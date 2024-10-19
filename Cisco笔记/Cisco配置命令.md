@@ -191,27 +191,27 @@
 
 ### 配置端口映射
 ### 进入全局配置模式
-`configure terminal`
+- `configure terminal`
 
 ### 定义NAT池，使用公网IP地址
-`ip nat pool MYPOOL 203.0.113.5 203.0.113.5 netmask 255.255.255.255`
+- `ip nat pool MYPOOL 203.0.113.5 203.0.113.5 netmask 255.255.255.255`
 
 ### 定义访问控制列表，允许内部网络的所有IP地址使用NAT
-`access-list 1 permit 192.168.1.0 0.0.0.255`
+- `access-list 1 permit 192.168.1.0 0.0.0.255`
 
 ### 将访问控制列表与NAT池关联，启用PAT
-`ip nat inside source list 1 pool MYPOOL`
+- `ip nat inside source list 1 pool MYPOOL`
 
 ### 配置内外网接口（假设内网接口是GigabitEthernet0/0，外网接口是GigabitEthernet0/1）
-`interface GigabitEthernet0/0`
-`ip nat inside`
+- `interface GigabitEthernet0/0`
+- `ip nat inside`
 
-`interface GigabitEthernet0/1`
-`ip nat outside`
+- `interface GigabitEthernet0/1`
+- `ip nat outside`
 
 ### 保存配置
-`end`
-`write memory`
+- `end`
+- `write memory`
 
 ### [端口转发](#端口转发)
 端口转发是一种安全功能，它允许外部请求通过特定的端口被转发到内部网络上的特定设备和端口上。端口转发通常用于让外部用户访问内部网络上提供的服务，如Web服务器或FTP服务器。
@@ -219,21 +219,22 @@
 ### 配置端口转发
 
 ### 进入全局配置模式
-`configure terminal`
+- `configure terminal`
 
 ### 定义端口转发规则，将到达公网IP地址的80端口的流量转发到内网Web服务器的80端口
-`ip nat inside source static tcp 61.159.62.131 80 192.168.100.2 80 extendable`
+- `ip nat inside source static tcp 61.159.62.131 80 192.168.100.2 80 extendable`
 
 ### 配置内外网接口（假设内网接口是GigabitEthernet0/0，外网接口是GigabitEthernet0/1）
-`interface GigabitEthernet0/0`
-`ip nat inside`
+- `interface GigabitEthernet0/0`
+- `ip nat inside`
 
-`interface GigabitEthernet0/1`
-`ip nat outside`
+- `interface GigabitEthernet0/1`
+- `ip nat outside`
 
 ### 保存配置
-`end`
-`write memory`
+- `end`
+
+- `write memory`
 
 ### 显示配置信息：
 - `show ip nat translations`
