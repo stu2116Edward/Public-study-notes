@@ -1,0 +1,314 @@
+# Cisco命令笔记
+
+## [基础理论](#基础理论)
+
+### [PPP：广域网协议](#PPP)
+- Serial（串口）
+
+### [PPPoE：以太网协议](#PPPoE)
+- RJ45的均为以太网
+
+## [初识Cisco(CLI面板信息)](#初识Cisco)
+### [超级终端：Terminal](#Terminal)
+- 用于访问和配置Cisco设备的控制台。
+
+### [用户模式与特权模式](#User_Mode_Privileged_Mode)
+- 用户模式：`>`
+- 特权模式：`#`
+
+### [配置模式与接口模式](#Configuration_Mode_Interface_Mode)
+- 配置模式：`config#`
+- 接口模式：`config-if#`
+
+## [快捷键以及基础命令](#快捷键以及基础命令)
+
+### [快捷键](#Shortcuts)
+- 直接退到特权模式(`#`)：`Ctrl+Z` 或者在命令行中输入`end`命令。
+- 在终端内加速时间：`Ctrl+Shift+6`
+- 用于查看当前视图中的命令及解释：`?`
+- 补全当前的命令：`Tab`
+
+### [基础命令](#Basic_Commands)
+- 进入特权模式：`enable`
+- 显示当前目录：`dir`
+- 用于显示某个命令执行的信息：`show <属性>` 注意要在特权模式下
+- 进入配置模式：`configure terminal` 或简写为 `conf t`
+- 进入某个接口：`interface <接口名称>` 这里示例：`int f0/1`
+- 对当前的设备重新命名：`hostname <设备名>`
+- 显示设备的接口状态：`show int f0/1`
+
+## [Telnet远程管理交换机](#Telnet_Remote_Management)
+
+### [配置VLAN接口](#Configuring_VLAN_Interface)
+- 默认的VLAN为VLAN 1。
+- 进入VLAN接口配置模式：`interface vlan 1`
+- 配置远程管理的IP地址以及子网掩码：`ip address 192.168.100.5 255.255.255.0`
+- 退出当前模式：`exit`
+- 给交换机定义网关：`ip default-gateway 192.168.100.100`
+- 开启接口：`no shutdown`
+- 查看当前配置信息：`show running-config`
+
+### [设置密码](#Setting_Passwords)
+- 在配置模式中设置进入特权模式的密码：`enable secret <密码>`
+- 进入虚拟终端模式并设置密码（这里设置的是Telnet的密码）：`line vty 0 4` 或 `line vty 5 15`，然后输入 `login` 和 `password <密码>`
+- 保存配置：`write memory`
+
+### [远程登录](#Remote_Login)
+- 进行远程登录：`telnet <IP地址>`
+
+## [追踪路由途径](#Trace_Route)
+- 使用 `tracert <IP/域名>` 命令追踪路由途径。
+- tracert命令的最大跳数默认为30跳。如果要增加最大跳数，可以使用`-h`参数，后跟所需的最大跳数。
+
+### [显示配置信息](#Display_Configuration)
+- 显示交换机当前在内存配置里的情况（特权模式中进行）：`show running-config`
+- 显示交换机保存在闪存(flash)中的配置（特权模式中进行）：`show startup-config`
+
+## [配置交换机VLAN](#Configuring_Switch_VLANs)
+
+### [创建VLAN并分配端口](#Creating_VLANs_and_Assigning_Ports)
+- 在配置模式中：`conf t`
+- 创建VLAN：`vlan 10` 和 `vlan 20`
+- 将端口加入VLAN：`int f0/1`，`switchport mode access`，`switchport access vlan 10`；对于`f0/2`，操作类似。
+
+### [交换机间Trunk配置](#Inter-Switch_Trunk_Configuration)
+- 配置为trunk模式：`int f0/24`，`switchport mode trunk`
+- 允许所有VLAN通过：`switchport trunk allowed vlan all`
+
+## [链路聚合](#Link_Aggregation)
+
+### [配置链路聚合](#Configuring_Link_Aggregation)
+- 将多个接口绑定为一个聚合组：`int range f0/1-f0/3`，`channel-group 1 mode on`
+- 设置聚合模式为on：`channel-group 1 mode on`
+- 设置为trunk模式：`switchport mode trunk`
+
+### 显示配置信息：
+- `show interfaces port-channel 1`
+- `show etherchannel summary`
+
+## [静态路由配置](#Static_Routing_Configuration)
+
+### [直连路由配置](#Directly_Connected_Routing_Configuration)
+- 进入端口配置模式：`int <接口名称>`
+- 配置IP地址：`ip address <IP地址> <子网掩码>`
+- 开启端口：`no shutdown`
+
+### [单臂路由配置](#Single-Arm_Routing_Configuration)
+- 配置子接口：`int <接口名称>.<子接口编号>`
+- 封装协议：`encapsulation dot1q <VLAN编号>`
+- 分配IP地址：`ip address <IP地址> <子网掩码>`
+
+- 配置子接口：`int f0/0.1`，`encapsulation dot1q 10`，`ip address 192.168.1.254 255.255.255.0`
+- 配置另一个VLAN的子接口：`int f0/0.2`，`encapsulation dot1q 20`，`ip address 192.168.2.254 255.255.255.0`
+
+### [静态路由和默认路由](#Static_Routing_and_Default_Routing)
+- 配置静态路由：`ip route <目标网络> <目标子网掩码> <下一跳IP地址或接口>`
+- 配置默认路由：`ip route 0.0.0.0 0.0.0.0 <下一跳IP地址或接口>`
+
+### 显示配置信息：
+- `show ip route`
+- `show ip route static`
+
+## [RIP动态路由配置](#RIP_Dynamic_Routing_Configuration)
+
+### [启用RIP路由](#Enabling_RIP_Routing)
+- 启用RIP路由：`router rip`
+- 配置网络：`network <与自身相连的网段，例如：192.168.1.0>`
+- 关闭自动汇总：`no auto-summary`
+- 设置RIP版本：`version 2`
+- 显示RIP信息：`show ip rip`
+- 显示RIP数据库：`show ip rip database`
+
+### [重发布静态路由到RIP](#Redistribution_Static_Routes_to_RIP)
+- 在RIP中重发布静态路由：`redistribute static`
+- `redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样RIP就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率(在RIP版本2中使用)`
+
+### [重发布默认路由到RIP](#Redistribution_Static_Routes_to_RIP)
+- 在RIP中重发布默认路由：`default-information originate`
+
+### 显示配置信息：
+- `debug ip rip`
+- `clear ip route *`
+
+## [OSPF路由配置](#OSPF_Routing_Configuration)
+
+### [启用OSPF路由](#Enabling_OSPF_Routing)
+- 启用OSPF路由：`router ospf <进程号>`
+- 配置网络：`network <本地网络IP地址> <本地网络子网掩码> area <区域号>`
+- 重发布静态路由到OSPF：`redistribute static subnets`
+- `redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样OSPF就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率`
+- 在OSPF中重发布默认路由：`default-information originate`
+- `使用 always 关键字可以确保即使没有静态默认路由，也会通告一个默认路由如果您只想在存在默认路由时重发布它，可以省略 always 关键字：default-information originate always`
+
+### 显示配置信息：
+- `show ip ospf neighbor`
+- `show ip ospf database`
+
+## [NAT地址转换](#NAT_Address_Translation)
+
+### [静态NAT配置](#Static_NAT_Configuration)
+- 配置静态NAT：`ip nat inside source static <内网IP> <公网IP>`
+- 应用NAT：`int f0/0`，`ip nat inside`；`int f0/1`，`ip nat outside`
+
+### [动态NAT配置](#Dynamic_NAT_Configuration)
+- 配置访问控制列表：`access-list 1 permit 192.168.0.0 <反掩码>`
+- 配置示例：`access-list 1 permit 192.168.0.0 0.0.0.255`
+- 配置NAT池：`ip nat pool zzz 20.0.0.1 20.0.0.1 netmask 255.255.255.0`
+- 应用动态NAT：`ip nat inside source list 1 pool zzz overload`
+
+### [动态NAPT配置](#Dynamic_NAPT_Configuration)
+- 配置访问控制列表：`access-list 1 permit 192.168.1.0 <反掩码>`
+- 配置示例：`access-list 1 permit 192.168.1.0 0.0.0.255`
+- 应用动态NAPT：`ip nat inside source list 1 interface f0/1 overload`
+
+### 显示配置信息：
+- `show ip nat translations`
+- `clear ip nat translations`
+
+## [ACL（访问控制列表）](#ACL_Access_Control_List)
+
+### [标准ACL](#Standard_ACL)
+- 配置标准ACL：`access-list 10 permit 192.168.1.0 <反掩码>`
+- 配置标准ACL示例：`access-list 10 permit 192.168.1.0 0.0.0.255`
+- 在接口中应用ACL：`int f0/1`，`ip access-group 10 in`
+
+### [扩展ACL](#Extended_ACL)
+- 配置扩展ACL：`access-list 100 deny tcp 192.168.1.0 <反掩码> any eq <端口号或服务>`
+- 配置扩展ACL示例：`access-list 100 deny tcp 192.168.1.0 0.0.0.255 any eq 23`
+- 应用扩展ACL：`int f0/1`，`ip access-group 100 in`
+
+### 显示配置信息：
+- `show access-lists`
+- `clear access-list counters`
+
+## [生成树协议（STP）](#Spanning_Tree_Protocol)
+
+### [配置生成树](#Configuring_Spanning_Tree)
+- 查看当前STP模式：`show spanning-tree mode`
+- 关闭生成树：`no spanning-tree mode pvst`
+- 设置VLAN优先级：`spanning-tree vlan 10-40 priority 0`
+
+### 显示配置信息：
+- `show spanning-tree`
+- `show spanning-tree vlan 10`
+
+## [交换机端口安全](#Switch_Port_Security)
+
+### [配置端口安全](#Configuring_Port_Security)
+- 进入接口配置模式：`int f0/1`
+- 开启端口安全：`switchport port-security`
+- 设置最大MAC连接数：`switchport port-security maximum 2`
+- 设置端口老化时间：`switchport port-security aging time 60`
+
+### 显示配置信息：
+- `show port-security`
+- `show port-security address`
+
+## [配置SSH访问](#Configuring_SSH_Access)
+- 进入特权模式：`enable`
+- 进入全局配置模式：`configure terminal`
+- 配置SSH版本：`crypto key generate rsa`
+- 设置用户名和密码：`username admin privilege 15 secret password`
+- 开启VTY线路并指定允许的SSH版本：`line vty 0 4`
+- 设置认证模式为SSH：`transport input ssh`
+- 保存配置：`write memory`
+
+### 显示配置信息：
+- `show crypto key mypubkey rsa`
+- `show ssh`
+
+## [内网静态路由重发布](#Internal_Static_Route_Redistribution)
+
+### [重发布静态路由](#Redistribution_Static_Routes)
+- 在RIP中重发布静态路由：`router rip`，`redistribute static`
+- 在OSPF中重发布静态路由：`router ospf 1`，`redistribute static subnets`
+
+### 显示配置信息：
+- `show ip route static`
+- `show ip rip database`
+
+## [链路聚合和Trunk](#Link_Aggregation_and_Trunk)
+
+### [配置链路聚合](#Configuring_Link_Aggregation)
+- 二层交换机：
+  - 进入接口组模式：`int range f0/1-f0/2`
+  - 建立聚合链路：`channel-group 1 mode on`
+  - 进入聚合链路1：`int port-channel 1`
+  - 设置为trunk模式：`switchport mode trunk`
+  - 允许所有VLAN通过：`switchport trunk allowed vlan all`
+
+- 三层交换机：
+  - 进入接口组模式：`int range f0/1-f0/2`
+  - 建立聚合链路：`channel-group 1 mode on`
+  - 进入聚合链路1：`int port-channel 1`
+  - 设置为trunk模式并封装：`switchport trunk encapsulation dot1q`
+  - 允许所有VLAN通过：`switchport trunk allowed vlan all`
+
+### 显示配置信息：
+- `show interfaces port-channel 1`
+- `show etherchannel summary`
+
+## [OSPF路由](#OSPF_Routing)
+
+### [配置OSPF路由](#Configuring_OSPF_Routing)
+- 启用OSPF路由：`router ospf 1`
+- 配置网络：`network 192.168.12.0 0.0.0.255 area 0`
+- 不同进程重发布：`redistribute ospf 2 subnets`
+
+### 显示配置信息：
+- `show ip ospf neighbor`
+- `show ip ospf database`
+
+## [三层交换机操作](#Layer_3_Switch_Operations)
+
+### [使用端口路由](#Using_Port_Routing)
+- 进入接口配置模式：`int f0/1`
+- 关闭交换模式：`no switchport`
+- 配置IP地址：`ip address 192.168.1.254 255.255.255.0`
+- 开启接口：`no shutdown`
+- 开启路由功能：`ip routing`
+
+### [使用VLAN路由](#Using_VLAN_Routing)
+- 创建VLAN：`vlan 10`，`vlan 20`
+- 将端口加入VLAN：`int f0/2`，`switchport mode access`，`switchport access vlan 20`
+- 配置VLAN接口：`int vlan 10`，`ip address 192.168.1.254 255.255.255.0`
+- 注意：不需要开启IP路由
+
+### [开启Trunk封装](#Enabling_Trunk_Encapsulation)
+- 进入接口配置模式：`int f0/3`
+- 设置封装类型：`switchport trunk encapsulation dot1q`
+- 开启Trunk模式：`switchport mode trunk`
+
+### [配置DHCP](#Configuring_DHCP)
+- 开启DHCP服务：`service dhcp`
+- 创建DHCP池：`ip dhcp pool bbb`
+- 配置网络和默认路由器：`network 192.168.1.0 255.255.255.0`，`default-router 192.168.1.1`
+- 配置DNS服务器：`dns-server 60.191.244.5`
+
+### [配置端口安全](#Configuring_Port_Security)
+- 进入接口配置模式：`int f0/1`
+- 开启端口安全：`switchport port-security`
+- 设置最大MAC地址数量：`switchport port-security maximum 2`
+- 设置端口老化时间：`switchport port-security aging time 60`
+
+### [生成树协议（STP）](#Spanning_Tree_Protocol)
+- 查看当前STP模式：`show spanning-tree mode`
+- 关闭生成树：`no spanning-tree mode pvst`
+- 设置VLAN优先级：`spanning-tree vlan 10-40 priority 0`
+
+### [子网汇聚](#Subnet_Aggregation)
+- 子网汇聚配置：`ip route 192.168.0.0 255.255.0.0 192.168.5.1`
+- 静态路由配置：`ip route 192.168.1.0 255.255.255.0 192.168.5.1`
+- 默认路由配置：`ip route 0.0.0.0 0.0.0.0 192.168.5.1`
+
+### [RIP动态路由](#RIP_Dynamic_Routing)
+- 启用RIP路由：`router rip`
+- 配置网络：`network 192.168.1.0`
+- 关闭自动汇总：`no auto-summary`
+- 设置RIP版本：`version 2`
+- 显示RIP信息：`show ip rip`
+- 显示RIP数据库：`show ip rip database`
+
+### [重发布静态路由到RIP](#Redistribution_Static_Routes_to_RIP)
+- 在RIP中重发布静态路由：`router rip`，`redistribute static`
+- `redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样RIP就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率(在RIP版本2中使用)`
