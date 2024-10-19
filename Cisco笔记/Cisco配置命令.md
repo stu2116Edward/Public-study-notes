@@ -10,7 +10,7 @@
 - [RIP动态路由配置](#RIP动态路由配置)
 - [OSPF路由配置](#OSPF路由配置)
 - [NAT地址转换](#NAT地址转换)
-- [#端口映射](#端口映射)
+- [端口映射](#端口映射)
 - [端口转发](#端口转发)
 - [ACL（访问控制列表）](#ACL访问控制列表)
 - [生成树协议（STP）](#生成树协议STP)
@@ -190,26 +190,26 @@
 假设您的公司有多个内部设备需要访问互联网，但只有一个公网IP地址`203.0.113.5`。您希望通过端口映射（PAT）允许这些设备共享这个公网IP地址。
 
 ### 配置端口映射
-# 进入全局配置模式
+### 进入全局配置模式
 `configure terminal`
 
-# 定义NAT池，使用公网IP地址
+### 定义NAT池，使用公网IP地址
 `ip nat pool MYPOOL 203.0.113.5 203.0.113.5 netmask 255.255.255.255`
 
-# 定义访问控制列表，允许内部网络的所有IP地址使用NAT
+### 定义访问控制列表，允许内部网络的所有IP地址使用NAT
 `access-list 1 permit 192.168.1.0 0.0.0.255`
 
-# 将访问控制列表与NAT池关联，启用PAT
+### 将访问控制列表与NAT池关联，启用PAT
 `ip nat inside source list 1 pool MYPOOL`
 
-# 配置内外网接口（假设内网接口是GigabitEthernet0/0，外网接口是GigabitEthernet0/1）
+### 配置内外网接口（假设内网接口是GigabitEthernet0/0，外网接口是GigabitEthernet0/1）
 `interface GigabitEthernet0/0`
 `ip nat inside`
 
 `interface GigabitEthernet0/1`
 `ip nat outside`
 
-# 保存配置
+### 保存配置
 `end`
 `write memory`
 
@@ -218,20 +218,20 @@
 - 配置说明： `ip nat inside source static tcp <公网IP> <外部端口> <内网IP> <内部端口> extendable`
 ### 配置端口转发
 
-# 进入全局配置模式
+### 进入全局配置模式
 `configure terminal`
 
-# 定义端口转发规则，将到达公网IP地址的80端口的流量转发到内网Web服务器的80端口
+### 定义端口转发规则，将到达公网IP地址的80端口的流量转发到内网Web服务器的80端口
 `ip nat inside source static tcp 61.159.62.131 80 192.168.100.2 80 extendable`
 
-# 配置内外网接口（假设内网接口是GigabitEthernet0/0，外网接口是GigabitEthernet0/1）
+### 配置内外网接口（假设内网接口是GigabitEthernet0/0，外网接口是GigabitEthernet0/1）
 `interface GigabitEthernet0/0`
 `ip nat inside`
 
 `interface GigabitEthernet0/1`
 `ip nat outside`
 
-# 保存配置
+### 保存配置
 `end`
 `write memory`
 
