@@ -1,2 +1,3 @@
 # Public-study-notes
-Something I've been learning lately
+
+这是我的学习笔记，如果你觉得我的内容有问题，请提出或给我发邮件，我会及时纠正，如果你有自己的学习笔记要分享，我也会上传，让我们一起成长
