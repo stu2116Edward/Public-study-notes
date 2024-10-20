@@ -1,10 +1,12 @@
 # Cisco命令笔记
 
 - [基础理论](#基础理论)
+- [初识Cisco(CLI面板信息)](#初识Cisco)
 - [快捷键以及基础命令](#快捷键以及基础命令)
 - [Telnet远程管理交换机](#Telnet远程管理交换机)
 - [追踪路由途径](#追踪路由途径)
 - [配置交换机VLAN](#配置交换机VLAN)
+- [子网汇聚](#Subnet_Aggregation)
 - [链路聚合](#链路聚合)
 - [静态路由配置](#静态路由配置)
 - [RIP动态路由配置](#RIP动态路由配置)
@@ -20,6 +22,9 @@
 - [链路聚合和Trunk](#链路聚合和Trunk)
 - [OSPF路由](#OSPF路由)
 - [三层交换机操作](#三层交换机操作)
+- [配置DHCP](#Configuring_DHCP)
+- [日志信息](#日志信息)
+- [关于设备信息](#关于设备信息)
 
 ## [基础理论](#基础理论)
 
@@ -30,8 +35,7 @@
 - RJ45的均为以太网
 
 ## [初识Cisco(CLI面板信息)](#初识Cisco)
-###
- [超级终端：Terminal](#Terminal)
+### [超级终端：Terminal](#Terminal)
 - 用于访问和配置Cisco设备的控制台。
 
 ### [用户模式与特权模式](#User_Mode_Privileged_Mode)
@@ -157,8 +161,8 @@ no logging：关闭日志记录功能。`
 - 配置默认路由：`ip route 0.0.0.0 0.0.0.0 <下一跳IP地址或接口>`
 
 ### 显示配置信息：
-- `show ip route`
-- `show ip route static`
+- 显示当前路由器的IP路由表：`show ip route`
+- 显示路由表中所有静态路由条目：`show ip route static`
 
 ## [RIP动态路由配置](#RIP_Dynamic_Routing_Configuration)
 
@@ -336,6 +340,11 @@ redistribute static subnets 使用subnets关键字，可以确保所有静态路
 - `show ip route static`
 - `show ip rip database`
 
+## [子网汇聚](#Subnet_Aggregation)
+- 子网汇聚配置：`ip route 192.168.0.0 255.255.0.0 192.168.5.1`
+- 静态路由配置：`ip route 192.168.1.0 255.255.255.0 192.168.5.1`
+- 默认路由配置：`ip route 0.0.0.0 0.0.0.0 192.168.5.1`
+
 ## [链路聚合和Trunk](#Link_Aggregation_and_Trunk)
 
 ### [配置链路聚合](#Configuring_Link_Aggregation)
@@ -369,7 +378,7 @@ redistribute static subnets 使用subnets关键字，可以确保所有静态路
 - `show ip ospf database`
 
 ## [三层交换机操作](#Layer_3_Switch_Operations)
-
+三层交换机(具备路由功能的交换机)需要注意的地方：
 ### [使用端口路由](#Using_Port_Routing)
 - 进入接口配置模式：`int f0/1`
 - 关闭交换模式：`no switchport`
@@ -384,45 +393,18 @@ redistribute static subnets 使用subnets关键字，可以确保所有静态路
 - 注意：不需要开启IP路由
 
 ### [开启Trunk封装](#Enabling_Trunk_Encapsulation)
+三层交换机开启trunk需要封装
 - 进入接口配置模式：`int f0/3`
 - 设置封装类型：`switchport trunk encapsulation dot1q`
 - 开启Trunk模式：`switchport mode trunk`
 
-### [配置DHCP](#Configuring_DHCP)
+## [配置DHCP](#Configuring_DHCP)
 - 开启DHCP服务：`service dhcp`
 - 创建DHCP池：`ip dhcp pool bbb`
 - 配置网络和默认路由器：`network 192.168.1.0 255.255.255.0`，`default-router 192.168.1.1`
 - 配置DNS服务器：`dns-server 60.191.244.5`
 
-### [配置端口安全](#Configuring_Port_Security)
-- 进入接口配置模式：`int f0/1`
-- 开启端口安全：`switchport port-security`
-- 设置最大MAC地址数量：`switchport port-security maximum 2`
-- 设置端口老化时间：`switchport port-security aging time 60`
-
-### [生成树协议（STP）](#Spanning_Tree_Protocol)
-- 查看生成树协议状态：`show spanning-tree`
-- 关闭生成树：`no spanning-tree mode pvst`
-- 设置VLAN优先级：`spanning-tree vlan 10-40 priority 0`
-
-### [子网汇聚](#Subnet_Aggregation)
-- 子网汇聚配置：`ip route 192.168.0.0 255.255.0.0 192.168.5.1`
-- 静态路由配置：`ip route 192.168.1.0 255.255.255.0 192.168.5.1`
-- 默认路由配置：`ip route 0.0.0.0 0.0.0.0 192.168.5.1`
-
-### [RIP动态路由](#RIP_Dynamic_Routing)
-- 启用RIP路由：`router rip`
-- 配置网络：`network 192.168.1.0`
-- 关闭自动汇总：`no auto-summary`
-- 设置RIP版本：`version 2`
-- 显示RIP信息：`show ip rip`
-- 显示RIP数据库：`show ip rip database`
-
-### [重发布静态路由到RIP](#Redistribution_Static_Routes_to_RIP)
-- 在RIP中重发布静态路由：`router rip`，`redistribute static`
-- `redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样RIP就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率(在RIP版本2中使用)`
-
-### [日志信息](#日志信息)
+## [日志信息](#日志信息)
 - 启用日志记录功能(全局配置模式)：`logging on`
 - 设置日志服务器地址：`logging host <IP地址>` 或 `logging host <域名>`
 - 设置日志记录的严重级别：`logging trap <级别>` 级别范围从0（紧急）到7（调试），例如 logging trap 3 表示记录错误及以上级别的日志。
@@ -430,7 +412,7 @@ redistribute static subnets 使用subnets关键字，可以确保所有静态路
 - 查看日志信息：`show logging`
 - 清除缓存器中的日志消息：`clear logging`
 
-### [关于设备信息](#关于设备信息)
+## [关于设备信息](#关于设备信息)
 - 查看设备版本信息：`show version`
 - 查看设备时钟信息：`show clock`
 - 查看设备技术支持信息：`show tech-support`
