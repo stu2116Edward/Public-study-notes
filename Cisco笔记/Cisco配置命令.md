@@ -282,11 +282,14 @@
 ## [配置SSH访问](#Configuring_SSH_Access)
 - 进入特权模式：`enable`
 - 进入全局配置模式：`configure terminal`
-- 配置SSH版本：`crypto key generate rsa`
-- 设置用户名和密码：`username admin privilege 15 secret password`
-- 开启VTY线路并指定允许的SSH版本：`line vty 0 4`
-- 设置认证模式为SSH：`transport input ssh`
-- 保存配置：`write memory`
+- 生成RSA密钥 `crypto key generate rsa general-keys modulus 1024`
+- 设置用户名和密码：`username <用户名> privilege 15 secret <密码>`
+- 开启VTY线路并指定允许的SSH版本：
+- 配置虚拟终端（VTY）线路，通常用于远程访问。这里的0 4指定了要配置的VTY线路编号：`line vty 0 4`
+- 只允许SSH协议通过这些VTY线路进行连接：`transport input ssh`
+- 指示设备在用户登录时使用本地用户数据库进行身份验证：`login local`
+- 删除VTY线路的密码要求，因为现在我们使用SSH密钥或用户名/密码进行身份验证：`no password`
+- 保存配置重启后配置仍然有效：`write memory`
 
 ### 显示配置信息：
 - `show crypto key mypubkey rsa`
