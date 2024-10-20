@@ -390,7 +390,7 @@ no logging：关闭日志记录功能。`
 - 设置端口老化时间：`switchport port-security aging time 60`
 
 ### [生成树协议（STP）](#Spanning_Tree_Protocol)
-- 查看当前STP模式：`show spanning-tree mode`
+- 查看生成树协议状态：`show spanning-tree`
 - 关闭生成树：`no spanning-tree mode pvst`
 - 设置VLAN优先级：`spanning-tree vlan 10-40 priority 0`
 
@@ -410,3 +410,16 @@ no logging：关闭日志记录功能。`
 ### [重发布静态路由到RIP](#Redistribution_Static_Routes_to_RIP)
 - 在RIP中重发布静态路由：`router rip`，`redistribute static`
 - `redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样RIP就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率(在RIP版本2中使用)`
+
+### [日志信息](#日志信息)
+- 启用日志记录功能(全局配置模式)：`logging on`
+- 设置日志服务器地址：`logging host <IP地址>` 或 `logging host <域名>`
+- 设置日志记录的严重级别：`logging trap <级别>` 级别范围从0（紧急）到7（调试），例如 logging trap 3 表示记录错误及以上级别的日志。
+- 设置日志消息的时间戳：`service timestamps log datetime localtime`
+- 查看日志信息：`show logging`
+- 清除缓存器中的日志消息：`clear logging`
+
+### [关于设备信息](#关于设备信息)
+- 查看设备版本信息：`show version`
+- 查看设备时钟信息：`show clock`
+- 查看设备技术支持信息：`show tech-support`
