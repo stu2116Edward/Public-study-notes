@@ -176,20 +176,21 @@ no logging：关闭日志记录功能。`
 - 显示RIP信息：`show ip rip`
 - 显示RIP数据库：`show ip rip database`
 
-### [重发布静态路由到RIP](#Redistribution_Static_Routes_to_RIP)
+### 重发布静态路由到RIP
 - 启用RIP路由：`router rip`
 - 在RIP中重发布静态路由：`redistribute static`  
 redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样RIP就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率(在RIP版本2中使用)
 
-### [重发布默认路由到RIP](#Redistribution_Static_Routes_to_RIP)
+### 重发布默认路由到RIP
 - 启用RIP路由：`router rip`
 - 在RIP中重发布默认路由：`default-information originate`
 
-### RIP重发布OSPF路由
-- 指定一个度量值（metric），这是RIP中跳数的值：`redistribute ospf <进程号> metric <度量值>`
-
-### RIP重发布EIGRP路由
-- `redistribute eigrp <自治系统号> metric <度量值>`
+### 在RIP重发布OSPF路由
+- 指定一个度量值（metric），这是RIP中跳数的值：`redistribute ospf <进程号> metric <度量值>`  
+这里的 <度量值> 是指 RIP 使用的度量值，用于表示 OSPF 路由在 RIP 中的"成本"  
+### 在RIP重发布EIGRP路由  
+- `redistribute eigrp <自治系统号> metric <度量值>`  
+这里的 <度量值> 则是指 EIGRP 使用的度量值，用于表示 EIGRP 路由在 RIP 中的"成本
 
 ### 显示配置信息：
 - 用于开启IP RIP的调试模式和诊断和解决RIP路由问题：`debug ip rip`
@@ -202,10 +203,19 @@ redistribute static subnets 使用subnets关键字，可以确保所有静态路
 - 配置网络：`network <本地网络IP地址> <本地网络子网掩码> area <区域号>`
 - 重发布静态路由到OSPF：`redistribute static subnets`  
 redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样OSPF就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率
-- 在OSPF中重发布默认路由：`default-information originate`
-- `使用 always 关键字可以确保即使没有静态默认路由，也会通告一个默认路由如果您只想在存在默认路由时重发布它，可以省略 always 关键字：default-information originate always`
+- 在OSPF中重发布默认路由：`default-information originate`  
+使用 always 关键字可以确保即使没有静态默认路由，也会通告一个默认路由如果您只想在存在默认路由时重发布它，可以省略 always 关键字：default-information originate always
 
-### OSPF中的边界路由配置：  
+### 在OSPF重发布RIP路由
+- redistribute rip metric <度量值> subnets
+这里的<度量值>是OSPF中的度量值，它不是RIP的跳数
+
+### 在OSPF中重发布EIGRP路由
+- redistribute eigrp <自治系统号> metric <度量值> subnets  
+<自治系统号>是EIGRP的进程号或自治系统号
+<度量值>是OSPF中的度量值，它考虑了带宽、延迟、负载、可靠性和MTU等因素，需要根据你的网络环境和需求来调整  
+
+### OSPF中的不同区域边界路由配置：  
 这是一个边界路由  
 1.定义区域  
 R1(config)# `router ospf 1`  
@@ -220,6 +230,14 @@ R1(config-if)# `ip ospf 1 area 1`
 R1(config-router)# `area 1 stub`  
 或者  
 R1(config-router)# `area 1 nssa`  
+
+### 不同的OSPF进程之间重发布路由  
+在进程1中重发布进程2的路由  
+R1(config)# `router ospf 1`  
+R1(config-router)# `redistribute ospf 2 metric 20`  
+在进程2中重发布进程1的路由  
+R1(config-router)# `router ospf 2`
+R1(config-router)# `redistribute ospf 1 metric 20`
 
 ### 显示配置信息：
 - `show ip ospf neighbor`
