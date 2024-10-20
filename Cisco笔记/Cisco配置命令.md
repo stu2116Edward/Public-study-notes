@@ -122,7 +122,16 @@ no logging：关闭日志记录功能。`
 ### [配置链路聚合](#Configuring_Link_Aggregation)
 - 将多个接口绑定为一个聚合组：`int range f0/1-f0/3`，`channel-group 1 mode on`
 - 设置聚合模式为on：`channel-group 1 mode on`
-- 设置为trunk模式：`switchport mode trunk`
+- 设置为trunk模式(如果需要)：`switchport mode trunk`
+
+### 三层交换机链路聚合配置：
+进入全局配置模式
+- 创建一个Port-channel接口：`int port-channel 1`
+- 设置IP地址(如果需要网管)：`ip address [IP地址] [子网掩码]`
+- 将物理接口添加到Port-channel接口：`interface range f0/1 - 3`
+- 指定封装类型：`switchport trunk encapsulation dot1q`
+- 设置聚合模式为on：`channel-group 1 mode on`
+- 设置为trunk模式(如果需要)：`switchport mode trunk`
 
 ### 显示配置信息：
 - `show interfaces port-channel 1`
