@@ -128,7 +128,7 @@ no logging：关闭日志记录功能。`
 进入全局配置模式
 - 创建一个Port-channel接口：`int port-channel 1`
 - 设置IP地址(如果需要网管)：`ip address [IP地址] [子网掩码]`
-- 将物理接口添加到Port-channel接口：`interface range f0/1 - 3`
+- 将物理接口添加到Port-channel接口：`interface range f0/1-3`
 - 指定封装类型：`switchport trunk encapsulation dot1q`
 - 设置聚合模式为on：`channel-group 1 mode on`
 - 设置为trunk模式(如果需要)：`switchport mode trunk`
@@ -153,7 +153,7 @@ no logging：关闭日志记录功能。`
 - 配置另一个VLAN的子接口：`int f0/0.2`，`encapsulation dot1q 20`，`ip address 192.168.2.254 255.255.255.0`
 
 ### [静态路由和默认路由](#Static_Routing_and_Default_Routing)
-- 配置静态路由：`ip route <目标网络> <目标子网掩码> <下一跳IP地址或接口>`
+- 配置静态路由：`ip route <目标网络地址> <目标子网掩码> <下一跳IP地址或接口>`
 - 配置默认路由：`ip route 0.0.0.0 0.0.0.0 <下一跳IP地址或接口>`
 
 ### 显示配置信息：
@@ -171,15 +171,17 @@ no logging：关闭日志记录功能。`
 - 显示RIP数据库：`show ip rip database`
 
 ### [重发布静态路由到RIP](#Redistribution_Static_Routes_to_RIP)
+- 启用RIP路由：`router rip`
 - 在RIP中重发布静态路由：`redistribute static`
-- `redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样RIP就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率(在RIP版本2中使用)`
+- redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样RIP就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率(在RIP版本2中使用)
 
 ### [重发布默认路由到RIP](#Redistribution_Static_Routes_to_RIP)
+- 启用RIP路由：`router rip`
 - 在RIP中重发布默认路由：`default-information originate`
 
 ### 显示配置信息：
-- `debug ip rip`
-- `clear ip route *`
+- 用于开启IP RIP的调试模式和诊断和解决RIP路由问题：`debug ip rip`
+- 清除路由器上的所有IP路由条目：`clear ip route *`
 
 ## [OSPF路由配置](#OSPF_Routing_Configuration)
 
