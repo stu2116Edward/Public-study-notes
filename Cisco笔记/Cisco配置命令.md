@@ -197,6 +197,22 @@ redistribute static subnets 使用subnets关键字，可以确保所有静态路
 - 在OSPF中重发布默认路由：`default-information originate`
 - `使用 always 关键字可以确保即使没有静态默认路由，也会通告一个默认路由如果您只想在存在默认路由时重发布它，可以省略 always 关键字：default-information originate always`
 
+### OSPF中的边界路由配置：  
+这是一个边界路由  
+1.定义区域  
+R1(config)# `router ospf 1`  
+R1(config-router)# `network 10.0.0.0 0.255.255.255 area 0`  
+R1(config-router)# `network 192.168.1.0 0.0.0.255 area 1`  
+2.配置ABR  
+R1(config)# `interface GigabitEthernet0/0`  
+R1(config-if)# `ip ospf 1 area 0` 
+R1(config-if)# `interface GigabitEthernet0/1`  
+R1(config-if)# `ip ospf 1 area 1`  
+3.配置Stub区域或NSSA区域  
+R1(config-router)# `area 1 stub`  
+或者  
+R1(config-router)# `area 1 nssa`  
+
 ### 显示配置信息：
 - `show ip ospf neighbor`
 - `show ip ospf database`
