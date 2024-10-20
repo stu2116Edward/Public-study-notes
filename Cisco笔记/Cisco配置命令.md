@@ -56,6 +56,7 @@
 - 用于显示某个命令执行的信息：`show <属性>` 注意要在特权模式下
 - 进入配置模式：`configure terminal` 或简写为 `conf t`
 - 进入某个接口：`interface <接口名称>` 这里示例：`int f0/1`
+- 进入接口组模式(用于一次性配置多个接口)：`int range f0/1-f0/10` 或者 `int range f0/1-10`
 - 对当前的设备重新命名：`hostname <设备名>`
 - 显示设备的接口状态：`show int f0/1`
 
