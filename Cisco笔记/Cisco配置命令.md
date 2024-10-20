@@ -33,6 +33,9 @@
 ### [PPPoE：以太网协议](#PPPoE)
 - RJ45的均为以太网
 
+### 专业术语：  
+- 1.在路由协议中，“跳数”（Hop Count）是一个重要的概念，它用来衡量数据包从一个网络设备到达另一个网络设备所经过的路由器数量,每经过一个路由器，跳数就增加1。
+
 ## [初识Cisco(CLI面板信息)](#初识Cisco)
 ### [超级终端：Terminal](#Terminal)
 - 用于访问和配置Cisco设备的控制台。
@@ -181,6 +184,12 @@ redistribute static subnets 使用subnets关键字，可以确保所有静态路
 ### [重发布默认路由到RIP](#Redistribution_Static_Routes_to_RIP)
 - 启用RIP路由：`router rip`
 - 在RIP中重发布默认路由：`default-information originate`
+
+### RIP重发布OSPF路由
+- 指定一个度量值（metric），这是RIP中跳数的值：`redistribute ospf <进程号> metric <度量值>`
+
+### RIP重发布EIGRP路由
+- `redistribute eigrp <自治系统号> metric <度量值>`
 
 ### 显示配置信息：
 - 用于开启IP RIP的调试模式和诊断和解决RIP路由问题：`debug ip rip`
