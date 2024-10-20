@@ -172,7 +172,7 @@ no logging：关闭日志记录功能。`
 
 ### [重发布静态路由到RIP](#Redistribution_Static_Routes_to_RIP)
 - 启用RIP路由：`router rip`
-- 在RIP中重发布静态路由：`redistribute static`
+- 在RIP中重发布静态路由：`redistribute static`  
 redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样RIP就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率(在RIP版本2中使用)
 
 ### [重发布默认路由到RIP](#Redistribution_Static_Routes_to_RIP)
@@ -188,7 +188,7 @@ redistribute static subnets 使用subnets关键字，可以确保所有静态路
 ### [启用OSPF路由](#Enabling_OSPF_Routing)
 - 启用OSPF路由：`router ospf <进程号>`
 - 配置网络：`network <本地网络IP地址> <本地网络子网掩码> area <区域号>`
-- 重发布静态路由到OSPF：`redistribute static subnets`
+- 重发布静态路由到OSPF：`redistribute static subnets`  
 redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样OSPF就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率
 - 在OSPF中重发布默认路由：`default-information originate`
 - `使用 always 关键字可以确保即使没有静态默认路由，也会通告一个默认路由如果您只想在存在默认路由时重发布它，可以省略 always 关键字：default-information originate always`
