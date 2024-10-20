@@ -53,12 +53,29 @@
 ### [基础命令](#Basic_Commands)
 - 进入特权模式：`enable`
 - 显示当前目录：`dir`
+- 关闭或撤销配置命令：一般在命令行前加上`no`
+示例：
+`no ip address：从接口上删除IP地址。
+no shutdown：激活（启用）之前被关闭的接口。
+no logging：关闭日志记录功能。`
 - 用于显示某个命令执行的信息：`show <属性>` 注意要在特权模式下
 - 进入配置模式：`configure terminal` 或简写为 `conf t`
 - 进入某个接口：`interface <接口名称>` 这里示例：`int f0/1`
 - 进入接口组模式(用于一次性配置多个接口)：`int range f0/1-f0/10` 或者 `int range f0/1-10`
 - 对当前的设备重新命名：`hostname <设备名>`
-- 显示设备的接口状态：`show int f0/1`
+- 显示单个接口状态：`show int f0/1`
+- 显示所有接口状态：`show interfaces`
+- 显示接口的简要状态(接口速率)：`show interfaces status`
+- 显示接口的协议状态(包括vlan)：`show ip interface brief`
+- 显示所有路由信息(路由器，三层交换机中)：`show ip route`
+- 显示特定目的网络的路由：`show ip route <网段或ip地址>`
+- 显示直连路由：`show ip interface brief | include "up" | awk '{print $1}'`
+- 显示静态路由信息：`show running-config | section ip route`
+- 显示路由的汇总信息：`show ip protocols`
+- 显示OSPF路由信息：`show ip ospf database`
+- 显示RIP路由信息：`show ip rip database`
+- 显示EIGRP路由信息：`show ip eigrp neighbors 或者 show ip eigrp topology`
+
 
 ## [Telnet远程管理交换机](#Telnet_Remote_Management)
 
