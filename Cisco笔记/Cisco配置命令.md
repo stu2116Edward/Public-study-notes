@@ -236,7 +236,7 @@ R1(config-router)# `area 1 nssa`
 R1(config)# `router ospf 1`  
 R1(config-router)# `redistribute ospf 2 metric 20`  
 在进程2中重发布进程1的路由  
-R1(config-router)# `router ospf 2`
+R1(config-router)# `router ospf 2`  
 R1(config-router)# `redistribute ospf 1 metric 20`
 
 ### 显示配置信息：
