@@ -411,10 +411,12 @@ network <汇聚后的子网段>
 - 开启Trunk模式：`switchport mode trunk`
 
 ## [配置DHCP](#配置DHCP)
-- 开启DHCP服务：`service dhcp`
-- 创建DHCP池：`ip dhcp pool bbb`
+- 开启DHCP服务(全局配置模式)：`service dhcp`
+- 创建DHCP池：`ip dhcp pool bbb`  bbb是地址池的名称
 - 配置网络和默认路由器：`network 192.168.1.0 255.255.255.0`，`default-router 192.168.1.1`
 - 配置DNS服务器：`dns-server 60.191.244.5`
+- 保存配置(特权模式)：`write memory` 或者 `copy running-config startup-config`
+
 
 ## [日志信息](#日志信息)
 - 启用日志记录功能(全局配置模式)：`logging on`
