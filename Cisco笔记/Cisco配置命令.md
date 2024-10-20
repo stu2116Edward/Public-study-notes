@@ -11,16 +11,15 @@
 - [静态路由配置](#静态路由配置)
 - [RIP动态路由配置](#RIP动态路由配置)
 - [OSPF路由配置](#OSPF路由配置)
+- [ACL（访问控制列表）](#ACL访问控制列表)
 - [NAT地址转换](#NAT地址转换)
 - [端口映射](#端口映射)
 - [端口转发](#端口转发)
-- [ACL（访问控制列表）](#ACL访问控制列表)
 - [生成树协议（STP）](#生成树协议STP)
 - [交换机端口安全](#交换机端口安全)
 - [配置SSH访问](#配置SSH访问)
 - [内网静态路由重发布](#内网静态路由重发布)
 - [链路聚合和Trunk](#链路聚合和Trunk)
-- [OSPF路由](#OSPF路由)
 - [三层交换机操作](#三层交换机操作)
 - [配置DHCP](#配置DHCP)
 - [日志信息](#日志信息)
@@ -217,6 +216,22 @@ R1(config-router)# `area 1 nssa`
 - `show ip ospf neighbor`
 - `show ip ospf database`
 
+## [ACL（访问控制列表）](#ACL_Access_Control_List)
+
+### [标准ACL](#Standard_ACL)
+- 配置标准ACL：`access-list 10 permit 192.168.1.0 <反掩码>`
+- 配置标准ACL示例：`access-list 10 permit 192.168.1.0 0.0.0.255`
+- 在接口中应用ACL：`int f0/1`，`ip access-group 10 in`
+
+### [扩展ACL](#Extended_ACL)
+- 配置扩展ACL：`access-list 100 deny tcp 192.168.1.0 <反掩码> any eq <端口号或服务>`
+- 配置扩展ACL示例：`access-list 100 deny tcp 192.168.1.0 0.0.0.255 any eq 23`
+- 应用扩展ACL：`int f0/1`，`ip access-group 100 in`
+
+### 显示配置信息：
+- `show access-lists`
+- `clear access-list counters`
+
 ## [NAT地址转换](#NAT_Address_Translation)
 
 ### [静态NAT配置](#Static_NAT_Configuration)
@@ -290,22 +305,6 @@ R1(config-router)# `area 1 nssa`
 ### 显示配置信息：
 - `show ip nat translations`
 - `clear ip nat translations`
-
-## [ACL（访问控制列表）](#ACL_Access_Control_List)
-
-### [标准ACL](#Standard_ACL)
-- 配置标准ACL：`access-list 10 permit 192.168.1.0 <反掩码>`
-- 配置标准ACL示例：`access-list 10 permit 192.168.1.0 0.0.0.255`
-- 在接口中应用ACL：`int f0/1`，`ip access-group 10 in`
-
-### [扩展ACL](#Extended_ACL)
-- 配置扩展ACL：`access-list 100 deny tcp 192.168.1.0 <反掩码> any eq <端口号或服务>`
-- 配置扩展ACL示例：`access-list 100 deny tcp 192.168.1.0 0.0.0.255 any eq 23`
-- 应用扩展ACL：`int f0/1`，`ip access-group 100 in`
-
-### 显示配置信息：
-- `show access-lists`
-- `clear access-list counters`
 
 ## [生成树协议（STP）](#Spanning_Tree_Protocol)
 
@@ -393,17 +392,6 @@ network <汇聚后的子网段>
 ### 显示配置信息：
 - `show interfaces port-channel 1`
 - `show etherchannel summary`
-
-## [OSPF路由](#OSPF_Routing)
-
-### [配置OSPF路由](#Configuring_OSPF_Routing)
-- 启用OSPF路由：`router ospf 1`
-- 配置网络：`network 192.168.12.0 0.0.0.255 area 0`
-- 不同进程重发布：`redistribute ospf 2 subnets`
-
-### 显示配置信息：
-- `show ip ospf neighbor`
-- `show ip ospf database`
 
 ## [三层交换机操作](#Layer_3_Switch_Operations)
 三层交换机(具备路由功能的交换机)需要注意的地方：
