@@ -246,14 +246,32 @@ R1(config-router)# `redistribute ospf 1 metric 20`
 ## [ACL（访问控制列表）](#ACL_Access_Control_List)
 
 ### [标准ACL](#Standard_ACL)
-- 配置标准ACL：`access-list 10 permit 192.168.1.0 <反掩码>`
-- 配置标准ACL示例：`access-list 10 permit 192.168.1.0 0.0.0.255`
-- 在接口中应用ACL：`int f0/1`，`ip access-group 10 in`
+- 配置标准ACL：`access-list <编号> permit <源IP地址网段> <反掩码>`  
+<编号>：ACL 的编号，标准 ACL 使用 1-99 或 1300-1999  
+<源IP地址网段>：要允许的数据包的源 IP 地址网段  
+<反掩码>：与源 IP 地址网段结合使用，定义网络范围  
+配置标准 ACL 示例：`access-list 10 permit 192.168.1.0 0.0.0.255`  
+- 在接口中应用标准 ACL
+interface <接口>  
+ip access-group <编号> in  
+应用标准 ACL 示例：`int f0/1`，`ip access-group 10 in`  
 
 ### [扩展ACL](#Extended_ACL)
-- 配置扩展ACL：`access-list 100 deny tcp 192.168.1.0 <反掩码> any eq <端口号或服务>`
-- 配置扩展ACL示例：`access-list 100 deny tcp 192.168.1.0 0.0.0.255 any eq 23`
-- 应用扩展ACL：`int f0/1`，`ip access-group 100 in`
+- 配置扩展ACL：`access-list <编号> deny|permit <协议> <源IP地址网段> <反掩码> <目的IP地址网段> <反掩码> [operator <端口号或服务>]`  
+<编号>：ACL 的编号，扩展 ACL 使用 100-199 或 2000-2699  
+<协议>：指定协议类型，如 tcp、udp、icmp、igmp 等  
+<源IP地址网段>：指定源 IP 地址范围  
+<反掩码>：与 <源IP地址网段> 配合使用，表示网络掩码  
+<目的IP地址网段>：指定目的 IP 地址范围  
+<反掩码>：与 <目的IP地址网段> 配合使用，表示网络掩码  
+[operator <端口号或服务>]：可选，指定协议的端口号或服务名称，如 eq 23（等于23端口）  
+配置示例：  
+拒绝从 192.168.1.0/24 网络到any(任何目的地的) TCP 端口 23（Telnet）的流量  
+`access-list 100 deny tcp 192.168.1.0 0.0.0.255 any eq 23`  
+拒绝从 192.168.1.0/24 网络到 10.10.10.0/24 网络的 TCP 端口 23（Telnet）的流量  
+`access-list 100 deny tcp 192.168.1.0 0.0.0.255 10.10.10.0 0.0.0.255 eq 23`  
+- 在接口中应用扩展 ACL：`interface <接口>`，`ip access-group <编号> in`
+- 应用扩展ACL示例：`int f0/1`，`ip access-group 100 in`
 
 ### 显示配置信息：
 - `show access-lists`
