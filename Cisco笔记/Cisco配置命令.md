@@ -6,7 +6,7 @@
 - [Telnet远程管理交换机](#Telnet远程管理交换机)
 - [追踪路由途径](#追踪路由途径)
 - [配置交换机VLAN](#配置交换机VLAN)
-- [子网汇聚](#Subnet_Aggregation)
+- [子网汇聚](#子网汇聚)
 - [链路聚合](#链路聚合)
 - [静态路由配置](#静态路由配置)
 - [RIP动态路由配置](#RIP动态路由配置)
@@ -22,7 +22,7 @@
 - [链路聚合和Trunk](#链路聚合和Trunk)
 - [OSPF路由](#OSPF路由)
 - [三层交换机操作](#三层交换机操作)
-- [配置DHCP](#Configuring_DHCP)
+- [配置DHCP](#配置DHCP)
 - [日志信息](#日志信息)
 - [关于设备信息](#关于设备信息)
 
@@ -398,7 +398,7 @@ redistribute static subnets 使用subnets关键字，可以确保所有静态路
 - 设置封装类型：`switchport trunk encapsulation dot1q`
 - 开启Trunk模式：`switchport mode trunk`
 
-## [配置DHCP](#Configuring_DHCP)
+## [配置DHCP](#配置DHCP)
 - 开启DHCP服务：`service dhcp`
 - 创建DHCP池：`ip dhcp pool bbb`
 - 配置网络和默认路由器：`network 192.168.1.0 255.255.255.0`，`default-router 192.168.1.1`
