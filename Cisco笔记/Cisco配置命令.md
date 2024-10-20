@@ -97,6 +97,7 @@
 ### [交换机间Trunk配置](#Inter-Switch_Trunk_Configuration)
 - 配置为trunk模式：`int f0/24`，`switchport mode trunk`
 - 允许所有VLAN通过：`switchport trunk allowed vlan all`
+- 当然你也可以自定义允许通过的vlan：`switchport trunk allowed vlan 10,20` 
 
 ## [链路聚合](#Link_Aggregation)
 
