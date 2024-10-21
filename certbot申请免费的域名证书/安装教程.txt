@@ -1,0 +1,50 @@
+Debian/Ubuntu安装certbot
+apt update -y && apt install -y certbot
+
+CentOS安装certbot
+yum -y update && yum -y install certbot
+
+Alpine Linux安装certbot
+apk update && apk add certbot
+
+申请证书
+确认80和443未被占用
+查找占用端口的进程：
+sudo ss -tulnp | grep :80
+sudo ss -tulnp | grep :443
+结束占用端口的进程：
+sudo kill -9 PID
+允许进程优雅地终止。
+sudo kill PID
+或者发送一个 SIGTERM 信号：
+sudo kill -15 PID
+如果进程没有在合理的时间内响应这些信号，那么再考虑使用 kill -9
+
+
+查看当前服务器的ip
+curl -s ipv4.ip.sb
+开始申请(同一个域名一个星期最多申请5次)
+certbot certonly --standalone -d 你的域名 --email your@email.com --agree-tos --no-eff-email --force-renewal
+
+证书存放目录
+ls /etc/letsencrypt/live/
+
+获取自动续签脚本
+curl -O https://raw.githubusercontent.com/kejilion/sh/main/auto_cert_renewal-1.sh
+配置可执行权限
+chmod +x auto_cert_renewal-1.sh
+运行脚本
+./auto_cert_renewal-1.sh
+
+定时执行
+echo "0 0 * * * cd ~ && ./auto_cert_renewal-1.sh" | crontab -
+执行命令
+crontab -e
+
+DNS方式申请（国内申请可用）
+certbot certonly --manual --preferred-challenges dns -d 你的域名
+
+到域名后台解析一个TXT记录
+填写名称和值
+解析后5分钟
+回到SSH终端回车继续申请
