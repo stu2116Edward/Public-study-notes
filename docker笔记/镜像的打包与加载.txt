@@ -1,0 +1,7 @@
+在源Linux电脑上保存镜像：
+docker save -o ~/docker-registry-ui_main_image.tar joxit/docker-registry-ui:main
+docker save -o ~/打包后的镜像名.tar 镜像名称:tag(标签)
+~/表示保存到root目录下
+
+在目标Linux电脑上加载镜像：
+docker load -i 打包后的镜像名.tar
