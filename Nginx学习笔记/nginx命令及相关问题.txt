@@ -1,18 +1,18 @@
-安装好nginx后将/etc/nginx/目录下的nginx.conf配置文件修改或更换为自己的
-使用命令重新加载 Nginx 的配置文件
-nginx -s reload
-如果nginx的 PID 加载异常并且nginx反向代理语法没有问题那就重启vps重启可以解决百分之90%的问题
-遇到类似错误
-root@linux:~# nginx -s reload
-nginx: [error] invalid PID number "" in "/run/nginx.pid"
-先重启nginx:
-systemctl restart nginx
+安装好nginx后将/etc/nginx/目录下的nginx.conf配置文件修改或更换为自己的  
+使用命令重新加载 Nginx 的配置文件  
+nginx -s reload  
+如果nginx的 PID 加载异常并且nginx反向代理语法没有问题那就重启vps重启可以解决百分之90%的问题  
+遇到类似错误  
+root@linux:~# nginx -s reload  
+nginx: [error] invalid PID number "" in "/run/nginx.pid"  
+先重启nginx:  
+systemctl restart nginx  
 如果不行直接重启vps
 
-检查 Nginx 语法类似如下就是正常的
-root@linux:~# nginx -t
-nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-nginx: configuration file /etc/nginx/nginx.conf test is successful
+检查 Nginx 语法类似如下就是正常的  
+root@linux:~# nginx -t  
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok  
+nginx: configuration file /etc/nginx/nginx.conf test is successful  
 
 
 ### 安装 Nginx
@@ -71,15 +71,15 @@ sudo apt-get autoremove
 ```bash
 sudo rm -rf /var/log/nginx /etc/nginx
 ```
-删除 Nginx 的文档和缓存
-sudo rm -rf /var/lib/nginx
-清理残留的配置文件
-sudo apt-get purge 'nginx*'
-清理本地仓库
-sudo apt-get clean
-更新包列表
-sudo apt-get update
-### 验证 Nginx 是否已被卸载
+删除 Nginx 的文档和缓存  
+sudo rm -rf /var/lib/nginx  
+清理残留的配置文件  
+sudo apt-get purge 'nginx*'  
+清理本地仓库  
+sudo apt-get clean  
+更新包列表  
+sudo apt-get update  
+### 验证 Nginx 是否已被卸载  
 ```bash
 sudo apt list --installed | grep nginx
 ```
@@ -121,4 +121,3 @@ sudo apt list --installed | grep nginx
   ```bash
   sudo systemctl disable nginx
   ```
-
