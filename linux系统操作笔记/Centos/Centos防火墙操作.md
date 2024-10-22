@@ -78,9 +78,9 @@ sudo iptables -I INPUT -p tcp --dport 8080 -j DROP
 sudo service iptables save  
 sudo service iptables restart
 
-允许特定服务（例如：开放 HTTP 服务）
-sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
-sudo service iptables save
+允许特定服务（例如：开放 HTTP 服务）  
+sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT  
+sudo service iptables save  
 sudo service iptables restart
 
 阻止特定服务（例如：关闭 FTP 服务）  
