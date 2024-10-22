@@ -70,17 +70,25 @@ sudo apt-get autoremove
 ```
 
 ### 删除 Nginx 生成的文件
-```bash
+```bash  
 sudo rm -rf /var/log/nginx /etc/nginx
 ```
 删除 Nginx 的文档和缓存  
-```sudo rm -rf /var/lib/nginx  ```
+```bash  
+sudo rm -rf /var/lib/nginx
+```
 清理残留的配置文件  
-```sudo apt-get purge 'nginx*'  ```
+```bash  
+sudo apt-get purge 'nginx*'
+```
 清理本地仓库  
-```sudo apt-get clean  ```
+```bash  
+sudo apt-get clean
+```
 更新包列表  
-```sudo apt-get update  ```
+```bash  
+sudo apt-get update
+```
 ### 验证 Nginx 是否已被卸载  
 ```bash
 sudo apt list --installed | grep nginx
