@@ -60,10 +60,12 @@ sudo apt update
 ```
 
 ### 卸载 Nginx
+卸载 Nginx 及其核心模块：  
 ```bash
-卸载 Nginx 及其核心模块：
 sudo apt-get remove --purge nginx nginx-common nginx-core
-再次执行自动删除未使用的依赖：
+```  
+再次执行自动删除未使用的依赖：  
+```bash
 sudo apt-get autoremove
 ```
 
@@ -72,13 +74,13 @@ sudo apt-get autoremove
 sudo rm -rf /var/log/nginx /etc/nginx
 ```
 删除 Nginx 的文档和缓存  
-sudo rm -rf /var/lib/nginx  
+```sudo rm -rf /var/lib/nginx  ```
 清理残留的配置文件  
-sudo apt-get purge 'nginx*'  
+```sudo apt-get purge 'nginx*'  ```
 清理本地仓库  
-sudo apt-get clean  
+```sudo apt-get clean  ```
 更新包列表  
-sudo apt-get update  
+```sudo apt-get update  ```
 ### 验证 Nginx 是否已被卸载  
 ```bash
 sudo apt list --installed | grep nginx
