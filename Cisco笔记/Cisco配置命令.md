@@ -22,6 +22,7 @@
 - [链路聚合和Trunk](#链路聚合和Trunk)
 - [三层交换机操作](#三层交换机操作)
 - [配置DHCP](#配置DHCP)
+- [配置GRE tunnel隧道](#配置GRE tunnel隧道)
 - [日志信息](#日志信息)
 - [关于设备信息](#关于设备信息)
 
@@ -468,6 +469,59 @@ network <汇聚后的子网段>
 - 配置网络和默认路由器：`network 192.168.1.0 255.255.255.0`，`default-router 192.168.1.1`
 - 配置DNS服务器：`dns-server 60.191.244.5`
 - 保存配置(特权模式)：`write memory` 或者 `copy running-config startup-config`
+
+## [配置GRE tunnel隧道](#配置GRE tunnel隧道)
+配置示例:  
+Route0是公网的路由  
+在Router1和Router2中使用默认路由指向Route0用来模拟公网透明传输  
+Router1:  
+`ip route 0.0.0.0 0.0.0.0 <R0的接口/直连ip地址>`  
+Router2:  
+`ip route 0.0.0.0 0.0.0.0 <R0的接口/直连ip地址>`  
+
+配置Router1和Router2之间的GRE隧道  
+隧道的源接口是 FastEthernet0/1，目标是Router2 的 FastEthernet0/1  
+
+Router1:  
+`interface Tunnel0`  
+给GRE隧道配置ip地址  
+`ip address <R1隧道的ip地址> <子网掩码>`  
+指定隧道的接口  
+`tunnel source FastEthernet0/1`  
+指定目的接口的ip地址  
+`tunnel destination <R2的目的接口的ip地址>`  
+`no shutdown`  
+
+Router2:  
+`interface Tunnel0`  
+给GRE隧道配置ip地址  
+`ip address <R2隧道的ip地址> <子网掩码>`  
+指定隧道的接口  
+`tunnel source FastEthernet0/1`  
+指定目的接口的ip地址  
+`tunnel destination <R1的目的接口的ip地址>`  
+`no shutdown`  
+
+在R1和R2中使用 ospf 路由（端到端路由传递）  
+Router1:  
+配置进程号(仅本地有效)  
+`router ospf 1`  
+指定路由器id号用于区分路由器  
+`router-id 1.1.1.1`  
+`network <与R1相连接的内网网段> <子网掩码/反掩码> area 0`  
+`network <隧道ip的网段> <子网掩码/反掩码> area 0`  
+Router2:  
+配置进程号(仅本地有效)  
+`router ospf 1`  
+指定路由器id号用于区分路由器  
+`router-id 2.2.2.2`  
+`network <与R2相连接的内网网段> <子网掩码/反掩码> area 0`  
+`network <隧道ip的网段> <子网掩码/反掩码> area 0`  
+
+验证隧道接口的状态 `show ip interface brief` 应显示 `up/up` 状态  
+`show ip route` 输出应显示静态路由条目，验证静态路由已成功配置  
+输入 `show ip ospf interface` 查看邻居建立结果  
+
 
 
 ## [日志信息](#日志信息)
