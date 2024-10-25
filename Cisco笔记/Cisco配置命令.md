@@ -22,7 +22,7 @@
 - [链路聚合和Trunk](#链路聚合和Trunk)
 - [三层交换机操作](#三层交换机操作)
 - [配置DHCP](#配置DHCP)
-- [配置GRE tunnel隧道](#配置GRE tunnel隧道)
+- [配置GRE-tunnel隧道](#配置GRE-tunnel隧道)
 - [日志信息](#日志信息)
 - [关于设备信息](#关于设备信息)
 
@@ -470,7 +470,8 @@ network <汇聚后的子网段>
 - 配置DNS服务器：`dns-server 60.191.244.5`
 - 保存配置(特权模式)：`write memory` 或者 `copy running-config startup-config`
 
-## [配置GRE tunnel隧道](#配置GRE tunnel隧道)
+
+## [配置GRE-tunnel隧道](#配置GRE-tunnel隧道)
 配置示例:  
 Route0是公网的路由  
 在Router1和Router2中使用默认路由指向Route0用来模拟公网透明传输  
@@ -523,7 +524,6 @@ Router2:
 输入 `show ip ospf interface` 查看邻居建立结果  
 
 
-
 ## [日志信息](#日志信息)
 - 启用日志记录功能(全局配置模式)：`logging on`
 - 设置日志服务器地址：`logging host <IP地址>` 或 `logging host <域名>`
@@ -531,6 +531,7 @@ Router2:
 - 设置日志消息的时间戳：`service timestamps log datetime localtime`
 - 查看日志信息：`show logging`
 - 清除缓存器中的日志消息：`clear logging`
+
 
 ## [关于设备信息](#关于设备信息)
 - 查看设备版本信息：`show version`
