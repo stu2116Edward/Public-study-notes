@@ -472,6 +472,7 @@ network <汇聚后的子网段>
 
 
 ## [配置GRE-tunnel隧道](#配置GRE-tunnel隧道)
+![屏幕截图 2024-10-25 212304](https://github.com/user-attachments/assets/61ca170d-b4bc-4d9e-9151-95b2ac29ca4b)  
 配置示例:  
 Route0是公网的路由  
 在Router1和Router2中使用默认路由指向Route0用来模拟公网透明传输  
