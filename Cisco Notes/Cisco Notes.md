@@ -395,9 +395,9 @@ int port-channel 1
 ```
 no switchport
 ```
-- 设置IP地址：
+- 设置IP地址：`ip address [IP地址] [子网掩码]`
 ```
-ip address [IP地址] [子网掩码]
+ip address 192.168.1.1 255.255.255.0
 ```
 退出当前视图  
 ```
@@ -415,24 +415,37 @@ ip routing
 
 ![屏幕截图 2024-10-26 180208](https://github.com/user-attachments/assets/aa334d27-2bb2-4bcc-80d2-b2f340ab4f4b)
 
-  - 进入接口组模式：`int range f0/1-f0/2`
-  - 建立聚合链路：`channel-group 1 mode on`
-  - 退出当前视图：`exit`
-  - 进入聚合链路1：`int port-channel 1`
-  - 设置为trunk模式：`switchport mode trunk`
-  - 允许所有VLAN通过：`switchport trunk allowed vlan all`
+  - 进入接口组模式：
+  ```int range f0/1-f0/2```
+  - 建立聚合链路：
+  ```channel-group 1 mode on```
+  - 退出当前视图：
+  ```exit```
+  - 进入聚合链路1：
+  ```int port-channel 1```
+  - 设置为trunk模式：
+  ```switchport mode trunk```
+  - 允许所有VLAN通过：
+  ```switchport trunk allowed vlan all```
 
 - 三层交换机：
 
 ![屏幕截图 2024-10-26 162122](https://github.com/user-attachments/assets/5bdb2ea4-aa29-43ed-ae31-abbb658312d8)
 
-  - 进入接口组模式：`int range f0/1-f0/2`
-  - 建立聚合链路：`channel-group 1 mode on`
-  - 退出当前视图：`exit`
-  - 进入聚合链路1：`int port-channel 1`
-  - 设置为trunk模式并封装：`switchport trunk encapsulation dot1q`
-  - 设置为trunk模式：`switchport mode trunk`
-  - 允许所有VLAN通过：`switchport trunk allowed vlan all`
+  - 进入接口组模式：
+  ```int range f0/1-f0/2```
+  - 建立聚合链路：
+  ```channel-group 1 mode on```
+  - 退出当前视图：
+  ```exit```
+  - 进入聚合链路1：
+  ```int port-channel 1```
+  - 设置为trunk模式并封装：
+  ```switchport trunk encapsulation dot1q```
+  - 设置为trunk模式：
+  ```switchport mode trunk```
+  - 允许所有VLAN通过：
+  ```switchport trunk allowed vlan all```
 
 ### 显示配置信息：
 显示接口编号为1的端口通道（Port-Channel）的配置和状态信息：  
