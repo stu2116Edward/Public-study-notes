@@ -305,12 +305,30 @@ switchport trunk allowed vlan 10,20
 ```
 
 
+## [子网汇聚](#Subnet_Aggregation)
+子网汇聚的配置示例  
+假设你有一个大型的网络，它由多个子网组成，这些子网的地址如下：  
+192.168.1.0/24  
+192.168.2.0/24  
+192.168.3.0/24  
+... 一直到 192.168.255.0/24  
+你可以使用子网汇聚将这些子网合并成一个更大的网络，例如：  
+- 子网汇聚静态路由配置参考：`ip route 192.168.0.0 255.255.0.0 192.168.5.1`  
+配置示例：ip route <汇聚后的子网网段> <汇聚后子网掩码> <下一跳地址>  
+- 子网汇聚rip路由配置参考：`network 192.168.0.0`  
+配置示例：  
+route rip  
+network <汇聚后的子网段>  
+- 子网汇聚rip路由配置参考：`network 192.168.0.0 0.0.255.255 area <区域号>`  
+配置示例：network <汇聚后的子网网段> <汇聚后的反掩码> area <区域号>  
+
+
 ## [链路聚合](#Link_Aggregation)
 
 ### 配置链路聚合
 - 将多个接口绑定为一个聚合组：
 ```
-int range f0/1-f0/3
+int range f0/1-f0/2
 ```
 - 设置聚合模式为on：
 ```
@@ -333,7 +351,7 @@ ip address [IP地址] [子网掩码]
 ```
 - 将物理接口添加到Port-channel接口：
 ```
-interface range f0/1-3
+interface range f0/1-2
 ```
 - 指定封装类型：
 ```
@@ -347,6 +365,24 @@ channel-group 1 mode on
 ```
 switchport mode trunk
 ```
+
+### 配置链路聚合和Trunk
+- 二层交换机：
+  - 进入接口组模式：`int range f0/1-f0/2`
+  - 建立聚合链路：`channel-group 1 mode on`
+  - 退出当前视图：`exit`
+  - 进入聚合链路1：`int port-channel 1`
+  - 设置为trunk模式：`switchport mode trunk`
+  - 允许所有VLAN通过：`switchport trunk allowed vlan all`
+
+- 三层交换机：
+  - 进入接口组模式：`int range f0/1-f0/2`
+  - 建立聚合链路：`channel-group 1 mode on`
+  - 退出当前视图：`exit`
+  - 进入聚合链路1：`int port-channel 1`
+  - 设置为trunk模式并封装：`switchport trunk encapsulation dot1q`
+  - 允许所有VLAN通过：`switchport trunk allowed vlan all`
+
 
 ### 显示配置信息：
 显示接口编号为1的端口通道（Port-Channel）的配置和状态信息：  
@@ -628,39 +664,6 @@ ip access-group <编号> in
 - `show ip route static`
 - `show ip rip database`
 
-## [子网汇聚](#Subnet_Aggregation)
-子网汇聚的配置示例  
-假设你有一个大型的网络，它由多个子网组成，这些子网的地址如下：  
-192.168.1.0/24  
-192.168.2.0/24  
-192.168.3.0/24  
-... 一直到 192.168.255.0/24  
-你可以使用子网汇聚将这些子网合并成一个更大的网络，例如：  
-- 子网汇聚静态路由配置参考：`ip route 192.168.0.0 255.255.0.0 192.168.5.1`  
-配置示例：ip route <汇聚后的子网网段> <汇聚后子网掩码> <下一跳地址>  
-- 子网汇聚rip路由配置参考：`network 192.168.0.0`  
-配置示例：  
-route rip  
-network <汇聚后的子网段>  
-- 子网汇聚rip路由配置参考：`network 192.168.0.0 0.0.255.255 area <区域号>`  
-配置示例：network <汇聚后的子网网段> <汇聚后的反掩码> area <区域号>  
-
-## [链路聚合和Trunk](#Link_Aggregation_and_Trunk)
-
-### 配置链路聚合
-- 二层交换机：
-  - 进入接口组模式：`int range f0/1-f0/2`
-  - 建立聚合链路：`channel-group 1 mode on`
-  - 进入聚合链路1：`int port-channel 1`
-  - 设置为trunk模式：`switchport mode trunk`
-  - 允许所有VLAN通过：`switchport trunk allowed vlan all`
-
-- 三层交换机：
-  - 进入接口组模式：`int range f0/1-f0/2`
-  - 建立聚合链路：`channel-group 1 mode on`
-  - 进入聚合链路1：`int port-channel 1`
-  - 设置为trunk模式并封装：`switchport trunk encapsulation dot1q`
-  - 允许所有VLAN通过：`switchport trunk allowed vlan all`
 
 ### 显示配置信息：
 - `show interfaces port-channel 1`
