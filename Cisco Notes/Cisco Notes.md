@@ -575,55 +575,130 @@ no shutdown
 - 配置默认路由：`ip route 0.0.0.0 0.0.0.0 <下一跳IP地址或接口>`
 
 ### 显示配置信息：
-- 显示当前路由器的IP路由表：`show ip route`
-- 显示路由表中所有静态路由条目：`show ip route static`
+- 显示当前路由器的IP路由表：
+```
+show ip route
+```
+- 显示路由表中所有静态路由条目：
+```
+show ip route static
+```
 
 ## [RIP动态路由配置](#RIP_Dynamic_Routing_Configuration)
 
 ### 启用RIP路由
-- 启用RIP路由：`router rip`
-- 配置网络：`network <与自身相连的网段，例如：192.168.1.0>`
-- 关闭自动汇总：`no auto-summary`
-- 设置RIP版本：`version 2`
-- 显示RIP信息：`show ip rip`
-- 显示RIP数据库：`show ip rip database`
+- 启用RIP路由：
+```
+router rip
+```
+- 配置网络：  
+```
+network <与自身相连的网段，例如：192.168.1.0>
+```
+- 关闭自动汇总：
+```
+no auto-summary
+```
+- 设置RIP版本：
+```
+version 2
+```
+- 显示RIP信息：
+```
+show ip rip
+```
+- 显示RIP数据库：
+```
+show ip rip database
+```
 
 ### 重发布静态路由到RIP
-- 启用RIP路由：`router rip`
-- 在RIP中重发布静态路由：`redistribute static`  
+- 启用RIP路由：
+```
+router rip
+```
+- 在RIP中重发布静态路由：
+```
+redistribute static
+```  
 redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样RIP就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率(在RIP版本2中使用)
 
 ### 重发布默认路由到RIP
-- 启用RIP路由：`router rip`
-- 在RIP中重发布默认路由：`default-information originate`
+- 启用RIP路由：
+```
+router rip
+```
+- 在RIP中重发布默认路由：
+```
+default-information originate
+```
 
 ### 在RIP重发布OSPF路由
-- 指定一个度量值（metric），这是RIP中跳数的值：`redistribute ospf <进程号> metric <度量值>`  
+- 启用RIP路由：
+```
+router rip
+```
+- 指定一个度量值（metric），这是RIP中跳数的值：
+```
+redistribute ospf <进程号> metric <度量值>
+```
 这里的 <度量值> 是指 RIP 使用的度量值，用于表示 OSPF 路由在 RIP 中的"成本"  
+
 ### 在RIP重发布EIGRP路由  
-- `redistribute eigrp <自治系统号> metric <度量值>`  
+- 启用RIP路由：
+```
+router rip
+```
+```
+redistribute eigrp <自治系统号> metric <度量值>
+```  
 这里的 <度量值> 则是指 EIGRP 使用的度量值，用于表示 EIGRP 路由在 RIP 中的"成本
 
 ### 显示配置信息：
-- 用于开启IP RIP的调试模式和诊断和解决RIP路由问题：`debug ip rip`
-- 清除路由器上的所有IP路由条目：`clear ip route *`
+- 用于开启IP RIP的调试模式和诊断和解决RIP路由问题：
+```
+debug ip rip
+```
+- 清除路由器上的所有IP路由条目：
+```
+clear ip route *
+```
 
 ## [OSPF路由配置](#OSPF_Routing_Configuration)
 
 ### 启用OSPF路由
-- 启用OSPF路由：`router ospf <进程号>`
-- 配置网络：`network <本地网络IP地址> <本地网络子网掩码> area <区域号>`
-- 重发布静态路由到OSPF：`redistribute static subnets`  
+- 启用OSPF路由：
+```
+router ospf <进程号>
+```
+- 配置网络：
+```
+network <本地网络IP地址> <本地网络子网掩码> area <区域号>
+```
+- 重发布静态路由到OSPF：
+```
+redistribute static subnets
+```  
 redistribute static subnets 使用subnets关键字，可以确保所有静态路由的子网信息都被考虑在内，这样OSPF就可以正确地处理这些路由,有助于减少路由聚合，提高路由的精确性和网络的效率
-- 在OSPF中重发布默认路由：`default-information originate`  
-使用 always 关键字可以确保即使没有静态默认路由，也会通告一个默认路由如果您只想在存在默认路由时重发布它，可以省略 always 关键字：default-information originate always
+- 在OSPF中重发布默认路由：
+```
+default-information originate
+```  
+使用 always 关键字可以确保即使没有静态默认路由，也会通告一个默认路由如果您只想在存在默认路由时重发布它，可以省略 always 关键字：
+```
+default-information originate always
+```
 
 ### 在OSPF重发布RIP路由
-- redistribute rip metric <度量值> subnets
+```
+redistribute rip metric <度量值> subnets
+```
 这里的<度量值>是OSPF中的度量值，它不是RIP的跳数
 
 ### 在OSPF中重发布EIGRP路由
-- redistribute eigrp <自治系统号> metric <度量值> subnets  
+```
+redistribute eigrp <自治系统号> metric <度量值> subnets
+```
 <自治系统号>是EIGRP的进程号或自治系统号
 <度量值>是OSPF中的度量值，它考虑了带宽、延迟、负载、可靠性和MTU等因素，需要根据你的网络环境和需求来调整  
 
@@ -651,22 +726,40 @@ R1(config-router)# `redistribute ospf 2 metric 20`
 R1(config-router)# `router ospf 2`  
 R1(config-router)# `redistribute ospf 1 metric 20`
 
-### 显示配置信息：
-- `show ip ospf neighbor`
-- `show ip ospf database`
+### 显示配置信息：  
+- 显示与本地路由器建立OSPF邻居关系的其他路由器的信息：  
+```
+show ip ospf neighbor
+```
+- 显示OSPF链路状态数据库（LSDB）的内容：  
+```
+show ip ospf database
+```
 
 ## [ACL（访问控制列表）](#ACL_Access_Control_List)
 
 ### 标准ACL
-- 配置标准ACL：`access-list <编号> permit <源IP地址网段> <反掩码>`  
+- 配置标准ACL：
+```
+access-list <编号> permit <源IP地址网段> <反掩码>
+```  
 <编号>：ACL 的编号，标准 ACL 使用 1-99 或 1300-1999  
 <源IP地址网段>：要允许的数据包的源 IP 地址网段  
 <反掩码>：与源 IP 地址网段结合使用，定义网络范围  
-配置标准 ACL 示例：`access-list 10 permit 192.168.1.0 0.0.0.255`  
+配置标准 ACL 示例：
+```
+access-list 10 permit 192.168.1.0 0.0.0.255
+```
 - 在接口中应用标准 ACL
-interface <接口>  
-ip access-group <编号> in  
-应用标准 ACL 示例：`int f0/1`，`ip access-group 10 in`  
+`interface <接口>`  
+`ip access-group <编号> in`  
+应用标准 ACL 示例：  
+```
+int f0/1
+```
+```
+ip access-group 10 in
+```  
 
 ### 扩展ACL
 - 配置扩展ACL：`access-list <编号> deny|permit <协议> <源IP地址网段> <反掩码> <目的IP地址网段> <反掩码> [operator <端口号或服务>]`  
@@ -680,17 +773,33 @@ ip access-group <编号> in
 
 配置示例：  
 拒绝从 192.168.1.0/24 网络到any(任何目的地的) TCP 端口 23（Telnet）的流量  
-`access-list 100 deny tcp 192.168.1.0 0.0.0.255 any eq 23`
+```
+access-list 100 deny tcp 192.168.1.0 0.0.0.255 any eq 23
+```
 
 拒绝从 192.168.1.0/24 网络到 10.10.10.0/24 网络的 TCP 端口 23（Telnet）的流量  
-`access-list 100 deny tcp 192.168.1.0 0.0.0.255 10.10.10.0 0.0.0.255 eq 23`  
+```
+access-list 100 deny tcp 192.168.1.0 0.0.0.255 10.10.10.0 0.0.0.255 eq 23
+```  
 
-- 在接口中应用扩展 ACL：`interface <接口>`，`ip access-group <编号> in`
-- 应用扩展ACL示例：`int f0/1`，`ip access-group 100 in`
+- 在接口中应用扩展 ACL：`interface <接口>`， `ip access-group <编号> in`
+- 应用扩展ACL示例：
+```
+int f0/1
+```
+```
+ip access-group 100 in
+```
 
 ### 显示配置信息：
-- `show access-lists`
-- `clear access-list counters`
+显示设备的访问控制列表（ACL）信息：  
+```
+show access-lists
+```
+如果需要从零开始监控新的流量模式，可以使用clear access-list counters命令重置计数器：  
+```
+clear access-list counters
+```
 
 ## [NAT地址转换](#NAT_Address_Translation)
 
