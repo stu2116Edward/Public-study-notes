@@ -501,10 +501,19 @@ no shutdown
 ```
 
 ### 单臂路由配置
+
+
 - 配置子接口：`int <接口名称>.<子接口编号>`
 - 封装协议：`encapsulation dot1q <VLAN编号>`
 - 分配IP地址：`ip address <IP地址> <子网掩码>`
 配置示例：
+  先开启端口  
+  ```
+  int f0/0
+  ```
+  ```
+  no shutdown
+  ```
   - 配置子接口：
   ```
   int f0/0.1
