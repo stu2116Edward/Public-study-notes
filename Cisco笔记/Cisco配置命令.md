@@ -1,4 +1,4 @@
-# Cisco命令笔记
+![屏幕截图 2024-10-26 160123](https://github.com/user-attachments/assets/0dcbd5a1-828a-446e-b390-fb6867676f01)# Cisco命令笔记
 
 - [基础理论](#基础理论)
 - [初识Cisco(CLI面板信息)](#初识Cisco)
@@ -341,6 +341,7 @@ int range f0/1-f0/2
 ```
 channel-group 1 mode on
 ```
+如果需要网管在VLAN中配置
 
 ### 三层交换机链路聚合配置：
 进入全局配置模式
@@ -357,7 +358,11 @@ channel-group 1 mode on
 exit
 ```
 配置链路聚合可网管(如果需要网管)：  
-- 创建一个Port-channel接口：
+把三层交换机当成路由器来使用接口都是路由模式的(接口变为三层无需配置trunk)  
+
+![屏幕截图 2024-10-26 160123](https://github.com/user-attachments/assets/79bf5b6d-cd5a-47aa-b228-ac873482c514)
+
+- 进入Port-channel接口：
 ```
 int port-channel 1
 ```
@@ -377,8 +382,10 @@ exit
 ```
 ip routing
 ```
+记得在三层交换机中配置路由实现跨网段通信：  
+静态,默认,rip,ospf,eigrp看心情配置  
 
-### 配置链路聚合和Trunk
+### 配置链路聚合和Trunk(接口处于二层)
 - 二层交换机：
   - 进入接口组模式：`int range f0/1-f0/2`
   - 建立聚合链路：`channel-group 1 mode on`
