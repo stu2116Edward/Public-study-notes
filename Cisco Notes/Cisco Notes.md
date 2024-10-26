@@ -176,6 +176,12 @@ write memory
 ```
 write flash
 ```
+将设备当前的配置保存为下一次启动时加载的配置:  
+```
+copy running-config startup-config
+```
+回车确认 y
+
 拓展  
 保存配置到SD卡：`write sdcard:`  
 保存配置到USB存储设备：`write usbflash:`  
@@ -673,7 +679,7 @@ router ospf <进程号>
 ```
 - 配置网络：
 ```
-network <本地网络IP地址> <本地网络子网掩码> area <区域号>
+network <本地网络IP地址> <反掩码/本地网络子网掩码> area <区域号>
 ```
 - 重发布静态路由到OSPF：
 ```
@@ -990,56 +996,101 @@ clear ip nat translations
 ## [生成树协议（STP）](#Spanning_Tree_Protocol)
 
 ### 配置生成树
-- 查看当前STP模式：`show spanning-tree mode`
-- 关闭生成树：`no spanning-tree mode pvst`
-- 设置VLAN优先级：`spanning-tree vlan 10-40 priority 0`
+- 查看当前STP模式：
+```
+show spanning-tree mode
+```
+- 关闭生成树：
+```
+no spanning-tree mode pvst
+```
+- 设置VLAN优先级：
+```
+spanning-tree vlan 10-40 priority 0
+```
 
 ### 显示配置信息：
-- `show spanning-tree`
-- `show spanning-tree vlan 10`
+```
+show spanning-tree
+```
+```
+show spanning-tree vlan 10
+```
 
 ## [交换机端口安全](#Switch_Port_Security)
 
 ### 配置端口安全
-- 进入接口配置模式：`int f0/1`
-- 开启端口安全：`switchport port-security`
-- 设置最大MAC连接数：`switchport port-security maximum 2`
-- 设置端口老化时间：`switchport port-security aging time 60`
+- 进入接口配置模式：
+```
+int f0/1
+```
+- 开启端口安全：
+```
+switchport port-security
+```
+- 设置最大MAC连接数：
+```
+switchport port-security maximum 2
+```
+- 设置端口老化时间：
+```
+switchport port-security aging time 60
+```
 
 ### 显示配置信息：
-- `show port-security`
-- `show port-security address`
+```
+show port-security
+```
+```
+show port-security address
+```
 
 ## [配置SSH访问](#Configuring_SSH_Access)
-- 进入特权模式：`enable`
-- 进入全局配置模式：`configure terminal`
-- 生成RSA密钥 `crypto key generate rsa general-keys modulus 1024`
-- 设置用户名和密码：`username <用户名> privilege 15 secret <密码>`
-- 开启VTY线路并指定允许的SSH版本：
-- 配置虚拟终端（VTY）线路，通常用于远程访问。这里的0 4指定了要配置的VTY线路编号：`line vty 0 4`
-- 只允许SSH协议通过这些VTY线路进行连接：`transport input ssh`
-- 指示设备在用户登录时使用本地用户数据库进行身份验证：`login local`
-- 删除VTY线路的密码要求，因为现在我们使用SSH密钥或用户名/密码进行身份验证：`no password`
-- 保存配置重启后配置仍然有效：`write memory`
+- 进入特权模式：
+```
+enable
+```
+- 进入全局配置模式：
+```
+configure terminal
+```
+- 生成RSA密钥
+```
+crypto key generate rsa general-keys modulus 1024
+```
+- 设置用户名和密码：
+```
+username <用户名> privilege 15 secret <密码>
+```
+- 开启VTY线路并指定允许的SSH版本：  
+- 配置虚拟终端（VTY）线路，通常用于远程访问。这里的0 4指定了要配置的VTY线路编号：
+```
+line vty 0 4
+```  
+- 只允许SSH协议通过这些VTY线路进行连接：
+```
+transport input ssh
+```
+- 指示设备在用户登录时使用本地用户数据库进行身份验证：
+```
+login local
+```
+- 删除VTY线路的密码要求，因为现在我们使用SSH密钥或用户名/密码进行身份验证：
+```
+no password
+```
+- 保存配置重启后配置仍然有效：
+```
+write memory
+```
 
 ### 显示配置信息：
-- `show crypto key mypubkey rsa`
-- `show ssh`
-
-## [内网静态路由重发布](#Internal_Static_Route_Redistribution)
-
-### 重发布静态路由
-- 在RIP中重发布静态路由：`router rip`，`redistribute static`
-- 在OSPF中重发布静态路由：`router ospf 1`，`redistribute static subnets`
-
-### 显示配置信息：
-- `show ip route static`
-- `show ip rip database`
-
-
-### 显示配置信息：
-- `show interfaces port-channel 1`
-- `show etherchannel summary`
+```
+show crypto key mypubkey rsa
+```
+```
+show ssh
+```
 
 ## [三层交换机操作](#Layer_3_Switch_Operations)
 三层交换机(具备路由功能的交换机)需要注意的地方：
@@ -1062,16 +1113,39 @@ clear ip nat translations
 - 设置封装类型：`switchport trunk encapsulation dot1q`
 - 开启Trunk模式：`switchport mode trunk`
 
+
 ## [配置DHCP](#配置DHCP)
-- 开启DHCP服务(全局配置模式)：`service dhcp`
-- 创建DHCP池：`ip dhcp pool bbb`  bbb是地址池的名称
-- 配置网络和默认路由器：`network 192.168.1.0 255.255.255.0`，`default-router 192.168.1.1`
-- 配置DNS服务器：`dns-server 60.191.244.5`
-- 保存配置(特权模式)：`write memory` 或者 `copy running-config startup-config`
+- 开启DHCP服务(全局配置模式)：
+```
+service dhcp
+```
+- 创建DHCP池：
+```
+ip dhcp pool bbb
+```
+bbb是地址池的名称  
+- 配置网络和默认路由器：
+```
+network 192.168.1.0 255.255.255.0`，`default-router 192.168.1.1
+```
+- 配置DNS服务器：
+```
+dns-server 60.191.244.5
+```
+- 保存配置(特权模式)：
+```
+write memory
+```
+或者  
+```
+copy running-config startup-config
+```
 
 
 ## [配置GRE-tunnel隧道](#配置GRE-tunnel隧道)
+
 ![屏幕截图 2024-10-25 212304](https://github.com/user-attachments/assets/61ca170d-b4bc-4d9e-9151-95b2ac29ca4b)  
+
 配置示例:  
 Route0是公网的路由  
 在Router1和Router2中使用默认路由指向Route0用来模拟公网透明传输  
@@ -1084,56 +1158,134 @@ Router2:
 隧道的源接口是 FastEthernet0/1，目标是Router2 的 FastEthernet0/1  
 
 Router1:  
-`interface Tunnel0`  
+```
+interface Tunnel0
+```  
 给GRE隧道配置ip地址  
-`ip address <R1隧道的ip地址> <子网掩码>`  
+```
+ip address <R1隧道的ip地址> <子网掩码>
+```  
 指定隧道的接口  
-`tunnel source FastEthernet0/1`  
+```
+tunnel source FastEthernet0/1
+```  
 指定目的接口的ip地址  
-`tunnel destination <R2的目的接口的ip地址>`  
-`no shutdown`  
+```
+tunnel destination <R2的目的接口的ip地址>
+```  
+```
+no shutdown
+```  
 
 Router2:  
-`interface Tunnel0`  
+```
+interface Tunnel0
+```  
 给GRE隧道配置ip地址  
-`ip address <R2隧道的ip地址> <子网掩码>`  
+```
+ip address <R2隧道的ip地址> <子网掩码>
+```  
 指定隧道的接口  
-`tunnel source FastEthernet0/1`  
+```
+tunnel source FastEthernet0/1
+```  
 指定目的接口的ip地址  
-`tunnel destination <R1的目的接口的ip地址>`  
-`no shutdown`  
+```
+tunnel destination <R1的目的接口的ip地址>
+```  
+```
+no shutdown
+```  
 
 在R1和R2中使用 ospf 路由（端到端路由传递）  
 Router1:  
 配置进程号(仅本地有效)  
-`router ospf 1`  
+```
+router ospf 1
+```  
 指定路由器id号用于区分路由器  
-`router-id 1.1.1.1`  
-`network <与R1相连接的内网网段> <子网掩码/反掩码> area 0`  
-`network <隧道ip的网段> <子网掩码/反掩码> area 0`  
+```
+router-id 1.1.1.1
+```  
+```
+network <与R1相连接的内网网段> <子网掩码/反掩码> area 0
+```  
+```
+network <隧道ip的网段> <子网掩码/反掩码> area 0
+```  
 Router2:  
 配置进程号(仅本地有效)  
-`router ospf 1`  
+```
+router ospf 1
+```  
 指定路由器id号用于区分路由器  
-`router-id 2.2.2.2`  
-`network <与R2相连接的内网网段> <子网掩码/反掩码> area 0`  
-`network <隧道ip的网段> <子网掩码/反掩码> area 0`  
+```
+router-id 2.2.2.2
+```  
+```
+network <与R2相连接的内网网段> <子网掩码/反掩码> area 0
+```  
+```
+network <隧道ip的网段> <子网掩码/反掩码> area 0
+```  
 
-验证隧道接口的状态 `show ip interface brief` 应显示 `up/up` 状态  
-`show ip route` 输出应显示静态路由条目，验证静态路由已成功配置  
-输入 `show ip ospf interface` 查看邻居建立结果  
+验证隧道接口的状态: 
+```
+show ip interface brief
+``` 
+应显示 `up/up` 状态  
+输出应显示静态路由条目，验证静态路由已成功配置:  
+```
+show ip route
+```
+查看邻居建立结果:  
+```
+show ip ospf interface
+```  
 
 
 ## [日志信息](#日志信息)
-- 启用日志记录功能(全局配置模式)：`logging on`
-- 设置日志服务器地址：`logging host <IP地址>` 或 `logging host <域名>`
-- 设置日志记录的严重级别：`logging trap <级别>` 级别范围从0（紧急）到7（调试），例如 logging trap 3 表示记录错误及以上级别的日志。
-- 设置日志消息的时间戳：`service timestamps log datetime localtime`
-- 查看日志信息：`show logging`
-- 清除缓存器中的日志消息：`clear logging`
+- 启用日志记录功能(全局配置模式)：
+```
+logging on
+```
+- 设置日志服务器地址：
+```
+logging host <IP地址>
+```
+或 
+```
+logging host <域名>
+```
+- 设置日志记录的严重级别：
+```
+logging trap <级别>
+```
+级别范围从0（紧急）到7（调试），例如 logging trap 3 表示记录错误及以上级别的日志。
+- 设置日志消息的时间戳：
+```
+service timestamps log datetime localtime
+```
+- 查看日志信息：
+```
+show logging
+```
+- 清除缓存器中的日志消息：
+```
+clear logging
+```
 
 
 ## [关于设备信息](#关于设备信息)
-- 查看设备版本信息：`show version`
-- 查看设备时钟信息：`show clock`
-- 查看设备技术支持信息：`show tech-support`
+- 查看设备版本信息：
+```
+show version
+```
+- 查看设备时钟信息：
+```
+show clock
+```
+- 查看设备技术支持信息：
+```
+show tech-support
+```
