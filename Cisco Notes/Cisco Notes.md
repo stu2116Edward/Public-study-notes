@@ -502,12 +502,13 @@ no shutdown
 
 ### 单臂路由配置
 
+![屏幕截图 2024-10-26 185540](https://github.com/user-attachments/assets/2a42928a-13a5-402f-8057-a0487fdd819c)
 
-- 配置子接口：`int <接口名称>.<子接口编号>`
-- 封装协议：`encapsulation dot1q <VLAN编号>`
+- 配置子接口：`int <接口名称>.<子接口编号>`  
+- 封装协议：`encapsulation dot1q <VLAN编号>`  
 - 分配IP地址：`ip address <IP地址> <子网掩码>`  
-配置示例：
-  生成VLAN:
+配置示例：  
+  交换机中生成VLAN:  
   ```
   vlan 10
   ```
@@ -520,7 +521,27 @@ no shutdown
   ```
   exit
   ```
-  开启端口  
+  在端口中绑定VLAN:
+  ```
+  int f0/1
+  ```
+  ```
+  switchport access vlan 10
+  ```
+  ```
+  int f0/2
+  ```
+  ```
+  switchport access vlan 20
+  ```
+  和路由器相连的线路配置为Trunk:
+  ```
+  int g0/0
+  ```
+  ```
+  switchport mode trunk
+  ```
+  路由器中开启端口  
   ```
   int g0/0/0
   ```
@@ -547,6 +568,7 @@ no shutdown
   ```
   ip address 192.168.2.254 255.255.255.0
   ```
+  最后不要忘记在PC上配置对应网段的网关
 
 ### 静态路由和默认路由
 - 配置静态路由：`ip route <目标网络地址> <目标子网掩码> <下一跳IP地址或接口>`
