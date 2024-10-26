@@ -166,7 +166,25 @@ show ip rip database
 - 显示EIGRP路由信息：  
 ```
 show ip eigrp neighbors 或者 show ip eigrp topology
+```  
+保存配置：  
+- 保存配置到设备的启动配置寄存器中：
 ```
+write memory
+```
+- 保存配置到闪存：
+```
+write flash
+```
+拓展  
+保存配置到SD卡：`write sdcard:`  
+保存配置到USB存储设备：`write usbflash:`  
+保存到TFTP服务器：  
+假设TFTP服务器的IP地址是 192.168.1.100  
+`
+configure terminal
+copy running-config tftp://192.168.1.100/config_backup.txt
+`
 
 
 ## [Telnet远程管理交换机](#Telnet_Remote_Management)
@@ -231,15 +249,24 @@ write memory
 ```
 
 ### 远程登录
-- 进行远程登录：`telnet <IP地址>`
+- 进行远程登录：
+```
+telnet <IP地址>
+```
 
 ## [追踪路由途径](#Trace_Route)
 - 使用 `tracert <IP/域名>` 命令追踪路由途径。
 - tracert命令的最大跳数默认为30跳。如果要增加最大跳数，可以使用`-h`参数，后跟所需的最大跳数。
 
 ### 显示配置信息
-- 显示交换机当前在内存配置里的情况（特权模式中进行）：`show running-config`
-- 显示交换机保存在闪存(flash)中的配置（特权模式中进行）：`show startup-config`
+- 显示交换机当前在内存配置里的情况（特权模式中进行）：
+```
+show running-config
+```
+- 显示交换机保存在闪存(flash)中的配置（特权模式中进行）：
+```
+show startup-config
+```
 
 ## [配置交换机VLAN](#Configuring_Switch_VLANs)
 
