@@ -341,6 +341,9 @@ network 192.168.0.0 0.0.255.255 area 0
 ## [链路聚合](#Link_Aggregation)
 
 ### 二层交换机链路聚合配置
+
+![屏幕截图 2024-10-26 180503](https://github.com/user-attachments/assets/ffad97a9-84cc-43f3-930d-b05bb4b5afdb)
+
 - 将多个接口绑定为一个聚合组：
 ```
 int range f0/1-f0/2
@@ -395,6 +398,9 @@ ip routing
 
 ### 配置链路聚合和Trunk(接口处于二层)
 - 二层交换机：
+
+![屏幕截图 2024-10-26 180208](https://github.com/user-attachments/assets/aa334d27-2bb2-4bcc-80d2-b2f340ab4f4b)
+
   - 进入接口组模式：`int range f0/1-f0/2`
   - 建立聚合链路：`channel-group 1 mode on`
   - 退出当前视图：`exit`
@@ -403,6 +409,8 @@ ip routing
   - 允许所有VLAN通过：`switchport trunk allowed vlan all`
 
 - 三层交换机：
+![屏幕截图 2024-10-26 162122](https://github.com/user-attachments/assets/5bdb2ea4-aa29-43ed-ae31-abbb658312d8)
+
   - 进入接口组模式：`int range f0/1-f0/2`
   - 建立聚合链路：`channel-group 1 mode on`
   - 退出当前视图：`exit`
