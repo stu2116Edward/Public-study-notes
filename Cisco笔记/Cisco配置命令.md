@@ -58,39 +58,115 @@
 - 补全当前的命令：`Tab`
 
 ### 基础命令
-- 进入特权模式：`enable`
-- 显示当前目录：`dir`
+- 进入特权模式：  
+```
+enable
+```
+- 显示当前目录：  
+```
+dir
+```
+- 进入配置模式：  
+```
+configure terminal
+```
+或简写为  
+```
+conf t
+```
+- 进入某个接口：  
+```
+interface <接口名称>
+```
+这里示例：  
+```
+int f0/1
+```
+- 进入接口组模式(用于一次性配置多个接口)：  
+```
+int range f0/1-f0/10
+```
+或者  
+```
+int range f0/1-10
+```
+- 对当前的设备重新命名：`hostname <设备名>`  
+示例：  
+```
+hostname SW1
+```
+
 - 关闭或撤销配置命令：一般在命令行前加上`no`  
 示例：  
-从接口上删除IP地址:
+- 从接口上删除IP地址:  
 ```
 no ip address
 ```
-激活（启用）之前被关闭的接口:
+- 激活（启用）之前被关闭的接口:  
 ```  
 no shutdown 
 ```
-关闭日志记录功能:
+- 关闭日志记录功能:  
 ```
 no logging
 ```
-- 用于显示某个命令执行的信息：`show <属性>` 注意要在特权模式下
-- 进入配置模式：`configure terminal` 或简写为 `conf t`
-- 进入某个接口：`interface <接口名称>` 这里示例：`int f0/1`
-- 进入接口组模式(用于一次性配置多个接口)：`int range f0/1-f0/10` 或者 `int range f0/1-10`
-- 对当前的设备重新命名：`hostname <设备名>`
-- 显示单个接口状态：`show int f0/1`
-- 显示所有接口状态：`show interfaces`
-- 显示接口的简要状态(接口速率)：`show interfaces status`
-- 显示接口的协议状态(包括vlan)：`show ip interface brief`
-- 显示所有路由信息(路由器，三层交换机中)：`show ip route`
-- 显示特定目的网络的路由：`show ip route <网段或ip地址>`
-- 显示直连路由：`show ip interface brief | include "up" | awk '{print $1}'`
-- 显示静态路由信息：`show running-config | section ip route`
-- 显示路由的汇总信息：`show ip protocols`
-- 显示OSPF路由信息：`show ip ospf database`
-- 显示RIP路由信息：`show ip rip database`
-- 显示EIGRP路由信息：`show ip eigrp neighbors 或者 show ip eigrp topology`
+- 用于显示某个命令执行的信息 `show <属性>` (注意要在特权模式下)：  
+- 显示单个接口状态：  
+```
+show int f0/1
+```
+- 显示所有接口状态：  
+```
+show interfaces
+```
+- 显示接口的简要状态(接口速率)：  
+```
+show interfaces status
+```
+- 显示接口的协议状态(包括vlan)：  
+```
+show ip interface brief
+```
+- 显示所有路由信息(路由器，三层交换机中)：  
+```
+show ip route
+```
+- 显示特定目的网络的路由：`show ip route <网段或ip地址>`  
+```
+show ip route 192.168.0.0
+```
+或者  
+```
+show ip route 192.168.0.1
+```
+- 显示直连路由(于当前设备相连接的路由接口)：  
+```
+show ip route connected
+```
+或者  
+```
+show ip route | section connected
+```
+- 显示静态路由信息(包括默认路由)：  
+```
+show running-config | section ip route
+```
+- 显示路由的汇总信息：  
+```
+show ip protocols
+```
+- 显示OSPF路由信息：  
+```
+show ip ospf database
+```
+- 显示RIP路由信息：  
+```
+show ip rip database
+```
+- 显示EIGRP路由信息：  
+```
+show ip eigrp neighbors 或者 show ip eigrp topology
+```
 
 
 ## [Telnet远程管理交换机](#Telnet_Remote_Management)
