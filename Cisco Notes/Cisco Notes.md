@@ -285,14 +285,24 @@ conf t
 - 创建VLAN 10 和 VLAN 20(思科中的vlan不能批量创建和华为不同只能一个一个创建)：
 ```
 vlan 10
+```
+```
 exit
+```
+```
 vlan 20
+```
+```
 exit
 ```
 - 将端口加入VLAN：
 ```
 int f0/1
+```
+```
 switchport mode access
+```
+```
 switchport access vlan 10
 ```
 对于`f0/2`，操作类似。
@@ -301,6 +311,8 @@ switchport access vlan 10
 - 配置为trunk模式：
 ```
 int f0/24
+```
+```
 switchport mode trunk
 ```
 - 允许所有VLAN通过：
@@ -330,8 +342,10 @@ ip route 192.168.0.0 255.255.0.0 192.168.5.1
 配置示例：   
 ```
 route rip  
+```
+```
 network 192.168.0.0
-```  
+```
 - 子网汇聚rip路由配置参考：`network <汇聚后的子网网段> <汇聚后的反掩码> area <区域号>`
 配置示例：  
 ```
@@ -409,6 +423,7 @@ ip routing
   - 允许所有VLAN通过：`switchport trunk allowed vlan all`
 
 - 三层交换机：
+
 ![屏幕截图 2024-10-26 162122](https://github.com/user-attachments/assets/5bdb2ea4-aa29-43ed-ae31-abbb658312d8)
 
   - 进入接口组模式：`int range f0/1-f0/2`
@@ -450,9 +465,27 @@ no shutdown
 - 配置子接口：`int <接口名称>.<子接口编号>`
 - 封装协议：`encapsulation dot1q <VLAN编号>`
 - 分配IP地址：`ip address <IP地址> <子网掩码>`
-
-- 配置子接口：`int f0/0.1`，`encapsulation dot1q 10`，`ip address 192.168.1.254 255.255.255.0`
-- 配置另一个VLAN的子接口：`int f0/0.2`，`encapsulation dot1q 20`，`ip address 192.168.2.254 255.255.255.0`
+配置示例：
+  - 配置子接口：
+  ```
+  int f0/0.1
+  ```
+  ```
+  encapsulation dot1q 10
+  ```
+  ```
+  ip address 192.168.1.254 255.255.255.0
+  ```
+  - 配置另一个VLAN的子接口：
+  ```
+  int f0/0.2
+  ```
+  ```
+  encapsulation dot1q 20
+  ```
+  ```
+  ip address 192.168.2.254 255.255.255.0
+  ```
 
 ### 静态路由和默认路由
 - 配置静态路由：`ip route <目标网络地址> <目标子网掩码> <下一跳IP地址或接口>`
