@@ -173,18 +173,60 @@ show ip eigrp neighbors 或者 show ip eigrp topology
 
 ### 配置VLAN接口
 - 默认的VLAN为VLAN 1。
-- 进入VLAN接口配置模式：`interface vlan 1`
-- 配置远程管理的IP地址以及子网掩码：`ip address 192.168.100.5 255.255.255.0`
-- 退出当前模式：`exit`
-- 给交换机定义网关：`ip default-gateway 192.168.100.100`
-- 开启接口：`no shutdown`    ```注意这里要开启vlan 1的接口否则无法ping通和telnet```
-- 查看当前配置信息：`show running-config`
+- 进入VLAN接口配置模式：
+```
+interface vlan 1
+```
+- 配置远程管理的IP地址以及子网掩码：
+```
+ip address 192.168.100.5 255.255.255.0
+```
+- 退出当前模式：
+```
+exit
+```
+- 给交换机定义网关：
+```
+ip default-gateway 192.168.100.100
+```
+- 开启接口(注意这里要开启vlan 1的接口否则无法ping通和telnet)：
+```
+no shutdown
+```    
+- 查看当前配置信息：
+```
+show running-config
+```
 
 ### 设置密码
-- 在配置模式中设置进入特权模式的密码：`enable secret <密码>`
-- 进入虚拟终端模式并设置密码（这里设置的是Telnet的密码）：`line vty 0 4` 或 `line vty 5 15`，然后输入 `login` 和 `password <密码>`
-- 进入特权模式'#'：`end`
-- 保存配置：`write memory`
+- 在配置模式中设置进入特权模式的密码：
+```
+enable secret <密码>
+```
+- 进入虚拟终端模式并设置密码（这里设置的是Telnet的密码）：
+```
+line vty 0 4
+```
+或
+```
+line vty 5 15
+```
+然后输入 
+```
+login
+```
+和 
+```
+password <密码>
+```
+- 进入特权模式'#'：
+```
+end
+```
+- 保存配置：
+```
+write memory
+```
 
 ### 远程登录
 - 进行远程登录：`telnet <IP地址>`
