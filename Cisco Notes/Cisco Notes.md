@@ -791,6 +791,20 @@ int f0/1
 ip access-group 100 in
 ```
 
+删除整个ACL：
+```
+no access-list <num>
+```
+单独删除某条ACL中的规则：
+```
+no <ACL编号> <ACL中的第n条规则>
+```
+Demo：  
+要删除编号为100的ACL中的第5条规则(从上往下数，在配置模式下进行删除操作):  
+```
+no access-list 100 5
+```
+
 ### 显示配置信息：
 显示设备的访问控制列表（ACL）信息：  
 ```
@@ -804,21 +818,81 @@ clear access-list counters
 ## [NAT地址转换](#NAT_Address_Translation)
 
 ### 静态NAT配置
-- 配置静态NAT：`ip nat inside source static <内网IP> <公网IP>`
-- 应用NAT：`int f0/0`，`ip nat inside`；`int f0/1`，`ip nat outside`
+- 配置静态NAT：  
+```
+ip nat inside source static <内网IP> <公网IP>
+```
+- 应用NAT：  
+在内部网络中应用：  
+```
+int f0/0
+```
+```
+ip nat inside
+```
+在外部网络中应用：  
+```
+int f0/1
+```
+```
+ip nat outside
+```
 
 ### 动态NAT配置
-- 配置说明：`access-list 1 permit 192.168.0.0 <反掩码>`
-- 配置示例：`access-list 1 permit 192.168.0.0 0.0.0.255`
-- 配置NAT池：`ip nat pool zzz 20.0.0.1 20.0.0.1 netmask 255.255.255.0`
-- 应用动态NAT：`ip nat inside source list 1 pool zzz overload`
-- 应用NAT：`int f0/0`，`ip nat inside`；`int f0/1`，`ip nat outside`
+- 配置说明：`access-list 1 permit 192.168.0.0 <反掩码>`  
+- 配置示例：  
+```
+access-list 1 permit 192.168.0.0 0.0.0.255
+```
+- 配置NAT池：
+```
+ip nat pool zzz 20.0.0.1 20.0.0.1 netmask 255.255.255.0
+```
+- 应用动态NAT：
+```
+ip nat inside source list 1 pool zzz overload
+```
+- 应用NAT：  
+在内部网络中应用：  
+```
+int f0/0
+```
+```
+ip nat inside
+```
+在外部网络中应用：  
+```
+int f0/1
+```
+```
+ip nat outside
+```
 
 ### 动态NAPT配置
-- 配置访问控制列表：`access-list 1 permit 192.168.1.0 <反掩码>`
-- 配置示例：`access-list 1 permit 192.168.1.0 0.0.0.255`
-- 应用动态NAPT：`ip nat inside source list 1 interface f0/1 overload`
-- 应用NAT：`int f0/0`，`ip nat inside`；`int f0/1`，`ip nat outside`
+- 配置访问控制列表：`access-list 1 permit 192.168.1.0 <反掩码>`  
+- 配置示例：  
+```
+access-list 1 permit 192.168.1.0 0.0.0.255
+```
+- 应用动态NAPT：
+```
+ip nat inside source list 1 interface f0/1 overload
+```
+- 应用NAT：  
+在内部网络中应用：
+```
+int f0/0
+```
+```
+ip nat inside
+```
+在外部网络中应用：  
+```
+int f0/1
+```
+```
+ip nat outside
+```
 
 ## [端口映射](#端口映射)
 端口映射，通常也称为网络地址转换（NAT），允许多个内部设备共享单个公网IP地址，并通过不同的端口号来区分。
@@ -826,27 +900,47 @@ clear access-list counters
 
 ### 配置端口映射
 ### 进入全局配置模式
-- `configure terminal`
+```
+configure terminal
+```
 
 ### 定义NAT池，使用公网IP地址
-- `ip nat pool MYPOOL 203.0.113.5 203.0.113.5 netmask 255.255.255.255`
+```
+ip nat pool MYPOOL 203.0.113.5 203.0.113.5 netmask 255.255.255.255
+```
 
 ### 定义访问控制列表，允许内部网络的所有IP地址使用NAT
-- `access-list 1 permit 192.168.1.0 0.0.0.255`
+```
+access-list 1 permit 192.168.1.0 0.0.0.255
+```
 
 ### 将访问控制列表与NAT池关联，启用PAT
-- `ip nat inside source list 1 pool MYPOOL`
+```
+ip nat inside source list 1 pool MYPOOL
+```
 
 ### 配置内外网接口（假设内网接口是GigabitEthernet0/0，外网接口是GigabitEthernet0/1）
-- `interface GigabitEthernet0/0`
-- `ip nat inside`
+```
+interface GigabitEthernet0/0
+```
+```
+ip nat inside
+```
 
-- `interface GigabitEthernet0/1`
-- `ip nat outside`
+```
+interface GigabitEthernet0/1
+```
+```
+ip nat outside
+```
 
 ### 保存配置
-- `end`
-- `write memory`
+```
+end
+```
+```
+write memory
+```
 
 ## [端口转发](#端口转发)
 端口转发是一种安全功能，它允许外部请求通过特定的端口被转发到内部网络上的特定设备和端口上。端口转发通常用于让外部用户访问内部网络上提供的服务，如Web服务器或FTP服务器。
@@ -857,23 +951,41 @@ clear access-list counters
 - `configure terminal`
 
 ### 定义端口转发规则，将到达公网IP地址的80端口的流量转发到内网Web服务器的80端口
-- `ip nat inside source static tcp 61.159.62.131 80 192.168.100.2 80 extendable`
+```
+ip nat inside source static tcp 61.159.62.131 80 192.168.100.2 80 extendable
+```
 
 ### 配置内外网接口（假设内网接口是GigabitEthernet0/0，外网接口是GigabitEthernet0/1）
-- `interface GigabitEthernet0/0`
-- `ip nat inside`
-
-- `interface GigabitEthernet0/1`
-- `ip nat outside`
+```
+interface GigabitEthernet0/0
+```
+```
+ip nat inside
+```
+```
+interface GigabitEthernet0/1
+```
+```
+ip nat outside
+```
 
 ### 保存配置
-- `end`
-
-- `write memory`
+```
+end
+```
+```
+write memory
+```
 
 ### 显示配置信息：
-- `show ip nat translations`
-- `clear ip nat translations`
+显示当前活跃的NAT转换表：  
+```
+show ip nat translations
+```
+清除NAT转换表中的所有条目，这通常用于调试或在配置更改后重置NAT状态：  
+```
+clear ip nat translations
+```
 
 ## [生成树协议（STP）](#Spanning_Tree_Protocol)
 
