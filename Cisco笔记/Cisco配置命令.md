@@ -181,10 +181,9 @@ write flash
 保存配置到USB存储设备：`write usbflash:`  
 保存到TFTP服务器：  
 假设TFTP服务器的IP地址是 192.168.1.100  
-`
-configure terminal
-copy running-config tftp://192.168.1.100/config_backup.txt
-`
+`configure terminal`  
+`copy running-config tftp://192.168.1.100/config_backup.txt`
+
 
 
 ## [Telnet远程管理交换机](#Telnet_Remote_Management)
