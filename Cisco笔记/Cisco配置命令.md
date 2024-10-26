@@ -270,41 +270,110 @@ show startup-config
 ## [配置交换机VLAN](#Configuring_Switch_VLANs)
 
 ### 创建VLAN并分配端口
-- 在配置模式中：`conf t`
-- 创建VLAN：`vlan 10` 和 `vlan 20`
-- 将端口加入VLAN：`int f0/1`，`switchport mode access`，`switchport access vlan 10`；对于`f0/2`，操作类似。
+- 进入配置模式中：
+```
+conf t
+```
+- 创建VLAN 10 和 VLAN 20(思科中的vlan不能批量创建和华为不同只能一个一个创建)：
+```
+vlan 10
+exit
+vlan 20
+exit
+```
+- 将端口加入VLAN：
+```
+int f0/1
+switchport mode access
+switchport access vlan 10
+```
+对于`f0/2`，操作类似。
 
 ### 交换机间Trunk配置
-- 配置为trunk模式：`int f0/24`，`switchport mode trunk`
-- 允许所有VLAN通过：`switchport trunk allowed vlan all`
-- 当然你也可以自定义允许通过的vlan：`switchport trunk allowed vlan 10,20` 
+- 配置为trunk模式：
+```
+int f0/24
+switchport mode trunk
+```
+- 允许所有VLAN通过：
+```
+switchport trunk allowed vlan all
+```
+- 当然你也可以自定义允许通过的vlan：
+```
+switchport trunk allowed vlan 10,20
+```
+
 
 ## [链路聚合](#Link_Aggregation)
 
 ### 配置链路聚合
-- 将多个接口绑定为一个聚合组：`int range f0/1-f0/3`，`channel-group 1 mode on`
-- 设置聚合模式为on：`channel-group 1 mode on`
-- 设置为trunk模式(如果需要)：`switchport mode trunk`
+- 将多个接口绑定为一个聚合组：
+```
+int range f0/1-f0/3
+```
+- 设置聚合模式为on：
+```
+channel-group 1 mode on
+```
+- 设置为trunk模式(如果需要)：
+```
+switchport mode trunk
+```
 
 ### 三层交换机链路聚合配置：
 进入全局配置模式
-- 创建一个Port-channel接口：`int port-channel 1`
-- 设置IP地址(如果需要网管)：`ip address [IP地址] [子网掩码]`
-- 将物理接口添加到Port-channel接口：`interface range f0/1-3`
-- 指定封装类型：`switchport trunk encapsulation dot1q`
-- 设置聚合模式为on：`channel-group 1 mode on`
-- 设置为trunk模式(如果需要)：`switchport mode trunk`
+- 创建一个Port-channel接口：
+```
+int port-channel 1
+```
+- 设置IP地址(如果需要网管)：
+```
+ip address [IP地址] [子网掩码]
+```
+- 将物理接口添加到Port-channel接口：
+```
+interface range f0/1-3
+```
+- 指定封装类型：
+```
+switchport trunk encapsulation dot1q
+```
+- 设置聚合模式为on：
+```
+channel-group 1 mode on
+```
+- 设置为trunk模式(如果需要)：
+```
+switchport mode trunk
+```
 
 ### 显示配置信息：
-- `show interfaces port-channel 1`
-- `show etherchannel summary`
+显示接口编号为1的端口通道（Port-Channel）的配置和状态信息：  
+```
+show interfaces port-channel 1
+```
+显示所有以太网通道（EtherChannel）的摘要信息：  
+```
+show etherchannel summary
+```
+
 
 ## [静态路由配置](#Static_Routing_Configuration)
 
 ### 直连路由配置
 - 进入端口配置模式：`int <接口名称>`
+```
+int f0/0
+```
 - 配置IP地址：`ip address <IP地址> <子网掩码>`
-- 开启端口：`no shutdown`
+```
+ip address 192.168.0.1 255.255.255.0
+```
+- 开启端口：
+```
+no shutdown
+```
 
 ### 单臂路由配置
 - 配置子接口：`int <接口名称>.<子接口编号>`
