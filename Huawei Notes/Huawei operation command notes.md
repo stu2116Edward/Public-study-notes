@@ -521,33 +521,57 @@ y
 接口视图下开启此接口的端口隔离功能  
 交换机默认是将隔离的端口加入到了一个隔离组中，默认是group 1，处于同一个组中的端口之间是不能互相访问的。不同组之间的端口是可以互相访问的。  
 将1口加入到组1中  
-`interface GigabitEthernet0/0/1`  
-`port-isolate enable group 1`  
+```
+interface GigabitEthernet0/0/1
+```  
+```
+port-isolate enable group 1
+```  
  或  
-`port-isolate enable`  
+```
+port-isolate enable
+```  
 
 将2口加入到组1中  
-`interface GigabitEthernet0/0/2`  
-`port-isolate enable group 1`  
+```
+interface GigabitEthernet0/0/2
+```  
+```
+port-isolate enable group 1
+```  
  或  
-`port-isolate enable`  
+```
+port-isolate enable
+```  
 
 将3口加入到组2中  
-`interface GigabitEthernet0/0/3`  
-`port-isolate enable group 2`  
+```
+interface GigabitEthernet0/0/3
+```  
+```
+port-isolate enable group 2
+```  
 1、2口之间的主机即使处于同一个网段中也是不能互相访问的，但是他们和3口之间是可以互相访问的。这属于端口隔离中的双向隔离。需要注意的是，同组中的端口是不能互相访问的，即使没有配置端口隔离的端口，是可以和配置了的端口进行访问的
 
 
 还有一种是单向隔离，如果在一个端口下开启和另一个端口之间的单向隔离，那么另一个端口的发包是可以到达此接口的，只是此接口回不了包而已  
-`interface g0/0/3`  
-`am isolate g0/0/1`  
+```
+interface g0/0/3
+```  
+```
+am isolate g0/0/1
+```  
 那么，1口的包是可以到达3口的，只是3口不能给1口进行回包而已
 
 
 如果开启了代理arp，那么双方还是会相互访问，那是因为隔离模式默认是2层隔离，开启了代理arp,数据包会发送给具有代理arp功能的设备，如果这个设备有能力到达目标IP，那么所请求的mac地址，就由代理arp帮你请求  
 进入到需要开启代理arp的接口  
-`interface g0/0/0`  
-`arp-proxy enable`  
+```
+interface g0/0/0
+```  
+```
+arp-proxy enable
+```  
 这样的话，即使开启的单向隔离，那么两个端口之间也会进行访问，但是需要注意它们之间访问的逻辑是什么
 
 项目示例：  
@@ -571,40 +595,76 @@ y
 
 命令解释：  
 属于同一个VLAN不能进行二层通信但是可以进行三层通信  
-`port-isolate mode l2`  
+```
+port-isolate mode l2
+```  
 属于同一个VLAN既不能进行二层通信，也不能进行三层通信  
-`port-isolate mode all`  
+```
+port-isolate mode all
+```  
 
 ## [不同vlan之间的通信](#不同vlan之间的通信)
 ### 三层交换机创建VLAN SVI实现不同vlan之间的通信  
 创建vlan 10的SVI,并给其配置ip地址  
-`vlan batch 10`  
-`quit`  
-`interface vlanif 10`  
-`ip address 192.168.64.254 255.255.255.0`  
+```
+vlan batch 10
+```  
+```
+quit
+```  
+```
+interface vlanif 10
+```  
+```
+ip address 192.168.64.254 255.255.255.0
+```  
 VLAN 10的SVI的IP地址，就是VLAN 10中各主机配置的默认网关地址  
 #### 在接口中应用：  
 ##### 接口为Access类型：  
-`int g0/0/1`  
-`port link-type access`  
-`port default vlan 10`  
-`quit`  
+```
+int g0/0/1
+```  
+```
+port link-type access
+```  
+```
+port default vlan 10
+```  
+```
+quit
+```  
 ##### 接口为Trunk类型：  
-`int g0/0/1`  
-`port link-type trunk`  
-`port trunk allow-pass vlan 10`  
-`quit`  
+```
+int g0/0/1
+```  
+```
+port link-type trunk
+```  
+```
+port trunk allow-pass vlan 10
+```  
+```
+quit
+```  
 
 ### 在路由器接口中配置地址  
-`int g0/0/1`  
-`ip address <ip地址> <子网掩码>`  
+```
+int g0/0/1
+```  
+```
+ip address <ip地址> <子网掩码>
+```  
 
 ## [路由协议](#路由协议)
 ### 配置默认路由(系统视图):  
-`ip route-static 0.0.0.0 0.0.0.0 <下一跳地址>`  
+```
+ip route-static 0.0.0.0 0.0.0.0 <下一跳地址>
+```  
 
 ### 配置静态路由(系统视图):  
-`ip route-static <目的网络地址.0结尾的> <子网掩码/网络号24> <下一跳地址>`  
+```
+ip route-static <目的网络地址.0结尾的> <子网掩码/网络号24> <下一跳地址>
+```  
 
 ### 配置RIP路由：  
 RIP是一种基于距离矢量的算法协议，它使用跳数作为度量值来衡量到达目的地址的距离，于它直连的网络跳数为0，通过一个设备可达的网络的跳数为1  
