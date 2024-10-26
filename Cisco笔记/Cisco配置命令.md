@@ -171,6 +171,8 @@ show ip eigrp neighbors 或者 show ip eigrp topology
 
 ## [Telnet远程管理交换机](#Telnet_Remote_Management)
 
+![屏幕截图 2024-10-26 135534](https://github.com/user-attachments/assets/3d38b66c-0075-48d8-8551-d451df591ce7)
+
 ### 配置VLAN接口
 - 默认的VLAN为VLAN 1。
 - 进入VLAN接口配置模式：
@@ -181,6 +183,10 @@ interface vlan 1
 ```
 ip address 192.168.100.5 255.255.255.0
 ```
+- 开启接口(注意这里要开启vlan 1的接口否则无法ping通和telnet)：
+```
+no shutdown
+```    
 - 退出当前模式：
 ```
 exit
@@ -189,10 +195,6 @@ exit
 ```
 ip default-gateway 192.168.100.100
 ```
-- 开启接口(注意这里要开启vlan 1的接口否则无法ping通和telnet)：
-```
-no shutdown
-```    
 - 查看当前配置信息：
 ```
 show running-config
