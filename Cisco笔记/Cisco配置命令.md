@@ -184,6 +184,14 @@ write flash
 `configure terminal`  
 `copy running-config tftp://192.168.1.100/config_backup.txt`
 
+清除配置(特权模式)：  
+```
+erase startup-config
+```
+清除配置后需要重启设备以使更改生效(特权模式):  
+```
+reload
+```
 
 
 ## [Telnet远程管理交换机](#Telnet_Remote_Management)
