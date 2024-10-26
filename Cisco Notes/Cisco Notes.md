@@ -505,18 +505,31 @@ no shutdown
 
 - 配置子接口：`int <接口名称>.<子接口编号>`
 - 封装协议：`encapsulation dot1q <VLAN编号>`
-- 分配IP地址：`ip address <IP地址> <子网掩码>`
+- 分配IP地址：`ip address <IP地址> <子网掩码>`  
 配置示例：
-  先开启端口  
+  生成VLAN:
   ```
-  int f0/0
+  vlan 10
+  ```
+  ```
+  exit
+  ```
+  ```
+  vlan 20
+  ```
+  ```
+  exit
+  ```
+  开启端口  
+  ```
+  int g0/0/0
   ```
   ```
   no shutdown
   ```
   - 配置子接口：
   ```
-  int f0/0.1
+  int g0/0/0.1
   ```
   ```
   encapsulation dot1q 10
@@ -526,7 +539,7 @@ no shutdown
   ```
   - 配置另一个VLAN的子接口：
   ```
-  int f0/0.2
+  int g0/0/0.2
   ```
   ```
   encapsulation dot1q 20
