@@ -1,4 +1,4 @@
-![屏幕截图 2024-10-26 160123](https://github.com/user-attachments/assets/0dcbd5a1-828a-446e-b390-fb6867676f01)# Cisco命令笔记
+# Cisco命令笔记
 
 - [基础理论](#基础理论)
 - [初识Cisco(CLI面板信息)](#初识Cisco)
