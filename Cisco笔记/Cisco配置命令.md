@@ -332,7 +332,7 @@ network 192.168.0.0 0.0.255.255 area 0
 
 ## [链路聚合](#Link_Aggregation)
 
-### 配置链路聚合
+### 二层交换机链路聚合配置
 - 将多个接口绑定为一个聚合组：
 ```
 int range f0/1-f0/2
@@ -341,36 +341,41 @@ int range f0/1-f0/2
 ```
 channel-group 1 mode on
 ```
-- 设置为trunk模式(如果需要)：
-```
-switchport mode trunk
-```
 
 ### 三层交换机链路聚合配置：
 进入全局配置模式
-- 创建一个Port-channel接口：
-```
-int port-channel 1
-```
-- 设置IP地址(如果需要网管)：
-```
-ip address [IP地址] [子网掩码]
-```
 - 将物理接口添加到Port-channel接口：
 ```
 interface range f0/1-2
-```
-- 指定封装类型：
-```
-switchport trunk encapsulation dot1q
 ```
 - 设置聚合模式为on：
 ```
 channel-group 1 mode on
 ```
-- 设置为trunk模式(如果需要)：
+退出当前视图  
 ```
-switchport mode trunk
+exit
+```
+配置链路聚合可网管(如果需要网管)：  
+- 创建一个Port-channel接口：
+```
+int port-channel 1
+```
+将二层端口改为三层：
+```
+no switchport
+```
+- 设置IP地址：
+```
+ip address [IP地址] [子网掩码]
+```
+退出当前视图  
+```
+exit
+```
+开启三层交换机的路由功能  
+```
+ip routing
 ```
 
 ### 配置链路聚合和Trunk
@@ -388,8 +393,8 @@ switchport mode trunk
   - 退出当前视图：`exit`
   - 进入聚合链路1：`int port-channel 1`
   - 设置为trunk模式并封装：`switchport trunk encapsulation dot1q`
+  - 设置为trunk模式：`switchport mode trunk`
   - 允许所有VLAN通过：`switchport trunk allowed vlan all`
-
 
 ### 显示配置信息：
 显示接口编号为1的端口通道（Port-Channel）的配置和状态信息：  
