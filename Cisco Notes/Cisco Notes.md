@@ -1114,6 +1114,10 @@ show running-config | include ip domain
 ```
 show ssh
 ```
+- 移除SSH版本配置：
+```
+no ip ssh version 2
+```
 
 ## [三层交换机操作](#Layer_3_Switch_Operations)
 三层交换机(具备路由功能的交换机)需要注意的地方：
