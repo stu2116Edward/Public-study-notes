@@ -1142,6 +1142,7 @@ no ip ssh version 2
 
 
 ## [配置DHCP](#配置DHCP)
+思科的交换机和路由器都可以配置DHCP服务器  
 - 开启DHCP服务(全局配置模式)：
 ```
 service dhcp
