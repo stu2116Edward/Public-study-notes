@@ -1054,11 +1054,28 @@ enable
 ```
 configure terminal
 ```
-- 生成RSA密钥
+- 设置主机名：
+```
+hostname SW1
+```
+- 设置域名：
+```
+ip domain-name example.com
+```
+- 生成RSA密钥对
 ```
 crypto key generate rsa general-keys modulus 1024
 ```
-- 设置用户名和密码：
+或  
+```
+crypto key generate rsa general-keys modulus 2048
+```
+这将生成一个2048位的RSA密钥对。你也可以选择1024位，但2048位或更高更安全  
+- 设置SSH版本：
+```
+ip ssh version 2
+```
+- 设置用户名和密码：  
 ```
 username <用户名> privilege 15 secret <密码>
 ```
@@ -1085,9 +1102,15 @@ write memory
 ```
 
 ### 显示配置信息：
+- 查看密钥对：
 ```
 show crypto key mypubkey rsa
 ```
+- 验证域名设置：
+```
+show running-config | include ip domain
+```
+- 验证SSH配置：
 ```
 show ssh
 ```
