@@ -194,10 +194,12 @@ copy running-config startup-config
 ```
 erase startup-config
 ```
+这里按一下y  
 清除配置后需要重启设备以使更改生效(特权模式):  
 ```
 reload
 ```
+这里按回车
 
 
 ## [Telnet远程管理交换机](#Telnet_Remote_Management)
