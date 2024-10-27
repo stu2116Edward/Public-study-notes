@@ -1120,6 +1120,10 @@ show ssh
 ```
 no ip ssh version 2
 ```
+- 关闭某个版本的ssh
+```
+no crypto key ssh version <指定ssh版本号>
+```
 
 ## [三层交换机操作](#Layer_3_Switch_Operations)
 三层交换机(具备路由功能的交换机)需要注意的地方：
