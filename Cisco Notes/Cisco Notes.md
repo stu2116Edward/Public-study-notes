@@ -246,6 +246,10 @@ line vty 0 4
 ```
 line vty 5 15
 ```
+设置仅允许telnet(可选但不推荐)
+```
+transport input telnet
+```
 然后输入 
 ```
 login
