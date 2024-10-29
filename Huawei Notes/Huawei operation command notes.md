@@ -1,5 +1,5 @@
-![链路聚合](https://github.com/user-attachments/assets/5e3baba3-d40b-49fe-bb6a-e6942bfd22b2)﻿# Huawei命令笔记
-
+﻿# Huawei命令笔记
+ 
 - [基础命令](#基础命令)
 - [接口速率](#接口速率)
 - [MAC地址自动学习于接口绑定](#MAC地址自动学习于接口绑定)
@@ -153,7 +153,7 @@ Mac-address static <host1的mac地址> Ethernet0/0/1 vlan 1
 
 ## [生成树协议](#生成树协议)
 交换机间采用双链路通信时，如果关闭生成树协议，交换机间会出现广播包环路，严重消耗网络资源，最终导致整个网络资源被耗尽，网络瘫痪不可用  
-![认识生成树协议](https://github.com/user-attachments/assets/94245374-9c2f-4c5e-b942-e6cc2e350d98)
+![认识生成树协议](https://github.com/user-attachments/assets/3034571e-0d31-4afb-bab9-8e5f0b0142e5)
 
 1:认识生成树  
 生成树协议：不改变网络的实际拓扑，在逻辑上切断某些链路，使得一台主机到所有其他主机的路径是无环路的树状结构，从而消除了环路  
