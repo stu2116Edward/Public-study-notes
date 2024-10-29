@@ -1,4 +1,4 @@
-﻿# Huawei命令笔记
+![链路聚合](https://github.com/user-attachments/assets/5e3baba3-d40b-49fe-bb6a-e6942bfd22b2)﻿# Huawei命令笔记
 
 - [基础命令](#基础命令)
 - [接口速率](#接口速率)
@@ -10,6 +10,7 @@
 - [绑定vlan关系](#绑定vlan关系)
 - [交换机端口隔离功能](#交换机端口隔离功能)
 - [不同vlan之间的通信](#不同vlan之间的通信)
+- [VRRP默认网关冗余技术](#VRRP默认网关冗余技术)
 - [路由协议](#路由协议)
 
 
@@ -38,6 +39,10 @@ sys 设备的名称
 用户视图中查看当前生效的配置信息  
 ```
 display current-configuration
+```
+缩写为
+```
+disp cur
 ```
 
 查看系统当前视图运行的配置  
@@ -68,6 +73,11 @@ display ip routing-table
 查看交换机MAC地址表(为空就是没有ping)  
 ```
 display mac-address
+```
+
+查看交换机链路状态
+```
+display stp brief
 ```
 
 查看交换机接口模式接口速率  
@@ -142,16 +152,146 @@ Mac-address static <host1的mac地址> Ethernet0/0/1 vlan 1
 
 
 ## [生成树协议](#生成树协议)
-交换机间采用双链路通信时，如果关闭生成树协议，交换机间会出现广播包环路，严重消耗网络资源，最终导致整个网络资源被耗尽，网络瘫痪不可用
+交换机间采用双链路通信时，如果关闭生成树协议，交换机间会出现广播包环路，严重消耗网络资源，最终导致整个网络资源被耗尽，网络瘫痪不可用  
+![认识生成树协议](https://github.com/user-attachments/assets/94245374-9c2f-4c5e-b942-e6cc2e350d98)
+
+1:认识生成树  
+生成树协议：不改变网络的实际拓扑，在逻辑上切断某些链路，使得一台主机到所有其他主机的路径是无环路的树状结构，从而消除了环路  
+STP的作用是防止环路和提供冗余功能  
+STP的版本：  
+STP(多生成树) --> RSTP(快速生成树协议) --> MSTP(多生成树协议)  
+MSTP实现了对VLAN的兼容(一般使用这个版本的STP)  
 
 开启交换机生成树协议(系统视图)  
 ```
 stp enable
 ```
+我们一般使用高级版本的STP协议MSTP  
+2.MSTP的应用  
+多个vlan凑成一个实例(instance)多个实例凑成一个区域（一个实例对应一个树）  
+LSW1:  
+进入系统视图  
+```
+sys
+```
+创建VLAN  
+```
+vlan batch 10 20 30 40
+```
+进入接口组模式
+```
+port-group 1
+```
+加入组成员接口
+```
+group-member e0/0/1 to e0/0/3
+```
+将组成员接口配置为trunk模式
+```
+port link-type trunk
+```
+配置允许所有VLAN通过
+```
+port trunk allow-pass vlan all
+```
+退出接口组视图
+```
+quit
+```
+选择MSTP版本
+```
+stp mode mstp
+```
+进入区域视图
+```
+stp region-configuration
+```
+设置区域名称
+```
+region-name RG1
+```
+关联实例
+```
+instance 1 vlan 10 30
+```
+```
+instance 2 vlan 20 40
+```
+激活区域
+```
+active region-configuration
+```
+配置实例优先级(数字越小优先级越高越不会被断开，数字越大优先级越低容易断开)
+```
+stp instance 1 priority 4096
+```
+```
+stp instance 2 priority 8192
+```
 
-关闭生成树协议使用链路聚合实现正常通信，并提供链路可靠性增加网络带宽
+LSW2:  
+进入系统视图  
+```
+sys
+```
+创建VLAN
+```
+vlan batch 10 20 30 40
+```
+进入接口组模式
+```
+port-group 1
+```
+加入组成员接口
+```
+group-member e0/0/1 to e0/0/3
+```
+将组成员接口配置为trunk模式
+```
+port link-type trunk
+```
+配置允许所有VLAN通过
+```
+port trunk allow-pass vlan all
+```
+退出接口组视图
+```
+quit
+```
+选择MSTP版本
+```
+stp mode mstp
+```
+进入区域视图
+```
+stp region-configuration
+```
+设置区域名称
+```
+region-name RG1
+```
+关联实例
+```
+instance 1 vlan 10 30
+```
+```
+instance 2 vlan 20 40
+```
+激活区域
+```
+active region-configuration
+```
+配置实例优先级(数字越小优先级越高越不会被断开，数字越大优先级越低容易断开)
+```
+stp instance 1 priority 8192
+```
+```
+stp instance 2 priority 4096
+```
+
 
 ## [链路聚合](#链路聚合)
+关闭生成树协议使用链路聚合实现正常通信，并提供链路可靠性增加网络带宽  
 创建链路聚合组1(系统视图)  
 ```
 interface Eth-Trunk 1
@@ -185,6 +325,38 @@ eth-trunk 1
 quit
 ```  
 同理另外一台交换机也配置相同的配置  
+
+链路聚合拓扑及配置Demo  
+![链路聚合](https://github.com/user-attachments/assets/4010e9de-ad09-4018-b612-d934f24d5f77)
+链路聚合用于增加带宽  
+链路聚合的配置  
+进入聚合接口  
+```
+int Eth-Trunk 1
+```
+加入成员  
+```
+trunkport g0/0/2
+```
+```
+trunkport g0/0/3
+```
+```
+trunkport g0/0/4
+```
+或者  
+```
+trunkport g 0/0/2 to 0/0/4
+```
+配置为Trunk  
+```
+port link-type trunk
+```
+允许所有vlan通过  
+```
+port trunk allow-pass vlan all
+```
+
 
 ## [vlan的创建与应用](#vlan的创建与应用)
 创建多个vlan  
@@ -654,6 +826,67 @@ int g0/0/1
 ```
 ip address <ip地址> <子网掩码>
 ```  
+
+
+## [VRRP默认网关冗余技术](#VRRP默认网关冗余技术)
+VRRP默认网关冗余技术(避免默认网关失效)  
+即使用了双网关  
+如果AR1路由器坏掉了，那么久可以使用AR2路由器作为网关  
+![VRRP](https://github.com/user-attachments/assets/73aca3af-da7a-4a8b-a123-60f8fb12abc3)
+
+AR1:  
+进入内部接口网关的视图  
+```
+int g0/0/1
+```
+配置内部网关接口的IP地址
+```
+ip address 192.168.11.1 24
+```
+在接口中配置虚拟IP,即网关(这里的虚拟IP地址要和实际的IP地址在同一个网段内)
+```
+vrrp vrid 1 virtual-ip 192.168.11.254
+```
+配置AR1的优先级(这里的数字越大优先级越高)
+```
+vrrp vrid 1 priority 120
+```
+配置回环接口用于测试优先级
+```
+int LoopBack 1
+```
+配置接口ip地址用于测试(PC只要能到这个路由器那么就能访问这个ip)
+```
+ip address 10.10.10.1 32
+```
+
+
+AR2:  
+进入内部接口网关的视图  
+```
+int g0/0/0
+```
+配置内部网关接口的IP地址
+```
+ip address 192.168.11.2 24
+```
+在接口中配置虚拟IP,即网关
+```
+vrrp vrid 1 virtual-ip 192.168.11.254
+```
+配置回环接口用于测试优先级
+```
+int LoopBack 1
+```
+配置接口ip地址用于测试(PC只要能到这个路由器那么就能访问这个ip)
+```
+ip address 20.20.20.1 32
+```
+查看交换机链路状态
+```
+display stp brief
+```
+
 
 ## [路由协议](#路由协议)
 ### 配置默认路由(系统视图):  
