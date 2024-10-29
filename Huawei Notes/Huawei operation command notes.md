@@ -328,7 +328,8 @@ quit
 同理另外一台交换机也配置相同的配置  
 
 链路聚合拓扑及配置Demo  
-![链路聚合](https://github.com/user-attachments/assets/4010e9de-ad09-4018-b612-d934f24d5f77)
+
+![链路聚合](https://github.com/user-attachments/assets/40eb1087-712e-4bce-96d3-6dac0930d7e2)
 
 链路聚合用于增加带宽  
 链路聚合的配置  
