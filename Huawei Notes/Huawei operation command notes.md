@@ -153,6 +153,7 @@ Mac-address static <host1的mac地址> Ethernet0/0/1 vlan 1
 
 ## [生成树协议](#生成树协议)
 交换机间采用双链路通信时，如果关闭生成树协议，交换机间会出现广播包环路，严重消耗网络资源，最终导致整个网络资源被耗尽，网络瘫痪不可用  
+
 ![认识生成树协议](https://github.com/user-attachments/assets/3034571e-0d31-4afb-bab9-8e5f0b0142e5)
 
 1:认识生成树  
