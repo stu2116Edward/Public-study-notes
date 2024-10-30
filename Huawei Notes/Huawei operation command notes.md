@@ -890,6 +890,660 @@ ip address 20.20.20.1 32
 display stp brief
 ```
 
+## [MSTP+VRRP](#MSTP+VRRP)
+拓扑图如下  
+![MSTP+VRRP拓扑图](https://github.com/user-attachments/assets/d307faaf-1d41-4310-9b89-86ef4cdf4321)
+
+可以见到LSW1与LSW2，LSW3，LSW4之间的链路都使用Trunk模式  
+LSW3和LSW4与各自四台PC之间的链路都使用Access模式  
+我们把PC1和PC5的默认VLAN设置为VLAN 10  
+我们把PC2和PC6的默认VLAN设置为VLAN 20  
+我们把PC3和PC7的默认VLAN设置为VLAN 30  
+我们把PC4和PC8的默认VLAN设置为VLAN 40  
+
+接下来是配置命令部分  
+SW1:  
+进入系统视图  
+```
+system-view
+```
+创建VLAN
+```
+vlan batch 10 20 30 40
+```
+进入接口组模式编号1
+```
+port-group 1
+```
+添加接口组成员
+```
+group-member g0/0/1 to g0/0/2
+```
+将接口组1链路设置为Trunk模式
+```
+port link-type trunk
+```
+编辑允许所有VLAN通过
+```
+port trunk allow-pass vlan all
+```
+退出当前接口组1视图
+```
+quit
+```
+进入接口组模式编号2
+```
+port-group 2
+```
+添加接口组成员
+```
+group-member g0/0/3 to g0/0/4
+```
+将接口组1链路设置为Hybrid模式
+```
+port link-type hybrid
+```
+退出当前接口组1视图
+```
+quit
+```
+配置LSW1与LSW2的链路聚合
+```
+int Eth-Trunk 1
+trunkport g 0/0/3 to 0/0/4
+port link-type hybrid
+quit
+```
+进入逻辑接口视图
+```
+int vlanif 10
+```
+配置逻辑接口的ip地址
+```
+ip address 192.168.10.1 24
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 10 virtual-ip 192.168.10.254
+```
+设置优先级
+```
+vrrp vrid 10 priority 120
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 11 virtual-ip 192.168.10.253
+```
+退出当前视图
+```
+quit
+```
+进入逻辑接口视图
+```
+int vlanif 20
+```
+配置逻辑接口的ip地址
+```
+ip address 192.168.20.1 24
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 20 virtual-ip 192.168.20.254
+```
+设置优先级
+```
+vrrp vrid 20 priority 120
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 21 virtual-ip 192.168.20.253
+```
+退出当前视图
+```
+quit
+```
+进入逻辑接口视图
+```
+int vlanif 30
+```
+配置逻辑接口的ip地址
+```
+ip address 192.168.30.1 24
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 30 virtual-ip 192.168.30.254
+```
+设置优先级
+```
+vrrp vrid 30 priority 120
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 31 virtual-ip 192.168.30.253
+```
+退出当前视图
+```
+quit
+```
+进入逻辑接口视图
+```
+int vlanif 40
+```
+配置逻辑接口的ip地址
+```
+ip address 192.168.40.1 24
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 40 virtual-ip 192.168.40.254
+```
+设置优先级
+```
+vrrp vrid 40 priority 120
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 41 virtual-ip 192.168.40.253
+```
+退出当前视图
+```
+quit
+```
+选择MSTP版本
+```
+stp mode mstp
+```
+进入MSTP协议视图
+```
+stp region-configuration
+```
+设置区域名称
+```
+region-name RG1
+```
+关联实例
+```
+instance 1 vlan 10 30
+instance 2 vlan 20 40
+```
+激活区域
+```
+active region-configuration
+```
+退出当前视图
+```
+quit
+```
+配置实例优先级(数字越小优先级越高，数字越大优先级越低)
+```
+stp instance 1 priority 4096
+stp instance 2 priority 8192
+```
+退出当前视图
+```
+quit
+```
+退出当前视图
+```
+quit
+```
+保存当前配置
+```
+save
+y
+```
+
+SW2:  
+进入系统视图
+```
+system-view
+```
+创建VLAN
+```
+vlan batch 10 20 30 40
+```
+进入接口组模式编号1
+```
+port-group 1
+```
+添加接口组成员
+```
+group-member g0/0/1 to g0/0/2
+```
+将接口组1链路设置为Trunk模式
+```
+port link-type trunk
+```
+编辑允许所有VLAN通过
+```
+port trunk allow-pass vlan all
+```
+退出当前接口组1视图
+```
+quit
+```
+进入接口组模式编号2
+```
+port-group 2
+```
+添加接口组成员
+```
+group-member g0/0/3 to g0/0/4
+```
+将接口组1链路设置为Hybrid模式
+```
+port link-type hybrid
+```
+退出当前接口组1视图
+```
+quit
+```
+配置LSW1与LSW2的链路聚合
+```
+int Eth-Trunk 1
+trunkport g 0/0/3 to 0/0/4
+port link-type hybrid
+quit
+```
+进入逻辑接口视图
+```
+int vlanif 10
+```
+配置逻辑接口的ip地址
+```
+ip address 192.168.10.2 24
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 10 virtual-ip 192.168.10.254
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 11 virtual-ip 192.168.10.253
+```
+设置优先级
+```
+vrrp vrid 11 priority 120
+```
+退出当前视图
+```
+quit
+```
+进入逻辑接口视图
+```
+int vlanif 20
+```
+配置逻辑接口的ip地址
+```
+ip address 192.168.20.1 24
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 20 virtual-ip 192.168.20.254
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 21 virtual-ip 192.168.20.253
+```
+设置优先级
+```
+vrrp vrid 21 priority 120
+```
+退出当前视图
+```
+quit
+```
+进入逻辑接口视图
+```
+int vlanif 30
+```
+配置逻辑接口的ip地址
+```
+ip address 192.168.30.1 24
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 30 virtual-ip 192.168.30.254
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 31 virtual-ip 192.168.30.253
+```
+设置优先级
+```
+vrrp vrid 31 priority 120
+```
+退出当前视图
+```
+quit
+```
+进入逻辑接口视图
+```
+int vlanif 40
+```
+配置逻辑接口的ip地址
+```
+ip address 192.168.40.1 24
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 40 virtual-ip 192.168.40.254
+```
+配置虚拟网关的ip地址
+```
+vrrp vrid 41 virtual-ip 192.168.40.253
+```
+设置优先级
+```
+vrrp vrid 41 priority 120
+```
+退出当前视图
+```
+quit
+```
+选择MSTP版本
+```
+stp mode mstp
+```
+进入MSTP协议视图
+```
+stp region-configuration
+```
+设置区域名称
+```
+region-name RG1
+```
+关联实例
+```
+instance 1 vlan 10 30
+instance 2 vlan 20 40
+```
+激活区域
+```
+active region-configuration
+```
+退出当前视图
+```
+quit
+```
+配置实例优先级(数字越小优先级越高，数字越大优先级越低)
+```
+stp instance 1 priority 8192
+stp instance 2 priority 4096
+```
+退出当前视图
+```
+quit
+```
+退出当前视图
+```
+quit
+```
+保存当前配置
+```
+save
+y
+```
+
+
+SW3:
+进入系统视图
+```
+system-view
+```
+创建VLAN
+```
+vlan batch 10 20 30 40
+```
+进入接口组模式编号1
+```
+port-group 1
+```
+添加接口组成员
+```
+group-member e0/0/1 to e0/0/2
+```
+将接口组1链路设置为Trunk模式
+```
+port link-type trunk
+```
+编辑允许所有VLAN通过
+```
+port trunk allow-pass vlan all
+```
+退出当前接口组1视图
+```
+quit
+```
+进入接口组模式编号2
+```
+port-group 2
+```
+添加接口组成员
+```
+group-member e0/0/3 to e0/0/6
+```
+将接口组2链路设置为Access模式
+```
+port link-type access
+```
+退出当前视图
+```
+quit
+```
+进入接口e0/0/3视图
+```
+int e0/0/3
+```
+配置默认VLAN为vlan 10
+```
+port default vlan 10
+```
+退出当前视图
+```
+quit
+```
+进入接口e0/0/4视图
+```
+int e0/0/4
+```
+配置默认VLAN为vlan 20
+```
+port default vlan 20
+```
+退出当前视图
+```
+quit
+```
+进入接口e0/0/5视图
+```
+int e0/0/5
+```
+配置默认VLAN为vlan 30
+```
+port default vlan 30
+```
+退出当前视图
+```
+quit
+```
+进入接口e0/0/6视图
+```
+int e0/0/6
+```
+配置默认VLAN为vlan 40
+```
+port default vlan 40
+```
+退出当前视图
+```
+quit
+```
+选择MSTP版本
+```
+stp mode mstp
+```
+进入MSTP协议视图
+```
+stp region-configuration
+```
+设置区域名称
+```
+region-name RG1
+```
+关联实例
+```
+instance 1 vlan 10 30
+instance 2 vlan 20 40
+```
+激活区域
+```
+active region-configuration
+```
+退出当前视图
+```
+quit
+```
+退出当前视图
+```
+quit
+```
+保存配置
+```
+save
+y
+```
+
+
+LSW4:  
+进入系统视图
+```
+system-view
+```
+创建VLAN
+```
+vlan batch 10 20 30 40
+```
+进入接口组模式编号1
+```
+port-group 1
+```
+添加接口组成员
+```
+group-member e0/0/1 to e0/0/2
+```
+将接口组1链路设置为Trunk模式
+```
+port link-type trunk
+```
+编辑允许所有VLAN通过
+```
+port trunk allow-pass vlan all
+```
+退出当前接口组1视图
+```
+quit
+```
+进入接口组模式编号2
+```
+port-group 2
+```
+添加接口组成员
+```
+group-member e0/0/3 to e0/0/6
+```
+将接口组2链路设置为Access模式
+```
+port link-type access
+```
+退出当前视图
+```
+quit
+```
+进入接口e0/0/3视图
+```
+int e0/0/3
+```
+配置默认VLAN为vlan 10
+```
+port default vlan 10
+```
+退出当前视图
+```
+quit
+```
+进入接口e0/0/4视图
+```
+int e0/0/4
+```
+配置默认VLAN为vlan 20
+```
+port default vlan 20
+```
+退出当前视图
+```
+quit
+```
+进入接口e0/0/5视图
+```
+int e0/0/5
+```
+配置默认VLAN为vlan 30
+```
+port default vlan 30
+```
+退出当前视图
+```
+quit
+```
+进入接口e0/0/6视图
+```
+int e0/0/6
+```
+配置默认VLAN为vlan 40
+```
+port default vlan 40
+```
+退出当前视图
+```
+quit
+```
+选择MSTP版本
+```
+stp mode mstp
+```
+进入MSTP协议视图
+```
+stp region-configuration
+```
+设置区域名称
+```
+region-name RG1
+```
+关联实例
+```
+instance 1 vlan 10 30
+instance 2 vlan 20 40
+```
+激活区域
+```
+active region-configuration
+```
+退出当前视图
+```
+quit
+```
+退出当前视图
+```
+quit
+```
+保存配置
+```
+save
+y
+```
+
 
 ## [路由协议](#路由协议)
 ### 配置默认路由(系统视图):  
