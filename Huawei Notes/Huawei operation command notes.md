@@ -11,7 +11,7 @@
 - [交换机端口隔离功能](#交换机端口隔离功能)
 - [不同vlan之间的通信](#不同vlan之间的通信)
 - [VRRP默认网关冗余技术](#VRRP默认网关冗余技术)
-- [MSTP+VRRP](#MSTP+VRRP)
+- [MSTP与VRRP](#MSTP与VRRP)
 - [路由协议](#路由协议)
 
 
@@ -891,7 +891,7 @@ ip address 20.20.20.1 32
 display stp brief
 ```
 
-## [MSTP+VRRP](#MSTP+VRRP)
+## [MSTP与VRRP](#MSTP与VRRP)
 拓扑图如下  
 ![MSTP+VRRP拓扑图](https://github.com/user-attachments/assets/d307faaf-1d41-4310-9b89-86ef4cdf4321)
 
