@@ -2,162 +2,113 @@
  * 学习通
  */
 
-(function () {
-    window.app = {
-        configs: {
-            playbackRate: 2, /// 倍数（经过试验，仅支持2倍数，更高的倍数会被限制导致视频暂停）
-            autoplay: true, /// 自动播放
-        },
-        _videoEl: null,
-        _treeContainerEl: null,
-        _cellData: {
-            cells: 0, /// 总的大节点数量
-            nCells: 0, /// 总的小节点数量
-            currentCellIndex: 0, // 当前所在的大节点
-            currentNCellIndex: 0, /// 当前所在的小节点
-            currentVideoTitle: "", /// 当前选中的视频的标题
-        },
-        get cellData() {
-            return this._cellData;
-        },
-        run() {
-            this._getTreeContainer();
-            this._initCellData();
-            this._videoEl = null;
-            this._getVideoEl();
-        },
-        /// 选择并播放下一小节视频（需要先调用run方法初始化数据）
-        nextUnit() {
-            // ... 保留原有nextUnit的代码逻辑 ...
-        },
-        _tryTimes: 0,
-        /// 播放当前视频（需要先调用run方法初始化数据）
-        async play() {
-            // ... 保留原有play的代码逻辑 ...
-        },
-        /// 播放当前指向的小节视频（需要先调用run方法初始化数据）
-        playCurrentIndex(nCell) {
-            // ... 保留原有playCurrentIndex的代码逻辑 ...
-        },
-        _initCellData() {
-            // ... 保留原有_initCellData的代码逻辑 ...
-        },
-        _getTreeContainer() {
-            // ... 保留原有_getTreeContainer的代码逻辑 ...
-        },
-        /**
-         * 获取视频元素Video
-         * @return {HTMLVideoElement}
-         * @private
-         */
-        _getVideoEl() {
-            // ... 保留原有_getVideoEl的代码逻辑 ...
-        },
-        /// 播放器事件处理
-        _videoEventHandle() {
-            // ... 保留原有_videoEventHandle的代码逻辑 ...
-        },
-    };
+// 当前小节
+// 确保页面中存在至少一个激活的小节元素
+const activeElement = $(".posCatalog_select.posCatalog_active");
 
-    // 当前小节
-    // 确保页面中存在至少一个激活的小节元素
-    const activeElement = $(".posCatalog_select.posCatalog_active");
+if (activeElement.length) {
+    // 先获取所有章节标题元素的父级（假设章节标题和小节同级）
+    const chapterTitles = $(".posCatalog_select:has(.posCatalog_title)");
 
-    if (activeElement.length) {
-        // 先获取所有章节标题元素的父级（假设章节标题和小节同级）
-        const chapterTitles = $(".posCatalog_select:has(.posCatalog_title)");
+    // 获取章节标题之外的所有小节元素
+    const substantiveSiblings = $(".posCatalog_select").not(chapterTitles);
 
-        // 获取章节标题之外的所有小节元素
-        const substantiveSiblings = $(".posCatalog_select").not(chapterTitles);
+    // 在实质性小节中找到当前活跃小节的索引
+    let unitCount = substantiveSiblings.index(activeElement);
 
-        // 在实质性小节中找到当前活跃小节的索引
-        let unitCount = substantiveSiblings.index(activeElement);
+    // jQuery 的 .index() 方法返回值是从0开始的，如果需要从1开始计数，可以加1
+    unitCount += 1;
 
-        // jQuery 的 .index() 方法返回值是从0开始的，如果需要从1开始计数，可以加1
-        unitCount += 1;
-
-        // 若找不到有效的小节同级元素，则设定默认值
-        if (!substantiveSiblings.length || unitCount === -1) {
-            console.warn("未找到有效的.posCatalog_select同级元素！");
-            unitCount = -1;
-        }
-
-        // 将结果赋值到全局作用域
-        window.unitCount = unitCount;
-    } else {
-        console.error("未找到激活的小节元素！");
+    // 若找不到有效的小节同级元素，则设定默认值
+    if (!substantiveSiblings.length || unitCount === -1) {
+        console.warn("未找到有效的.posCatalog_select同级元素！");
+        unitCount = -1;
     }
-    // 获取小节数量
-    window.unit = $(".posCatalog_level span em").length;
 
-    function main() {
-        // 尝试点击视频按钮
-        document.querySelector('li[title="视频"]').click();
-        // 等待几秒后执行视频存在性检查和其他操作
-        setTimeout(() => {
-            const frameObj = $("iframe").eq(0).contents().find("iframe.ans-insertvideo-online");
-            const videoNum = frameObj.length;
-            if (videoNum > 0) {
-                console.log("%c当前小节中包含 " + videoNum + " 个视频", "color:#FF7A38;font-size:18px");
-                var v_done = 0;
-                // 添加事件处理程序
-                addEventListener("playdone", () => {
-                    v_done++;
-                    if (v_done > videoNum) {
-                        // 下一节
-                    } else if (v_done < videoNum) {
-                        watchVideo(frameObj, v_done);
-                    } else {
-                        console.log("%c本小节视频播放完毕，等待跳转至下一小节...", "font-size:18px");
-                        window.app.nextUnit();
-                    }
-                });
-                // 播放
-                watchVideo(frameObj, v_done);
-            } else {
-                if (window.unitCount < window.unit) {
-                    console.log("%c当前小节中无视频，6秒后将跳转至下一节", "font-size:18px");
-                    window.app.nextUnit();
+    // 将结果赋值到全局作用域
+    window.unitCount = unitCount;
+} else {
+    console.error("未找到激活的小节元素！");
+}
+// 获取小节数量
+window.unit = $(".posCatalog_level span em").length;
+
+function main() {
+    // 尝试点击视频按钮
+    document.querySelector('li[title="视频"]').click();
+    // 等待几秒后执行视频存在性检查和其他操作
+    setTimeout(() => {
+        const frameObj = $("iframe").eq(0).contents().find("iframe.ans-insertvideo-online");
+        const videoNum = frameObj.length;
+        if (videoNum > 0) {
+            console.log("%c当前小节中包含 " + videoNum + " 个视频", "color:#FF7A38;font-size:18px");
+            var v_done = 0;
+            // 添加事件处理程序
+            addEventListener("playdone", () => {
+                v_done++;
+                if (v_done >= videoNum) {
+                    nextUnit();
                 } else {
-                    console.log("%c好了好了，毕业了", "color:red;font-size:18px");
+                    watchVideo(frameObj, v_done);
                 }
+            });
+            // 播放
+            watchVideo(frameObj, v_done);
+        } else {
+            if (window.unitCount < window.unit) {
+                console.log("%c当前小节中无视频，6秒后将跳转至下一节", "font-size:18px");
+                nextUnit();
+            } else {
+                console.log("%c好了好了，毕业了", "color:red;font-size:18px");
             }
-        }, 3000); // 3000毫秒（即3秒）后执行
-    }
-
-    function watchVideo(frameObj, v_done) {
-        // 添加播放事件
-        var playDoneEvent = new Event("playdone");
-        // 获取播放对象
-        var v = undefined;
-        v = frameObj.contents().eq(v_done).find("video#video_html5_api").get(0);
-        window.a = v;
-        // 设置倍速
-        try {
-            v.playbackRate = 2;
-        } catch (e) {
-            console.error("倍速设置失败！此节可能有需要回复内容，不影响，跳至下一节。错误信息：" + e);
-            window.app.nextUnit();
-            return;
         }
-        // 播放
-        v.play();
-        console.log("%c正在 " + v.playbackRate + " 倍速播放第 " + (v_done + 1) + " 个视频", "font-size:18px");
-        // 循环获取播放进度
-        window.inter = setInterval(() => {
-            v = window.a;
-            if (v.currentTime >= v.duration) {
-                dispatchEvent(playDoneEvent);
-                clearInterval(window.inter);
-            }
-            if (v.paused) {
-                v.play();
-            }
-        }, 1000);
+    }, 3000); // 3000毫秒（即3秒）后执行
+}
+
+function watchVideo(frameObj, v_done) {
+    // 添加播放事件
+    var playDoneEvent = new Event("playdone");
+    // 获取播放对象
+    var v = frameObj.contents().eq(v_done).find("video#video_html5_api").get(0);
+    window.a = v;
+    // 设置倍速
+    try {
+        v.playbackRate = 1;
+    } catch (e) {
+        console.error("倍速设置失败！此节可能有需要回复内容，不影响，跳至下一节。错误信息：" + e);
+        nextUnit();
+        return;
     }
+    // 播放
+    v.play();
+    console.log("%c正在 " + v.playbackRate + " 倍速播放第 " + (v_done + 1) + " 个视频", "font-size:18px");
+    // 循环获取播放进度
+    window.inter = setInterval(() => {
+        v = window.a;
+        if (v.currentTime >= v.duration) {
+            dispatchEvent(playDoneEvent);
+            clearInterval(window.inter);
+        }
+        if (v.paused) {
+            v.play();
+        }
+    }, 1000);
+}
 
-    console.log("%c 欢迎使用本脚本，此科目有%c %d %c个小节，当前为 %c第%d小节 %c-chao", "color:#6dbcff", "color:red", window.unit, "color:#6dbcff", "color:red", window.unitCount, "font-size:8px");
-    main();
+function nextUnit() {
+    console.log("%c即将进入下一节...", "color:red;font-size:18px");
+    setTimeout(() => {
+        $(document).scrollTop($(document).height() - $(window).height());
+        $("#prevNextFocusNext").click();
+        $(".nextChapter").eq(0).click();
+        $("#prevNextFocusNext").click();
+        $(".nextChapter").eq(0).click();
+        console.log("%c行了别看了，我知道你学会了，下一节", "color:red;font-size:18px");// (已经跳转" +(++window.unitCount)+"次)");
+        if (window.unitCount++ < window.unit) {
+            setTimeout(() => main(), 10000);
+        }
+    }, 6000);
+}
 
-    window.app.run();
-})();
+console.log("%c 欢迎使用本脚本，此科目有 %c %d %c 个小节，当前为 %c 第 %d 小节 %c -chao", "color:#6dbcff", "color:red", window.unit, "color:#6dbcff", "color:red", window.unitCount, "font-size:8px");
+main();
