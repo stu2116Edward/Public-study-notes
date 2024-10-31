@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr1 = [151, 4155, 154, 15, 151, 999, 11]
+        // 获取数组中的最大值
+        function arr_min(arr) {
+            let max = arr[0]
+            for (let i = 1; i < arr.length; i++) {
+                if (max < arr[i]) {
+                    max = arr[i]
+                }
+            }
+            return max
+        } 
+ 
+        // 获取数组中的最小值
+        function arr_min(arr) {
+            let min = arr[0]
+            for (let i = 1; i < arr.length; i++) {
+                if (min > arr[i]) {
+                    min = arr[i]
+                }
+            }
+            return min
+        }
+
+        // 将数组中最大的元素排到最后
+        // 冒泡排序
+        function maopao(arr) {
+            let len = arr.length
+            for (let i = 0; i < len; i++) {
+                for (let j = 0; j < len - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        // 交换相邻元素0
+                        let temp = arr[j]
+                        arr[j] = arr[j + 1]
+                        arr[j + 1] = temp
+                    }
+                }
+            }
+            return arr
+        }
+        // console.log(maopao(arr1))
+        
+        // 选择排序
+        function xuanze(arr) {
+            let len = arr.length
+            let minIndex, temp
+            for (let i = 0; i < len; i++) {
+                minIndex = i
+                for (let j = i + 1; j < len; j++) {
+                    if (arr[j] < arr[minIndex]) {
+                        minIndex = j;
+                    }
+                }
+                if (minIndex !== i) {
+                    temp = arr[minIndex]
+                    arr[minIndex] = arr[i]
+                    arr[i] = temp
+                }
+            }
+            return arr
+        }
+        // console.log(xuanze(arr1))
+
+        // 选择排序（庄鹤林-必考题）
+        // for (let len = arr1.length; len > 1; len--) {
+        //     let max = 0
+        //     for (let i = 1; i < len; ++i) {
+        //         if (arr1[i] > arr1[max]) {
+        //             max = i
+        //         }
+        //     }
+        //     let temp = arr1[max]
+        //     arr1[max] = arr1[len - 1]
+        //     arr1[len - 1] = temp
+        // }
+        // console.log(arr1)
+    </script>
+</body>
+</html>
