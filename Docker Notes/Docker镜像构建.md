@@ -3,7 +3,7 @@
 - [Python项目Docker镜像构建流程](#Python项目Docker镜像构建流程)
 - [C项目Docker镜像构建流程](#C项目Docker镜像构建流程)
 - [Java项目Docker镜像构建流程](#Java项目Docker镜像构建流程)
-- [C++项目Docker镜像构建流程](#C++项目Docker镜像构建流程)
+- [C++项目Docker镜像构建流程](#cpp项目Docker镜像构建流程)
 - [Go项目Docker镜像构建流程](#Go项目Docker镜像构建流程)
 
 ## [Python项目Docker镜像构建流程](#Python项目Docker镜像构建流程)
@@ -124,7 +124,7 @@ cd /my-java-app
 docker build -t my-java-app .
 ```
 
-## [C++项目Docker镜像构建流程](#C++项目Docker镜像构建流程)
+## [C++项目Docker镜像构建流程](#cpp项目Docker镜像构建流程)
 1.创建项目结构：  
 /my-cpp-app/  
 |-- main.cpp  
