@@ -1,0 +1,36 @@
+操作系统Centos7.4
+一，基础环境配置
+Linux查看ip
+时钟同步
+防火墙使用
+SSH免密
+
+二，Hadoop 集群部署
+Hadoop软件安装
+安装Java环境
+集群配置
+
+三，实验视图
+Hadoop启动
+端口查看
+Mapreduce测试
+
+四，ZooKeeper 集群部署实验
+ZooKeeper安装部署
+Zookeeper文件参数配置
+ZooKeeper集群启动
+
+五，Hadoop 集群部署实验
+SSH免密配置
+Hadoop HA文件参数配置
+JournalNode初始化和启动
+
+六，ZooKeeper 集群部署实验
+格式化各种元素
+启动各个进程
+手动切换主备
+
+
+
+
+
