@@ -1412,9 +1412,13 @@ stp region-configuration
 ```
 region-name RG1
 ```
-关联实例
+关联实例  
+将VLAN 10和VLAN 30关联到编号为1的实例  
 ```
 instance 1 vlan 10 30
+```
+将VLAN 20和VLAN 40关联到编号为2的实例  
+```
 instance 2 vlan 20 40
 ```
 激活区域
@@ -1541,9 +1545,13 @@ stp region-configuration
 ```
 region-name RG1
 ```
-关联实例
+关联实例  
+将VLAN 10和VLAN 30关联到编号为1的实例  
 ```
 instance 1 vlan 10 30
+```
+将VLAN 20和VLAN 40关联到编号为2的实例
+```
 instance 2 vlan 20 40
 ```
 激活区域
