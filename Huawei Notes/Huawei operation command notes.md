@@ -1,4 +1,4 @@
-![result](https://github.com/user-attachments/assets/f68e432d-def5-4cb1-b84a-daf89de09557)﻿# Huawei命令笔记
+﻿# Huawei命令笔记
  
 - [基础命令](#基础命令)
 - [接口速率](#接口速率)
