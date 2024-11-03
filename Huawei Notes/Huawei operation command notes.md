@@ -1,4 +1,4 @@
-﻿# Huawei命令笔记
+![result](https://github.com/user-attachments/assets/f68e432d-def5-4cb1-b84a-daf89de09557)﻿# Huawei命令笔记
  
 - [基础命令](#基础命令)
 - [接口速率](#接口速率)
@@ -60,7 +60,14 @@ display vlan
 ```
 display port vlan
 ```
-
+显示端口组的详细信息
+```
+display port-group
+```
+显示以太网聚合接口（Eth-Trunk）的信息
+```
+display eth-trunk
+```
 查看隔离组中的接口配置信息(系统视图)  
 ```
 display port-isolate group all
@@ -893,7 +900,7 @@ display stp brief
 
 ## [MSTP与VRRP](#MSTP与VRRP)
 拓扑图如下  
-![MSTP+VRRP拓扑图](https://github.com/user-attachments/assets/d307faaf-1d41-4310-9b89-86ef4cdf4321)
+![屏幕截图 2024-11-03 095150](https://github.com/user-attachments/assets/660f7757-e9c5-4253-9f42-28808d3575ae)
 
 可以见到LSW1与LSW2，LSW3，LSW4之间的链路都使用Trunk模式  
 LSW3和LSW4与各自四台PC之间的链路都使用Access模式  
@@ -912,6 +919,7 @@ system-view
 ```
 vlan batch 10 20 30 40
 ```
+
 进入接口组模式编号1
 ```
 port-group 1
@@ -919,6 +927,10 @@ port-group 1
 添加接口组成员
 ```
 group-member g0/0/1 to g0/0/2
+```
+或不用事先指定接口组编号使用默认编号直接添加接口组成员
+```
+port-group group-member g0/0/1 to g0/0/2
 ```
 将接口组1链路设置为Trunk模式
 ```
@@ -932,27 +944,21 @@ port trunk allow-pass vlan all
 ```
 quit
 ```
-进入接口组模式编号2
-```
-port-group 2
-```
-添加接口组成员
-```
-group-member g0/0/3 to g0/0/4
-```
-将接口组1链路设置为Hybrid模式
-```
-port link-type hybrid
-```
-退出当前接口组1视图
-```
-quit
-```
 配置LSW1与LSW2的链路聚合
+进入聚合接口组1
 ```
 int Eth-Trunk 1
+```
+添加聚合端口
+```
 trunkport g 0/0/3 to 0/0/4
+```
+设置端口的链路类型为混合模式
+```
 port link-type hybrid
+```
+退出当前视图
+```
 quit
 ```
 进入逻辑接口视图
@@ -967,7 +973,8 @@ ip address 192.168.10.1 24
 ```
 vrrp vrid 10 virtual-ip 192.168.10.254
 ```
-设置优先级
+提高vrid 10的优先级
+`在VRRP中，优先级较高的路由器将成为主路由器(master)，负责转发虚拟IP地址的流量。通过提高优先级，您可以控制哪个路由器将成为主路由器(即主网关地址)。`
 ```
 vrrp vrid 10 priority 120
 ```
@@ -991,7 +998,7 @@ ip address 192.168.20.1 24
 ```
 vrrp vrid 20 virtual-ip 192.168.20.254
 ```
-设置优先级
+提高vrid 20的优先级
 ```
 vrrp vrid 20 priority 120
 ```
@@ -1015,7 +1022,7 @@ ip address 192.168.30.1 24
 ```
 vrrp vrid 30 virtual-ip 192.168.30.254
 ```
-设置优先级
+提高vrid 30的优先级
 ```
 vrrp vrid 30 priority 120
 ```
@@ -1039,7 +1046,7 @@ ip address 192.168.40.1 24
 ```
 vrrp vrid 40 virtual-ip 192.168.40.254
 ```
-设置优先级
+提高vrid 40的优先级
 ```
 vrrp vrid 40 priority 120
 ```
@@ -1064,8 +1071,12 @@ stp region-configuration
 region-name RG1
 ```
 关联实例
+将VLAN 10和VLAN 30关联到编号为1的实例
 ```
 instance 1 vlan 10 30
+```
+将VLAN 20和VLAN 40关联到编号为2的实例
+```
 instance 2 vlan 20 40
 ```
 激活区域
@@ -1076,9 +1087,12 @@ active region-configuration
 ```
 quit
 ```
-配置实例优先级(数字越小优先级越高，数字越大优先级越低)
+配置实例优先级(数字越小优先级越高，数字越大优先级越低)  
+这里优先使用实例1  
 ```
 stp instance 1 priority 4096
+```
+```
 stp instance 2 priority 8192
 ```
 退出当前视图
@@ -1092,8 +1106,8 @@ quit
 保存当前配置
 ```
 save
-y
 ```
+输入 y 确认
 
 SW2:  
 进入系统视图
@@ -1112,6 +1126,10 @@ port-group 1
 ```
 group-member g0/0/1 to g0/0/2
 ```
+或不用事先指定接口组编号使用默认编号直接添加接口组成员
+```
+port-group group-member g0/0/1 to g0/0/2
+```
 将接口组1链路设置为Trunk模式
 ```
 port link-type trunk
@@ -1124,27 +1142,21 @@ port trunk allow-pass vlan all
 ```
 quit
 ```
-进入接口组模式编号2
-```
-port-group 2
-```
-添加接口组成员
-```
-group-member g0/0/3 to g0/0/4
-```
-将接口组1链路设置为Hybrid模式
-```
-port link-type hybrid
-```
-退出当前接口组1视图
-```
-quit
-```
 配置LSW1与LSW2的链路聚合
+进入聚合接口组1
 ```
 int Eth-Trunk 1
+```
+添加聚合端口
+```
 trunkport g 0/0/3 to 0/0/4
+```
+设置端口的链路类型为混合模式
+```
 port link-type hybrid
+```
+退出当前视图
+```
 quit
 ```
 进入逻辑接口视图
@@ -1163,7 +1175,7 @@ vrrp vrid 10 virtual-ip 192.168.10.254
 ```
 vrrp vrid 11 virtual-ip 192.168.10.253
 ```
-设置优先级
+提高vrid 11的优先级
 ```
 vrrp vrid 11 priority 120
 ```
@@ -1187,7 +1199,7 @@ vrrp vrid 20 virtual-ip 192.168.20.254
 ```
 vrrp vrid 21 virtual-ip 192.168.20.253
 ```
-设置优先级
+提高vrid 21的优先级
 ```
 vrrp vrid 21 priority 120
 ```
@@ -1211,7 +1223,7 @@ vrrp vrid 30 virtual-ip 192.168.30.254
 ```
 vrrp vrid 31 virtual-ip 192.168.30.253
 ```
-设置优先级
+提高vrid 31的优先级
 ```
 vrrp vrid 31 priority 120
 ```
@@ -1235,7 +1247,7 @@ vrrp vrid 40 virtual-ip 192.168.40.254
 ```
 vrrp vrid 41 virtual-ip 192.168.40.253
 ```
-设置优先级
+提高vrid 41的优先级
 ```
 vrrp vrid 41 priority 120
 ```
@@ -1256,8 +1268,12 @@ stp region-configuration
 region-name RG1
 ```
 关联实例
+将VLAN 10和VLAN 30关联到编号为1的实例
 ```
 instance 1 vlan 10 30
+```
+将VLAN 20和VLAN 40关联到编号为2的实例
+```
 instance 2 vlan 20 40
 ```
 激活区域
@@ -1269,8 +1285,11 @@ active region-configuration
 quit
 ```
 配置实例优先级(数字越小优先级越高，数字越大优先级越低)
+这里优先使用实例2
 ```
 stp instance 1 priority 8192
+```
+```
 stp instance 2 priority 4096
 ```
 退出当前视图
@@ -1284,8 +1303,8 @@ quit
 保存当前配置
 ```
 save
-y
 ```
+输入 y 确认
 
 
 SW3:
@@ -1410,11 +1429,11 @@ quit
 ```
 quit
 ```
-保存配置
+保存当前配置
 ```
 save
-y
 ```
+输入 y 确认
 
 
 LSW4:  
@@ -1539,11 +1558,37 @@ quit
 ```
 quit
 ```
-保存配置
+保存当前配置
 ```
 save
-y
 ```
+输入 y 确认  
+测试阶段  
+在LSW1和LSW2中分别配置回环接口的ip地址  
+LSW1:  
+进入回环接口  
+```
+int LoopBack 1
+```
+配置回环接口ip地址
+```
+ip address 10.10.10.1 24
+```
+这里最好保存一下配置  
+LSW2:  
+进入回环接口  
+```
+int LoopBack 1
+```
+配置回环接口ip地址
+```
+ip address 20.20.20.1 24
+```
+这里最好保存一下配置  
+4台PC的网关配置为254，另外四台网关配置为253  
+测试当一台交换机坏了(关闭LSW1或LSW2)测试是否还能实现通信  
+测试结果能够实现通信  
+![result](https://github.com/user-attachments/assets/ba1c3d93-e9bc-4681-aba0-b8188fff78de)
 
 
 ## [路由协议](#路由协议)
