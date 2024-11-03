@@ -9,10 +9,12 @@
 ## [Python项目Docker镜像构建流程](#Python项目Docker镜像构建流程)
 
 1.创建项目结构：  
+<pre>
 /my-python-app/  
 |-- app.py  
 |-- requirements.txt  
 |-- Dockerfile  
+</pre>
 
 2.Dockerfile (/my-python-app/Dockerfile)：  
 ```dockerfile
@@ -45,9 +47,11 @@ docker build -t my-python-app .
 
 ## [C项目Docker镜像构建流程](#C项目Docker镜像构建流程)
 1.创建项目结构：  
+<pre>
 /my-c-app/  
 |-- main.c  
 |-- Dockerfile  
+</pre>
 
 2.Dockerfile (/my-c-app/Dockerfile)：  
 ```dockerfile
@@ -128,10 +132,12 @@ docker build -t my-java-app .
 
 ## [cpp项目Docker镜像构建流程](#cpp项目Docker镜像构建流程)
 1.创建项目结构：  
+<pre>
 /my-cpp-app/  
 |-- main.cpp  
 |-- Dockerfile  
-
+</pre>
+  
 2.Dockerfile (/my-cpp-app/Dockerfile)：  
 ```dockerfile
 # 使用基础镜像
@@ -161,11 +167,13 @@ docker build -t my-cpp-app:v1.00 .
 
 ## [Go项目Docker镜像构建流程](#Go项目Docker镜像构建流程)
 1.创建项目结构：
+<pre>
 /my-go-app/  
 |-- main.go  
 |-- go.mod  
 |-- Dockerfile  
-
+</pre>
+  
 2.Dockerfile (/my-go-app/Dockerfile)：
 ```dockerfile
 # 使用Go语言的官方镜像作为构建环境
