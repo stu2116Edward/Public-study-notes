@@ -1,7 +1,7 @@
 vim 编辑器使用说明  
 启动 Vim  
 打开文件：`vim <filename>`
-创建新文件：`vim <newfile>  `
+创建新文件：`vim <newfile>`
 
 命令模式（Normal Mode）  
 这是 Vim 的默认模式，用于执行命令。  
