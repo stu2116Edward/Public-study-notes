@@ -14,19 +14,22 @@
 ![7](https://github.com/user-attachments/assets/c789bab2-90b7-4259-b319-b846d10772a5)  
 ![8](https://github.com/user-attachments/assets/f41db619-035a-4820-a119-01cc7fc0a8d8)  
 ![9](https://github.com/user-attachments/assets/b9e9714b-64ed-4f4f-9c80-48cf2e6bd8c0)  
-![10](https://github.com/user-attachments/assets/c61eba20-74b9-4a3b-934e-7ad1bab92c92)  
+![10](https://github.com/user-attachments/assets/507efd74-0298-44d1-95da-8d715e0c7424)  
 保存退出。  
 
 
-## 4.回到终端输入，vi /etc/network/interfaces ,进入网卡配置，输入以下内容  
+## 4.回到终端,进入网卡配置，输入以下内容  
+```
+vim /etc/network/interfaces
+```
 ![11](https://github.com/user-attachments/assets/7dfe1722-7261-47fd-a8dd-88425308212f)  
 ![12](https://github.com/user-attachments/assets/37c0d5bd-5948-4100-a99c-32d765e45e5a)  
-按esc键输入:wq 保存退出。（注意，冒号是英文输入法下的）  
+按esc键输入`:wq` 保存退出。（注意，冒号是英文输入法下的）  
 
 ## 5.输入 vim /etc/resolv.conf ,打开dns配置，添加以下内容  
 ![13](https://github.com/user-attachments/assets/d78c2dd2-c20a-46c1-88d0-58934da7f289)  
 ![14](https://github.com/user-attachments/assets/a5e1b39f-044b-4e38-a708-bce81ec8523a)  
-按esc键输入:wq  
+按esc键输入`:wq`  
 保存退出。（注意，冒号是英文输入法下的）  
 
 ## 6.重启网卡  
