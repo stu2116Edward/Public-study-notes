@@ -1,31 +1,3 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Linux 压缩包使用指南</title>
-<style>
-  body {
-    font-family: 'Microsoft YaHei', Arial, sans-serif;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  th {
-    background-color: #f2f2f2;
-  }
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-</style>
-</head>
-<body>
 <h1>Linux 压缩包使用指南</h1>
 <p>以下是Linux系统中常用的压缩和解压缩命令列表，包括使用zip和tar命令，以及如何设置密码保护。</p>
 
@@ -86,6 +58,3 @@
     <td><code>tar -xjvf 压缩包名称.tar.bz2</code></td>
   </tr>
 </table>
-
-</body>
-</html>
