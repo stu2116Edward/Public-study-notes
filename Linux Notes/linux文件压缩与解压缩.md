@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux 压缩包使用指南</title>
+<style>
+  body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+</style>
+</head>
+<body>
+<h1>Linux 压缩包使用指南</h1>
+<p>以下是Linux系统中常用的压缩和解压缩命令列表，包括使用zip和tar命令，以及如何设置密码保护。</p>
+
+<table>
+  <tr>
+    <th>命令</th>
+    <th>描述</th>
+    <th>示例</th>
+  </tr>
+  <tr>
+    <td>安装zip</td>
+    <td>如果系统中尚未安装zip包，使用此命令进行安装。</td>
+    <td><code>sudo apt install zip</code></td>
+  </tr>
+  <tr>
+    <td>打包成zip</td>
+    <td>将文件或目录压缩成一个zip格式的压缩包。</td>
+    <td><code>zip -r 压缩包名称.zip 文件/目录</code></td>
+  </tr>
+  <tr>
+    <td>带密码打包成zip</td>
+    <td>将文件或目录压缩成一个带密码保护的zip格式的压缩包。</td>
+    <td><code>zip -er 压缩包名称.zip 文件/目录</code></td>
+  </tr>
+  <tr>
+    <td>解压缩zip</td>
+    <td>解压一个zip格式的压缩包。</td>
+    <td><code>unzip 压缩包名称.zip</code></td>
+  </tr>
+  <tr>
+    <td>带密码解压缩zip</td>
+    <td>解压一个带密码保护的zip格式的压缩包。</td>
+    <td><code>unzip 压缩包名称.zip</code>（会提示输入密码）</td>
+  </tr>
+  <tr>
+    <td>安装tar</td>
+    <td>如果系统中尚未安装tar包，使用此命令进行安装。</td>
+    <td><code>sudo apt install tar</code></td>
+  </tr>
+  <tr>
+    <td>压缩成tar.gz</td>
+    <td>将文件或目录压缩成一个tar.gz格式的压缩包。</td>
+    <td><code>tar -czvf 压缩包名称.tar.gz 文件/目录</code></td>
+  </tr>
+  <tr>
+    <td>压缩成tar.bz2</td>
+    <td>将文件或目录压缩成一个tar.bz2格式的压缩包。</td>
+    <td><code>tar -cjvf 压缩包名称.tar.bz2 文件/目录</code></td>
+  </tr>
+  <tr>
+    <td>解压缩tar.gz</td>
+    <td>解压一个tar.gz格式的压缩包。</td>
+    <td><code>tar -xzvf 压缩包名称.tar.gz</code></td>
+  </tr>
+  <tr>
+    <td>解压缩tar.bz2</td>
+    <td>解压一个tar.bz2格式的压缩包。</td>
+    <td><code>tar -xjvf 压缩包名称.tar.bz2</code></td>
+  </tr>
+</table>
+
+</body>
+</html>
