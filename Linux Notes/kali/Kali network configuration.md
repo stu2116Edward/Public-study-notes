@@ -26,7 +26,10 @@ vim /etc/network/interfaces
 ![12](https://github.com/user-attachments/assets/37c0d5bd-5948-4100-a99c-32d765e45e5a)  
 按esc键输入`:wq` 保存退出。（注意，冒号是英文输入法下的）  
 
-## 5.输入 vim /etc/resolv.conf ,打开dns配置，添加以下内容  
+## 5.配置DNS，添加以下内容  
+```
+vim /etc/resolv.conf
+```
 ![13](https://github.com/user-attachments/assets/d78c2dd2-c20a-46c1-88d0-58934da7f289)  
 ![14](https://github.com/user-attachments/assets/a5e1b39f-044b-4e38-a708-bce81ec8523a)  
 按esc键输入`:wq`  
@@ -37,9 +40,10 @@ vim /etc/network/interfaces
 systemctl restart networking.service
 ```
 ![15](https://github.com/user-attachments/assets/f03b4197-a783-4f22-8c1c-0d8854add74b)  
-## 7.再输入ifconfig
+
+再输入`ifconfig`  
 ![16](https://github.com/user-attachments/assets/cd0d7bc4-c964-4525-a6a1-2880c915617f)  
 发现有了刚才配的ip地址  
 
-## 8.测试ping 百度，可以上外网，成功  
+## 7.测试ping 百度，可以上外网，成功  
 ![17](https://github.com/user-attachments/assets/83f2d0ee-aba4-463d-aa70-57b6790482f2)  
