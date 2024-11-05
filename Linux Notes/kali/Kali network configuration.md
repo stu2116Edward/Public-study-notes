@@ -108,9 +108,6 @@ systemctl restart networking
 ```
 
 
-## 使用 vim /etc/NetworkManager/NetworkManager.conf 配置文件配置网络
-
-
 ### 出现的问题
 配置文件正确但是无法上网  
 如果 /etc/network/interfaces 和 /etc/resolv.conf 配置文件没有任何问题那么就得看 /etc/NetworkManager/NetworkManager.conf 文件里的内容了  
@@ -126,4 +123,3 @@ managed=false
 ```
 注意`managed=false`如果要使用 /etc/network/interfaces 作为网络配置文件的话就改为`false`如果要使用/etc/NetworkManager/NetworkManager.conf配置文件管理网络就改为true  
 两个配置文件只能选取一个否则会导致冲突  
-
