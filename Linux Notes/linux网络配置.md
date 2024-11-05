@@ -223,7 +223,7 @@ sudo service network-manager restart
    ```
 
    
-不同Linux发行版网络配置文件路径和重启网络服务命令的详细列表：  
+## 不同Linux发行版网络配置文件路径和重启网络服务命令的详细列表：  
 <table border="1">
     <tr>
         <th>Linux发行版</th>
