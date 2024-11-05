@@ -1,5 +1,6 @@
 ## 现代化Linux系统网络配置命令： 
 ### 1. 重启网络服务  
+需要注意的是，systemd-networkd 和 NetworkManager 通常不会同时使用，因为它们是两种不同的网络管理服务。systemd-networkd 是一个低级别的网络配置守护程序，而 NetworkManager 提供了一个更高级别的网络管理界面。  
 在基于systemd的系统中，你可以使用以下命令来重启网络服务：  
 ```
 sudo systemctl restart systemd-networkd
