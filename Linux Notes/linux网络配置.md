@@ -1,4 +1,5 @@
-1. 重启网络服务
+## 现代化Linux系统网络配置命令： 
+### 1. 重启网络服务  
 在基于systemd的系统中，你可以使用以下命令来重启网络服务：  
 ```
 sudo systemctl restart systemd-networkd
@@ -7,33 +8,33 @@ sudo systemctl restart systemd-networkd
 ```
 sudo systemctl restart NetworkManager
 ```
-2. 对单一网卡进行操作
-- 使用ip命令来管理网络接口：
- - 查看所有网络接口信息：
+### 2. 对单一网卡进行操作  
+使用ip命令来管理网络接口：  
+- 查看所有网络接口信息：  
 ```
 ip addr show
 ```
-禁用指定的网络接口：
+- 禁用指定的网络接口：  
 ```
 sudo ip link set [网卡名称] down
 ```
-启用指定的网络接口：
+- 启用指定的网络接口：  
 ```
 sudo ip link set [网卡名称] up
 ```
-3. DHCP重新获取IP
-使用dhclient命令来管理DHCP：
-- 释放当前的DHCP租约：
+### 3. DHCP重新获取IP  
+使用dhclient命令来管理DHCP：  
+- 释放当前的DHCP租约：  
 ```
 sudo dhclient -r [网卡名称]
 ```
-- 重新获取IP地址：
+- 重新获取IP地址：  
 ```
 sudo dhclient [网卡名称]
 ```
-4. 配置静态或动态IP
-在/etc/network/interfaces文件中配置网络接口  
-例如，要为一个名为eth0的网络接口配置静态IP，可以编辑该文件并添加以下内容：
+### 4. 配置静态或动态IP  
+在/etc/network/interfaces文件中配置网络接口    
+例如，要为一个名为eth0的网络接口配置静态IP，可以编辑该文件并添加以下内容：  
 ```
 auto eth0
 iface eth0 inet static
@@ -42,58 +43,58 @@ iface eth0 inet static
     gateway 192.168.1.1
     dns-nameservers 8.8.8.8 8.8.4.4
 ```
-对于动态IP（DHCP），配置如下：
+对于动态IP（DHCP），配置如下：  
 ```
 auto eth0
 iface eth0 inet dhcp
 ```
-5. 应用配置
-在修改了/etc/network/interfaces文件后，你可以使用以下命令来重新加载网络配置：
+### 5. 应用配置  
+在修改了/etc/network/interfaces文件后，你可以使用以下命令来重新加载网络配置：  
 ```
 sudo systemctl restart networking
 ```
-或者，如果你使用的是NetworkManager，可以使用：
+或者，如果你使用的是NetworkManager，可以使用：  
 ```
 sudo systemctl restart NetworkManager
 ```
 
-旧版Linux系统网络配置命令：
-1.重启网络服务
-在基于System V init的旧版系统中，你可以使用以下命令来重启网络服务：
+## 旧版本Linux系统网络配置命令：  
+### 1.重启网络服务  
+在基于System V init的旧版系统中，你可以使用以下命令来重启网络服务：  
 ```
 sudo /etc/init.d/networking restart
 ```
-或者，如果你想要重启网络管理器（例如NetworkManager），可以使用：
+或者，如果你想要重启网络管理器（例如NetworkManager），可以使用：  
 ```
 sudo service network-manager restart
 ```
-2.对单一网卡进行操作
-使用 ifconfig 命令来管理网络接口：
-- 查看所有网络接口信息：
+### 2.对单一网卡进行操作  
+使用 ifconfig 命令来管理网络接口：  
+- 查看所有网络接口信息：  
 ```
 ifconfig -a
 ```
-- 禁用指定的网络接口：
+- 禁用指定的网络接口：  
 ```
 sudo ifconfig [网卡名称] down
 ```
-- 启用指定的网络接口：
+- 启用指定的网络接口：  
 ```
 sudo ifconfig [网卡名称] up
 ```
-3. DHCP重新获取IP
-使用dhclient命令来管理DHCP：
-- 释放当前的DHCP租约：
+### 3. DHCP重新获取IP  
+使用dhclient命令来管理DHCP：  
+- 释放当前的DHCP租约：  
 ```
 sudo dhclient -r [网卡名称]
 ```
-- 重新获取IP地址：
+- 重新获取IP地址：  
 ```
 sudo dhclient [网卡名称]
 ```
-4.配置静态或动态IP
-在 /etc/sysconfig/network-scripts/ifcfg-[网卡名称] 文件中配置网络接口。
-- 例如，要为一个名为 eth0 的网络接口配置静态IP，可以编辑该文件并添加以下内容：
+### 4.配置静态或动态IP  
+在 /etc/sysconfig/network-scripts/ifcfg-[网卡名称] 文件中配置网络接口。  
+- 例如，要为一个名为 eth0 的网络接口配置静态IP，可以编辑该文件并添加以下内容：  
 ```
 DEVICE=eth0
 BOOTPROTO=static
@@ -104,24 +105,24 @@ GATEWAY=192.168.1.1
 DNS1=8.8.8.8
 DNS2=8.8.4.4
 ```
-- 对于动态IP（DHCP），配置如下：
+- 对于动态IP（DHCP），配置如下：  
 ```
 DEVICE=eth0
 BOOTPROTO=dhcp
 ONBOOT=yes
 ```
-5.应用配置
-在修改了 /etc/sysconfig/network-scripts/ifcfg-[网卡名称] 文件后，你可以使用以下命令来重新加载网络配置：
+### 5.应用配置  
+在修改了 /etc/sysconfig/network-scripts/ifcfg-[网卡名称] 文件后，你可以使用以下命令来重新加载网络配置：  
 ```
 sudo /etc/init.d/networking restart
 ```
-或者，如果你使用的是NetworkManager，可以使用：
+或者，如果你使用的是NetworkManager，可以使用：  
 ```
 sudo service network-manager restart
 ```
 
-常用的网管命令
-### `ip` 命令：
+## 常用的网管命令  
+### ip 命令：
 
 1. **查看所有网络接口信息**：
    ```
@@ -173,7 +174,7 @@ sudo service network-manager restart
     sudo ip link set [网卡名称] mtu [值]
     ```
 
-### `ifconfig` 命令：
+### ifconfig 命令：
 
 1. **查看所有网络接口信息**：
    ```
