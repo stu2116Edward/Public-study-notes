@@ -13,6 +13,11 @@
     <td><code>sudo apt install zip</code></td>
   </tr>
   <tr>
+    <td>安装tar</td>
+    <td>如果系统中尚未安装tar包，使用此命令进行安装。</td>
+    <td><code>sudo apt install tar</code></td>
+  </tr>
+  <tr>
     <td>打包成zip</td>
     <td>将文件或目录压缩成一个zip格式的压缩包。</td>
     <td><code>zip -r 压缩包名称.zip 文件/目录</code></td>
@@ -33,9 +38,9 @@
     <td><code>unzip 压缩包名称.zip</code>（会提示输入密码）</td>
   </tr>
   <tr>
-    <td>安装tar</td>
-    <td>如果系统中尚未安装tar包，使用此命令进行安装。</td>
-    <td><code>sudo apt install tar</code></td>
+    <td>打包成tar</td>
+    <td>将文件或目录打包成一个tar格式的压缩包。</td>
+    <td><code>tar -cvf 压缩包名称.tar 文件/目录</code></td>
   </tr>
   <tr>
     <td>压缩成tar.gz</td>
@@ -46,6 +51,11 @@
     <td>压缩成tar.bz2</td>
     <td>将文件或目录压缩成一个tar.bz2格式的压缩包。</td>
     <td><code>tar -cjvf 压缩包名称.tar.bz2 文件/目录</code></td>
+  </tr>
+  <tr>
+    <td>解压缩tar</td>
+    <td>解压一个tar格式的压缩包。</td>
+    <td><code>tar -xvf 压缩包名称.tar</code></td>
   </tr>
   <tr>
     <td>解压缩tar.gz</td>
@@ -70,7 +80,7 @@
   <tr>
     <td>排除文件压缩</td>
     <td>压缩时排除特定文件或目录。</td>
-    <td><code>zip -r 压缩包名称.zip --exclude=*.tmp 文件/目录</code></td>
+    <td><code>tar --exclude='*.tmp' -cvf 压缩包名称.tar 文件/目录</code></td>
   </tr>
   <tr>
     <td>更新zip压缩包</td>
