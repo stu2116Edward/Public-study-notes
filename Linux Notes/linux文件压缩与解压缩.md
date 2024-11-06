@@ -57,4 +57,34 @@
     <td>解压一个tar.bz2格式的压缩包。</td>
     <td><code>tar -xjvf 压缩包名称.tar.bz2</code></td>
   </tr>
+  <tr>
+    <td>查看zip内容</td>
+    <td>查看zip压缩包中的内容而不解压。</td>
+    <td><code>zip -sf 压缩包名称.zip</code></td>
+  </tr>
+  <tr>
+    <td>查看tar内容</td>
+    <td>查看tar.gz或tar.bz2压缩包中的内容而不解压。</td>
+    <td><code>tar -tzvf 压缩包名称.tar.gz</code> 或 <code>tar -tzvf 压缩包名称.tar.bz2</code></td>
+  </tr>
+  <tr>
+    <td>排除文件压缩</td>
+    <td>压缩时排除特定文件或目录。</td>
+    <td><code>zip -r 压缩包名称.zip --exclude=*.tmp 文件/目录</code></td>
+  </tr>
+  <tr>
+    <td>更新zip压缩包</td>
+    <td>向现有的zip压缩包中添加新文件。</td>
+    <td><code>zip -g 压缩包名称.zip 新文件</code></td>
+  </tr>
+  <tr>
+    <td>压缩成tar.xz</td>
+    <td>将文件或目录压缩成一个tar.xz格式的压缩包。</td>
+    <td><code>tar -cJvf 压缩包名称.tar.xz 文件/目录</code></td>
+  </tr>
+  <tr>
+    <td>解压缩tar.xz</td>
+    <td>解压一个tar.xz格式的压缩包。</td>
+    <td><code>tar -xJvf 压缩包名称.tar.xz</code></td>
+  </tr>
 </table>
