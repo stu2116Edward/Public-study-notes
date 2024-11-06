@@ -97,4 +97,39 @@
     <td>解压一个tar.xz格式的压缩包。</td>
     <td><code>tar -xJvf 压缩包名称.tar.xz</code></td>
   </tr>
+  <tr>
+    <td>安装unrar</td>
+    <td>如果系统中尚未安装unrar包，使用此命令进行安装。</td>
+    <td><code>sudo apt install unrar</code></td>
+  </tr>
+  <tr>
+    <td>解压缩rar</td>
+    <td>解压一个rar格式的压缩包。</td>
+    <td><code>unrar x 压缩包名称.rar</code></td>
+  </tr>
+  <tr>
+    <td>压缩成7z</td>
+    <td>将文件或目录压缩成一个7z格式的压缩包。</td>
+    <td><code>7z a 压缩包名称.7z 文件/目录</code></td>
+  </tr>
+  <tr>
+    <td>解压缩7z</td>
+    <td>解压一个7z格式的压缩包。</td>
+    <td><code>7z x 压缩包名称.7z</code></td>
+  </tr>
+  <tr>
+    <td>安装p7zip-full</td>
+    <td>如果系统中尚未安装p7zip-full包，使用此命令进行安装。</td>
+    <td><code>sudo apt install p7zip-full</code></td>
+  </tr>
+  <tr>
+    <td>解压缩.Z</td>
+    <td>解压一个.Z格式的压缩包。</td>
+    <td><code>uncompress 压缩文件名.Z</code></td>
+  </tr>
+  <tr>
+    <td>压缩成.Z</td>
+    <td>将文件压缩成一个.Z格式的压缩包。</td>
+    <td><code>compress 要压缩的文件</code></td>
+  </tr>
 </table>
