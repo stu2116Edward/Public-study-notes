@@ -119,6 +119,26 @@
     <td>解压一个rar格式的压缩包。</td>
     <td><code>unrar x 压缩包名称.rar</code></td>
   </tr>
+  <tr>
+    <td>打包成rar</td>
+    <td>将文件或目录压缩成一个rar格式的压缩包。</td>
+    <td><code>rar a 压缩包名称.rar 文件/目录</code></td>
+  </tr>
+  <tr>
+    <td>带密码打包成rar</td>
+    <td>将文件或目录压缩成一个带密码保护的rar格式的压缩包。</td>
+    <td><code>rar a -hp 压缩包名称.rar 文件/目录</code></td>
+  </tr>
+  <tr>
+    <td>带密码解压缩rar</td>
+    <td>解压一个带密码保护的rar格式的压缩包。</td>
+    <td><code>unrar x -p 压缩包名称.rar</code>（会提示输入密码）</td>
+  </tr>
+  <tr>
+    <td>查看rar内容</td>
+    <td>查看rar压缩包中的内容而不解压。</td>
+    <td><code>unrar l 压缩包名称.rar</code></td>
+  </tr>
   <!-- 7z 压缩相关命令 -->
   <tr>
     <td colspan="3"><strong>7z 压缩命令</strong></td>
@@ -138,9 +158,19 @@
     <td>解压一个7z格式的压缩包。</td>
     <td><code>7z x 压缩包名称.7z</code></td>
   </tr>
+  <tr>
+    <td>查看7z内容</td>
+    <td>查看7z压缩包中的内容而不解压。</td>
+    <td><code>7z l 压缩包名称.7z</code></td>
+  </tr>
   <!-- .Z 压缩相关命令 -->
   <tr>
     <td colspan="3"><strong>.Z 压缩命令</strong></td>
+  </tr>
+  <tr>
+    <td>安装压缩工具</td>
+    <td>如果系统中尚未安装压缩工具，使用此命令进行安装。</td>
+    <td><code>sudo apt install gzip</code></td>
   </tr>
   <tr>
     <td>压缩成.Z</td>
@@ -151,5 +181,10 @@
     <td>解压缩.Z</td>
     <td>解压一个.Z格式的压缩包。</td>
     <td><code>uncompress 压缩文件名.Z</code></td>
+  </tr>
+  <tr>
+    <td>查看.Z内容</td>
+    <td>查看.Z压缩包中的内容而不解压。</td>
+    <td><code>zcat 压缩文件名.Z</code></td>
   </tr>
 </table>
