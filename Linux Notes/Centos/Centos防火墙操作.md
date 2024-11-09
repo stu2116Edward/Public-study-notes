@@ -68,15 +68,15 @@ sudo firewall-cmd --zone=public --remove-port=80/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
+保存当前的防火墙配置
+```
+sudo firewall-cmd --runtime-to-permanent
+```
 重新加载防火墙规则  
 ```
 sudo firewall-cmd --reload
 ```
-在执行这个命令之前，您可能需要先保存当前的防火墙配置，可以使用  
-```
-sudo firewall-cmd --runtime-to-permanent
-```
-命令来实现。这样可以确保在系统重启后，当前的防火墙规则仍然生效。  
+先保存当前的防火墙配置，这样可以确保在系统重启后，当前的防火墙规则仍然生效。  
 
 请注意，`--permanent` 标志表示对当前的运行规则和持久规则都进行更改，然后需要执行 `--reload` 来重新加载规则使更改生效。  
 在执行这些命令之前，请确保 `firewalld` 服务已经安装在你的系统上。如果尚未安装，可以使用以下命令进行安装：  
