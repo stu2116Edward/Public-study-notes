@@ -189,7 +189,7 @@ cat 打包后的镜像名.tar | docker load
 ```
 docker ps
 ```
-列出所有容器：
+列出所有容器（包括停止的）：
 ```
 docker ps -a
 ```
@@ -197,25 +197,44 @@ docker ps -a
 ```
 docker images
 ```
-查看容器日志：
+查看指定容器的日志：
 ```
-docker logs <容器>
+docker logs <容器名/ID>
 ```
 查看Docker版本：
 ```
 docker --version
 ```
-查看Docker系统信息：
+查看 Docker 系统信息（包括资源使用情况、配置等）：
 ```
 docker info
 ```
-查看容器统计信息：
+实时查看容器统计信息（CPU、内存、网络 I/O 等）：
 ```
 docker stats
 ```
-查看容器和镜像的详细信息：
+查看容器或镜像的详细信息：
 ```
 docker inspect <容器名/ID或镜像名/ID>
+```
+查看 Docker 网络信息：
+```
+docker network ls
+```
+查看 Docker 卷信息:
+```
+docker volume ls
+```
+列出所有 Docker 构建的缓存（适用于 Docker 18.09 及更高版本）
+```
+docker builder prune -a --filter "until=<timestamp>"
+```
+可选参数 <timestamp> 用于指定时间之前的构建缓存  
+注意：通常不使用 --filter 参数，直接运行 `docker builder prune -a` 来清理所有构建缓存  
+
+查看 Docker 磁盘使用情况:
+```
+docker system df
 ```
 
 
