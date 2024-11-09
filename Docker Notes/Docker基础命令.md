@@ -220,28 +220,31 @@ docker inspect <容器名/ID或镜像名/ID>
 
 
 ## Docker资源清理  
-清理未使用的资源：  
-清理未使用的资源（包括停止的容器、未使用的网络、未使用的镜像、未使用的构建缓存）：  
+- 清理未使用的资源（包括停止的容器、未使用的网络、未使用的镜像、未使用的构建缓存）
 ```
 docker system prune
 ```
-清理所有未使用的镜像、容器、卷和网络：  
+- 清理所有未使用的资源（包括卷）
 ```
 docker system prune -a
 ```
-清理未使用的卷：  
+- 清理所有未使用的镜像（包括悬空镜像和无标签的镜像）
+```
+docker image prune
+```
+- 清理未使用的卷
 ```
 docker volume prune
 ```
-清理未使用的网络：  
+- 清理未使用的网络
 ```
 docker network prune
 ```
-清理镜像仓库的缓存：（注意：这个命令在 Docker 19.03 及更高版本中可用）  
+- 清理构建缓存
 ```
-docker cache clean
+docker builder prune
 ```
-清理所有未使用的 Docker 对象，包括镜像、容器、卷和网络：  
+- 清理所有未使用的 Docker 对象，包括镜像、容器、卷和网络（带强制确认）
 ```
 docker system prune -af
 ```
