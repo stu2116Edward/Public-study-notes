@@ -149,11 +149,11 @@ docker rmi <镜像名/ID>
 ```
 拉取镜像：
 ```
-docker pull <镜像名/ID>
+docker pull <镜像名:tag/ID>
 ```
 构建镜像：
 ```
-docker build <上下文>
+docker build -t <镜像名>:<tag> <上下文路径>
 ```
 保存镜像为文件：
 ```
@@ -181,6 +181,10 @@ docker load -i ~/打包后的镜像名.tar
 ```
 ```
 cat 打包后的镜像名.tar | docker load
+```
+列出本地镜像：
+```
+docker images
 ```
 
 
