@@ -38,11 +38,11 @@ ps aux
 ```
 查看特定用户进程：
 ```
-ps -u username
+ps -u <username>
 ```
 查看特定组进程：
 ```
-ps -G groupname
+ps -G <groupname>
 ```
 按CPU使用率排序：
 ```
@@ -65,11 +65,11 @@ top
 ```
 显示特定用户的进程：
 ```
-top -u username
+top -u <username>
 ```
 显示特定组的进程：
 ```
-top -G groupname
+top -G <groupname>
 ```
 显示所有CPU的核心：
 ```
@@ -77,7 +77,7 @@ top -1
 ```
 显示特定核心的进程信息：
 ```
-top -1 -p core_number
+top -1 -p <core_number>
 ```
 以树状图显示进程：
 ```
@@ -104,7 +104,7 @@ htop -t
 ```
 只显示用户进程：
 ```
-htop -u username
+htop -u <username>
 ```
 过滤进程：
 ```
@@ -135,15 +135,15 @@ kill -USER PID
 - pkill 命令  
 按名称终止进程：
 ```
-pkill processname
+pkill <processname>
 ```
 按组名终止进程：
 ```
-pkill -G groupname
+pkill -G <groupname>
 ```
 按用户名终止进程：
 ```
-pkill -u username
+pkill -u <username>
 ```
 递归终止进程：
 ```
@@ -154,15 +154,15 @@ pkill -r pattern
 - killall 命令  
 按名称终止所有匹配的进程：
 ```
-killall processname
+killall <processname>
 ```
 按用户名终止所有匹配的进程：
 ```
-killall -u username
+killall -u <username>
 ```
 按组名终止所有匹配的进程：
 ```
-killall -G groupname
+killall -G <groupname>
 ```
 
 
@@ -471,34 +471,96 @@ host -t MX <hostname>（MX记录）
 ```
 
 
+## 磁盘管理
+查看磁盘空间使用情况：
+```
+df -h
+```
+查看特定文件系统的使用情况：
+```
+df -h <filesystem>
+```
+查看所有文件系统的使用情况：
+```
+df -h --local
+```
+查看当前目录的磁盘使用情况：
+```
+du -sh
+```
+查看特定目录的磁盘使用情况：
+```
+du -h <directory>
+```
+查看文件的磁盘使用情况：
+```
+du -h <file>
+```
+查看特定深度的目录树使用情况：
+```
+du -h --max-depth=<depth> <directory>
+```
+列出所有可用的块设备：
+```
+lsblk
+```
+以易于阅读的格式显示：
+```
+lsblk -f
+```
+查看磁盘分区表：
+```
+sudo fdisk -l
+```
+交互式地管理磁盘分区：
+```
+sudo fdisk <device>
+```
+创建新的文件系统：
+```
+sudo mkfs -t <type> <device>
+```
+挂载文件系统：
+```
+sudo mount <device> <mountpoint>
+```
+挂载特定类型的文件系统：
+```
+sudo mount -t <type> <device> <mountpoint>
+```
+卸载文件系统：
+```
+sudo umount <mountpoint>
+```
+交互式地查看磁盘使用情况：
+```
+ncdu <directory>
+```
+查找大文件：
+```
+find <directory> -type f -size +100M
+```
+监控磁盘I/O：
+```
+iostat <device>
+```
+查看和调整磁盘参数：
+```
+sudo hdparm -I /dev/sda
+```
+检查磁盘的SMART状态：
+```
+sudo smartctl -a /dev/sda
+```
 
-查看磁盘空间使用情况：df -h  
-查看特定文件系统的使用情况：df -h <filesystem>  
-查看所有文件系统的使用情况：df -h --local  
-查看当前目录的磁盘使用情况：du -sh  
-查看特定目录的磁盘使用情况：du -h <directory>  
-查看文件的磁盘使用情况：du -h <file>  
-查看特定深度的目录树使用情况：du -h --max-depth=<depth> <directory>  
-列出所有可用的块设备：lsblk  
-以易于阅读的格式显示：lsblk -f  
-查看磁盘分区表：sudo fdisk -l  
-交互式地管理磁盘分区：sudo fdisk <device>  
-创建新的文件系统：sudo mkfs -t <type> <device>  
-挂载文件系统：sudo mount <device> <mountpoint>  
-挂载特定类型的文件系统：sudo mount -t <type> <device> <mountpoint>  
-卸载文件系统：sudo umount <mountpoint>  
-交互式地查看磁盘使用情况：ncdu <directory>  
-查找大文件：find <directory> -type f -size +100M  
-监控磁盘I/O：iostat <device>  
-查看和调整磁盘参数：sudo hdparm -I /dev/sda  
-检查磁盘的SMART状态：sudo smartctl -a /dev/sda  
 
-
-文件权限管理  
+## 文件权限管理  
 设置文件权限：  
-chmod <权限数字> <文件或目录>  
+```
+chmod <权限数字> <文件或目录>
+```
 
-数字参考示例：  
+- 数字参考示例：  
 0	无权限（---）  
 1	执行（--x）  
 2	写（-w-）  
@@ -508,7 +570,7 @@ chmod <权限数字> <文件或目录>
 6	读和写（rw-）  
 7	读、写和执行（rwx）  
 
-以下是一些常见的权限设置示例：  
+- 以下是一些常见的权限设置示例：  
 644：所有者有读写权限，所属组和其他用户只有读权限。  
 755：所有者有全部权限，所属组和其他用户有读和执行权限。  
 700：只有所有者有读、写和执行权限，所属组和其他用户没有任何权限。  
@@ -517,27 +579,72 @@ chmod <权限数字> <文件或目录>
 
 
 
-用户管理  
-添加新用户：sudo useradd <username>  
-设置用户主目录：sudo useradd -m <username>  
-设置用户Shell：sudo useradd -s <shell-path> <username>  
+## 用户管理  
+添加新用户：
+```
+sudo useradd <username>
+```
+设置用户主目录：
+```
+sudo useradd -m <username>
+```
+设置用户Shell：
+```
+sudo useradd -s <shell-path> <username>
+```
 
-修改用户信息：sudo usermod <options> <username>  
-更改用户主目录：sudo usermod -d <new-home-dir> <username>  
-更改用户组：sudo usermod -g <groupname> <username>  
+修改用户信息：
+```
+sudo usermod <options> <username>
+```
+更改用户主目录：
+```
+sudo usermod -d <new-home-dir> <username>
+```
+更改用户组：
+```
+sudo usermod -g <groupname> <username>
+```
 
-更改用户密码：sudo passwd <username>  
-立刻强制用户下次登录时更改密码：sudo passwd -e <username>  
+更改用户密码：
+```
+sudo passwd <username>
+```
+立刻强制用户下次登录时更改密码：
+```
+sudo passwd -e <username>
+```
 
-更改文件权限：sudo chmod <permissions> <file>  
-递归更改目录权限：sudo chmod -R <permissions> <directory>  
-使文件可执行：sudo chmod +x <file>  
+更改文件权限：
+```
+sudo chmod <permissions> <file>
+```
+递归更改目录权限：
+```
+sudo chmod -R <permissions> <directory>
+```
+使文件可执行：
+```
+sudo chmod +x <file>
+```
 
-更改文件所有者：sudo chown <new-owner> <file>  
-递归更改目录及其内容的所有者：sudo chown -R <new-owner> <directory>  
+更改文件所有者：
+```
+sudo chown <new-owner> <file>
+```
+递归更改目录及其内容的所有者：
+```
+sudo chown -R <new-owner> <directory>
+```
 
-更改文件组：sudo chgrp <groupname> <file>  
-递归更改目录及其内容的组：sudo chgrp -R <groupname> <directory>  
+更改文件组：
+```
+sudo chgrp <groupname> <file>
+```
+递归更改目录及其内容的组：
+```
+sudo chgrp -R <groupname> <directory>
+```
 
 Nginx管理：  
 nginx -s reload：重新加载配置文件  
