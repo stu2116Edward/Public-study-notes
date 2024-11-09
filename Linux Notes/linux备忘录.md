@@ -1,94 +1,222 @@
-服务管理：  
-启动服务：sudo systemctl start service_name  
-停止服务：sudo systemctl stop service_name  
-重启服务：sudo systemctl restart service_name  
-查看服务状态：sudo systemctl status service_name  
-设置服务开机自启：sudo systemctl enable service_name  
-取消服务开机自启：sudo systemctl disable service_name  
+# Linux基本操作命令
+
+## 服务管理：  
+启动服务：
+```
+sudo systemctl start service_name
+```
+停止服务：
+```
+sudo systemctl stop service_name
+```
+重启服务：
+```
+sudo systemctl restart service_name
+```
+查看服务状态：
+```
+sudo systemctl status service_name
+```
+设置服务开机自启：
+```
+sudo systemctl enable service_name
+```
+取消服务开机自启：
+```
+sudo systemctl disable service_name
+```
 
 
-查看进程：  
-ps 命令查看进程：ps  
-查看所有进程：ps aux  
-查看特定用户进程：ps -u username  
-查看特定组进程：ps -G groupname  
-按CPU使用率排序：ps -eo pid,ppid,%cpu,cmd --sort=-%cpu  
-按内存使用率排序：ps -eo pid,ppid,%mem,cmd --sort=-%mem  
-查看进程树：ps -ef | grep <process-name>  
+## 查看进程：  
+ps 命令查看进程：
+```
+ps
+```
+查看所有进程：
+```
+ps aux
+```
+查看特定用户进程：
+```
+ps -u username
+```
+查看特定组进程：
+```
+ps -G groupname
+```
+按CPU使用率排序：
+```
+ps -eo pid,ppid,%cpu,cmd --sort=-%cpu
+```
+按内存使用率排序：
+```
+ps -eo pid,ppid,%mem,cmd --sort=-%mem
+```
+查看进程树：
+```
+ps -ef | grep <process-name>
+```
 
 
-top 命令  
-实时显示进程信息：top  
-显示特定用户的进程：top -u username  
-显示特定组的进程：top -G groupname  
-显示所有CPU的核心：top -1  
-显示特定核心的进程信息：top -1 -p core_number  
-以树状图显示进程：top -t -c  
+## top 命令实时显示系统中各个进程的资源占用情况
+实时显示进程信息：
+```
+top
+```
+显示特定用户的进程：
+```
+top -u username
+```
+显示特定组的进程：
+```
+top -G groupname
+```
+显示所有CPU的核心：
+```
+top -1
+```
+显示特定核心的进程信息：
+```
+top -1 -p core_number
+```
+以树状图显示进程：
+```
+top -t -c
+```
 
 
-htop 命令  
-实时显示进程信息：htop  
-启动时不显示颜色：htop -n 1  
-设置更新间隔：htop -d 5  
-以树状图显示进程：htop -t  
-只显示用户进程：htop -u username  
-过滤进程：htop -F <process-name>  
+## htop 交互式进程查看器
+实时显示进程信息：
+```
+htop
+```
+启动时不显示颜色：
+```
+htop -n 1
+```
+设置更新间隔：
+```
+htop -d 5
+```
+以树状图显示进程：
+```
+htop -t
+```
+只显示用户进程：
+```
+htop -u username
+```
+过滤进程：
+```
+htop -F <process-name>
+```
 
 
-管理进程  
-kill 命令  
-终止进程：kill PID  
-强制终止进程：kill -9 PID  
-发送SIGTERM信号：kill -15 PID  
-向特定用户进程发送信号：kill -USER PID  
+## 管理进程  
+- kill 命令  
+终止进程：
+```
+kill PID
+```
+强制终止进程：
+```
+kill -9 PID
+```
+发送SIGTERM信号：
+```
+kill -15 PID
+```
+向特定用户进程发送信号：
+```
+kill -USER PID
+```
 
 
-pkill 命令  
-按名称终止进程：pkill processname  
-按组名终止进程：pkill -G groupname  
-按用户名终止进程：pkill -u username  
-递归终止进程：pkill -r pattern  
+- pkill 命令  
+按名称终止进程：
+```
+pkill processname
+```
+按组名终止进程：
+```
+pkill -G groupname
+```
+按用户名终止进程：
+```
+pkill -u username
+```
+递归终止进程：
+```
+pkill -r pattern
+```
 
 
-killall 命令  
-按名称终止所有匹配的进程：killall processname  
-按用户名终止所有匹配的进程：killall -u username  
-按组名终止所有匹配的进程：killall -G groupname  
+- killall 命令  
+按名称终止所有匹配的进程：
+```
+killall processname
+```
+按用户名终止所有匹配的进程：
+```
+killall -u username
+```
+按组名终止所有匹配的进程：
+```
+killall -G groupname
+```
 
 
-nice 和 renice 命令  
-以低优先级运行命令：nice -n 10 some_command  
-调整正在运行的进程的优先级：renice 10 -p PID  
+- nice 和 renice 命令  
+以低优先级运行命令：
+```
+nice -n 10 some_command
+```
+调整正在运行的进程的优先级：
+```
+renice 10 -p PID
+```
 
 
-nohup 命令  
-在断开终端后继续运行命令：nohup some_command &  
+- nohup 命令  
+在断开终端后继续运行命令：
+```
+nohup some_command &
+```
 
 
-pstree 命令  
-以树状图显示进程：pstree  
-显示进程的完整命令行：pstree -p  
-显示进程的PID：pstree -s  
+- pstree 命令  
+以树状图显示进程：
+```
+pstree
+```
+显示进程的完整命令行：
+```
+pstree -p
+```
+显示进程的PID：
+```
+pstree -s
+```
 
 
-top 命令的交互模式  
-刷新屏幕：Ctrl + L  
-排序：O (大写字母o),然后选择列进行排序  
-查看线程：H (大写字母h)  
-退出：q  
+- top 命令的交互模式  
+刷新屏幕：`Ctrl + L`  
+排序：`O` (大写字母o),然后选择列进行排序  
+查看线程：`H` (大写字母h)  
+退出：`q`  
 
 
-htop 命令的交互模式  
-排序：F3 或 O，然后选择列进行排序  
-切换树状图显示：F5  
-切换彩色/单色显示：F9  
-切换滚动模式：Space（空格键）  
-退出：F10  
+- htop 命令的交互模式  
+排序：`F3` 或 `O`，然后选择列进行排序  
+切换树状图显示：`F5`  
+切换彩色/单色显示：`F9`  
+切换滚动模式：`Space`（空格键）  
+退出：`F10`  
 
 
 
-网络管理  
-ifconfig 或 ip addr 命令  
+## 网络管理  
+- ifconfig 或 ip addr 命令  
 查看所有网络接口：ip addr show 或 ifconfig -a  
 查看特定网络接口：ip addr show <interface> 或 ifconfig <interface>  
 启用网络接口：sudo ip link set <interface> up  
