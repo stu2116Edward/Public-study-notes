@@ -96,7 +96,7 @@ docker run -d --name my_container --network container:other_container nginx
 
 ### -e 或 --env：设置环境变量
 环境变量是在操作系统中定义的变量，它们可以控制程序的运行方式。在 Docker 中，您可以使用 -e 或 --env 选项来设置环境变量。  
-示例:
+示例:  
 ```
 # 设置单个环境变量
 docker run -d --name my_container -e "ENV_VAR=value" nginx
@@ -135,7 +135,7 @@ docker run -d --name my_container --volume my_volume:/container/path nginx
  - ro：挂载卷为只读模式（例如 -v /host/path:/container/path:ro）
  - rw：读写模式（默认）。
 
-示例:
+示例:  
 ```
 # 以只读模式挂载卷
 docker run -d --name my_container -v /host/path:/container/path:ro nginx
@@ -159,10 +159,10 @@ docker build <上下文>
 ```
 docker save -o <目标文件路径/文件名.tar> <镜像名>:<tag>
 ```
-- -o 选项用于指定输出文件的路径。
-- <目标文件路径> 可以是绝对路径或相对路径。
-- <镜像名>:<tag> 指定要保存的镜像名称和标签(tag)
-示例:
+- -o 选项用于指定输出文件的路径。  
+- <目标文件路径> 可以是绝对路径或相对路径。  
+- <镜像名>:<tag> 指定要保存的镜像名称和标签(tag)  
+示例:  
 ```
 docker save -o ~/打包后的镜像名.tar 镜像名称:tag
 ```
@@ -201,12 +201,6 @@ docker images
 ```
 docker logs <容器>
 ```
-
-## Docker资源清理  
-清理未使用的资源：  
-```
-docker system prune
-```
 查看Docker版本：
 ```
 docker --version
@@ -222,4 +216,32 @@ docker stats
 查看容器和镜像的详细信息：
 ```
 docker inspect <容器名/ID或镜像名/ID>
+```
+
+
+## Docker资源清理  
+清理未使用的资源：  
+清理未使用的资源（包括停止的容器、未使用的网络、未使用的镜像、未使用的构建缓存）：  
+```
+docker system prune
+```
+清理所有未使用的镜像、容器、卷和网络：  
+```
+docker system prune -a
+```
+清理未使用的卷：  
+```
+docker volume prune
+```
+清理未使用的网络：  
+```
+docker network prune
+```
+清理镜像仓库的缓存：（注意：这个命令在 Docker 19.03 及更高版本中可用）  
+```
+docker cache clean
+```
+清理所有未使用的 Docker 对象，包括镜像、容器、卷和网络：  
+```
+docker system prune -af
 ```
