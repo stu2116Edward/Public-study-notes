@@ -181,4 +181,5 @@ sudo yum install iptables-services
 sudo systemctl start iptables  
 sudo systemctl enable iptables
 ```
-这些命令应该可以帮助你在 CentOS 7 或更早版本上管理 `iptables` 防火墙。
+这些命令应该可以帮助你在 CentOS 7 或更早版本上管理 `iptables` 防火墙。  
+注意：不推荐同时使用 firewalld 和 iptables，因为它们是两个不同的防火墙管理工具，可能会相互冲突。每个工具都有自己的配置文件和规则集，同时使用可能会导致不可预测的行为，例如规则冲突、网络连接问题等。
