@@ -157,11 +157,30 @@ docker build <上下文>
 ```
 保存镜像为文件：
 ```
-docker save <镜像名和版本>  <文件名>.tar
+docker save -o <目标文件路径/文件名.tar> <镜像名>:<tag>
 ```
+- -o 选项用于指定输出文件的路径。
+- <目标文件路径> 可以是绝对路径或相对路径。
+- <镜像名>:<tag> 指定要保存的镜像名称和标签(tag)
+示例:
+```
+docker save -o ~/打包后的镜像名.tar 镜像名称:tag
+```
+
 从文件加载镜像：
 ```
+docker load -i <文件路径>
+```
+或
+```
 cat <文件名>.tar | docker load
+```
+示例：
+```
+docker load -i ~/打包后的镜像名.tar
+```
+```
+cat 打包后的镜像名.tar | docker load
 ```
 
 
