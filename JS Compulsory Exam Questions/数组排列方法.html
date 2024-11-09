@@ -34,7 +34,7 @@
         // 冒泡排序
         function maopao(arr) {
             let len = arr.length
-            for (let i = 0; i < len; i++) {
+            for (let i = 0; i < len - 1; i++) {
                 for (let j = 0; j < len - i - 1; j++) {
                     if (arr[j] > arr[j + 1]) {
                         // 交换相邻元素0
@@ -52,7 +52,7 @@
         function xuanze(arr) {
             let len = arr.length
             let minIndex, temp
-            for (let i = 0; i < len; i++) {
+            for (let i = 0; i < len - 1; i++) {
                 minIndex = i
                 for (let j = i + 1; j < len; j++) {
                     if (arr[j] < arr[minIndex]) {
