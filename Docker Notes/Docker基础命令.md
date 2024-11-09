@@ -53,10 +53,29 @@ docker rm <容器名/ID>
 ```
 docker rm -f <容器名/ID>
 ```
+查看容器内的进程：
+```
+docker top <容器名/ID>
+```
+进入容器内部：  
+除了使用 docker run -it 来启动一个交互式容器外，您还可以使用 docker exec 命令进入已经运行的容器内部：  
+```
+docker exec -it <容器名/ID> /bin/bash  # 或者 /bin/sh，取决于容器内的shell
+```
+导出和导入容器：  
+虽然通常我们更关注镜像的保存和加载，但有时也需要导出和导入容器（例如，为了迁移或备份）：  
+```
+# 导出容器为tar文件
+docker export <容器名/ID> > <文件名>.tar
+
+# 从tar文件导入容器为镜像（注意，这不是一个运行的容器，而是一个静态的镜像）
+cat <文件名>.tar | docker import - <镜像名>:<标签>
+```
+
 
 ### Docker 网络功能允许您将容器连接到一个或多个网络。
 - --network 选项允许您指定容器应连接到的网络。以下是一些常用的网络模式和选项：
- - bridge：这是默认的网络设置，Docker 会创建一个桥接网络并将容器连接到这个网络。
+ - bridge：这是`默认`的网络设置，Docker 会创建一个桥接网络并将容器连接到这个网络。
  - host：将容器的网络堆栈与宿主机共享。容器不会获得自己的 IP 地址，并且会共享宿主机的网络。
  - none：容器有自己的网络堆栈，但是不进行任何配置。您需要手动配置网络。
  - container：容器将共享另一个容器的网络堆栈。
@@ -73,6 +92,8 @@ docker run -d --name my_container --network host nginx
 # 将容器连接到另一个容器的网络堆栈
 docker run -d --name my_container --network container:other_container nginx
 ```
+
+
 ### -e 或 --env：设置环境变量
 环境变量是在操作系统中定义的变量，它们可以控制程序的运行方式。在 Docker 中，您可以使用 -e 或 --env 选项来设置环境变量。  
 示例:
@@ -91,6 +112,8 @@ docker run -d --name my_container --env-file .env nginx
 ENV_VAR1=value1
 ENV_VAR2=value2
 ```
+
+
 ### -v 或 --volume：挂载卷，用于数据持久化或共享
 挂载卷（Volumes）是 Docker 中用于数据持久化和数据共享的高级功能。它们允许您将数据独立于容器的生命周期进行管理，这意味着即使容器被删除，数据也不会丢失。  
 示例:  
@@ -140,6 +163,7 @@ docker save <镜像名和版本>  <文件名>.tar
 ```
 cat <文件名>.tar | docker load
 ```
+
 
 ## Docker资源查看  
 列出当前运行的容器：
