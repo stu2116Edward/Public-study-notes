@@ -6,7 +6,7 @@
 ```
 docker run [选项] <镜像名/ID>
 ```
-- <镜像>：指定要运行的Docker镜像名称。
+- <镜像名/ID>：指定要运行的Docker镜像名称或ID
 - [选项]包括但不限于：
  - -d：后台运行容器
  - --name：为容器指定一个名称
@@ -22,7 +22,7 @@ docker run [选项] <镜像名/ID>
 ```
 docker run -d --name my_container -p 8080:80 nginx --restart=always
 ```
-这个命令会在后台 `-d` 运行一个名为 `my_container` 的容器，使用 `nginx镜像`，并将 `容器的80端口` 映射到宿 `主机的8080端口` 设置容器的重启策略为总是重启`--restart=always`
+这个命令会在后台运行一个名为 `my_container` 的容器，使用 `nginx 镜像`，并将`容器的80端口`映射到宿`主机的8080端口`。同时，设置容器的重启策略为总是重启 `--restart=always`
 
 - 其他常用选项
  - -it：分配一个伪终端并保持标准输入开放，通常与bash或sh命令一起使用，以便交互式地进入容器内部。
@@ -73,7 +73,7 @@ docker run -d --name my_container --network host nginx
 # 将容器连接到另一个容器的网络堆栈
 docker run -d --name my_container --network container:other_container nginx
 ```
-### -e：设置环境变量
+### -e 或 --env：设置环境变量
 环境变量是在操作系统中定义的变量，它们可以控制程序的运行方式。在 Docker 中，您可以使用 -e 或 --env 选项来设置环境变量。  
 示例:
 ```
@@ -91,7 +91,7 @@ docker run -d --name my_container --env-file .env nginx
 ENV_VAR1=value1
 ENV_VAR2=value2
 ```
-### -v：挂载卷，用于数据持久化或共享
+### -v 或 --volume：挂载卷，用于数据持久化或共享
 挂载卷（Volumes）是 Docker 中用于数据持久化和数据共享的高级功能。它们允许您将数据独立于容器的生命周期进行管理，这意味着即使容器被删除，数据也不会丢失。  
 示例:  
 ```
@@ -109,7 +109,7 @@ docker run -d --name my_container --volume my_volume:/container/path nginx
 - my_volume：卷的名称，Docker 将管理这个卷的生命周期。
 
 - 使用挂载卷时，您可以指定卷的访问模式，例如：
- - ro：只读模式（-v /host/path:/container/path:ro）。
+ - ro：挂载卷为只读模式（例如 -v /host/path:/container/path:ro）
  - rw：读写模式（默认）。
 
 示例:
