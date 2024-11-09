@@ -3,27 +3,27 @@
 ## 服务管理：  
 启动服务：
 ```
-sudo systemctl start service_name
+sudo systemctl start <service_name>
 ```
 停止服务：
 ```
-sudo systemctl stop service_name
+sudo systemctl stop <service_name>
 ```
 重启服务：
 ```
-sudo systemctl restart service_name
+sudo systemctl restart <service_name>
 ```
 查看服务状态：
 ```
-sudo systemctl status service_name
+sudo systemctl status <service_name>
 ```
 设置服务开机自启：
 ```
-sudo systemctl enable service_name
+sudo systemctl enable <service_name>
 ```
 取消服务开机自启：
 ```
-sudo systemctl disable service_name
+sudo systemctl disable <service_name>
 ```
 
 
@@ -169,7 +169,7 @@ killall -G groupname
 - nice 和 renice 命令  
 以低优先级运行命令：
 ```
-nice -n 10 some_command
+nice -n 10 <some_command>
 ```
 调整正在运行的进程的优先级：
 ```
@@ -180,7 +180,7 @@ renice 10 -p PID
 - nohup 命令  
 在断开终端后继续运行命令：
 ```
-nohup some_command &
+nohup <some_command> &
 ```
 
 
@@ -217,71 +217,258 @@ pstree -s
 
 ## 网络管理  
 - ifconfig 或 ip addr 命令  
-查看所有网络接口：ip addr show 或 ifconfig -a  
-查看特定网络接口：ip addr show <interface> 或 ifconfig <interface>  
-启用网络接口：sudo ip link set <interface> up  
-禁用网络接口：sudo ip link set <interface> down  
-为网络接口分配IP地址：sudo ip addr add <ip>/<mask> dev <interface>  
-移除网络接口的IP地址：sudo ip addr del <ip>/<mask} dev <interface>  
+查看所有网络接口：
+```
+ip addr show
+```
+或
+```
+ifconfig -a
+```
+查看特定网络接口：
+```
+ip addr show <interface>
+```
+或
+```
+ifconfig <interface>
+```
+启用网络接口：
+```
+sudo ip link set <interface> up
+```
+禁用网络接口：
+```
+sudo ip link set <interface> down
+```
+为网络接口分配IP地址：
+```
+sudo ip addr add <ip>/<mask> dev <interface>
+```
+移除网络接口的IP地址：
+```
+sudo ip addr del <ip>/<mask} dev <interface>
+```
 
 
-ping 命令  
-测试网络连接：ping <host>  
-连续发送ping：ping -t <host>  
-使用特定次数的ping：ping -c <count> <host>  
-使用特定大小的包：ping -s <size> <host>  
+- ping 命令  
+测试网络连接：
+```
+ping <host>
+```
+连续发送ping：
+```
+ping -t <host>
+```
+使用特定次数的ping：
+```
+ping -c <count> <host>
+```
+使用特定大小的包：
+```
+ping -s <size> <host>
+```
 
 
-netstat 或 ss 命令  
-查看所有网络端口：sudo netstat -tuln 或 sudo ss -tuln  
-查看特定服务的端口：sudo netstat -tulnp | grep <service> 或 sudo ss -tulnp | grep <service>  
-查看所有UDP端口：sudo netstat -tulnu 或 sudo ss -tulnu  
-查看所有TCP端口：sudo netstat -tulnt 或 sudo ss -tulnt  
+- netstat 或 ss 命令  
+查看所有网络端口：
+```
+sudo netstat -tuln
+```
+或
+```
+sudo ss -tuln
+```
+查看所有服务的 PID
+```
+sudo netstat -tulnp
+```
+或
+```
+sudo ss -tulnp
+```
+查看特定服务的端口：
+```
+sudo netstat -tulnp | grep <service>
+```
+或
+```
+sudo ss -tulnp | grep <service>
+```
+查看所有UDP端口：
+```
+sudo netstat -tulnu 或 sudo ss -tulnu
+```
+查看所有TCP端口：
+```
+sudo netstat -tulnt 或 sudo ss -tulnt
+```
 
 
-traceroute 或 tracepath 命令  
-追踪网络路径：traceroute <host> 或 tracepath <host>  
-使用ICMP协议：traceroute -I <host>  
-使用UDP协议：traceroute -U <host>  
+- traceroute 或 tracepath 命令  
+追踪网络路径：
+```
+traceroute <host>
+```
+或
+```
+tracepath <host>
+```
+使用ICMP协议：
+```
+traceroute -I <host>
+```
+使用UDP协议：
+```
+traceroute -U <host>
+```
 
 
-nslookup 或 dig 命令  
-查询DNS信息：nslookup <host> 或 dig <host>  
-查询特定类型的DNS记录：dig A <host>（A记录）dig MX <host>（MX记录）  
+- nslookup 或 dig 命令  
+查询DNS信息：
+```
+nslookup <hostname>
+```
+或
+```
+dig <hostname>
+```
+查询特定类型的DNS记录：
+```
+dig <记录类型> <hostname>
+```
+示例：
+```
+dig A <hostname>（A记录）
+dig MX <hostname>（MX记录）  
+```
+示例：  
+例如，要查询 google.com 的IP地址，你可以使用：
+```
+nslookup google.com
+```
+指定一个特定的DNS服务器来查询  
+```
+nslookup google.com 8.8.8.8
+```
+例如，要查询 google.com 的DNS信息，你可以使用：
+```
+dig google.com
+```
+查询A记录（IPv4地址）：
+```
+dig A google.com
+```
+查询NS记录（域名服务器）：
+```
+dig NS google.com
+```
+查询MX记录（邮件交换服务器）：
+```
+dig MX google.com
+```
+查询TXT记录（通常用于存储元数据）：
+```
+dig TXT google.com
+```
+
+- iptables 或 ufw 命令  
+列出iptables规则：
+```
+sudo iptables -L
+```
+添加规则允许端口：
+```
+sudo iptables -A INPUT -p tcp --dport <port> -j ACCEPT
+```
+添加规则阻止端口：
+```
+sudo iptables -A INPUT -p tcp --dport <port> -j DROP
+```
+启用防火墙：
+```
+sudo ufw enable
+```
+禁用防火墙：
+```
+sudo ufw disable
+```
+允许特定端口：
+```
+sudo ufw allow <port>/<protocol>
+```
+阻止特定端口：
+```
+sudo ufw deny <port>/<protocol>
+```
 
 
-iptables 或 ufw 命令  
-列出iptables规则：sudo iptables -L  
-添加规则允许端口：sudo iptables -A INPUT -p tcp --dport <port> -j ACCEPT  
-添加规则阻止端口：sudo iptables -A INPUT -p tcp --dport <port> -j DROP  
-启用防火墙：sudo ufw enable  
-禁用防火墙：sudo ufw disable  
-允许特定端口：sudo ufw allow <port>/<protocol>  
-阻止特定端口：sudo ufw deny <port>/<protocol>  
+- curl 或 wget 命令  
+获取网页内容：
+```
+curl <url> 或 wget <url>
+```
+获取网页内容并输出到文件：
+```
+curl -o <file> <url> 或 wget -O <file> <url>
+```
+发送POST请求：
+```
+curl -d "param=value" <url>
+```
 
 
-curl 或 wget 命令  
-获取网页内容：curl <url> 或 wget <url>  
-获取网页内容并输出到文件：curl -o <file> <url> 或 wget -O <file> <url>  
-发送POST请求：curl -d "param=value" <url>  
+- nmap 命令  
+扫描主机端口：
+```
+nmap <host>
+```
+扫描特定端口范围：
+```
+nmap -p <port1>-<port2> <host>
+```
+扫描所有TCP端口：
+```
+nmap -p 1-65535 <host>
+```
+扫描主机开放的端口：
+```
+nmap -sT <host>
+```
 
 
-nmap 命令  
-扫描主机端口：nmap <host>  
-扫描特定端口范围：nmap -p <port1>-<port2> <host>  
-扫描所有TCP端口：nmap -p 1-65535 <host>  
-扫描主机开放的端口：nmap -sT <host>  
+- arp 命令  
+查看ARP表：
+```
+arp -a
+```
+添加静态ARP映射：
+```
+sudo arp -s <ip> <mac>
+```
+删除静态ARP映射：
+```
+sudo arp -d <ip>
+```
 
 
-arp 命令  
-查看ARP表：arp -a  
-添加静态ARP映射：sudo arp -s <ip> <mac>  
-删除静态ARP映射：sudo arp -d <ip>  
-
-
-host 命令  
-查看主机名和IP地址映射：host <host>  
-查看特定类型的记录：host -t A <host>（A记录）host -t MX <host>（MX记录）  
+- host 命令  
+查看主机名和IP地址映射：
+```
+host <hostname>
+```
+查看特定类型的记录：  
+```
+host -t <记录类型> <hostname>
+```
+查询A记录（IPv4地址）：
+```
+host -t A <hostname>（A记录）
+```
+查询MX记录（邮件交换服务器）：
+```
+host -t MX <hostname>（MX记录）
+```
 
 
 
