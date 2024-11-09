@@ -580,6 +580,43 @@ chmod <权限数字> <文件或目录>
 
 
 ## 用户管理  
+查看当前用户信息：  
+- 显示当前执行命令的用户的名字
+```
+whoami
+```
+显示当前用户的用户ID（UID）、组ID（GID）以及用户和组的名称
+```
+id
+```
+显示当前登录系统的用户列表，包括用户名称、终端、登录时间等信息
+```
+who
+```
+显示系统中所有用户的活动，包括哪些用户已登录以及他们在做什么
+```
+w
+```
+显示当前登录系统的用户列表
+```
+users
+```
+显示用户的登录历史记录，包括登录和注销时间
+```
+last
+```
+显示用户的失败登录尝试记录
+```
+lastb
+```
+显示系统中所有用户的最后登录时间
+```
+lastlog
+```
+ps命令结合特定的选项，可以查看当前运行的进程，包括它们的所有者
+```
+ps aux
+```
 添加新用户：
 ```
 sudo useradd <username>
@@ -592,7 +629,6 @@ sudo useradd -m <username>
 ```
 sudo useradd -s <shell-path> <username>
 ```
-
 修改用户信息：
 ```
 sudo usermod <options> <username>
@@ -605,7 +641,6 @@ sudo usermod -d <new-home-dir> <username>
 ```
 sudo usermod -g <groupname> <username>
 ```
-
 更改用户密码：
 ```
 sudo passwd <username>
@@ -614,7 +649,6 @@ sudo passwd <username>
 ```
 sudo passwd -e <username>
 ```
-
 更改文件权限：
 ```
 sudo chmod <permissions> <file>
@@ -627,7 +661,6 @@ sudo chmod -R <permissions> <directory>
 ```
 sudo chmod +x <file>
 ```
-
 更改文件所有者：
 ```
 sudo chown <new-owner> <file>
@@ -636,7 +669,6 @@ sudo chown <new-owner> <file>
 ```
 sudo chown -R <new-owner> <directory>
 ```
-
 更改文件组：
 ```
 sudo chgrp <groupname> <file>
@@ -646,24 +678,24 @@ sudo chgrp <groupname> <file>
 sudo chgrp -R <groupname> <directory>
 ```
 
-Nginx管理：  
+## Nginx管理：  
 nginx -s reload：重新加载配置文件  
 nginx -s reopen：重新打开日志文件  
 nginx -s stop：快速关闭服务  
 nginx -t：测试配置文件  
 
 
-防火墙管理（如果使用iptables）：  
+## 防火墙管理（如果使用iptables）：  
 iptables -L：列出规则  
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT：添加规则允许80端口  
 iptables -D INPUT -p tcp --dport 80 -j ACCEPT：删除规则  
 
 
-日志管理：  
+## 日志管理：  
 tail -f /var/log/nginx/access.log：查看Nginx访问日志  
 tail -f /var/log/syslog：查看系统日志  
 
 
-备份和恢复：  
+## 备份和恢复：  
 tar：打包和压缩文件  
 rsync：同步文件和目录  
