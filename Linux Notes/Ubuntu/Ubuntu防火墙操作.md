@@ -63,7 +63,15 @@ sudo ufw delete allow 80/tcp
 ```
 sudo ufw delete <ID号>
 ```
+
+ufw 的配置会自动保存  
 重载防火墙规则(在添加规则和删除规则后切记要运行一下)
 ```
 sudo ufw reload
+```
+
+安装 ufw  
+```
+sudo apt update
+sudo apt install ufw
 ```
