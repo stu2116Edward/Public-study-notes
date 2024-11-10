@@ -100,9 +100,9 @@ apt-get dist-upgrade -y
 - 命令说明：
   - -y 的意思是提示选择时默认确认  
 ![e3a55a8fdd964c9aa632afebb6f830de](https://github.com/user-attachments/assets/1a1fe399-69ce-46fe-8242-ef52ba5cd994)  
-安装提示输入y即可
+安装提示输入y即可  
 ![bf7a85d9117d458e8caa5bb67d91e9c2](https://github.com/user-attachments/assets/420cd2f2-0cac-4aa9-8c9d-f8fd6ed56289)  
-安装或更新完成后，会遗留一些软件的安装包，会占用部分硬盘空间，可使用下面的命令来对其进行清理
+安装或更新完成后，会遗留一些软件的安装包，会占用部分硬盘空间，可使用下面的命令来对其进行清理  
 ```
 apt-get clean
 ```
