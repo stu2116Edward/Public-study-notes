@@ -97,3 +97,4 @@ echo LANG="en_US.UTF-8" > /etc/default/locale
 ```
 sudo reboot
 ```
+建议中英文分别创建一个快照  
