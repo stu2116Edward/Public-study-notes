@@ -47,7 +47,7 @@ sudo apt-get install fonts-wqy-zenhei
 ```
 sudo reboot
 ```
-![59eb0a30911f4126b288ad2109c0903a](https://github.com/user-attachments/assets/33e6863-2a6e-4a8c-b3a3-9cce807b1469)  
+![59eb0a30911f4126b288ad2109c0903a](https://github.com/user-attachments/assets/fa572e74-a440-45da-97d3-843bfee0634e)  
 
 ### 七、安装中文输入法
 - 如果需要输入中文，可以安装中文输入法。例如，安装Fcitx或IBus输入法框架  
