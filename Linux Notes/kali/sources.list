@@ -1,0 +1,25 @@
+# See https://www.kali.org/docs/general-use/kali-linux-sources-list-repositories/
+#deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware
+
+# 阿里云
+deb http://mirrors.aliyun.com/kali kali-rolling main non-free non-free-firmware contrib
+deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free non-free-firmware contrib
+
+# 中科大
+#deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free non-free-firmware contrib
+#deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free non-free-firmware contrib
+
+# 清华大学
+#deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free non-free-firmware
+#deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free non-free-firmware
+
+# 腾讯云
+#deb https://mirrors.cloud.tencent.com/kali kali-rolling main non-free contrib
+#deb-src https://mirrors.cloud.tencent.com/kali kali-rolling main non-free contrib
+
+# 官方源
+#deb https://http.kali.org/kali kali-rolling main non-free contrib
+#deb-src https://http.kali.org/kali kali-rolling main non-free contrib
+
+# Additional line for source packages
+#deb-src http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware

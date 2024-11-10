@@ -1,0 +1,26 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# 开启DHCP
+auto eth0
+iface eth0 inet dhcp
+
+#NAT模式静态地址
+#auto eth0
+#iface eth0 inet static
+#address 192.168.66.110
+#netmask 255.255.255.0
+#gateway 192.168.66.1
+
+#桥接要和物理机地址一样
+#auto eth0
+#iface eth0 inet static
+#address 10.31.182.10
+#netmask 255.254.0.0
+#gateway 10.30.0.1
