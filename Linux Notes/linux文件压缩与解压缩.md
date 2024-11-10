@@ -9,7 +9,7 @@
   </tr>
   <!-- ZIP 压缩相关命令 -->
   <tr>
-    <td colspan="3"><center><strong>ZIP 压缩命令</strong></center></td>
+    <td colspan="3" style="center"><strong>ZIP 压缩命令</strong></td>
   </tr>
   <tr>
     <td>安装zip</td>
