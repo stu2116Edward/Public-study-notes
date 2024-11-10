@@ -8,8 +8,8 @@
     <th>示例</th>
   </tr>
   <!-- ZIP 压缩相关命令 -->
-  <tr style="text-align: center;">
-    <td colspan="3"><strong>ZIP 压缩命令</strong></td>
+  <tr>
+    <td colspan="3" style="text-align: center;"><strong>ZIP 压缩命令</strong></td>
   </tr>
   <tr>
     <td>安装zip</td>
