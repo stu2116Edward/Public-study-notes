@@ -48,7 +48,7 @@
   </tr>
   <!-- TAR 压缩相关命令 -->
   <tr>
-    <td colspan="3"><strong>TAR 压缩命令</strong></td>
+    <th colspan="3" style="text-align: center;"><strong>TAR 压缩命令</strong></th>
   </tr>
   <tr>
     <td>安装tar</td>
@@ -107,7 +107,7 @@
   </tr>
   <!-- RAR 压缩相关命令 -->
   <tr>
-    <td colspan="3"><strong>RAR 压缩命令</strong></td>
+    <th colspan="3" style="text-align: center;"><strong>RAR 压缩命令</strong></th>
   </tr>
   <tr>
     <td>安装unrar</td>
@@ -141,7 +141,7 @@
   </tr>
   <!-- 7z 压缩相关命令 -->
   <tr>
-    <td colspan="3"><strong>7z 压缩命令</strong></td>
+    <th colspan="3" style="text-align: center;"><strong>7z 压缩命令</strong></th>
   </tr>
   <tr>
     <td>安装p7zip-full</td>
@@ -165,7 +165,7 @@
   </tr>
   <!-- .Z 压缩相关命令 -->
   <tr>
-    <td colspan="3"><strong>.Z 压缩命令</strong></td>
+    <th colspan="3" style="text-align: center;"><strong>.Z 压缩命令</strong></th>
   </tr>
   <tr>
     <td>安装压缩工具</td>
