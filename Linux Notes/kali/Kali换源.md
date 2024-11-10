@@ -1,7 +1,7 @@
 # kali换源教程
 
-## 1、进入控制台
-- 在kali桌面右键选择Open Terminal Here
+## 1、进入控制台  
+- 在kali桌面右键选择Open Terminal Here  
 ![69ef6a57571e44f0a4fb8d8eadd36d91](https://github.com/user-attachments/assets/72b8edb9-91c4-4f0f-af5c-25c159f28272)  
 
 ## 2、root配置权限
