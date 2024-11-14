@@ -63,6 +63,7 @@ sudo apt install --only-upgrade <package_name>
 sudo apt-get install --only-upgrade <package_name>
 ```
 13.下载软件包而不安装：  
+通常APT下载的软件包会存放在/var/cache/apt/archives/目录  
 ```
 apt download <package_name>
 apt-get download <package_name>
