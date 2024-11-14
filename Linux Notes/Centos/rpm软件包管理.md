@@ -80,7 +80,6 @@ rpm 是 Red Hat 包管理器，用于管理 .rpm 软件包。CentOS 和 Red Hat 
     ```
     rpm --showrc
     ```
-    这个命令不正确，rpm 没有 --showrc 选项。如果您想查看 rpm 的许可证信息，可以使用 rpm --showrc 查看配置文件路径，但这不是许可证信息  
     
 17. **显示 rpm 的版本号**：
     ```
