@@ -156,72 +156,72 @@
   <!-- 设置所有者可读写执行，组和其他用户可读执行 -->
   <li><strong>设置权限为755</strong>
     <ul>
-      <li><code>chmod u=rwx,g=rx,o=rx file.txt</code> - 使用符号模式设置权限</li>
-      <li><code>chmod 755 file.txt</code> - 使用八进制模式设置权限</li>
+      <li><code>chmod u=rwx,g=rx,o=rx file.txt</code> - 使用符号模式设置所有者读、写、执行，组和其他人读、执行权限。</li>
+      <li><code>chmod 755 file.txt</code> - 使用八进制模式设置相同权限。</li>
     </ul>
   </li>
   
   <!-- 设置所有者可读写，组和其他用户可读 -->
   <li><strong>设置权限为644</strong>
     <ul>
-      <li><code>chmod u=rw,g=r,o=r file.txt</code> - 使用符号模式设置权限</li>
-      <li><code>chmod 644 file.txt</code> - 使用八进制模式设置权限</li>
+      <li><code>chmod u=rw,g=r,o=r file.txt</code> - 使用符号模式设置所有者读、写，组和其他人读权限。</li>
+      <li><code>chmod 644 file.txt</code> - 使用八进制模式设置相同权限。</li>
     </ul>
   </li>
   
   <!-- 给文件所有者增加读权限 -->
   <li><strong>给所有者增加读权限</strong>
     <ul>
-      <li><code>chmod u+r file.txt</code> - 使用符号模式增加权限</li>
-      <li><code>chmod 444 file.txt</code> - 将文件权限设置为所有用户可读</li>
+      <li><code>chmod u+r file.txt</code> - 使用符号模式给所有者增加读权限。</li>
+      <li><code>chmod 444 file.txt</code> - 使用八进制模式设置所有用户读权限，包括所有者。</li>
     </ul>
   </li>
   
   <!-- 给目录的所属组增加写权限 -->
   <li><strong>给所属组增加写权限</strong>
     <ul>
-      <li><code>chmod g+w directory</code> - 使用符号模式增加权限</li>
-      <li><code>chmod 774 directory</code> - 设置目录权限为所有者和组可读写执行，其他用户可读</li>
+      <li><code>chmod g+w directory</code> - 使用符号模式给目录的所属组增加写权限。</li>
+      <li><code>chmod 774 directory</code> - 使用八进制模式设置目录权限为所有者和组可读写执行，其他用户可读。</li>
     </ul>
   </li>
   
   <!-- 给其他用户增加对文件的执行权限 -->
   <li><strong>给其他用户增加执行权限</strong>
     <ul>
-      <li><code>chmod o+x file.txt</code> - 使用符号模式增加权限</li>
-      <li><code>chmod 755 file.txt</code> - 将文件权限设置为所有者可读写执行，组和其他用户可读执行</li>
+      <li><code>chmod o+x file.txt</code> - 使用符号模式给其他用户增加执行权限。</li>
+      <li><code>chmod 755 file.txt</code> - 使用八进制模式设置所有者可读写执行，组和其他用户可读执行。</li>
     </ul>
   </li>
   
   <!-- 移除所有用户对文件的读、写和执行权限 -->
   <li><strong>移除所有用户权限</strong>
     <ul>
-      <li><code>chmod a-rwx file.txt</code> - 使用符号模式移除权限</li>
-      <li><code>chmod 000 file.txt</code> - 使用八进制模式移除所有权限</li>
+      <li><code>chmod a-rwx file.txt</code> - 使用符号模式移除所有用户的读、写和执行权限。</li>
+      <li><code>chmod 000 file.txt</code> - 使用八进制模式移除所有权限。</li>
     </ul>
   </li>
   
   <!-- 设置文件所有者具有读、写和执行权限 -->
   <li><strong>设置所有者完全权限</strong>
     <ul>
-      <li><code>chmod u=rwx file.txt</code> - 使用符号模式设置权限</li>
-      <li><code>chmod 700 file.txt</code> - 使用八进制模式设置所有者完全权限</li>
+      <li><code>chmod u=rwx file.txt</code> - 使用符号模式设置所有者具有读、写和执行权限。</li>
+      <li><code>chmod 700 file.txt</code> - 使用八进制模式设置相同权限。</li>
     </ul>
   </li>
   
   <!-- 设置文件的所属组只有读权限 -->
   <li><strong>设置组只有读权限</strong>
     <ul>
-      <li><code>chmod g=r file.txt</code> - 使用符号模式设置权限</li>
-      <li><code>chmod 640 file.txt</code> - 使用八进制模式设置所有者读写，组读，其他用户读</li>
+      <li><code>chmod g=r file.txt</code> - 使用符号模式设置文件的所属组只有读权限。</li>
+      <li><code>chmod 640 file.txt</code> - 使用八进制模式设置所有者读写，组读，其他用户读。</li>
     </ul>
   </li>
   
   <!-- 移除其他用户对文件的所有权限 -->
   <li><strong>移除其他用户所有权限</strong>
     <ul>
-      <li><code>chmod o= file.txt</code> - 使用符号模式移除权限</li>
-      <li><code>chmod 700 file.txt</code> - 使用八进制模式设置所有者完全权限，组和其他用户无权限</li>
+      <li><code>chmod o= file.txt</code> - 使用符号模式移除其他用户的所有权限。</li>
+      <li><code>chmod 700 file.txt</code> - 使用八进制模式设置所有者完全权限，组和其他用户无权限。</li>
     </ul>
   </li>
 </ul>
