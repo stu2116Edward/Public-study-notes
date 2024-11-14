@@ -171,7 +171,7 @@
   <tr>
     <td>给文件所有者增加读权限</td>
     <td><code>chmod u+r file.txt</code></td>
-    <td><code>chmod 444 file.txt</code> (增加读权限后)</td>
+    <td><code>chmod 400 file.txt</code> (增加读权限后)</td>
   </tr>
   <tr>
     <td>给目录的所属组增加写权限</td>
@@ -201,6 +201,6 @@
   <tr>
     <td>移除其他用户对文件的所有权限</td>
     <td><code>chmod o= file.txt</code></td>
-    <td><code>chmod 700 file.txt</code> (移除后)</td>
+    <td><code>chmod 750 file.txt</code> (移除后)</td>
   </tr>
 </table>
