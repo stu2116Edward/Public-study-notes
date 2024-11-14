@@ -183,3 +183,98 @@ sudo systemctl enable iptables
 ```
 这些命令应该可以帮助你在 CentOS 7 或更早版本上管理 `iptables` 防火墙。  
 注意：不推荐同时使用 firewalld 和 iptables，因为它们是两个不同的防火墙管理工具，可能会相互冲突。每个工具都有自己的配置文件和规则集，同时使用可能会导致不可预测的行为，例如规则冲突、网络连接问题等。
+
+## 列表格式
+<table border="1">
+  <tr>
+    <th>命令</th>
+    <th>参数说明</th>
+    <th>示例</th>
+    <th>描述</th>
+  </tr>
+  <tr>
+    <td>iptables -A</td>
+    <td>-A: Append to chain</td>
+    <td>iptables -A INPUT -p tcp --dport 80 -j ACCEPT</td>
+    <td>在INPUT链的末尾添加一条规则，允许所有TCP流量通过80端口（HTTP）。</td>
+  </tr>
+  <tr>
+    <td>iptables -I</td>
+    <td>-I: Insert rule</td>
+    <td>iptables -I INPUT 1 -p tcp --dport 22 -j ACCEPT</td>
+    <td>在INPUT链的顶部插入一条规则，允许所有TCP流量通过22端口（SSH）。</td>
+  </tr>
+  <tr>
+    <td>iptables -D</td>
+    <td>-D: Delete rule</td>
+    <td>iptables -D INPUT -p tcp --dport 22 -j ACCEPT</td>
+    <td>从INPUT链中删除允许所有TCP流量通过22端口的规则。</td>
+  </tr>
+  <tr>
+    <td>iptables -L</td>
+    <td>-L: List rules</td>
+    <td>iptables -L</td>
+    <td>列出所有链中的规则。</td>
+  </tr>
+  <tr>
+    <td>iptables -F</td>
+    <td>-F: Flush rules</td>
+    <td>iptables -F</td>
+    <td>清空所有链中的规则。</td>
+  </tr>
+  <tr>
+    <td>iptables -X</td>
+    <td>-X: Delete chain</td>
+    <td>iptables -X INPUT</td>
+    <td>删除名为INPUT的用户自定义链。</td>
+  </tr>
+  <tr>
+    <td>iptables -P</td>
+    <td>-P: Set default policy</td>
+    <td>iptables -P INPUT DROP</td>
+    <td>设置INPUT链的默认策略为DROP，即默认情况下拒绝所有流量。</td>
+  </tr>
+  <tr>
+    <td>iptables -t</td>
+    <td>-t: Specify table</td>
+    <td>iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080</td>
+    <td>在NAT表的PREROUTING链中添加一条规则，将所有TCP流量重定向到8080端口。</td>
+  </tr>
+  <tr>
+    <td>iptables -j</td>
+    <td>-j: Jump target</td>
+    <td>iptables -A INPUT -p icmp -j ACCEPT</td>
+    <td>在INPUT链中添加一条规则，允许所有ICMP（ping）流量。</td>
+  </tr>
+  <tr>
+    <td>iptables -m</td>
+    <td>-m: Match extension</td>
+    <td>iptables -A INPUT -m state --state NEW,ESTABLISHED -j ACCEPT</td>
+    <td>在INPUT链中添加一条规则，允许所有新建立的和已建立的连接。</td>
+  </tr>
+  <tr>
+    <td>iptables -p</td>
+    <td>-p: Protocol</td>
+    <td>iptables -A INPUT -p udp --dport 53 -j ACCEPT</td>
+    <td>在INPUT链中添加一条规则，允许所有UDP流量通过53端口（DNS）。</td>
+  </tr>
+  <tr>
+    <td>iptables --dport</td>
+    <td>--dport: Destination port</td>
+    <td>iptables -A OUTPUT -p tcp --dport 443 -j ACCEPT</td>
+    <td>在OUTPUT链中添加一条规则，允许所有TCP流量通过443端口（HTTPS）。</td>
+  </tr>
+  <tr>
+    <td>iptables -s</td>
+    <td>-s: Source address</td>
+    <td>iptables -A INPUT -s 192.168.1.100 -j DROP</td>
+    <td>在INPUT链中添加一条规则，阻止来自192.168.1.100的流量。</td>
+  </tr>
+  <tr>
+    <td>iptables -d</td>
+    <td>-d: Destination address</td>
+    <td>iptables -A OUTPUT -d 192.168.1.100 -j ACCEPT</td>
+    <td>在OUTPUT链中添加一条规则，允许所有到192.168.1.100的流量。</td>
+  </tr>
+</table>
+
