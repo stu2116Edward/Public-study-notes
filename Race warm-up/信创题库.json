@@ -1,0 +1,8384 @@
+{
+    "id": "t2ufBg",
+    "title": "信创题库",
+    "description": "感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！满分234分加油！！！",
+    "type": "Survey",
+    "attribute": {
+     "suffix": "您已完成本次考试。",
+     "submitButton": "提交",
+     "examScore": 234
+    },
+    "children": [
+     {
+      "id": "4xzl",
+      "title": "“去IOE”中的I·O·E分别代表哪些国际IT厂商？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "bs0l",
+        "title": "a. IBM ` Oracle ` EMC",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "bs0l"
+        }
+       },
+       {
+        "id": "zec7",
+        "title": "b. Intel ` Oracle ` Ericsson",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4sbq",
+        "title": "c. IBM ` Oracle ` Ericsson",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "k8na",
+        "title": "d. Intel ` Oracle ` EMC",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "x235",
+      "title": "“去IOE”是由哪家公司最早提出的？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "uan5",
+        "title": "a. 阿里巴巴",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "uan5"
+        }
+       },
+       {
+        "id": "8gv8",
+        "title": "b. 腾讯",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "yy0x",
+        "title": "c. 华为",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "5mtj",
+        "title": "d. 百度",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "gvhs",
+      "title": "ansible中定义被管理主机的文件是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "165k",
+        "title": "a. hosts",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "165k"
+        }
+       },
+       {
+        "id": "m8k0",
+        "title": "b. roles",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "kfkf",
+        "title": "c. playbook",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4dp3",
+        "title": "d. group",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "jge9",
+      "title": "ansible自动化运维平台通信使用的协议是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "spk3",
+        "title": "a. ssh",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "spk3"
+        }
+       },
+       {
+        "id": "4w4h",
+        "title": "b. icmp",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "p8fk",
+        "title": "c. ssl",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "j44t",
+        "title": "d. http",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "i5bh",
+      "title": "chrony的核心组件有几个？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "lj6v",
+        "title": "a. 2",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "lj6v"
+        }
+       },
+       {
+        "id": "lqlu",
+        "title": "b. 3",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "h51b",
+        "title": "c. 4",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "8zjy",
+        "title": "d. 5",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "o07g",
+      "title": "dhcp的租约文件存放在哪个目录下？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "wz56",
+        "title": "a. /var",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "wz56"
+        }
+       },
+       {
+        "id": "sl79",
+        "title": "b. /dhcp",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ljo9",
+        "title": "c. /etc",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "bgdx",
+        "title": "d. /log",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "37b2",
+      "title": "dns服务使用的端口是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "yw51",
+        "title": "a. 53",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "yw51"
+        }
+       },
+       {
+        "id": "xdb1",
+        "title": "b. 35",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "s8q9",
+        "title": "c. 67",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "479f",
+        "title": "d. 153",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "vh3b",
+      "title": "firewall防火墙提供了一个daemon和scrvice，还有命令行和图形界面配置工具，其底层使用的防火墙管理规则是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "e695",
+        "title": "a. firewalld",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ui1g",
+        "title": "b. iptables",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ui1g"
+        }
+       },
+       {
+        "id": "depo",
+        "title": "c. filter",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "g9um",
+        "title": "d. router",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "jds1",
+      "title": "grep命令中如果希望正则表达式中使用d字符·则需要使用命令选项？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "thm5",
+        "title": "a. -E",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "p5ju",
+        "title": "b. -P",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "p5ju"
+        }
+       },
+       {
+        "id": "ou3t",
+        "title": "c. -R",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "mgrg",
+        "title": "d. -r",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ekrn",
+      "title": "iscsi存储共享属于哪种存储结构？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "bdpu",
+        "title": "a. NAS",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "s5xz",
+        "title": "b. SAN",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "s5xz"
+        }
+       },
+       {
+        "id": "e9zz",
+        "title": "c. MAC",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "heqz",
+        "title": "d. DAS",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "hrwf",
+      "title": "KingbaseESv8的连接认证配置文件是哪个？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "pqep",
+        "title": "a. sys_ident.conf",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "whtr",
+        "title": "b. sys_hba.conf",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "whtr"
+        }
+       },
+       {
+        "id": "gc9e",
+        "title": "c. kingbase.conf",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "bbj4",
+        "title": "d. kingbase.opts",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "lf82",
+      "title": "KingbaseESv8的默认字符集是哪个？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "9e5w",
+        "title": "a. UTF8",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "9e5w"
+        }
+       },
+       {
+        "id": "krg9",
+        "title": "b. GBK",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "nlb5",
+        "title": "c. GB2312",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "qjsu",
+        "title": "d. US7ASCII",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "9kvf",
+      "title": "KingbaseESv8通用版数据文件的默认block尺寸为？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "545y",
+        "title": "a. 4KB",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "571f",
+        "title": "b. 8Kb",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "tpb2",
+        "title": "c. 8KB",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "tpb2"
+        }
+       },
+       {
+        "id": "9e2x",
+        "title": "d. 16KB",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "er7z",
+      "title": "Linux中的终端命令grep用于做什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "z360",
+        "title": "a. 查找文件内容",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "z360"
+        }
+       },
+       {
+        "id": "c3k7",
+        "title": "b. 列出文件和目录",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "pxva",
+        "title": "c. 显示当前工作目录",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "0acu",
+        "title": "d. 修改文件权限",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "nv71",
+      "title": "Linux中___用于创建软链接的命令是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "2etp",
+        "title": "a. ln",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "2etp"
+        }
+       },
+       {
+        "id": "nv46",
+        "title": "b. link",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "p9l7",
+        "title": "c. symlink",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "58u1",
+        "title": "d. softlink",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "i7yz",
+      "title": "Linux中用于显示正在进行中的任务的命令是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "7yxj",
+        "title": "a. running",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "z97c",
+        "title": "b. active",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7g93",
+        "title": "c. ps",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "7g93"
+        }
+       },
+       {
+        "id": "jgu6",
+        "title": "d. task",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "jmkv",
+      "title": "Linux中用于查看系统日志的命令是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "uomn",
+        "title": "a. log",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "c4ub",
+        "title": "b. catlog",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "800p",
+        "title": "c. syslog",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "brci",
+        "title": "d. journalctl",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "brci"
+        }
+       }
+      ]
+     },
+     {
+      "id": "7j2b",
+      "title": "team链路聚合最多支持几块网卡？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "d9l3",
+        "title": "a. 2",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ef77",
+        "title": "b. 6",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ozh4",
+        "title": "c. 8",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ozh4"
+        }
+       },
+       {
+        "id": "tsod",
+        "title": "d. 10",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ift5",
+      "title": "Windows属于哪种操作系统？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "qzle",
+        "title": "a. 实时系统",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "g8ec",
+        "title": "b. 分时系统",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "g8ec"
+        }
+       },
+       {
+        "id": "4uhk",
+        "title": "c. 批处理系统",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "p9r6",
+        "title": "d. 网络系统",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "u5jb",
+      "title": "yum下载源配置文件存放的位置是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "tuf0",
+        "title": "a. /etc/yum.d/",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "5tjg",
+        "title": "b. /dev/yum.d/",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "jh79",
+        "title": "c. /dev/yum.repos.d/",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "jq2k",
+        "title": "d. /etc/yum.repos.d/",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "jq2k"
+        }
+       }
+      ]
+     },
+     {
+      "id": "aufd",
+      "title": "yum源配置文件中，哪个设置是用来启用/停用的？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "t5fu",
+        "title": "a. enabled",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "t5fu"
+        }
+       },
+       {
+        "id": "agk7",
+        "title": "b. gpgcheck",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "a7t9",
+        "title": "c. name",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "fy8h",
+        "title": "d. baseurl",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ssvh",
+      "title": "不属于参数log_statement的可选值的是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "718b",
+        "title": "a. none",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "m3e8",
+        "title": "b. ddl",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ugo1",
+        "title": "c. dml",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ugo1"
+        }
+       },
+       {
+        "id": "amdi",
+        "title": "d. mod",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "o10w",
+      "title": "操作系统的文件控制块不包括下面哪一个？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "pkrq",
+        "title": "a. 文件名",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "njs9",
+        "title": "b. 文件访问权限说明",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "dlj9",
+        "title": "c. 文件物理位置信息",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "c8se",
+        "title": "d. 磁盘坏块信息",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "c8se"
+        }
+       }
+      ]
+     },
+     {
+      "id": "9bey",
+      "title": "查看CPU信息命令是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "48ag",
+        "title": "a. lscpu",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "48ag"
+        }
+       },
+       {
+        "id": "xv6e",
+        "title": "b. uname -r",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "x6kg",
+        "title": "c. hostname",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ylxw",
+        "title": "d. ifconfig",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "f2ky",
+      "title": "创建raid1最少需要几块硬盘？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "a4zw",
+        "title": "a. 2",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "a4zw"
+        }
+       },
+       {
+        "id": "s2nc",
+        "title": "b. 3",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "wwbg",
+        "title": "c. 4",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "hypp",
+        "title": "d. 5",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "3mmx",
+      "title": "从后台启动进程，应在命令的结尾加上？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ad95",
+        "title": "a. #",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "anbk",
+        "title": "b. *",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "hi93",
+        "title": "c. $",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "yre5",
+        "title": "d. &amp;",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "yre5"
+        }
+       }
+      ]
+     },
+     {
+      "id": "skls",
+      "title": "对名为foo的文件用chmod 551 foo进行了修改，则它的权限是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "snht",
+        "title": "a. -rwxr-xr-x",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "vucw",
+        "title": "b. -rwxr--r--",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "8rlg",
+        "title": "-r--r--r--",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "2z1o",
+        "title": "d. -r-xr-x--x",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "2z1o"
+        }
+       }
+      ]
+     },
+     {
+      "id": "agyw",
+      "title": "多路复用的优点主要是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "b6jm",
+        "title": "a. 冗余",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "k4fh",
+        "title": "b. 改进性能",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "avm8",
+        "title": "c. 冗余和改进性能",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "avm8"
+        }
+       },
+       {
+        "id": "1um6",
+        "title": "d. 便于使用",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "3dtq",
+      "title": "关于重定向输出，以下说法正确的是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "zy2a",
+        "title": "a. &gt;为追加重定向",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ufx9",
+        "title": "b. &gt;可以在文件内容最后追加写入",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "yw15",
+        "title": "c. &gt;&gt;当文件不存在时会自动创建",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "yw15"
+        }
+       },
+       {
+        "id": "cqw3",
+        "title": "d. &gt;&gt;为覆盖重定向",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "t66g",
+      "title": "国产服务器用户主目录用什么表示？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "fexa",
+        "title": "a. ~",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "fexa"
+        }
+       },
+       {
+        "id": "83sp",
+        "title": "b. *",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "pvd3",
+        "title": "c. .",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "i68f",
+        "title": "d. $",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "omgv",
+      "title": "国产麒麟系统采取的漏洞定级标准是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "nzqd",
+        "title": "a. CVSS 3",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "80y3",
+        "title": "b. CVSS 2",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "2hmw",
+        "title": "c. CVSS 3.2",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7xuv",
+        "title": "d. CVSS 3.1",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "7xuv"
+        }
+       }
+      ]
+     },
+     {
+      "id": "hs45",
+      "title": "计算机系统中软件资源的实例有？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "osh1",
+        "title": "a. 文件",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "osh1"
+        }
+       },
+       {
+        "id": "i6lr",
+        "title": "b. 软盘",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "zo98",
+        "title": "c. 磁带",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "mq95",
+        "title": "d. U盘",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "oyvj",
+      "title": "将当前目录下的文件夹按大小排序，如何操作？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "syfy",
+        "title": "a. df -h | sort -r",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "e4qa",
+        "title": "b. df -h | sort -n",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "1nno",
+        "title": "c. du -h | sort -hr",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "1nno"
+        }
+       },
+       {
+        "id": "3y5d",
+        "title": "d. du -h | sort -n",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "1twr",
+      "title": "静态度量机制能够防御？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "245c",
+        "title": "a. 已知恶意程序",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "n0ix",
+        "title": "b. 既能够防御已知恶意程序,也能防御未知恶意程序",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "n0ix"
+        }
+       },
+       {
+        "id": "36fs",
+        "title": "c. 未知恶意程序",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ayjb",
+        "title": "d. 系统漏洞",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "hrmc",
+      "title": "开机自动挂载配置文件为？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "pjd9",
+        "title": "a. /etc/passwd",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "z99q",
+        "title": "b. /etc/tab",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "0zxe",
+        "title": "c. /etc/crontab",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "3e8q",
+        "title": "d. /etc/fstab",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "3e8q"
+        }
+       }
+      ]
+     },
+     {
+      "id": "ys08",
+      "title": "客户端工具ksql显示用户的元命令是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "q7z3",
+        "title": "a. d",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "o59k",
+        "title": "b. dr",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "58s7",
+        "title": "c. dg",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "58s7"
+        }
+       },
+       {
+        "id": "l0av",
+        "title": "d. deu",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "iew6",
+      "title": "漏洞管理的5分进程是漏洞预警,漏洞检测,______,漏洞修复和漏洞审计。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "kr4k",
+        "title": "a. 风险管理",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "kr4k"
+        }
+       },
+       {
+        "id": "7uya",
+        "title": "b. 漏洞挖掘",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "nbpc",
+        "title": "c. 漏洞补丁",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ixl9",
+        "title": "d. 系统漏洞",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "cdao",
+      "title": "某文件的组外成员的权限为只读，所有者有全部权限；组内的权限为读与写，则该文件的权限为？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "cwbz",
+        "title": "a. 467",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "b8hk",
+        "title": "b. 674",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "11f8",
+        "title": "c. 476",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "8y5y",
+        "title": "d. 764",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "8y5y"
+        }
+       }
+      ]
+     },
+     {
+      "id": "snl1",
+      "title": "哪个选项用来删除已安装的RPM包？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "8fyf",
+        "title": "a. -r",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "o5fn",
+        "title": "b. -e",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "o5fn"
+        }
+       },
+       {
+        "id": "oykd",
+        "title": "c. -c",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "r1pn",
+        "title": "d. -U",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "gwjl",
+      "title": "批处理系统的主要缺点是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "2l8a",
+        "title": "a. CPU的利用率不高",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "yeqy",
+        "title": "b. 失去了交互性",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "yeqy"
+        }
+       },
+       {
+        "id": "01w5",
+        "title": "c. 不具备并行性",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ymlq",
+        "title": "d. 以上都不是",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "zcys",
+      "title": "麒麟操作系统中，程序运行有若干优先级，最低的优先级是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "hmx3",
+        "title": "a. -5",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "1r2y",
+        "title": "b. 0",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "lh55",
+        "title": "c. 10",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "bkoh",
+        "title": "d. 19",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "bkoh"
+        }
+       }
+      ]
+     },
+     {
+      "id": "y15a",
+      "title": "麒麟操作系统中的超级管理员为？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "870d",
+        "title": "a. root",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "870d"
+        }
+       },
+       {
+        "id": "o12u",
+        "title": "b. Administrator",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "3t0p",
+        "title": "c. guest",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "vqco",
+        "title": "d. Admin",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "afpj",
+      "title": "麒麟桌面操作系统安装过程中默认的时区是哪里？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "zw7u",
+        "title": "a. 莫斯科",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7mcq",
+        "title": "b. 乌鲁木齐",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "6n5p",
+        "title": "c. 上海",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "6n5p"
+        }
+       },
+       {
+        "id": "v26b",
+        "title": "d. 伦敦",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "3zml",
+      "title": "麒麟桌面操作系统默认登录用户是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "2gh4",
+        "title": "a. root",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "46es",
+        "title": "b. administrator",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "w8m8",
+        "title": "c. guest",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "kxl8",
+        "title": "d. 安装时创建用户",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "kxl8"
+        }
+       }
+      ]
+     },
+     {
+      "id": "20af",
+      "title": "麒麟桌面操作系统v10版本在命令终端中ctrl+L的功能是什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ywl1",
+        "title": "a. 清除屏幕内容",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ywl1"
+        }
+       },
+       {
+        "id": "hff4",
+        "title": "b. 锁定屏幕",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "72mb",
+        "title": "c. 补全命令",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "pido",
+        "title": "d. 中断程序",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "2824",
+      "title": "麒麟桌面操作系统v10版二次开发的基础是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "xujv",
+        "title": "a. Ubuntu",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "xujv"
+        }
+       },
+       {
+        "id": "5ix3",
+        "title": "b. CentOS",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "1x7s",
+        "title": "c. Debian",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "pndz",
+        "title": "d. Unix",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "nxfr",
+      "title": "启用firewalld防火墙默认区域中的http服务，其命令为？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "g1x0",
+        "title": "a. firewall-cmd --reload=http",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "bs4k",
+        "title": "b. firewall-cmd --getzones=http",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "1uj2",
+        "title": "c. firewall-cmd --get-all-roules=http",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "2j3y",
+        "title": "d. firewall-cmd --add-service=http",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "2j3y"
+        }
+       }
+      ]
+     },
+     {
+      "id": "plv8",
+      "title": "如果想要修改nginx的端口的话，需要修改配置文件中的那个字段？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ux47",
+        "title": "a. listen",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ux47"
+        }
+       },
+       {
+        "id": "w312",
+        "title": "b. access_log",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "31po",
+        "title": "c. location",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "bl6x",
+        "title": "d. root",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "zmew",
+      "title": "如何让一个程序的标准输出既输入文件file，同时又能显示在标准输出设备？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ro3x",
+        "title": "a. command &amp;&gt; file",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "5esg",
+        "title": "b. command | tee file",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "5esg"
+        }
+       },
+       {
+        "id": "3vpl",
+        "title": "c. command &gt; file",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "13m8",
+        "title": "d. command | &gt; file",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "bbr0",
+      "title": "如何使用exportfs命令，取消所有的nfs共享？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "2pa8",
+        "title": "a. au",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "2pa8"
+        }
+       },
+       {
+        "id": "1ajy",
+        "title": "b. ar",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "j4pt",
+        "title": "c. rv",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "crxx",
+        "title": "d. ru",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "0oii",
+      "title": "如何使用yum删除一组软件包？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "bqb7",
+        "title": "a. yum groupremove",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "bqb7"
+        }
+       },
+       {
+        "id": "66qs",
+        "title": "b. yum remove",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "o4n2",
+        "title": "c. yum rm",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "tkkr",
+        "title": "d. yum del",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "kw1l",
+      "title": "如何使用yum搜索一个软件包？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "rljt",
+        "title": "a. yum list",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "z42p",
+        "title": "b. yum info",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "j0br",
+        "title": "c. yum remove",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "d667",
+        "title": "d. yum search",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "d667"
+        }
+       }
+      ]
+     },
+     {
+      "id": "bca7",
+      "title": "软件的什么值可以作为软件唯一性特征，可以作为软件白名单关键要素？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "8mza",
+        "title": "a. SM3值",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "8mza"
+        }
+       },
+       {
+        "id": "7ypj",
+        "title": "b. 绝对路径",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "pjat",
+        "title": "c. 相对路径",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "jcyz",
+        "title": "d. 名称",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "sxb5",
+      "title": "若要在/home分区定义用户限额，下面哪个文件包含限额信息？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "s7ll",
+        "title": "a. /home/quotas",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "orec",
+        "title": "b. /home/userquotas",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "8l39",
+        "title": "c. /home/allquotas",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "fsj7",
+        "title": "d. /home/aquota.user",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "fsj7"
+        }
+       }
+      ]
+     },
+     {
+      "id": "rlq0",
+      "title": "社会工程学的什么属于信息系统的安全威胁？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "onen",
+        "title": "a. 拒绝服务攻击",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "q6pi",
+        "title": "b. 内部人员威胁",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "q6pi"
+        }
+       },
+       {
+        "id": "nt9w",
+        "title": "c. 特洛伊木马",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "h1xu",
+        "title": "d. ARP欺骗，IP源地址欺骗",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "kp8q",
+      "title": "事务（Transaction）是一个？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "i2b6",
+        "title": "a. 程序",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4w2u",
+        "title": "b. 进程",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "f262",
+        "title": "c. 操作序列",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "f262"
+        }
+       },
+       {
+        "id": "zwpy",
+        "title": "d. 完整性规则",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "7lx1",
+      "title": "事务对DB的修改，应该在数据库中留下痕迹，永不消逝这个性质称为事务的？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "8qpy",
+        "title": "a. 持久性",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "8qpy"
+        }
+       },
+       {
+        "id": "n2b8",
+        "title": "b. 隔离性",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4auk",
+        "title": "c. 一致性",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ekhv",
+        "title": "d. 原子性",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "oy1a",
+      "title": "使用光盘进行系统麒麟桌面操作系统安装过程中在安装类型界面有哪两种系统安装方式选项？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "gv3r",
+        "title": "a. 标准安装和高级安装",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ey3b",
+        "title": "b. 高级安装和自定义安装",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "c7ti",
+        "title": "c. 标准安装和快速安装",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "wq18",
+        "title": "d. 全盘安装和自定义安装",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "wq18"
+        }
+       }
+      ]
+     },
+     {
+      "id": "ruxg",
+      "title": "使用哪个命令可以查看时间同步的源？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "wrps",
+        "title": "a. chronyc",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "wrps"
+        }
+       },
+       {
+        "id": "5d62",
+        "title": "b. chronyd",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "kn2d",
+        "title": "c. chrony",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "3fmo",
+        "title": "d. date",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ukzv",
+      "title": "手动挂载/dev/sdb1到/mnt，如何操作？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "071r",
+        "title": "a. mount /dev/sdb1",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ptet",
+        "title": "b. mount /mnt",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "qj9s",
+        "title": "c. mount -a",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "w4jh",
+        "title": "d. mount /dev/sdb1 /mnt",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "w4jh"
+        }
+       }
+      ]
+     },
+     {
+      "id": "8en1",
+      "title": "数据库、数据库系统（DBS）和数据库管理系统（DBMS）三者之间的关系是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "vh8t",
+        "title": "a. DBS包括DB和DBMS",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "vh8t"
+        }
+       },
+       {
+        "id": "phaq",
+        "title": "b. DBMS包括DB和DBS",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7lma",
+        "title": "c. DB包括DBS和DBMS",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4jlc",
+        "title": "d. DBS就是DB，也就是DBMS",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "yonx",
+      "title": "数据库的什么性质是指数据的正确性和相容性？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "jibz",
+        "title": "a. 安全性",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ujmq",
+        "title": "b. 完整性",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ujmq"
+        }
+       },
+       {
+        "id": "u3ze",
+        "title": "c. 并发控制",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "5hpy",
+        "title": "d. 恢复",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "3jxr",
+      "title": "数据库的三级模式结构中，描述数据库中全体数据的全局逻辑结构和特征的是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "9oka",
+        "title": "a. 外模式",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "jtyl",
+        "title": "b. 内模式",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "3gqn",
+        "title": "c. 存储模式",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "p8qz",
+        "title": "d. 模式",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "p8qz"
+        }
+       }
+      ]
+     },
+     {
+      "id": "vofp",
+      "title": "为了解决不同用户文件的“命名冲突”问题，通常在文件系统中采用什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "vn2q",
+        "title": "a. 约定的方法",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ik5x",
+        "title": "b. 多级目录",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ik5x"
+        }
+       },
+       {
+        "id": "kox8",
+        "title": "c. 路径",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "o7wh",
+        "title": "d. 索引",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "zcfb",
+      "title": "为什么用户账号加密后的密码存储在/etc/shadow，而不再存储在/etc/passwd中？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "800o",
+        "title": "a. 为了阻止普通用户读取/etc/passwd文件内容后暴力破解密码",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "800o"
+        }
+       },
+       {
+        "id": "s1w1",
+        "title": "b. 加速系统启动过程",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7vau",
+        "title": "c. 为减少/etc/passwd文件中每条记录的长度",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "c04a",
+        "title": "d. 为了可以使用不同的hash算法来加密",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "03q0",
+      "title": "为yanwj用户非交互设置密码txuos，命令正确的是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "emei",
+        "title": "a. echo 'yanwj:txuos' | chpasswd",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "emei"
+        }
+       },
+       {
+        "id": "v1d3",
+        "title": "b. echo txuos | passwd yanwj",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "52j3",
+        "title": "c. echo txuos | passwd --stdin yanwc",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "h56f",
+        "title": "d. echo 'yanwj:txuos' &gt; chpasswd",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "l5uz",
+      "title": "文件标志c表示什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "xjxl",
+        "title": "a. 字符设备文件",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "xjxl"
+        }
+       },
+       {
+        "id": "ui3h",
+        "title": "b. 目录文件",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4k0y",
+        "title": "c. 块设备文件",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ngzp",
+        "title": "d. 套接字",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "rz5q",
+      "title": "系统中有用户user1和user2，同属于users组。在user1用户目录下有一文件file1：它拥有644的权限，如果user2用户想修改user1用户目录下的file1文件，应拥有什么权限？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "rt97",
+        "title": "a. 744",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "sa2w",
+        "title": "b. 664",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "sa2w"
+        }
+       },
+       {
+        "id": "k1bk",
+        "title": "c. 646",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "2hif",
+        "title": "d. 746",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "40lr",
+      "title": "下列于链接描述，错误的是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "x8gu",
+        "title": "a. 硬链接就是让链接文件的 i 节点号指向被链接文件的 i 节点",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4j27",
+        "title": "b. 硬链接和符号链接都是产生一个新的 i 节点",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "4j27"
+        }
+       },
+       {
+        "id": "31zz",
+        "title": "c. 链接分为硬链接和符号链接",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "uz4y",
+        "title": "d. 硬链接不能链接目录文件",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "01ab",
+      "title": "下列进程变化状态中，不可能发生的变化是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "3131",
+        "title": "a. 运行 -&gt; 就绪",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "jhrj",
+        "title": "b. 运行 -&gt; 阻塞",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "pbls",
+        "title": "c. 阻塞 -&gt; 运行",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "pbls"
+        }
+       },
+       {
+        "id": "eb1i",
+        "title": "d. 阻塞 -&gt; 就绪",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "6nyr",
+      "title": "下列哪个不属于麒麟操作系统核心竞争力的特性？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "gnhm",
+        "title": "a. 高安全",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ywkv",
+        "title": "b. 高可用",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "b0ql",
+        "title": "c. 可定制",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "illj",
+        "title": "d. 难操作",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "illj"
+        }
+       }
+      ]
+     },
+     {
+      "id": "uh8c",
+      "title": "下列数据类型哪个不可以作为表字段使用？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "g2c4",
+        "title": "a. OID",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "2ecj",
+        "title": "b. ARRAY",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "9ghj",
+        "title": "c. ANY",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "9ghj"
+        }
+       },
+       {
+        "id": "vjos",
+        "title": "d. SYS_LSN",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "5dio",
+      "title": "下列属于KingbaseES的共享缓存区的是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "tl7f",
+        "title": "a. work mem",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "eu2j",
+        "title": "b. maintenance work mem",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "j64r",
+        "title": "c. temp buffers",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "mfkg",
+        "title": "d. share buffers",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "mfkg"
+        }
+       }
+      ]
+     },
+     {
+      "id": "gqdr",
+      "title": "下列选项在麒麟桌面操作系统V10里面哪个说法是错误的？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "meur",
+        "title": "a. 可以自定义快捷键",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "dl46",
+        "title": "b. 系统里面有自带的快捷键",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "uthz",
+        "title": "c. 无法自定义快捷键",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "uthz"
+        }
+       },
+       {
+        "id": "dhos",
+        "title": "d. 系统里面既有自带的快捷键又可以自定义快捷键",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "b4pn",
+      "title": "下面哪种分区类型不属于安装麒麟操作系统时硬盘分区规划中的分区类型？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "tyfm",
+        "title": "a. 主分区",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "u2vo",
+        "title": "b. 扩展分区",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "hagk",
+        "title": "c. 其他分区",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "hagk"
+        }
+       },
+       {
+        "id": "n76n",
+        "title": "d. 逻辑分区",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "rlap",
+      "title": "信创理论的核心本质是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "4qgi",
+        "title": "a. 自主创新",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "rh5h",
+        "title": "b. 自主可控",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "rh5h"
+        }
+       },
+       {
+        "id": "cs0i",
+        "title": "c. 自主发展",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ga91",
+        "title": "d. 自主竞争",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "53y7",
+      "title": "以下关于麒麟软件商店描述错误的是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "yl3w",
+        "title": "a. 为用户提供软件的下载安装、卸载、升级等功能",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "hla7",
+        "title": "b. 用户可以通过麒麟软件商店的搜索功能快速查找到自己需要的软件",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "qesj",
+        "title": "c. 通过“开始菜单”&gt;“设置”&gt;“麒麟软件商店”打开麒麟软件商店主界面",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "qesj"
+        }
+       },
+       {
+        "id": "snbv",
+        "title": "d. 麒麟软件商店为用户推荐了在Linux下常用的windows替代软件",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "6bfh",
+      "title": "以下哪个选项不是KingbaseESv8支持的伪列？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "2wvd",
+        "title": "a. ROWID",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "2wvd"
+        }
+       },
+       {
+        "id": "9rfi",
+        "title": "b. ROWNUM",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "c3mc",
+        "title": "c. LEVEL",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "0kql",
+        "title": "d. CONNECT_BY_ISLEAF",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "2wz7",
+      "title": "以下哪个选项属于命令行工具sys_ctl的主要功能？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "0mrz",
+        "title": "a. 查看和修改系统内核参数",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "cn6d",
+        "title": "b. 查看与修改数据库参数",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "dn4m",
+        "title": "c. 备份与恢复数据库数据",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7teo",
+        "title": "d. 启停、重载数据库实例",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "7teo"
+        }
+       }
+      ]
+     },
+     {
+      "id": "l0ao",
+      "title": "以下是KingbaseESv8数据库的客户端认证配置文件的是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "qrgw",
+        "title": "a. kingbase.conf",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4ly8",
+        "title": "b. sys_ident.conf",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "y0z6",
+        "title": "c. kingbase.auto.conf",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "nqdo",
+        "title": "d. sys_hba.conf",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "nqdo"
+        }
+       }
+      ]
+     },
+     {
+      "id": "f2fw",
+      "title": "银河麒麟服务器操作系统不支持配置哪些方式的软件源？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "wgab",
+        "title": "a. ssh源配置",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "wgab"
+        }
+       },
+       {
+        "id": "20vw",
+        "title": "b. 本地软件源",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "6qje",
+        "title": "c. http服务器软件源",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "j9vz",
+        "title": "d. ftp服务器软件源",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "5x9h",
+      "title": "银河麒麟服务器系统中提供数据包过滤功能的服务是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "fbjc",
+        "title": "a. rarp",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "cwde",
+        "title": "b. route",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "705o",
+        "title": "c. firewalld",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "705o"
+        }
+       },
+       {
+        "id": "1cpd",
+        "title": "d. filter",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "nzdu",
+      "title": "用户程序进行系统调用时必须给出的参数是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ngz4",
+        "title": "a. 进程pid",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "af0a",
+        "title": "b. 系统调用函数名",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "mkxf",
+        "title": "c. 系统调用ID",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "mkxf"
+        }
+       },
+       {
+        "id": "gsf9",
+        "title": "d. 线程tid",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ypjh",
+      "title": "用命令ls -l显示出文件file的描述（-rw-r--r-- 1 root root 0 8月 2 19:00 file），由此可知文件file的类型为？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "98aw",
+        "title": "a. 普通文件",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "98aw"
+        }
+       },
+       {
+        "id": "jlre",
+        "title": "b. 硬连接",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "wbzj",
+        "title": "c. 目录",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "gor3",
+        "title": "d. 符号连接",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "7mf4",
+      "title": "在/home/stud1/wang目录下有一文件file：使用哪一个命令可实现在后台执行命令，此命令将file文件中的内容输出到file.copy文件中？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "n9z2",
+        "title": "a. cat file &gt; file.copy",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "eywv",
+        "title": "b. cat &gt; file.copy",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "v90p",
+        "title": "c. cat file file.copy &amp;",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "2lje",
+        "title": "d. cat file &gt; file.copy &amp;",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "2lje"
+        }
+       }
+      ]
+     },
+     {
+      "id": "mxgl",
+      "title": "在安装nginx时，下列软件包不是必须安装的是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "2qtr",
+        "title": "a. gcc",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "9576",
+        "title": "b. pcre-devel",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "vy8h",
+        "title": "c. zlib-devel",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "gmd8",
+        "title": "d. httpd",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "gmd8"
+        }
+       }
+      ]
+     },
+     {
+      "id": "eqpt",
+      "title": "在chrony中，下列哪个字段可以定义时间服务器？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ko0a",
+        "title": "a. timeserver",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "qo81",
+        "title": "b. time",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "9hju",
+        "title": "c. pool",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "9hju"
+        }
+       },
+       {
+        "id": "c8fl",
+        "title": "d. iburst",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "aib9",
+      "title": "在dns的配置文件中，每一行需要以哪个符号结尾？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "spds",
+        "title": "a. ；（分号）",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "spds"
+        }
+       },
+       {
+        "id": "zyom",
+        "title": "b. ，（逗号）",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "5fyf",
+        "title": "c. ：（冒号）",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "r9fb",
+        "title": "d. \\（反斜杠）",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ef1f",
+      "title": "在dns的配置文件中，使用哪个关键字可以定义dns解析文件的名称？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "556m",
+        "title": "a. file",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "556m"
+        }
+       },
+       {
+        "id": "dok0",
+        "title": "b. zone",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "6dny",
+        "title": "c. type",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ycne",
+        "title": "d. acl",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "knuu",
+      "title": "在给定文件中查找与设定条件相符字符串的命令为？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "9t0w",
+        "title": "a. grep",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "9t0w"
+        }
+       },
+       {
+        "id": "qqqw",
+        "title": "b. gzip",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ufwz",
+        "title": "c. find",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "y6md",
+        "title": "d. sort",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "cdcg",
+      "title": "在国产操作系统中，局域网的网络地址172.16.1.0/24，局域网络连接其它网络的网关地址是172.16.1.1，主机172.16.1.20访问192.168.1.0/24网络时，其路由设置正确的是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "o6f5",
+        "title": "a. route add -net 172.16.1.0 gw 172.16.1.1 netmask 255.255.255.0",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "m762",
+        "title": "b. route add -net 192.168.1.0 gw 172.16.1.1 netmask 255.255.255.0",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "m762"
+        }
+       },
+       {
+        "id": "s4tx",
+        "title": "c. route add -net 172.16.10.0 gw 172.16.1.1 netmask 255.255.255.0",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "3je2",
+        "title": "d. route add default 172.16.1.0 netmask 172.168.1.1",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "x2a6",
+      "title": "在国产操作系统中，在终端执行ls *.*命令返回一组文件的列表，如何描述被列出的这些文件？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "c1fp",
+        "title": "a. 当前工作目录中所有文件的列表",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "r6pj",
+        "title": "b. 当前目录中所有非隐藏文件的列表",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "avlk",
+        "title": "c. 当前工作目录中所有名称中有.的文件列表但是不包括.是起始字符的文件。",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "avlk"
+        }
+       },
+       {
+        "id": "i644",
+        "title": "d. 当前工作目录中所有名称中有.的文件列表",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "iabu",
+      "title": "在国产linux系统中，为了通过SSH在远程服务器上执行命令，应使用哪个命令？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "jwd5",
+        "title": "a. ssh user@remote-host 'command'",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "jwd5"
+        }
+       },
+       {
+        "id": "0h7f",
+        "title": "b. ssh -x user@remote-host command",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "kf0a",
+        "title": "c. scp user@remote-host:command",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "c45z",
+        "title": "d. ssh --exec user@remote-host command",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "oe4p",
+      "title": "在国产银河麒麟服务器系统中本地域名解析的配置文件是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "jr4x",
+        "title": "a. /etc/HOSTNAME",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "wady",
+        "title": "b. /etc/hosts",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "wady"
+        }
+       },
+       {
+        "id": "q5qp",
+        "title": "c. /etc/resolv.conf",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "dpuw",
+        "title": "d. /etc/network/interfaces",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "1q4x",
+      "title": "在KingbaseESv8的数据目录中：系统表保存在哪个目录下？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "bcbm",
+        "title": "a. base",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "y104",
+        "title": "b. global",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "y104"
+        }
+       },
+       {
+        "id": "m2ay",
+        "title": "c. sys_tblspc",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ol90",
+        "title": "d. audit",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "75ex",
+      "title": "在Linux系统中，SELinux的哪个模式将记录违规操作，但不会拒绝任何行为？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "53xn",
+        "title": "a. Enforcing",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "d268",
+        "title": "b. Permissive",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "d268"
+        }
+       },
+       {
+        "id": "qvgg",
+        "title": "c. Passive",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "j712",
+        "title": "d. Logging",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "voan",
+      "title": "在Linux中，用于将标准输出重定向到文件的符号是什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ivz3",
+        "title": "a. &gt;&gt;",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "aoqf",
+        "title": "b. &lt;",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "dq0j",
+        "title": "c. &amp;&gt;",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ax69",
+        "title": "d. &gt;",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ax69"
+        }
+       }
+      ]
+     },
+     {
+      "id": "1iaw",
+      "title": "在Linux中，运行chmod 755 file.txt命令后，文件的权限是什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "srko",
+        "title": "a. -rwxr-xr-x",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "srko"
+        }
+       },
+       {
+        "id": "80hp",
+        "title": "b. -rw-rw-rw-",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4nnr",
+        "title": "c. -rwx------",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7719",
+        "title": "d. -r--r--r--",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "gq95",
+      "title": "在命令终端一行内无法输入全部命令，需要分隔符将命令持续到下一行时，可以使用分隔符？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "213r",
+        "title": "a. ,",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7q7c",
+        "title": "b. .",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "jfl3",
+        "title": "c. ;",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ldpb",
+        "title": "d. \\",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ldpb"
+        }
+       }
+      ]
+     },
+     {
+      "id": "7c7m",
+      "title": "在目录中创建的新文档，如何实现其所属组自动设置成与父目录相同的所属组？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "6uaw",
+        "title": "a. 为此目录设置Set UID权限",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "odvw",
+        "title": "b. 为此目录设置Set GID权限",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "odvw"
+        }
+       },
+       {
+        "id": "iwif",
+        "title": "c. 为此目录设置 w 权限",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "5q9j",
+        "title": "d. 为此目录设置 t 权限",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "k0se",
+      "title": "在nfs的共享设置文件中，通过哪个参数可以指定访问用户的UID？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "m763",
+        "title": "a. all_squash",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "rimm",
+        "title": "b. hide",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "2wwn",
+        "title": "c. anonuid",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "2wwn"
+        }
+       },
+       {
+        "id": "cjsi",
+        "title": "d. anongid",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "qkn6",
+      "title": "在nginx配置文件中，定义返回值的关键字为？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "lqcl",
+        "title": "a. location",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "482e",
+        "title": "b. root",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "mpe8",
+        "title": "c. back",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "6ip3",
+        "title": "d. return",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "6ip3"
+        }
+       }
+      ]
+     },
+     {
+      "id": "7lkq",
+      "title": "在麒麟桌面操作系统v10版本Ctrl+Alt与哪个键组合无法切换到字符界面？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "xz41",
+        "title": "a. F7",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "xz41"
+        }
+       },
+       {
+        "id": "71ah",
+        "title": "b. F3",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "44hf",
+        "title": "c. F4",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "6p8q",
+        "title": "d. F5",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "btlz",
+      "title": "在设置yum源配置文件的时候，baseurl需要指定几个？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "4vq0",
+        "title": "a. 1",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "4vq0"
+        }
+       },
+       {
+        "id": "et84",
+        "title": "b. 2",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "yf96",
+        "title": "c. 3",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "sy42",
+        "title": "d. 4",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "lssn",
+      "title": "在设置子网掩码时，和255.255.255.0意义是相同的选项是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "6yab",
+        "title": "a. IP/22",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "700z",
+        "title": "b. IP/23",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "jbiw",
+        "title": "c. IP/24",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "jbiw"
+        }
+       },
+       {
+        "id": "65g2",
+        "title": "d. IP/25",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "f9h3",
+      "title": "在时间服务器中，下列哪个字段定义允许的网段？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "lopb",
+        "title": "a. allow",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "lopb"
+        }
+       },
+       {
+        "id": "fkng",
+        "title": "b. allow-networks",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "85s2",
+        "title": "c. pool",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "su8e",
+        "title": "d. logdir",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "89sp",
+      "title": "在银河麒麟服务器操作系统中，默认防火墙区域（zone）被设置为？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "fdn2",
+        "title": "a. home",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "shfq",
+        "title": "b. work",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "s9cq",
+        "title": "c. trust",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "caeq",
+        "title": "d. public",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "caeq"
+        }
+       }
+      ]
+     },
+     {
+      "id": "sya5",
+      "title": "在银河麒麟服务器操作系统中，哪个命令用来显示系统中各个分区中inode的使用情况？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "gz5n",
+        "title": "a. df -i",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "gz5n"
+        }
+       },
+       {
+        "id": "12kg",
+        "title": "b. df -H",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7ojs",
+        "title": "c. free -b",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "cv17",
+        "title": "d. du -a -c /",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "n3ci",
+      "title": "在银河麒麟服务器操作系统中，设置默认路由为192.168.1.254的命令是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "9j5m",
+        "title": "a. route add 192.168.1.254",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ugnp",
+        "title": "b. route add gw 192.168.1.254",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "13gi",
+        "title": "c. route add default 192.168.1.254",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "mzni",
+        "title": "d. route add default gw 192.168.1.254",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "mzni"
+        }
+       }
+      ]
+     },
+     {
+      "id": "3dze",
+      "title": "在银河麒麟服务器操作系统中，使用fdisk分区工具的p选项观察分区表情况时，标记可引导分区使用的标志是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ftll",
+        "title": "a. a",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "y84w",
+        "title": "b. *",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "y84w"
+        }
+       },
+       {
+        "id": "emon",
+        "title": "c. @",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "bfaz",
+        "title": "d. +",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "wzsv",
+      "title": "在银河麒麟服务器操作系统中，系统管理员编写了shell程序hello.sh，测试时程序死循环无法结束，可以通过下列方式结束程序？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "c5vf",
+        "title": "a. Ctrl+C",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "c5vf"
+        }
+       },
+       {
+        "id": "lcut",
+        "title": "b. Ctrl+X",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "2ilc",
+        "title": "c. Alt+F2 kill进程ID",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "qnml",
+        "title": "d. Ctrl+D",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "eove",
+      "title": "在银河麒麟服务器操作系统中，以下哪种方式可以修改系统的时区？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "nmfm",
+        "title": "a. sudo date -s",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "yl0e",
+        "title": "b. 通过“开始菜单”“设置”“时间与日期”",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "spm2",
+        "title": "c. sudo tzselect",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "spm2"
+        }
+       },
+       {
+        "id": "kl1g",
+        "title": "d. date -R",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "b0np",
+      "title": "在银河麒麟服务器操作系统中，已知虚拟机网卡为ens38：执行firewall-cmd --get-active-zones有如下回显public interfaces:ens38，请问执行firewall-cmd --permanent --zone=work --add-source=192.168.1.0/24后，所有192.168.1网段主机将匹配哪个区域规则？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "b5j3",
+        "title": "a. public",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "t5v2",
+        "title": "b. work",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "t5v2"
+        }
+       },
+       {
+        "id": "885o",
+        "title": "c. home",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "nnqo",
+        "title": "d. dmz",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "lxhf",
+      "title": "在银河麒麟服务器操作系统中，chattr +a file命令的执行结果是什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "d2io",
+        "title": "a. 禁止任何修改：文件file不可改动。",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "9tbl",
+        "title": "b. file文件将压缩后保存，进行读操作时会自动解压缩。",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "lxqy",
+        "title": "c. file文件只可以增加数据，但是不能修改和删除原有内容。",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "lxqy"
+        }
+       },
+       {
+        "id": "o8uz",
+        "title": "d. file文件只能使用改写模式打开：可以修改和删除原有内容。",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "osxr",
+      "title": "在银河麒麟服务器操作系统中，firewalld默认每个服务是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "5wf0",
+        "title": "a. 允许",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "irmk",
+        "title": "b. 通过",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "cn27",
+        "title": "c. 拒绝",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "cn27"
+        }
+       },
+       {
+        "id": "1vpd",
+        "title": "d. 丢弃",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "pbbi",
+      "title": "在银河麒麟服务器操作系统中，ssh服务默认端口为？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "4pdd",
+        "title": "a. 22",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "4pdd"
+        }
+       },
+       {
+        "id": "issx",
+        "title": "b. 25",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "6ft4",
+        "title": "c. 161",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "t1xu",
+        "title": "d. 8080",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "wfne",
+      "title": "最终的进程优先级共多少级，称为基本优先级？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "umyn",
+        "title": "a. 30级",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ksoj",
+        "title": "b. 32级",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ksoj"
+        }
+       },
+       {
+        "id": "crb4",
+        "title": "c. 16级",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4ghz",
+        "title": "d. 28级",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "5w8j",
+      "title": "kysec文件执行控制标记中，该标记可以执行的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "ihz4",
+        "title": "a. unknown",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "npim",
+        "title": "b. original",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "npim"
+        }
+       },
+       {
+        "id": "6hfd",
+        "title": "c. verified",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "6hfd"
+        }
+       },
+       {
+        "id": "7akq",
+        "title": "d. kysoft",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "7akq"
+        }
+       },
+       {
+        "id": "kx46",
+        "title": "e. trusted",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "kx46"
+        }
+       }
+      ]
+     },
+     {
+      "id": "uvp5",
+      "title": "KYSEC是银河麒麟服务器操作系统的强制访问的默认选择，其基于kysec安全标记进行保护的一种安全机制主要保护对象有?",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "gbok",
+        "title": "a. 内核模块",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "gbok"
+        }
+       },
+       {
+        "id": "lcuw",
+        "title": "b. 执行程序",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "lcuw"
+        }
+       },
+       {
+        "id": "ngb2",
+        "title": "c. 脚本文件",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ngb2"
+        }
+       },
+       {
+        "id": "zmn4",
+        "title": "d. 共享库",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "zmn4"
+        }
+       },
+       {
+        "id": "ebbf",
+        "title": "e. 内存",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "hn2c",
+        "title": "f. CPU",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "uxco",
+      "title": "Linux的哪些运行级别通常表示“多用户模式”？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "rlia",
+        "title": "a. 0",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "pprl",
+        "title": "b. 1",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "2fxa",
+        "title": "c. 3",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "2fxa"
+        }
+       },
+       {
+        "id": "oh7t",
+        "title": "d. 5",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "oh7t"
+        }
+       }
+      ]
+     },
+     {
+      "id": "ez5p",
+      "title": "MAC强制访问控制有哪三种实现方式？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "rqbt",
+        "title": "a. Apparmor",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "rqbt"
+        }
+       },
+       {
+        "id": "8mq2",
+        "title": "b. SELinux",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "8mq2"
+        }
+       },
+       {
+        "id": "j3u9",
+        "title": "c. kysec",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "j3u9"
+        }
+       },
+       {
+        "id": "3kr8",
+        "title": "d. rwx",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "5bk2",
+      "title": "Netfilter是Linux操作系统核心层内部的一个数据包处理模块，Linux平台下的包过滤防火墙。其主要功能为？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "roqs",
+        "title": "a. 网络地址转换（Network Address Translate）",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "roqs"
+        }
+       },
+       {
+        "id": "id0x",
+        "title": "b. 数据包内容修改",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "id0x"
+        }
+       },
+       {
+        "id": "0615",
+        "title": "c. 数据包过滤的防火墙功能",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "0615"
+        }
+       },
+       {
+        "id": "itm8",
+        "title": "d. 捕获数据包数据",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "puiq",
+      "title": "安装完麒麟桌面版操作系统之后，软件商店无法安装软件的解决办法是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "5b17",
+        "title": "a. 激活操作系统",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "5b17"
+        }
+       },
+       {
+        "id": "c4tz",
+        "title": "b. 在终端中执行sudo apt update",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "c4tz"
+        }
+       },
+       {
+        "id": "5iyz",
+        "title": "c. 重启计算机",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "0sk0",
+        "title": "d. 多打开几次应用商店",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "rj4u",
+      "title": "查看touch命令的使用方法，可以如何获取帮助信息？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "hrom",
+        "title": "a. help touch",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "uy6r",
+        "title": "b. touch --help",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "uy6r"
+        }
+       },
+       {
+        "id": "7hcs",
+        "title": "c. man touch",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "7hcs"
+        }
+       },
+       {
+        "id": "09re",
+        "title": "d. info touch",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "09re"
+        }
+       }
+      ]
+     },
+     {
+      "id": "bz1p",
+      "title": "查看系统运行进程状况可使用的命令有？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "t554",
+        "title": "a. ps",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "t554"
+        }
+       },
+       {
+        "id": "h1ze",
+        "title": "b. free",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "pcec",
+        "title": "c. top",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "pcec"
+        }
+       },
+       {
+        "id": "i7mx",
+        "title": "d. systemd",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "0j7t",
+      "title": "查看系统中块设备信息的命令有？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "9g9u",
+        "title": "a. ps",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "k11w",
+        "title": "b. blkid",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "k11w"
+        }
+       },
+       {
+        "id": "hsn6",
+        "title": "c. lskid",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "hsn6"
+        }
+       },
+       {
+        "id": "wqg8",
+        "title": "d. systemd",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "2h6s",
+      "title": "当您需要平衡性能和冗余时，哪些RAID级别是好的选择？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "hoql",
+        "title": "a. RAID 0",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "jhjc",
+        "title": "b. RAID 1",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "oi8e",
+        "title": "c. RAID 5",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "oi8e"
+        }
+       },
+       {
+        "id": "jein",
+        "title": "d. RAID 6",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "jein"
+        }
+       }
+      ]
+     },
+     {
+      "id": "1i1g",
+      "title": "当要在数据中心中部署大量服务器时，哪些服务器构建形式更为合适以节省空间和提高冷却效率？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "c1yb",
+        "title": "a. 塔式服务器",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "aef8",
+        "title": "b. 机架式服务器",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "aef8"
+        }
+       },
+       {
+        "id": "zq3q",
+        "title": "c. 刀片式服务器",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "zq3q"
+        }
+       },
+       {
+        "id": "sn79",
+        "title": "d. 桌面式服务器",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "k7c4",
+      "title": "对某个数据库进行筛选后？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "fqak",
+        "title": "a. 可以选出符合某些条件组合的记录",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "fqak"
+        }
+       },
+       {
+        "id": "mbv2",
+        "title": "b. 不能选择出符合条件组合的记录",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4y14",
+        "title": "c. 可以选出符合某些条件的记录",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "4y14"
+        }
+       },
+       {
+        "id": "20gr",
+        "title": "d. 只能选择出符合某一条件的记录",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "f0q2",
+      "title": "防火墙模块在Netfilter中的五个链分别是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "3ons",
+        "title": "a. PREROUTING",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "3ons"
+        }
+       },
+       {
+        "id": "rrtt",
+        "title": "b. FORWARD",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "rrtt"
+        }
+       },
+       {
+        "id": "v5kq",
+        "title": "c. POSTROUTING",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "v5kq"
+        }
+       },
+       {
+        "id": "0s4w",
+        "title": "d. INPUT",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "0s4w"
+        }
+       },
+       {
+        "id": "wj8u",
+        "title": "e. OUTPUT",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "wj8u"
+        }
+       },
+       {
+        "id": "xcam",
+        "title": "f. RAW",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "gh7m",
+      "title": "关于超线程技术，以下哪些说法是正确的？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "s5j4",
+        "title": "a. 它允许两个任务共享一个物理核心的资源",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "s5j4"
+        }
+       },
+       {
+        "id": "74b7",
+        "title": "b. 它总是提高了性能无论负载如何",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "59ch",
+        "title": "c. 在密集的浮点计算负载中可能不提供显著的性能优势",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "59ch"
+        }
+       },
+       {
+        "id": "a6eu",
+        "title": "d. 每个物理核心可以支持多达四个超线程",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "pfhh",
+      "title": "关于打包与压缩描述正确的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "z2g4",
+        "title": "a. 打包是指将一大堆文件或目录变成一个总的文件",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "z2g4"
+        }
+       },
+       {
+        "id": "nl6y",
+        "title": "b. 压缩则是将一个大的文件通过一些压缩算法变成一个小文件",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "nl6y"
+        }
+       },
+       {
+        "id": "seyj",
+        "title": "c. 打包即压缩",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "6lep",
+        "title": "d. 打包和压缩使用tar命令的参数一样",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "9q69",
+      "title": "关于服务器固件和操作系统的说法，哪些是正确的？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "s8w9",
+        "title": "a. BIOS是服务器的基本输入/输出系统",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "s8w9"
+        }
+       },
+       {
+        "id": "djmd",
+        "title": "b. BMC用于远程管理服务器",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "djmd"
+        }
+       },
+       {
+        "id": "kdo7",
+        "title": "c. CMOS存储BIOS的设置和时间/日期信息",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "kdo7"
+        }
+       },
+       {
+        "id": "27ih",
+        "title": "d. 服务器只能使用Linux系统",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "fh92",
+      "title": "关于Linux中的systemd,哪些描述是正确的？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "budf",
+        "title": "a. 它使用targets代替传统的运行级别",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "budf"
+        }
+       },
+       {
+        "id": "pdi1",
+        "title": "b. 它是唯一的系统初始化解决方案",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "495h",
+        "title": "c. 它可以用systemctl命令进行管理",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "495h"
+        }
+       },
+       {
+        "id": "2qdi",
+        "title": "d. 它的服务单元存储在/var/systemd/目录中",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "h12h",
+      "title": "关于麒麟桌面操作系统安装系统时创建的用户，不正确的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "007w",
+        "title": "a. 该用户就是root用户",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "h12h"
+        }
+       },
+       {
+        "id": "rxj4",
+        "title": "b. 只有该用户才能获得超级管理员权限",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "h12h"
+        }
+       },
+       {
+        "id": "497u",
+        "title": "c. 该用户可以获得超级管理员权限",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "bsu7",
+        "title": "d. root用户不能删除该用户",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "h12h"
+        }
+       }
+      ]
+     },
+     {
+      "id": "ou35",
+      "title": "国产服务器厂商都有哪些？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "pfip",
+        "title": "a. 浪潮",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "pfip"
+        }
+       },
+       {
+        "id": "musk",
+        "title": "b. 华为",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "musk"
+        }
+       },
+       {
+        "id": "r8l5",
+        "title": "c. 戴尔",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "044r",
+        "title": "d. 新华三",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "044r"
+        }
+       }
+      ]
+     },
+     {
+      "id": "j7bi",
+      "title": "哪些命令可以用于在Linux中创建和管理逻辑卷？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "t1dt",
+        "title": "a. fdisk",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "854s",
+        "title": "b. lvcreate",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "854s"
+        }
+       },
+       {
+        "id": "40c8",
+        "title": "c. vgextend",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "40c8"
+        }
+       },
+       {
+        "id": "282g",
+        "title": "d. mkpart",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "g0lp",
+      "title": "哪些命令可以在Linux系统中查看磁盘I/O性能？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "fuqn",
+        "title": "a. iotop",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "fuqn"
+        }
+       },
+       {
+        "id": "2uyl",
+        "title": "b. iftop",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "55gq",
+        "title": "c. iostat",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "55gq"
+        }
+       },
+       {
+        "id": "xc94",
+        "title": "d. netstat",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "c3tf",
+      "title": "哪些指令集架构与其代表性处理器匹配是正确的？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "xw5e",
+        "title": "a. MIPS-龙芯",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "xw5e"
+        }
+       },
+       {
+        "id": "abtu",
+        "title": "b. ARM-鲲鹏",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "abtu"
+        }
+       },
+       {
+        "id": "o3df",
+        "title": "c. ARM-兆芯",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "0oip",
+        "title": "d. SW-64-申威",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "0oip"
+        }
+       }
+      ]
+     },
+     {
+      "id": "x3pu",
+      "title": "麒麟系统中用户组的类型有？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "xypm",
+        "title": "a. 服务组",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "hlpf",
+        "title": "b. 主组",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "hlpf"
+        }
+       },
+       {
+        "id": "4gd2",
+        "title": "c. 群组",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "4gd2"
+        }
+       },
+       {
+        "id": "0jdo",
+        "title": "d. 其他组",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "0jdo"
+        }
+       }
+      ]
+     },
+     {
+      "id": "2q8v",
+      "title": "如果一块硬盘在RAID阵列中发生故障，哪些RAID配置仍然可以保持数据完整性？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "h30l",
+        "title": "a. RAID 0",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "wwgb",
+        "title": "b. RAID 1",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "wwgb"
+        }
+       },
+       {
+        "id": "eclp",
+        "title": "c. RAID 5",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "eclp"
+        }
+       },
+       {
+        "id": "9cma",
+        "title": "d. RAID 6",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "9cma"
+        }
+       }
+      ]
+     },
+     {
+      "id": "y7rx",
+      "title": "三权分立指的是哪三权管理员？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "bsmj",
+        "title": "a. 日志管理员",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "n05n",
+        "title": "b. 系统管理员",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "n05n"
+        }
+       },
+       {
+        "id": "662v",
+        "title": "c. 审计管理员",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "662v"
+        }
+       },
+       {
+        "id": "wbbr",
+        "title": "d. 安全管理员",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "wbbr"
+        }
+       }
+      ]
+     },
+     {
+      "id": "xstb",
+      "title": "使用纯自研指令集的国产cpu都有哪些？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "j5xg",
+        "title": "a. 龙芯",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "j5xg"
+        }
+       },
+       {
+        "id": "djfa",
+        "title": "b. 鲲鹏",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7zzr",
+        "title": "c. 海光",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "5wfl",
+        "title": "d. 申威",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "5wfl"
+        }
+       }
+      ]
+     },
+     {
+      "id": "olgr",
+      "title": "通常，哪些任务是由CPU执行的？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "r9un",
+        "title": "a. 数学计算",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "r9un"
+        }
+       },
+       {
+        "id": "g7mo",
+        "title": "b. 图形渲染",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "yvdg",
+        "title": "c. 文件存储",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "p97o",
+        "title": "d. 指令执行",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "p97o"
+        }
+       }
+      ]
+     },
+     {
+      "id": "4cqi",
+      "title": "下列哪些接口通常用于存储设备？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "vuw7",
+        "title": "a. SATA",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "vuw7"
+        }
+       },
+       {
+        "id": "bu7y",
+        "title": "b. HDMI",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "91qr",
+        "title": "c. PCIe",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "91qr"
+        }
+       },
+       {
+        "id": "nte6",
+        "title": "d. Thunderbolt",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "nlz4",
+      "title": "下列是MYSQL比较运算符的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "wz6q",
+        "title": "a. !=",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "wz6q"
+        }
+       },
+       {
+        "id": "ccfe",
+        "title": "b. &lt;&gt;",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ccfe"
+        }
+       },
+       {
+        "id": "x5ey",
+        "title": "c. &gt;=",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "x5ey"
+        }
+       },
+       {
+        "id": "ov89",
+        "title": "d. ==",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "34b5",
+      "title": "下面关于麒麟系统中路径的描述正确的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "d554",
+        "title": "a. 目录树的起始点为根目录“/”",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "d554"
+        }
+       },
+       {
+        "id": "1a0r",
+        "title": "b. 路径指定一个文件在分层的树形结构（文件系统）中的位置",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "1a0r"
+        }
+       },
+       {
+        "id": "x3mp",
+        "title": "c. 绝对路径：从“根”开始的路径也称为完全路径",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "x3mp"
+        }
+       },
+       {
+        "id": "alnk",
+        "title": "d. 相对路径：从用户工作目录开始的路径",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "alnk"
+        }
+       }
+      ]
+     },
+     {
+      "id": "lemc",
+      "title": "下面关于软件包安装包管理系统描述正确的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "yi0t",
+        "title": "a. rpm可以解决安装包依赖问题",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "bxbp",
+        "title": "b. dpkg是最底层的包管理命令",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "bxbp"
+        }
+       },
+       {
+        "id": "9mpu",
+        "title": "c. rpm是包管理系统",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "9mpu"
+        }
+       },
+       {
+        "id": "v3e7",
+        "title": "d. dpkg是为\"Debian\"专门开发的套件管理系统",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "v3e7"
+        }
+       }
+      ]
+     },
+     {
+      "id": "wpy4",
+      "title": "下面哪些技术对提高操作系统实时性能无效？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "fayo",
+        "title": "a. 中断分级",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "enft",
+        "title": "b. 中断屏蔽",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "enft"
+        }
+       },
+       {
+        "id": "9eco",
+        "title": "c. 加快时钟中断频率",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "cmqh",
+        "title": "d. 优先级调度",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "cmqh"
+        }
+       }
+      ]
+     },
+     {
+      "id": "qtoa",
+      "title": "以下哪些技术或标准是与无线通信相关的？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "a0kq",
+        "title": "a. SATA",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "c86s",
+        "title": "b. 802.11",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "c86s"
+        }
+       },
+       {
+        "id": "q7og",
+        "title": "c. Bluetooth",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "q7og"
+        }
+       },
+       {
+        "id": "g583",
+        "title": "d. PCIe",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "x96n",
+      "title": "以下哪些RAID级别使用了条带化技术？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "y1jr",
+        "title": "a. RAID 0",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "y1jr"
+        }
+       },
+       {
+        "id": "h9h8",
+        "title": "b. RAID 1",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "jpid",
+        "title": "c. RAID 5",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "jpid"
+        }
+       },
+       {
+        "id": "87j4",
+        "title": "d. RAID 6",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "87j4"
+        }
+       }
+      ]
+     },
+     {
+      "id": "xsv3",
+      "title": "以下哪些是信创操作系统的评测标准？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "vcye",
+        "title": "a. 安全性",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "vcye"
+        }
+       },
+       {
+        "id": "0yn4",
+        "title": "b. 兼容性",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "0yn4"
+        }
+       },
+       {
+        "id": "wprx",
+        "title": "c. 美观度",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "m0el",
+        "title": "d. 性能",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "m0el"
+        }
+       }
+      ]
+     },
+     {
+      "id": "sqxo",
+      "title": "以下哪些是信创操作系统在2022年取得的重要进展？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "qg8k",
+        "title": "a. 统信UOS在银行业等金融机构进行试点",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "qg8k"
+        }
+       },
+       {
+        "id": "b15a",
+        "title": "b. 麒麟软件V10在教育行业进行试点布局",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "b15a"
+        }
+       },
+       {
+        "id": "st10",
+        "title": "c. 中科曙光发布全国首款车规级隔离型IGBT栅极驱动芯片",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "q3i7",
+        "title": "d. 深度deepin在全球开源操作系统排行榜上居第八位",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "q3i7"
+        }
+       }
+      ]
+     },
+     {
+      "id": "4p19",
+      "title": "以下哪些是信创云平台的优势？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "6w0h",
+        "title": "a. 提供国产化的基础软件和应用软件",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "6w0h"
+        }
+       },
+       {
+        "id": "xcmr",
+        "title": "b. 提供安全可靠的数据服务和信息安全",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "xcmr"
+        }
+       },
+       {
+        "id": "xwab",
+        "title": "c. 提供高效便捷的云计算和云存储",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "xwab"
+        }
+       },
+       {
+        "id": "brug",
+        "title": "d. 提供丰富多样的娱乐内容和社交功能",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "4ouv",
+      "title": "以下哪些信息安全产品是国产信息安全产品的代表作？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "q8cu",
+        "title": "a. 卡巴斯基",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "s3ly",
+        "title": "b. 迈克菲",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "b9cc",
+        "title": "c. 深信服网关",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "b9cc"
+        }
+       },
+       {
+        "id": "by4r",
+        "title": "d. 天融信防火墙",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "by4r"
+        }
+       }
+      ]
+     },
+     {
+      "id": "cn9a",
+      "title": "以下哪些应用软件是国产应用软件的代表作？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "l8qb",
+        "title": "a. 福昕软件",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "l8qb"
+        }
+       },
+       {
+        "id": "3814",
+        "title": "b. Microsoft Office",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "tf3v",
+        "title": "c. WPS Office",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "tf3v"
+        }
+       },
+       {
+        "id": "jkq0",
+        "title": "d. 天瑞绿盾",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "mzuc",
+      "title": "以下哪些中间件是国产中间件的代表作？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "s0l9",
+        "title": "a. tomcat",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "c4za",
+        "title": "b. 东方通中间件",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "c4za"
+        }
+       },
+       {
+        "id": "mof8",
+        "title": "c. 普元中间件",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "mof8"
+        }
+       },
+       {
+        "id": "i0ok",
+        "title": "d. nginx",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "4ox5",
+      "title": "以下属于DHCP的优点的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "s7ys",
+        "title": "a. 域名解析",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "l7z1",
+        "title": "b. 傻瓜式接入",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "l7z1"
+        }
+       },
+       {
+        "id": "v2rg",
+        "title": "c. IP高效利用",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "v2rg"
+        }
+       },
+       {
+        "id": "k5e5",
+        "title": "d. 避免IP冲突",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "k5e5"
+        }
+       }
+      ]
+     },
+     {
+      "id": "m8d5",
+      "title": "以下属于firewall防火墙区域（zone）的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "ajx0",
+        "title": "a. public",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ajx0"
+        }
+       },
+       {
+        "id": "ssq6",
+        "title": "b. trusted",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ssq6"
+        }
+       },
+       {
+        "id": "jvl9",
+        "title": "c. dmz",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "jvl9"
+        }
+       },
+       {
+        "id": "9y5w",
+        "title": "d. accept",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7aos",
+        "title": "e. reject",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "vbza",
+        "title": "f. drop",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "vbza"
+        }
+       }
+      ]
+     },
+     {
+      "id": "uu0n",
+      "title": "以下属于KYSEC安全框架的模式的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "gr9b",
+        "title": "a. Normal",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "gr9b"
+        }
+       },
+       {
+        "id": "ua91",
+        "title": "b. Warning",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ua91"
+        }
+       },
+       {
+        "id": "spin",
+        "title": "c. Softmode",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "spin"
+        }
+       },
+       {
+        "id": "6pci",
+        "title": "d. Disable",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "5d3g",
+        "title": "e. permissive",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "b8sl",
+        "title": "f. enforcing",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "cm7d",
+      "title": "以下属于kysec文件标识类型的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "7qpw",
+        "title": "a. userid",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "7qpw"
+        }
+       },
+       {
+        "id": "8ou4",
+        "title": "b. exectl",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "8ou4"
+        }
+       },
+       {
+        "id": "320x",
+        "title": "c. protect",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "320x"
+        }
+       },
+       {
+        "id": "jimf",
+        "title": "d. nona",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "oamx",
+        "title": "e. readnoly",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ichw",
+      "title": "以下属于日志类别的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "asnw",
+        "title": "a. kern",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "asnw"
+        }
+       },
+       {
+        "id": "kb6w",
+        "title": "b. mail",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "kb6w"
+        }
+       },
+       {
+        "id": "8nd8",
+        "title": "c. daemon",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "8nd8"
+        }
+       },
+       {
+        "id": "5mx8",
+        "title": "d. cron",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "5mx8"
+        }
+       },
+       {
+        "id": "ub13",
+        "title": "e. last",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "cql7",
+      "title": "以下说法正确的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "hylx",
+        "title": "a. 一个服务器只能有一个数据库",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "r1tt",
+        "title": "b. 一个服务器可以有多个数据库",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "r1tt"
+        }
+       },
+       {
+        "id": "52zb",
+        "title": "c. 一个数据库只能建立一张数据表",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "1x42",
+        "title": "d. 一个数据库可以建立多张数据表",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "1x42"
+        }
+       }
+      ]
+     },
+     {
+      "id": "yz2d",
+      "title": "引入线程是为了？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "s0mc",
+        "title": "a. 提高CPU的处理速度",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "miv1",
+        "title": "b. 提高应用程序的运行速度",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "miv1"
+        }
+       },
+       {
+        "id": "6u08",
+        "title": "c. 节省内存空间",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4ak3",
+        "title": "d. 减少系统开销",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "4ak3"
+        }
+       }
+      ]
+     },
+     {
+      "id": "w8xy",
+      "title": "与普通计算机相比，服务器的哪些方面通常更为突出？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "coma",
+        "title": "a. 音频处理能力",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "1w10",
+        "title": "b. 图形渲染能力",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "a90q",
+        "title": "c. 网络通信能力",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "a90q"
+        }
+       },
+       {
+        "id": "hhk8",
+        "title": "d. 稳定性和可靠性",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "hhk8"
+        }
+       }
+      ]
+     },
+     {
+      "id": "4e5l",
+      "title": "在Linux中，哪些是用于硬盘和分区管理的工具？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "v4fs",
+        "title": "a. fdisk",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "v4fs"
+        }
+       },
+       {
+        "id": "cfg1",
+        "title": "b. diskpart",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "74ve",
+        "title": "c. parted",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "74ve"
+        }
+       },
+       {
+        "id": "v3hb",
+        "title": "d. df",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "kw0s",
+      "title": "在Linux中，哪些文件与日志相关？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "u90s",
+        "title": "a. /var/log/syslog",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "u90s"
+        }
+       },
+       {
+        "id": "g51a",
+        "title": "b. /etc/log",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "n2ue",
+        "title": "c. /var/log/messages",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "n2ue"
+        }
+       },
+       {
+        "id": "ro54",
+        "title": "d. /var/log/secure",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ro54"
+        }
+       }
+      ]
+     },
+     {
+      "id": "xr64",
+      "title": "在麒麟桌面操作系统中，关于高级软件包工具apt描述正确的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "jllk",
+        "title": "a. 软件源只能是远程的ftp服务器或http服务器",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "wyfr",
+        "title": "b. 安装和卸载软件包时自动寻找最新版本并自动解决软件的依赖关系",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "wyfr"
+        }
+       },
+       {
+        "id": "usmj",
+        "title": "c. 麒麟操作系统apt的源需要用户自己配置",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "wtyk",
+        "title": "d. 使用apt-get命令执行软件包安装有关的操作",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "wtyk"
+        }
+       }
+      ]
+     },
+     {
+      "id": "f3cm",
+      "title": "在数据库系统中，有哪几种数据模型？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "x6fz",
+        "title": "a. 实体联系模型",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "viuy",
+        "title": "b. 关系模型",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "viuy"
+        }
+       },
+       {
+        "id": "nuoi",
+        "title": "c. 网状模型",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "nuoi"
+        }
+       },
+       {
+        "id": "irsm",
+        "title": "d. 层次模型",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "irsm"
+        }
+       }
+      ]
+     },
+     {
+      "id": "axog",
+      "title": "在数据库中SQL语句中关于DELETE和TRUNCATE TABLE的说法，正确的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "o7eb",
+        "title": "a. 两者都可以删除指定条目的记录",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "8sz2",
+        "title": "b. 前者可以有条件地删除指定条目的记录，后者只能删除所有记录",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "8sz2"
+        }
+       },
+       {
+        "id": "hzbc",
+        "title": "c. 两者都返回被删除记录的数目",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "yne1",
+        "title": "d. 前者返回被删除记录数目后者不返回",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "yne1"
+        }
+       }
+      ]
+     },
+     {
+      "id": "i6v5",
+      "title": "在SQL中：以下否定语句搭配正确的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "ctje",
+        "title": "a. not in",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ctje"
+        }
+       },
+       {
+        "id": "qw6e",
+        "title": "b. inu00a0not",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "v420",
+        "title": "c. not between and",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "v420"
+        }
+       },
+       {
+        "id": "nri0",
+        "title": "d. is not null",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "nri0"
+        }
+       }
+      ]
+     },
+     {
+      "id": "6dit",
+      "title": "在syslog日志记录中，常见的系统服务信息有？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "8u7r",
+        "title": "a. systemd",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "8u7r"
+        }
+       },
+       {
+        "id": "33dc",
+        "title": "b. cron",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "33dc"
+        }
+       },
+       {
+        "id": "z0dv",
+        "title": "c. rtkit-daemon",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "z0dv"
+        }
+       },
+       {
+        "id": "lxp7",
+        "title": "d. dbus-daemon",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "lxp7"
+        }
+       },
+       {
+        "id": "pi30",
+        "title": "e. user",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "by38",
+      "title": "在下列关于全系的叙述中，正确的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "a4xn",
+        "title": "a. 表中任意两列的值不能相同",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "0kpo",
+        "title": "b. 表中任意两行的值不能相同",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "0kpo"
+        }
+       },
+       {
+        "id": "smim",
+        "title": "c. 列在表中的顺序无关紧要",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "smim"
+        }
+       },
+       {
+        "id": "u842",
+        "title": "d. 行在表中的顺序无关紧要",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "u842"
+        }
+       }
+      ]
+     },
+     {
+      "id": "bo4b",
+      "title": "在银河麒麟服务器操作系统中，以下哪个命令可以重启？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "kh50",
+        "title": "a. shutdown -h now",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4224",
+        "title": "b. shutdown -r now",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "4224"
+        }
+       },
+       {
+        "id": "ohs8",
+        "title": "c. reboot",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ohs8"
+        }
+       },
+       {
+        "id": "b1kg",
+        "title": "d. init 6",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "b1kg"
+        }
+       }
+      ]
+     },
+     {
+      "id": "6lbw",
+      "title": "/dev目录包含系统的所有设备文件。？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "cxgd",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "cxgd"
+        }
+       },
+       {
+        "id": "bvjk",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "8ld5",
+      "title": "“十四五”开始，我国重点关注信创产业的国产化程度，旨在实现自主研发和自主可控。？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "tdcv",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "tdcv"
+        }
+       },
+       {
+        "id": "qpue",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "8snh",
+      "title": "2020年作为信创发展元年，国家一连颁布五项政策对信创产业发展规划提出相关规定。？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ngr8",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ngr8"
+        }
+       },
+       {
+        "id": "bm3m",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "fdc3",
+      "title": "802.11ac是个定义了在2.4GHz频段上操作的无线网络标准。？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "7yxe",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "164g",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "164g"
+        }
+       }
+      ]
+     },
+     {
+      "id": "kufc",
+      "title": "ARP（地址解析协议）用于将IPv6地址映射到MAC地址。？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "kik2",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "2di8",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "2di8"
+        }
+       }
+      ]
+     },
+     {
+      "id": "siia",
+      "title": "chroot命令可以用来改变用户的家目录。？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "tfsr",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "oquq",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "oquq"
+        }
+       }
+      ]
+     },
+     {
+      "id": "3uv7",
+      "title": "CIDR（无类域间路由）允许使用可变长度的子网掩码，从而更有效地利用IP地址空间。？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "gmjo",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "gmjo"
+        }
+       },
+       {
+        "id": "3b7p",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "zvmy",
+      "title": "DHCP的日志信息默认记录在messages文件中？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "egfy",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "egfy"
+        }
+       },
+       {
+        "id": "krg7",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "i76w",
+      "title": "HTTPS采用明文传输？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "yt6q",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "h3gq",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "h3gq"
+        }
+       }
+      ]
+     },
+     {
+      "id": "mkz3",
+      "title": "HTTPS默认使用的端口是53？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "e9tg",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "igc5",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "igc5"
+        }
+       }
+      ]
+     },
+     {
+      "id": "lj69",
+      "title": "Iptables防火墙是静态防火墙？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "xo7f",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "xo7f"
+        }
+       },
+       {
+        "id": "7sx2",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "6s5r",
+      "title": "iSCSI可以设置物理磁盘共享和文件磁盘共享？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "1run",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "1run"
+        }
+       },
+       {
+        "id": "3wfm",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "fyec",
+      "title": "kysec-set命令可以为文件或目录设置kysec标记？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ujz7",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "gixf",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "gixf"
+        }
+       }
+      ]
+     },
+     {
+      "id": "o5z2",
+      "title": "LAN交换机可以隔离冲突域，不能隔离广播域？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "lfzo",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "lfzo"
+        }
+       },
+       {
+        "id": "wp27",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "9783",
+      "title": "Linux下普通用户可以通过passwd命令修改root用户的密码？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "yjmo",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "6y4j",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "6y4j"
+        }
+       }
+      ]
+     },
+     {
+      "id": "qs23",
+      "title": "Linux中的每个文件和目录都关联一个inode，其中存储了它的元数据？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "h8zl",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "h8zl"
+        }
+       },
+       {
+        "id": "fyfe",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "86id",
+      "title": "Linux内核版本是个类似x.y.z的数字，其中如果y是奇数代表了此版本的内核是稳定版的内核？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "otwl",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "bvly",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "bvly"
+        }
+       }
+      ]
+     },
+     {
+      "id": "syxx",
+      "title": "logrotate是基于cron来运行的？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "as52",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "as52"
+        }
+       },
+       {
+        "id": "qpua",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "rxru",
+      "title": "MAC地址过滤是一种强大的网络安全措施，因为MAC地址是无法被欺骗或更改的？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "06nz",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "01wk",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "01wk"
+        }
+       }
+      ]
+     },
+     {
+      "id": "v3tp",
+      "title": "netfilter负责过滤数据包？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "zyx9",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "zyx9"
+        }
+       },
+       {
+        "id": "je3l",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "4auu",
+      "title": "rsync命令只能用于远程文件同步？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "l4sx",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "6emr",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "6emr"
+        }
+       }
+      ]
+     },
+     {
+      "id": "tz9o",
+      "title": "Sticky Bit设置在目录上时，可以防止非目录所有者删除或重命名目录中的文件？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "73wk",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "73wk"
+        }
+       },
+       {
+        "id": "fguc",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "3j5n",
+      "title": "vmstat系统命令可以针对所有或者单个进程进行监控？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "5iay",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "zh47",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "zh47"
+        }
+       }
+      ]
+     },
+     {
+      "id": "vcls",
+      "title": "反斜杠能够保护字符不被shell解释？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "dpq6",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "dpq6"
+        }
+       },
+       {
+        "id": "h87j",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "8l8g",
+      "title": "光纤的速率高指的是光纤的传播速率高？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "volr",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "0lwp",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "0lwp"
+        }
+       }
+      ]
+     },
+     {
+      "id": "5gr5",
+      "title": "国产操作系统中，使用scp拷贝时，必须指定用户，否则不知道以何种身份进行拷贝？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "qayv",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "gddk",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "gddk"
+        }
+       }
+      ]
+     },
+     {
+      "id": "ebte",
+      "title": "将计算机的输出通过同轴电缆、光纤等介质基础上的数字信道传送的，称为数字通信？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ksyn",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ksyn"
+        }
+       },
+       {
+        "id": "4cki",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "a85k",
+      "title": "进行麒麟操作系统安装，必须由光盘启动并且直接由光盘安装？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "qxoc",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "symz",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "symz"
+        }
+       }
+      ]
+     },
+     {
+      "id": "7vo1",
+      "title": "路由器进行数据包转发时需要修改数据包中的目的IP地址？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "2ys9",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "d8d7",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "d8d7"
+        }
+       }
+      ]
+     },
+     {
+      "id": "9e1x",
+      "title": "路由器所有的接口属于同一个广播域？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "5irh",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "o2jw",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "o2jw"
+        }
+       }
+      ]
+     },
+     {
+      "id": "iyl8",
+      "title": "普华操作系统仅支持X86架构的CPU平台，不支持国产龙芯、申威和兆芯等架构？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "8w5x",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "1av7",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "1av7"
+        }
+       }
+      ]
+     },
+     {
+      "id": "j9ns",
+      "title": "麒麟操作系统不仅支持Intel、AMD还支持国产6大CPU，所以应用范围非常广？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "gi4c",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "gi4c"
+        }
+       },
+       {
+        "id": "5alb",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "gigx",
+      "title": "麒麟操作系统的文件系统是树形结构的文件系统？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "vjgr",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "vjgr"
+        }
+       },
+       {
+        "id": "ic6j",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "oxju",
+      "title": "麒麟操作系统和Windows系统上的二进制程序拥有不同的格式？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "6ay9",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "6ay9"
+        }
+       },
+       {
+        "id": "o6yp",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "9yf5",
+      "title": "麒麟操作系统使用快捷键Shift+Print Screen唤出截屏？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "qwoc",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "qwoc"
+        }
+       },
+       {
+        "id": "bc8g",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "t61v",
+      "title": "麒麟桌面操作系统桌面智能助手选中文字按下Ctrl+Alt+E可以打开资源管理器？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "gtqy",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "gtqy"
+        }
+       },
+       {
+        "id": "5bv2",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "th00",
+      "title": "如果说国产化替代是一场战争，那么CPU、操作系统、数据库等基础软硬件，就是“自主可控”的“正面战场”，是国家网络安全的基础和保障？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "5g65",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "5g65"
+        }
+       },
+       {
+        "id": "dunk",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "dykt",
+      "title": "如果要实现双向同时通信就必须要有两条数据传输线路？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "1gyi",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "itff",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "itff"
+        }
+       }
+      ]
+     },
+     {
+      "id": "n0zx",
+      "title": "如果一个网络的网络地址为192.168.1.0，那么它的广播地址一定是192.168.1.255？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "i30n",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "yt50",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "yt50"
+        }
+       }
+      ]
+     },
+     {
+      "id": "dyvs",
+      "title": "使用银河麒麟桌面操作系统时默认禁止root用户直接登录？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "i1lp",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "i1lp"
+        }
+       },
+       {
+        "id": "oo0l",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "8p9i",
+      "title": "所有的Linux命令都是大小写敏感的？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "f78r",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "f78r"
+        }
+       },
+       {
+        "id": "cp8y",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "fx4b",
+      "title": "通过适当的配置麒麟操作系统可以在网络上担当起路由器的角色？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "zuwe",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "zuwe"
+        }
+       },
+       {
+        "id": "sc8x",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "vdds",
+      "title": "网络链路聚合虽然能解决网络大并发，但是无法实现网卡硬件容错？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "gldt",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "eo1w",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "eo1w"
+        }
+       }
+      ]
+     },
+     {
+      "id": "a1xd",
+      "title": "我国的“十二五”规划中提出了增强电子信息技术产业的核心竞争力，但未提及信创？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "kxgo",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "kxgo"
+        }
+       },
+       {
+        "id": "urpu",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "yun8",
+      "title": "信创操作系统都是基于开源社区的标准开发的？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "p61p",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ptsy",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ptsy"
+        }
+       }
+      ]
+     },
+     {
+      "id": "n8dh",
+      "title": "信创操作系统是“新基建”的重要内容？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ntak",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "0lm3",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "0lm3"
+        }
+       }
+      ]
+     },
+     {
+      "id": "yk29",
+      "title": "信创产业面临着一些挑战和困难，需要加强研发投入、提升产品质量、拓展市场应用、培养人才队伍等方面的工作？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "syw4",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "syw4"
+        }
+       },
+       {
+        "id": "qq66",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "a3gt",
+      "title": "信创产业是为了实现信息技术领域的自主可控，保障国家信息安全而提出的？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "iqlp",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "iqlp"
+        }
+       },
+       {
+        "id": "iqz3",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "uvs1",
+      "title": "信创产业最初在党政领域试点应用，之后在八大重点行业加速推进？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "44a3",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "44a3"
+        }
+       },
+       {
+        "id": "0j6r",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "5s52",
+      "title": "信创是一条规模庞大、体系完整的产业链，是新基建的重要组成部分，也是我国经济发展的重要抓手？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "h1re",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "h1re"
+        }
+       },
+       {
+        "id": "2572",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "yamo",
+      "title": "以太网帧的最小长度是64字节？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "idnm",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "idnm"
+        }
+       },
+       {
+        "id": "mzl5",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "c04u",
+      "title": "银河麒麟高级服务器操作系统中开启kysec功能可直接生效？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ngd7",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "nyz5",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "nyz5"
+        }
+       }
+      ]
+     },
+     {
+      "id": "qaju",
+      "title": "由于麒麟桌面操作系统的内核是Linux，所以麒麟桌面操作系统主要用于命令终端环境中？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ysp6",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "qvm0",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "qvm0"
+        }
+       }
+      ]
+     },
+     {
+      "id": "5bm5",
+      "title": "在大多数家庭网络中，ISP（互联网服务提供商）为家庭路由器分配一个公共IP地址？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "mnfw",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "mnfw"
+        }
+       },
+       {
+        "id": "rlgp",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "psai",
+      "title": "在Linux中，普通用户可以通过编辑/etc/passwd文件来修改密码？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "k8xz",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "b2g6",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "b2g6"
+        }
+       }
+      ]
+     },
+     {
+      "id": "ljao",
+      "title": "在Linux中，软链接和硬链接都可以跨文件系统？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "zxhi",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "yg84",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "yg84"
+        }
+       }
+      ]
+     },
+     {
+      "id": "2fa2",
+      "title": "在麒麟操作系统下/etc/passwd文件记录了所有用户的登录口令？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "qvye",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "p8g7",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "p8g7"
+        }
+       }
+      ]
+     },
+     {
+      "id": "r3kz",
+      "title": "在数据传输中，多模光纤的性能要优于单模光纤？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "90wg",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "dvpm",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "dvpm"
+        }
+       }
+      ]
+     },
+     {
+      "id": "1bo6",
+      "title": "在一个TCP连接中，数据传输是双向的，即可以从A到B也可以从B到A？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "rb1t",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "rb1t"
+        }
+       },
+       {
+        "id": "3bkn",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "5neo",
+      "title": "中兴通讯的新支点操作系统采用\"3+1+N模式\"，包含了办公、娱乐、出行5G、智能驾驶等多个方面？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "h2b1",
+        "title": "a. 对",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "h2b1"
+        }
+       },
+       {
+        "id": "24n5",
+        "title": "b. 错",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     }
+    ]
+   }
