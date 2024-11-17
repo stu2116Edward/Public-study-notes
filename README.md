@@ -29,7 +29,7 @@ If you find my notes helpful, please consider giving this repository a star. Eve
 2. **Quick Reference** - [Quick Reference](https://quickref.cn/) 
    - 为了方便开发人员查阅技术栈，分享这份快速参考备忘清单【速查表】。
 
-3. **哔哩哔哩** - [Bilibili](https://www.bilibili.com/) 
+3. **哔哩哔哩** - [bilibili](https://www.bilibili.com/) 
    - 哔哩哔哩是一个视频分享网站，用户可以观看、上传、分享视频。
 
 4. **博客园** - [博客园](https://www.cnblogs.com/) 
