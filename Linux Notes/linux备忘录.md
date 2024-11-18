@@ -9,7 +9,7 @@ sudo systemctl start <service_name>
 ```
 sudo systemctl stop <service_name>
 ```
-重启服务：
+重启服务(生产环境中不推荐频繁使用)：
 ```
 sudo systemctl restart <service_name>
 ```
@@ -25,7 +25,10 @@ sudo systemctl enable <service_name>
 ```
 sudo systemctl disable <service_name>
 ```
-
+重新加载服务配置(生产环境中推荐使用)：
+```
+sudo systemctl reload <service_name>
+```
 
 ## 查看进程：  
 ps 命令查看进程：
