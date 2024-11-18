@@ -1,16 +1,5 @@
 # 常用命令及快捷方式
 
-在可视化的Ubuntu或者Redhat等操作系统中无法使用快捷键打开终端窗口的解决方法  
-在右上角电源处选择设置  
-点击键盘  
-名称自定义  
-比如：
-`Run a terminal`
-add cmd：
-`/usr/bin/gnome-terminal`
-添加快捷方式：`Ctrl + Shift + T`
-
-
 ## 基本操作
 
 ### 文件和目录操作
