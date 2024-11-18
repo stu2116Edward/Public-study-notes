@@ -58,7 +58,8 @@ vim /etc/samba/smb.conf
     path = /tmp
     writable = yes
     browseable = yes
-    guest ok = yes
+    guest ok = no  # 禁止guest用户访问
+    valid users = sambauser  # 指定可以访问此共享的用户
 ```
 
 ### 6. 添加用户并设置密码
