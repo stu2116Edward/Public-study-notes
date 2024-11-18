@@ -250,7 +250,7 @@ sudo ip addr add <ip>/<mask> dev <interface>
 ```
 移除网络接口的IP地址：
 ```
-sudo ip addr del <ip>/<mask} dev <interface>
+sudo ip addr del <ip>/<mask> dev <interface>
 ```
 
 
