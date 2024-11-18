@@ -1,5 +1,6 @@
 步骤 1：备份原有的 YUM 源文件  
 在更换 YUM 源之前，建议先备份系统自带的 YUM 源配置文件，以防需要恢复原配置  
+镜像源文件地址：`/etc/yum.repos.d/CentOS-Base.repo`
 ```
 sudo cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
 ```
