@@ -681,19 +681,6 @@ sudo chgrp <groupname> <file>
 sudo chgrp -R <groupname> <directory>
 ```
 
-## Nginx管理：  
-nginx -s reload：重新加载配置文件  
-nginx -s reopen：重新打开日志文件  
-nginx -s stop：快速关闭服务  
-nginx -t：测试配置文件  
-
-
-## 防火墙管理（如果使用iptables）：  
-iptables -L：列出规则  
-iptables -A INPUT -p tcp --dport 80 -j ACCEPT：添加规则允许80端口  
-iptables -D INPUT -p tcp --dport 80 -j ACCEPT：删除规则  
-
-
 ## 日志管理：  
 tail -f /var/log/nginx/access.log：查看Nginx访问日志  
 tail -f /var/log/syslog：查看系统日志  
