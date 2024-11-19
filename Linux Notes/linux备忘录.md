@@ -307,6 +307,395 @@ sudo netstat -tulnu 或 sudo ss -tulnu
 sudo netstat -tulnt 或 sudo ss -tulnt
 ```
 
+### ip命令
+
+#### 语法结构
+用法
+```
+ip [OPTIONS] OBJECT { COMMAND | help } [ARGUMENTS]
+```
+OPTIONS选项  
+- -V：显示指令版本信息；
+- -s：输出更详细的信息；可以使用多个 -s 来显示更多的信息
+- -f 或 -family：强制使用指定的协议族（如inet, inet6, link）
+- -4：指定使用的网络层协议是IPv4协议
+- -6：指定使用的网络层协议是IPv6协议
+- -0：shortcut for -family link
+- -o：每条记录输出一行，即使内容较多也不换行显示
+- -r：显示主机时，不使用IP地址，而使用主机的域名
+
+OBJECT对象
+- link：网卡信息
+- address：IP地址信息
+- neighbour：邻居表
+- route：路由表
+- rule：IP策略
+- tunnel：IP隧道
+
+#### 显示网络接口信息
+用法
+
+```bash
+ip [选项] link show [接口名]
+```
+常用选项
+
+无特定选项，但可以通过接口名来显示特定接口的信息。
+示例
+
+显示所有网络接口的状态：
+```bash
+ip link show
+```
+显示特定网络接口（如eth0）的状态：
+```bash
+ip link show eth0
+```
+
+#### 配置网络接口
+用法
+
+```bash
+ip link set [接口名] [选项]
+```
+常用选项
+
+- up：启用网络接口。
+- down：禁用网络接口。
+- mtu [值]：设置网络接口的MTU（最大传输单元）。
+- address [MAC地址]：设置网络接口的MAC地址。
+示例
+
+启用网络接口eth0：
+```bash
+ip link set eth0 up
+```
+禁用网络接口eth0：
+```bash
+ip link set eth0 down
+```
+修改网络接口eth0的MTU为1500：
+```bash
+ip link set eth0 mtu 1500
+```
+设置网络接口eth0的MAC地址为00:11:22:33:44:55：
+```bash
+ip link set dev eth0 address 00:11:22:33:44:55
+```
+
+#### 配置IP地址
+用法
+
+```bash
+ip addr [选项] [IP地址/子网掩码] dev [接口名]
+```
+常用选项
+
+- add：添加IP地址。
+- del：删除IP地址。
+- show：显示IP地址。
+示例
+
+给网络接口eth0添加IP地址192.168.1.100/24：
+```bash
+ip addr add 192.168.1.100/24 dev eth0
+```
+删除网络接口eth0的IP地址192.168.1.100/24：
+```bash
+ip addr del 192.168.1.100/24 dev eth0
+```
+显示网络接口eth0的IP地址：
+```bash
+ip addr show dev eth0
+```
+
+#### 显示路由信息
+用法
+
+```bash
+ip route [选项]
+```
+常用选项
+
+- show：显示路由表。
+- add：添加路由。
+- del：删除路由。
+- change：修改路由。
+示例
+
+显示当前的路由表：
+```bash
+ip route show
+```
+添加路由，使192.168.2.0/24网络通过192.168.1.1网关访问：
+```bash
+ip route add 192.168.2.0/24 via 192.168.1.1
+```
+删除路由，删除到192.168.2.0/24网络的路由：
+```bash
+ip route del 192.168.2.0/24 via 192.168.1.1
+```
+修改默认网关为192.168.1.1：
+```bash
+ip route change default via 192.168.1.1
+```
+显示特定路由表（如main、local、default）：
+```bash
+ip route show table main
+ip route show table local
+ip route show table default
+```
+
+#### 显示和配置策略路由
+用法
+
+```bash
+ip rule [选项]
+```
+常用选项
+
+- show：显示策略路由规则。
+- add：添加策略路由规则。
+- del：删除策略路由规则。
+- change：修改策略路由规则。
+示例
+
+显示策略路由规则：
+```bash
+ip rule show
+```
+添加策略路由规则，使来自192.168.1.100/32的流量使用表100：
+```bash
+ip rule add from 192.168.1.100/32 table 100
+```
+删除策略路由规则，删除来自192.168.1.100/32的流量使用表100的规则：
+```bash
+ip rule del from 192.168.1.100/32 table 100
+```
+修改策略路由规则，修改来自192.168.1.100/32的流量使用表100的规则，并设置优先级为100：
+```bash
+ip rule change from 192.168.1.100/32 table 100 priority 100
+```
+
+#### 显示和管理邻居（ARP表）
+用法
+
+```bash
+ip neigh { show | add | del | change | replace } [IP地址]
+```
+常用选项
+
+- show：显示邻居信息。
+- add：添加静态邻居条目。
+- del：删除邻居条目。
+- change：修改邻居条目。
+- replace：替换一个已有的邻居条目。
+- dev：指定邻居条目所属的网络接口。
+- lladdr：指定邻居的链路层地址（MAC地址）。
+- nud { permanent | noarp | stale | reachable }：设置邻居条目的状态。
+
+示例
+
+显示所有邻居信息：
+```bash
+ip neigh show
+```
+
+显示特定接口（如eth0）的邻居信息：
+```bash
+ip neigh show dev eth0
+```
+
+添加静态邻居条目，使IP地址192.168.1.100与MAC地址00:11:22:33:44:55关联，并设置为永久有效：
+```bash
+ip neigh add 192.168.1.100 lladdr 00:11:22:33:44:55 dev eth0 nud permanent
+```
+
+删除邻居条目，删除IP地址192.168.1.100的邻居信息：
+```bash
+ip neigh del 192.168.1.100 dev eth0
+```
+
+修改邻居条目，修改IP地址192.168.1.100与MAC地址00:11:22:33:44:55的关联，并设置为永久有效：
+```bash
+ip neigh change 192.168.1.100 lladdr 00:11:22:33:44:55 dev eth0 nud permanent
+```
+
+替换一个已有的邻居条目，如果条目不存在则添加：
+```bash
+ip neigh replace 192.168.1.100 lladdr 00:11:22:33:44:55 dev eth0 nud permanent
+```
+
+#### 显示和管理隧道
+用法
+
+```bash
+ip tunnel [选项] [隧道接口名]
+```
+常用选项
+
+- add：创建一个新的隧道接口。
+- del：删除一个已存在的隧道接口。
+- show：列出所有隧道接口的详细信息。
+
+示例
+
+创建一个IPIP模式的隧道接口 `tun0`，远程地址为 `192.168.1.1`，本地地址为 `192.168.1.100`：
+```bash
+ip tunnel add tun0 mode ipip remote 192.168.1.1 local 192.168.1.100
+```
+
+启用并激活隧道接口 `tun0`：
+```bash
+ip link set tun0 up
+```
+
+删除隧道接口 `tun0`：
+```bash
+ip tunnel del tun0
+```
+
+显示所有隧道接口的信息：
+```bash
+ip tunnel show
+```
+
+#### IPv6 over IPv4隧道
+用法
+
+```bash
+ip tunnel [选项] [隧道接口名]
+```
+常用选项
+
+- add：创建一个新的隧道接口。
+- del：删除一个已存在的隧道接口。
+- mode sit：设置隧道模式为SIT（Simple IP Tunneling），适用于IPv6 over IPv4。
+- remote any：指定隧道的远程端地址，`any` 表示自动选择。
+- local any：指定隧道的本地端地址，`any` 表示自动选择。
+
+示例
+
+创建一个IPv6 over IPv4隧道接口 `tun6to4`：
+```bash
+ip tunnel add tun6to4 mode sit remote any local any
+```
+
+启用并激活隧道接口 `tun6to4`：
+```bash
+ip link set tun6to4 up
+```
+
+为隧道接口 `tun6to4` 分配一个IPv6地址：
+```bash
+ip -6 addr add 2001:470:1f11:101::1/64 dev tun6to4
+```
+
+通过隧道接口 `tun6to4` 添加默认IPv6路由：
+```bash
+ip -6 route add default via 2001:470:1f11:101::2 dev tun6to4
+```
+
+删除隧道接口 `tun6to4`：
+```bash
+ip tunnel del tun6to4
+```
+
+#### 显示和管理网络设备
+用法
+
+```bash
+ip link [选项]
+```
+常用选项
+
+- add：创建虚拟网络设备。
+- del：删除虚拟网络设备。
+- show：显示虚拟网络设备。
+示例
+
+创建虚拟网络设备：
+```bash
+ip link add dummy0 type dummy
+```
+删除虚拟网络设备：
+```bash
+ip link del dummy0
+```
+显示虚拟网络设备：
+```bash
+ip link show type dummy
+```
+
+#### 显示和管理网络策略
+用法
+
+```bash
+ip netns [选项]
+```
+常用选项
+
+- list：显示所有网络命名空间。
+- add：创建网络命名空间。
+- del：删除网络命名空间。
+- exec：在网络命名空间中执行命令。
+示例
+
+显示所有网络命名空间：
+```bash
+ip netns list
+```
+创建网络命名空间myns：
+```bash
+ip netns add myns
+```
+删除网络命名空间myns：
+```bash
+ip netns del myns
+```
+进入网络命名空间myns并执行bash：
+```bash
+ip netns exec myns bash
+```
+在命名空间myns中配置网络接口eth0为启用状态：
+```bash
+ip netns exec myns ip link set eth0 up
+```
+在命名空间myns中配置IP地址192.168.1.100/24给接口eth0：
+```bash
+ip netns exec myns ip addr add 192.168.1.100/24 dev eth0
+```
+在命名空间myns中配置路由：
+```bash
+ip netns exec myns ip route add default via 192.168.1.1
+```
+
+#### 防止ARP欺骗攻击
+用法
+
+```bash
+ip neigh [选项]
+```
+常用选项
+
+- add：添加静态邻居条目。
+- show：显示邻居信息。
+- del：删除邻居条目。
+- change：修改邻居条目。
+示例
+
+设置静态ARP条目，防止ARP欺骗：
+```bash
+ip neigh add 192.168.1.1 lladdr 00:11:22:33:44:55 dev eth0 nud permanent
+```
+显示静态ARP条目：
+```bash
+ip neigh show dev eth0 nud permanent
+```
+删除静态ARP条目：
+```bash
+ip neigh del 192.168.1.1 dev eth0
+```
 
 ### - traceroute 或 tracepath 命令  
 追踪网络路径：
