@@ -1,19 +1,26 @@
 安装好nginx后将/etc/nginx/目录下的nginx.conf配置文件修改或更换为自己的  
 使用命令重新加载 Nginx 的配置文件  
-nginx -s reload  
+```
+nginx -s reload
+```
 如果nginx的 PID 加载异常并且nginx反向代理语法没有问题那就重启vps重启可以解决百分之90%的问题  
 遇到类似错误  
+<pre>
 root@linux:~# nginx -s reload  
-nginx: [error] invalid PID number "" in "/run/nginx.pid"  
+nginx: [error] invalid PID number "" in "/run/nginx.pid" 
+</pre>
 先重启nginx:  
-systemctl restart nginx  
+```
+systemctl restart nginx
+```
 如果不行直接重启vps
 
 检查 Nginx 语法类似如下就是正常的  
+<pre>
 root@linux:~# nginx -t  
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok  
 nginx: configuration file /etc/nginx/nginx.conf test is successful  
-
+</pre>
 
 ### 安装 Nginx
 ```bash
