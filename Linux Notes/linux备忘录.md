@@ -61,7 +61,7 @@ ps -ef | grep <process-name>
 ```
 
 
-## top 命令实时显示系统中各个进程的资源占用情况
+### top 命令实时显示系统中各个进程的资源占用情况
 实时显示进程信息：
 ```
 top
@@ -88,7 +88,7 @@ top -t -c
 ```
 
 
-## htop 交互式进程查看器
+### htop 交互式进程查看器
 实时显示进程信息：
 ```
 htop
@@ -254,7 +254,7 @@ sudo ip addr del <ip>/<mask> dev <interface>
 ```
 
 
-- ping 命令  
+### - ping 命令  
 测试网络连接：
 ```
 ping <host>
@@ -273,7 +273,7 @@ ping -s <size> <host>
 ```
 
 
-- netstat 或 ss 命令  
+### - netstat 或 ss 命令  
 查看所有网络端口：
 ```
 sudo netstat -tuln
@@ -308,7 +308,7 @@ sudo netstat -tulnt 或 sudo ss -tulnt
 ```
 
 
-- traceroute 或 tracepath 命令  
+### - traceroute 或 tracepath 命令  
 追踪网络路径：
 ```
 traceroute <host>
@@ -327,7 +327,7 @@ traceroute -U <host>
 ```
 
 
-- nslookup 或 dig 命令  
+### - nslookup 或 dig 命令  
 查询DNS信息：
 ```
 nslookup <hostname>
@@ -375,7 +375,7 @@ dig MX google.com
 dig TXT google.com
 ```
 
-- iptables 或 ufw 命令  
+### - iptables 和 ufw 命令  
 列出iptables规则：
 ```
 sudo iptables -L
@@ -406,7 +406,7 @@ sudo ufw deny <port>/<protocol>
 ```
 
 
-- curl 或 wget 命令  
+### - curl 或 wget 命令  
 获取网页内容：
 ```
 curl <url> 或 wget <url>
@@ -421,7 +421,7 @@ curl -d "param=value" <url>
 ```
 
 
-- nmap 命令  
+### - nmap 命令  
 扫描主机端口：
 ```
 nmap <host>
@@ -440,7 +440,7 @@ nmap -sT <host>
 ```
 
 
-- arp 命令  
+### - arp 命令  
 查看ARP表：
 ```
 arp -a
@@ -455,7 +455,7 @@ sudo arp -d <ip>
 ```
 
 
-- host 命令  
+### - host 命令  
 查看主机名和IP地址映射：
 ```
 host <hostname>
@@ -754,6 +754,77 @@ sudo chgrp -R <groupname> <directory>
 请根据你的具体需求选择合适的命令。如果你需要查看特定的日志文件，通常这些文件位于`/var/log/`目录下
 
 
-## 备份和恢复：  
-tar：打包和压缩文件  
-rsync：同步文件和目录  
+## 备份和恢复
+
+### 备份命令
+
+1. **`cp`**
+   - 用于复制文件或目录。
+   - 示例命令：
+     - 复制文件：`cp 源文件 备份文件`
+     - 递归复制目录：`cp -r 源目录 备份目录`
+
+2. **`rsync`**
+   - 用于同步文件和目录，支持本地和远程备份。
+   - 示例命令：
+     - 同步目录：`rsync -av 源目录/ 备份目录/`
+     - 同步并删除备份目录中多余的文件：`rsync -av --delete 源目录/ 备份目录/`
+
+3. **`tar`**
+   - 用于打包和压缩文件。
+   - 示例命令：
+     - 创建tar包：`tar -cvf 备份文件名.tar 源目录/`
+     - 创建gzip压缩的tar包：`tar -czvf 备份文件名.tar.gz 源目录/`
+
+4. **`dd`**
+   - 用于复制和转换文件，常用于备份整个磁盘或分区。
+   - 示例命令：`dd if=/dev/sdX of=备份镜像.img`
+
+5. **`dump`**
+   - 用于备份文件系统，支持增量备份。
+   - 示例命令：`dump -0u -f /路径/到/备份文件 源目录`
+
+6. **`bzip2`, `gzip`, `xz`**
+   - 用于压缩文件，常与`tar`命令结合使用。
+   - 示例命令：
+     - 使用bzip2压缩：`tar -cjvf 备份文件名.tar.bz2 源目录/`
+
+7. **`zip`**
+   - 用于压缩文件和目录。
+   - 示例命令：`zip -r 备份文件名.zip 源目录/`
+
+### 恢复命令
+
+1. **`cp`**
+   - 用于复制文件或目录，也可以用于恢复。
+   - 示例命令：
+     - 恢复文件：`cp 备份文件 源文件`
+     - 递归恢复目录：`cp -r 备份目录/ 源目录/`
+
+2. **`rsync`**
+   - 用于同步文件和目录，也可以用于恢复。
+   - 示例命令：
+     - 从备份恢复：`rsync -av 备份目录/ 源目录/`
+
+3. **`tar`**
+   - 用于解压和解包文件。
+   - 示例命令：
+     - 解压tar包：`tar -xvf 备份文件名.tar`
+     - 解压gzip压缩的tar包：`tar -xzvf 备份文件名.tar.gz`
+
+4. **`dd`**
+   - 用于恢复整个磁盘或分区。
+   - 示例命令：`dd if=备份镜像.img of=/dev/sdX`
+
+5. **`restore`**
+   - 用于从`dump`命令创建的备份中恢复文件系统。
+   - 示例命令：`restore -rf /路径/到/备份文件`
+
+6. **`bzip2`, `gzip`, `xz`**
+   - 用于解压缩文件。
+   - 示例命令：
+     - 使用bzip2解压缩：`tar -xjvf 备份文件名.tar.bz2`
+
+7. **`unzip`**
+   - 用于解压缩zip文件。
+   - 示例命令：`unzip 备份文件名.zip`
