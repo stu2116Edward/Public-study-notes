@@ -307,7 +307,7 @@ sudo netstat -tulnu 或 sudo ss -tulnu
 sudo netstat -tulnt 或 sudo ss -tulnt
 ```
 
-### ip命令
+### - ip命令
 
 #### 语法结构
 用法
