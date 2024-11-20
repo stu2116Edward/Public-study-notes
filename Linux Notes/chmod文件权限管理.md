@@ -1,4 +1,4 @@
-# chmod权限配置
+# chmod文件权限管理
 
 ![file-permissions-rwx](https://github.com/user-attachments/assets/d37ff0df-afe3-4369-b2fa-7d7c5dc6fc77)  
 ![rwx-standard-unix-permission-bits](https://github.com/user-attachments/assets/e88795b4-c720-4938-b794-0deba810df4d)  
