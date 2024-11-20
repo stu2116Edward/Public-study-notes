@@ -39,27 +39,27 @@
 
 ```bash
 # 创建文件夹和文件
-sudo mkdir /hardlink
+mkdir /hardlink
 cd /hardlink
-sudo touch test.txt
+touch test.txt
 
 # 查看文件的链接数
 ls -il
 
 # 创建硬链接
-sudo ln test.txt hard.link
+ln test.txt hard.link
 
 # 查看链接数变化
 ls -il
 
 # 向原文件写入内容
-echo "hahaha" | sudo tee test.txt
+echo "hahaha" > test.txt
 
 # 查看硬链接内容
 cat hard.link
 
 # 删除原文件
-sudo rm -f test.txt
+rm -f test.txt
 
 # 查看硬链接内容
 cat hard.link
@@ -95,7 +95,10 @@ sudo ln -s test.txt soft.link
 ls -il
 
 # 向原文件写入内容
-echo "hahaha" | sudo tee test.txt
+echo "hahaha" > test.txt
+
+# 查看软链接内容
+cat soft.link
 
 # 查看软链接大小
 ls -il
