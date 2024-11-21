@@ -137,8 +137,8 @@ Node.js程序开发的时候调试和其它很多语言都差不多，依赖于�
 function tast1() {
     f = readfile() // 读写文件通常都是耗时操作
     if(f) {
-		f.fun() // 读取文件成功后再进一步处理
-	}
+        f.fun() // 读取文件成功后再进一步处理
+    }
 }
 
 function tast2() { }
