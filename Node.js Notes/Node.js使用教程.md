@@ -305,7 +305,7 @@ console.log('end');
 上面代码可以随意改变打印输出的先后顺序，多测试几次，基本上除了 setImmediate() 和 setTimeout(()=>{}, 0) 的问题，其它部分输出顺序基本都是不会变的  
 
 更多内容可以参考下面文章：  
-[!《setTimeout和setImmediate到底谁先执行，本文让你彻底理解Event Loop》](https://blog.csdn.net/dennis_jiang/article/details/105044361)  
+[《setTimeout和setImmediate到底谁先执行，本文让你彻底理解Event Loop》](https://blog.csdn.net/dennis_jiang/article/details/105044361)  
 
 ## 总结
 Node.js最基础的一些内容就是上面这些了，除此之外还有 npm 工具和 CommonJS 规范也是比较重要的内容，会在接下来的文章中进行说明。更多内容可以参考官方文档：  
