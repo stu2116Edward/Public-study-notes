@@ -70,7 +70,7 @@ server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`) // 启动成功后输出信息
 })
 ```
-
+![node5](https://github.com/user-attachments/assets/9aae6adc-a7c8-4fd6-9d3c-e676f7d2a5e1)  
 
 
 上面是个最简单的例子，可以在终端中按键盘上ctrl+c终止程序。对于web服务器来说最主要的就是处理来自客户端的请求 request ，然后根据请求内容向客户端返回响应 response ，两者分别就是上面的 req 和 res 两个对象  
@@ -100,10 +100,9 @@ server.listen(3000, '127.0.0.1', () => {
     console.log(`Server running at http://127.0.0.1:3000/`)
 })
 ```
+![node6](https://github.com/user-attachments/assets/d2d9b26e-3589-4787-8d9a-1ca184708456)  
 
-
-
-如果只是简单应用的话在上面的基础上稍微再加工下就可以当作一般的web使用的。当然实际项目中你也可以使用现成的库，比如 koa 、 Fastify 等第三方库  
+如果只是简单应用的话在上面的基础上稍微再加工下就可以当作一般的web使用的。当然实际项目中你也可以使用现成的库，比如 `koa` 、 `Fastify` 等第三方库  
 
 ### 内置功能
 上面演示中使用 `const http = require('http')` 方式用到了Node.js内置的 http 模块。Node.js内置了很多的模块、对象、方法、变量等，这里稍微列举下一些常用的：  
@@ -133,7 +132,7 @@ https://nodejs.org/en/docs/
 
 **调试代码**
 Node.js程序开发的时候调试和其它很多语言都差不多，依赖于日志输出，比如多打印 console.log() ，如果工具好的话还可以打断点调试，比如在VS Code中就可以用下面的方式打断点调试：  
-
+![node7](https://github.com/user-attachments/assets/e35f8cba-587a-42be-939b-6a7c3a68d915)  
 
 
 ### 异步操作与事件循环
@@ -169,8 +168,7 @@ fs.readFile('/naisu.txt', function (err, data) {
 ```
 Node.js中fs模块的 readFile 方法是异步的（fs模块也有同步读取文件的方法，比如readFileSync），在Node.js中通常规定 异步方法的最后一个参数为回调函数，该回调函数的第一个参数为异步操作过程中的错误对象，如果没有发生错误则该对象为 `null`  
 我们可以在上面代码的下面再加一条输出语句做测试：  
-
-
+![node8](https://github.com/user-attachments/assets/ca9bb26d-8539-45cd-a47d-98cdd4157bbd)  
 
 可以看到上面测试中先输出了后面的语句，后输出前面的语句。Node.js中很多方法都是异步的，并且不会显式的声明（反而同步的方法会有sync词缀），这在编程时需要特别注意  
 实现自己的异步操作  
@@ -307,6 +305,7 @@ fnImmediateAsync();
 
 console.log('end');
 ```
+![node9](https://github.com/user-attachments/assets/5e9ba663-ad3b-4dbd-a32a-febd3c6ef396)  
 
 上面代码可以随意改变打印输出的先后顺序，多测试几次，基本上除了 setImmediate() 和 setTimeout(()=>{}, 0) 的问题，其它部分输出顺序基本都是不会变的  
 
