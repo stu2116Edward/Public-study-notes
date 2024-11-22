@@ -946,128 +946,209 @@ sudo smartctl -a /dev/sda
 ```
 
 
-## 文件权限管理  
-设置文件权限：  
+## 文件权限管理
+
+### 更改文件权限：
+- 使用数字设置权限：
+  ```
+  sudo chmod <权限数字> <文件或目录>
+  ```
+  - 数字参考示例：
+    - 0：无权限（---）
+    - 1：执行（--x）
+    - 2：写（-w-）
+    - 3：写和执行（-wx）
+    - 4：读（r--）
+    - 5：读和执行（r-x）
+    - 6：读和写（rw-）
+    - 7：读、写和执行（rwx）
+
+- 使用字符设置权限：
+  ```
+  sudo chmod <权限字符> <文件或目录>
+  ```
+  - 权限字符参考：
+    - `u`：用户（文件所有者）
+    - `g`：组（文件所属组）
+    - `o`：其他（其他用户）
+    - `a`：所有（u+g+o）
+    - 操作符：`+`（添加权限）、`-`（移除权限）、`=`（设置为指定权限）
+  - 例如：
+    - 添加执行权限给所有用户：`sudo chmod a+x <文件或目录>`
+    - 移除用户的写权限：`sudo chmod u-w <文件或目录>`
+    - 设置用户为读/写，组和其他为只读：`sudo chmod u=rw,g=r,o=r <文件或目录>`
+
+递归更改目录权限：
+- 使用数字设置权限：
 ```
-chmod <权限数字> <文件或目录>
+sudo chmod -R <权限数字> <目录>
+```
+- 使用字符设置权限：
+```
+sudo chmod -R <权限字符> <目录>
 ```
 
-- 数字参考示例：  
-0	无权限（---）  
-1	执行（--x）  
-2	写（-w-）  
-3	写和执行（-wx）  
-4	读（r--）  
-5	读和执行（r-x）  
-6	读和写（rw-）  
-7	读、写和执行（rwx）  
+使文件可执行：
+```
+sudo chmod +x <文件>
+```
 
-- 以下是一些常见的权限设置示例：  
-644：所有者有读写权限，所属组和其他用户只有读权限。  
-755：所有者有全部权限，所属组和其他用户有读和执行权限。  
-700：只有所有者有读、写和执行权限，所属组和其他用户没有任何权限。  
-777：所有用户都有读、写和执行权限（注意：这通常不推荐，因为它不够安全）。
+使文件不可执行：
+```
+sudo chmod -x <文件>
+```
+
+### 文件所有权和组管理
+
+更改文件所有者：
+```
+sudo chown <新所有者> <文件或目录>
+```
+
+递归更改目录及其内容的所有者：
+```
+sudo chown -R <新所有者> <目录>
+```
+
+更改文件组：
+```
+sudo chgrp <组名> <文件或目录>
+```
+
+递归更改目录及其内容的组：
+```
+sudo chgrp -R <组名> <目录>
+```
+
+将文件的组设置为主要组：
+```
+sudo chgrp -h <组名> <文件或目录>
+```
+
+查看文件的所有者和组：
+```
+ls -l <文件或目录>
+```
 
 
+## 用户和组管理
 
-
-## 用户管理  
+### 用户管理
 查看当前用户信息：  
 - 显示当前执行命令的用户的名字
 ```
 whoami
 ```
-显示当前用户的用户ID（UID）、组ID（GID）以及用户和组的名称
+- 显示当前用户的用户ID（UID）、组ID（GID）以及用户和组的名称
 ```
 id
 ```
-显示当前登录系统的用户列表，包括用户名称、终端、登录时间等信息
+- 显示当前登录系统的用户列表，包括用户名称、终端、登录时间等信息
 ```
 who
 ```
-显示系统中所有用户的活动，包括哪些用户已登录以及他们在做什么
+- 显示系统中所有用户的活动，包括哪些用户已登录以及他们在做什么
 ```
 w
 ```
-显示当前登录系统的用户列表
+- 显示当前登录系统的用户列表
 ```
 users
 ```
-显示用户的登录历史记录，包括登录和注销时间
+- 显示用户的登录历史记录，包括登录和注销时间
 ```
 last
 ```
-显示用户的失败登录尝试记录
+- 显示用户的失败登录尝试记录
 ```
 lastb
 ```
-显示系统中所有用户的最后登录时间
+- 显示系统中所有用户的最后登录时间
 ```
 lastlog
 ```
-ps命令结合特定的选项，可以查看当前运行的进程，包括它们的所有者
+- ps命令结合特定的选项，可以查看当前运行的进程，包括它们的所有者
 ```
 ps aux
 ```
+
 添加新用户：
 ```
 sudo useradd <username>
 ```
+
 设置用户主目录：
 ```
 sudo useradd -m <username>
 ```
+
 设置用户Shell：
 ```
 sudo useradd -s <shell-path> <username>
 ```
+
 修改用户信息：
 ```
 sudo usermod <options> <username>
 ```
+
 更改用户主目录：
 ```
 sudo usermod -d <new-home-dir> <username>
 ```
+
 更改用户组：
 ```
 sudo usermod -g <groupname> <username>
 ```
-更改用户密码：
+
+### 更改用户密码：
 ```
 sudo passwd <username>
 ```
+
+解锁用户账户，允许用户更改密码（例如，由于多次输入错误密码）
+```
+sudo passwd -u <username>
+```
+
 立刻强制用户下次登录时更改密码：
 ```
 sudo passwd -e <username>
 ```
-更改文件权限：
+
+### 组管理：  
+- 创建新组
 ```
-sudo chmod <permissions> <file>
+sudo groupadd <groupname>
 ```
-递归更改目录权限：
+- 删除组
 ```
-sudo chmod -R <permissions> <directory>
+sudo groupdel <groupname>
 ```
-使文件可执行：
+- 将用户添加到组
 ```
-sudo chmod +x <file>
+sudo usermod -aG <groupname> <username>
 ```
-更改文件所有者：
+- 从组中移除用户
 ```
-sudo chown <new-owner> <file>
+sudo gpasswd -d <username> <groupname>
 ```
-递归更改目录及其内容的所有者：
+- 列出用户所属的所有组
 ```
-sudo chown -R <new-owner> <directory>
+groups <username>
 ```
-更改文件组：
+- 查看组的详细信息
 ```
-sudo chgrp <groupname> <file>
+getent group <groupname>
 ```
-递归更改目录及其内容的组：
+- 修改组的属性
 ```
-sudo chgrp -R <groupname> <directory>
+sudo groupmod <options> <groupname>
+```
+- 更改组的GID
+```
+sudo groupmod -g <new-gid> <groupname>
 ```
 
 
