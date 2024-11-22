@@ -1,12 +1,12 @@
 # ubuntu20.04 使用root用户登录系统
 
 **文章目录**  
-- 1. 以普通用户登录系统，创建root用户的密码
-- 2. 修改`50-ubuntu.conf`文件
-- 3. 修改`gdm-autologin`文件
-- 4. 修改`gdm-password`文件
-- 5. 修改`/root/.profile`文件
-- 6. 注销当前用户，登录root用户
+- **1**. 以普通用户登录系统，创建root用户的密码
+- **2**. 修改`50-ubuntu.conf`文件
+- **3**. 修改`gdm-autologin`文件
+- **4**. 修改`gdm-password`文件
+- **5**. 修改`/root/.profile`文件
+- **6**. 注销当前用户，登录root用户
 
 ### 1. 以普通用户登录系统，创建root用户的密码
 在终端输入命令：
