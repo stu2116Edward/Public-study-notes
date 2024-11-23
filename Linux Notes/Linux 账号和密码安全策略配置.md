@@ -16,6 +16,7 @@ sudo gedit /etc/pam.d/system-auth
 ```bash
 password requisite pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=
 minlen=8 lcredit=-1 ucredit=-1 dcredit=-1 ocredit=-1 difok=5 enforce_for_root
+
 ```
 - **参数说明**：
   - `minlen=8`：密码长度至少为8位。
@@ -183,9 +184,8 @@ PASS_WARN_AGE   15
 设置会话超时，使会话在一定时间内无活动后自动退出。
 
 **配置文件**：`/etc/profile`
-
+编辑全局配置文件
 ```bash
-# 编辑全局配置文件
 sudo gedit /etc/profile
 ```
 
@@ -199,9 +199,8 @@ source /etc/profile
 设置登录失败策略，当用户连续输错密码达到一定次数后锁定账号。
 
 **配置文件**：`/etc/pam.d/common-auth`
-
+编辑 common-auth 配置文件
 ```bash
-# 编辑 common-auth 配置文件
 sudo gedit /etc/pam.d/common-auth
 ```
 
