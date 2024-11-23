@@ -26,7 +26,7 @@ proxy-dns-upstream:
 在 `ImagePath` 后面添加 yml 文件位置，如(注意这里有个空格)  
 ```
  --config D:\dujin\config.yml
-```
+```  
 ![DoH1](https://github.com/user-attachments/assets/3bd1139b-f3ee-4c8c-9acd-a2202d4e0f8b)  
 
 以管理员权限运行 powershell，执行
