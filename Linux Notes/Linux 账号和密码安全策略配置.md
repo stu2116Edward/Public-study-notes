@@ -66,9 +66,8 @@ password requisite pam_pwquality.so retry=3 minlen=6 dcredit=-1 lcredit=0 ucredi
 密码有效期可以通过 `/etc/login.defs` 文件来管理。
 
 - **配置文件**：`/etc/login.defs`
-
+编辑登录定义文件
 ```bash
-# 编辑登录定义文件
 sudo vim /etc/login.defs
 
 # 配置策略
@@ -129,8 +128,8 @@ Ubuntu 使用 `pam_pwquality` 模块来控制密码复杂度策略。
 配置文件：`/etc/pam.d/common-password`
 
 **使用方法**：
+编辑 common-password 配置文件
 ```bash
-# 编辑 common-password 配置文件
 sudo gedit /etc/pam.d/common-password
 ```
 
@@ -162,9 +161,8 @@ password requisite pam_pwquality.so retry=3 minlen=6 dcredit=-1 lcredit=0 ucredi
 密码有效期可以通过 `chage` 命令和 `/etc/login.defs` 文件来管理。
 
 **配置文件**：`/etc/login.defs`
-
+编辑登录定义文件
 ```bash
-# 编辑登录定义文件
 sudo gedit /etc/login.defs
 ```
 
