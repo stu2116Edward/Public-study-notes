@@ -27,16 +27,19 @@ proxy-dns-upstream:
 ```
  --config D:\dujin\config.yml
 ```
+![DoH1](https://github.com/user-attachments/assets/3bd1139b-f3ee-4c8c-9acd-a2202d4e0f8b)  
 
 以管理员权限运行 powershell，执行
 ```
 Start-Service Cloudflared
 ```
 运行之后，将网络的 DNS 改为127.0.0.1即可
+![DoH2](https://github.com/user-attachments/assets/4442a79c-be02-4f61-8be4-7696ea43ae11)  
+
 
 **验证**：
 网卡抓取本地环回地址，过滤DNS协议，验证DNS解析到本地cloudfared服务：  
-
+![DoH3](https://github.com/user-attachments/assets/edf07fb2-c225-48c4-8109-c662b3b89b1b)  
 
 
 **DoH服务器列表**
