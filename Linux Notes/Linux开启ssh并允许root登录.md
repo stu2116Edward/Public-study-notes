@@ -28,10 +28,10 @@ ssh客户端是默认安装的，连接其它ssh服务器用的，使用 `apt in
 vim /etc/ssh/sshd_config
 ```
 修改如下：允许root账户登录  
-<per>
+<pre>
 #PermitRootLogin prohibit-password
 PermitRootLogin yes
-</per>
+</pre>
 需要重启系统或者sshd服务  
 ```
 sudo systemctl restart sshd
@@ -105,11 +105,11 @@ apt-get install openssh-server
 ```
 vim /etc/ssh/sshd_config
 ```
-找到配置
-```
+修改如下：允许root账户登录  
+<pre>
 #PermitRootLogin prohibit-password
 PermitRootLogin yes
-```
+</pre>
 保存退出，重启ssh服务
 ```
 /etc/init.d/ssh restart
