@@ -71,3 +71,5 @@ If you find my notes helpful, please consider giving this repository a star. Eve
 16. **金山文档** - [金山文档](https://www.kdocs.cn/view/l/cczZcgviXVhJ) 
     - 提供在线文档编辑和协作功能，支持多种文档格式。
 
+17. **diffchecker** - [diffchecker](https://www.diffchecker.com/zh-Hans/text-compare/) 
+    - 在线查找两个文本文件之间的差异
