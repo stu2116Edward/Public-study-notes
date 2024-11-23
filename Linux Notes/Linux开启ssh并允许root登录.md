@@ -118,18 +118,24 @@ PermitRootLogin yes
 启动ssh  
 ```
 /etc/init.d/ssh start
-#或
+```
+或
+```
 systemctl start sshd
 ```
 查看ssh的运行状态
 ```
 /etc/init.d/ssh status
-#或
+```
+或
+```
 systemctl status sshd
 ```
 开机自启动配置
 ```
 systemctl enable ssh.service
-#或
+```
+或
+```
 update-rc.d ssh enable
 ```
