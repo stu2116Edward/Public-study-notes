@@ -1,5 +1,8 @@
 # wget和curl全面指南
 
+### [wget使用示例](#wget使用示例)
+### [curl使用示例](#curl使用示例)
+
 在网络开发、系统管理和自动化脚本中，wget 和 curl 是两个不可或缺的命令行工具。它们允许用户通过命令行接口与各种网络资源进行交互。这篇博客将深入探讨这两个工具，比较它们的功能、用法，并通过具体的示例展示如何在实际工作中使用它们  
 
 ## 一、什么是 wget 和 curl?
@@ -487,7 +490,7 @@ curl：提供了丰富的命令行选项，可以进行各种 HTTP 操作，如�
   </tr>
 </table>
 
-### 使用实例
+### [wget使用示例](#wget使用示例)
 
 <pre>
 wget命令的常用选项
@@ -677,31 +680,33 @@ wget --ftp-user=USERNAME --ftp-password=PASSWORD ftp://example.com/ftp-url
 
 ## 四、curl 的常见用法
 
-### 基本下载
+### [curl使用示例](#curl使用示例)
+
+#### 基本下载
 curl 最基本的用法是下载文件并将其保存到指定文件中：
 ```
 curl -o file.zip http://example.com/file.zip
 ```
 
-### 下载并显示内容
+#### 下载并显示内容
 curl 默认会将下载的内容显示在终端，可以使用 `-O` 选项将文件保存到本地：
 ```
 curl -O http://example.com/file.zip
 ```
 
-### 发送 GET 请求
+#### 发送 GET 请求
 默认情况下，curl 发送的是 GET 请求，并返回服务器响应的内容：
 ```
 curl http://api.example.com/resource
 ```
 
-### 发送 POST 请求
+#### 发送 POST 请求
 可以使用 `-d` 选项发送 POST 请求，并传递数据：
 ```
 curl -X POST -d "key1=value1&key2=value2" http://api.example.com/resource
 ```
 
-### 设置请求头
+#### 设置请求头
 curl 允许设置自定义的 HTTP 请求头，使用 `-H` 选项：
 ```
 curl -H "Content-Type: application/json" \
@@ -709,7 +714,7 @@ curl -H "Content-Type: application/json" \
      http://api.example.com/resource
 ```
 
-### 处理文件上传
+#### 处理文件上传
 使用 `-F` 选项可以上传文件：
 ```
 curl -F "file=@/path/to/file.zip" http://api.example.com/upload
