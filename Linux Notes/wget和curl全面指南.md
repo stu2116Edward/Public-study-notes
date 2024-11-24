@@ -490,6 +490,10 @@ curl：提供了丰富的命令行选项，可以进行各种 HTTP 操作，如�
   </tr>
 </table>
 
+```bash
+wget -S –spider url  ## 不下载只显示过程
+```
+
 ### [wget使用示例](#wget使用示例)
 
 <pre>
