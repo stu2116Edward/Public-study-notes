@@ -1345,11 +1345,15 @@ curl -L -d 'tweet=hi' https://api.twitter.com/tweet
 curl --limit-rate 200k https://google.com
 ```
 
-#### 文件保存
+#### 文件保存(下载文件)
 - **保存服务器回应为文件**  
 使用 `-o` 参数将服务器的回应保存成文件：
 ```bash
 curl -o example.html https://www.example.com
+```
+使用 `-o` 参数保存到指定的路径：
+```bash
+curl -o /path/to/your/directory/example.html https://www.example.com
 ```
 使用 `-O` 参数将服务器回应保存为文件，并将 URL 的最后部分作为文件名：
 ```bash
