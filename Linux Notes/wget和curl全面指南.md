@@ -1202,6 +1202,47 @@ curl [参数] [URL地址]
 curl https://www.example.com
 ```
 
+#### 常用的curl组合命令:
+组合命令`curl -fsSL`示例：
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+```
+curl -fsSL 是一个常用的 curl 命令组合，它的各个参数含义如下：
+- -f：失败时不显示友好错误页面，直接返回错误码。
+- -s：静默模式，不显示进度条和错误信息。
+- -S：即使在静默模式下，也显示错误信息。
+- -L：跟随重定向。
+
+#### 文件保存(下载文件)
+- **保存服务器回应为文件**  
+使用 `-o` 参数将服务器的回应保存成文件：
+```bash
+curl -o example.html https://www.example.com
+```
+使用 `-o` 参数保存到指定的路径：
+```bash
+curl -o /path/to/your/directory/example.html https://www.example.com
+```
+使用 `-O` 参数将服务器回应保存为文件，并将 URL 的最后部分作为文件名：
+```bash
+curl -O https://www.example.com/foo/bar.html
+```
+
+#### 文件上传
+- **上传二进制文件**  
+使用 `-F` 参数向服务器上传二进制文件：
+```bash
+curl -F 'file=@photo.png' https://google.com/profile
+```
+指定 MIME 类型：
+```bash
+curl -F 'file=@photo.png;type=image/png' https://google.com/profile
+```
+指定文件名：
+```bash
+curl -F 'file=@photo.png;filename=me.png' https://google.com/profile
+```
+
 #### 用户代理
 - **设置用户代理（User-Agent）**  
 使用 `-A` 参数指定客户端的用户代理标头：
@@ -1270,21 +1311,6 @@ curl -e 'https://google.com?q=example' https://www.example.com
 curl -H 'Referer: https://google.com?q=example' https://www.example.com
 ```
 
-#### 文件上传
-- **上传二进制文件**  
-使用 `-F` 参数向服务器上传二进制文件：
-```bash
-curl -F 'file=@photo.png' https://google.com/profile
-```
-指定 MIME 类型：
-```bash
-curl -F 'file=@photo.png;type=image/png' https://google.com/profile
-```
-指定文件名：
-```bash
-curl -F 'file=@photo.png;filename=me.png' https://google.com/profile
-```
-
 #### 查询字符串
 - **构造 URL 查询字符串**  
 使用 `-G` 参数构造 URL 的查询字符串：
@@ -1343,21 +1369,6 @@ curl -L -d 'tweet=hi' https://api.twitter.com/tweet
 使用 `--limit-rate` 限制带宽，模拟慢网速环境：
 ```bash
 curl --limit-rate 200k https://google.com
-```
-
-#### 文件保存(下载文件)
-- **保存服务器回应为文件**  
-使用 `-o` 参数将服务器的回应保存成文件：
-```bash
-curl -o example.html https://www.example.com
-```
-使用 `-o` 参数保存到指定的路径：
-```bash
-curl -o /path/to/your/directory/example.html https://www.example.com
-```
-使用 `-O` 参数将服务器回应保存为文件，并将 URL 的最后部分作为文件名：
-```bash
-curl -O https://www.example.com/foo/bar.html
 ```
 
 #### 错误和进度信息
