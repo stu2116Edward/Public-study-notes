@@ -4,7 +4,10 @@
 ```
 ls / 
 ```
+![mljg1](https://github.com/user-attachments/assets/850e299f-c53f-4ae1-993a-ea6ef4a3de3c)  
+
 树状目录结构：
+![mljg2](https://github.com/user-attachments/assets/01dc22fa-4bad-4a63-b6d0-4b419a674fc7)  
 
 ## 1. Linux 目录结构概述
 
