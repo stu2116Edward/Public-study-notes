@@ -6,6 +6,8 @@ Linux 系统中服务管理是确保系统稳定性和效率的关键环节。�
 
 ## init
 
+### 命令简介
+
 - **定义**：`init` 是 Linux 系统中的第一个进程（PID 1），负责启动和管理后续所有进程。
 - **工作方式**：通过 `/etc/init.d` 目录下的脚本管理服务，这些脚本控制服务的启动和停止。
 - **命令示例**：
@@ -15,6 +17,8 @@ Linux 系统中服务管理是确保系统稳定性和效率的关键环节。�
 - **缺点**：
   - 串行启动服务，导致系统启动时间长。
   - 脚本复杂度高，需要处理多种启动情况。
+
+### 命令表格
 
 <table border="1" cellspacing="0" cellpadding="5">
     <tr>
@@ -86,13 +90,13 @@ sudo update-rc.d <service_name> disable
 
 ## service
 
-### 一、命令简介
+### 命令简介
 
 - `service` 命令是 Linux 系统中用于管理服务的工具，它通过调用位于 `/etc/init.d/` 目录下的服务脚本，来执行启动、停止、重启、查询状态等操作。
 - `service` 命令是一个便捷的 shell 脚本，简化了对服务脚本的直接调用。
 - 随着 `systemd` 的普及，新版的 Linux 发行版可能不再包含 `service` 命令，而是使用 `systemctl` 命令来管理服务。
 
-### 二、命令参数
+### 命令参数
 
 `service [选项] [service_name] [command]`
 
@@ -112,7 +116,7 @@ sudo update-rc.d <service_name> disable
   - `enable`：设置服务开机自启。
   - `disable`：禁止服务开机自启。
 
-### 三、定义及关系
+### 定义及关系
 
 - **定义**：`service` 命令是 `System V init` 的一个接口，用于管理 `/etc/init.d` 目录下的服务脚本。
 - **关系**：`service` 命令实际上是对 `/etc/init.d/` 脚本的封装。
@@ -207,16 +211,13 @@ sudo service -h
 
 ## systemd
 
+### 命令简介
+
 - **定义**：`systemd` 是现代 Linux 系统中的初始化系统，旨在替代传统的 `System V init`。
 - **特点**：
   - 支持服务的并行启动，显著减少系统启动时间。
   - 提供强大的服务依赖管理和控制。
 - **主命令**：`systemctl`，用于管理系统和服务。
-- **命令示例**：
-  ```bash
-  systemctl start nginx
-  systemctl status nginx
-  ```
 
 ## systemctl
 
@@ -224,6 +225,8 @@ sudo service -h
 - **高级特性**：
   - 服务依赖管理，确保服务按正确顺序启动。
   - 管理套接字、挂载点和定时任务。
+
+### 命令表格
 
 <table border="1" cellspacing="0" cellpadding="5">
     <tr>
