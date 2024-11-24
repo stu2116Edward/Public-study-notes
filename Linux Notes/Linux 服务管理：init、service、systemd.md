@@ -479,6 +479,84 @@ sudo journalctl --since "YYYY-MM-DD" -u <service_name>
 sudo systemctl edit --full systemd-journald.service
 ```
 
+## service文件配置
+
+### 添加服务文件
+在/etc/systemd/system/文件目录下添加.service服务文件  
+编写.service文件
+```
+[Unit]
+Description=test for service
+ConditionFileIsExecutable=/etc/init.d/tst.sh
+After=weston.service
+ 
+[Service]
+Type=forking
+ExecStart=-/etc/init.d/tst.sh start
+ExecStop=-/etc/init.d/tst.sh stop
+ 
+[Install]
+WantedBy=multi-user.target
+```
+从上面可以看出.serive文件包括三个部分：[Unit]、[Service]、[Install]
+```
+[Unit]
+Description：对当前服务的简单描述。
+After：指定.serive在哪些服务之后进行启动；
+Before：指定.serive在哪些服务之前进行启动；
+除上述内容，文件中还可能出现以下内容：
+Requires：指定服务依赖于哪些服务（强依赖关系，一旦所依赖服务异常，当前服务也随之停止）；
+Wants：指定服务依赖于哪些服务（弱依赖关系，所依赖服务异常不影响当前服务正常运行）。
+ 
+[Service] 
+Type：定义启动类型。可设置：simple，exec，forking，oneshot，dbus，notify，idle。
+simple：ExecStart 字段启动的进程为该服务的主进程；
+forking：ExecStart 字段的命令将以 fork() 方式启动，此时父进程将会退出，子进程将成为主进程；
+ExecStart：定义启动进程时执行的命令；
+ExecStop：停止服务时执行的命令；
+除上述内容外，文件中还可能出现：
+EnvironmentFile:环境配置文件，用来指定当前服务启动的环境变量;
+ExecReload：重启服务时执行的命令；
+ExecStartPre：启动服务之前执行的命令；
+ExecStartPost：启动服务之后执行的命令；
+ExecStopPost：停止服务之后执行的命令；
+RemainAfterExit：设为yes，表示进程退出以后，服务仍然保持执行；
+RestartSec：重启服务之前需要等待的秒数。
+KillMode：定义 Systemd 如何停止服务，可以设置的值如下：
+    control-group（默认值）：当前控制组里面的所有子进程，都会被杀掉；
+    process：只杀主进程；
+    mixed：主进程将收到 SIGTERM 信号，子进程收到 SIGKILL 信号；
+    none：没有进程会被杀掉。
+Restart：定义了退出后，Systemd 的重启方式，可以设置的值如下：
+    no（默认值）：退出后不会重启；
+    on-success：当进程正常退出时（退出状态码为0），才会重启；
+    on-failure：当进程非正常退出时（退出状态码非0），包括被信号终止和超时，才会重启；
+    on-abnormal：当被信号终止和超时，才会重启；
+    on-abort：当收到没有捕捉到的信号终止时，才会重启；
+    on-watchdog：看门狗超时退出，才会重启；
+    always：总是重启。
+ 
+[Install] 
+Install一般填为WantedBy=multi-user.target，表示多用户环境下服务被启用。
+```
+实例:
+```
+[Unit]
+Description=[服务名称]
+After=syslog.target network.target remote-fs.target nss-lookup.target
+ 
+[Service]
+Type=simple
+WorkingDirectory=[路径]
+ExecStart= /usr/bin/dotnet [dll名称] --urls "http://*:[端口]"
+ExecReload=/bin/kill -s HUP $MAINPID
+RemainAfterExit=yes
+ 
+[Install]
+WantedBy=multi-user.target
+```
+
+
 ## 理论部分
 ### 日志轮转和压缩
 配置日志轮转和压缩策略，可以通过编辑对应的单位文件来实现。
