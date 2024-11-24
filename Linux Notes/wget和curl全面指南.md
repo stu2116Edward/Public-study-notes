@@ -36,7 +36,12 @@ curl：提供了丰富的命令行选项，可以进行各种 HTTP 操作，如�
 
 ## 三、wget 的常见用法
 
-### 命令参数表格
+**语法**
+```
+wget [参数] [URL地址]
+```
+
+### 命令行选项参数表格
 
 #### 启动参数
 <table border="1">
@@ -496,6 +501,11 @@ wget -S –spider url  ## 不下载只显示过程
 
 ### [wget使用示例](#wget使用示例)
 
+**语法**
+```
+wget [参数] [URL地址]
+```
+
 <pre>
 wget命令的常用选项
 -b：后台下载
@@ -684,7 +694,15 @@ wget --ftp-user=USERNAME --ftp-password=PASSWORD ftp://example.com/ftp-url
 
 ## 四、curl 的常见用法
 
+### 命令行选项参数表格
+
+
 ### [curl使用示例](#curl使用示例)
+
+**语法**
+```
+curl [参数] [URL地址]
+```
 
 #### 基本下载
 curl 最基本的用法是下载文件并将其保存到指定文件中：
