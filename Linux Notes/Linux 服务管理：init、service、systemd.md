@@ -219,7 +219,7 @@ sudo service -h
   - 提供强大的服务依赖管理和控制。
 - **主命令**：`systemctl`，用于管理系统和服务。
 
-## systemctl
+### systemctl
 
 - **功能**：`systemctl` 是 `systemd` 的命令行工具，用于控制服务单元（Unit）。
 - **高级特性**：
