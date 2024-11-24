@@ -1195,42 +1195,225 @@ wget --ftp-user=USERNAME --ftp-password=PASSWORD ftp://example.com/ftp-url
 curl [参数] [URL地址]
 ```
 
-#### 基本下载
-curl 最基本的用法是下载文件并将其保存到指定文件中：
-```
-curl -o file.zip http://example.com/file.zip
-```
-
-#### 下载并显示内容
-curl 默认会将下载的内容显示在终端，可以使用 `-O` 选项将文件保存到本地：
-```
-curl -O http://example.com/file.zip
+#### 基本请求
+- **不带参数的GET请求**  
+不带任何参数时，curl 默认发出 GET 请求：
+```bash
+curl https://www.example.com
 ```
 
-#### 发送 GET 请求
-默认情况下，curl 发送的是 GET 请求，并返回服务器响应的内容：
+#### 用户代理
+- **设置用户代理（User-Agent）**  
+使用 `-A` 参数指定客户端的用户代理标头：
+```bash
+curl -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36' https://google.com
 ```
-curl http://api.example.com/resource
+或者移除 User-Agent 标头：
+```bash
+curl -A '' https://google.com
 ```
-
-#### 发送 POST 请求
-可以使用 `-d` 选项发送 POST 请求，并传递数据：
-```
-curl -X POST -d "key1=value1&key2=value2" http://api.example.com/resource
-```
-
-#### 设置请求头
-curl 允许设置自定义的 HTTP 请求头，使用 `-H` 选项：
-```
-curl -H "Content-Type: application/json" \
-     -H "Authorization: Bearer token" \
-     http://api.example.com/resource
+也可以通过 `-H` 参数直接指定标头，更改 User-Agent：
+```bash
+curl -H 'User-Agent: php/1.0' https://google.com
 ```
 
-#### 处理文件上传
-使用 `-F` 选项可以上传文件：
+#### Cookies
+- **发送 Cookies**  
+使用 `-b` 参数向服务器发送 Cookie：
+```bash
+curl -b 'foo=bar' https://google.com
 ```
-curl -F "file=@/path/to/file.zip" http://api.example.com/upload
+发送多个 Cookie：
+```bash
+curl -b 'foo1=bar;foo2=bar2' https://google.com
+```
+读取本地文件 `cookies.txt` 发送 Cookies：
+```bash
+curl -b cookies.txt https://www.google.com
+```
+- **保存 Cookies**  
+使用 `-c` 参数将服务器设置的 Cookie 写入文件：
+```bash
+curl -c cookies.txt https://www.google.com
+```
+
+#### POST请求
+- **发送 POST 请求的数据体**  
+使用 `-d` 参数发送 POST 请求的数据体：
+```bash
+curl -d 'login=emma&password=123' -X POST https://google.com/login
+```
+或者省略 `-X POST`，因为 `-d` 会自动将请求转为 POST 方法：
+```bash
+curl -d 'login=emma' -d 'password=123' https://google.com/login
+```
+`-d` 参数也可以读取本地文本文件的数据，向服务器发送：
+```bash
+curl -d '@data.txt' https://google.com/login
+```
+
+#### 数据编码
+- **URL 编码 POST 数据**  
+使用 `--data-urlencode` 参数发送 POST 请求的数据体，并进行 URL 编码：
+```bash
+curl --data-urlencode 'comment=hello world' https://google.com/login
+```
+
+#### 引用来源
+- **设置 HTTP Referer 标头**  
+使用 `-e` 参数设置 HTTP 的标头 Referer：
+```bash
+curl -e 'https://google.com?q=example' https://www.example.com
+```
+也可以通过 `-H` 参数直接添加标头 Referer：
+```bash
+curl -H 'Referer: https://google.com?q=example' https://www.example.com
+```
+
+#### 文件上传
+- **上传二进制文件**  
+使用 `-F` 参数向服务器上传二进制文件：
+```bash
+curl -F 'file=@photo.png' https://google.com/profile
+```
+指定 MIME 类型：
+```bash
+curl -F 'file=@photo.png;type=image/png' https://google.com/profile
+```
+指定文件名：
+```bash
+curl -F 'file=@photo.png;filename=me.png' https://google.com/profile
+```
+
+#### 查询字符串
+- **构造 URL 查询字符串**  
+使用 `-G` 参数构造 URL 的查询字符串：
+```bash
+curl -G -d 'q=kitties' -d 'count=20' https://google.com/search
+```
+如果数据需要 URL 编码，可以结合 `--data-urlencode` 参数：
+```bash
+curl -G --data-urlencode 'comment=hello world' https://www.example.com
+```
+
+#### 请求头
+- **添加 HTTP 请求的标头**  
+使用 `-H` 参数添加 HTTP 请求的标头：
+```bash
+curl -H 'Accept-Language: en-US' https://google.com
+```
+添加多个 HTTP 标头：
+```bash
+curl -H 'Accept-Language: en-US' -H 'Secret-Message: xyzzy' https://google.com
+```
+发送 JSON 数据：
+```bash
+curl -d '{"login": "emma", "pass": "123"}' -H 'Content-Type: application/json' https://google.com/login
+```
+
+#### 响应头
+- **打印服务器回应的 HTTP 标头**  
+使用 `-i` 参数打印出服务器回应的 HTTP 标头：
+```bash
+curl -i https://www.example.com
+```
+- **发出 HEAD 请求**  
+使用 `-I` 或 `--head` 参数向服务器发出 HEAD 请求，并打印服务器返回的 HTTP 标头：
+```bash
+curl -I https://www.example.com
+curl --head https://www.example.com
+```
+
+#### SSL
+- **跳过 SSL 检测**  
+使用 `-k` 参数指定跳过 SSL 检测：
+```bash
+curl -k https://www.example.com
+```
+
+#### 重定向
+- **跟随服务器的重定向**  
+使用 `-L` 参数让 HTTP 请求跟随服务器的重定向：
+```bash
+curl -L -d 'tweet=hi' https://api.twitter.com/tweet
+```
+
+#### 带宽限制
+- **限制 HTTP 请求和回应的带宽**  
+使用 `--limit-rate` 限制带宽，模拟慢网速环境：
+```bash
+curl --limit-rate 200k https://google.com
+```
+
+#### 文件保存
+- **保存服务器回应为文件**  
+使用 `-o` 参数将服务器的回应保存成文件：
+```bash
+curl -o example.html https://www.example.com
+```
+使用 `-O` 参数将服务器回应保存为文件，并将 URL 的最后部分作为文件名：
+```bash
+curl -O https://www.example.com/foo/bar.html
+```
+
+#### 错误和进度信息
+- **不输出错误和进度信息**  
+使用 `-s` 参数将不输出错误和进度信息：
+```bash
+curl -s https://www.example.com
+```
+如果想让 curl 不产生任何输出，可以使用：
+```bash
+curl -s -o /dev/null https://google.com
+```
+- **只输出错误信息**  
+使用 `-S` 参数指定只输出错误信息，通常与 `-s` 一起使用：
+```bash
+curl -s -S https://www.example.com
+```
+
+#### 认证
+- **设置服务器认证的用户名和密码**  
+使用 `-u` 参数设置服务器认证的用户名和密码：
+```bash
+curl -u 'bob:12345' https://google.com/login
+```
+curl 能够识别 URL 里面的用户名和密码：
+```bash
+curl https://bob:12345@google.com/login
+```
+只设置用户名，执行后，curl 会提示用户输入密码：
+```bash
+curl -u 'bob' https://google.com/login
+```
+
+#### 调试
+- **输出通信的整个过程**  
+使用 `-v` 参数输出通信的整个过程，用于调试：
+```bash
+curl -v https://www.example.com
+```
+使用 `--trace` 参数也可以用于调试，还会输出原始的二进制数据：
+```bash
+curl --trace - https://www.example.com
+```
+
+#### 代理
+- **指定 HTTP 请求的代理**  
+使用 `-x` 参数指定 HTTP 请求的代理：
+```bash
+curl -x socks5://james:cats@myproxy.com:8080 https://www.example.com
+```
+如果没有指定代理协议，默认为 HTTP：
+```bash
+curl -x james:cats@myproxy.com:8080 https://www.example.com
+```
+
+#### 请求方法
+- **指定 HTTP 请求的方法**  
+使用 `-X` 参数指定 HTTP 请求的方法：
+```bash
+curl -X POST https://www.example.com
 ```
 
 ## 五、进阶使用：在实际项目中的应用
