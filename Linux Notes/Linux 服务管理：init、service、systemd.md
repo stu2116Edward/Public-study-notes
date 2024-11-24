@@ -480,9 +480,8 @@ sudo systemctl edit --full systemd-journald.service
 ```
 
 ## 理论部分
-### 日志管理
-日志轮转和压缩
-- 配置日志轮转和压缩策略，可以通过编辑对应的单位文件来实现。
+### 日志轮转和压缩
+配置日志轮转和压缩策略，可以通过编辑对应的单位文件来实现。
 - 通过修改 `/etc/systemd/journald.conf` 文件中的设置，可以配置日志文件的轮转和压缩策略。
 - 常用的配置参数包括 `SystemMaxUse`（日志文件的最大使用空间）、`MaxFileSec`（单个日志文件的最大保存时间）等。
 
