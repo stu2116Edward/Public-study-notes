@@ -341,39 +341,144 @@ sudo service -h
     </tr>
 </table>
 
-## 服务管理：  
-启动服务：
+
+## 服务管理
+
+### 启动、停止、重启服务
+- 启动服务：
 ```bash
 sudo systemctl start <service_name>
 ```
-停止服务：
+- 停止服务：
 ```bash
 sudo systemctl stop <service_name>
 ```
-重启服务：
+- 重启服务：
 ```bash
 sudo systemctl restart <service_name>
 ```
-查看服务状态：
+
+### 查看服务状态
+- 查看服务状态：
 ```bash
 sudo systemctl status <service_name>
 ```
-设置服务开机自启：
+
+### 开机自启设置
+- 设置服务开机自启：
 ```bash
 sudo systemctl enable <service_name>
 ```
-取消服务开机自启：
+- 取消服务开机自启：
 ```bash
 sudo systemctl disable <service_name>
 ```
-重新加载服务配置：
+
+### 重新加载服务配置
+- 重新加载服务配置：
 ```bash
 sudo systemctl reload <service_name>
 ```
-查看和管理日志：
+
+### 列出服务
+- 列出所有已启用的服务：
+```bash
+sudo systemctl list-unit-files --type=service --state=enabled
+```
+- 列出所有服务：
+```bash
+sudo systemctl list-units --type=service
+```
+
+### 添加和移除服务链接
+- 添加一个自定义的服务链接：
+```bash
+sudo systemctl link /path/to/服务单位文件
+```
+- 移除一个服务的链接：
+```bash
+sudo systemctl unlink /path/to/服务单位文件
+```
+
+### 重新加载 systemd 配置
+- 重新加载 systemd 配置：
+```bash
+sudo systemctl daemon-reload
+```
+
+### 查看服务是否已启用或正在运行
+- 查看服务是否已启用：
+```bash
+sudo systemctl is-enabled <service_name>
+```
+- 查看服务是否正在运行：
+```bash
+sudo systemctl is-active <service_name>
+```
+
+### 定制服务配置
+- 编辑一个服务的配置文件：
+```bash
+sudo systemctl edit <service_name>
+```
+
+## 依赖关系管理
+
+### 查看服务依赖
+- 查看服务的依赖关系：
+```bash
+sudo systemctl show <service_name> --property=Requires
+sudo systemctl show <service_name> --property=Wants
+```
+- 查看服务的依赖树：
+```bash
+sudo systemctl list-dependencies <service_name>
+```
+
+### 解决依赖问题
+- 启用服务并解决依赖问题：
+```bash
+sudo systemctl enable --now <service_name>
+```
+- 禁用服务并忽略依赖：
+```bash
+sudo systemctl disable --ignore-dependencies <service_name>
+```
+
+### 配置服务启动顺序
+- 使用Before和After配置服务启动顺序：
+```ini
+[Unit]
+Before=服务1.service
+After=服务2.service
+```
+
+## 日志管理
+
+### 查看服务日志
+- 查看服务日志：
 ```bash
 sudo journalctl -u <service_name>
 ```
+
+### 实时查看日志
+- 实时查看服务日志：
+```bash
+sudo journalctl -fu <service_name>
+```
+
+### 查看特定时间的日志
+- 查看特定时间的日志：
+```bash
+sudo journalctl --since "YYYY-MM-DD" -u <service_name>
+```
+
+### 设置日志级别和存储位置
+- 编辑 `/etc/systemd/journald.conf` 文件来设置日志级别和存储位置：
+```bash
+sudo systemctl edit --full systemd-journald.service
+```
+
 
 ## 总结
 
