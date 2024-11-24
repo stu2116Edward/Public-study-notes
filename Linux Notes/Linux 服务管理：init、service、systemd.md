@@ -86,13 +86,39 @@ sudo update-rc.d <service_name> disable
 
 ## service
 
+### 一、命令简介
+
+- `service` 命令是 Linux 系统中用于管理服务的工具，它通过调用位于 `/etc/init.d/` 目录下的服务脚本，来执行启动、停止、重启、查询状态等操作。
+- `service` 命令是一个便捷的 shell 脚本，简化了对服务脚本的直接调用。
+- 随着 `systemd` 的普及，新版的 Linux 发行版可能不再包含 `service` 命令，而是使用 `systemctl` 命令来管理服务。
+
+### 二、命令参数
+
+`service [选项] [service_name] [command]`
+
+- **选项**：
+  - `-h` 或 `--help`：显示帮助信息。
+  - `-v` 或 `--version`：显示版本信息。
+
+- **service_name**：表示服务的名称，通常是 `/etc/init.d/` 目录下的脚本文件名。
+
+- **command**：
+  - `start`：启动服务。
+  - `stop`：停止服务。
+  - `restart`：重启服务。
+  - `reload`：重新加载服务的配置文件。
+  - `status`：查看服务的当前状态。
+  - `condrestart`：如果服务正在运行，则重启服务。
+  - `enable`：设置服务开机自启。
+  - `disable`：禁止服务开机自启。
+
+### 三、定义及关系
+
 - **定义**：`service` 命令是 `System V init` 的一个接口，用于管理 `/etc/init.d` 目录下的服务脚本。
-- **命令示例**：
-  ```bash
-  service nginx start
-  ```
 - **关系**：`service` 命令实际上是对 `/etc/init.d/` 脚本的封装。
 - **缺点**：功能有限，不支持 `systemd` 的高级特性，如并行启动和依赖管理。
+
+### 命令表格
 
 <table border="1" cellspacing="0" cellpadding="5">
     <tr>
@@ -130,32 +156,52 @@ sudo update-rc.d <service_name> disable
         <td>--status-all</td>
         <td>显示所有服务状态</td>
     </tr>
+    <tr>
+        <td>service</td>
+        <td>enable 服务名称</td>
+        <td>设置服务开机自启</td>
+    </tr>
+    <tr>
+        <td>service</td>
+        <td>disable 服务名称</td>
+        <td>取消服务开机自启</td>
+    </tr>
 </table>
 
-### 服务管理：
+
+### 服务管理命令
+
 启动服务：
 ```bash
-sudo service <service_name> start
+sudo service <服务名称> start
 ```
 停止服务：
 ```bash
-sudo service <service_name> stop
+sudo service <服务名称> stop
 ```
 重启服务：
 ```bash
-sudo service <service_name> restart
+sudo service <服务名称> restart
 ```
 查看服务状态：
 ```bash
-sudo service <service_name> status
+sudo service <服务名称> status
 ```
-设置服务开机自启（使用 `chkconfig`）：
+显示所有服务状态：
 ```bash
-sudo chkconfig <service_name> on
+sudo service --status-all
 ```
-取消服务开机自启（使用 `chkconfig`）：
+设置服务开机自启：
 ```bash
-sudo chkconfig <service_name> off
+sudo service <服务名称> enable
+```
+取消服务开机自启：
+```bash
+sudo service <服务名称> disable
+```
+显示帮助信息：
+```bash
+sudo service -h
 ```
 
 
