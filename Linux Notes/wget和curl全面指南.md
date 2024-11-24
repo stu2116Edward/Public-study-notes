@@ -695,7 +695,498 @@ wget --ftp-user=USERNAME --ftp-password=PASSWORD ftp://example.com/ftp-url
 ## 四、curl 的常见用法
 
 ### 命令行选项参数表格
-
+<table border="1">
+  <tr>
+    <th>短格式</th>
+    <th>长格式</th>
+    <th>说明</th>
+  </tr>
+  <tr>
+    <td>-a</td>
+    <td>--append</td>
+    <td>上传文件时，附加到目标文件</td>
+  </tr>
+  <tr>
+    <td>-A</td>
+    <td>--user-agent &lt;string&gt;</td>
+    <td>设置用户代理发送给服务器</td>
+  </tr>
+  <tr>
+    <td>-anyauth</td>
+    <td>&nbsp;</td>
+    <td>可以使用“任何”身份验证方法</td>
+  </tr>
+  <tr>
+    <td>-b</td>
+    <td>--cookie &lt;name=string/file&gt;</td>
+    <td>cookie字符串或文件读取位置</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--basic</td>
+    <td>使用HTTP基本验证</td>
+  </tr>
+  <tr>
+    <td>-B</td>
+    <td>--use-ascii</td>
+    <td>使用ASCII /文本传输</td>
+  </tr>
+  <tr>
+    <td>-c</td>
+    <td>--cookie-jar &lt;file&gt;</td>
+    <td>操作结束后把cookie写入到这个文件中</td>
+  </tr>
+  <tr>
+    <td>-C</td>
+    <td>--continue-at &lt;offset&gt;</td>
+    <td>断点续转</td>
+  </tr>
+  <tr>
+    <td>-d</td>
+    <td>--data &lt;data&gt;</td>
+    <td>HTTP POST方式传送数据</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--data-ascii &lt;data&gt;</td>
+    <td>以ascii的方式post数据</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--data-binary &lt;data&gt;</td>
+    <td>以二进制的方式post数据</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--negotiate</td>
+    <td>使用HTTP身份验证</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--digest</td>
+    <td>使用数字身份验证</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--disable-eprt</td>
+    <td>禁止使用EPRT或LPRT</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--disable-epsv</td>
+    <td>禁止使用EPSV</td>
+  </tr>
+  <tr>
+    <td>-D</td>
+    <td>--dump-header &lt;file&gt;</td>
+    <td>把header信息写入到该文件中</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--egd-file &lt;file&gt;</td>
+    <td>为随机数据(SSL)设置EGD socket路径</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--tcp-nodelay</td>
+    <td>使用TCP_NODELAY选项</td>
+  </tr>
+  <tr>
+    <td>-e</td>
+    <td>--referer</td>
+    <td>来源网址</td>
+  </tr>
+  <tr>
+    <td>-E</td>
+    <td>--cert &lt;cert[:passwd]&gt;</td>
+    <td>客户端证书文件和密码 (SSL)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--cert-type &lt;type&gt;</td>
+    <td>证书文件类型 (DER/PEM/ENG) (SSL)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--key &lt;key&gt;</td>
+    <td>私钥文件名 (SSL)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--key-type &lt;type&gt;</td>
+    <td>私钥文件类型 (DER/PEM/ENG) (SSL)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--pass &lt;pass&gt;</td>
+    <td>私钥密码 (SSL)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--engine &lt;eng&gt;</td>
+    <td>加密引擎使用 (SSL). "--engine list" for list</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--cacert &lt;file&gt;</td>
+    <td>CA证书 (SSL)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--capath &lt;directory&gt;</td>
+    <td>CA目录 (made using c_rehash) to verify peer against (SSL)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--ciphers &lt;list&gt;</td>
+    <td>SSL密码</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--compressed</td>
+    <td>要求返回是压缩的形势 (using deflate or gzip)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--connect-timeout &lt;seconds&gt;</td>
+    <td>设置最大请求时间</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--create-dirs</td>
+    <td>建立本地目录的目录层次结构</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--crlf</td>
+    <td>上传是把LF转变成CRLF</td>
+  </tr>
+  <tr>
+    <td>-f</td>
+    <td>--fail</td>
+    <td>连接失败时不显示http错误</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--ftp-create-dirs</td>
+    <td>如果远程目录不存在，创建远程目录</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--ftp-method [multicwd/nocwd/singlecwd]</td>
+    <td>控制CWD的使用</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--ftp-pasv</td>
+    <td>使用 PASV/EPSV 代替端口</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--ftp-skip-pasv-ip</td>
+    <td>使用PASV的时候,忽略该IP地址</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--ftp-ssl</td>
+    <td>尝试用 SSL/TLS 来进行ftp数据传输</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--ftp-ssl-reqd</td>
+    <td>要求用 SSL/TLS 来进行ftp数据传输</td>
+  </tr>
+  <tr>
+    <td>-F</td>
+    <td>--form &lt;name=content&gt;</td>
+    <td>模拟http表单提交数据</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--form-string &lt;name=string&gt;</td>
+    <td>模拟http表单提交数据</td>
+  </tr>
+  <tr>
+    <td>-g</td>
+    <td>--globoff</td>
+    <td>禁用网址序列和范围使用{}和[]</td>
+  </tr>
+  <tr>
+    <td>-G</td>
+    <td>--get</td>
+    <td>以get的方式来发送数据</td>
+  </tr>
+  <tr>
+    <td>-H</td>
+    <td>--header &lt;line&gt;</td>
+    <td>自定义头信息传递给服务器</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--ignore-content-length</td>
+    <td>忽略的HTTP头信息的长度</td>
+  </tr>
+  <tr>
+    <td>-i</td>
+    <td>--include</td>
+    <td>输出时包括protocol头信息</td>
+  </tr>
+  <tr>
+    <td>-I</td>
+    <td>--head</td>
+    <td>只显示请求头信息</td>
+  </tr>
+  <tr>
+    <td>-j</td>
+    <td>--junk-session-cookies</td>
+    <td>读取文件进忽略session cookie</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--interface &lt;interface&gt;</td>
+    <td>使用指定网络接口/地址</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--krb4 &lt;level&gt;</td>
+    <td>使用指定安全级别的krb4</td>
+  </tr>
+  <tr>
+    <td>-k</td>
+    <td>--insecure</td>
+    <td>允许不使用证书到SSL站点</td>
+  </tr>
+  <tr>
+    <td>-K</td>
+    <td>--config</td>
+    <td>指定的配置文件读取</td>
+  </tr>
+  <tr>
+    <td>-l</td>
+    <td>--list-only</td>
+    <td>列出ftp目录下的文件名称</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--limit-rate &lt;rate&gt;</td>
+    <td>设置传输速度</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--local-port&lt;NUM&gt;</td>
+    <td>强制使用本地端口号</td>
+  </tr>
+  <tr>
+    <td>-m</td>
+    <td>--max-time &lt;seconds&gt;</td>
+    <td>设置最大传输时间</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--max-redirs &lt;num&gt;</td>
+    <td>设置最大读取的目录数</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--max-filesize &lt;bytes&gt;</td>
+    <td>设置最大下载的文件总量</td>
+  </tr>
+  <tr>
+    <td>-M</td>
+    <td>--manual</td>
+    <td>显示全手动</td>
+  </tr>
+  <tr>
+    <td>-n</td>
+    <td>--netrc</td>
+    <td>从netrc文件中读取用户名和密码</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--netrc-optional</td>
+    <td>使用 .netrc 或者 URL来覆盖-n</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--ntlm</td>
+    <td>使用 HTTP NTLM 身份验证</td>
+  </tr>
+  <tr>
+    <td>-N</td>
+    <td>--no-buffer</td>
+    <td>禁用缓冲输出</td>
+  </tr>
+  <tr>
+    <td>-o</td>
+    <td>--output</td>
+    <td>把输出写到该文件中</td>
+  </tr>
+  <tr>
+    <td>-O</td>
+    <td>--remote-name</td>
+    <td>把输出写到该文件中，保留远程文件的文件名</td>
+  </tr>
+  <tr>
+    <td>-p</td>
+    <td>--proxytunnel</td>
+    <td>使用HTTP代理</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--proxy-anyauth</td>
+    <td>选择任一代理身份验证方法</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--proxy-basic</td>
+    <td>在代理上使用基本身份验证</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--proxy-digest</td>
+    <td>在代理上使用数字身份验证</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--proxy-ntlm</td>
+    <td>在代理上使用ntlm身份验证</td>
+  </tr>
+  <tr>
+    <td>-P</td>
+    <td>--ftp-port &lt;address&gt;</td>
+    <td>使用端口地址，而不是使用PASV</td>
+  </tr>
+  <tr>
+    <td>-q</td>
+    <td>&nbsp;</td>
+    <td>作为第一个参数，关闭 .curlrc</td>
+  </tr>
+  <tr>
+    <td>-Q</td>
+    <td>--quote &lt;cmd&gt;</td>
+    <td>文件传输前，发送命令到服务器</td>
+  </tr>
+  <tr>
+    <td>-r</td>
+    <td>--range &lt;range&gt;</td>
+    <td>检索来自HTTP/1.1或FTP服务器字节范围</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--range-file</td>
+    <td>读取（SSL）的随机文件</td>
+  </tr>
+  <tr>
+    <td>-R</td>
+    <td>--remote-time</td>
+    <td>在本地生成文件时，保留远程文件时间</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--retry &lt;num&gt;</td>
+    <td>传输出现问题时，重试的次数</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--retry-delay &lt;seconds&gt;</td>
+    <td>传输出现问题时，设置重试间隔时间</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--retry-max-time &lt;seconds&gt;</td>
+    <td>传输出现问题时，设置最大重试时间</td>
+  </tr>
+  <tr>
+    <td>-s</td>
+    <td>--silent</td>
+    <td>静默模式。不输出任何东西</td>
+  </tr>
+  <tr>
+    <td>-S</td>
+    <td>--show-error</td>
+    <td>显示错误</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--socks4 &lt;host[:port]&gt;</td>
+    <td>用socks4代理给定主机和端口</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--socks5 &lt;host[:port]&gt;</td>
+    <td>用socks5代理给定主机和端口</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--stderr &lt;file&gt;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>-t</td>
+    <td>--telnet-option &lt;OPT=val&gt;</td>
+    <td>Telnet选项设置</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--trace &lt;file&gt;</td>
+    <td>对指定文件进行debug</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--trace-ascii &lt;file&gt;</td>
+    <td>Like --跟踪但没有hex输出</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--trace-time</td>
+    <td>跟踪/详细输出时，添加时间戳</td>
+  </tr>
+  <tr>
+    <td>-T</td>
+    <td>--upload-file &lt;file&gt;</td>
+    <td>上传文件</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>--url &lt;URL&gt;</td>
+    <td>Spet URL to work with</td>
+  </tr>
+  <tr>
+    <td>-u</td>
+    <td>--user &lt;user[:password]&gt;</td>
+    <td>设置服务器的用户和密码</td>
+  </tr>
+  <tr>
+    <td>-U</td>
+    <td>--proxy-user &lt;user[:password]]&gt;</td>
+    <td>设置代理用户名和密码</td>
+  </tr>
+  <tr>
+    <td>-w</td>
+    <td>--write-out [format]</td>
+    <td>什么输出完成后</td>
+  </tr>
+  <tr>
+    <td>-x</td>
+    <td>--proxy &lt;host[:port]]&gt;</td>
+    <td>在给定的端口上使用HTTP代理</td>
+  </tr>
+  <tr>
+    <td>-X</td>
+    <td>--request &lt;command&gt;</td>
+    <td>指定什么命令</td>
+  </tr>
+  <tr>
+    <td>-y</td>
+    <td>--speed-time</td>
+    <td>放弃限速所要的时间，默认为30</td>
+  </tr>
+  <tr>
+    <td>-Y</td>
+    <td>--speed-limit</td>
+    <td>停止传输速度的限制，速度时间</td>
+  </tr>
+</table>
 
 ### [curl使用示例](#curl使用示例)
 
