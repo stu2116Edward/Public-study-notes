@@ -54,13 +54,17 @@ cd /etc/sysconfig/network-scripts
 ### 3.编辑网络文件配置
 - 使用vim编辑神器进行编辑文件，如上图最后一行所示，另附代码如下：
 ```
-vi ifcfg-eno16777736
+vim ifcfg-eno16777736
 ```
 1.按回车键进入以下界面：  
 ![109e49d1a8b40e22bb1019e9899f240f](https://github.com/user-attachments/assets/b152cbe2-4a4c-42c6-9bbb-cbf31ca8090e)  
 2.在当前界面按下i键进入交互模式  
 3.把 `ONMOOT=NO` 改为 `ONBOOT=YES`  
 4.修改完毕后按下esc键，输入:wq即可  
+5.如果无法访问互联网记得在配置文件的最后加上DNS解析记录
+```
+DNS1=223.6.6.6
+```
 
 ### 4.测试网络
 进行完以上配置重启network.service服务。  
