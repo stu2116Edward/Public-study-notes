@@ -126,33 +126,44 @@ sudo update-rc.d <service_name> disable
 
 <table border="1" cellspacing="0" cellpadding="5">
     <tr>
+        <tr>
         <th>命令</th>
         <th>参数</th>
         <th>描述</th>
     </tr>
     <tr>
         <td>service</td>
-        <td>restart 服务名称</td>
-        <td>重启指定的服务</td>
-    </tr>
-    <tr>
-        <td>service</td>
-        <td>stop 服务名称</td>
-        <td>关闭指定的服务</td>
-    </tr>
-    <tr>
-        <td>service</td>
-        <td>start 服务名称</td>
+        <td>start &lt;服务名称&gt;</td>
         <td>启动指定的服务</td>
     </tr>
     <tr>
         <td>service</td>
-        <td>-h</td>
-        <td>显示帮助信息</td>
+        <td>stop &lt;服务名称&gt;</td>
+        <td>关闭指定的服务</td>
     </tr>
     <tr>
         <td>service</td>
-        <td>status 服务名称</td>
+        <td>reload &lt;服务名称&gt;</td>
+        <td>重新加载服务的配置文件</td>
+    </tr>
+    <tr>
+        <td>service</td>
+        <td>restart &lt;服务名称&gt;</td>
+        <td>重启指定的服务</td>
+    </tr>
+    <tr>
+        <td>service</td>
+        <td>enable &lt;服务名称&gt;</td>
+        <td>设置服务开机自启</td>
+    </tr>
+    <tr>
+        <td>service</td>
+        <td>disable &lt;服务名称&gt;</td>
+        <td>取消服务开机自启</td>
+    </tr>
+    <tr>
+        <td>service</td>
+        <td>status &lt;服务名称&gt;</td>
         <td>查看指定服务的状态</td>
     </tr>
     <tr>
@@ -162,13 +173,18 @@ sudo update-rc.d <service_name> disable
     </tr>
     <tr>
         <td>service</td>
-        <td>enable 服务名称</td>
-        <td>设置服务开机自启</td>
+        <td>-h</td>
+        <td>显示帮助信息</td>
     </tr>
     <tr>
         <td>service</td>
-        <td>disable 服务名称</td>
-        <td>取消服务开机自启</td>
+        <td>condrestart &lt;服务名称&gt;</td>
+        <td>如果服务正在运行，则重启服务</td>
+    </tr>
+    <tr>
+        <td>service</td>
+        <td>-v 或 --version</td>
+        <td>显示版本信息</td>
     </tr>
 </table>
 
@@ -183,9 +199,17 @@ sudo service <服务名称> start
 ```bash
 sudo service <服务名称> stop
 ```
+重新加载服务配置文件（对于需要即时应用配置更改的服务）：
+```bash
+sudo service <服务名称> reload
+```
 重启服务：
 ```bash
 sudo service <服务名称> restart
+```
+条件重启服务（如果服务正在运行，则重启）：
+```bash
+sudo service <服务名称> condrestart
 ```
 查看服务状态：
 ```bash
@@ -206,6 +230,10 @@ sudo service <服务名称> disable
 显示帮助信息：
 ```bash
 sudo service -h
+```
+显示版本信息：
+```bash
+sudo service --version
 ```
 
 
