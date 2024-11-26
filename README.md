@@ -76,3 +76,6 @@ If you find my notes helpful, please consider giving this repository a star. Eve
    
 18. **在线markdown** - [在线markdown](https://tool.lu/markdown/) 
     - 在线markdown编辑器
+
+18. **在线磁力解析** - [webtor](https://webtor.io/) 
+    - 在线磁力解析工具 
