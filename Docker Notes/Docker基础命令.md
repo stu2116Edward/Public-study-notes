@@ -269,6 +269,11 @@ docker network prune
 ```
 docker builder prune
 ```
+- 清理所有未使用的 Docker 对象，包括镜像、容器、卷和网络（带强制确认）
+```
+docker system prune -af
+```
+
 
 ## Docker网络
 <table>
@@ -298,7 +303,3 @@ docker builder prune
     <td>container模式，同其它容器共享网络，MAC地址和ip一样。</td>
   </tr>
 </table>
-- 清理所有未使用的 Docker 对象，包括镜像、容器、卷和网络（带强制确认）
-```
-docker system prune -af
-```
