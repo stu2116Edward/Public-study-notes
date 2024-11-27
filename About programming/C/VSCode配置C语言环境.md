@@ -225,6 +225,9 @@ tasks.json
 注意在终端运行之前一定要先保存，否则运行的是保存之前代码（可以在File中勾选自动保存）  
 ![vc8](https://github.com/user-attachments/assets/4c55d1ef-50a7-477c-bc11-52c9a349bcbe)  
 
+补充一点：  
+这里可以使用快捷键 `Ctrl+Shift+D` 呼出  
+![屏幕截图 2024-11-27 120401](https://github.com/user-attachments/assets/b1cd82ae-3281-4dc2-8bc6-c3af24db260b)  
 
 当然也依旧可以选择按F5使用小黑框进行运行调试的,但是两个进程是冲突的，只是多了一种选择，是不可以同时用的！比如我正在终端运行代码的时候，再按F5调试代码就会出错  
 
