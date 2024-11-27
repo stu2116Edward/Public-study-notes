@@ -19,6 +19,9 @@ gcc -v -E -x c++ -
 首先在一个你希望的位置建一个文件夹，随意起名就可以（注意`不可以用中文！`），以后的C/C++代码文件都要放在这个文件夹里才可以正常调试  
 然后进入VSCode,点击`Open Folder`或者点击左上角`File -> Open Folder`，然后打开刚刚建的文件夹，选择信任父级文件夹  
 点击这个图标新建一个文件夹，命名为`.vscode`（注意必须是这个名字！）  
+![vc1](https://github.com/user-attachments/assets/03bb30f2-4612-46f5-82e0-1ae407772518)  
+![vc2](https://github.com/user-attachments/assets/cf841f15-3f62-4a5b-ac81-8d266e74066d)  
+
 创建完成后再点击这个图标新建四个文件，文件名分别是:  
 ```
 c_cpp_properties.json
@@ -32,6 +35,8 @@ settings.json
 ```
 tasks.json
 ```
+![vc3](https://github.com/user-attachments/assets/9a1d9e1d-3056-4fad-9347-1f525ff2affb)  
+
 接下来复制粘贴这四个文件的内容:  
 
 ### 首先是c_cpp_properties.json
@@ -197,21 +202,25 @@ tasks.json
 ## 其他事项
 ### 1.中文显示乱码  
 首先点击左下角的齿轮按钮，打开Settings（设置）  
-
+![vc4](https://github.com/user-attachments/assets/52f23938-737c-4cae-a4bc-452dd4ed5d2c)  
 
 打开设置搜索框快捷键：`Ctrl+,`  
 在搜索框中输入`Encoding`,然后如图把Encoding`改成GBK`(原来应该是UTF-8)  
+![vc5](https://github.com/user-attachments/assets/8341cb22-a2ee-49e5-9af7-b2636596c5a1)  
 
 设置完之后编辑有中文的文件就不会显示乱码啦！  
 
 ### 2.在终端中运行
 如果不喜欢每次都弹出一个小黑框的话，可以选择在终端中运行，效果如图  
+![vc6](https://github.com/user-attachments/assets/36564c8c-8b29-43e1-8cbc-b2eae094834b)  
 
 这个设置也很简单，打开设置，搜索`run in terminal`,找到这个选项打勾就可以啦  
+![vc7](https://github.com/user-attachments/assets/ef689ac3-8052-4801-b3d8-539eada3a47c)  
 
 之后就可以点击右上角这个按钮在下面的终端运行/调试，或者按快捷键`Ctrl+Alt+N`运行  
-
 注意在终端运行之前一定要先保存，否则运行的是保存之前代码（可以在File中勾选自动保存）  
+![vc8](https://github.com/user-attachments/assets/4c55d1ef-50a7-477c-bc11-52c9a349bcbe)  
+
 
 当然也依旧可以选择按F5使用小黑框进行运行调试的,但是两个进程是冲突的，只是多了一种选择，是不可以同时用的！比如我正在终端运行代码的时候，再按F5调试代码就会出错  
 
@@ -220,4 +229,4 @@ tasks.json
 
 如果不存在中文的话，右键点击VSCode的图标，选择“属性”  
 然后选择“兼容性”，勾选“以管理员身份运行此程序” ，然后依次点击“应用”，‘确定’即可（部分电脑需要选择这个选项）  
-
+![vc9](https://github.com/user-attachments/assets/b0d4475f-99a8-48e3-bbdc-01e99c9a4bf8)  
