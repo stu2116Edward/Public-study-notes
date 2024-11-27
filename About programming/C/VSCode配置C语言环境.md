@@ -49,6 +49,7 @@ tasks.json
       "includePath": ["${workspaceFolder}/**"],
       "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
       "windowsSdkVersion": "10.0.18362.0",
+
       "compilerPath": "E:\\mingw64\\bin\\g++.exe",
       "cStandard": "c17",
       "cppStandard": "c++17",
@@ -229,7 +230,7 @@ tasks.json
 这里可以使用快捷键 `Ctrl+Shift+D` 呼出  
 ![屏幕截图 2024-11-27 120401](https://github.com/user-attachments/assets/b1cd82ae-3281-4dc2-8bc6-c3af24db260b)  
 如果按F5调试右下角显示 `"launch.json" 中缺少配置“C/C++: g++.exe 生成和调试活动文件”。`  
-那就先使用`gdb`运行然后使用`C/C++`调试  
+![屏幕截图 2024-11-27 180433](https://github.com/user-attachments/assets/a7a505f5-664d-441e-ae27-41b6dd92db80)  
 
 当然也依旧可以选择按F5使用小黑框进行运行调试的,但是两个进程是冲突的，只是多了一种选择，是不可以同时用的！比如我正在终端运行代码的时候，再按F5调试代码就会出错  
 
