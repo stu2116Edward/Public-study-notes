@@ -27,13 +27,13 @@
 
 4. **创建新的环境**：
    ```bash
-   conda create -n env_name python=3.8
+   conda create -n <env_name> python=3.8
    ```
    - 创建一个名为 `env_name` 的新环境，并指定 Python 版本为 3.8。
 
 5. **激活环境**：
    ```bash
-   conda activate env_name
+   conda activate <env_name>
    ```
    - 激活名为 `env_name` 的环境。
 
@@ -45,21 +45,21 @@
 
 7. **删除环境**：
    ```bash
-   conda env remove -n env_name
+   conda env remove -n <env_name>
    ```
    - 删除名为 `env_name` 的环境。
 
 8. **更新环境**：
    ```bash
    conda update --all
-   conda update package_name
+   conda update <package_name>
    ```
    - 更新所有已安装的包。
    - 更新指定的包 `package_name`。
 
 9. **克隆环境**：
    ```bash
-   conda create --name new_env_name --clone env_name
+   conda create --name <new_env_name> --clone <env_name>
    ```
    - 克隆名为 `env_name` 的环境，并创建一个名为 `new_env_name` 的新环境。
 
@@ -67,21 +67,21 @@
 
 10. **搜索包**：
     ```bash
-    conda search package_name
+    conda search <package_name>
     ```
     - 在 Conda 仓库中搜索 `package_name`。
 
 11. **安装包**：
     ```bash
-    conda install package_name
-    conda install package_name=version
+    conda install <package_name>
+    conda install <package_name>=version
     ```
     - 安装 `package_name`。
     - 安装特定版本的 `package_name`。
 
 12. **卸载包**：
     ```bash
-    conda remove package_name
+    conda remove <package_name>
     ```
     - 从当前激活的环境中卸载 `package_name`。
 
@@ -101,8 +101,8 @@
 
 15. **配置 Conda**：
     ```bash
-    conda config --add channels channel_name
-    conda config --remove channels channel_name
+    conda config --add channels <channel_name>
+    conda config --remove channels <channel_name>
     ```
     - 添加一个新的通道 `channel_name` 到 Conda 配置。
     - 从 Conda 配置中移除一个通道 `channel_name`。
