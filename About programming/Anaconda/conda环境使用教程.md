@@ -131,7 +131,7 @@ conda env create -f environment.yml
 
 19. **查找可更新的包**：
 ```bash
-conda outdated
+conda update --all --dry-run
 ```
 - 查找当前环境中可更新的包。
 
@@ -151,21 +151,21 @@ conda search --info <package_name>
 
 22. **设置 Conda 仓库通道**：
 ```bash
-conda config --set channel_priority true
+conda config --set channel_priority <strict|flexible|disabled>
 ```
-- 设置通道优先级，使得 Conda 会优先从已配置的通道中安装包。
+- 这个命令用于设置通道优先级，其中 <strict|flexible|disabled> 是一个占位符，您需要用 strict、flexible 或 disabled 中的一个替换它来设置通道优先级的行为  
 
 ### 高级操作
 
 23. **查看环境变量**：
 ```bash
-conda env config vars
+conda env config vars list
 ```
 - 查看当前环境的环境变量。
 
 24. **查看环境的活动通道**：
 ```bash
-conda env config channels
+conda config --show channels
 ```
 - 查看当前环境的活动通道。
 
