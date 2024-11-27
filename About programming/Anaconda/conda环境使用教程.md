@@ -112,3 +112,81 @@
     conda config --show
     ```
     - 显示当前 Conda 配置的所有设置。
+
+### 环境管理
+
+17. **导出环境**：
+```bash
+conda env export > environment.yml
+```
+- 将当前环境的配置导出到 `environment.yml` 文件中。
+
+18. **导入环境**：
+```bash
+conda env create -f environment.yml
+```
+- 从 `environment.yml` 文件中创建一个新的环境。
+
+### 包管理
+
+19. **查找可更新的包**：
+```bash
+conda outdated
+```
+- 查找当前环境中可更新的包。
+
+20. **清理未使用的包**：
+```bash
+conda clean --all
+```
+- 清理所有未使用的包，包括缓存和不再需要的包。
+
+### 更新和配置
+
+21. **查看 Conda 仓库中的包**：
+```bash
+conda search --info <package_name>
+```
+- 查看 Conda 仓库中 `package_name` 的详细信息。
+
+22. **设置 Conda 仓库通道**：
+```bash
+conda config --set channel_priority true
+```
+- 设置通道优先级，使得 Conda 会优先从已配置的通道中安装包。
+
+### 高级操作
+
+23. **查看环境变量**：
+```bash
+conda env config vars
+```
+- 查看当前环境的环境变量。
+
+24. **查看环境的活动通道**：
+```bash
+conda env config channels
+```
+- 查看当前环境的活动通道。
+
+25. **修复环境**：
+```bash
+conda env repair
+```
+- 修复损坏的环境。
+
+### 备份和导入环境
+
+如你所述，备份和导入环境可以通过 `environment.yml` 文件来实现：
+
+- **备份环境**：
+在激活环境后，运行以下命令来创建一个包含环境配置的 `environment.yml` 文件：
+```bash
+conda env export > environment.yml
+```
+
+- **导入环境**：
+使用以下命令从 `environment.yml` 文件创建一个新环境：
+```bash
+conda env create -f environment.yml
+```
