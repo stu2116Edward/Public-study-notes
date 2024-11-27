@@ -163,21 +163,23 @@ docker save -o <目标文件路径/文件名.tar> <镜像名>:<tag>
 - <目标文件路径> 可以是绝对路径或相对路径。  
 - <镜像名>:<tag> 指定要保存的镜像名称和标签(tag)  
 示例:  
+将镜像保存到home目录下
 ```
 docker save -o ~/打包后的镜像名.tar 镜像名称:tag
 ```
 
 从文件加载镜像：
 ```
-docker load -i <文件路径>
+docker load -i <镜像路径/镜像名.tar>
 ```
 或
 ```
 cat <文件名>.tar | docker load
 ```
-示例：
+示例：  
+从当前目录下加载镜像文件
 ```
-docker load -i ~/打包后的镜像名.tar
+docker load -i ./打包后的镜像名.tar
 ```
 ```
 cat 打包后的镜像名.tar | docker load
