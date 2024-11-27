@@ -40,6 +40,7 @@ tasks.json
 接下来复制粘贴这四个文件的内容:  
 
 ### 首先是c_cpp_properties.json
+注意这里要修改为你的g++.exe文件路径
 ```json
 {
   "configurations": [
@@ -60,6 +61,7 @@ tasks.json
 注意`compilerPath`这一项要把路径改成刚才`g++的安装路径`：找到`mingw64`的安装文件夹`->mingw64->bin->g++.exe` ,然后复制或者手动把`g++.exe`的路径敲上去，格式要跟上面代码段一样  
 
 ### 然后是launch.json
+注意这里要修改为你的gdb.exe文件路径
 ```json
 {
   "version": "0.2.0",
@@ -91,6 +93,7 @@ tasks.json
 注意`miDebuggerPath`这一项也要把路径改成刚才`gdb的安装路径`：找到刚刚的安装文件夹`->mingw64->bin->gdb.exe` ,然后复制或者手动把`gdb.exe`的路径敲上去，格式要跟上面代码段一样  
 
 ### 接下来是settings.json
+这里无需修改直接复制粘贴
 ```json
 {
   "files.associations": {
@@ -160,6 +163,7 @@ tasks.json
 ```
 
 ### 最后是tasks.json
+这里无需修改直接复制粘贴
 ```json
 {
   "version": "2.0.0",
