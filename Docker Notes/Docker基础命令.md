@@ -401,7 +401,7 @@ docker network create [选项] <网络名称>
 
 这将创建一个名为 my-network 的新网络。您可以使用不同的驱动程序创建网络，例如使用 overlay 驱动程序创建一个跨主机的网络：  
 ```bash
-docker network create --driver overlay <my-overlay-network>
+docker network create --driver overlay <我的覆盖网络>
 ```
 删除指定网络:
 ```bash
