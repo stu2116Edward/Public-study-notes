@@ -390,21 +390,41 @@ docker system prune -af
 ```bash
 docker network ls
 ```
+这个命令会列出 Docker 守护进程当前知道的所有的网络
 
 创建新网络:
 ```bash
-docker network create <my-network>
+docker network create [选项] <网络名称>
 ```
+- [选项] 可以包括网络驱动程序（如 --driver bridge）、子网（--subnet）、网关（--gateway）等
+- <网络名称> 是您要创建的网络的名称
+
 这将创建一个名为 my-network 的新网络。您可以使用不同的驱动程序创建网络，例如使用 overlay 驱动程序创建一个跨主机的网络：  
 ```bash
-docker network create --driver <overlay my-overlay-network>
+docker network create --driver overlay <my-overlay-network>
 ```
 删除指定网络:
 ```bash
-docker network rm <my-network>
+docker network rm <网络名称>
 ```
-请注意，在删除网络之前，需要先断开所有连接到该网络的容器
-
+请注意，在删除网络之前，需要先断开所有连接到该网络的容器  
+连接容器到网络:  
+```bash
+docker network connect [选项] <网络名称> <容器名称或ID>
+```
+这个命令会将一个已运行的容器连接到指定的网络  
+从网络断开容器:
+```bash
+docker network disconnect [选项] <网络名称> <容器名称或ID>
+```
+查看网络详情:
+```bash
+docker network inspect <网络名称或ID>
+```
+创建并启动容器时连接到网络:
+```bash
+docker run [选项] --network <网络名称或ID> --name <容器名称> <镜像名称> [命令] [参数]
+```
 
 ### Docker网络模式
 
