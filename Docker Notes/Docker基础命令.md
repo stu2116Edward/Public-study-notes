@@ -58,6 +58,10 @@ docker rm -f <容器名/ID>
 ```
 docker top <容器名/ID>
 ```
+重新加载镜像：
+```
+systemctl daemon-reload && systemctl restart docker
+```
 
 **进入容器内部**：  
 除了使用 docker run -it 来启动一个交互式容器外，您还可以使用 docker exec 命令进入已经运行的容器内部：  
