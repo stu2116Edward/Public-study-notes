@@ -449,6 +449,8 @@ Docker网络服务发现与负载均衡：
 `Docker的网络服务发现与负载均衡功能在Docker Swarm模式下特别有用。Swarm是Docker的一个集群管理工具，它允许将多个Docker主机组合成一个单一的、可伸缩的、高可用的集群。在这个集群中，可以部署和管理服务，而Docker Swarm会负责在集群节点之间分配和调度容器`  
 - 服务发现:  
 服务发现是Swarm的一个核心功能，它允许服务自动找到彼此，而不需要硬编码主机名或IP地址。Swarm使用DNS和VIP（虚拟IP地址）来实现服务发现。每个服务在Swarm中都会被分配一个唯一的名称和VIP，其他服务可以通过这个名称或VIP来访问该服务，而不需要知道底层容器的实际IP地址  
+![fzjh](https://github.com/user-attachments/assets/59bec79e-3548-494a-a017-bcd2f8ebeef7)  
+
 - 负载均衡:  
 当服务有多个副本（即多个容器实例）在Swarm集群中运行时，Docker Swarm会自动处理负载均衡。它使用内置的负载均衡器来将流量分发到不同的容器实例上，从而实现高可用性和扩展性。这个负载均衡器是基于Docker的网络驱动和iptables（Linux内核的包过滤技术）实现的  
 
