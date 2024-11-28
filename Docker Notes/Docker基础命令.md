@@ -19,13 +19,6 @@ docker run [选项] <镜像名/ID>
  - --network：设置容器的网络连接
  - --restart：容器的重启策略（如 no、on-failure、always、unless-stopped）
  - -u: 指定用户
-
-示例:
-```
-docker run -d --name my_container -p 8080:80 nginx --restart=always
-```
-这个命令会在后台运行一个名为 `my_container` 的容器，使用 `nginx 镜像`，并将`容器的80端口`映射到宿`主机的8080端口`。同时，设置容器的重启策略为总是重启 `--restart=always`
-
 - 其他常用选项
  - --env-file：从文件中读取环境变量
  - --add-host：添加自定义的DNS条目
@@ -34,6 +27,28 @@ docker run -d --name my_container -p 8080:80 nginx --restart=always
  - --detach-keys：设置容器分离的键
  - --cpus：限制容器使用的CPU资源
  - --memory：限制容器使用的内存
+
+后台运行容器：
+```
+docker run -d --name <容器名称> <镜像名称>
+```
+
+示例:
+```
+docker run -d --name my_container -p 8080:80 nginx --restart=always
+```
+这个命令会在后台运行一个名为 `my_container` 的容器，使用 `nginx 镜像`，并将`容器的80端口`映射到宿`主机的8080端口`。同时，设置容器的重启策略为总是重启 `--restart=always`
+
+设置容器重启策略：  
+决定了容器在退出或 Docker 服务重启时的行为  
+- 设置容器总是重启：
+```bash
+docker update --restart=always <容器名或容器ID>
+```
+- 取消容器的自动重启：
+```bash
+docker update --restart=no <容器名或容器ID>
+```
 
 #### 仅创建一个新的容器，但不启动它：
 ```
