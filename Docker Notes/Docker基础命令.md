@@ -3,7 +3,7 @@
 ## Docker容器管理  
 
 ### 基本命令
-运行新容器：  
+创建并立即启动一个新容器：  
 ```
 docker run [选项] <镜像名/ID>
 ```
@@ -33,6 +33,12 @@ docker run -d --name my_container -p 8080:80 nginx --restart=always
  - --cap-add：添加容器的Linux能力。
  - --entrypoint：覆盖镜像中设置的入口点。
  - --detach-keys：设置容器分离的键。
+
+
+仅创建一个新的容器，但不启动它：
+```
+docker create --name <容器名> <镜像名>
+```
 
 停止容器：
 ```
@@ -82,6 +88,10 @@ docker export <容器名或ID> > <输出文件名>.tar
 从tar文件导入容器为镜像（注意，这不是一个运行的容器，而是一个静态的镜像）:  
 ```
 cat <文件名>.tar | docker import - <镜像名>:<标签>
+```
+查看容器的详细信息：
+```
+docker inspect <容器名/ID>
 ```
 
 
@@ -159,9 +169,25 @@ docker run -d --name my_container -v /host/path:/container/path:ro nginx
 ```
 docker search <镜像名称>
 ```
-拉取镜像：
+登录私有dockerhub仓库:
+```
+docker login <IP/域名>
+```
+输入账号密码  
+
+拉取镜像：  
 ```
 docker pull <镜像名:tag/ID>
+```
+给镜像打标签:  
+```
+docker tag <原始镜像名>:<tag> <私有仓库地址>/<新镜像名>:<tag>
+```
+如果是latest可以省略tag部分  
+
+推送镜像：
+```
+docker push <IP/域名>/images:<tag>
 ```
 列出本地镜像：
 ```
