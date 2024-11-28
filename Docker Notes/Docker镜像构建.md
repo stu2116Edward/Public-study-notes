@@ -6,6 +6,106 @@
 - [cpp项目Docker镜像构建流程](#cpp项目Docker镜像构建流程)
 - [Go项目Docker镜像构建流程](#Go项目Docker镜像构建流程)
 
+## 什么是Dockerfile
+Dockerfile 是用于构建 Docker 镜像的文本文件。它包含了一系列的指令，用于描述如何构建镜像的步骤和配置  
+通过编写 Dockerfile，您可以定义镜像的基础环境、安装软件包、复制文件、设置环境变量等操作。Dockerfile 提供了一种可重复、可自动化的方式来构建镜像，使得您可以轻松地创建和部署应用程序的容器化版本  
+Dockerfile 的编写非常灵活，您可以根据自己的需求和项目的特点来定义构建镜像的步骤和配置。通过使用 Dockerfile，您可以将整个构建过程以代码的形式进行版本控制，并且可以轻松地在不同的环境中重复构建相同的镜像  
+Dockerfile的基本结构包括四个部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令  
+Docker以从上到下的顺序运行Dockerfile的指令。为了指定基本映像，第一条指令必须是FROM。一个声明以“#”字符开头则被视为注释  
+在Dockerfile中可以使用多种指令，例如RUN、CMD、FROM、EXPOSE、ENV等。这些指令可以用来定义镜像的操作系统、软件安装、环境变量等  
+一旦编写好 Dockerfile，您可以使用 Docker 命令来构建镜像。通过运行 docker build 命令并指定 Dockerfile 的路径，Docker 引擎将根据 Dockerfile 中的指令逐步执行构建过程，生成一个新的镜像  
+总结来说，Dockerfile 是一个用于定义构建 Docker 镜像的文本文件，它提供了一种可重复、可自动化的方式来构建和配置镜像，使得容器化应用程序的构建和部署更加简单和可靠  
+
+## Dockerfile 中常用的指令
+| 指令       | 说明                                                         |
+|-----------|--------------------------------------------------------------|
+| FROM      | 指定基础镜像                                                 |
+| MAINTAINER | 设置维护者信息                                               |
+| RUN       | 在镜像中执行命令                                             |
+| CMD       | 指定容器启动时要执行的命令                                     |
+| ENTRYPOINT | 与 CMD 类似，但不会被 docker run 命令行参数覆盖               |
+| COPY      | 复制文件或目录到镜像中                                       |
+| ADD       | 复制文件或目录到镜像中，支持远程 URL 和解压缩功能             |
+| ENV       | 设置环境变量                                                 |
+| ARG       | 定义构建时的变量，可以通过 --build-arg 参数传递               |
+| WORKDIR   | 设置工作目录                                                |
+| EXPOSE    | 声明容器运行时需要监听的端口                                   |
+| USER      | 指定运行容器时的用户名或 UID                                 |
+| HEALTHCHECK | 定义容器的健康检查命令                                       |
+| VOLUME    | 声明容器中的挂载点                                           |
+| LABEL     | 为镜像添加元数据                                             |
+
+这些指令可以根据需要灵活组合，构建出符合需求的 Docker 镜像。请注意，Dockerfile 中的指令顺序很重要，因为每个指令都会创建一个新的镜像层，而后续的指令将基于前面的镜像层进行操作  
+更详细的指令说明和用法，请参考 Docker 官方文档：https://docs.docker.com/engine/reference/builder/  
+
+
+## docker build命令详解
+docker build 命令用于从 Dockerfile 创建镜像  
+<pre>
+docker build [OPTIONS] PATH | URL | -
+</pre>
+其中， PATH 是 Dockerfile 所在的路径， URL 是 Dockerfile 的 URL， - 表示从标准输入读取 Dockerfile  
+docker build 命令可以使用以下选项：  
+- -t ：指定镜像的名称和标签。
+- -f ：指定 Dockerfile 的路径或 URL。
+- -q ：只显示镜像 ID。
+- -no-cache ：不使用缓存构建镜像。
+- -build-arg ：指定构建镜像时使用的参数。
+- -force-rm ：在构建镜像时删除中间容器。
+- -target ：指定构建镜像的目标阶段。
+
+以下是 docker build 命令的一些示例：  
+<pre>
+# 从当前目录构建镜像
+docker build -t my-image .
+
+# 从指定路径构建镜像
+docker build -t my-image /path/to/Dockerfile
+
+# 从指定 URL 构建镜像
+docker build -t my-image https://github.com/docker/dockerfile-examples/blob/master/nginx.dockerfile
+
+# 只显示镜像 ID
+docker build -t my-image -q .
+
+# 不使用缓存构建镜像
+docker build -t my-image -no-cache .
+
+# 指定构建镜像时使用的参数
+docker build -t my-image -build-arg VERSION=1.0 .
+
+# 在构建镜像时删除中间容器
+docker build -t my-image -force-rm .
+
+# 指定构建镜像的目标阶段
+docker build -t my-image -target build .
+</pre>
+docker build 命令是构建 Docker 镜像的常用命令。它可以用于从 Dockerfile 创建镜像，也可以从指定的路径或 URL 创建镜像  
+
+### 补充说明--target参数
+-target 参数用于指定构建镜像的目标阶段。当 Dockerfile 中定义了多个阶段时，可以使用 -target 参数来选择性地构建特定阶段的镜像  
+在 Dockerfile 中定义多个阶段时，可以使用 AS 关键字为每个阶段命名。例如：  
+<pre>
+FROM base AS build
+RUN apt-get update && apt-get install -y build-essential
+
+FROM base AS test
+RUN apt-get update && apt-get install -y curl
+
+FROM base AS deploy
+COPY --from=build /app /app
+COPY --from=test /test /test
+</pre>
+在上面的示例中，Dockerfile 定义了三个阶段： build 、 test 和 deploy 。每个阶段都有一个特定的操作。 deploy 阶段依赖于 build 和 test 阶段的结果  
+使用 -target 参数，可以选择性地构建特定的阶段。例如，要只构建 build 阶段的镜像，可以执行以下命令：  
+```
+docker build -t my-image --target build .
+```
+这将只构建 build 阶段的镜像，并忽略其他阶段。通过 -target 参数，可以控制构建过程中所涉及的阶段，从而提高构建效率  
+需要注意的是， -target 参数只能选择构建过程中的某个阶段，而不能选择构建过程中的某个指令。因此，指定的目标阶段必须在 Dockerfile 中明确定义  
+-target 参数是一个有用的选项，特别适用于大型项目或复杂的构建流程，可以帮助减少构建时间并提高构建效率  
+
+
 ## [Python项目Docker镜像构建流程](#Python项目Docker镜像构建流程)
 
 1.创建项目结构：  
