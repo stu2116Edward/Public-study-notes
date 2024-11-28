@@ -68,7 +68,7 @@ docker exec -it <容器名/ID> /bin/bash  # 或者 /bin/sh，取决于容器内�
 虽然通常我们更关注镜像的保存和加载，但有时也需要导出和导入容器（例如，为了迁移或备份）：  
 导出容器为tar文件:  
 ```
-docker export <容器名/ID> > <文件名>.tar
+docker export <容器名或ID> > <输出文件名>.tar
 ```
 从tar文件导入容器为镜像（注意，这不是一个运行的容器，而是一个静态的镜像）:  
 ```
@@ -215,6 +215,7 @@ docker save -o <目标文件路径/文件名.tar> <镜像名>:<tag>
 docker load -i <镜像路径/镜像名.tar>
 ```
 总的来说，如果你想要`保存整个镜像，包括它的所有历史和标签`，那么你应该使用 `docker save` 和 `docker load` 命令。而如果你只是想要`保存一个容器的当前状态`，那么你应该使用 `docker export` 和 `docker import` 命令  
+注意：在 docker save 和 docker load 的操作中，你在操作镜像，镜像名称后可以带标签（如果不指定标签，默认为 latest）。而在 docker export 和 docker import 的操作中，你在操作容器（对应的是一个容器的 ID 或名称）和镜像（可以指定新的镜像名称和标签）  
 
 
 ## Docker资源查看  
