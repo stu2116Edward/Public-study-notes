@@ -3,21 +3,22 @@
 ## Docker容器管理  
 
 ### 基本命令
-创建并立即启动一个新容器：  
+#### 创建并立即启动一个新容器：  
 ```
 docker run [选项] <镜像名/ID>
 ```
 - <镜像名/ID>：指定要运行的Docker镜像名称或ID
 - [选项]包括但不限于：
- - -d：后台运行容器
+ - -d: 后台运行容器并返回容器 ID
+ - - -it：交互式运行容器，分配一个伪终端
  - --name：为容器指定一个名称
- - -p：端口映射，格式为宿主机端口:容器端口
- - -e：设置环境变量
- - -v：挂载卷，用于数据持久化或共享
- - --cpus：限制容器使用的CPU资源
- - --memory：限制容器使用的内存
- - --restart：设置容器的重启策略，例如 `--restart=always` 表示容器总是重新启动，`--restart=no` 不要自动重启容器
+ - -p：端口映射，格式为宿(主机端口:容器端口)
+ - -v：挂载卷，用于数据持久化或共享，格式为：(宿主机目录:容器目录)
+ - --rm: 容器停止后自动删除容器
+ - --env 或 -e: 设置环境变量
  - --network：设置容器的网络连接
+ - --restart：容器的重启策略（如 no、on-failure、always、unless-stopped）
+ - -u: 指定用户
 
 示例:
 ```
@@ -26,19 +27,28 @@ docker run -d --name my_container -p 8080:80 nginx --restart=always
 这个命令会在后台运行一个名为 `my_container` 的容器，使用 `nginx 镜像`，并将`容器的80端口`映射到宿`主机的8080端口`。同时，设置容器的重启策略为总是重启 `--restart=always`
 
 - 其他常用选项
- - -it：分配一个伪终端并保持标准输入开放，通常与bash或sh命令一起使用，以便交互式地进入容器内部。
- - --rm：容器退出时自动清理容器文件系统。
- - --env-file：从文件中读取环境变量。
- - --add-host：添加自定义的DNS条目。
- - --cap-add：添加容器的Linux能力。
- - --entrypoint：覆盖镜像中设置的入口点。
- - --detach-keys：设置容器分离的键。
+ - --env-file：从文件中读取环境变量
+ - --add-host：添加自定义的DNS条目
+ - --cap-add：添加容器的Linux能力
+ - --entrypoint：覆盖镜像中设置的入口点
+ - --detach-keys：设置容器分离的键
+ - --cpus：限制容器使用的CPU资源
+ - --memory：限制容器使用的内存
 
-
-仅创建一个新的容器，但不启动它：
+#### 仅创建一个新的容器，但不启动它：
 ```
 docker create --name <容器名> <镜像名>
 ```
+常用参数：
+- --name: 给容器指定一个名称。
+- -p, --publish: 端口映射，格式为 host_port:container_port
+- -v, --volume: 挂载卷，格式为 host_dir:container_dir
+- -e, --env: 设置环境变量
+- --network: 指定容器的网络模式
+- --restart: 容器的重启策略（如 no、on-failure、always、unless-stopped）
+- -u, --user: 指定用户
+- --entrypoint: 覆盖容器的默认入口点
+- --detach: 在后台创建容器
 
 停止容器：
 ```
