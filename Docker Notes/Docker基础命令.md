@@ -385,6 +385,69 @@ docker system prune -af
   </tr>
 </table>
 
+### 管理 Docker 网络
+查看所有的docker网络:
+```bash
+docker network ls
+```
+
+创建新网络:
+```bash
+docker network create <my-network>
+```
+这将创建一个名为 my-network 的新网络。您可以使用不同的驱动程序创建网络，例如使用 overlay 驱动程序创建一个跨主机的网络：  
+```bash
+docker network create --driver <overlay my-overlay-network>
+```
+删除指定网络:
+```bash
+docker network rm <my-network>
+```
+请注意，在删除网络之前，需要先断开所有连接到该网络的容器
+
+
+### Docker网络模式
+
+![dnetwork](https://github.com/user-attachments/assets/6a2dbfef-1270-447b-93bc-2df47325f657)  
+
+bridge模式：--net=bridge 桥接模式（默认设置，自己创建也使用bridge 模式）  
+host模式：--net=host 和宿主即共享网络  
+container模式：--net=container:NAME_or_ID 容器网络连通!(很少用，局限性很大！)  
+none模式：--net=none 不配置网络  
+
+#### 桥接模式（Bridge Network）
+Docker的bridge网络模式是Docker的默认网络模式。当Docker进程启动时，它会在主机上创建一个名为docker0的虚拟网桥。此主机上启动的Docker容器会连接到这个虚拟网桥上。这个虚拟网桥的工作方式类似于物理交换机，使得主机上的所有容器都通过交换机连接在一个二层网络中  
+
+![BN](https://github.com/user-attachments/assets/985dcbe9-f145-447d-9b03-263272452d24)  
+
+在这种模式下，Docker会为每个新创建的容器分配独立的Network Namespace和IP段等，同时文件系统、进程等也是隔离的。容器内部会有一个虚拟网卡，名为eth0，容器之间可以通过这个虚拟网卡和内部的IP地址进行通信。另外，从docker0子网中分配一个IP给容器使用，并设置docker0的IP地址为容器的默认网关  
+
+然而，处于桥接模式的容器和宿主机网络不在同一个网段，容器一般使用172.16.0.xx/24这种网段。因此，容器不能直接和宿主机以外的网络进行通信，而必须要经过NAT转换。同时，容器需要在宿主机上竞争端口，完成端口映射的配置后，从外部到容器内的网络访问tcp流量将会通过DNAT从宿主机端口转发到容器内对应的端口上。此外，容器对于宿主机以外是不可见的，从容器发出的网络请求会通过SNAT从已对接的虚拟网桥（如宿主机的docker0）上统一发出  
+
+#### Host 网络
+Docker的host网络模式是另一种网络模式，与bridge模式不同，它将容器直接融入到主机的网络栈中，使得容器直接使用主机的网络接口和IP地址。在这种模式下，容器不会获得一个独立的Network Namespace，而是和宿主机共用一个Network Namespace。因此，容器内部的服务可以使用宿主机的网络地址和端口，无需进行NAT转换，网络性能较好  
+
+使用host网络模式的一个典型场景是需要容器与宿主机共享网络资源或者容器需要快速访问宿主机网络服务的场景。例如，如果需要在容器内部运行一些网络相关的应用，如网络监控、日志收集等，这些应用需要直接访问宿主机的网络接口和IP地址，此时就可以使用host网络模式  
+
+![Host](https://github.com/user-attachments/assets/d80efa59-27ff-4357-a76b-b1b68659f27b)  
+
+需要注意的是，由于容器与宿主机共用一个网络栈，因此容器的网络隔离性较差，可能存在安全隐患。如果需要在不同主机上运行容器并实现跨主机通信，则不能使用host网络模式  
+
+`总的来说，Docker的host网络模式提供了一种将容器与宿主机网络栈直接融合的方式，使得容器可以直接使用宿主机的网络接口和IP地址，适用于一些需要快速访问宿主机网络服务的场景。但是需要注意的是，该模式下容器的网络隔离性较差，需要谨慎使用`  
+
+#### None 网络
+Docker的none网络模式是Docker提供的一种特殊网络模式，它将容器与宿主机隔离开来，不提供任何网络能力。在这种模式下，容器内部没有网卡、IP地址、路由等信息，只有一个回环网络（loopback）接口。这意味着容器不能访问外部网络，也不能被外部网络访问  
+
+none网络模式通常用于一些特殊场景，比如需要在容器内部运行一些独立的、与网络无关的应用程序，或者需要进行一些网络调试。由于容器与外部网络完全隔离，这种模式可以增加容器的安全性  
+
+#### container 模式
+Docker的container网络模式是指新创建的容器和已经存在的一个容器共享一个Network Namespace，而不是和宿主机共享。这意味着新创建的容器不会创建自己的网卡、配置自己的IP地址，而是和一个已存在的容器共享IP地址、端口范围等网络资源。同时，这两个容器的进程可以通过lo网卡设备通信。然而，这两个容器在其他方面，如文件系统、进程列表等，仍然是隔离的  
+
+![container](https://github.com/user-attachments/assets/e9e46b05-a3af-4e40-8dc5-eb58687ccf1a)  
+
+使用container网络模式的一个典型场景是，当需要多个容器之间共享网络配置时，可以使用该模式。例如，可以使用该模式创建一个nginx容器，并指定其网络模型为container模式，和另一个已经存在的容器共享网络命名空间。这样，nginx容器就可以直接使用另一个容器的IP地址和端口，无需进行额外的网络配置  
+
+
 ## 进阶操作：
 CPU隔离:  
 ```
