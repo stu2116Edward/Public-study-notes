@@ -425,6 +425,33 @@ docker network inspect <网络名称或ID>
 ```bash
 docker run [选项] --network <网络名称或ID> --name <容器名称> <镜像名称> [命令] [参数]
 ```
+指定其他网络选项：
+```bash
+docker network create \  
+  --driver bridge \  
+  --subnet=172.25.0.0/16 \  
+  --gateway=172.25.0.1 \  
+  --ip-range=172.25.50.0/24 \  
+  --aux-address="my-router=172.25.50.10" \  
+  my-custom-network
+```
+这将创建一个名为 my-custom-network 的自定义 bridge 网络，具有指定的子网、网关、IP 地址范围和辅助地址  
+- --driver 或 -d：指定网络驱动程序，如 bridge 或 overlay
+- --subnet：指定网络的子网地址
+- --gateway：指定网络的网关地址
+- --ip-range：指定网络的 IP 地址范围
+- --aux-address：指定网络的辅助地址
+
+![host2](https://github.com/user-attachments/assets/cf5d6f52-b5c9-42c9-a78c-70c0131285d5)  
+
+Docker网络服务发现与负载均衡：
+**Docker Swarm**  
+`Docker的网络服务发现与负载均衡功能在Docker Swarm模式下特别有用。Swarm是Docker的一个集群管理工具，它允许将多个Docker主机组合成一个单一的、可伸缩的、高可用的集群。在这个集群中，可以部署和管理服务，而Docker Swarm会负责在集群节点之间分配和调度容器`  
+- 服务发现:  
+服务发现是Swarm的一个核心功能，它允许服务自动找到彼此，而不需要硬编码主机名或IP地址。Swarm使用DNS和VIP（虚拟IP地址）来实现服务发现。每个服务在Swarm中都会被分配一个唯一的名称和VIP，其他服务可以通过这个名称或VIP来访问该服务，而不需要知道底层容器的实际IP地址  
+- 负载均衡:  
+当服务有多个副本（即多个容器实例）在Swarm集群中运行时，Docker Swarm会自动处理负载均衡。它使用内置的负载均衡器来将流量分发到不同的容器实例上，从而实现高可用性和扩展性。这个负载均衡器是基于Docker的网络驱动和iptables（Linux内核的包过滤技术）实现的  
+
 
 ### Docker网络模式
 
@@ -467,6 +494,8 @@ Docker的container网络模式是指新`创建的容器和已经存在的一个�
 
 使用container网络模式的一个典型场景是，当需要多个容器之间共享网络配置时，可以使用该模式。例如，可以使用该模式创建一个nginx容器，并指定其网络模型为container模式，和另一个已经存在的容器共享网络命名空间。这样，nginx容器就可以直接使用另一个容器的IP地址和端口，无需进行额外的网络配置  
 
+**Docker 网络桥接模式和 Host 模式的区别**  
+在桥接网络模式下，Docker 将为每个容器创建一个独立的网络命名空间，并为容器分配一个|P 地址。而在 Host 网络模式下，容器将直接使用主机的网络栈，与主机共享网络接口和 IP 地址，这意味着容器可以直接访问主机上的所有网络服务，同时也会导致容器与主机网络之间的隔离性降低  
 
 ## 进阶操作：
 CPU隔离:  
