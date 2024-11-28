@@ -64,6 +64,11 @@ docker top <容器名/ID>
 ```
 docker exec -it <容器名/ID> /bin/bash  # 或者 /bin/sh，取决于容器内的shell
 ```
+连接容器：
+```
+docker attach <容器名/ID>
+```
+
 **导出和导入容器**：  
 虽然通常我们更关注镜像的保存和加载，但有时也需要导出和导入容器（例如，为了迁移或备份）：  
 导出容器为tar文件:  
@@ -146,17 +151,25 @@ docker run -d --name my_container -v /host/path:/container/path:ro nginx
 
 
 ## Docker镜像管理  
-删除镜像：  
+查找镜像:
 ```
-docker rmi <镜像名/ID>
+docker search <镜像名称>
 ```
 拉取镜像：
 ```
 docker pull <镜像名:tag/ID>
 ```
+列出本地镜像：
+```
+docker images
+```
 构建镜像：
 ```
 docker build -t <镜像名>:<tag> <上下文路径>
+```
+删除镜像：  
+```
+docker rmi <镜像名/ID>
 ```
 保存镜像为文件：
 ```
@@ -187,9 +200,9 @@ docker load -i ./打包后的镜像名.tar
 ```
 cat 打包后的镜像名.tar | docker load
 ```
-列出本地镜像：
+查看镜像信息：
 ```
-docker images
+docker inspect <registry:latest>
 ```
 
 
@@ -331,3 +344,25 @@ docker system prune -af
     <td>container模式，同其它容器共享网络，MAC地址和ip一样。</td>
   </tr>
 </table>
+
+## 进阶操作：
+CPU隔离:  
+```
+docker run -d --cpuset-cpus=1-20 coml_transcode:v2.0
+```
+指定该容器使用CPU 1-20
+
+日志文件同步:  
+日志同步可以做到容器指定目录下的文件可以和宿主机指定目录下的文件进行实时同步功能。这样可以解决如下几个问题：  
+1.如果启动的容器异常退出之后，重启不起来，导致容器里存在的程序日志信息无法查看；  
+2.如果需要更新程序，只需要将最新版本的程序，上传至宿主机的共享目录下，然后重启容器即可完成程序的迭代更新；  
+3.对于集群部署的容器，可以将宿主机共享文件统一设置再一个目录下，如：data/data1, data/data2, data/data3这样的格式，这样便于查看每个容器所打印的日志信息，不必去连接到每一个容器去查看  
+启动容器时使用如下命令：  
+```
+# 获取宿主机可执行程序运行目录
+root@ubuntu:/home/DockerTranscode/coml_transcode# pwd
+/home/DockerTranscode/coml_transcode
+
+# 启动容器
+ docker run -d --privileged=true -v /home/DockerTranscode/coml_transcode:/home/coml_transcode/ coml_transcode:v5.0
+```
