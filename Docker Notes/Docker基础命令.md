@@ -444,7 +444,7 @@ docker network create \
 
 ![host2](https://github.com/user-attachments/assets/cf5d6f52-b5c9-42c9-a78c-70c0131285d5)  
 
-Docker网络服务发现与负载均衡：
+Docker网络服务发现与负载均衡：  
 **Docker Swarm**  
 `Docker的网络服务发现与负载均衡功能在Docker Swarm模式下特别有用。Swarm是Docker的一个集群管理工具，它允许将多个Docker主机组合成一个单一的、可伸缩的、高可用的集群。在这个集群中，可以部署和管理服务，而Docker Swarm会负责在集群节点之间分配和调度容器`  
 - 服务发现:  
