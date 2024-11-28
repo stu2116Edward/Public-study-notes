@@ -431,7 +431,7 @@ docker run [选项] --network <网络名称或ID> --name <容器名称> <镜像�
 ![dnetwork](https://github.com/user-attachments/assets/6a2dbfef-1270-447b-93bc-2df47325f657)  
 
 bridge模式：--net=bridge 桥接模式（默认设置，自己创建也使用bridge 模式）  
-host模式：--net=host 和宿主即共享网络  
+host模式：--net=host 和宿主机共享网络  
 container模式：--net=container:NAME_or_ID 容器网络连通!(很少用，局限性很大！)  
 none模式：--net=none 不配置网络  
 
