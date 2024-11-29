@@ -78,4 +78,7 @@ If you find my notes helpful, please consider giving this repository a star. Eve
     - 在线markdown编辑器
 
 19. **在线磁力解析** - [webtor](https://webtor.io/) 
-    - 在线磁力解析工具 
+    - 在线磁力解析工具
+
+20. **在线Json格式解析** - [Json.cn](https://www.json.cn/) 
+    - 在线Json格式校验
