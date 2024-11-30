@@ -21,7 +21,7 @@ python setup.py install
 windows系统中只有火狐浏览器可以直接从浏览器里面获取cookie  
 要登陆一下对应的视频网站如果能够看到最高的分辨率就下载最高分辨率的  
 
-方法一(使用火狐浏览器下载)：
+## 方法一(使用火狐浏览器下载)：
 ```bash
 yt-dlp --cookies-from-browser firefox <video url>
 ```
@@ -33,7 +33,7 @@ yt-dlp "你的视频下载链接" -f "ba+bv"
 ```bash
 yt-dlp --cookies-from-browser firefox https://www.bilibili.com/video/BV1A2DVY2EC5?t=330.2
 ```
-使用浏览器Cookie下载：  
+## 使用浏览器Cookie下载：  
 1.Chrome浏览器中安装`get cookie locally`扩展  
 2.执行下面的命令：
 ```bash
@@ -44,7 +44,8 @@ yt-dlp --cookies <你的cookies.txt文件路径> <你视频的url>
 yt-dlp --cookies cookies.txt https://www.bilibili.com/video/BV1A2DVY2EC5?t=323.4
 ```
 
-yt-dlp 下载 YouTube 视频的命令  
+
+## yt-dlp 下载 YouTube 视频的命令  
 基本下载命令  
 ```bash
 yt-dlp -f 'bestvideo+bestaudio' "https://www.youtube.com/watch?v=VIDEO_ID" -o '%(title)s.%(ext)s'
@@ -79,6 +80,7 @@ yt-dlp --write-thumbnail --skip-download "https://www.youtube.com/watch?v=VIDEO_
 yt-dlp --write-thumbnail -f 'bestvideo+bestaudio' "https://www.youtube.com/watch?v=VIDEO_ID" -o '%(title)s.%(ext)s'
 ```
 
+## 下载哔哩哔哩 (Bilibili) 视频
 下载哔哩哔哩 (Bilibili) 视频时，如果遇到需要登录时候，需要注意的事情  
 需要提供登录状态的 cookies。以下是具体步骤：  
 
@@ -103,7 +105,7 @@ yt-dlp --cookies cookies.txt --list-formats "https://www.bilibili.com/video/BV1o
 yt-dlp --cookies cookies.txt -f 'bv*[height=1080]+ba' "https://www.bilibili.com/video/BV1ocxveJE2H/?vd_source=6278f29e0b4b9859224ba32ab49ee184" -o '%(title)s.%(ext)s'
 ```
 
-其他注意事项:  
+## 其他注意事项:  
 ● 确保 cookies 文件的路径正确，并且文件格式为 Netscape 格式  
 ● 确保你的账号具有相应的权限，如果视频需要付费会员，请确保你的账号是会员  
 ● cookies 文件有可能会过期，如果下载失败，请重新导出新的 cookies 文件  
