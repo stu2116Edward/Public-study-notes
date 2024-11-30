@@ -41,7 +41,7 @@ yt-dlp 下载 YouTube 视频的命令
 yt-dlp -f 'bestvideo+bestaudio' "https://www.youtube.com/watch?v=VIDEO_ID" -o '%(title)s.%(ext)s'
 ```
 - -f 'bestvideo+bestaudio'：选择最佳视频和最佳音频格式
-- "https://www.youtube.com/watch?v=VIDEO_ID"：目标视频的 URL
+- `https://www.youtube.com/watch?v=VIDEO_ID`：目标视频的 URL
 - -o '%(title)s.%(ext)s'：输出文件的命名格式，%(title)s 表示视频标题，%(ext)s 表示视频格式
 
 视频输出为mp4
