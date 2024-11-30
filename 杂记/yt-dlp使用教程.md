@@ -74,7 +74,7 @@ yt-dlp --write-thumbnail -f 'bestvideo+bestaudio' "https://www.youtube.com/watch
 需要提供登录状态的 cookies。以下是具体步骤：  
 
 - 方法一：使用浏览器扩展导出 Netscape 格式的 cookies  
-1. 安装Cookie-Editor扩展（例如 edge 浏览器）  
+1. 安装`Cookie-Editor`扩展（例如 edge 浏览器）Chrome浏览器中下载`get cookie locally`扩展  
 1. 打开 Bilibili 并登录  
 2. 使用 Cookie-Editor导出 cookies，选择“导出为文本（Netscape 格式）”，保存为 cookies.txt 文件  
 
