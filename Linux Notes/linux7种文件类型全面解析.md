@@ -44,7 +44,7 @@
 ll anaconda-ks.cfg                       // 查看第一个字符确定文件类型
 -rw-------. 1 root root 2460 6月 1 23:37 anaconda-ks.cfg
 ```
-在这个示例中，`-`表示`anaconda-ks.cfg`是一个普通文件。
+在这个示例中，`-rw-------`从左往右第一个`-`表示`anaconda-ks.cfg`是一个普通文件。
 ```bash
 ls -ld /etc
 drwxr-xr-x. 81 root root 4096 Jan 29 03:25 /etc
