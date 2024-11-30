@@ -39,7 +39,10 @@ yt-dlp --cookies-from-browser firefox https://www.bilibili.com/video/BV1A2DVY2EC
 ```bash
 yt-dlp --cookies <你的cookies.txt文件路径> <你视频的url>
 ```
-
+示例：
+```bash
+yt-dlp --cookies cookies.txt https://www.bilibili.com/video/BV1A2DVY2EC5?t=323.4
+```
 
 yt-dlp 下载 YouTube 视频的命令  
 基本下载命令  
