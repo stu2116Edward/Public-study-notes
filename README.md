@@ -82,3 +82,9 @@ If you find my notes helpful, please consider giving this repository a star. Eve
 
 20. **在线Json格式解析** - [Json.cn](https://www.json.cn/) 
     - 在线Json格式校验
+
+21. **在线源站ip扫描** - [Censys](https://search.censys.io/) 
+    - 在线源站ip扫描
+   
+22. **在线域名解析查询** - [nslookup](https://uutool.cn/nslookup/) 
+    - 在线nslookup域名解析查询工具
