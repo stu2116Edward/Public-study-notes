@@ -22,7 +22,7 @@ sudo cp docker/* /usr/bin/
 ```
 ### 步骤四：将docker注册成系统服务
 ```
-vim /etc/systemd/system/docker.service
+sudo vim /etc/systemd/system/docker.service
 ```
 然后在文件中添加以下内容，退出并保存
 ```
@@ -50,8 +50,10 @@ WantedBy=multi-user.target
 ```
 ### 步骤五：给文件增加可执行权限
 ```
-chmod +x /etc/systemd/system/docker.service
-systemctl daemon-reload 
+sudo chmod +x /etc/systemd/system/docker.service
+```
+```
+sudo systemctl daemon-reload
 ```
 ### 步骤六：设置开机自启动
 ```
