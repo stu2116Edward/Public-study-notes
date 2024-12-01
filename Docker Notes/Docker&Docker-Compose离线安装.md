@@ -64,13 +64,15 @@ systemctl start docker
 systemctl enable docker.service
 ```
 ### 步骤八：测试docker是否启动
-```
-docker run hello-world
-```
-或查看docker运行状态
+查看docker运行状态
 ```
 systemctl status docker
 ```
+或尝试运行docker容器
+```
+docker run hello-world
+```
+
 
 ## 卸载Docker
 ### 步骤一：停止docker
