@@ -4,9 +4,9 @@
 下载地址：https://code.visualstudio.com/  
 VSCode推荐设置：  
 使用快捷键`Ctrl + ,`搜索：  
-`Mouse Wheel Zoom` : 按住Ctrl键并滚动鼠标滚轮对编辑器字体大小进行缩放
-`Run In Terminal` : 是否在集成终端中运行代码
-`Encoding` : 在读取和写入文件时使用的默认字符编码(默认UTF-8中文使用GBK)
+`Mouse Wheel Zoom` : 按住Ctrl键并滚动鼠标滚轮对编辑器字体大小进行缩放  
+`Run In Terminal` : 是否在集成终端中运行代码  
+`Encoding` : 在读取和写入文件时使用的默认字符编码(默认UTF-8中文使用GBK)  
 
 ## 安装MinGW
 下载地址：https://github.com/niXman/mingw-builds-binaries/releases  
