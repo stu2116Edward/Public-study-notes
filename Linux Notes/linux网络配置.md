@@ -333,7 +333,7 @@ sudo service network-manager restart
 ## 不同Linux发行版网络配置文件路径和重启网络服务命令的详细列表：  
 | Linux发行版             | 网络配置文件路径                                           | 重启网络服务命令                                           |
 |----------------------|-----------------------------------------------------|------------------------------------------------------|
-| Ubuntu               | `/etc/network/interfaces`                                 | `sudo systemctl restart networking` 或 `sudo /etc/init.d/networking restart` |
+| Ubuntu               | `/etc/netplan/`                                 | `sudo systemctl restart networking` 或 `sudo /etc/init.d/networking restart` |
 | Debian               | `/etc/network/interfaces`                                 | `sudo systemctl restart networking` 或 `sudo /etc/init.d/networking restart` |
 | Fedora               | `/etc/sysconfig/network-scripts/ifcfg-<网卡名称>`              | `sudo systemctl restart network`                             |
 | CentOS               | `/etc/sysconfig/network-scripts/ifcfg-<网卡名称>`              | 对于CentOS 6及以下版本，使用 `service network restart`；对于CentOS 7及以上版本，使用 `sudo systemctl restart NetworkManager` |
