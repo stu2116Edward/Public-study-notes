@@ -44,456 +44,111 @@ wget [参数] [URL地址]
 ### 命令行选项参数表格
 
 #### 启动参数
-<table border="1">
-  <tr>
-    <th>短格式</th>
-    <th>长格式</th>
-    <th>说明</th>
-  </tr>
-  <tr>
-    <td>-V</td>
-    <td>--version</td>
-    <td>显示wget的版本后退出</td>
-  </tr>
-  <tr>
-    <td>-h</td>
-    <td>--help</td>
-    <td>打印语法帮助</td>
-  </tr>
-  <tr>
-    <td>-b</td>
-    <td>--background</td>
-    <td>启动后转入后台执行</td>
-  </tr>
-  <tr>
-    <td>-e</td>
-    <td>--execute=COMMAND</td>
-    <td>执行`.wgetrc’格式的命令，wgetrc格式参见/etc/wgetrc或~/.wgetrc</td>
-  </tr>
-</table>
+| 短格式 | 长格式         | 说明                             |
+|--------|---------------|----------------------------------|
+| -V     | --version     | 显示wget的版本后退出               |
+| -h     | --help        | 打印语法帮助                       |
+| -b     | --background  | 启动后转入后台执行                 |
+| -e     | --execute=COMMAND | 执行`.wgetrc’格式的命令，wgetrc格式参见/etc/wgetrc或~/.wgetrc |
 
 #### 记录和输入文件参数
-<table border="1">
-  <tr>
-    <th>短格式</th>
-    <th>长格式</th>
-    <th>说明</th>
-  </tr>
-  <tr>
-    <td>-o</td>
-    <td>--output-file=FILE</td>
-    <td>把记录写到FILE文件中</td>
-  </tr>
-  <tr>
-    <td>-a</td>
-    <td>--append-output=FILE</td>
-    <td>把记录追加到FILE文件中</td>
-  </tr>
-  <tr>
-    <td>-d</td>
-    <td>--debug</td>
-    <td>打印调试输出</td>
-  </tr>
-  <tr>
-    <td>-q</td>
-    <td>--quiet</td>
-    <td>安静模式（没有输出）</td>
-  </tr>
-  <tr>
-    <td>-v</td>
-    <td>--verbose</td>
-    <td>冗长模式（这是缺省设置）</td>
-  </tr>
-  <tr>
-    <td>-nv</td>
-    <td>--non-verbose</td>
-    <td>关掉冗长模式，但不是安静模式</td>
-  </tr>
-  <tr>
-    <td>-i</td>
-    <td>--input-file=FILE</td>
-    <td>下载在FILE文件中出现的URLs</td>
-  </tr>
-  <tr>
-    <td>-F</td>
-    <td>--force-html</td>
-    <td>把输入文件当作HTML格式文件对待</td>
-  </tr>
-  <tr>
-    <td>-B</td>
-    <td>--base=URL</td>
-    <td>将URL作为在-F -i参数指定的文件中出现的相对链接的前缀</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--sslcertfile=FILE</td>
-    <td>可选客户端证书</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--sslcertkey=KEYFILE</td>
-    <td>可选客户端证书的KEYFILE</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--egd-file=FILE</td>
-    <td>指定EGD socket的文件名</td>
-  </tr>
-</table>
+| 短格式 | 长格式                     | 说明                             |
+|--------|---------------------------|----------------------------------|
+| -o     | --output-file=FILE         | 把记录写到FILE文件中               |
+| -a     | --append-output=FILE       | 把记录追加到FILE文件中             |
+| -d     | --debug                   | 打印调试输出                       |
+| -q     | --quiet                   | 安静模式（没有输出）                 |
+| -v     | --verbose                 | 冗长模式（这是缺省设置）             |
+| -nv    | --non-verbose             | 关掉冗长模式，但不是安静模式         |
+| -i     | --input-file=FILE         | 下载在FILE文件中出现的URLs           |
+| -F     | --force-html              | 把输入文件当作HTML格式文件对待       |
+| -B     | --base=URL                | 将URL作为在-F -i参数指定的文件中出现的相对链接的前缀 |
+|        | --sslcertfile=FILE        | 可选客户端证书                       |
+|        | --sslcertkey=KEYFILE      | 可选客户端证书的KEYFILE             |
+|        | --egd-file=FILE           | 指定EGD socket的文件名               |
 
 #### 下载参数
-<table border="1">
-  <tr>
-    <th>短格式</th>
-    <th>长格式</th>
-    <th>说明</th>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--bind-address=ADDRESS</td>
-    <td>指定本地使用地址（主机名或IP，当本地有多个IP或名字时使用）</td>
-  </tr>
-  <tr>
-    <td>-t</td>
-    <td>--tries=NUMBER</td>
-    <td>设定最大尝试链接次数（0表示无限制）</td>
-  </tr>
-  <tr>
-    <td>-O</td>
-    <td>--output-document=FILE</td>
-    <td>把文档写到FILE文件中</td>
-  </tr>
-  <tr>
-    <td>-nc</td>
-    <td>--no-clobber</td>
-    <td>不要覆盖存在的文件或使用.#前缀</td>
-  </tr>
-  <tr>
-    <td>-c</td>
-    <td>--continue</td>
-    <td>接着下载没下载完的文件</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--progress=TYPE</td>
-    <td>设定进程条标记</td>
-  </tr>
-  <tr>
-    <td>-N</td>
-    <td>--timestamping</td>
-    <td>不要重新下载文件除非比本地文件新</td>
-  </tr>
-  <tr>
-    <td>-S</td>
-    <td>--server-response</td>
-    <td>打印服务器的回应</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--spider</td>
-    <td>不下载任何东西</td>
-  </tr>
-  <tr>
-    <td>-T</td>
-    <td>--timeout=SECONDS</td>
-    <td>设定响应超时的秒数</td>
-  </tr>
-  <tr>
-    <td>-w</td>
-    <td>--wait=SECONDS</td>
-    <td>两次尝试之间间隔SECONDS秒</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--waitretry=SECONDS</td>
-    <td>在重新链接之间等待1…SECONDS秒</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--random-wait</td>
-    <td>在下载之间等待0…2*WAIT秒</td>
-  </tr>
-  <tr>
-    <td>-Y</td>
-    <td>--proxy=on/off</td>
-    <td>打开或关闭代理</td>
-  </tr>
-  <tr>
-    <td>-Q</td>
-    <td>--quota=NUMBER</td>
-    <td>设置下载的容量限制</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--limit-rate=RATE</td>
-    <td>限定下载速率</td>
-  </tr>
-</table>
-
+| 短格式 | 长格式                     | 说明                                                         |
+|--------|---------------------------|--------------------------------------------------------------|
+|        | --bind-address=ADDRESS     | 指定本地使用地址（主机名或IP，当本地有多个IP或名字时使用）       |
+| -t     | --tries=NUMBER            | 设定最大尝试链接次数（0表示无限制）                             |
+| -O     | --output-document=FILE     | 把文档写到FILE文件中                                         |
+| -nc    | --no-clobber              | 不要覆盖存在的文件或使用.#前缀                                 |
+| -c     | --continue                | 接着下载没下载完的文件                                       |
+|        | --progress=TYPE           | 设定进程条标记                                               |
+| -N     | --timestamping            | 不要重新下载文件除非比本地文件新                                |
+| -S     | --server-response          | 打印服务器的回应                                              |
+|        | --spider                  | 不下载任何东西                                               |
+| -T     | --timeout=SECONDS         | 设定响应超时的秒数                                           |
+| -w     | --wait=SECONDS            | 两次尝试之间间隔SECONDS秒                                     |
+|        | --waitretry=SECONDS       | 在重新链接之间等待1…SECONDS秒                                 |
+|        | --random-wait             | 在下载之间等待0…2*WAIT秒                                     |
+| -Y     | --proxy=on/off            | 打开或关闭代理                                               |
+| -Q     | --quota=NUMBER            | 设置下载的容量限制                                            |
+|        | --limit-rate=RATE         | 限定下载速率                                                 |
 #### 目录参数
-<table border="1">
-  <tr>
-    <th>短格式</th>
-    <th>长格式</th>
-    <th>说明</th>
-  </tr>
-  <tr>
-    <td>-nd</td>
-    <td>--no-directories</td>
-    <td>不创建目录</td>
-  </tr>
-  <tr>
-    <td>-x</td>
-    <td>--force-directories</td>
-    <td>强制创建目录</td>
-  </tr>
-  <tr>
-    <td>-nH</td>
-    <td>--no-host-directories</td>
-    <td>不创建主机目录</td>
-  </tr>
-  <tr>
-    <td>-P</td>
-    <td>--directory-prefix=PREFIX</td>
-    <td>将文件保存到目录 PREFIX/…</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--cut-dirs=NUMBER</td>
-    <td>忽略NUMBER层远程目录</td>
-  </tr>
-</table>
+| 短格式 | 长格式                     | 说明               |
+|--------|---------------------------|--------------------|
+| -nd    | --no-directories          | 不创建目录         |
+| -x     | --force-directories       | 强制创建目录         |
+| -nH    | --no-host-directories     | 不创建主机目录       |
+| -P     | --directory-prefix=PREFIX | 将文件保存到目录 PREFIX/… |
+|        | --cut-dirs=NUMBER        | 忽略NUMBER层远程目录   |
 
 #### HTTP 选项参数
-<table border="1">
-  <tr>
-    <th>短格式</th>
-    <th>长格式</th>
-    <th>说明</th>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--http-user=USER</td>
-    <td>设定HTTP用户名为USER</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--http-passwd=PASS</td>
-    <td>设定HTTP密码为PASS</td>
-  </tr>
-  <tr>
-    <td>-C</td>
-    <td>--cache=on/off</td>
-    <td>允许/不允许服务器端的数据缓存（一般情况下允许）</td>
-  </tr>
-  <tr>
-    <td>-E</td>
-    <td>--html-extension</td>
-    <td>将所有text/html文档以.html扩展名保存</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--ignore-length</td>
-    <td>忽略`Content-Length’头域</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--header=STRING</td>
-    <td>在headers中插入字符串STRING</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--proxy-user=USER</td>
-    <td>设定代理的用户名为USER</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--proxy-passwd=PASS</td>
-    <td>设定代理的密码为PASS</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--referer=URL</td>
-    <td>在HTTP请求中包含`Referer: URL’头</td>
-  </tr>
-  <tr>
-    <td>-s</td>
-    <td>--save-headers</td>
-    <td>保存HTTP头到文件</td>
-  </tr>
-  <tr>
-    <td>-U</td>
-    <td>--user-agent=AGENT</td>
-    <td>设定代理的名称为AGENT而不是Wget/VERSION</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--no-http-keep-alive</td>
-    <td>关闭HTTP活动链接（永远链接）</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--cookies=off</td>
-    <td>不使用cookies</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--load-cookies=FILE</td>
-    <td>在开始会话前从文件FILE中加载cookie</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--save-cookies=FILE</td>
-    <td>在会话结束后将cookies保存到FILE文件中</td>
-  </tr>
-</table>
+| 短格式 | 长格式                     | 说明                                       |
+|--------|---------------------------|--------------------------------------------|
+|        | --http-user=USER          | 设定HTTP用户名为USER                         |
+|        | --http-passwd=PASS        | 设定HTTP密码为PASS                         |
+| -C     | --cache=on/off           | 允许/不允许服务器端的数据缓存（一般情况下允许） |
+| -E     | --html-extension         | 将所有text/html文档以.html扩展名保存         |
+|        | --ignore-length           | 忽略`Content-Length’头域                     |
+|        | --header=STRING          | 在headers中插入字符串STRING                  |
+|        | --proxy-user=USER         | 设定代理的用户名为USER                      |
+|        | --proxy-passwd=PASS       | 设定代理的密码为PASS                        |
+|        | --referer=URL            | 在HTTP请求中包含`Referer: URL’头              |
+| -s     | --save-headers           | 保存HTTP头到文件                            |
+| -U     | --user-agent=AGENT        | 设定代理的名称为AGENT而不是Wget/VERSION       |
+|        | --no-http-keep-alive     | 关闭HTTP活动链接（永远链接）                   |
+|        | --cookies=off            | 不使用cookies                               |
+|        | --load-cookies=FILE       | 在开始会话前从文件FILE中加载cookie           |
+|        | --save-cookies=FILE       | 在会话结束后将cookies保存到FILE文件中         |
 
 #### FTP 选项参数
-<table border="1">
-  <tr>
-    <th>短格式</th>
-    <th>长格式</th>
-    <th>说明</th>
-  </tr>
-  <tr>
-    <td>-nr</td>
-    <td>--dont-remove-listing</td>
-    <td>不移走.listing文件</td>
-  </tr>
-  <tr>
-    <td>-g</td>
-    <td>--glob=on/off</td>
-    <td>打开或关闭文件名的globbing机制</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--passive-ftp</td>
-    <td>使用被动传输模式（缺省值）</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--active-ftp</td>
-    <td>使用主动传输模式</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--retr-symlinks</td>
-    <td>在递归的时候，将链接指向文件（而不是目录）</td>
-  </tr>
-</table>
+| 短格式 | 长格式               | 说明                         |
+|--------|---------------------|------------------------------|
+| -nr    | --dont-remove-listing | 不移走.listing文件           |
+| -g     | --glob=on/off        | 打开或关闭文件名的globbing机制 |
+|        | --passive-ftp        | 使用被动传输模式（缺省值）   |
+|        | --active-ftp         | 使用主动传输模式             |
+|        | --retr-symlinks       | 在递归的时候，将链接指向文件（而不是目录） |
 
 #### 递归下载参数
-<table border="1">
-  <tr>
-    <th>短格式</th>
-    <th>长格式</th>
-    <th>说明</th>
-  </tr>
-  <tr>
-    <td>-r</td>
-    <td>--recursive</td>
-    <td>递归下载——慎用!</td>
-  </tr>
-  <tr>
-    <td>-l</td>
-    <td>--level=NUMBER</td>
-    <td>最大递归深度 (inf 或 0 代表无穷)</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--delete-after</td>
-    <td>在下载完毕后局部删除文件</td>
-  </tr>
-  <tr>
-    <td>-k</td>
-    <td>--convert-links</td>
-    <td>转换非相对链接为相对链接</td>
-  </tr>
-  <tr>
-    <td>-K</td>
-    <td>--backup-converted</td>
-    <td>在转换文件X之前，将之备份为 X.orig</td>
-  </tr>
-  <tr>
-    <td>-m</td>
-    <td>--mirror</td>
-    <td>等价于 -r -N -l inf -nr</td>
-  </tr>
-  <tr>
-    <td>-p</td>
-    <td>--page-requisites</td>
-    <td>下载显示HTML文件的所有图片</td>
-  </tr>
-</table>
+| 短格式 | 长格式               | 说明                             |
+|--------|---------------------|---------------------------------|
+| -r     | --recursive          | 递归下载——慎用!                   |
+| -l     | --level=NUMBER       | 最大递归深度 (inf 或 0 代表无穷)   |
+|        | --delete-after       | 在下载完毕后局部删除文件           |
+| -k     | --convert-links      | 转换非相对链接为相对链接           |
+| -K     | --backup-converted   | 在转换文件X之前，将之备份为 X.orig |
+| -m     | --mirror            | 等价于 -r -N -l inf -nr           |
+| -p     | --page-requisites    | 下载显示HTML文件的所有图片         |
 
 #### 递归下载中的包含和不包含(accept/reject)：
-<table border="1">
-  <tr>
-    <th>短格式</th>
-    <th>长格式</th>
-    <th>说明</th>
-  </tr>
-  <tr>
-    <td>-A</td>
-    <td>--accept=LIST</td>
-    <td>分号分隔的被接受扩展名的列表</td>
-  </tr>
-  <tr>
-    <td>-R</td>
-    <td>--reject=LIST</td>
-    <td>分号分隔的不被接受的扩展名的列表</td>
-  </tr>
-  <tr>
-    <td>-D</td>
-    <td>--domains=LIST</td>
-    <td>分号分隔的被接受域的列表</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--exclude-domains=LIST</td>
-    <td>分号分隔的不被接受的域的列表</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--follow-ftp</td>
-    <td>跟踪HTML文档中的FTP链接</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>--follow-tags=LIST</td>
-    <td>分号分隔的被跟踪的HTML标签的列表</td>
-  </tr>
-  <tr>
-    <td>-G</td>
-    <td>--ignore-tags=LIST</td>
-    <td>分号分隔的被忽略的HTML标签的列表</td>
-  </tr>
-  <tr>
-    <td>-H</td>
-    <td>--span-hosts</td>
-    <td>当递归时转到外部主机</td>
-  </tr>
-  <tr>
-    <td>-L</td>
-    <td>--relative</td>
-    <td>仅仅跟踪相对链接</td>
-  </tr>
-  <tr>
-    <td>-I</td>
-    <td>--include-directories=LIST</td>
-    <td>允许目录的列表</td>
-  </tr>
-  <tr>
-    <td>-X</td>
-    <td>--exclude-directories=LIST</td>
-    <td>不被包含目录的列表</td>
-  </tr>
-  <tr>
-    <td>-np</td>
-    <td>--no-parent</td>
-    <td>不要追溯到父目录</td>
-  </tr>
-</table>
+| 短格式 | 长格式                     | 说明                               |
+|--------|---------------------------|------------------------------------|
+| -A     | --accept=LIST             | 分号分隔的被接受扩展名的列表           |
+| -R     | --reject=LIST             | 分号分隔的不被接受的扩展名的列表       |
+| -D     | --domains=LIST            | 分号分隔的被接受域的列表               |
+|        | --exclude-domains=LIST     | 分号分隔的不被接受的域的列表           |
+|        | --follow-ftp               | 跟踪HTML文档中的FTP链接               |
+|        | --follow-tags=LIST         | 分号分隔的被跟踪的HTML标签的列表       |
+| -G     | --ignore-tags=LIST         | 分号分隔的被忽略的HTML标签的列表       |
+| -H     | --span-hosts              | 当递归时转到外部主机                   |
+| -L     | --relative                | 仅仅跟踪相对链接                       |
+| -I     | --include-directories=LIST | 允许目录的列表                         |
+| -X     | --exclude-directories=LIST | 不被包含目录的列表                     |
+| -np    | --no-parent               | 不要追溯到父目录                       |
 
 ```bash
 wget -S –spider url  ## 不下载只显示过程
@@ -695,498 +350,106 @@ wget --ftp-user=USERNAME --ftp-password=PASSWORD ftp://example.com/ftp-url
 ## 四、curl 的常见用法
 
 ### 命令行选项参数表格
-<table border="1">
-  <tr>
-    <th>短格式</th>
-    <th>长格式</th>
-    <th>说明</th>
-  </tr>
-  <tr>
-    <td>-a</td>
-    <td>--append</td>
-    <td>上传文件时，附加到目标文件</td>
-  </tr>
-  <tr>
-    <td>-A</td>
-    <td>--user-agent &lt;string&gt;</td>
-    <td>设置用户代理发送给服务器</td>
-  </tr>
-  <tr>
-    <td>-anyauth</td>
-    <td>&nbsp;</td>
-    <td>可以使用“任何”身份验证方法</td>
-  </tr>
-  <tr>
-    <td>-b</td>
-    <td>--cookie &lt;name=string/file&gt;</td>
-    <td>cookie字符串或文件读取位置</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--basic</td>
-    <td>使用HTTP基本验证</td>
-  </tr>
-  <tr>
-    <td>-B</td>
-    <td>--use-ascii</td>
-    <td>使用ASCII /文本传输</td>
-  </tr>
-  <tr>
-    <td>-c</td>
-    <td>--cookie-jar &lt;file&gt;</td>
-    <td>操作结束后把cookie写入到这个文件中</td>
-  </tr>
-  <tr>
-    <td>-C</td>
-    <td>--continue-at &lt;offset&gt;</td>
-    <td>断点续转</td>
-  </tr>
-  <tr>
-    <td>-d</td>
-    <td>--data &lt;data&gt;</td>
-    <td>HTTP POST方式传送数据</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--data-ascii &lt;data&gt;</td>
-    <td>以ascii的方式post数据</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--data-binary &lt;data&gt;</td>
-    <td>以二进制的方式post数据</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--negotiate</td>
-    <td>使用HTTP身份验证</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--digest</td>
-    <td>使用数字身份验证</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--disable-eprt</td>
-    <td>禁止使用EPRT或LPRT</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--disable-epsv</td>
-    <td>禁止使用EPSV</td>
-  </tr>
-  <tr>
-    <td>-D</td>
-    <td>--dump-header &lt;file&gt;</td>
-    <td>把header信息写入到该文件中</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--egd-file &lt;file&gt;</td>
-    <td>为随机数据(SSL)设置EGD socket路径</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--tcp-nodelay</td>
-    <td>使用TCP_NODELAY选项</td>
-  </tr>
-  <tr>
-    <td>-e</td>
-    <td>--referer</td>
-    <td>来源网址</td>
-  </tr>
-  <tr>
-    <td>-E</td>
-    <td>--cert &lt;cert[:passwd]&gt;</td>
-    <td>客户端证书文件和密码 (SSL)</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--cert-type &lt;type&gt;</td>
-    <td>证书文件类型 (DER/PEM/ENG) (SSL)</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--key &lt;key&gt;</td>
-    <td>私钥文件名 (SSL)</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--key-type &lt;type&gt;</td>
-    <td>私钥文件类型 (DER/PEM/ENG) (SSL)</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--pass &lt;pass&gt;</td>
-    <td>私钥密码 (SSL)</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--engine &lt;eng&gt;</td>
-    <td>加密引擎使用 (SSL). "--engine list" for list</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--cacert &lt;file&gt;</td>
-    <td>CA证书 (SSL)</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--capath &lt;directory&gt;</td>
-    <td>CA目录 (made using c_rehash) to verify peer against (SSL)</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--ciphers &lt;list&gt;</td>
-    <td>SSL密码</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--compressed</td>
-    <td>要求返回是压缩的形势 (using deflate or gzip)</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--connect-timeout &lt;seconds&gt;</td>
-    <td>设置最大请求时间</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--create-dirs</td>
-    <td>建立本地目录的目录层次结构</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--crlf</td>
-    <td>上传是把LF转变成CRLF</td>
-  </tr>
-  <tr>
-    <td>-f</td>
-    <td>--fail</td>
-    <td>连接失败时不显示http错误</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--ftp-create-dirs</td>
-    <td>如果远程目录不存在，创建远程目录</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--ftp-method [multicwd/nocwd/singlecwd]</td>
-    <td>控制CWD的使用</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--ftp-pasv</td>
-    <td>使用 PASV/EPSV 代替端口</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--ftp-skip-pasv-ip</td>
-    <td>使用PASV的时候,忽略该IP地址</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--ftp-ssl</td>
-    <td>尝试用 SSL/TLS 来进行ftp数据传输</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--ftp-ssl-reqd</td>
-    <td>要求用 SSL/TLS 来进行ftp数据传输</td>
-  </tr>
-  <tr>
-    <td>-F</td>
-    <td>--form &lt;name=content&gt;</td>
-    <td>模拟http表单提交数据</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--form-string &lt;name=string&gt;</td>
-    <td>模拟http表单提交数据</td>
-  </tr>
-  <tr>
-    <td>-g</td>
-    <td>--globoff</td>
-    <td>禁用网址序列和范围使用{}和[]</td>
-  </tr>
-  <tr>
-    <td>-G</td>
-    <td>--get</td>
-    <td>以get的方式来发送数据</td>
-  </tr>
-  <tr>
-    <td>-H</td>
-    <td>--header &lt;line&gt;</td>
-    <td>自定义头信息传递给服务器</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--ignore-content-length</td>
-    <td>忽略的HTTP头信息的长度</td>
-  </tr>
-  <tr>
-    <td>-i</td>
-    <td>--include</td>
-    <td>输出时包括protocol头信息</td>
-  </tr>
-  <tr>
-    <td>-I</td>
-    <td>--head</td>
-    <td>只显示请求头信息</td>
-  </tr>
-  <tr>
-    <td>-j</td>
-    <td>--junk-session-cookies</td>
-    <td>读取文件进忽略session cookie</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--interface &lt;interface&gt;</td>
-    <td>使用指定网络接口/地址</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--krb4 &lt;level&gt;</td>
-    <td>使用指定安全级别的krb4</td>
-  </tr>
-  <tr>
-    <td>-k</td>
-    <td>--insecure</td>
-    <td>允许不使用证书到SSL站点</td>
-  </tr>
-  <tr>
-    <td>-K</td>
-    <td>--config</td>
-    <td>指定的配置文件读取</td>
-  </tr>
-  <tr>
-    <td>-l</td>
-    <td>--list-only</td>
-    <td>列出ftp目录下的文件名称</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--limit-rate &lt;rate&gt;</td>
-    <td>设置传输速度</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--local-port&lt;NUM&gt;</td>
-    <td>强制使用本地端口号</td>
-  </tr>
-  <tr>
-    <td>-m</td>
-    <td>--max-time &lt;seconds&gt;</td>
-    <td>设置最大传输时间</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--max-redirs &lt;num&gt;</td>
-    <td>设置最大读取的目录数</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--max-filesize &lt;bytes&gt;</td>
-    <td>设置最大下载的文件总量</td>
-  </tr>
-  <tr>
-    <td>-M</td>
-    <td>--manual</td>
-    <td>显示全手动</td>
-  </tr>
-  <tr>
-    <td>-n</td>
-    <td>--netrc</td>
-    <td>从netrc文件中读取用户名和密码</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--netrc-optional</td>
-    <td>使用 .netrc 或者 URL来覆盖-n</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--ntlm</td>
-    <td>使用 HTTP NTLM 身份验证</td>
-  </tr>
-  <tr>
-    <td>-N</td>
-    <td>--no-buffer</td>
-    <td>禁用缓冲输出</td>
-  </tr>
-  <tr>
-    <td>-o</td>
-    <td>--output</td>
-    <td>把输出写到该文件中</td>
-  </tr>
-  <tr>
-    <td>-O</td>
-    <td>--remote-name</td>
-    <td>把输出写到该文件中，保留远程文件的文件名</td>
-  </tr>
-  <tr>
-    <td>-p</td>
-    <td>--proxytunnel</td>
-    <td>使用HTTP代理</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--proxy-anyauth</td>
-    <td>选择任一代理身份验证方法</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--proxy-basic</td>
-    <td>在代理上使用基本身份验证</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--proxy-digest</td>
-    <td>在代理上使用数字身份验证</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--proxy-ntlm</td>
-    <td>在代理上使用ntlm身份验证</td>
-  </tr>
-  <tr>
-    <td>-P</td>
-    <td>--ftp-port &lt;address&gt;</td>
-    <td>使用端口地址，而不是使用PASV</td>
-  </tr>
-  <tr>
-    <td>-q</td>
-    <td>&nbsp;</td>
-    <td>作为第一个参数，关闭 .curlrc</td>
-  </tr>
-  <tr>
-    <td>-Q</td>
-    <td>--quote &lt;cmd&gt;</td>
-    <td>文件传输前，发送命令到服务器</td>
-  </tr>
-  <tr>
-    <td>-r</td>
-    <td>--range &lt;range&gt;</td>
-    <td>检索来自HTTP/1.1或FTP服务器字节范围</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--range-file</td>
-    <td>读取（SSL）的随机文件</td>
-  </tr>
-  <tr>
-    <td>-R</td>
-    <td>--remote-time</td>
-    <td>在本地生成文件时，保留远程文件时间</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--retry &lt;num&gt;</td>
-    <td>传输出现问题时，重试的次数</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--retry-delay &lt;seconds&gt;</td>
-    <td>传输出现问题时，设置重试间隔时间</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--retry-max-time &lt;seconds&gt;</td>
-    <td>传输出现问题时，设置最大重试时间</td>
-  </tr>
-  <tr>
-    <td>-s</td>
-    <td>--silent</td>
-    <td>静默模式。不输出任何东西</td>
-  </tr>
-  <tr>
-    <td>-S</td>
-    <td>--show-error</td>
-    <td>显示错误</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--socks4 &lt;host[:port]&gt;</td>
-    <td>用socks4代理给定主机和端口</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--socks5 &lt;host[:port]&gt;</td>
-    <td>用socks5代理给定主机和端口</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--stderr &lt;file&gt;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>-t</td>
-    <td>--telnet-option &lt;OPT=val&gt;</td>
-    <td>Telnet选项设置</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--trace &lt;file&gt;</td>
-    <td>对指定文件进行debug</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--trace-ascii &lt;file&gt;</td>
-    <td>Like --跟踪但没有hex输出</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--trace-time</td>
-    <td>跟踪/详细输出时，添加时间戳</td>
-  </tr>
-  <tr>
-    <td>-T</td>
-    <td>--upload-file &lt;file&gt;</td>
-    <td>上传文件</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>--url &lt;URL&gt;</td>
-    <td>Spet URL to work with</td>
-  </tr>
-  <tr>
-    <td>-u</td>
-    <td>--user &lt;user[:password]&gt;</td>
-    <td>设置服务器的用户和密码</td>
-  </tr>
-  <tr>
-    <td>-U</td>
-    <td>--proxy-user &lt;user[:password]]&gt;</td>
-    <td>设置代理用户名和密码</td>
-  </tr>
-  <tr>
-    <td>-w</td>
-    <td>--write-out [format]</td>
-    <td>什么输出完成后</td>
-  </tr>
-  <tr>
-    <td>-x</td>
-    <td>--proxy &lt;host[:port]]&gt;</td>
-    <td>在给定的端口上使用HTTP代理</td>
-  </tr>
-  <tr>
-    <td>-X</td>
-    <td>--request &lt;command&gt;</td>
-    <td>指定什么命令</td>
-  </tr>
-  <tr>
-    <td>-y</td>
-    <td>--speed-time</td>
-    <td>放弃限速所要的时间，默认为30</td>
-  </tr>
-  <tr>
-    <td>-Y</td>
-    <td>--speed-limit</td>
-    <td>停止传输速度的限制，速度时间</td>
-  </tr>
-</table>
+| 短格式 | 长格式                     | 说明                                                         |
+|--------|---------------------------|--------------------------------------------------------------|
+| -a     | --append                  | 上传文件时，附加到目标文件                                   |
+| -A     | --user-agent <string>      | 设置用户代理发送给服务器                                     |
+| anyauth |                          | 可以使用“任何”身份验证方法                                   |
+| -b     | --cookie <name=string/file> | cookie字符串或文件读取位置                                   |
+|        | --basic                   | 使用HTTP基本验证                                           |
+| -B     | --use-ascii               | 使用ASCII /文本传输                                         |
+| -c     | --cookie-jar <file>        | 操作结束后把cookie写入到这个文件中                           |
+| -C     | --continue-at <offset>    | 断点续转                                                   |
+| -d     | --data <data>            | HTTP POST方式传送数据                                       |
+|        | --data-ascii <data>       | 以ascii的方式post数据                                       |
+|        | --data-binary <data>      | 以二进制的方式post数据                                       |
+|        | --negotiate               | 使用HTTP身份验证                                           |
+|        | --digest                  | 使用数字身份验证                                           |
+|        | --disable-eprt            | 禁止使用EPRT或LPRT                                         |
+|        | --disable-epsv            | 禁止使用EPSV                                               |
+| -D     | --dump-header <file>       | 把header信息写入到该文件中                                   |
+|        | --egd-file <file>         | 为随机数据(SSL)设置EGD socket路径                             |
+|        | --tcp-nodelay             | 使用TCP_NODELAY选项                                         |
+| -e     | --referer                 | 来源网址                                                   |
+| -E     | --cert <cert[:passwd]>     | 客户端证书文件和密码 (SSL)                                   |
+|        | --cert-type <type>        | 证书文件类型 (DER/PEM/ENG) (SSL)                             |
+|        | --key <key>              | 私钥文件名 (SSL)                                          |
+|        | --key-type <type>         | 私钥文件类型 (DER/PEM/ENG) (SSL)                             |
+|        | --pass <pass>            | 私钥密码 (SSL)                                            |
+|        | --engine <eng>            | 加密引擎使用 (SSL). "--engine list" for list                   |
+|        | --cacert <file>          | CA证书 (SSL)                                             |
+|        | --capath <directory>      | CA目录 (made using c_rehash) to verify peer against (SSL)     |
+|        | --ciphers <list>         | SSL密码                                                   |
+|        | --compressed             | 要求返回是压缩的形势 (using deflate or gzip)                 |
+|        | --connect-timeout <seconds>| 设置最大请求时间                                          |
+|        | --create-dirs            | 建立本地目录的目录层次结构                                   |
+|        | --crlf                   | 上传是把LF转变成CRLF                                       |
+| -f     | --fail                    | 连接失败时不显示http错误                                     |
+|        | --ftp-create-dirs         | 如果远程目录不存在，创建远程目录                             |
+|        | --ftp-method [multicwd/nocwd/singlecwd] | 控制CWD的使用                             |
+|        | --ftp-pasv                | 使用 PASV/EPSV 代替端口                                     |
+|        | --ftp-skip-pasv-ip        | 使用PASV的时候,忽略该IP地址                                |
+|        | --ftp-ssl                | 尝试用 SSL/TLS 来进行ftp数据传输                             |
+|        | --ftp-ssl-reqd            | 要求用 SSL/TLS 来进行ftp数据传输                             |
+| -F     | --form <name=content>      | 模拟http表单提交数据                                         |
+|        | --form-string <name=string>| 模拟http表单提交数据                                         |
+| -g     | --globoff                 | 禁用网址序列和范围使用{}和[]                                 |
+| -G     | --get                     | 以get的方式来发送数据                                       |
+| -H     | --header <line>           | 自定义头信息传递给服务器                                     |
+|        | --ignore-content-length   | 忽略的HTTP头信息的长度                                     |
+| -i     | --include                 | 输出时包括protocol头信息                                   |
+| -I     | --head                    | 只显示请求头信息                                           |
+| -j     | --junk-session-cookies    | 读取文件进忽略session cookie                                |
+|        | --interface <interface>   | 使用指定网络接口/地址                                       |
+|        | --krb4 <level>           | 使用指定安全级别的krb4                                     |
+| -k     | --insecure               | 允许不使用证书到SSL站点                                     |
+| -K     | --config                  | 指定的配置文件读取                                         |
+| -l     | --list-only               | 列出ftp目录下的文件名称                                     |
+|        | --limit-rate <rate>       | 设置传输速度                                               |
+|        | --local-port<NUM>         | 强制使用本地端口号                                         |
+| -m     | --max-time <seconds>      | 设置最大传输时间                                           |
+|        | --max-redirs <num>        | 设置最大读取的目录数                                       |
+|        | --max-filesize <bytes>    | 设置最大下载的文件总量                                     |
+| -M     | --manual                 | 显示全手动                                                 |
+| -n     | --netrc                   | 从netrc文件中读取用户名和密码                                |
+|        | --netrc-optional          | 使用 .netrc 或者 URL来覆盖-n                                |
+|        | --ntlm                    | 使用 HTTP NTLM 身份验证                                     |
+| -N     | --no-buffer               | 禁用缓冲输出                                               |
+| -o     | --output                  | 把输出写到该文件中                                         |
+| -O     | --remote-name             | 把输出写到该文件中，保留远程文件的文件名                       |
+| -p     | --proxytunnel              | 使用HTTP代理                                               |
+|        | --proxy-anyauth           | 选择任一代理身份验证方法                                     |
+|        | --proxy-basic             | 在代理上使用基本身份验证                                   |
+|        | --proxy-digest            | 在代理上使用数字身份验证                                     |
+|        | --proxy-ntlm             | 在代理上使用ntlm身份验证                                     |
+| -P     | --ftp-port <address>      | 使用端口地址，而不是使用PASV                                 |
+| -q     |                          | 作为第一个参数，关闭 .curlrc                                 |
+| -Q     | --quote <cmd>             | 文件传输前，发送命令到服务器                                   |
+| -r     | --range <range>           | 检索来自HTTP/1.1或FTP服务器字节范围                             |
+|        | --range-file              | 读取（SSL）的随机文件                                       |
+| -R     | --remote-time             | 在本地生成文件时，保留远程文件时间                             |
+|        | --retry <num>             | 传输出现问题时，重试的次数                                     |
+|        | --retry-delay <seconds>    | 传输出现问题时，设置重试间隔时间                                |
+|        | --retry-max-time <seconds> | 传输出现问题时，设置最大重试时间                                |
+| -s     | --silent                  | 静默模式。不输出任何东西                                       |
+| -S     | --show-error              | 显示错误                                                   |
+|        | --socks4 <host[:port]>     | 用socks4代理给定主机和端口                                   |
+|        | --socks5 <host[:port]>     | 用socks5代理给定主机和端口                                   |
+|        | --stderr <file>           |                                                           |
+| -t     | --telnet-option <OPT=val>  | Telnet选项设置                                             |
+|        | --trace <file>           | 对指定文件进行debug                                         |
+|        | --trace-ascii <file>      | Like --跟踪但没有hex输出                                     |
+|        | --trace-time              | 跟踪/详细输出时，添加时间戳                                   |
+| -T     | --upload-file <file>      | 上传文件                                                   |
+|        | --url <URL>              | Set URL to work with                                       |
+| -u     | --user <user[:password]>   | 设置服务器的用户和密码                                       |
+| -U     | --proxy-user <user[:password]]> | 设置代理用户名和密码                                   |
+| -w     | --write-out [format]      | 什么输出完成后                                             |
+| -x     | --proxy <host[:port]]>    | 在给定的端口上使用HTTP代理                                   |
+| -X     | --request <command>       | 指定什么命令                                             |
+| -y     | --speed-time              | 放弃限速所要的时间，默认为30                                   |
+| -Y     | --speed-limit             | 停止传输速度的限制
+
 
 ### [curl使用示例](#curl使用示例)
 
