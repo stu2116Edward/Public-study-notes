@@ -28,13 +28,29 @@ sudo yum makecache
 ```
 sudo yum install <package_name>
 ```
+- **自动安装不进行交互**：
+```
+yum -y install <package_name>
+```
+- **检查可更新的软件有哪些**:
+```
+yum check-update
+```
 - **升级所有软件包**：
 ```
 sudo yum update
 ```
-- **升级特定软件包**：
+- **更新指定程序包**：
 ```
 sudo yum update <package_name>
+```
+- **升级指定程序包**：
+```
+yum upgrade <package_name>
+```
+- **有时候需要将高版本的依赖降级到低版本，降级命令如下**：
+```
+yum downgrade <package_name>
 ```
 - **删除软件包（保留配置文件）**：
 ```
@@ -98,7 +114,7 @@ sudo yum update <package_name>
 ```
 - **下载软件包而不安装**：
 ```
-sudo yum download <package_name>
+sudo yum install --downloadonly --downloaddir=/path/to/download/directory <package_name>
 ```
 - **检查损坏的依赖关系**：
 ```
@@ -121,11 +137,11 @@ sudo yum localinstall /path/to/your_package.rpm
 ### 软件包组管理命令列表
 - **安装软件包组**：
 ```
-sudo yum groupinstall "Development Tools"
+sudo yum groupinstall <group_name>
 ```
-- **删除程序组group**：
+- **卸载软件包组**：
 ```
-yum groupremove <group_name>
+sudo yum groupremove <group_name>
 ```
 - **列出已安装的软件包组**：
 ```
@@ -133,13 +149,9 @@ yum grouplist installed
 ```
 - **列出特定软件包组的信息**：
 ```
-yum grouplist "Development Tools"
+yum grouplist <group_name>
 ```
 - **查看软件包组信息**：
 ```
-yum groupinfo "Development Tools"
-```
-- **卸载软件包组**：
-```
-sudo yum groupremove "Development Tools"
+yum groupinfo <group_name>
 ```
