@@ -77,15 +77,15 @@ tasks.json
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "(gdb) Launch", 
-      "type": "cppdbg", 
-      "request": "launch", 
-      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe", 
-      "args": [], 
+      "name": "(gdb) Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "args": [],
       "stopAtEntry": false,
-      "cwd": "${workspaceRoot}",
+      "cwd": "${workspaceFolder}",
       "environment": [],
-      "externalConsole": true, 
+      "externalConsole": true,
       "MIMode": "gdb",
       "miDebuggerPath": "E:\\mingw64\\bin\\gdb.exe",
       "preLaunchTask": "C/C++: g++.exe build and debug activity files",
@@ -189,7 +189,7 @@ tasks.json
       ],
       "problemMatcher": {
         "owner": "cpp",
-        "fileLocation": ["relative", "${workspaceRoot}"],
+        "fileLocation": ["relative", "${workspaceFolder}"],
         "pattern": {
           "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
           "file": 1,
