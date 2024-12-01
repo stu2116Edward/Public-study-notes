@@ -26,8 +26,8 @@ sudo gedit /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
 ```
 在文件末尾增加如下两行并保存：
 ```
-greeter-show-manual-login=true #手工输入登陆系统的用户名和密码  
-allow-guest=false #不允许guest登录（可选）  
+greeter-show-manual-login=true #手工输入登陆系统的用户名和密码
+allow-guest=false #不允许guest登录（可选）
 ```
 ![ub3](https://github.com/user-attachments/assets/136117d2-84c8-4fc5-8950-97257663ff9b)  
 
