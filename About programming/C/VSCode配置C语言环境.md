@@ -8,6 +8,10 @@ VSCode推荐设置：
 `Run In Terminal` : 是否在集成终端中运行代码  
 `Encoding` : 在读取和写入文件时使用的默认字符编码(默认UTF-8中文使用GBK)  
 
+**编码（Code）— 构建（build）— 运行/调试（run/debug）— 测试 （test） — 打包（package）**  
+**在VSCode中可以使用快捷键`Ctrl + Shift + B`实现快速构建（build）**  
+**注意配置文件`tasks.json`的`"label": "这里的内容"`要和`launch.json`中的`"preLaunchTask": "这里的内容"`一样我这里使用了`g++`**  
+
 ## 安装MinGW
 下载地址：https://github.com/niXman/mingw-builds-binaries/releases  
 我的是windows x64位的系统所以下的是`x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0.7z`
@@ -84,7 +88,7 @@ tasks.json
       "externalConsole": true, 
       "MIMode": "gdb",
       "miDebuggerPath": "E:\\mingw64\\bin\\gdb.exe",
-      "preLaunchTask": "g++",
+      "preLaunchTask": "C/C++: g++.exe build and debug activity files",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
@@ -175,7 +179,7 @@ tasks.json
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "g++",
+      "label": "C/C++: g++.exe build and debug activity files",
       "command": "g++",
       "args": [
         "-g",
@@ -203,6 +207,12 @@ tasks.json
   ]
 }
 ```
+参数解释：
+- "label": "g++"：这是任务的标签，它应该与 launch.json 中的 "preLaunchTask" 匹配。
+- "command": "g++"：这是要执行的编译器命令。
+- "args": ["-g", "${file}", "-o", "${fileDirname}/${fileBasenameNoExtension}.exe"]：这是传递给 g++ 的参数，包括调试信息标志 -g，当前文件 ${file}，输出文件路径 ${fileDirname}/${fileBasenameNoExtension}.exe。
+- "problemMatcher"：这部分配置用于匹配编译器输出中的错误和警告，并在 VSCode 的“问题”面板中显示。
+- "group": {"kind": "build", "isDefault": true}：这指定了任务属于构建组，并且是默认的构建任务。
 保存这四个文件就配置完成了！  
 
 **再次强调：以后的C/C++代码文件必须放在这个Code文件夹里，或者说有.vscode文件夹的文件夹里，如果调试放在其他位置的代码文件会报错！**
