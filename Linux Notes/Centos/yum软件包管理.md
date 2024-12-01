@@ -42,7 +42,7 @@ sudo yum remove <package_name>
 
 6. 清除包（删除软件包及其配置文件）：
 ```
-sudo yum remove <package_name>
+sudo yum remove -y <package_name>
 ```
 
 7. 搜索包：
