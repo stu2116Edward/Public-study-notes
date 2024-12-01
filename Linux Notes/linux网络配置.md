@@ -331,55 +331,14 @@ sudo service network-manager restart
 
    
 ## 不同Linux发行版网络配置文件路径和重启网络服务命令的详细列表：  
-<table border="1">
-    <tr>
-        <th>Linux发行版</th>
-        <th>网络配置文件路径</th>
-        <th>重启网络服务命令</th>
-    </tr>
-    <tr>
-        <td>Ubuntu</td>
-        <td>/etc/network/interfaces</td>
-        <td>sudo systemctl restart networking 或 sudo /etc/init.d/networking restart</td>
-    </tr>
-    <tr>
-        <td>Debian</td>
-        <td>/etc/network/interfaces</td>
-        <td>sudo systemctl restart networking 或 sudo /etc/init.d/networking restart</td>
-    </tr>
-    <tr>
-        <td>Fedora</td>
-        <td>/etc/sysconfig/network-scripts/ifcfg-<网卡名称></td>
-        <td>sudo systemctl restart network</td>
-    </tr>
-    <tr>
-        <td>CentOS</td>
-        <td>/etc/sysconfig/network-scripts/ifcfg-<网卡名称></td>
-        <td>对于CentOS 6及以下版本，使用 service network restart；对于CentOS 7及以上版本，使用 sudo systemctl restart NetworkManager</td>
-    </tr>
-    <tr>
-        <td>RHEL (Red Hat Enterprise Linux)</td>
-        <td>/etc/sysconfig/network-scripts/ifcfg-<网卡名称></td>
-        <td>对于RHEL 6及以下版本，使用 service network restart；对于RHEL 7及以上版本，使用 sudo systemctl restart NetworkManager</td>
-    </tr>
-    <tr>
-        <td>Kali Linux</td>
-        <td>/etc/network/interfaces 或 /etc/sysconfig/network-scripts/ifcfg-<网卡名称></td>
-        <td>sudo systemctl restart networking 或 sudo service network-manager restart</td>
-    </tr>
-    <tr>
-        <td>Kubuntu</td>
-        <td>/etc/network/interfaces</td>
-        <td>sudo systemctl restart networking 或 sudo /etc/init.d/networking restart</td>
-    </tr>
-    <tr>
-        <td>Arch Linux</td>
-        <td>/etc/netctl/<接口名></td>
-        <td>sudo systemctl restart netctl</td>
-    </tr>
-    <tr>
-        <td>OpenSUSE</td>
-        <td>/etc/sysconfig/network/ifcfg-<网卡名称></td>
-        <td>sudo systemctl restart wickedd 或 sudo /etc/init.d/network restart</td>
-    </tr>
-</table>
+| Linux发行版             | 网络配置文件路径                                           | 重启网络服务命令                                           |
+|----------------------|-----------------------------------------------------|------------------------------------------------------|
+| Ubuntu               | `/etc/network/interfaces`                                 | `sudo systemctl restart networking` 或 `sudo /etc/init.d/networking restart` |
+| Debian               | `/etc/network/interfaces`                                 | `sudo systemctl restart networking` 或 `sudo /etc/init.d/networking restart` |
+| Fedora               | `/etc/sysconfig/network-scripts/ifcfg-<网卡名称>`              | `sudo systemctl restart network`                             |
+| CentOS               | `/etc/sysconfig/network-scripts/ifcfg-<网卡名称>`              | 对于CentOS 6及以下版本，使用 `service network restart`；对于CentOS 7及以上版本，使用 `sudo systemctl restart NetworkManager` |
+| RHEL (Red Hat Enterprise Linux) | `/etc/sysconfig/network-scripts/ifcfg-<网卡名称>` | 对于RHEL 6及以下版本，使用 `service network restart`；对于RHEL 7及以上版本，使用 `sudo systemctl restart NetworkManager` |
+| Kali Linux           | `/etc/network/interfaces` 或 `/etc/sysconfig/network-scripts/ifcfg-<网卡名称>` | `sudo systemctl restart networking` 或 `sudo service network-manager restart` |
+| Kubuntu              | `/etc/network/interfaces`                                 | `sudo systemctl restart networking` 或 `sudo /etc/init.d/networking restart` |
+| Arch Linux           | `/etc/netctl/<接口名>`                                      | `sudo systemctl restart netctl`                             |
+| OpenSUSE             | `/etc/sysconfig/network/ifcfg-<网卡名称>`                     | `sudo systemctl restart wickedd` 或 `sudo /etc/init.d/network restart` |
