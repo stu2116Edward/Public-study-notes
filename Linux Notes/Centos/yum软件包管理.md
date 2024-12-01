@@ -1,11 +1,7 @@
 # yum 命令列表：
 
-### YUM (Yellow dog Updater, Modified)
-- **定义**：基于RPM的软件包管理器，自动下载RPM包并安装，自动处理依赖性关系。
-- **优点**：
-- 自动下载并安装软件包及其依赖。
-- 更新包版本方便。
-- 操作命令简单。
+**yum命令简介**  
+yum 是一种强大的包管理工具，用于在基于 RPM 包管理系统的 Linux 发行版中管理软件包。它可以自动解决软件包之间的依赖关系，简化了软件包的安装、更新和删除过程
 
 **软件包和软件包组**  
 软件包（Package）  
@@ -82,7 +78,7 @@ yum list updates
 ```
 - **查找包提供程序**：
 ```
-yum whatprovides <keyword>
+yum provides <keyword>
 ```
 - **检查包依赖关系**：
 ```
@@ -91,14 +87,6 @@ yum deplist <package_name>
 - **安装本地软件包文件**：
 ```
 sudo yum localinstall /path/to/your_package.rpm
-```
-- **列出所有已安装的软件包**：
-```
-yum list installed
-```
-- **查看软件包的详细信息**：
-```
-yum info <package_name>
 ```
 - **清理下载的.rpm包文件**：
 ```
