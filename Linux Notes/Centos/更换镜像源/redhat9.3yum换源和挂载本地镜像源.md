@@ -11,7 +11,6 @@
 ```bash
 df -h
 ```
-![redhy1](https://github.com/user-attachments/assets/911024a9-6f7f-4197-8647-8d81110b360c)  
 
 找到 ISO 文件，通常是 8GB 左右。
 
@@ -29,7 +28,6 @@ mount /dev/sr0 /my/iso
 ```bash
 ls /my/iso
 ```
-![redhy2](https://github.com/user-attachments/assets/3c37c7a3-91aa-43f0-8d21-5f3062d025ee)  
 
 5. **配置文件**
 在 `/etc/yum.repos.d` 中创建 `red9.repo` 文件：
