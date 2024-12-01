@@ -1,5 +1,17 @@
 # yum 命令列表：
 
+### RPM (Red Hat Package Manager)
+- **用途**：用于Linux系统中管理软件包的安装、升级、卸载和查询等操作。
+- **特点**：允许用户对软件包进行管理，但不会自动处理依赖关系。
+
+### YUM (Yellow dog Updater, Modified)
+- **定义**：基于RPM的软件包管理器，自动下载RPM包并安装，自动处理依赖性关系。
+- **优点**：
+- 自动下载并安装软件包及其依赖。
+- 更新包版本方便。
+- 操作命令简单。
+
+**软件包和软件包组**
 软件包（Package）  
 定义：软件包是Linux系统中最小的软件部署单元。它包含程序及其所有依赖项，用于执行特定任务。  
 内容：一个软件包通常包含程序文件、库文件、配置文件和文档等。  
@@ -14,128 +26,202 @@
 依赖性：安装一个软件包组时，包管理器会自动处理该组内所有软件包的依赖关系。  
 管理：软件包组也可以通过包管理器进行安装、卸载等操作，但操作的是整个组，而不是单个软件包。  
 
-### 软件包管理：  
-1. 更新软件包列表：
+### YUM源配置
+- **YUM源**：YUM仓库，用于存放RPM包的下载路径。
+- **配置文件**：位于 `/etc/yum.repos.d/` 目录下，以 `.repo` 为后缀。
+- **基本结构**：
+```
+[base]
+name=CentOS-$releasever - Base - mirrors.aliyun.com
+failovermethod=priority
+baseurl=http://mirrors.aliyun.com/centos/$releasever/os/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+```
+  
+- **清理缓存**：
+```
+yum clean all
+```
+- **查看已启用的源仓库配置**：
+```
+yum repolist enabled
+```
+
+### YUM远程源
+- **位置**：`/etc/yum.repos.d/` 目录下的 `.repo` 文件。
+- **更换远程源**：
+```
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+```
+- **清理缓存并创建缓存**：
+```
+yum clean all
+yum makecache
+```
+
+### YUM本地源
+- **配置**：将 `baseurl` 指向本地或内网的RPM包存储路径。
+- **示例配置**：
+```
+[ldsxLocal]
+name=Centos 7.9
+baseurl=file:///path/to/local/repo
+enabled=1
+gpgcheck=0
+```
+
+### YUM基本命令
+- **查看源仓库**：
+```
+yum repolist all
+yum repolist enabled
+yum repolist disabled
+```
+- **查看软件包**：
+```
+yum list
+yum list | grep xxxx
+yum list installed
+yum search 关键字
+yum provides 要查询的可执行文件
+yum info 包名称
+```
+- **下载带依赖的rpm包**：
+```
+yum install yum-utils
+yumdownloader --resolve 包名
+yumdownloader --resolve --destdir <directory> 包名
+```
+- **安装**：
+```
+yum install 要安装的包名
+yum reinstall 要安装的包名
+yum localinstall /path/to/your_package.rpm
+yum localinstall /path/*.rpm -y
+rpm -ivh /path/to/your_package.rpm
+```
+- **更新**：
+```
+yum check-update
+yum upgrade
+yum update
+vi /etc/yum.conf （配置是否保留旧包）
+```
+- **卸载**：
+```
+yum remove 包名
+```
+- **清理缓存**：
+```
+yum clean all
+```
+- **生成缓存**：
+```
+yum makecache
+```
+
+### 软件包管理命令列表
+- **更新软件包列表**：
 ```
 sudo yum makecache
 ```
-
-2. 安装新软件：
+- **安装新软件**：
 ```
 sudo yum install <package_name>
 ```
-
-3. 升级所有软件包：
+- **升级所有软件包**：
 ```
 sudo yum update
 ```
-
-4. 升级特定软件包：
+- **升级特定软件包**：
 ```
 sudo yum update <package_name>
 ```
-
-5. 删除软件包（保留配置文件）：
+- **删除软件包（保留配置文件）**：
 ```
 sudo yum remove <package_name>
 ```
-
-6. 清除包（删除软件包及其配置文件）：
+- **清除包（删除软件包及其配置文件）**：
 ```
 sudo yum remove -y <package_name>
 ```
-
-7. 搜索包：
+- **搜索包**：
 ```
 yum search <package_name>
 ```
-
-8. 列出已安装的软件包：
+- **列出已安装的软件包**：
 ```
 yum list installed
 ```
-
-9. 检查包裹详细信息：
+- **检查包裹详细信息**：
 ```
 yum info <package_name>
 ```
-
-10. 清理未使用的依赖项：
+- **清理未使用的依赖项**：
 ```
 sudo yum clean all
 ```
-
-11. 更新单个软件包：
+- **更新单个软件包**：
 ```
 sudo yum update <package_name>
 ```
-
-12. 下载软件包而不安装：
+- **下载软件包而不安装**：
 ```
 sudo yum download <package_name>
 ```
-
-13. 检查损坏的依赖关系：
+- **检查损坏的依赖关系**：
 ```
 yum check
 ```
-
-14. 列出可升级的软件包：
+- **列出可升级的软件包**：
 ```
 yum list updates
 ```
-
-15. 查找包提供程序：
+- **查找包提供程序**：
 ```
 yum whatprovides <keyword>
 ```
-
-16. 检查包依赖关系：
+- **检查包依赖关系**：
 ```
 yum deplist <package_name>
 ```
-
-17. 安装本地软件包文件：
+- **安装本地软件包文件**：
 ```
 sudo yum localinstall /path/to/your_package.rpm
 ```
-
-18. 列出所有已安装的软件包：
+- **列出所有已安装的软件包**：
 ```
 yum list installed
 ```
-
-19. 查看软件包的详细信息（包括依赖关系、安装大小等）：
+- **查看软件包的详细信息**：
 ```
 yum info <package_name>
 ```
-
-20. 清理下载的.rpm包文件（这些文件通常存储在`/var/cache/yum/$basearch/$releasever`目录中）：
+- **清理下载的.rpm包文件**：
 ```
 sudo yum clean all
 ```
 
-### 软件包组管理：
-21. 安装软件包组：
+### 软件包组管理命令列表
+- **安装软件包组**：
 ```
 sudo yum groupinstall "Development Tools"
 ```
-
-22. 列出已安装的软件包组：
+- **列出已安装的软件包组**：
 ```
 yum grouplist installed
 ```
-列出特定软件包组的信息：
+- **列出特定软件包组的信息**：
 ```
 yum grouplist "Development Tools"
 ```
-
-23. 查看软件包组信息：
+- **查看软件包组信息**：
 ```
 yum groupinfo "Development Tools"
 ```
-
-24. 卸载软件包组：
+- **卸载软件包组**：
 ```
 sudo yum groupremove "Development Tools"
 ```
