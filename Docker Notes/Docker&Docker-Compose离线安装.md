@@ -55,13 +55,13 @@ sudo chmod +x /etc/systemd/system/docker.service
 ```
 sudo systemctl daemon-reload
 ```
-### 步骤六：设置开机自启动
-```
-systemctl enable docker.service
-```
-### 步骤七 ：启动docker
+### 步骤六 ：启动docker
 ```
 systemctl start docker
+```
+### 步骤七：设置开机自启动
+```
+systemctl enable docker.service
 ```
 ### 步骤八：测试docker是否启动
 ```
