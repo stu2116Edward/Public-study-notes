@@ -30,7 +30,7 @@ sudo yum install <package_name>
 ```
 - **自动安装不进行交互**：
 ```
-yum -y install <package_name>
+sudo yum -y install <package_name>
 ```
 - **检查可更新的软件有哪些**:
 ```
@@ -122,11 +122,11 @@ yum check
 ```
 - **查找包提供程序**：
 ```
-yum provides <keyword>
+sudo yum provides <keyword>
 ```
 - **检查包依赖关系**：
 ```
-yum deplist <package_name>
+sudo yum deplist <package_name>
 ```
 - **安装本地软件包文件**：
 ```
