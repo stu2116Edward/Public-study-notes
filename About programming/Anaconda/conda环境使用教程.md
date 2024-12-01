@@ -90,31 +90,6 @@ conda create --name <new_env_name> --clone <env_name>
  conda list
  ```
  - 列出当前激活环境中安装的所有包及其版本。
-检查环境的解释器(这里使用 Python 解释器做演示)：
-<pre>
-C:\Users\Admin>conda env list
-# conda environments:
-#
-tensorflow               C:\Users\Admin\.conda\envs\tensorflow
-base                     E:\Anaconda
-</pre>
-激活环境:
-```bash
-conda activate base
-```
-查看 Python 解释器的位置:  
-**在 Unix/Linux/macOS 上**
-```bash
-which python
-```
-**在 Windows 上**
-```bash
-where python
-```
-查看当前环境下的解释器版本
-```bash
-python --version
-```
 
 ### 更新和配置
 
@@ -151,6 +126,33 @@ conda env export > environment.yml
 conda env create -f environment.yml
 ```
 - 从 `environment.yml` 文件中创建一个新的环境。
+
+#### 查看环境中的解释器：
+这里使用 Python 解释器做演示
+<pre>
+C:\Users\Admin>conda env list
+# conda environments:
+#
+tensorflow               C:\Users\Admin\.conda\envs\tensorflow
+base                     E:\Anaconda
+</pre>
+激活环境:
+```bash
+conda activate base
+```
+查看 Python 解释器的位置:  
+**在 Unix/Linux/macOS 上**
+```bash
+which python
+```
+**在 Windows 上**
+```bash
+where python
+```
+查看当前环境下的解释器版本
+```bash
+python --version
+```
 
 ### 包管理
 
