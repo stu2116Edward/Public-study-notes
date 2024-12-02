@@ -7,7 +7,7 @@ VSCode推荐设置：
 `Mouse Wheel Zoom` : 按住Ctrl键并滚动鼠标滚轮对编辑器字体大小进行缩放  
 `Run In Terminal` : 是否在集成终端中运行代码  
 `Encoding` : 在读取和写入文件时使用的默认字符编码(默认UTF-8中文使用GBK)  
-如果是新手只需要在VSCode中安装下面三个插件就行了：  
+一般只需要在VSCode中安装下面三个插件就行了：  
 ![C1](https://github.com/user-attachments/assets/a943b0a0-1743-4c15-abef-b62fbb7af692)  
 ![C2](https://github.com/user-attachments/assets/df609e2c-8cdf-499a-8b60-9cbda62ff349)  
 ![C3](https://github.com/user-attachments/assets/92828c09-2164-4b86-aa26-fbd2044c1e75)  
