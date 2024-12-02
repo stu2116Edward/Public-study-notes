@@ -48,13 +48,13 @@ VMnet1、VMnet8可在NAT与仅主机模式互相切换
 cd /etc/sysconfig/network-scripts
 ```
 - 进入以下界面：
-![bed97e213015df597c078c27c051e8ea](https://github.com/user-attachments/assets/2ad1318c-1dad-400b-a9c7-b76b5fa2fa49)  
-在所显示的配置中有两个网络文件，其中所要配置的网络文件为第一个：ifcfg-eno16777736  
+![屏幕截图 2024-12-02 190154](https://github.com/user-attachments/assets/1c29f2e1-f8eb-4150-90d6-a7352e9259b2)  
+在所显示的配置中有两个网络文件，其中所要配置的网络文件为第一个：`ifcfg-ens33`  
 
 ### 3.编辑网络文件配置
 - 使用vim编辑神器进行编辑文件，如上图最后一行所示，另附代码如下：
 ```
-vim ifcfg-eno16777736
+vim ifcfg-ens33
 ```
 1.按回车键进入以下界面：  
 ![109e49d1a8b40e22bb1019e9899f240f](https://github.com/user-attachments/assets/b152cbe2-4a4c-42c6-9bbb-cbf31ca8090e)  
