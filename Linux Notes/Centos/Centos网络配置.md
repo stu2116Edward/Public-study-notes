@@ -47,7 +47,7 @@ VMnet1、VMnet8可在NAT与仅主机模式互相切换
 ```
 cd /etc/sysconfig/network-scripts
 ```
-- 进入以下界面：
+- 进入以下界面：  
 ![屏幕截图 2024-12-02 190154](https://github.com/user-attachments/assets/1c29f2e1-f8eb-4150-90d6-a7352e9259b2)  
 在所显示的配置中有两个网络文件，其中所要配置的网络文件为第一个：`ifcfg-ens33`  
 
