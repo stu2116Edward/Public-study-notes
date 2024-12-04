@@ -1,6 +1,6 @@
 # yt-dlp使用教程
 
-## yt-dlp 的安装
+## 从源码编译
 yt-dlp 是 youtube-dl 的一个更活跃的分支，支持更多网站和功能。你可以通过多种方式安装 yt-dlp  
 使用 pip 安装
 ```bash
@@ -16,6 +16,9 @@ brew install yt-dlp
 ```
 python setup.py install
 ```
+
+## yt-dlp 的安装
+[windows下载这个](https://github.com/yt-dlp/yt-dlp/releases/download/2024.12.03/yt-dlp.exe)
 
 
 windows系统中只有火狐浏览器可以直接从浏览器里面获取cookie  
