@@ -46,7 +46,7 @@ yt-dlp "你的视频下载链接" -f "ba+bv"
 ```bash
 yt-dlp --cookies-from-browser firefox https://www.bilibili.com/video/BV1A2DVY2EC5?t=330.2
 ```
-## 使用浏览器Cookie下载：  
+## 方法二(使用浏览器Cookie下载)：  
 1.Chrome浏览器中安装`get cookie locally`扩展  
 2.执行下面的命令：
 ```bash
