@@ -10,17 +10,27 @@ pip install yt-dlp
 ```bash
 brew install yt-dlp
 ```
-从源代码安装
+从源代码安装  
 1.从 [yt-dlp GitHub](https://github.com/yt-dlp/yt-dlp) 仓库 下载最新的源码
 2.运行以下命令
 ```
 python setup.py install
 ```
 
-## yt-dlp 的安装
-[windows下载这个](https://github.com/yt-dlp/yt-dlp/releases/download/2024.12.03/yt-dlp.exe)
+## 安装环境
+yt-dlp 的安装  
+仓库地址：https://github.com/yt-dlp/yt-dlp/releases/  
+[windows下载这个](https://github.com/yt-dlp/yt-dlp/releases/download/2024.12.03/yt-dlp.exe)  
+FFmpeg 的安装  
+官网：https://ffmpeg.org/  
+因为许多网站的视频下载下来是分片的或者是音画分离的所以需要FFmpeg最后整合一下  
+[windows下载这个](https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z)  
+解压后找到`ffprobe.exe`和`ffmpeg.exe`  
+然后把这三个文件放在同一个目录下  
+![屏幕截图 2024-12-04 230527](https://github.com/user-attachments/assets/698e875f-0668-470e-aeca-be054d041978)  
+最后再Windows环境变量`Path`中加入存放这三个文件的目录就配置成功了
 
-
+注意：  
 windows系统中只有火狐浏览器可以直接从浏览器里面获取cookie  
 要登陆一下对应的视频网站如果能够看到最高的分辨率就下载最高分辨率的  
 
