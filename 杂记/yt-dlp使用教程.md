@@ -11,7 +11,7 @@ pip install yt-dlp
 brew install yt-dlp
 ```
 从源代码安装  
-1.从 [yt-dlp GitHub](https://github.com/yt-dlp/yt-dlp) 仓库 下载最新的源码
+1.从 [yt-dlp GitHub](https://github.com/yt-dlp/yt-dlp) 仓库 下载最新的源码  
 2.运行以下命令
 ```
 python setup.py install
