@@ -34,7 +34,7 @@ FFmpeg 的安装
 windows系统中只有火狐浏览器可以直接从浏览器里面获取cookie  
 要登陆一下对应的视频网站如果能够看到最高的分辨率就下载最高分辨率的  
 
-## 方法一(使用火狐浏览器下载)：
+## 方法一(推荐使用火狐浏览器下载)：
 ```bash
 yt-dlp --cookies-from-browser firefox <video url>
 ```
