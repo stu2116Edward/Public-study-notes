@@ -144,8 +144,8 @@ export PATH=$PATH:$STORM_HOME/bin
 [2] 16573
 [root@slave1 bin]# nohup: ignoring input and appending output to ‘nohup.out’
 </pre>
-浏览器输入master1-1:9999查看集群状态:
-
+浏览器输入master1-1:9999查看集群状态:  
+![storm1](https://github.com/user-attachments/assets/58e93b05-91d8-4b90-95a1-db4a6de2ede0)  
 
 <pre>
 [root@master1 conf]# jps
