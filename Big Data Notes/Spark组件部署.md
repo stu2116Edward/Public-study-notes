@@ -222,11 +222,13 @@ sbin/start-all.sh
 10991 DataNode
 </pre>
 2、浏览器输入`master:8080`查看web UI  
+![SPK1](https://github.com/user-attachments/assets/d39d4123-1ef0-4249-953f-c3b0301aef5d)  
 
 3、slave端启动master  
 <pre>
 [root@slave1 hadoop]# cd /usr/local/src/spark/
 [root@slave1 spark]# sbin/start-master.sh
 </pre>
+![SPK2](https://github.com/user-attachments/assets/87a68bd1-d0a5-4a5c-a164-213b35cdc4ca)  
 
 ***注：通过观察可知，主节点的 Master 状态为活动状态，从节点的Master状态为备用状态，即为集群成功运行***
