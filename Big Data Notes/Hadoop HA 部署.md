@@ -732,8 +732,14 @@ sbin/hadoop-daemon.sh start resourcemanager
 ```
 2、在浏览访问两个 namenode 和 resourcemanager web 界面  
 地址栏输入 `master1:50070`  
+![HA1](https://github.com/user-attachments/assets/eb974aff-2295-4f51-8f7d-a5303557c2d4)  
+
 地址栏输入 `slave1:50070`  
+![HA2](https://github.com/user-attachments/assets/476fda09-4981-41b1-ac76-b0d3a4b53698)  
+
 地址栏输入 `master1:8088`  
+![HA3](https://github.com/user-attachments/assets/9c265527-58b5-4311-9edf-d5e3adc5beb8)  
+
 **点击左方Nodes可以看到当前存在的节点**
 
 
@@ -776,7 +782,10 @@ sbin/hadoop-daemon.sh start resourcemanager
 7383 Jps
 6606 JournalNode
 </pre>
-实现上一步骤就会发现，杀死master1的namenode进程，master就不能访问了，slave1会自动转化换active状态
+实现上一步骤就会发现，杀死master1的namenode进程，master就不能访问了，slave1会自动转化换active状态  
+![HA4](https://github.com/user-attachments/assets/3c9c5af8-9e6f-400c-90dd-dc2090d70c2e)  
+![HA5](https://github.com/user-attachments/assets/ff222b4a-9bd8-4d3f-ab55-2c7da0fb09f1)  
+
 
 ## 十六、重启刚才终止的 namenode,并查看 jps 进程,截图访问两个 namenode 的 web 界面,并截图保存
 `[root@master1 hadoop]#`
@@ -801,4 +810,6 @@ jps
 8236 DFSZKFailoverController
 9007 Jps
 </pre>
-再次启动master的namenode节点后，发现状态转变为standby状态，slave1仍然为active状态，两者之间进行了转换
+再次启动master的namenode节点后，发现状态转变为standby状态，slave1仍然为active状态，两者之间进行了转换  
+![HA6](https://github.com/user-attachments/assets/d6d66d87-61e2-4196-a83f-9333e767bdac)  
+![HA7](https://github.com/user-attachments/assets/6cc0c284-d4ba-47db-b6b0-06d824a7bd90)  
