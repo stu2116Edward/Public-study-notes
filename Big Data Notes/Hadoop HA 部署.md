@@ -121,7 +121,7 @@ vim /etc/hosts
 ### 五、修改每台主机hostname文件配置IP与主机名映射关系；截取/etc/hostname文件截图
 **master节点**
 ```bash
-hostnamectl set-hostname master
+hostnamectl set-hostname master1
 bash
 ```
 **slave1节点**
@@ -178,7 +178,7 @@ syncLimit=5
 dataDir=/usr/local/src/zookeeper/data
 dataLogDir=/usr/local/src/zookeeper/logs
 clientPort=2181
-server.1=master:2888:3888
+server.1=master1:2888:3888
 server.2=slave1:2888:3888
 server.3=slave2:2888:3888
 ```
