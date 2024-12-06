@@ -1,6 +1,6 @@
 ## Spark组件部署
 
-### 1、 需前置 Hadoop 环境，并检查 Hadoop 环境是否可用，截图并保存结果
+### 一、 需前置 Hadoop 环境，并检查 Hadoop 环境是否可用，截图并保存结果
 <pre>
 [root@master1 hadoop]# jps
 71504 QuorumPeerMain
