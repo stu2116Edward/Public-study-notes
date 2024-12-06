@@ -82,11 +82,9 @@ ssh-keygen -t rsa
 ```bash
 ssh-copy-id 192.168.66.114
 ```
-**slave1节点**
 ```bash
 ssh-copy-id 192.168.66.115
 ```
-**slave2节点**
 ```bash
 ssh-copy-id 192.168.66.116
 ```
