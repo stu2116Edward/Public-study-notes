@@ -520,10 +520,10 @@ slave2
 ```
 11、分发jdk和hadoop文件
 ```bash
-scp -r /usr/local/src/jdk1.8.0_152/ slave1:/usr/local/src/
+scp -r /usr/local/src/jdk1.8.0_144/ slave1:/usr/local/src/
 ```
 ```bash
-scp -r /usr/local/src/jdk1.8.0_152/ slave2:/usr/local/src/
+scp -r /usr/local/src/jdk1.8.0_144/ slave2:/usr/local/src/
 ```
 ```bash
 scp -r /usr/local/hadoop/ slave1:/usr/local/
