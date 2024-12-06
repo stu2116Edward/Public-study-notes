@@ -43,6 +43,10 @@ vim /etc/profile
 export JAVA_HOME=/usr/local/src/jdk1.8.0_144
 export PATH=$PATH:$JAVA_HOME/bin
 ```
+生效环境变量
+```bash
+source /etc/profile
+```
 查看一下jdk版本是否一致
 ```bash
 java -version
