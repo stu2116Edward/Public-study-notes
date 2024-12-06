@@ -178,7 +178,7 @@ syncLimit=5
 dataDir=/usr/local/src/zookeeper/data
 dataLogDir=/usr/local/src/zookeeper/logs
 clientPort=2181
-server.1=master1:2888:3888
+server.1=master:2888:3888
 server.2=slave1:2888:3888
 server.3=slave2:2888:3888
 ```
@@ -624,6 +624,9 @@ sbin/hadoop-daemon.sh start journalnode
 ```
 4、初始化namenode  
 进入hadoop/bin目录下  
+```bash
+cd bin
+```
 `[root@master1 bin]#`
 ```bash
 hdfs namenode -format
