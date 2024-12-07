@@ -147,7 +147,7 @@ vim spark-env.sh
 ```
 添加或修改为如下内容
 ```
-export JAVA_HOME=/usr/local/src/jdk1.8.0_152/
+export JAVA_HOME=/usr/local/src/jdk1.8.0_144/
 export HADOOP_HOME=/usr/local/hadoop
 export SCALA_HOME=/usr/local/src/scala
 export SPARK_MASTER_IP=master1
