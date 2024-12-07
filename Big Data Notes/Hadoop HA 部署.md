@@ -112,7 +112,7 @@ vim /etc/hosts
 ```
 添加以下内容
 ```
-192.168.66.114 master
+192.168.66.114 master1
 192.168.66.115 slave1
 192.168.66.116 slave2
 ```
@@ -628,6 +628,13 @@ sbin/hadoop-daemon.sh start journalnode
 cd bin
 ```
 `[root@master1 bin]#`
+```bash
+hdfs namenode -format
+```
+***注意slave1节点也需要格式化***
+```bash
+cd bin
+```
 ```bash
 hdfs namenode -format
 ```
