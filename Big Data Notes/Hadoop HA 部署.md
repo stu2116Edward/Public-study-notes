@@ -717,7 +717,7 @@ sbin/hadoop-daemon.sh start namenode
 ```
 `[root@slave1 hadoop]#`
 ```bash
-sbin/hadoop-daemon.sh start resourcemanager
+sbin/yarn-daemon.sh start resourcemanager
 ```
 
 
