@@ -124,7 +124,7 @@ log.dirs=/usr/local/src/kafka/logs
 ```
 最后添加：
 ```
-host.name=master
+host.name=master1
 delete.topic.enable=true
 ```
 3、创建logs目录
