@@ -51,6 +51,11 @@ disp cur
 display this
 ```
 
+验证网络连通性
+```
+ping -c <测试的次数(数字)> <your ip address>
+```
+
 查看系统vlan信息  
 ```
 display vlan
