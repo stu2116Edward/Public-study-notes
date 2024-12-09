@@ -36,9 +36,10 @@ Users\*\WPSDrive - *
 关闭安全软件，制作过程会格式化U盘，要提前备份好U盘内的资料
 ![PE4](https://github.com/user-attachments/assets/c03bf334-7077-4afc-9099-e9870b2cf559)  
 制作中，等待ing...  
-制作后的装机盘变成了两个，一个是EFI分区，一个是可以当成普通U盘使用的分区  
+制作后的装机盘变成了两个，一个是EFI分区，一个是可以当成普通U盘使用的分区
+[微软操作系统镜像官方下载地址](https://www.microsoft.com/zh-cn/software-download/)  
 把下载好的系统镜像文件或备份好的wim文件复制到U盘内，即可使用此U盘安装与维护系统了  
-- 2.插上PE启动盘开机进入PE系统  
+- 2.插上PE启动盘开机疯狂按启动键进入PE系统  
 ![openPE](https://github.com/user-attachments/assets/4ca9ff9a-2c20-467d-98fb-e7d4987738d4)  
 - 3.打开Dism++进行还原或重装系统  
 还原系统时一定要把C盘格式化，否则C盘里面原有的系统会和还原后的系统共存导致冲突,最后勾选上添加引导  
