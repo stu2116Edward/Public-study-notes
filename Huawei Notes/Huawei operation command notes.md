@@ -18,17 +18,17 @@
 ## [基础命令](#基础命令)
 用户视图 `<Huawei>`
 
-进入系统视图  
+1.进入系统视图  
 ```
 system-view
 ```
 
-删除或禁用某个功能或者删除某项配置  
+2.删除或禁用某个功能或者删除某项配置  
 ```
 undo
 ```
 
-在系统视图中设置网络设备的名称  
+3.在系统视图中设置网络设备的名称  
 ```
 sysname 设备的名称
 ```   
@@ -37,7 +37,7 @@ sysname 设备的名称
 sys 设备的名称
 ```
 
-用户视图中查看当前生效的配置信息  
+4.用户视图中查看当前生效的配置信息  
 ```
 display current-configuration
 ```
@@ -46,90 +46,93 @@ display current-configuration
 disp cur
 ```
 
-查看系统当前视图运行的配置  
+5.查看系统当前视图运行的配置  
 ```
 display this
 ```
 
-验证网络连通性
+6.验证网络连通性
 ```
 ping -c <测试的次数(数字)> <your ip address>
 ```
 
-查看系统vlan信息  
+7.查看系统vlan信息  
 ```
 display vlan
 ```
 
-查看vlan中接口信息  
+8.查看vlan中接口信息  
 ```
 display port vlan
 ```
-显示端口组的详细信息
+
+9.显示端口组的详细信息
 ```
 display port-group
 ```
-显示以太网聚合接口（Eth-Trunk）的信息
+
+10.显示以太网聚合接口（Eth-Trunk）的信息
 ```
 display eth-trunk
 ```
-查看隔离组中的接口配置信息(系统视图)  
+
+11.查看隔离组中的接口配置信息(系统视图)  
 ```
 display port-isolate group all
 ```
 
-查看设备路由表  
+12.查看设备路由表  
 ```
 display ip routing-table
 ```
 
-查看交换机MAC地址表(为空就是没有ping)  
+13.查看交换机MAC地址表(为空就是没有ping)  
 ```
 display mac-address
 ```
 
-查看交换机链路状态
+14.查看交换机链路状态
 ```
 display stp brief
 ```
 
-查看交换机接口模式接口速率  
+15.查看交换机接口模式接口速率  
 ```
 display interface Ethernet brief
 ```
 
-进入指定接口视图  
+16.进入指定接口视图  
 ```
 interface 接口名称
 ```  
 
-退回较低级别的视图  
+17.退回较低级别的视图  
 ```
 quit
 ```
 
-在用户视图中保持当前的配置  
+18.在用户视图中保持当前的配置  
 ```
 save
 ```
 
-在用户视图中重启系统  
+19.在用户视图中重启系统  
 ```
 reboot
 ```
 
-在用户视图中清空设备下次启动使用的配置文件内容  
+20.在用户视图中清空设备下次启动使用的配置文件内容  
 ```
 reset saved-configuration
 ```
 
-进入接口视图配置接口描述  
+21.进入接口视图配置接口描述  
 ```
 description 描述信息
 ```
 
 ## [接口速率](#接口速率)
-接口视图中将当前接口配置为非自动协商模式和全双工模式  
+1.接口视图中将当前接口配置为非自动协商模式和全双工模式  
 ```
 undo negotiation auto
 ```
@@ -137,28 +140,28 @@ undo negotiation auto
 duplex full
 ```
 
-接口视图中将接口速率设置为100Mb/s  
+2.接口视图中将接口速率设置为100Mb/s  
 ```
 speed 100
 ```
 
-接口视图中打开当前接口流量控制开关  
+3.接口视图中打开当前接口流量控制开关  
 ```
 flow-control
 ```
 
 ## [MAC地址自动学习于接口绑定](#MAC地址自动学习于接口绑定)
-系统视图中关闭交换机指定接口的MAC地址学习功能(避免陌生mac设备接入),也称为信息中心功能  
+1.系统视图中关闭交换机指定接口的MAC地址学习功能(避免陌生mac设备接入),也称为信息中心功能  
 ```
 undo info-center enable
 ```
 
-关闭指定接口的MAC地址自动学习功能(接口视图中)  
+2.关闭指定接口的MAC地址自动学习功能(接口视图中)  
 ```
 mac-address learning disable action discard
 ```
 
-将host1的MAC地址与Ethernet 0/0/1接口绑定  
+3.将host1的MAC地址与Ethernet 0/0/1接口绑定  
 ```
 Mac-address static <host1的mac地址> Ethernet0/0/1 vlan 1
 ```
