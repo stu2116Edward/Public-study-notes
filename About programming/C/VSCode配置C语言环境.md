@@ -92,7 +92,7 @@ tasks.json
       "externalConsole": true,
       "MIMode": "gdb",
       "miDebuggerPath": "E:\\mingw64\\bin\\gdb.exe",
-      "preLaunchTask": "C/C++: g++.exe build and debug activity files",
+      "preLaunchTask": "g++",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
@@ -183,7 +183,7 @@ tasks.json
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "C/C++: g++.exe build and debug activity files",
+      "label": "g++",
       "command": "g++",
       "args": [
         "-g",
