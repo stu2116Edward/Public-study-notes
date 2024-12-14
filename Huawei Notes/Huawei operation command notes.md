@@ -1652,7 +1652,7 @@ disp rip
 ```
 5. 查看 rip 数据库
 ```shell
-disp rip database
+disp rip <进程号> database
 ```
 6. 查看路由表
 ```shell
