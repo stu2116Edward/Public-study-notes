@@ -1670,14 +1670,14 @@ summary always
 int [接口]
 undo rip split-horizon
 ```
-关闭水平分割功能，允许自动汇总路由
+关闭水平分割功能，允许自动汇总路由  
 8. 配置RIPv2手动汇总
 ```shell
 int [接口]
 rip summary-address 3.3.0.0 255.255.252.0
 ```
-9. RIP与不连续子网（解决不连续子网问题）
-- 方法1：给接口配置第二个IP地址
+9. RIP与不连续子网（解决不连续子网问题）  
+- 方法1：给接口配置第二个IP地址  
 ```shell
 int [接口]
 ip address 10.0.23.2 sub
@@ -1689,7 +1689,7 @@ version 2
 undo summary
 ```
 关闭自动汇总，关闭水平分割功能，开启毒性逆转功能，增加度量值  
-10. Rip路由引入
+10. Rip路由引入  
 - 引入直连路由
 ```shell
 rip
@@ -1744,7 +1744,7 @@ rip version 2 broadcast
 rip version 2 multicast
 ```
 配置路由器以广播或组播的形式发送RIPv2报文  
-18. 配置RIP定时器和优先级
+18. 配置RIP定时器和优先级  
 - 停止发送RIP路由更新
 ```shell
 int [接口]
