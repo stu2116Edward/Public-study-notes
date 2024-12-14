@@ -1700,6 +1700,14 @@ import-route direct
 rip
 import-route static
 ```
+- 引入OSPF路由
+```shell
+import-route ospf
+```
+- 引入BGP路由
+```shell
+import-route bgp
+```
 11. 查看RIP定期更新情况
 ```shell
 debugging rip 1
