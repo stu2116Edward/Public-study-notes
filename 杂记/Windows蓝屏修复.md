@@ -67,3 +67,6 @@ chkdsk c: /f
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity`里面有一个`Enable`，双击它，将它的数值数据修改成 `0` 即可  
 3. 最后重启下电脑  
 注：如果你的电脑`一直无限蓝屏重启`，无法操作以上步骤，可以先进入windows的`安全模式`，再进行操作  
+
+### 以下是常见蓝屏代码的参考：
+[详情请跳转CSDN](https://blog.csdn.net/gelinwangzi_juge/article/details/109177813)  
