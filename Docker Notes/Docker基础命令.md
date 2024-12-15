@@ -91,6 +91,10 @@ docker restart <容器名/ID>
 ```
 docker rm <容器名/ID>
 ```
+查看容器状态：
+```
+docker container status <容器名/ID>
+```
 停止并删除容器：
 ```
 docker rm -f <容器名/ID>
