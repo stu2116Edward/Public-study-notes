@@ -69,4 +69,9 @@ chkdsk c: /f
 注：如果你的电脑`一直无限蓝屏重启`，无法操作以上步骤，可以先进入windows的`安全模式`，再进行操作  
 
 ### 以下是常见蓝屏代码的参考：
-[详情请跳转CSDN](https://blog.csdn.net/gelinwangzi_juge/article/details/109177813)  
+1.0x0000009C 内存条故障引起，建议更换新内存条  
+2.0x0000007B   硬盘分区引导错误  
+3.0x00000050磁盘坏道，建议使用DiskGenius软件修复  
+4.软件兼容问题蓝屏代码：0x000000BE 、0x0000000A  
+5.驱动兼容问题蓝屏代码：0x0000000A、0x000000B4、 0X000000D1  
+[更多详情请跳转CSDN](https://blog.csdn.net/gelinwangzi_juge/article/details/109177813)  
