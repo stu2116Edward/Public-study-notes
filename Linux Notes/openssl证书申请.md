@@ -29,12 +29,14 @@ cd /etc/ssl/certs/ip.stu2116hhr.net
 ```bash
 openssl genrsa -des3 -out server.key 2048
 ```
-输入一个4位以上的密码
+**输入一个4位以上的密码**
 
 ### 生成CSR(证书签名请求)
 ```bash
 openssl req -new -key server.key -out server.csr -subj "/C=CN/ST=Zhejiang/L=JinHua/O=shanhai/OU=shanhai/CN=ip.stu2116hhr.net"
 ```
+**输入刚刚设置的密码**
+
 参数说明如下：
 | 字段 | 字段含义 | 示例 |
 | --- | --- | --- |
