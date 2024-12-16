@@ -53,6 +53,7 @@ openssl req -new -key server.key -out server.csr -subj "/C=CN/ST=Zhejiang/L=JinH
 ```bash
 openssl rsa -in server.key -out server.key
 ```
+**再次输入密码**
 
 ### 生成自签名SSL证书
 ***-days 证书有效期-天***
