@@ -149,4 +149,4 @@ http {
 }
 ```
 在浏览器中访问显示https不安全那就在你当前的内网环境下手动添加证书  
-`【Win+R】输入 certmgr.msc 在受信任的根证书颁发机构中添加你的server.crt证书`
+`【Win+R】输入 certmgr.msc 在受信任的根证书颁发机构中添加你的server.crt证书选择“所有任务” > “导入”`
