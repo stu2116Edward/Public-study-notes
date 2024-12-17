@@ -7,7 +7,7 @@
 - [链路聚合](#链路聚合)
 - [vlan的创建与应用](#vlan的创建与应用)
 - [vlan中绑定MAC地址](#vlan中绑定MAC地址)
-- [绑定vlan关系](#绑定vlan关系)
+- [MUX-VLAN配置](#MUX-VLAN配置)
 - [交换机端口隔离功能](#交换机端口隔离功能)
 - [不同vlan之间的通信](#不同vlan之间的通信)
 - [VRRP默认网关冗余技术](#VRRP默认网关冗余技术)
@@ -376,6 +376,10 @@ port link-type trunk
 port trunk allow-pass vlan all
 ```
 
+## Access、Trunk、Hybrid含义
+**Access**类型：端口只能属于1个VLAN，`一般用于连接计算机`  
+**Trunk**类型：端口可以属于多个VLAN，可以接收和发送多个VLAN的报文，`一般用于交换机之间连接`  
+**Hybrid**类型：端口可以属于多个VLAN，可以接收和发送多个VLAN的报文，可以用于`交换机`之间连接，也可以用于连接用户的`计算机`  
 
 ## [vlan的创建与应用](#vlan的创建与应用)
 创建多个vlan  
@@ -432,7 +436,7 @@ display this
 ```  
 缩写  
 ```
-dis this
+disp this
 ``` 
 
 退出当前视图  
@@ -520,7 +524,7 @@ port hybrid untagged vlan 10 20
 ```
 
 
-## [绑定vlan关系](#绑定vlan关系)
+## [MUX-VLAN配置](#MUX-VLAN配置)
 绑定vlan关系：  
 主 VLAN(Principal VLAN)可以访问所有从 VLAN  
 组 VLAN(Group VLAN)内部的接口可以互相访问，也可以访问主 VLAN，但不能访问隔离 VLAN  
@@ -643,7 +647,7 @@ port mux-vlan enable
 quit
 ```
 
-创建了一个名为vlan10的端口组  
+**创建了一个名为vlan10的端口组**  
 端口组是将多个物理端口逻辑上组合在一起，以便可以对它们进行统一的配置和管理  
 ```
 port-group vlan10
@@ -669,7 +673,7 @@ port mux-vlan enable
 quit
 ```
 
-创建了一个名为vlan30的端口组  
+**创建了一个名为vlan30的端口组**  
 ```
 port-group vlan30
 ```  
