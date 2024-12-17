@@ -1788,7 +1788,7 @@ rip version 2 broadcast
 ```shell
 rip version 2 multicast
 ```
-19. 配置RIP认证
+19. 配置RIP认证  
 配置rip简单认证
 ```shell
 rip authentication-mode simple <password>
