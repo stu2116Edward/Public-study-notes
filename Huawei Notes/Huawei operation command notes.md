@@ -793,6 +793,8 @@ port-isolate mode l2
 ```
 port-isolate mode all
 ```  
+对于不同VLAN的端口：  
+当配置了port-isolate时，不同VLAN的端口之间的通信不会受到影响，因为它们本来就处于`不同的广播域`中，port-isolate功能主要影响`同一VLAN`内部的端口通信  
 
 ## [不同vlan之间的通信](#不同vlan之间的通信)
 ### 三层交换机创建VLAN SVI实现不同vlan之间的通信  
