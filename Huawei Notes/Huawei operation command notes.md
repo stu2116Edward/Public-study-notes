@@ -1710,6 +1710,14 @@ import-route ospf
 ```shell
 import-route bgp
 ```
+- 引入ISIS路由到RIP实例
+```shell
+import-route isis
+```
+- 引入User Network Route（Unr）到RIP实例
+```shell
+import-route unr
+```
 11. 查看RIP定期更新情况
 ```shell
 debugging rip 1
