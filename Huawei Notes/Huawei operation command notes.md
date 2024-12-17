@@ -1734,27 +1734,11 @@ terminal monitor
 undo debugging rip 1
 undo debug all
 ```
-14. RIP简单认证
-```shell
-rip authentication-mode simple huawei
-```
-配置RIP简单认证，需要在所有路由器上配置相同的密码  
-15. 配置RIPv2 MD5密文验证
-```shell
-rip authentication-mode md5 usual huawei
-```
-配置RIP使用MD5密文验证，增强安全性  
-16. 查看RIP配置信息
+14. 查看RIP配置信息
 ```shell
 disp default-parameter rip
 ```
-17. 配置RIP版本兼容
-```shell
-rip version 2 broadcast
-rip version 2 multicast
-```
-配置路由器以广播或组播的形式发送RIPv2报文  
-18. 配置RIP定时器和优先级  
+15. 配置RIP定时器和优先级  
 - 停止发送RIP路由更新
 ```shell
 int [接口]
@@ -1771,15 +1755,16 @@ timers rip 20 120 60
 ```
 - 修改RIP协议优先级
 ```shell
+rip
 preference 90
 ```
-19. 配置抑制接口
+16. 配置抑制接口
 ```shell
 rip 1
 silent-interface GigabitEthernet 0/0/0
 ```
 设置要抑制的接口，不通过该接口发送或接收RIP更新  
-20. 配置RIP单播更新
+17. 配置RIP单播更新
 ```shell
 rip 1
 peer 172.16.1.100
