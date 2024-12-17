@@ -536,7 +536,7 @@ MUX VLAN 是一种用于对连接批量设备的访问控制功能，
 它允许在一个物理接口上虚拟出多个逻辑接口，  
 每个逻辑接口可以属于不同的 VLAN，从而实现不同 VLAN 间的隔离和互通  
 
-接口绑定vlan    
+### 接口绑定vlan    
 trunk模式:    
 ```
 int <接口名称>
@@ -547,7 +547,7 @@ port link-type trunk
 ```
 配置允许通过的VLAN
 ```
-port trunk allow-pass vlan 允许通过的vlan列表
+port trunk allow-pass vlan <允许通过的vlan列表>
 ```
 
 access模式:  
@@ -571,7 +571,7 @@ port mux-vlan enable
 quit
 ```
 
-vlan关系配置示例:  
+### vlan关系配置示例:  
 进入系统视图  
 ```
 sys
@@ -609,7 +609,7 @@ display this
 quit
 ```
 
-在接口中应用：  
+### 在接口中应用：  
 进入接口视图  
 ```
 interface g0/0/1
@@ -648,7 +648,7 @@ quit
 ```
 
 **创建了一个名为vlan10的端口组**  
-端口组是将多个物理端口逻辑上组合在一起，以便可以对它们进行统一的配置和管理  
+端口组是`将多个物理端口逻辑上组合在一起`，以便可以对它们进行统一的配置和管理  
 ```
 port-group vlan10
 ```  
