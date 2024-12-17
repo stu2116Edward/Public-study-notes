@@ -1769,4 +1769,35 @@ silent-interface GigabitEthernet 0/0/0
 rip 1
 peer 172.16.1.100
 ```
-配置RIP单播更新，指定邻居路由器的IP地址
+配置RIP单播更新，指定邻居路由器的IP地址  
+18. 配置RIP版本兼容  
+首先将rip的版本设置为version 2
+```shell
+rip
+version 2
+```
+进入接口模式
+```shell
+int <接口>
+```
+配置RIP版本2以广播或多播方式发送更新
+```shell
+rip version 2 broadcast
+```
+或者
+```shell
+rip version 2 multicast
+```
+19. 配置RIP认证
+配置rip简单认证
+```shell
+rip authentication-mode simple <password>
+```
+配置RIPv2 MD5密文验证
+```shell
+rip authentication-mode md5 usual <password>
+```
+配置hmac-sha256密文验证
+```shell
+rip authentication-mode hmac-sha256 <password>
+```
