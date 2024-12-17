@@ -1677,7 +1677,7 @@ undo rip split-horizon
 ```shell
 int [接口]
 rip summary-address 3.3.0.0 255.255.252.0
-```
+```  
 9. RIP与不连续子网（解决不连续子网问题）  
 - 方法1：给接口配置第二个IP地址  
 ```shell
