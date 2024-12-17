@@ -56,7 +56,6 @@ openssl rsa -in server.key -out server.key
 **再次输入密码**
 
 ### 生成自签名SSL证书
-***-days 证书有效期-天***
 ```bash
 # -days 证书有效期-天
 openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
