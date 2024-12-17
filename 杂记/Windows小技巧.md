@@ -35,3 +35,17 @@ gateway：192.168.1.1
 ```shell
 notepad C:\Windows\System32\drivers\etc\hosts
 ```
+
+### 常用配置命令
+`msconfig`是一个能够修改调节系统启动方式、状态、后台服务等的程序
+```
+msconfig
+```
+`gpedit.msc`叫组策略，它的作用是用户可以通过它对计算机的安全、功能等设置用户自定义的策略
+```
+gpedit.msc
+```
+`regedit`是注册表，你机器上安装的所有软件、驱动、组件和系统本身的东西都注册在里面（通俗的讲，就是都到那儿报了个到，并挂名注册）
+```
+regedit
+```
