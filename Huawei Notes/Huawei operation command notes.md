@@ -1788,7 +1788,11 @@ rip version 2 broadcast
 ```shell
 rip version 2 multicast
 ```
-19. 配置RIP认证  
+19. 配置RIP认证
+进入接口模式
+```shell
+int <接口>
+```
 配置rip简单认证
 ```shell
 rip authentication-mode simple <password>
@@ -1801,3 +1805,5 @@ rip authentication-mode md5 usual <password>
 ```shell
 rip authentication-mode hmac-sha256 <password>
 ```
+目的是为了实现抓包时明文不可见
+
