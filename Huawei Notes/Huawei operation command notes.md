@@ -1692,6 +1692,14 @@ undo summary
 ```
 关闭自动汇总，关闭水平分割功能，开启毒性逆转功能，增加度量值  
 10. Rip路由引入  
+- 引入不同进程号的RIP路由  
+不同进程号的路由表是不一样的以下使用rip 10, rip 20进行演示(一般是边界路由的配置)
+```
+rip 10
+import-route rip 20
+rip 20
+import-route rip 10
+```
 - 引入直连路由
 ```shell
 rip
