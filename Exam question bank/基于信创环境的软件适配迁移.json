@@ -1,0 +1,3668 @@
+{
+    "id": "bQ8Piw",
+    "title": "基于信创环境的软件适配迁移",
+    "description": "感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！",
+    "type": "Survey",
+    "attribute": {
+     "suffix": "您已完成本次考试。",
+     "submitButton": "提交",
+     "examScore": 120
+    },
+    "children": [
+     {
+      "id": "pcsr",
+      "title": "升级操作系统、数据库或中间件版本前，应确认其（）对业务系统的影响",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "fknk",
+        "title": "A、兼容性",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "fknk"
+        }
+       },
+       {
+        "id": "irye",
+        "title": "B、并发性",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "m2ab",
+        "title": "C、吞吐量",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "dlq3",
+        "title": "D、并行性",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "6ztb",
+      "title": "下面不属于应用服务器中间件的是（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "yjyg",
+        "title": "A、Tomcat",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ekvc",
+        "title": "B、WebSphere",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "awci",
+        "title": "C、Redis",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "awci"
+        }
+       },
+       {
+        "id": "bumh",
+        "title": "D、Weblogic",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "00hd",
+      "title": "负载均衡中间件主要应用于哪方面（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "yar6",
+        "title": "A、内存",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "gxjs",
+        "title": "B、流量",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "gxjs"
+        }
+       },
+       {
+        "id": "kx8l",
+        "title": "C、CPU",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "83on",
+        "title": "D、操作系统",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "qicu",
+      "title": "电子政务信息化发展路径正确的是（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "e3ng",
+        "title": "A、办公设备电子化阶段、部门业务信息化阶段、公共服务网络化阶段、电子政务一体化阶段、政府服务智慧化阶段",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "e3ng"
+        }
+       },
+       {
+        "id": "us8y",
+        "title": "B、办公设备电子化阶段、公共服务网络化阶段、部门业务信息化阶段、电子政务一体化阶段、政府服务智慧化阶段",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "u9c8",
+        "title": "C、办公设备电子化阶段、部门业务信息化阶段、电子政务一体化阶段、公共服务网络化阶段、政府服务智慧化阶段",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "qz8z",
+        "title": "D、办公设备电子化阶段、部门业务信息化阶段、公共服务网络化阶段、政府服务智慧化阶段、电子政务一体化阶段",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "itn5",
+      "title": "属于 JavaEE 技术规范中的 EJB 规范是哪个（）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "tz4i",
+        "title": "A、EJB 3.1",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "tz4i"
+        }
+       },
+       {
+        "id": "pzxq",
+        "title": "B、JMS2.0",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "hog1",
+        "title": "C、SOAP 1.2",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "hggu",
+        "title": "D、JSF 2.3",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "mm0b",
+      "title": "JTA 是 JavaEE 技术规范中的哪种？()",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "e4ym",
+        "title": "A、Java 事务 API",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "e4ym"
+        }
+       },
+       {
+        "id": "sqrt",
+        "title": "B、Java 事务服务",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "vb11",
+        "title": "C、Java 消息服务",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "f0hb",
+        "title": "D、Java 的命名和目录接口",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ivi9",
+      "title": "属于消息中间件的是哪个？（）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "hh3c",
+        "title": "A、Redis",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "vws8",
+        "title": "B、Nginx",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "d3ib",
+        "title": "C、Tomcat",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "kb5j",
+        "title": "D、Kafka",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "kb5j"
+        }
+       }
+      ]
+     },
+     {
+      "id": "4o3j",
+      "title": "基于信创的应用平台总体架构中，负载均衡中间件所处的位置在哪里（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "foiw",
+        "title": "A、应用程序与数据库之间",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "bul3",
+        "title": "B、客户端与应用程序之间",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "bul3"
+        }
+       },
+       {
+        "id": "r4wf",
+        "title": "C、应用程序与应用程序之间",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "kxmy",
+        "title": "D、消息中间件与数据库之间",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "odn4",
+      "title": "技术架构升级和演进过程中，单租户主要升级成哪种（）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "0mwo",
+        "title": "A、弹性伸缩",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "dpvc",
+        "title": "B、多租户",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "dpvc"
+        }
+       },
+       {
+        "id": "rwyp",
+        "title": "C、云原生应用",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "rwr6",
+        "title": "D、容器技术",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "fy8n",
+      "title": "信创中间件的应用路径正确的是（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "pxre",
+        "title": "A、业务应用、试点应用、创新应用",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "60ol",
+        "title": "B、试点应用、业务应用、创新应用",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "60ol"
+        }
+       },
+       {
+        "id": "1hue",
+        "title": "C、试点应用、创新应用、业务应用",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "a7iu",
+        "title": "D、业务应用、创新应用、试点应用",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ozs8",
+      "title": "信创一期电子公文试点项目主要在哪些行业（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "3lmv",
+        "title": "A、党政",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "3lmv"
+        }
+       },
+       {
+        "id": "thuo",
+        "title": "B、金融",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "qq2m",
+        "title": "C、电力",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "525s",
+        "title": "D、教育",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ytzt",
+      "title": "以下哪个用户不属于三员管理员（）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "pyof",
+        "title": "A、系统管理员",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "9tw7",
+        "title": "B、超级用户",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "9tw7"
+        }
+       },
+       {
+        "id": "gufg",
+        "title": "C、安全保密管理员",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "974m",
+        "title": "D、安全审计员",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "w87r",
+      "title": "缓存中间件用到了哪种持久化的技术（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "9nkd",
+        "title": "A、RDB",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "n9dl",
+        "title": "B、AOF",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "qjso",
+        "title": "C、文件存储",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "szu1",
+        "title": "D、其他选项都是",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "szu1"
+        }
+       }
+      ]
+     },
+     {
+      "id": "dcfz",
+      "title": "消息中间件的队列/主题的作用是什么（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "nwe5",
+        "title": "A、产生消息的应用程序",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "5qi2",
+        "title": "B、存储消息的缓冲区实体",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "5qi2"
+        }
+       },
+       {
+        "id": "btrm",
+        "title": "C、不同的应用程序（进程或线程）之间传递或交换的信息",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "psfw",
+        "title": "D、产生消息的应用程序",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ztn3",
+      "title": "以长格式显示当前目录下所有文件时，若文件 test 属性的第一部分为：drwxrw-r--，则 test 的文件类型及文件属主的权限是什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "5vg5",
+        "title": "A、目录文件、浏览目录修改目录下文件和进入目录",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "5vg5"
+        }
+       },
+       {
+        "id": "9hov",
+        "title": "B、目录文件、浏览目录修改目录下文件",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7xko",
+        "title": "C、普通文件、读写",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "05ji",
+        "title": "D、普通文件、读",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ugqo",
+      "title": "假如文件权限是按 8 进制来定义，下面哪个值代表了读和写?",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "do7q",
+        "title": "A、2",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "js05",
+        "title": "B、6",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "js05"
+        }
+       },
+       {
+        "id": "4sx2",
+        "title": "C、4",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "9yy8",
+        "title": "D、1",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "9da0",
+      "title": "下列哪个命令能查找当前目录一个月（30 天）以前大于 100M 的日志文件（.log）？（）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "xyfe",
+        "title": "A、find . -name \"*.log\" -m time +30 -type f -size +10",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ttz3",
+        "title": "B、find . -name \"*.log\" -mtime +30 -type f -size +100",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "trut",
+        "title": "C、find . -name \"*.log\" -mtime +30 -type -size +100M",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "trut"
+        }
+       },
+       {
+        "id": "htpd",
+        "title": "D、find . -name \"*.log\" -m time +30 -type -size +100M",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "eg76",
+      "title": "创建 raid5 最少需要几块硬盘？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "7hg6",
+        "title": "A、2",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "jrrc",
+        "title": "B、3",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "jrrc"
+        }
+       },
+       {
+        "id": "v8u9",
+        "title": "C、4",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "djs1",
+        "title": "D、5",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "wvjj",
+      "title": "软件项目存储于/ftproot，用 ls -l /ftproot，命令输出信息为：drwxr-xr-x 2 root root 4096 Nov 30 10:22 ftproot，该软件项目的维护由apache 用户负责，下面哪个命令可以实现该需求？（）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "wp6b",
+        "title": "A、chown -R apache /ftproot",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "wp6b"
+        }
+       },
+       {
+        "id": "pa4x",
+        "title": "B、chown -r apache /ftproot",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "db5e",
+        "title": "C、chgrp -R apache /ftproot",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "9y22",
+        "title": "D、chgrp -r apache /ftproot",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "gipy",
+      "title": "存放系统配置文件，如网络配置、设备配置等的目录是哪个？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "eiqu",
+        "title": "A、/bin",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "v7y2",
+        "title": "B、/boot",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "9lqx",
+        "title": "C、/dev",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "3313",
+        "title": "D、/etc",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "3313"
+        }
+       }
+      ]
+     },
+     {
+      "id": "yq04",
+      "title": "命令 cat file1&gt;&gt;file2 的功能是？（）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ithb",
+        "title": "A、将文件 file2 的内容添加到文件 file1 的末尾",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "i456",
+        "title": "B、将文件 file1 的内容添加到文件 file2 的末尾",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "i456"
+        }
+       },
+       {
+        "id": "x2ou",
+        "title": "C、删除文件 file1 和 file2",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "eegg",
+        "title": "D、显示文件 file1 和 file2",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "knwf",
+      "title": "运行一个脚本，用户需要什么样的权限？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "amry",
+        "title": "A、acl",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ez68",
+        "title": "B、write",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "n21b",
+        "title": "C、read 和 execute",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "n21b"
+        }
+       },
+       {
+        "id": "2u3e",
+        "title": "D、browse on the directory",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "0nrm",
+      "title": "切换目录的命令是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "cxzq",
+        "title": "A、cd",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "cxzq"
+        }
+       },
+       {
+        "id": "un41",
+        "title": "B、pwd",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "pbdw",
+        "title": "C、mkdir",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "8ggc",
+        "title": "D、rmdir",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "sgat",
+      "title": "“当前用户 Shell 类型”是哪个环境变量？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "nfd8",
+        "title": "A、HOSTNAME",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4762",
+        "title": "B、SHELL",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "4762"
+        }
+       },
+       {
+        "id": "2yxn",
+        "title": "C、MAIL",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "y8a3",
+        "title": "D、LANGUAGE",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "vxzc",
+      "title": "下列常用的性能评测工具中, 属于 CPU 性能评测工具的是哪一个？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "8lza",
+        "title": "A、stream",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "9jlt",
+        "title": "B、SPEC CPU2006",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "9jlt"
+        }
+       },
+       {
+        "id": "a2ky",
+        "title": "C、IOzone",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "n6pa",
+        "title": "D、netperf",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "8e65",
+      "title": "下列 linux 常用命令中，不可以查看文件内容的是哪一个?",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "z34y",
+        "title": "A、wc",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "z34y"
+        }
+       },
+       {
+        "id": "3z98",
+        "title": "B、 more",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7ceq",
+        "title": "C、 less",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "tg2d",
+        "title": "D、tail",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "tmpi",
+      "title": "以下哪个命令可以用来更改文件的读写权限？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "8ha0",
+        "title": "A、chmod",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "8ha0"
+        }
+       },
+       {
+        "id": "ic0x",
+        "title": "B、chown",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "r4dw",
+        "title": "C、chgrp",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "e5ak",
+        "title": "D、chattr",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "q2w2",
+      "title": "CPU 芯片设计中，负责指令译码的是（ ）。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "7vjw",
+        "title": "A、运算器",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "wckw",
+        "title": "B、控制器",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "wckw"
+        }
+       },
+       {
+        "id": "c475",
+        "title": "C、寄存器",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "0rov",
+        "title": "D、缓存",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ht5q",
+      "title": "采用指令 Cache 与数据 Cache 分离的主要目的是（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "h0p2",
+        "title": "A、降低 Cache 的缺失损失",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "wh6f",
+        "title": "B、提高 Cache 的命中率",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "z1on",
+        "title": "C、降低 CPU 平均访问时间",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "rpyi",
+        "title": "D、减少指令流水线资源冲突",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "rpyi"
+        }
+       }
+      ]
+     },
+     {
+      "id": "i2yx",
+      "title": "CPU 芯片设计中的布局布线阶段主要目的是（ ）。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "bfrr",
+        "title": "A、确定芯片的外观",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "vhbu",
+        "title": "B、安排晶体管和电路的位置",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "vhbu"
+        }
+       },
+       {
+        "id": "t7e0",
+        "title": "C、选择制造材料",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "vwlx",
+        "title": "D、计算芯片成本",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "c4j9",
+      "title": "CPU 乱序执行技术主要依赖于（ ）。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "lkig",
+        "title": "A、高速缓存",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "owc2",
+        "title": "B、分支预测",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "owc2"
+        }
+       },
+       {
+        "id": "k283",
+        "title": "C、指令预取",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "a0w9",
+        "title": "D、多核处理器",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "1uzt",
+      "title": "以下关于指令集的说法错误的是（ ）。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ec93",
+        "title": "A、指令集越复杂，CPU 的性能一定越高",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ec93"
+        }
+       },
+       {
+        "id": "5nzg",
+        "title": "B、不同的指令集决定了 CPU 能执行的不同指令",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "lbtm",
+        "title": "C、指令集的设计会影响软件的兼容性",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "z540",
+        "title": "D、指令集的发展与计算机技术的进步密切相关",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "96oj",
+      "title": "以下关于 CPU 流水线深度的说法正确的是（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "iuiv",
+        "title": "A、流水线深度越深，性能越好",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "kxf5",
+        "title": "B、流水线深度越浅，性能越好",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "fl0d",
+        "title": "C、流水线深度与性能没有关系",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "mb9d",
+        "title": "D、流水线深度需要根据具体应用进行优化",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "mb9d"
+        }
+       }
+      ]
+     },
+     {
+      "id": "mqcy",
+      "title": "信创 CPU 的安全特性主要包括哪些方面？（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "jp07",
+        "title": "A、加密技术",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4n32",
+        "title": "B、访问控制",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "nv1d",
+        "title": "C、安全启动",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4wg8",
+        "title": "D、以上都是",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "4wg8"
+        }
+       }
+      ]
+     },
+     {
+      "id": "q2of",
+      "title": "指令周期是指（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "u211",
+        "title": "A、CPU 从主存取出一条指令的时间",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "rkk0",
+        "title": "B、CPU 执行一条指令的时间",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "8y2v",
+        "title": "C、CPU 从主存取出一条指令并执行完该指令的时间",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "8y2v"
+        }
+       },
+       {
+        "id": "ekh8",
+        "title": "D、时钟周期的时间",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "zjt9",
+      "title": "以下关于 CPU 缓存一致性的说法正确的是（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "qt27",
+        "title": "A、缓存一致性可以保证不同核心的缓存数据相同",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "qt27"
+        }
+       },
+       {
+        "id": "4lok",
+        "title": "B、缓存一致性会降低 CPU 的性能",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "0x25",
+        "title": "C、缓存一致性对程序的执行结果没有影响",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "etxr",
+        "title": "D、所有的 CPU 都不需要考虑缓存一致性问题",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "2r2u",
+      "title": "某 CPU 在一个时钟周期内可以执行多条指令，这种技术被称为（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "sat7",
+        "title": "A、超标量技术",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "sat7"
+        }
+       },
+       {
+        "id": "g4si",
+        "title": "B、流水线技术",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "xjub",
+        "title": "C、超线程技术",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "bm0a",
+        "title": "D、多核技术",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ivdz",
+      "title": "r、w、x 分别表示 Linux 文件的_____、_____、_____权限。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "bbb4",
+        "title": "A、写、读、执行",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "jlu3",
+        "title": "B、读、写、执行",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "jlu3"
+        }
+       },
+       {
+        "id": "0qx5",
+        "title": "C、执行、写、读",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "5hcs",
+        "title": "D、读、执行、写",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "a7f8",
+      "title": "在 vim 的编辑模式下，哪一个命令可以在光标所在行的下一行进行编辑？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ut0a",
+        "title": "A、i",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "1s3q",
+        "title": "B、a",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "o17z",
+        "title": "C、o",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "o17z"
+        }
+       },
+       {
+        "id": "b7o7",
+        "title": "D、s",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "781v",
+      "title": "父进程退出后，子进程还在运行，这类进程被称为",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "r5h1",
+        "title": "A、孤儿进程",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "r5h1"
+        }
+       },
+       {
+        "id": "f2f2",
+        "title": "B、僵尸进程",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ivo4",
+        "title": "C、守护进程",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "lz7j",
+        "title": "D、以上内容均不对",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ky6a",
+      "title": "信创产业中的“信创”指的是什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "2xvz",
+        "title": "A、信息创新",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ba66",
+        "title": "B、信息技术应用创新",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ba66"
+        }
+       },
+       {
+        "id": "enxk",
+        "title": "C、信息通信创新",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "xbsf",
+        "title": "D、信息安全创新",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "u4j8",
+      "title": "以下哪个不是信创产业重点发展的领域？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "1kcj",
+        "title": "A、 高性能计算",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "g827",
+        "title": "B、云计算",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "91xl",
+        "title": "C、物联网",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "yfcg",
+        "title": "D、传统家电制造",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "yfcg"
+        }
+       }
+      ]
+     },
+     {
+      "id": "3jiv",
+      "title": "信创产业的核心目标是？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "9jew",
+        "title": "A、提高国际竞争力",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "tc4p",
+        "title": "B、实现信息技术自主可控",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "tc4p"
+        }
+       },
+       {
+        "id": "uhog",
+        "title": "C、扩大市场份额",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "myo6",
+        "title": "D、降低生产成本",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "1fvm",
+      "title": "信创产业中的“两芯”指的是什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ygtm",
+        "title": "A、CPU 和 GPU",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ygtm"
+        }
+       },
+       {
+        "id": "bta7",
+        "title": "B、 CPU 和 FPGA",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "czfi",
+        "title": "C、 CPU 和 DSP",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "vew4",
+        "title": "D、CPU 和 ASIC",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ooel",
+      "title": "以下哪个不是信创产业发展的主要挑战？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "7pdr",
+        "title": "A、技术壁垒",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "1zsx",
+        "title": "B、产业链不完善",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "9ckm",
+        "title": "C、市场需求不足",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "9ckm"
+        }
+       },
+       {
+        "id": "ieoi",
+        "title": "D、 国际竞争压力",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "b4bj",
+      "title": "世界上第一个数据库是什么模型?",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "70ze",
+        "title": "A、关系型",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "fbwn",
+        "title": "B、层次型",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ifkn",
+        "title": "C、网状型",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ifkn"
+        }
+       },
+       {
+        "id": "qe6z",
+        "title": "D、事务型",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ui3q",
+      "title": "ACID 的提出者是谁?",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "167l",
+        "title": "A、尼古拉.格雷",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "167l"
+        }
+       },
+       {
+        "id": "ozig",
+        "title": "B、比尔.门恩",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "g0lh",
+        "title": "C、拉里.埃里森",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "5bb7",
+        "title": "D、迈克尔.斯通布雷克",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "oge4",
+      "title": "CentOS/openEuler 等 Linux 操作系统中哪个内核参数控制单个共享内存段的最大值？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "1mo0",
+        "title": "A、fs.file-max",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "hif9",
+        "title": "B、kernel.shmall",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "qw94",
+        "title": "C、kernel.shmmax",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "qw94"
+        }
+       },
+       {
+        "id": "alc5",
+        "title": "D、vm.swappiness",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "sv8s",
+      "title": "删除 schema 时，如果 schema 下存在对象则无法直接删除，可以使用使用哪个关键字删除：（ ）",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "urtt",
+        "title": "A、force",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "qx1x",
+        "title": "B、cascade",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "qx1x"
+        }
+       },
+       {
+        "id": "rbsa",
+        "title": "C、restrict",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "zw6r",
+        "title": "D、 immediate",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "yjcz",
+      "title": "<p>下面建表语句共创建了几种约束（）</p><p>CREATE TABLE products (</p><p>order_id integer PRIMARY KEY、</p><p>product_no integer REFERENCES products (product_no)、</p><p>name text NOT NULL、</p><p>price numeric CHECK (price &gt; 0)、</p><p>discounted_price numeric CHECK (discounted_price &gt; 0)、</p><p>CHECK (price &gt; discounted_price));</p>",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "lll3",
+        "title": "A、主键 唯一约束 检查约束 非空约束",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "wov9",
+        "title": "B、主键 外键 检查约束 非空约束",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "wov9"
+        }
+       },
+       {
+        "id": "8akv",
+        "title": "C、主键 外键 排他约束 非空约束",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "322k",
+        "title": "D、外键 检查约束 唯一约束 非空约束",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "3fkl",
+      "title": "在虚拟化技术中，从 x86 架构迁移到 ARM 架构后，以下哪种软件修改通常是必须的？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "cz50",
+        "title": "A、图形界面优化",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "o1o1",
+        "title": "B、操作系统级别的兼容性处理",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "o1o1"
+        }
+       },
+       {
+        "id": "byr6",
+        "title": "C、数据库索引优化",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "4bve",
+        "title": "D、网络协议调整",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "g0qu",
+      "title": "国产 CPU 生态发展中，最重要的生态建设方式是什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "fi3g",
+        "title": "A、扩大厂商合作范围",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ug03",
+        "title": "B、构建完善的开发工具链和应用生态",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "ug03"
+        }
+       },
+       {
+        "id": "jia8",
+        "title": "C、增加终端用户市场宣传",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "1rou",
+        "title": "D、提高网络设备兼容性",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ks1t",
+      "title": "在虚拟化技术中，硬件虚拟化的关键技术是什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "5tuo",
+        "title": "A、硬件辅助虚拟化（如 Intel VT-x、AMD-V 等）",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "5tuo"
+        }
+       },
+       {
+        "id": "3q1e",
+        "title": "B、云存储",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "19c5",
+        "title": "C、网络虚拟化",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "bls6",
+        "title": "D、应用虚拟化",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "z3te",
+      "title": "在信创虚拟化运维中，以下哪项是虚拟机热迁移的主要目的？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "t7fj",
+        "title": "A、提高虚拟机的性能",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "m89t",
+        "title": "B、实现虚拟机的负载均衡",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "m89t"
+        }
+       },
+       {
+        "id": "8luk",
+        "title": "C、降低虚拟机的资源消耗",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "evnv",
+        "title": "D、增加虚拟机的数量",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "jetb",
+      "title": "信创虚拟化环境中，以下哪项不是虚拟化带来的优势？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "0vgs",
+        "title": "A、降低能源消耗",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "3w15",
+        "title": "B、提高硬件利用率",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "1yvz",
+        "title": "C、增加物理服务器数量",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "1yvz"
+        }
+       },
+       {
+        "id": "wagp",
+        "title": "D、提升系统的灵活性和可扩展性",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "gn6o",
+      "title": "信创计算虚拟化的的主要目标有？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "fz11",
+        "title": "A、提高图形处理能力",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "seev",
+        "title": "B、实现自主可控的计算架构",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "seev"
+        }
+       },
+       {
+        "id": "2aid",
+        "title": "C、降低功耗",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "ir04",
+        "title": "D、增强网络传输速度",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "j5qk",
+      "title": "信创云的建设中，经常使用 Overlay 网络，请问在 Overlay 网络中，控制平面通常负责什么？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ql36",
+        "title": "A、数据转发",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "age5",
+        "title": "B、网络流量监控",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "p5h8",
+        "title": "C、网络拓扑管理",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "p5h8"
+        }
+       },
+       {
+        "id": "to67",
+        "title": "D、物理设备管理",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "5m8o",
+      "title": "信创虚拟化中，Linux 系统应用比较广泛，请问在 Linux 中，哪个文件系统支持快照功能？",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "pmu4",
+        "title": "A、 ext3",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "724k",
+        "title": "B、ext4",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "cvee",
+        "title": "C、Btrfs",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "cvee"
+        }
+       },
+       {
+        "id": "cnwk",
+        "title": "D、FAT32",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "n2xw",
+      "title": "以信创环境针对 CPU 能力进行优化的技术叫",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "7mm0",
+        "title": "A、计算虚拟化",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "7mm0"
+        }
+       },
+       {
+        "id": "31m8",
+        "title": "B、存储虚拟化",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "w0ov",
+        "title": "C、网络虚拟化",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "kb0x",
+        "title": "D、显卡虚拟化",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "x02v",
+      "title": "信创环境下的安全问题不可以通过哪个设备解决",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "bcyn",
+        "title": "A、信创防火墙",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "7pbk",
+        "title": "B、信创零信任",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "aawn",
+        "title": "C、信创应用软件",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "aawn"
+        }
+       },
+       {
+        "id": "3lvh",
+        "title": "D、信创端点安全",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "jy8q",
+      "title": "中间件适配迁移硬件需要评估哪些（）",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "36fm",
+        "title": "A、CPU",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "36fm"
+        }
+       },
+       {
+        "id": "f7vg",
+        "title": "B、硬盘",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "jy8q"
+        }
+       },
+       {
+        "id": "d22h",
+        "title": "C、内存",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "jy8q"
+        }
+       },
+       {
+        "id": "gv66",
+        "title": "D、JDK",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "jy8q"
+        }
+       }
+      ]
+     },
+     {
+      "id": "ok9e",
+      "title": "分布式架构有哪些特点（ ）",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "hs3f",
+        "title": "A、架构简单",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "cyfz",
+        "title": "B、架构复杂",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ok9e"
+        }
+       },
+       {
+        "id": "4943",
+        "title": "C、利于扩展",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ok9e"
+        }
+       },
+       {
+        "id": "o6ea",
+        "title": "D、耦合度低",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ok9e"
+        }
+       }
+      ]
+     },
+     {
+      "id": "ilca",
+      "title": "应用系统开发模式有哪些（）",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "07pb",
+        "title": "A、单体应用架构",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "07pb"
+        }
+       },
+       {
+        "id": "sre1",
+        "title": "B、分布式应用架构",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ilca"
+        }
+       },
+       {
+        "id": "oluz",
+        "title": "C、微服务应用架构",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ilca"
+        }
+       },
+       {
+        "id": "m75e",
+        "title": "D、云原生应用架构",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "ilca"
+        }
+       }
+      ]
+     },
+     {
+      "id": "247u",
+      "title": "负载均衡中间件常用的负载策略有哪些（ ）",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "l66i",
+        "title": "A、轮询算法",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "l66i"
+        }
+       },
+       {
+        "id": "mmxt",
+        "title": "B、权重算法",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "247u"
+        }
+       },
+       {
+        "id": "60w6",
+        "title": "C、最小连接数算法",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "247u"
+        }
+       },
+       {
+        "id": "gat7",
+        "title": "D、一致性哈希算法",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "247u"
+        }
+       }
+      ]
+     },
+     {
+      "id": "3tl3",
+      "title": "信创应用服务器可以快速适配哪些语言开发的应用（）",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "xg4g",
+        "title": "A、JAVA",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "xg4g"
+        }
+       },
+       {
+        "id": "jg2u",
+        "title": "B、PHP",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "3tl3"
+        }
+       },
+       {
+        "id": "aqwy",
+        "title": "C、Python",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "3tl3"
+        }
+       },
+       {
+        "id": "3c5g",
+        "title": "D、C#",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "t0gi",
+      "title": "应用服务器中间件能提供哪些基础服务（ ）",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "c3ev",
+        "title": "A、线程服务",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "c3ev"
+        }
+       },
+       {
+        "id": "8w6g",
+        "title": "B、资源服务",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "t0gi"
+        }
+       },
+       {
+        "id": "ia9z",
+        "title": "C、通信服务",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "t0gi"
+        }
+       },
+       {
+        "id": "673j",
+        "title": "D、事务服务",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "t0gi"
+        }
+       }
+      ]
+     },
+     {
+      "id": "f73o",
+      "title": "以下哪些 ip 是和 172.16.200.10/16 在同一子网内的主机？（）",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "u51s",
+        "title": "A、192.168.0.1",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "yp1n",
+        "title": "B、172.16.0.1",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "f73o"
+        }
+       },
+       {
+        "id": "un5s",
+        "title": "C、172.16.200.11",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "f73o"
+        }
+       },
+       {
+        "id": "m5i9",
+        "title": "D、172.16.0.0",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "c7i0",
+      "title": "以下对硬链接描述正确的是（）",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "ioxs",
+        "title": "A、链接和源文件指向同一个 inode",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "ioxs"
+        }
+       },
+       {
+        "id": "a5x0",
+        "title": "B、删除源文件，链接文件依然可用",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "c7i0"
+        }
+       },
+       {
+        "id": "lvon",
+        "title": "C、不能对目录创建硬链接",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "c7i0"
+        }
+       },
+       {
+        "id": "uqox",
+        "title": "D、可以跨文件系统",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "2gdh",
+      "title": "假设今天是 2021 年 6 月 1 号，想要在 6 月 3 号执行某条命令，时间设置正确的选项是？（）",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "ve5d",
+        "title": "A、at 3/6/2021",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "v8rh",
+        "title": "B、at now + 2 days",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "2gdh"
+        }
+       },
+       {
+        "id": "08eo",
+        "title": "C、at 6/3/2021",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "2gdh"
+        }
+       },
+       {
+        "id": "o1s8",
+        "title": "D、at now + 3 days",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "91fb",
+      "title": "软件分为基础软件和应用软件, 下列属于基础软件的是?",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "59ks",
+        "title": "A、操作系统",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "59ks"
+        }
+       },
+       {
+        "id": "fv14",
+        "title": "B、数据库",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "91fb"
+        }
+       },
+       {
+        "id": "khgb",
+        "title": "C、中间件",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "91fb"
+        }
+       },
+       {
+        "id": "kx6o",
+        "title": "D、办公软件",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "w9d4",
+      "title": "CPU 多发射超标量技术的优点包括（ ）。",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "tlua",
+        "title": "A、提高指令执行并行度",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "tlua"
+        }
+       },
+       {
+        "id": "5eb7",
+        "title": "B、增加处理器性能",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "w9d4"
+        }
+       },
+       {
+        "id": "vl5z",
+        "title": "C、降低功耗",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "w9d4"
+        }
+       },
+       {
+        "id": "l7kt",
+        "title": "D、提升系统响应速度",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "1sc7",
+      "title": "CPU 的虚拟化技术的好处有（ ）",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "v07b",
+        "title": "A、提高硬件资源的利用率",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "v07b"
+        }
+       },
+       {
+        "id": "hdzm",
+        "title": "B、增强系统的安全性",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "1sc7"
+        }
+       },
+       {
+        "id": "b6ls",
+        "title": "C、便于管理和维护",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "1sc7"
+        }
+       },
+       {
+        "id": "jqv6",
+        "title": "D、降低软件的开发成本",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "87gp",
+      "title": "CPU 的指令集架构的重要性体现在（ ）",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "5k8d",
+        "title": "A、决定了 CPU 能执行的指令类型",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "5k8d"
+        }
+       },
+       {
+        "id": "d090",
+        "title": "B、影响软件的兼容性",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "87gp"
+        }
+       },
+       {
+        "id": "9ied",
+        "title": "C、与 CPU 的性能直接相关",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "87gp"
+        }
+       },
+       {
+        "id": "wnfc",
+        "title": "D、决定了 CPU 的制造工艺",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "r5s1",
+      "title": "下列业务系统优化手段包括（）？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "jfhy",
+        "title": "A、 数据库优化",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "jfhy"
+        }
+       },
+       {
+        "id": "bg4w",
+        "title": "B、提升磁盘读写效率，如使用 SSD 代替 SATA",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "r5s1"
+        }
+       },
+       {
+        "id": "bzae",
+        "title": "C、进程/线程绑核优化",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "r5s1"
+        }
+       },
+       {
+        "id": "vmp0",
+        "title": "D、使用多线程编程",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "r5s1"
+        }
+       }
+      ]
+     },
+     {
+      "id": "tnsd",
+      "title": "关于 GPL 开源协议，下面说法正确的是？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "5idh",
+        "title": "A、遵循 GPL 协议的软件必须开源",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "5idh"
+        }
+       },
+       {
+        "id": "83bg",
+        "title": "B、在 GPL 开源软件基础上修改的代码也必须开源",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "tnsd"
+        }
+       },
+       {
+        "id": "qkmq",
+        "title": "C、GPL 开源软件必须免费提供",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "e8qn",
+        "title": "D、在 GPL 开源软件基础上修改代码发布的软件可以收费但必须开源。",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "tnsd"
+        }
+       },
+       {
+        "id": "t5t1",
+        "title": "E、通过 GPL 协议发布的软件必须放弃版权。",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "fxem",
+      "title": "<p>启动数据库报错如下：</p><p>FATAL: the values of memory out of limit, the database failed to be </p><p>started, max_process_memory (4944MB) must greater than 2GB + </p><p>cstore_buffers(512MB) + (udf_memory_limit(200MB) -</p><p>UDF_DEFAULT_MEMORY(200MB)) + shared_buffers(1858MB) + preserved </p><p>memory(3715MB) = 8133MB</p><p>要解决这个问题，下面哪些方法是有效的：</p>",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "n3om",
+        "title": "A、增大数据库参数 max_process_memory",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "fxem"
+        }
+       },
+       {
+        "id": "6gt0",
+        "title": "B、减少数据库参数 shared_buffers",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "fxem"
+        }
+       },
+       {
+        "id": "lzja",
+        "title": "C、减少数据库参数 max_connection",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "fxem"
+        }
+       },
+       {
+        "id": "mciw",
+        "title": "D、增加服务器总内存大小",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "g5up",
+        "title": "E、调高操作系统内核参数 kernel.shmall",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "m25n",
+      "title": "关于索引，哪两个选项说法是错误的？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "9kqu",
+        "title": "A、 一个索引是通过’create index’语句创建，通过’drop index’删除",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "05nc",
+        "title": "B、通过使用索引，可以让查询和排序更快",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "04ll",
+        "title": "C、分区表索引类型分为 local 索引与 global 索引",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "pywb",
+        "title": "D、通过使用索引，性能一定会提高",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "m25n"
+        }
+       },
+       {
+        "id": "c2dl",
+        "title": "E、创建一个不使用的索引，对数据库性能没有任何负面影响。",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "m25n"
+        }
+       }
+      ]
+     },
+     {
+      "id": "xg5n",
+      "title": "在信创云或信创虚拟化的容器管理中，以下哪些是常用的日志收集工具？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "py6b",
+        "title": "A、Fluentd",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "py6b"
+        }
+       },
+       {
+        "id": "8kc3",
+        "title": "B、Logstash",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "xg5n"
+        }
+       },
+       {
+        "id": "ggjo",
+        "title": "C、 Prometheus",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "6jc6",
+        "title": "D、 Grafana",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "t8t4",
+      "title": "在信创云的云内核技术中，以下哪些功能是关键的？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "f5m2",
+        "title": "A、资源调度",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "f5m2"
+        }
+       },
+       {
+        "id": "g3a5",
+        "title": "B、网络隔离",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "t8t4"
+        }
+       },
+       {
+        "id": "sa2s",
+        "title": "C、负载均衡",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "t8t4"
+        }
+       },
+       {
+        "id": "tmzn",
+        "title": "D、数据库管理",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "t1p1",
+      "title": "在信创云的云运维中，以下哪些工具可以用于自动化部署？",
+      "type": "Checkbox",
+      "attribute": {
+       "examScore": 2,
+       "examAnswerMode": "selectAll"
+      },
+      "children": [
+       {
+        "id": "qya8",
+        "title": "A、Ansible",
+        "type": "Option",
+        "attribute": {
+         "examScore": 5,
+         "examCorrectAnswer": "qya8"
+        }
+       },
+       {
+        "id": "4bbj",
+        "title": "B、Terraform",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "t1p1"
+        }
+       },
+       {
+        "id": "boan",
+        "title": "C、Git",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "5k9g",
+        "title": "D、Puppet",
+        "type": "Option",
+        "attribute": {
+         "examCorrectAnswer": "t1p1"
+        }
+       }
+      ]
+     },
+     {
+      "id": "d21o",
+      "title": "中间件增加了系统的维护、运行和管理的工作量。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "fbmy",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "wsjx",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "wsjx"
+        }
+       }
+      ]
+     },
+     {
+      "id": "nos3",
+      "title": "消息中间件中，一个主题可以被多个消费者订阅。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "pdbs",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "pdbs"
+        }
+       },
+       {
+        "id": "599t",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ztmt",
+      "title": "数据缓存中间件可以将 session 存储在缓存中间件中，实现用户会话信息的共享。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "k4mu",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "k4mu"
+        }
+       },
+       {
+        "id": "hyba",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "ypxc",
+      "title": "异构网络环境是指不同制造商生产的计算机和系统组成的网络环境。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "apjn",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "apjn"
+        }
+       },
+       {
+        "id": "92ij",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "0rch",
+      "title": "RAID 0 技术把多块物理硬盘设备（至少两块）通过硬件或软件的方式串联在一起，组成一个大的卷组，并将数据随机写入到各个物理硬盘中。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "vave",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "0ask",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "0ask"
+        }
+       }
+      ]
+     },
+     {
+      "id": "w8hw",
+      "title": "LVM 可以允许用户对磁盘资源进行动态调整。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "hzpg",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "hzpg"
+        }
+       },
+       {
+        "id": "s0yv",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "i5w0",
+      "title": "由于技术的局限性，我们不能跨分区对目录文件进行软链接。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "bmr1",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "aj02",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "aj02"
+        }
+       }
+      ]
+     },
+     {
+      "id": "u0ao",
+      "title": "为了提高业务系统的整体性能， 可以使用多线程编程技术， 让多线程充分利用 CPU，提高 CPU 利用率， 所以线程数量越多，性能越好。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "kjpc",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "gbe1",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "gbe1"
+        }
+       }
+      ]
+     },
+     {
+      "id": "ml2f",
+      "title": "精简指令集的 CPU 可能比复杂指令集的 CPU 成本高。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "bvlo",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "bvlo"
+        }
+       },
+       {
+        "id": "a52p",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "b8i3",
+      "title": "指令集的设计不会影响 CPU 的散热。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "ydln",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "m12k",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "m12k"
+        }
+       }
+      ]
+     },
+     {
+      "id": "tcp2",
+      "title": "国产处理器只有基于 x86 架构设计的。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "mum6",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "i810",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "i810"
+        }
+       }
+      ]
+     },
+     {
+      "id": "xvb7",
+      "title": "信创产业的发展不需要知识产权保护。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "cb7k",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "rcqj",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "rcqj"
+        }
+       }
+      ]
+     },
+     {
+      "id": "5y6y",
+      "title": "信创产业的发展不受技术创新的推动",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "1bvv",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "lctj",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "lctj"
+        }
+       }
+      ]
+     },
+     {
+      "id": "1fzr",
+      "title": "IBM 科学家埃德加·弗兰克·科德发明了结构化查询语言",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "n1a7",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "09ne",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "09ne"
+        }
+       }
+      ]
+     },
+     {
+      "id": "eozd",
+      "title": "假设表 tab1 仅有一列（id int），下面的 insert 可以执行成功吗？Insert into tab1 values(1),(2);",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "sy63",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "sy63"
+        }
+       },
+       {
+        "id": "zjte",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     },
+     {
+      "id": "swul",
+      "title": "一台服务器上运行了多个数据库实例，可以共用一个 5432 端口。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "wjcb",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "xmkj",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "xmkj"
+        }
+       }
+      ]
+     },
+     {
+      "id": "y4x7",
+      "title": "信创环境是绝对安全的网络环境，不会有漏洞，更不会有 0day。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "muul",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "dei6",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "dei6"
+        }
+       }
+      ]
+     },
+     {
+      "id": "bphe",
+      "title": "信创虚拟化仅包括计算虚拟化、存储虚拟化、网络虚拟化。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "qngl",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "44ib",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "44ib"
+        }
+       }
+      ]
+     },
+     {
+      "id": "fpmd",
+      "title": "动态资源调度是为了解决虚拟化技术中硬件层面的高可用性。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "9yz8",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {}
+       },
+       {
+        "id": "wqfu",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "wqfu"
+        }
+       }
+      ]
+     },
+     {
+      "id": "2xu8",
+      "title": "虚拟化超融合技术支持“一云多芯”，这里指的意思是一套虚拟化云平台支持多个类型 CPU 芯片。",
+      "type": "Radio",
+      "attribute": {
+       "examScore": 1,
+       "examAnswerMode": "onlyOne"
+      },
+      "children": [
+       {
+        "id": "fnam",
+        "title": "A、正确",
+        "type": "Option",
+        "attribute": {
+         "examScore": 1,
+         "examCorrectAnswer": "fnam"
+        }
+       },
+       {
+        "id": "dqcl",
+        "title": "B、错误",
+        "type": "Option",
+        "attribute": {}
+       }
+      ]
+     }
+    ]
+   }
