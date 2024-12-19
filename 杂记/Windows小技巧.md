@@ -97,3 +97,33 @@ rem 重启Windows外壳程序explorer
 start explorer
 ```
 如果上面这三种方法还是没能解决图标问题，说明问题已经超出了「图标缓存」的范畴，需要考虑其他方面的影响（比如软件安装错误、软件图标丢失等）
+
+### 关于右键
+推荐一个右键菜单管理工具  
+Github仓库：ContextMenuManager  
+下载地址：https://github.com/BluePointLilac/ContextMenuManager/releases  
+打开注册表 `Win + R` 输入 `regedit`  
+管理右键文件打开方式(图标缓存清理的问题)  
+```
+计算机\HKEY_USERS\S-1-5-21-538346675-2617965756-301681954-1001\Software\Classes\Applications
+```
+针对桌面右键菜单：
+```
+计算机\HKEY_CLASSES_ROOT\Directory\Background\shell
+```
+文件：
+```
+计算机\HKEY_CLASSES_ROOT\*\shell
+```
+文件夹：
+```
+计算机\HKEY_CLASSES_ROOT\Directory\shell
+```
+文件和文件夹：
+```
+计算机\HKEY_CLASSES_ROOT\AllFilesystemObjects\shell
+```
+文件夹空白处：
+```
+计算机\HKEY_CLASSES_ROOT\Directory\Background\shell
+```
