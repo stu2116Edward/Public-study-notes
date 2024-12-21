@@ -1845,6 +1845,7 @@ interface GigabitEthernet0/0/1
 ip address 21.1.1.1 255.255.255.0
 interface LoopBack0
 ip address 1.1.1.1 255.255.255.0
+quit
 ```
 **将路由优先级改为50 设置为优选路径**
 ```
@@ -1863,6 +1864,7 @@ interface GigabitEthernet0/0/1
 ip address 21.1.1.2 255.255.255.0
 interface LoopBack0
 ip address 2.2.2.2 255.255.255.0
+quit
 ip route-static 1.1.1.0 255.255.255.0 12.1.1.1 preference 50
 ip route-static 1.1.1.0 255.255.255.0 21.1.1.1
 ```
