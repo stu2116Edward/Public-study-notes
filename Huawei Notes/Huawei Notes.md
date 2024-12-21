@@ -1887,4 +1887,18 @@ ping -c 1000 -a 1.1.1.1 2.2.2.2
 ![sbfd5](https://github.com/user-attachments/assets/de8058ab-2815-4038-8631-7e28a967bbb3)  
 上图结果可以看到，在直连的情况下，互为备份的两条链路，有一条出现断开之后，另一条可以快速接管进行数据的转发
 
+（2）R1和R2两个设备非直连，当一端链路出现故障，例如SW与R2互连链路断开，数据的转发无法切换过来，因为R1的E0/0/0接口还是UP状态。不同于直连时的情况E0/0/0接口是Down的状态，因此会切换过去：  
+![sbfd6](https://github.com/user-attachments/assets/4455cf86-7cc4-477f-9a97-6e2ae65996a0)  
+
+接下来在R1上对2.2.2.2进行长ping模拟断开SW与R2互连的链路，观察变化  
+```
+ping -c 1000 -a 1.1.1.1 2.2.2.2
+```
+以1.1.1.1 为源地址ping 2.2.2.2次数1000次  
+![sbfd7](https://github.com/user-attachments/assets/12ac47f1-017f-4deb-b7ba-63120ba789e4)  
+![sbfd8](https://github.com/user-attachments/assets/f71aade8-0075-4d84-9600-f2c349f27c4f)  
+![sbfd9](https://github.com/user-attachments/assets/5383a1f0-a651-4b6c-b603-58568f2be9ee)  
+
+通过`dis ip routing-table protocol static`查看路由表协议信息，静态路由中去往2.2.2.0的下一跳还是12.1.1.2，而SW与R2互连的链路已经断开，R1无法感知到链路断开，因此始终无法进行切换备份链路  
+由此引出BFD技术，运用在非直连的情况，使得链路故障快速恢复，切换到备份转发
 
