@@ -1830,3 +1830,59 @@ BFD（Bidirectional Forwarding Detection）即双向转发检测，是一种用�
 作用：>  
 - 检测二层非直连故障
 - 加快三层协议收敛
+
+### 静态路由联动BFD
+（1）R1和R2两个设备直连，当一端链路出现故障，例如断开E0/0/0接口的链路，那么数据的转发会切换到E0/0/1接口进行转发： 
+![sbfd1](https://github.com/user-attachments/assets/19548387-5a3a-44c0-92d5-24bdef01b10b)  
+**R1**：
+```
+sys
+sysname R1
+undo info-center enable
+interface GigabitEthernet0/0/0
+ip address 12.1.1.1 255.255.255.0
+interface GigabitEthernet0/0/1
+ip address 21.1.1.1 255.255.255.0
+interface LoopBack0
+ip address 1.1.1.1 255.255.255.0
+```
+**将路由优先级改为50 设置为优选路径**
+```
+ip route-static 2.2.2.0 255.255.255.0 12.1.1.2 preference 50
+ip route-static 2.2.2.0 255.255.255.0 21.1.1.2
+```
+
+**R2**：
+```
+sys
+sysname R2
+undo info-center enable
+interface GigabitEthernet0/0/0
+ip address 12.1.1.2 255.255.255.0
+interface GigabitEthernet0/0/1
+ip address 21.1.1.2 255.255.255.0
+interface LoopBack0
+ip address 2.2.2.2 255.255.255.0
+ip route-static 1.1.1.0 255.255.255.0 12.1.1.1 preference 50
+ip route-static 1.1.1.0 255.255.255.0 21.1.1.1
+```
+
+检查1.1.1.1是否经过E0/0/0接口转发，访问2.2.2.2  
+**R1**：
+```
+tracert  2.2.2.2
+```
+![sbfd2](https://github.com/user-attachments/assets/68aa3764-48d0-4bf1-ac01-b6a56d190bf7)  
+
+接下来在R1上对2.2.2.2进行长ping模拟断开E0/0/0接口的链路，观察变化  
+**R1**：
+```
+ping -c 1000 -a 1.1.1.1 2.2.2.2
+```
+以1.1.1.1 为源地址ping 2.2.2.2次数1000次  
+![sbfd3](https://github.com/user-attachments/assets/6956564f-5a5c-40b1-ad12-eb10792cdc40)  
+![sbfd4](https://github.com/user-attachments/assets/a61cdbe4-a3ed-4514-bf80-77adebf5e630)  
+![sbfd5](https://github.com/user-attachments/assets/de8058ab-2815-4038-8631-7e28a967bbb3)  
+上图结果可以看到，在直连的情况下，互为备份的两条链路，有一条出现断开之后，另一条可以快速接管进行数据的转发
+
+
