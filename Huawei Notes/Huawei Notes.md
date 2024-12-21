@@ -1902,3 +1902,63 @@ ping -c 1000 -a 1.1.1.1 2.2.2.2
 通过`dis ip routing-table protocol static`查看路由表协议信息，静态路由中去往2.2.2.0的下一跳还是12.1.1.2，而SW与R2互连的链路已经断开，R1无法感知到链路断开，因此始终无法进行切换备份链路  
 由此引出BFD技术，运用在非直连的情况，使得链路故障快速恢复，切换到备份转发
 
+### 静态路由联动静态BFD
+**配置静态BFD**  
+**R1**：  
+全局使能bfd
+```
+bfd
+bfd aa bind peer-ip 12.1.1.2 source-ip 12.1.1.1
+```
+本地标识 两台路由器的标识需要互为对称
+```
+discriminator local 1
+```
+对端标识
+```
+discriminator remote 2
+```
+比如说R1的本地标识设置为1了，那么在R2设置的对端标识要为1，互为对称  
+在R1设置了对端标识为2，那么R2上配置时就需要设置本地标识为2  
+确认提交配置
+```
+commit
+quit
+```
+在静态路由上调用跟踪名为aa的BFD会话状态
+```
+ip route-static 2.2.2.0 255.255.255.0 12.1.1.2 preference 50 track bfd-session aa
+```
+配置完静态路由显示`Info: Succeeded in modifying route.`就表示成功了  
+
+**R2**：
+```
+bfd
+quit
+bfd aa bind peer-ip 12.1.1.1 source-ip 12.1.1.2
+discriminator local 2
+discriminator remote 1
+commit
+quit
+ip route-static 1.1.1.0 255.255.255.0 12.1.1.1 preference 50 track bfd-session aa
+```
+配置完成可以通过命令查看静态 BFD会话信息：
+```
+display bfd session static
+```
+![sbfd10](https://github.com/user-attachments/assets/7964c945-f5cb-4327-b849-4b74360f443c)  
+
+查看静态 BFD会话详细信息：
+```
+display bfd session static verbose
+```
+![sbfd11](https://github.com/user-attachments/assets/7079dfb4-9a13-46ae-bbd2-dd7872f9f458)  
+
+接下来模拟当SW与R2互连链路断开时，观察BFD与静态路由联动的效果：
+```
+ping -c 1000 -a 1.1.1.1 2.2.2.2
+```
+以1.1.1.1 为源地址ping 2.2.2.2次数1000次  
+![sbfd12](https://github.com/user-attachments/assets/8179e965-8fee-4f1b-ba93-4dda526e3969)  
+![sbfd13](https://github.com/user-attachments/assets/3df17cdc-660a-4fd8-8761-1afa6e5b6d32)  
+由上图结果可以看到，当非直连无法感知到的链路出现断开时，R1设备通过BFD会话状态响应快速切换到备份链路，恢复数据的转发
