@@ -131,6 +131,13 @@ reset saved-configuration
 description 描述信息
 ```
 
+22.关闭信息中心功能  
+设备不再记录和输出任何系统信息，包括执行该命令本身产生的日志信息
+```
+undo info-center enable
+```
+
+
 ## [接口速率](#接口速率)
 1.接口视图中将当前接口配置为非自动协商模式和全双工模式  
 ```
@@ -1625,67 +1632,67 @@ RIP是一种基于距离矢量的算法协议，它使用跳数作为度量值�
 RIP不能在大型网络中得到应用  
 特点：仅和相邻路由器交换信息  
 1. 进入RIP进程配置模式
-```shell
+```
 rip
 ```
 2. 网络声明
-```shell
+```
 network [ip address]
 ```
 在RIP中声明直连的网络段，使能这些网段上的接口参与RIP路由协议    
 3. 配置RIP版本
 - 配置RIP2
 启用 RIP 默认 v1
-```shell
+```
 rip
 version 2
 network [ip address]
 ```
 - 或者直接配置
-```shell
+```
 rip 1
 version 2
 network [ip address]
 ```
 这些命令用于配置路由器使用RIP版本2，RIPv2支持CIDR和VLSM，允许更灵活的路由汇总  
 4. 查看 rip
-```shell
+```
 disp rip
 ```
 5. 查看 rip 数据库
-```shell
+```
 disp rip <进程号> database
 ```
 6. 查看路由表
-```shell
+```
 disp ip routing-table
 ```
 7. 配置RIPv2自动汇总路由
 - 方法1：
-```shell
+```
 rip 1
 version 2
 summary always
 ```
 - 方法2：
-```shell
+```
 int [接口]
 undo rip split-horizon
 ```
 关闭水平分割功能，允许自动汇总路由  
 8. 配置RIPv2手动汇总
-```shell
+```
 int [接口]
 rip summary-address 3.3.0.0 255.255.252.0
 ```  
 9. RIP与不连续子网（解决不连续子网问题）  
 - 方法1：给接口配置第二个IP地址  
-```shell
+```
 int [接口]
 ip address 10.0.23.2 sub
 ```
 - 方法2：使用RIPv2，关闭自动汇总
-```shell
+```
 rip
 version 2
 undo summary
@@ -1701,119 +1708,119 @@ rip 20
 import-route rip 10
 ```
 - 引入直连路由
-```shell
+```
 rip
 import-route direct
 ```
 - 引入静态路由
-```shell
+```
 rip
 import-route static
 ```
 - 引入OSPF路由
-```shell
+```
 import-route ospf
 ```
 - 引入BGP路由
-```shell
+```
 import-route bgp
 ```
 - 引入ISIS路由到RIP实例
-```shell
+```
 import-route isis
 ```
 - 引入User Network Route（Unr）到RIP实例
-```shell
+```
 import-route unr
 ```
 11. 查看RIP定期更新情况
-```shell
+```
 debugging rip 1
 ```
 开启RIP调试，查看RIP协议的定期更新情况  
 12. 调试信息显示设置
-```shell
+```
 terminal debugging
 terminal monitor
 ```
 这些命令用于在屏幕上显示调试信息  
 13. 关闭debug调试功能
-```shell
+```
 undo debugging rip 1
 undo debug all
 ```
 14. 查看RIP配置信息
-```shell
+```
 disp default-parameter rip
 ```
 15. 配置RIP定时器和优先级  
 - 停止发送RIP路由更新
-```shell
+```
 int [接口]
 undo rip output
 ```
 - 检查RIP发布数据库中的所有路由激活
-```shell
+```
 display rip 1 database
 ```
 - 设置RIP定时器
-```shell
+```
 rip
 timers rip 20 120 60
 ```
 - 修改RIP协议优先级
-```shell
+```
 rip
 preference 90
 ```
 16. 配置抑制接口
-```shell
+```
 rip 1
 silent-interface GigabitEthernet 0/0/0
 ```
 设置要抑制的接口，不通过该接口发送或接收RIP更新  
 17. 配置RIP单播更新
-```shell
+```
 rip 1
 peer 172.16.1.100
 ```
 配置RIP单播更新，指定邻居路由器的IP地址  
 18. 配置RIP版本兼容  
 首先将rip的版本设置为version 2
-```shell
+```
 rip
 version 2
 ```
 进入接口模式
-```shell
+```
 int <接口>
 ```
 配置RIP版本2以广播或多播方式发送更新
-```shell
+```
 rip version 2 broadcast
 ```
 或者
-```shell
+```
 rip version 2 multicast
 ```
 19. 配置RIP认证
 进入接口模式
-```shell
+```
 int <接口>
 ```
 配置rip简单认证
-```shell
+```
 rip authentication-mode simple <password>
 ```
 配置RIPv2 MD5密文验证
-```shell
+```
 rip authentication-mode md5 usual <password>
 ```
 配置hmac-sha256密文验证
-```shell
+```
 rip authentication-mode hmac-sha256 <password>
 ```
-目的是为了实现抓包时明文不可见
+认证的目的是为了实现抓包时明文不可见
 
 ## [BFD技术](#BFD技术)
 BFD概述  
