@@ -2062,6 +2062,7 @@ display ospf peer
 **配置**：  
 **R1**  
 ```
+sys
 interface GigabitEthernet 0/0/0
 ip address 192.168.0.1 24
 quit
@@ -2082,6 +2083,7 @@ network <通告的IP地址网段> <IP地址反子网掩码>
 
 **R2**  
 ```
+sys
 interface GigabitEthernet 0/0/0
 ip address 192.168.1.2 24
 quit
@@ -2100,6 +2102,7 @@ quit
 ```
 **R3** 
 ```
+sys
 interface GigabitEthernet 0/0/0
 ip address 192.168.4.1 24
 quit
@@ -2127,6 +2130,7 @@ display ip routing-table
 **配置**：  
 **R1**  
 ```
+sys
 interface GigabitEthernet 0/0/0
 ip address 192.168.0.1 24
 quit
@@ -2141,6 +2145,7 @@ quit
 ```
 **R2**  
 ```
+sys
 interface GigabitEthernet 0/0/0
 ip address 192.168.1.2 24
 quit
@@ -2162,6 +2167,7 @@ quit
 因为R2同时处于区域0和区域1，所以称R2为"边界路由"，**边界路由的配置规则是：接口处于哪个区域就在哪个区域进行通告，处于区域之间的接口，放在哪个区域都可以，但最好放在区域0当中，也就是能放到骨干区域的就放到骨干区域**  
 **R3** 
 ```
+sys
 interface GigabitEthernet 0/0/0
 ip address 192.168.4.1 24
 quit
@@ -2269,6 +2275,7 @@ ping -c 1000 -a 1.1.1.1 2.2.2.2
 **R1**：  
 全局使能bfd
 ```
+sys
 bfd
 bfd aa bind peer-ip 12.1.1.2 source-ip 12.1.1.1
 ```
@@ -2295,6 +2302,7 @@ ip route-static 2.2.2.0 255.255.255.0 12.1.1.2 preference 50 track bfd-session a
 
 **R2**：
 ```
+sys
 bfd
 quit
 bfd aa bind peer-ip 12.1.1.1 source-ip 12.1.1.2
@@ -2341,6 +2349,7 @@ undo bfd
 **配置动态BFD**  
 **R1**：
 ```
+sys
 bfd
 quit
 bfd bb bind peer-ip 12.1.1.2 source-ip 12.1.1.1 auto
@@ -2350,6 +2359,7 @@ ip route-static 2.2.2.0 255.255.255.0 12.1.1.2 preference 50 track bfd-session b
 ```
 **R2**：
 ```
+sys
 bfd
 quit
 bfd bb bind peer-ip 12.1.1.1 source-ip 12.1.1.2 auto
