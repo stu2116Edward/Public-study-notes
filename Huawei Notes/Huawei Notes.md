@@ -510,8 +510,8 @@ port trunk allow-pass vlan all
 ```
 
 ## [VLAN中绑定MAC地址](#VLAN中绑定MAC地址)
-vlan中绑定MAC地址  
-进入vlan视图  
+在指定vlan中绑定MAC地址  
+进入vlan 10视图  
 ```
 vlan 10
 ```  
