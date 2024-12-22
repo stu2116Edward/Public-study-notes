@@ -1,3124 +1,3130 @@
 {
-    "id": "SOdnjL",
-    "title": "区块链题库",
-    "description": "感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！",
-    "type": "Survey",
-    "attribute": {
-     "suffix": "您已完成本次考试。",
-     "submitButton": "提交",
-     "examScore": 85,
-     "globalRule": []
-    },
-    "children": [
-     {
-      "id": "pand",
-      "title": "以下技术中哪一项不属于区块链核心技术？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "bag4",
-        "title": "A.大数据技术",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "bag4"
-        }
-       },
-       {
-        "id": "p9yr",
-        "title": "B.P2P网络通信",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "9pwv",
-        "title": "C.共识算法",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "c59z",
-        "title": "D.去中心化账本",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "cu07",
-      "title": "以下描述中哪一项不属于去中心化系统的特点？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "5m49",
-        "title": "A.拓扑网络健壮",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "i6xr",
-        "title": "B.处理速度快",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "i6xr"
-        }
-       },
-       {
-        "id": "zmx9",
-        "title": "C.点对点数据直传，保护数据隐私与信息安全",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "c1xq",
-        "title": "D.拓扑网络复杂度高，维护成本高",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "3kn8",
-      "title": "以下哪项技术可以类推智能合约？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "ak1t",
-        "title": "A.数据分析与数据仓库",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "seqh",
-        "title": "B.程序设计与算法",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "seqh"
-        }
-       },
-       {
-        "id": "9xjr",
-        "title": "C.容器技术与云计算",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "dpil",
-        "title": "D.数据库与SQL",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "xb35",
-      "title": "以下哪项技术不属于区块链的类别？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "4r7w",
-        "title": "A.公有链",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "k1c7",
-        "title": "B.私有链",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "nt4u",
-        "title": "C.区块链",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "nt4u"
-        }
-       },
-       {
-        "id": "cxgx",
-        "title": "D.联盟链",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "m2yy",
-      "title": "以下关于区块链的分类描述正确的是？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "s4dk",
-        "title": "A.公有链的去中心化程度最高",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "s4dk"
-        }
-       },
-       {
-        "id": "ovia",
-        "title": "B.联盟链允许参与者自由出入",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "64bs",
-        "title": "C.私有链的决策速度很慢",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "kz8y",
-        "title": "D.公有链的交易数据是非公开的",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "v5u8",
-      "title": "以下哪项描述不属于联盟链的技术特点？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "489n",
-        "title": "A.参与者为所有联盟成员",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "489n"
-        }
-       },
-       {
-        "id": "8azo",
-        "title": "B.去中心化",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "bvqv",
-        "title": "C.交易数据非公开",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "zbki",
-        "title": "D.典型应用场景为支付与结算",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "xn92",
-      "title": "在Linux操作系统中，tree命令的作用为()。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "2zda",
-        "title": "A.显示指定文件的具体内容",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "u95u",
-        "title": "B.向指定URL发送HTTP请求",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "08mc",
-        "title": "C.查看文件夹的具体结构",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "08mc"
-        }
-       },
-       {
-        "id": "yf69",
-        "title": "D.加载配置文件内容",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "pb7m",
-      "title": "Python Flask服务端架构接收HTTPGET请求参数的方式为()。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "open",
-        "title": "A.通过@app.route()装器",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "j0xn",
-        "title": "B.在请求处理函数中通过request.args",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "j0xn"
-        }
-       },
-       {
-        "id": "940r",
-        "title": "C.在app.run方法中设置参数",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "ibyl",
-        "title": "D.在请求处理函数中通过request.json",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "c3hn",
-      "title": "下列哪个选项不属于哈希函数？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "29f2",
-        "title": "A. RSA",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "29f2"
-        }
-       },
-       {
-        "id": "zsfe",
-        "title": "B. MD5",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "rfsd",
-        "title": "C. SHA-256",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "n8b7",
-        "title": "D. SM3",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "v5vu",
-      "title": "以下关于非对称加密算法说法不正确的是？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "fke0",
-        "title": "A.非对称加密算法使用公私钥对进行加密/解密",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "3r6y",
-        "title": "B.在非对称加密算法中，可以通过私钥获取公钥",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "c3bp",
-        "title": "C.在非对称加密算法中，可使用私钥进行签名，再使用公钥进行验签",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "5yz1",
-        "title": "D. 哈希函数是非对称加密算法应用的形式之一",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "5yz1"
-        }
-       }
-      ]
-     },
-     {
-      "id": "4rs9",
-      "title": "Python程序设计语言中哪个依赖包可以实现非对称加密算法？()。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "suzc",
-        "title": "A. hashlib",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "8680",
-        "title": "B. ecdsa",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "8680"
-        }
-       },
-       {
-        "id": "1pwg",
-        "title": "C. flask",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "p7a6",
-        "title": "D. random",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "5158",
-      "title": "以下哪些数据项在区块头中保存？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "fmdu",
-        "title": "A.默克尔根（Merkle root）",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "hclq",
-        "title": "B.版本号（Version）",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "f5ya",
-        "title": "C.父块哈希值（Prev-hash）",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "cyff",
-        "title": "D.以上选项都是",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "cyff"
-        }
-       }
-      ]
-     },
-     {
-      "id": "d9kw",
-      "title": "区块链是由区块通过链的方式组合而成的，那么区块间是如何实现连接的？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "1y8u",
-        "title": "A.通过节点保存的区块索引记录表实现区块连接",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "dfnp",
-        "title": "B.通过区块头中的父块哈希值实现区块连接",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "dfnp"
-        }
-       },
-       {
-        "id": "7sx1",
-        "title": "C.通过区块体中的交易内容实现区块连接",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "8xp3",
-        "title": "D.通过访问中心节点实现区块连接",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "l1uk",
-      "title": "以下关于区块链中的账户描述正确的是？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "jrsv",
-        "title": "A.区块链中的账户是保存在一个中心服务器中",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "19kh",
-        "title": "B.区块链中的账户通过输入账号和密码进行登录",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "jmek",
-        "title": "C.区块链系统中的用户采用自定义名称作为自己的账户名",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "g31c",
-        "title": "D.区块链的账户是由私钥、公钥和地址三个要素组成",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "g31c"
-        }
-       }
-      ]
-     },
-     {
-      "id": "yz8z",
-      "title": "如果用传统纸质账本与区块链账本进行对比，那么区块相当于纸质账本的()。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "i5h4",
-        "title": "A.账页",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "i5h4"
-        }
-       },
-       {
-        "id": "alm0",
-        "title": "B.账目",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "naev",
-        "title": "C.账目相关的关键信息",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "v8le",
-        "title": "D.账本",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "slyw",
-      "title": "以下哪一步不是生成公钥、私钥的具体步骤？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "govg",
-        "title": "A.生成“绝对”随机的种子",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "kpxa",
-        "title": "B.通过特定的非对称加密算法对种子加密生成私钥",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "ffsz",
-        "title": "C.基于已生成的私钥借助非对称加密算法生成公钥",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "nmi2",
-        "title": "D.基于公钥使用哈希算法生成账户地址",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "nmi2"
-        }
-       }
-      ]
-     },
-     {
-      "id": "tzo2",
-      "title": "以下哪一项Python依赖包可以生成公钥、私钥？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "esp7",
-        "title": "A. ecdsa",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "esp7"
-        }
-       },
-       {
-        "id": "vs1z",
-        "title": "B. hashlib",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "uik7",
-        "title": "C. random",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "di66",
-        "title": "D.os",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "nl2j",
-      "title": "以下哪一项Python依赖包可以实现哈希加密算法？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "kyrt",
-        "title": "A.hashlib",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "kyrt"
-        }
-       },
-       {
-        "id": "7b0f",
-        "title": "B.ecdsa",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "ab9o",
-        "title": "C.flask",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "30h2",
-        "title": "D.datetime",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "5phr",
-      "title": "以下选项中哪一项说法正确？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "xytx",
-        "title": "A.生成公钥、私钥时需要使用哈希函数",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "p1q0",
-        "title": "B.通过公钥可以生成私钥",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "xdsz",
-        "title": "C.公钥签名，私钥验证",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "niu4",
-        "title": "D.私钥签名，公钥验证",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "niu4"
-        }
-       }
-      ]
-     },
-     {
-      "id": "ka7a",
-      "title": "以下关于区块链的交易描述不正确的是？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "rsk0",
-        "title": "A.交易是区块链中最小的数据存储单元",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "0kcq",
-        "title": "B.在比特币区块链系统中，一个区块可以存储4000条左右的交易",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "ig7j",
-        "title": "C.建立交易时，需要将交易发送方的私钥打包进交易当中",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "ig7j"
-        }
-       },
-       {
-        "id": "0be8",
-        "title": "D.交易是以“默克尔树”的形式存储在区块体中",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "byg8",
-      "title": "区块链中最小数据单位是什么？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "grjq",
-        "title": "A.区块链",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "f0ge",
-        "title": "B.区块",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "ccnw",
-        "title": "C.交易",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "ccnw"
-        }
-       },
-       {
-        "id": "nij5",
-        "title": "D.账页",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "mvw1",
-      "title": "区块链交易中不包括以下哪项内容？ ()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "k1wq",
-        "title": "A.发送方地址",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "atze",
-        "title": "B.接收方地址",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "blse",
-        "title": "C.时间戳",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "srdk",
-        "title": "D.发送方私钥",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "srdk"
-        }
-       }
-      ]
-     },
-     {
-      "id": "rcqh",
-      "title": "公有链为什么类型的网络拓扑？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "4kn2",
-        "title": "A.星形",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "6xrd",
-        "title": "B.树形",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "xntl",
-        "title": "C. Mesh形",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "xntl"
-        }
-       },
-       {
-        "id": "izm5",
-        "title": "D.总线型",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "eid3",
-      "title": "以下关于Socket通信机制的说法，不正确的是？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "1oy2",
-        "title": "A.Socket的通信主体包括客户端和服务端",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "bv6u",
-        "title": "B. Socket通信属于TCP/IP网络模型的应用层",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "54xf",
-        "title": "C. 在数据传输中，服务器将开启轮询机制以监听客户端发送的请求",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "54xf"
-        }
-       },
-       {
-        "id": "t3g3",
-        "title": "D.Socket并不是一种通信协议，而是一种通信手段",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "wkxw",
-      "title": "如下哪个Python依赖包可以实现区块链网络的绘制？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "283d",
-        "title": "A.os",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "4yy7",
-        "title": "B. NetworkX",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "4yy7"
-        }
-       },
-       {
-        "id": "1xxw",
-        "title": "C. Matplotlib",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "r9bf",
-        "title": "D. Flask-APScheduler",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "zs9s",
-      "title": "如下哪个Python依赖包可以实现定时器功能？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "2f89",
-        "title": "A.os",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "6d0d",
-        "title": "B. NetworkX",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "qt98",
-        "title": "C. Matplotlib",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "c5sx",
-        "title": "D. Flask-APScheduler",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "c5sx"
-        }
-       }
-      ]
-     },
-     {
-      "id": "m789",
-      "title": "通过Python NetworkX工具绘制网络，当引入依赖库（import networkx as nx）后，以下描述错误的是：",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "64gj",
-        "title": "A.可以通过G = nx.Graph()创建一个空图",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "zk4q",
-        "title": "B.可以通过G.delete_node(1)删出一个节点",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "lggt",
-        "title": "C.可以通过G.add_node(1)添加一个节点",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "lpco",
-        "title": "D.可以通过G.add_ edges_from([(1, 2), (1, 3)] )迭代添加两条边",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "lpco"
-        }
-       }
-      ]
-     },
-     {
-      "id": "fxwd",
-      "title": "从应用角度出发，共识算法主要是为了解决区块链的什么问题？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "87gr",
-        "title": "A.通信效率低",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "hof1",
-        "title": "B.节点维护困难",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "hof1"
-        }
-       },
-       {
-        "id": "fchj",
-        "title": "C.网络传输的不稳定性",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "z6pa",
-        "title": "D.网络的不稳定性",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "xpqm",
-      "title": "如下哪些内容不属于区块链的分类方式？()",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "dr4u",
-        "title": "A.基于选主策略的分类",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "p2cv",
-        "title": "B.基于传输效率的分类",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "p2cv"
-        }
-       },
-       {
-        "id": "roxv",
-        "title": "C.基于容错类型的分类",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "o66i",
-        "title": "D.基于部署方式的分类",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "lfyt",
-      "title": "以下关于共识算法的描述正确的是？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "ekrh",
-        "title": "A.共识算法是为了实现区块链网络中所有节点数据的“安全性”",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "ztcr",
-        "title": "B.随机类共识算法包括Paxos和Raft算法",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "szy4",
-        "title": "C.证明类共识算法包括PoW和PoS算法",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "szy4"
-        }
-       },
-       {
-        "id": "kjwm",
-        "title": "D.BFT（拜占庭容错）共识算法其可以在有1/2容错率的情况下依然可以达成共识",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "w0ud",
-      "title": "PoW算法的核心思想是()。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "oltf",
-        "title": "A.给每个节点都赋予一个“难题”，通过解决难题争夺记账权",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "oltf"
-        }
-       },
-       {
-        "id": "yji1",
-        "title": "B.根据不同节点所持有的债券数量多少获取记账权",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "z82x",
-        "title": "C.以投票的方式在区块链节点中选出节点赋予记账权",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "86vn",
-        "title": "D.从区块链中选出多个节点作为代表节点在代表节点中实现记账权的争夺",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "tiwi",
-      "title": "以下不属于智能合约“模型”的内容是？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "n94k",
-        "title": "A.合约状态",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "6put",
-        "title": "B.账本数据",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "6put"
-        }
-       },
-       {
-        "id": "avrn",
-        "title": "C.合约值",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "nbfh",
-        "title": "D.预置响应条件与规则",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "fppu",
-      "title": "以下关于智能合约在区块链网络部署与调用中错误的说法是？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "1w15",
-        "title": "A.智能合约“上链”后只能被智能合约的创建者使用",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "1w15"
-        }
-       },
-       {
-        "id": "whch",
-        "title": "B.智能合约部署的第一步为编译合约",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "sn33",
-        "title": "C.智能合约在部署时需要借助区块链节点实现",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "m53e",
-        "title": "D.智能合约“上链”后可被所有节点使用",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "vmgg",
-      "title": "Merkle Tree的优点是什么？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "sw3a",
-        "title": "A.节省存储空间",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "wx55",
-        "title": "B.提高数据验证效率",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "k2s0",
-        "title": "C.提高数据安全性",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "svbu",
-        "title": "D.所有以上选项",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "svbu"
-        }
-       }
-      ]
-     },
-     {
-      "id": "27h0",
-      "title": "拜占庭将军问题描述的是什么情况？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "99t0",
-        "title": "A.多个将军之间需要达成一致决策，但其中存在叛徒",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "99t0"
-        }
-       },
-       {
-        "id": "ltar",
-        "title": "B.多个将军之间需要进行战争，但其中存在内奸",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "mt93",
-        "title": "C.多个将军之间需要分配资源，但其中存在贪污腐败",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "lk9f",
-        "title": "D.多个将军之间需要建立联盟，但其中存在背叛",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "1ypp",
-      "title": "区块链中的分叉是指什么？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "z292",
-        "title": "A.区块链网络中断",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "ijgl",
-        "title": "B.区块链网络被攻击",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "9qw5",
-        "title": "C.区块链网络中出现两个或以上不同版本的区块链",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "9qw5"
-        }
-       },
-       {
-        "id": "1ptd",
-        "title": "D.区块链网络中出现安全漏洞",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "3ywk",
-      "title": "PoW和PoS的主要区别是什么？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "ncva",
-        "title": "A.PoW依赖于计算能力，PoS依赖于持币量",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "ncva"
-        }
-       },
-       {
-        "id": "uft6",
-        "title": "B.PoW依赖于持币量，PoS依赖于计算能力",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "jy3x",
-        "title": "C.PoW和PoS都依赖于计算能力",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "i1va",
-        "title": "D.PoW和PoS都依赖于持币量",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "jbn5",
-      "title": "比特币的交易速度快吗？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "zjtd",
-        "title": "A.非常快，几乎是实时到账。",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "mozo",
-        "title": "B.较快，通常需要几分钟到几小时。",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "mozo"
-        }
-       },
-       {
-        "id": "rdmm",
-        "title": "C.一般，通常需要几小时到几天。",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "scmz",
-        "title": "D.较慢，通常需要几天到几周",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "f327",
-      "title": "比特币的交易记录保存在哪里？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "wzl4",
-        "title": "A.区块链",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "wzl4"
-        }
-       },
-       {
-        "id": "km3h",
-        "title": "B.政府机构",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "tl2j",
-        "title": "C.银行账户",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "7vzr",
-        "title": "D.云端服务器",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "bwph",
-      "title": "区块链的分类：有公有链、联盟链和（  ）",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "byoe",
-        "title": "A.私有链",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "byoe"
-        }
-       },
-       {
-        "id": "a1ol",
-        "title": "B.比特币",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "97d0",
-        "title": "C.以太坊",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "mg2m",
-        "title": "D.交叉链",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "69fe",
-      "title": "比特币使用的加密算法是",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "i665",
-        "title": "A.椭圆曲线",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "i665"
-        }
-       },
-       {
-        "id": "emia",
-        "title": "B.对称加密",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "bq0p",
-        "title": "C.MD5",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "756a",
-        "title": "D.DES",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "5jdu",
-      "title": "以太坊智能合约的开发语言是",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "yhnb",
-        "title": "A.java",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "uxo4",
-        "title": "B.Solidity",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "uxo4"
-        }
-       },
-       {
-        "id": "plbf",
-        "title": "C.C",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "z046",
-        "title": "D.C++",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "uxqs",
-      "title": "以下关于JSON语法的配置信息描述不正确的是？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "3zwu",
-        "title": "A. JSON数据的表现形式为 \"name\" : \"张三\"",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "n89k",
-        "title": "B. JSON 对象的数据表现形式为{ \"name\":\"张三\" , \"age\":\"20\" }",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "yx7n",
-        "title": "C. JSON数据通过键值对的形式表示并由空格(  )隔开",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "yx7n"
-        }
-       },
-       {
-        "id": "aeee",
-        "title": "D. JSON语法中，方括号([])用于保存数组，数组中可包含多个对象",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "dayx",
-      "title": "在使用Python开发的区块链系统中哪个描述是不正确的？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "bomk",
-        "title": "A. 客户端通过HTTP POST形式向服务端发送请求时，数据一般以字典格式在Body中封装",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "hxgg",
-        "title": "B. 采用Flask框架实现WEB HTTP服务以及进程持久化",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "3n23",
-        "title": "C. 采用Flask-socketio实现Socket通信的服务端。",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "wd9a",
-        "title": "D. 采用python-socketio[client]实现Socket通信的客户端",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "wd9a"
-        }
-       }
-      ]
-     },
-     {
-      "id": "t9yg",
-      "title": "比特币是什么？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "3rqy",
-        "title": "A. 一种数字货币",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "3rqy"
-        }
-       },
-       {
-        "id": "nvcf",
-        "title": "B. 一种股票",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "7t6k",
-        "title": "C. 一种债券",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "1aev",
-        "title": "D. 一种信用卡",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "rstq",
-      "title": "智能合约是什么？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "ro0o",
-        "title": "A. 一种数字货币",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "p8ue",
-        "title": "B. 一种区块链平台",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "kjvf",
-        "title": "C. 一种自动执行的计算机程序",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "kjvf"
-        }
-       },
-       {
-        "id": "4ab8",
-        "title": "D. 一种债券",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "ddv7",
-      "title": "哈希函数在区块链中的作用是什么？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "okx2",
-        "title": "A. 用于加密数据",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "8urd",
-        "title": "B. 用于验证数据完整性",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "8urd"
-        }
-       },
-       {
-        "id": "rlpj",
-        "title": "C. 用于生成新的区块",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "3cjb",
-        "title": "D. 用于生成新的数字货币",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "4at4",
-      "title": "PoW是什么的缩写？",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "95do",
-        "title": "A. Proof of Work",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "95do"
-        }
-       },
-       {
-        "id": "nkov",
-        "title": "B. Proof of Stake",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "ppse",
-        "title": "C. Power of Work",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "sg6g",
-        "title": "D. Power of Stake",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "akwu",
-      "title": "区块链技术的特性包括",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "qq1l",
-        "title": "A.去中心化",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "qq1l"
-        }
-       },
-       {
-        "id": "gz1p",
-        "title": "B.共识性",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "akwu"
-        }
-       },
-       {
-        "id": "l95u",
-        "title": "C.不易篡改性",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "akwu"
-        }
-       },
-       {
-        "id": "vhfj",
-        "title": "D.可追溯性",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "akwu"
-        }
-       },
-       {
-        "id": "jrbj",
-        "title": "E.可编程性",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "akwu"
-        }
-       }
-      ]
-     },
-     {
-      "id": "2zgj",
-      "title": "智能合约在区块链中的部署方式包括",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "3ths",
-        "title": "A.编写一份完整的智能合约代码",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "3ths"
-        }
-       },
-       {
-        "id": "6eiw",
-        "title": "B.借助区块链网络中的节点，发布该智能合约",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "2zgj"
-        }
-       },
-       {
-        "id": "fqpz",
-        "title": "C.交易内容被其他节点接收",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "lhii",
-        "title": "D.打包进区块后上链并同步",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "2zgj"
-        }
-       }
-      ]
-     },
-     {
-      "id": "pn6l",
-      "title": "下列关于非对称加密模型描述，正确的是",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "bczi",
-        "title": "A.非对称加密算法中公钥无需保密",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "bczi"
-        }
-       },
-       {
-        "id": "as30",
-        "title": "B.私钥无需在网络中进行传播",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "pn6l"
-        }
-       },
-       {
-        "id": "vrmf",
-        "title": "C.公钥加密，私钥解密",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "2psf",
-        "title": "D.私钥签名，公钥验签",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "pn6l"
-        }
-       }
-      ]
-     },
-     {
-      "id": "wm3v",
-      "title": "智能合约的具体使用流程包括",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "xm1w",
-        "title": "A.编译",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "xm1w"
-        }
-       },
-       {
-        "id": "9r0r",
-        "title": "B.部署",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "wm3v"
-        }
-       },
-       {
-        "id": "nnmp",
-        "title": "C.上链",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "wm3v"
-        }
-       },
-       {
-        "id": "rmb5",
-        "title": "D.调用",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "wm3v"
-        }
-       },
-       {
-        "id": "b8su",
-        "title": "E.执行",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "wm3v"
-        }
-       }
-      ]
-     },
-     {
-      "id": "4pdp",
-      "title": "关于哈希(Hash)函数的描述，正确的是",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "ph8v",
-        "title": "A.具备抗碰撞性",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "ph8v"
-        }
-       },
-       {
-        "id": "0wbi",
-        "title": "B.具备不可逆性（单向性）",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "4pdp"
-        }
-       },
-       {
-        "id": "jzdt",
-        "title": "C.是仅能将任意长度的字符、数字输入转换成固定长度输出的方法",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "4pdp"
-        }
-       },
-       {
-        "id": "kllc",
-        "title": "D.可以保证数据的不易篡改性",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "4pdp"
-        }
-       }
-      ]
-     },
-     {
-      "id": "vd7q",
-      "title": "一个区块的基本构成包括",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "uzot",
-        "title": "A.区块头",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "uzot"
-        }
-       },
-       {
-        "id": "90hr",
-        "title": "B.区块体",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "vd7q"
-        }
-       },
-       {
-        "id": "yysr",
-        "title": "C.PoW算法",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "ss1s",
-        "title": "D.PoS算法",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "yidv",
-      "title": "共识算法的具体流程包括",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "2ngb",
-        "title": "A.选主",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "2ngb"
-        }
-       },
-       {
-        "id": "kp1i",
-        "title": "B.造块",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "yidv"
-        }
-       },
-       {
-        "id": "5a9q",
-        "title": "C.验证",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "yidv"
-        }
-       },
-       {
-        "id": "rpsu",
-        "title": "D.上链",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "yidv"
-        }
-       }
-      ]
-     },
-     {
-      "id": "qxkd",
-      "title": "在Python下，创建区块链账户且实现签名/验签的文件crypto_util.py中，以下哪些函数用于实现创建区块链账户？",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "4t76",
-        "title": "A.def create_seed",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "4t76"
-        }
-       },
-       {
-        "id": "c0e5",
-        "title": "B.def create_private_key",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "qxkd"
-        }
-       },
-       {
-        "id": "4syj",
-        "title": "C.def create_public_key",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "qxkd"
-        }
-       },
-       {
-        "id": "94r1",
-        "title": "D.def create_account",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "qxkd"
-        }
-       },
-       {
-        "id": "3ds4",
-        "title": "E.def calc_merkle_root",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "kfuk",
-      "title": "下列关于默克尔树(Merkle tree)的描述，正确的是",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "ktsf",
-        "title": "A.默克尔树是典型的二叉树结构",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "ktsf"
-        }
-       },
-       {
-        "id": "947d",
-        "title": "B.默克尔树的最底层是由该区块中所有的交易组成",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "kfuk"
-        }
-       },
-       {
-        "id": "6zjo",
-        "title": "C.默克尔树从最底层分叉节点开始两两组合计算哈希值，直至只剩下一个哈希值时，称为默克尔根（Merkle root）",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "kfuk"
-        }
-       },
-       {
-        "id": "56tz",
-        "title": "D.区块中的交易数必须打包2的幂数个，以满足默克尔根的生成条件",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "zzf3",
-      "title": "数字签名功能包括",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "tibb",
-        "title": "A. 防范信息伪造",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "tibb"
-        }
-       },
-       {
-        "id": "42bx",
-        "title": "B. 防范信息篡改",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "zzf3"
-        }
-       },
-       {
-        "id": "5ift",
-        "title": "C. 防范信息重放",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "zzf3"
-        }
-       },
-       {
-        "id": "cw8v",
-        "title": "D. 防止签名者抵赖",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "zzf3"
-        }
-       }
-      ]
-     },
-     {
-      "id": "40nt",
-      "title": "关于区块链网络通信，下列描述正确的是",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "tuuc",
-        "title": "A.区块链采用P2P通信技术",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "tuuc"
-        }
-       },
-       {
-        "id": "izu6",
-        "title": "B.区块链系统中节点既可以承担服务端，也可以作为客户端",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "40nt"
-        }
-       },
-       {
-        "id": "hhge",
-        "title": "C.Gossip机制分别具备Pull和Push两种实现模式",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "40nt"
-        }
-       },
-       {
-        "id": "wi47",
-        "title": "D.区块链系统通信中，当一个节点出现故障并不会影响整个区块链系统通信的运行",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "40nt"
-        }
-       }
-      ]
-     },
-     {
-      "id": "7dwf",
-      "title": "Hash函数特性是",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "180f",
-        "title": "A. 抗原像攻击（单向性one-way）",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "180f"
-        }
-       },
-       {
-        "id": "6epy",
-        "title": "B. 抗DDOS攻击",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "kbt8",
-        "title": "C. 抗碰撞攻击（strongly collision-free）",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "7dwf"
-        }
-       },
-       {
-        "id": "dajs",
-        "title": "D. 抗第二原像攻击（weak collision resistance/ weakly collision-free）",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "kzrv",
-      "title": "在Python下生成区块链系统中的区块（包含交易）时，models.py文件下包含了哪几个对象？",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "mzol",
-        "title": "A.class Transaction",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "mzol"
-        }
-       },
-       {
-        "id": "la19",
-        "title": "B.class Block",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "kzrv"
-        }
-       },
-       {
-        "id": "ixoa",
-        "title": "C.class Blockchain",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "kzrv"
-        }
-       },
-       {
-        "id": "49ug",
-        "title": "D.class Peer",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "tboo",
-        "title": "E.class Network",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "0td4",
-      "title": "块的主要元素包括",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "x7or",
-        "title": "A. 指向上一个块的哈希指针",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "x7or"
-        }
-       },
-       {
-        "id": "x69x",
-        "title": "B. 时间戳记",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "0td4"
-        }
-       },
-       {
-        "id": "4u4u",
-        "title": "C. 交易清单",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "0td4"
-        }
-       },
-       {
-        "id": "9mut",
-        "title": "D. 共识算法",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "073x",
-      "title": "下列关于PoW算法的描述，正确的是",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "e8ys",
-        "title": "A.PoW算法要求诚实节点超过50%的算力才能正常运行",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "e8ys"
-        }
-       },
-       {
-        "id": "3yey",
-        "title": "B.矿工节点通过调整区块头中的随机数（Nonce）以改变该区块头的哈希值来满足难度目标的要求",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "073x"
-        }
-       },
-       {
-        "id": "k91w",
-        "title": "C.一个矿工节点在本次没有争夺到记账权的情况下，下一次争夺到记账权的概率将提高",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "lfgv",
-        "title": "D.算力和获得记账权的概率几乎成正比",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "073x"
-        }
-       }
-      ]
-     },
-     {
-      "id": "2uu5",
-      "title": "区块链的分布式记帐优势有",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "2uwj",
-        "title": "A. 通过多方记账的方式，增强数据安全性，防止单点故障",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "2uwj"
-        }
-       },
-       {
-        "id": "nwg5",
-        "title": "B. 减少不同数据库之间的对账工作，提高效率和透明度",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "2uu5"
-        }
-       },
-       {
-        "id": "j2m1",
-        "title": "C. 与复式记帐差异不大",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "1oqy",
-        "title": "D. 难以保持数据一致性",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "mz1n",
-      "title": "以下关于智能合约“状态”的描述正确的是",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "bh6i",
-        "title": "A.智能合约的“状态”用于持久化记录区块链中的数据",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "bh6i"
-        }
-       },
-       {
-        "id": "4002",
-        "title": "B.智能合约的“状态”通过版本标明先后",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "tcud",
-        "title": "C.智能合约的“状态”不会发生改变",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "5o8n",
-        "title": "D.智能合约的“状态”随着交易而发生改变",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "mz1n"
-        }
-       }
-      ]
-     },
-     {
-      "id": "k7vr",
-      "title": "智能合约在区块链中的部署方式包括",
-      "type": "Checkbox",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "selectAll"
-      },
-      "children": [
-       {
-        "id": "uw7r",
-        "title": "A.编写一份完整的智能合约代码",
-        "type": "Option",
-        "attribute": {
-         "examScore": 5,
-         "examCorrectAnswer": "uw7r"
-        }
-       },
-       {
-        "id": "wjyw",
-        "title": "B.借助区块链网络中的节点，发布该智能合约",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "k7vr"
-        }
-       },
-       {
-        "id": "vqy3",
-        "title": "C.交易内容被其他节点接收",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "k7vr"
-        }
-       },
-       {
-        "id": "6zdl",
-        "title": "D.打包进区块后上链并同步",
-        "type": "Option",
-        "attribute": {
-         "examCorrectAnswer": "k7vr"
-        }
-       }
-      ]
-     },
-     {
-      "id": "eawy",
-      "title": "“Hello World”与“hello world”经SHA-256计算得出的值是一样的。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "9l9t",
-        "title": "对",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "pw6n",
-        "title": "错",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "pw6n"
-        }
-       }
-      ]
-     },
-     {
-      "id": "hx7p",
-      "title": "当区块链出现分叉时，后续区块将沿着更短的那条分叉继续记录，称为“最短链原则”。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "d5bg",
-        "title": "对",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "n4sw",
-        "title": "错",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "n4sw"
-        }
-       }
-      ]
-     },
-     {
-      "id": "xzsi",
-      "title": "比特币的激励机制是指矿工通过解决复杂的数学问题来获得比特币奖励。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "by8o",
-        "title": "对",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "by8o"
-        }
-       },
-       {
-        "id": "k4go",
-        "title": "错",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "k8fx",
-      "title": "区块链上的数据可以被任何人随意修改",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "6tx1",
-        "title": "对",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "gu1f",
-        "title": "错",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "gu1f"
-        }
-       }
-      ]
-     },
-     {
-      "id": "zse2",
-      "title": "比特币的激励机制只能通过购买比特币来获得。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "rv4h",
-        "title": "对",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "a82n",
-        "title": "错",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "a82n"
-        }
-       }
-      ]
-     },
-     {
-      "id": "z4di",
-      "title": "共识机制就是所有记账节点之间怎么达成共识，去认定一个记录的有效性。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "zuvm",
-        "title": "对",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "zuvm"
-        }
-       },
-       {
-        "id": "j0b2",
-        "title": "错",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "r0tb",
-      "title": "假设难度目标值为0x1e11ffff，则1e表示指数，11ffff表示系数。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "4n4e",
-        "title": "对",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "9mlh",
-        "title": "错",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "9mlh"
-        }
-       }
-      ]
-     },
-     {
-      "id": "47gn",
-      "title": "区块链不只是单一技术，而是多种技术的综合集成，包括P2P网络通信、非对称加密技术以及分布式数据库技术等。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "32ds",
-        "title": "对",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "32ds"
-        }
-       },
-       {
-        "id": "uwn4",
-        "title": "错",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "pyrg",
-      "title": "区块链上的数据可以被任何人随意修改。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "0oss",
-        "title": "对",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "o7sx",
-        "title": "错",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "o7sx"
-        }
-       }
-      ]
-     },
-     {
-      "id": "w2cn",
-      "title": "以太坊区块链系统中，出块时间大概在10分钟左右。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "72s1",
-        "title": "对",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "hddg",
-        "title": "错",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "hddg"
-        }
-       }
-      ]
-     },
-     {
-      "id": "hgha",
-      "title": "区块链系统可以被视为带密钥的分布式和自动式记账账本，其核心是系统中每个节点都有一份一模一样的账本，记录了所有的交易，并且能自动将新的交易数据添加到每个节点的账本中。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "pysm",
-        "title": "对",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "pysm"
-        }
-       },
-       {
-        "id": "9cvj",
-        "title": "错",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "gvpk",
-      "title": "数字签名的步骤是：接收方将私钥广播到网络，发送方收到私钥后利用该私钥对数据进行签名并发送给接收方，接收方再用公钥进行验签。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "fc3y",
-        "title": "对",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "ecg9",
-        "title": "错",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "ecg9"
-        }
-       }
-      ]
-     },
-     {
-      "id": "h2py",
-      "title": "区块链中的一个区块永远不能有多个父区块。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "0k0o",
-        "title": "对",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "0k0o"
-        }
-       },
-       {
-        "id": "jtz5",
-        "title": "错",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "293w",
-      "title": "数字签名(Digital Signature)主要用于对数字消息进行签名，以防消息的冒名伪造或篡改，亦可以用于通信双方的身份鉴别。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "eua7",
-        "title": "对",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "eua7"
-        }
-       },
-       {
-        "id": "lk6q",
-        "title": "错",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "kcig",
-      "title": "智能合约是基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "hh6z",
-        "title": "对",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "hh6z"
-        }
-       },
-       {
-        "id": "l6k1",
-        "title": "错",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "k3zp",
-      "title": "区块链系统主要使用的哈希算法是MD5",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "bwcs",
-        "title": "对",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "mlve",
-        "title": "错",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "mlve"
-        }
-       }
-      ]
-     },
-     {
-      "id": "e9cd",
-      "title": "比特币区块链系统中，出块时间越短越好",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "en8q",
-        "title": "对",
-        "type": "Option",
-        "attribute": {}
-       },
-       {
-        "id": "jl02",
-        "title": "错",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "jl02"
-        }
-       }
-      ]
-     },
-     {
-      "id": "ie5h",
-      "title": "比特币区块链系统中，一个区块的大小在1M左右，可以保存4000条交易。",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "pqzm",
-        "title": "对",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "pqzm"
-        }
-       },
-       {
-        "id": "hb6z",
-        "title": "错",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
-     },
-     {
-      "id": "oi54",
-      "title": "智能合约“状态”分为外部账户与合约账户，合约账户无法主动发起交易，交易只能由外部账户发起",
-      "type": "Radio",
-      "attribute": {
-       "examScore": 1,
-       "examAnswerMode": "onlyOne"
-      },
-      "children": [
-       {
-        "id": "7aag",
-        "title": "对",
-        "type": "Option",
-        "attribute": {
-         "examScore": 1,
-         "examCorrectAnswer": "7aag"
-        }
-       },
-       {
-        "id": "r1e8",
-        "title": "错",
-        "type": "Option",
-        "attribute": {}
-       }
-      ]
+ "id": "SOdnjL",
+ "title": "区块链题库",
+ "description": "感谢您能抽出几分钟时间来参加本次答题，现在我们就马上开始吧！",
+ "type": "Survey",
+ "attribute": {
+  "suffix": "您已完成本次考试。",
+  "submitButton": "提交",
+  "examScore": 85,
+  "globalRule": []
+ },
+ "children": [
+  {
+   "id": "pand",
+   "title": "以下技术中哪一项不属于区块链核心技术？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "bag4",
+     "title": "A.大数据技术",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "bag4"
      }
-    ]
-   }
+    },
+    {
+     "id": "p9yr",
+     "title": "B.P2P网络通信",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "9pwv",
+     "title": "C.共识算法",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "c59z",
+     "title": "D.去中心化账本",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "cu07",
+   "title": "以下描述中哪一项不属于去中心化系统的特点？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "5m49",
+     "title": "A.拓扑网络健壮",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "i6xr",
+     "title": "B.处理速度快",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "i6xr"
+     }
+    },
+    {
+     "id": "zmx9",
+     "title": "C.点对点数据直传，保护数据隐私与信息安全",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "c1xq",
+     "title": "D.拓扑网络复杂度高，维护成本高",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "3kn8",
+   "title": "以下哪项技术可以类推智能合约？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "ak1t",
+     "title": "A.数据分析与数据仓库",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "seqh",
+     "title": "B.程序设计与算法",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "seqh"
+     }
+    },
+    {
+     "id": "9xjr",
+     "title": "C.容器技术与云计算",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "dpil",
+     "title": "D.数据库与SQL",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "xb35",
+   "title": "以下哪项技术不属于区块链的类别？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "4r7w",
+     "title": "A.公有链",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "k1c7",
+     "title": "B.私有链",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "nt4u",
+     "title": "C.区块链",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "nt4u"
+     }
+    },
+    {
+     "id": "cxgx",
+     "title": "D.联盟链",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "m2yy",
+   "title": "以下关于区块链的分类描述正确的是？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "s4dk",
+     "title": "A.公有链的去中心化程度最高",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "s4dk"
+     }
+    },
+    {
+     "id": "ovia",
+     "title": "B.联盟链允许参与者自由出入",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "64bs",
+     "title": "C.私有链的决策速度很慢",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "kz8y",
+     "title": "D.公有链的交易数据是非公开的",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "v5u8",
+   "title": "以下哪项描述不属于联盟链的技术特点？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "489n",
+     "title": "A.参与者为所有联盟成员",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "489n"
+     }
+    },
+    {
+     "id": "8azo",
+     "title": "B.去中心化",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "bvqv",
+     "title": "C.交易数据非公开",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "zbki",
+     "title": "D.典型应用场景为支付与结算",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "xn92",
+   "title": "在Linux操作系统中，tree命令的作用为()。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "2zda",
+     "title": "A.显示指定文件的具体内容",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "u95u",
+     "title": "B.向指定URL发送HTTP请求",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "08mc",
+     "title": "C.查看文件夹的具体结构",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "08mc"
+     }
+    },
+    {
+     "id": "yf69",
+     "title": "D.加载配置文件内容",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "pb7m",
+   "title": "Python Flask服务端架构接收HTTPGET请求参数的方式为()。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "open",
+     "title": "A.通过@app.route()装器",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "j0xn",
+     "title": "B.在请求处理函数中通过request.args",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "j0xn"
+     }
+    },
+    {
+     "id": "940r",
+     "title": "C.在app.run方法中设置参数",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "ibyl",
+     "title": "D.在请求处理函数中通过request.json",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "c3hn",
+   "title": "下列哪个选项不属于哈希函数？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "29f2",
+     "title": "A. RSA",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "29f2"
+     }
+    },
+    {
+     "id": "zsfe",
+     "title": "B. MD5",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "rfsd",
+     "title": "C. SHA-256",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "n8b7",
+     "title": "D. SM3",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "v5vu",
+   "title": "以下关于非对称加密算法说法不正确的是？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "fke0",
+     "title": "A.非对称加密算法使用公私钥对进行加密/解密",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "3r6y",
+     "title": "B.在非对称加密算法中，可以通过私钥获取公钥",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "c3bp",
+     "title": "C.在非对称加密算法中，可使用私钥进行签名，再使用公钥进行验签",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "5yz1",
+     "title": "D. 哈希函数是非对称加密算法应用的形式之一",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "5yz1"
+     }
+    }
+   ]
+  },
+  {
+   "id": "4rs9",
+   "title": "Python程序设计语言中哪个依赖包可以实现非对称加密算法？()。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "suzc",
+     "title": "A. hashlib",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "8680",
+     "title": "B. ecdsa",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "8680"
+     }
+    },
+    {
+     "id": "1pwg",
+     "title": "C. flask",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "p7a6",
+     "title": "D. random",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "5158",
+   "title": "以下哪些数据项在区块头中保存？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "fmdu",
+     "title": "A.默克尔根（Merkle root）",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "hclq",
+     "title": "B.版本号（Version）",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "f5ya",
+     "title": "C.父块哈希值（Prev-hash）",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "cyff",
+     "title": "D.以上选项都是",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "cyff"
+     }
+    }
+   ]
+  },
+  {
+   "id": "d9kw",
+   "title": "区块链是由区块通过链的方式组合而成的，那么区块间是如何实现连接的？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "1y8u",
+     "title": "A.通过节点保存的区块索引记录表实现区块连接",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "dfnp",
+     "title": "B.通过区块头中的父块哈希值实现区块连接",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "dfnp"
+     }
+    },
+    {
+     "id": "7sx1",
+     "title": "C.通过区块体中的交易内容实现区块连接",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "8xp3",
+     "title": "D.通过访问中心节点实现区块连接",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "l1uk",
+   "title": "以下关于区块链中的账户描述正确的是？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "jrsv",
+     "title": "A.区块链中的账户是保存在一个中心服务器中",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "19kh",
+     "title": "B.区块链中的账户通过输入账号和密码进行登录",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "jmek",
+     "title": "C.区块链系统中的用户采用自定义名称作为自己的账户名",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "g31c",
+     "title": "D.区块链的账户是由私钥、公钥和地址三个要素组成",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "g31c"
+     }
+    }
+   ]
+  },
+  {
+   "id": "yz8z",
+   "title": "如果用传统纸质账本与区块链账本进行对比，那么区块相当于纸质账本的()。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "i5h4",
+     "title": "A.账页",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "i5h4"
+     }
+    },
+    {
+     "id": "alm0",
+     "title": "B.账目",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "naev",
+     "title": "C.账目相关的关键信息",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "v8le",
+     "title": "D.账本",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "slyw",
+   "title": "以下哪一步不是生成公钥、私钥的具体步骤？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "govg",
+     "title": "A.生成“绝对”随机的种子",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "kpxa",
+     "title": "B.通过特定的非对称加密算法对种子加密生成私钥",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "ffsz",
+     "title": "C.基于已生成的私钥借助非对称加密算法生成公钥",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "nmi2",
+     "title": "D.基于公钥使用哈希算法生成账户地址",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "nmi2"
+     }
+    }
+   ]
+  },
+  {
+   "id": "tzo2",
+   "title": "以下哪一项Python依赖包可以生成公钥、私钥？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "esp7",
+     "title": "A. ecdsa",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "esp7"
+     }
+    },
+    {
+     "id": "vs1z",
+     "title": "B. hashlib",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "uik7",
+     "title": "C. random",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "di66",
+     "title": "D.os",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "nl2j",
+   "title": "以下哪一项Python依赖包可以实现哈希加密算法？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "kyrt",
+     "title": "A.hashlib",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "kyrt"
+     }
+    },
+    {
+     "id": "7b0f",
+     "title": "B.ecdsa",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "ab9o",
+     "title": "C.flask",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "30h2",
+     "title": "D.datetime",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "5phr",
+   "title": "以下选项中哪一项说法正确？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "xytx",
+     "title": "A.生成公钥、私钥时需要使用哈希函数",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "p1q0",
+     "title": "B.通过公钥可以生成私钥",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "xdsz",
+     "title": "C.公钥签名，私钥验证",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "niu4",
+     "title": "D.私钥签名，公钥验证",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "niu4"
+     }
+    }
+   ]
+  },
+  {
+   "id": "ka7a",
+   "title": "以下关于区块链的交易描述不正确的是？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "rsk0",
+     "title": "A.交易是区块链中最小的数据存储单元",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "0kcq",
+     "title": "B.在比特币区块链系统中，一个区块可以存储4000条左右的交易",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "ig7j",
+     "title": "C.建立交易时，需要将交易发送方的私钥打包进交易当中",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "ig7j"
+     }
+    },
+    {
+     "id": "0be8",
+     "title": "D.交易是以“默克尔树”的形式存储在区块体中",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "byg8",
+   "title": "区块链中最小数据单位是什么？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "grjq",
+     "title": "A.区块链",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "f0ge",
+     "title": "B.区块",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "ccnw",
+     "title": "C.交易",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "ccnw"
+     }
+    },
+    {
+     "id": "nij5",
+     "title": "D.账页",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "mvw1",
+   "title": "区块链交易中不包括以下哪项内容？ ()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "k1wq",
+     "title": "A.发送方地址",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "atze",
+     "title": "B.接收方地址",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "blse",
+     "title": "C.时间戳",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "srdk",
+     "title": "D.发送方私钥",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "srdk"
+     }
+    }
+   ]
+  },
+  {
+   "id": "rcqh",
+   "title": "公有链为什么类型的网络拓扑？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "4kn2",
+     "title": "A.星形",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "6xrd",
+     "title": "B.树形",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "xntl",
+     "title": "C. Mesh形",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "xntl"
+     }
+    },
+    {
+     "id": "izm5",
+     "title": "D.总线型",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "eid3",
+   "title": "以下关于Socket通信机制的说法，不正确的是？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "1oy2",
+     "title": "A.Socket的通信主体包括客户端和服务端",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "bv6u",
+     "title": "B. Socket通信属于TCP/IP网络模型的应用层",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "54xf",
+     "title": "C. 在数据传输中，服务器将开启轮询机制以监听客户端发送的请求",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "54xf"
+     }
+    },
+    {
+     "id": "t3g3",
+     "title": "D.Socket并不是一种通信协议，而是一种通信手段",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "wkxw",
+   "title": "如下哪个Python依赖包可以实现区块链网络的绘制？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "283d",
+     "title": "A.os",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "4yy7",
+     "title": "B. NetworkX",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "4yy7"
+     }
+    },
+    {
+     "id": "1xxw",
+     "title": "C. Matplotlib",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "r9bf",
+     "title": "D. Flask-APScheduler",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "zs9s",
+   "title": "如下哪个Python依赖包可以实现定时器功能？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "2f89",
+     "title": "A.os",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "6d0d",
+     "title": "B. NetworkX",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "qt98",
+     "title": "C. Matplotlib",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "c5sx",
+     "title": "D. Flask-APScheduler",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "c5sx"
+     }
+    }
+   ]
+  },
+  {
+   "id": "m789",
+   "title": "通过Python NetworkX工具绘制网络，当引入依赖库（import networkx as nx）后，以下描述错误的是：",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "64gj",
+     "title": "A.可以通过G = nx.Graph()创建一个空图",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "zk4q",
+     "title": "B.可以通过G.delete_node(1)删出一个节点",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "lggt",
+     "title": "C.可以通过G.add_node(1)添加一个节点",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "lpco",
+     "title": "D.可以通过G.add_ edges_from([(1, 2), (1, 3)] )迭代添加两条边",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "lpco"
+     }
+    }
+   ]
+  },
+  {
+   "id": "fxwd",
+   "title": "从应用角度出发，共识算法主要是为了解决区块链的什么问题？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "87gr",
+     "title": "A.通信效率低",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "hof1",
+     "title": "B.节点维护困难",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "hof1"
+     }
+    },
+    {
+     "id": "fchj",
+     "title": "C.网络传输的不稳定性",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "z6pa",
+     "title": "D.网络的不稳定性",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "xpqm",
+   "title": "如下哪些内容不属于区块链的分类方式？()",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "dr4u",
+     "title": "A.基于选主策略的分类",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "p2cv",
+     "title": "B.基于传输效率的分类",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "p2cv"
+     }
+    },
+    {
+     "id": "roxv",
+     "title": "C.基于容错类型的分类",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "o66i",
+     "title": "D.基于部署方式的分类",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "lfyt",
+   "title": "以下关于共识算法的描述正确的是？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "ekrh",
+     "title": "A.共识算法是为了实现区块链网络中所有节点数据的“安全性”",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "ztcr",
+     "title": "B.随机类共识算法包括Paxos和Raft算法",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "szy4",
+     "title": "C.证明类共识算法包括PoW和PoS算法",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "szy4"
+     }
+    },
+    {
+     "id": "kjwm",
+     "title": "D.BFT（拜占庭容错）共识算法其可以在有1/2容错率的情况下依然可以达成共识",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "w0ud",
+   "title": "PoW算法的核心思想是()。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "oltf",
+     "title": "A.给每个节点都赋予一个“难题”，通过解决难题争夺记账权",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "oltf"
+     }
+    },
+    {
+     "id": "yji1",
+     "title": "B.根据不同节点所持有的债券数量多少获取记账权",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "z82x",
+     "title": "C.以投票的方式在区块链节点中选出节点赋予记账权",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "86vn",
+     "title": "D.从区块链中选出多个节点作为代表节点在代表节点中实现记账权的争夺",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "tiwi",
+   "title": "以下不属于智能合约“模型”的内容是？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "n94k",
+     "title": "A.合约状态",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "6put",
+     "title": "B.账本数据",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "6put"
+     }
+    },
+    {
+     "id": "avrn",
+     "title": "C.合约值",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "nbfh",
+     "title": "D.预置响应条件与规则",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "fppu",
+   "title": "以下关于智能合约在区块链网络部署与调用中错误的说法是？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "1w15",
+     "title": "A.智能合约“上链”后只能被智能合约的创建者使用",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "1w15"
+     }
+    },
+    {
+     "id": "whch",
+     "title": "B.智能合约部署的第一步为编译合约",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "sn33",
+     "title": "C.智能合约在部署时需要借助区块链节点实现",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "m53e",
+     "title": "D.智能合约“上链”后可被所有节点使用",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "vmgg",
+   "title": "Merkle Tree的优点是什么？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "sw3a",
+     "title": "A.节省存储空间",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "wx55",
+     "title": "B.提高数据验证效率",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "k2s0",
+     "title": "C.提高数据安全性",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "svbu",
+     "title": "D.所有以上选项",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "svbu"
+     }
+    }
+   ]
+  },
+  {
+   "id": "27h0",
+   "title": "拜占庭将军问题描述的是什么情况？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "99t0",
+     "title": "A.多个将军之间需要达成一致决策，但其中存在叛徒",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "99t0"
+     }
+    },
+    {
+     "id": "ltar",
+     "title": "B.多个将军之间需要进行战争，但其中存在内奸",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "mt93",
+     "title": "C.多个将军之间需要分配资源，但其中存在贪污腐败",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "lk9f",
+     "title": "D.多个将军之间需要建立联盟，但其中存在背叛",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "1ypp",
+   "title": "区块链中的分叉是指什么？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "z292",
+     "title": "A.区块链网络中断",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "ijgl",
+     "title": "B.区块链网络被攻击",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "9qw5",
+     "title": "C.区块链网络中出现两个或以上不同版本的区块链",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "9qw5"
+     }
+    },
+    {
+     "id": "1ptd",
+     "title": "D.区块链网络中出现安全漏洞",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "3ywk",
+   "title": "PoW和PoS的主要区别是什么？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "ncva",
+     "title": "A.PoW依赖于计算能力，PoS依赖于持币量",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "ncva"
+     }
+    },
+    {
+     "id": "uft6",
+     "title": "B.PoW依赖于持币量，PoS依赖于计算能力",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "jy3x",
+     "title": "C.PoW和PoS都依赖于计算能力",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "i1va",
+     "title": "D.PoW和PoS都依赖于持币量",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "jbn5",
+   "title": "比特币的交易速度快吗？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "zjtd",
+     "title": "A.非常快，几乎是实时到账。",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "mozo",
+     "title": "B.较快，通常需要几分钟到几小时。",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "mozo"
+     }
+    },
+    {
+     "id": "rdmm",
+     "title": "C.一般，通常需要几小时到几天。",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "scmz",
+     "title": "D.较慢，通常需要几天到几周",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "f327",
+   "title": "比特币的交易记录保存在哪里？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "wzl4",
+     "title": "A.区块链",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "wzl4"
+     }
+    },
+    {
+     "id": "km3h",
+     "title": "B.政府机构",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "tl2j",
+     "title": "C.银行账户",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "7vzr",
+     "title": "D.云端服务器",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "bwph",
+   "title": "区块链的分类：有公有链、联盟链和（  ）",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "byoe",
+     "title": "A.私有链",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "byoe"
+     }
+    },
+    {
+     "id": "a1ol",
+     "title": "B.比特币",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "97d0",
+     "title": "C.以太坊",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "mg2m",
+     "title": "D.交叉链",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "69fe",
+   "title": "比特币使用的加密算法是",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "i665",
+     "title": "A.椭圆曲线",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "i665"
+     }
+    },
+    {
+     "id": "emia",
+     "title": "B.对称加密",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "bq0p",
+     "title": "C.MD5",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "756a",
+     "title": "D.DES",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "5jdu",
+   "title": "以太坊智能合约的开发语言是",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "yhnb",
+     "title": "A.java",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "uxo4",
+     "title": "B.Solidity",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "uxo4"
+     }
+    },
+    {
+     "id": "plbf",
+     "title": "C.C",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "z046",
+     "title": "D.C++",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "uxqs",
+   "title": "以下关于JSON语法的配置信息描述不正确的是？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "3zwu",
+     "title": "A. JSON数据的表现形式为 \"name\" : \"张三\"",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "n89k",
+     "title": "B. JSON 对象的数据表现形式为{ \"name\":\"张三\" , \"age\":\"20\" }",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "yx7n",
+     "title": "C. JSON数据通过键值对的形式表示并由空格(  )隔开",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "yx7n"
+     }
+    },
+    {
+     "id": "aeee",
+     "title": "D. JSON语法中，方括号([])用于保存数组，数组中可包含多个对象",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "dayx",
+   "title": "在使用Python开发的区块链系统中哪个描述是不正确的？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "bomk",
+     "title": "A. 客户端通过HTTP POST形式向服务端发送请求时，数据一般以字典格式在Body中封装",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "hxgg",
+     "title": "B. 采用Flask框架实现WEB HTTP服务以及进程持久化",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "3n23",
+     "title": "C. 采用Flask-socketio实现Socket通信的服务端。",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "wd9a",
+     "title": "D. 采用python-socketio[client]实现Socket通信的客户端",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "wd9a"
+     }
+    }
+   ]
+  },
+  {
+   "id": "t9yg",
+   "title": "比特币是什么？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "3rqy",
+     "title": "A. 一种数字货币",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "3rqy"
+     }
+    },
+    {
+     "id": "nvcf",
+     "title": "B. 一种股票",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "7t6k",
+     "title": "C. 一种债券",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "1aev",
+     "title": "D. 一种信用卡",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "rstq",
+   "title": "智能合约是什么？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "ro0o",
+     "title": "A. 一种数字货币",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "p8ue",
+     "title": "B. 一种区块链平台",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "kjvf",
+     "title": "C. 一种自动执行的计算机程序",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "kjvf"
+     }
+    },
+    {
+     "id": "4ab8",
+     "title": "D. 一种债券",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "ddv7",
+   "title": "哈希函数在区块链中的作用是什么？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "okx2",
+     "title": "A. 用于加密数据",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "8urd",
+     "title": "B. 用于验证数据完整性",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "8urd"
+     }
+    },
+    {
+     "id": "rlpj",
+     "title": "C. 用于生成新的区块",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "3cjb",
+     "title": "D. 用于生成新的数字货币",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "4at4",
+   "title": "PoW是什么的缩写？",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "95do",
+     "title": "A. Proof of Work",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "95do"
+     }
+    },
+    {
+     "id": "nkov",
+     "title": "B. Proof of Stake",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "ppse",
+     "title": "C. Power of Work",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "sg6g",
+     "title": "D. Power of Stake",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "akwu",
+   "title": "区块链技术的特性包括",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "qq1l",
+     "title": "A.去中心化",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "qq1l"
+     }
+    },
+    {
+     "id": "gz1p",
+     "title": "B.共识性",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "akwu"
+     }
+    },
+    {
+     "id": "l95u",
+     "title": "C.不易篡改性",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "akwu"
+     }
+    },
+    {
+     "id": "vhfj",
+     "title": "D.可追溯性",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "akwu"
+     }
+    },
+    {
+     "id": "jrbj",
+     "title": "E.可编程性",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "akwu"
+     }
+    }
+   ]
+  },
+  {
+   "id": "2zgj",
+   "title": "智能合约在区块链中的部署方式包括",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "3ths",
+     "title": "A.编写一份完整的智能合约代码",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "3ths"
+     }
+    },
+    {
+     "id": "6eiw",
+     "title": "B.借助区块链网络中的节点，发布该智能合约",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "2zgj"
+     }
+    },
+    {
+     "id": "fqpz",
+     "title": "C.交易内容被其他节点接收",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "2zgj"
+     }
+    },
+    {
+     "id": "lhii",
+     "title": "D.打包进区块后上链并同步",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "2zgj"
+     }
+    }
+   ]
+  },
+  {
+   "id": "pn6l",
+   "title": "下列关于非对称加密模型描述，正确的是",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "bczi",
+     "title": "A.非对称加密算法中公钥无需保密",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "bczi"
+     }
+    },
+    {
+     "id": "as30",
+     "title": "B.私钥无需在网络中进行传播",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "pn6l"
+     }
+    },
+    {
+     "id": "vrmf",
+     "title": "C.公钥加密，私钥解密",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "pn6l"
+     }
+    },
+    {
+     "id": "2psf",
+     "title": "D.私钥签名，公钥验签",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "pn6l"
+     }
+    }
+   ]
+  },
+  {
+   "id": "wm3v",
+   "title": "智能合约的具体使用流程包括",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "xm1w",
+     "title": "A.编译",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "xm1w"
+     }
+    },
+    {
+     "id": "9r0r",
+     "title": "B.部署",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "wm3v"
+     }
+    },
+    {
+     "id": "nnmp",
+     "title": "C.上链",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "wm3v"
+     }
+    },
+    {
+     "id": "rmb5",
+     "title": "D.调用",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "wm3v"
+     }
+    },
+    {
+     "id": "b8su",
+     "title": "E.执行",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "wm3v"
+     }
+    }
+   ]
+  },
+  {
+   "id": "4pdp",
+   "title": "关于哈希(Hash)函数的描述，正确的是",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "ph8v",
+     "title": "A.具备抗碰撞性",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "ph8v"
+     }
+    },
+    {
+     "id": "0wbi",
+     "title": "B.具备不可逆性（单向性）",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "4pdp"
+     }
+    },
+    {
+     "id": "jzdt",
+     "title": "C.是仅能将任意长度的字符、数字输入转换成固定长度输出的方法",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "kllc",
+     "title": "D.可以保证数据的不易篡改性",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "4pdp"
+     }
+    }
+   ]
+  },
+  {
+   "id": "vd7q",
+   "title": "一个区块的基本构成包括",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "uzot",
+     "title": "A.区块头",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "uzot"
+     }
+    },
+    {
+     "id": "90hr",
+     "title": "B.区块体",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "vd7q"
+     }
+    },
+    {
+     "id": "yysr",
+     "title": "C.PoW算法",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "ss1s",
+     "title": "D.PoS算法",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "yidv",
+   "title": "共识算法的具体流程包括",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "2ngb",
+     "title": "A.选主",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "2ngb"
+     }
+    },
+    {
+     "id": "kp1i",
+     "title": "B.造块",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "yidv"
+     }
+    },
+    {
+     "id": "5a9q",
+     "title": "C.验证",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "yidv"
+     }
+    },
+    {
+     "id": "rpsu",
+     "title": "D.上链",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "yidv"
+     }
+    }
+   ]
+  },
+  {
+   "id": "qxkd",
+   "title": "在Python下，创建区块链账户且实现签名/验签的文件crypto_util.py中，以下哪些函数用于实现创建区块链账户？",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "4t76",
+     "title": "A.def create_seed",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "4t76"
+     }
+    },
+    {
+     "id": "c0e5",
+     "title": "B.def create_private_key",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "qxkd"
+     }
+    },
+    {
+     "id": "4syj",
+     "title": "C.def create_public_key",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "qxkd"
+     }
+    },
+    {
+     "id": "94r1",
+     "title": "D.def create_account",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "qxkd"
+     }
+    },
+    {
+     "id": "3ds4",
+     "title": "E.def calc_merkle_root",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "kfuk",
+   "title": "下列关于默克尔树(Merkle tree)的描述，正确的是",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "ktsf",
+     "title": "A.默克尔树是典型的二叉树结构",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "ktsf"
+     }
+    },
+    {
+     "id": "947d",
+     "title": "B.默克尔树的最底层是由该区块中所有的交易组成",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "kfuk"
+     }
+    },
+    {
+     "id": "6zjo",
+     "title": "C.默克尔树从最底层分叉节点开始两两组合计算哈希值，直至只剩下一个哈希值时，称为默克尔根（Merkle root）",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "kfuk"
+     }
+    },
+    {
+     "id": "56tz",
+     "title": "D.区块中的交易数必须打包2的幂数个，以满足默克尔根的生成条件",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "zzf3",
+   "title": "数字签名功能包括",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "tibb",
+     "title": "A. 防范信息伪造",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "tibb"
+     }
+    },
+    {
+     "id": "42bx",
+     "title": "B. 防范信息篡改",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "zzf3"
+     }
+    },
+    {
+     "id": "5ift",
+     "title": "C. 防范信息重放",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "zzf3"
+     }
+    },
+    {
+     "id": "cw8v",
+     "title": "D. 防止签名者抵赖",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "zzf3"
+     }
+    }
+   ]
+  },
+  {
+   "id": "40nt",
+   "title": "关于区块链网络通信，下列描述正确的是",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "tuuc",
+     "title": "A.区块链采用P2P通信技术",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "tuuc"
+     }
+    },
+    {
+     "id": "izu6",
+     "title": "B.区块链系统中节点既可以承担服务端，也可以作为客户端",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "40nt"
+     }
+    },
+    {
+     "id": "hhge",
+     "title": "C.Gossip机制分别具备Pull和Push两种实现模式",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "40nt"
+     }
+    },
+    {
+     "id": "wi47",
+     "title": "D.区块链系统通信中，当一个节点出现故障并不会影响整个区块链系统通信的运行",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "40nt"
+     }
+    }
+   ]
+  },
+  {
+   "id": "7dwf",
+   "title": "Hash函数特性是",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "180f",
+     "title": "A. 抗原像攻击（单向性one-way）",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "180f"
+     }
+    },
+    {
+     "id": "6epy",
+     "title": "B. 抗DDOS攻击",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "kbt8",
+     "title": "C. 抗碰撞攻击（strongly collision-free）",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "7dwf"
+     }
+    },
+    {
+     "id": "dajs",
+     "title": "D. 抗第二原像攻击（weak collision resistance/ weakly collision-free）",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "kzrv",
+   "title": "在Python下生成区块链系统中的区块（包含交易）时，models.py文件下包含了哪几个对象？",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "mzol",
+     "title": "A.class Transaction",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "mzol"
+     }
+    },
+    {
+     "id": "la19",
+     "title": "B.class Block",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "kzrv"
+     }
+    },
+    {
+     "id": "ixoa",
+     "title": "C.class Blockchain",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "kzrv"
+     }
+    },
+    {
+     "id": "49ug",
+     "title": "D.class Peer",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "kzrv"
+     }
+    },
+    {
+     "id": "tboo",
+     "title": "E.class Network",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "0td4",
+   "title": "块的主要元素包括",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "x7or",
+     "title": "A. 指向上一个块的哈希指针",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "x7or"
+     }
+    },
+    {
+     "id": "x69x",
+     "title": "B. 时间戳记",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "0td4"
+     }
+    },
+    {
+     "id": "4u4u",
+     "title": "C. 交易清单",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "0td4"
+     }
+    },
+    {
+     "id": "9mut",
+     "title": "D. 共识算法",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "073x",
+   "title": "下列关于PoW算法的描述，正确的是",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "e8ys",
+     "title": "A.PoW算法要求诚实节点超过50%的算力才能正常运行",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "e8ys"
+     }
+    },
+    {
+     "id": "3yey",
+     "title": "B.矿工节点通过调整区块头中的随机数（Nonce）以改变该区块头的哈希值来满足难度目标的要求",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "073x"
+     }
+    },
+    {
+     "id": "k91w",
+     "title": "C.一个矿工节点在本次没有争夺到记账权的情况下，下一次争夺到记账权的概率将提高",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "lfgv",
+     "title": "D.算力和获得记账权的概率几乎成正比",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "073x"
+     }
+    }
+   ]
+  },
+  {
+   "id": "2uu5",
+   "title": "区块链的分布式记帐优势有",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "2uwj",
+     "title": "A. 通过多方记账的方式，增强数据安全性，防止单点故障",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "2uwj"
+     }
+    },
+    {
+     "id": "nwg5",
+     "title": "B. 减少不同数据库之间的对账工作，提高效率和透明度",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "2uu5"
+     }
+    },
+    {
+     "id": "j2m1",
+     "title": "C. 与复式记帐差异不大",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "1oqy",
+     "title": "D. 难以保持数据一致性",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "mz1n",
+   "title": "以下关于智能合约“状态”的描述正确的是",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "bh6i",
+     "title": "A.智能合约的“状态”用于持久化记录区块链中的数据",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "bh6i"
+     }
+    },
+    {
+     "id": "4002",
+     "title": "B.智能合约的“状态”通过版本标明先后",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "mz1n"
+     }
+    },
+    {
+     "id": "tcud",
+     "title": "C.智能合约的“状态”不会发生改变",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "5o8n",
+     "title": "D.智能合约的“状态”随着交易而发生改变",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "mz1n"
+     }
+    }
+   ]
+  },
+  {
+   "id": "k7vr",
+   "title": "智能合约在区块链中的部署方式包括",
+   "type": "Checkbox",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "selectAll"
+   },
+   "children": [
+    {
+     "id": "uw7r",
+     "title": "A.编写一份完整的智能合约代码",
+     "type": "Option",
+     "attribute": {
+      "examScore": 5,
+      "examCorrectAnswer": "uw7r"
+     }
+    },
+    {
+     "id": "wjyw",
+     "title": "B.借助区块链网络中的节点，发布该智能合约",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "k7vr"
+     }
+    },
+    {
+     "id": "vqy3",
+     "title": "C.交易内容被其他节点接收",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "k7vr"
+     }
+    },
+    {
+     "id": "6zdl",
+     "title": "D.打包进区块后上链并同步",
+     "type": "Option",
+     "attribute": {
+      "examCorrectAnswer": "k7vr"
+     }
+    }
+   ]
+  },
+  {
+   "id": "eawy",
+   "title": "“Hello World”与“hello world”经SHA-256计算得出的值是一样的。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "9l9t",
+     "title": "对",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "pw6n",
+     "title": "错",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "pw6n"
+     }
+    }
+   ]
+  },
+  {
+   "id": "hx7p",
+   "title": "当区块链出现分叉时，后续区块将沿着更短的那条分叉继续记录，称为“最短链原则”。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "d5bg",
+     "title": "对",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "n4sw",
+     "title": "错",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "n4sw"
+     }
+    }
+   ]
+  },
+  {
+   "id": "xzsi",
+   "title": "比特币的激励机制是指矿工通过解决复杂的数学问题来获得比特币奖励。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "by8o",
+     "title": "对",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "by8o"
+     }
+    },
+    {
+     "id": "k4go",
+     "title": "错",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "k8fx",
+   "title": "区块链上的数据可以被任何人随意修改",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "6tx1",
+     "title": "对",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "gu1f",
+     "title": "错",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "gu1f"
+     }
+    }
+   ]
+  },
+  {
+   "id": "zse2",
+   "title": "比特币的激励机制只能通过购买比特币来获得。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "rv4h",
+     "title": "对",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "a82n",
+     "title": "错",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "a82n"
+     }
+    }
+   ]
+  },
+  {
+   "id": "z4di",
+   "title": "共识机制就是所有记账节点之间怎么达成共识，去认定一个记录的有效性。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "zuvm",
+     "title": "对",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "zuvm"
+     }
+    },
+    {
+     "id": "j0b2",
+     "title": "错",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "r0tb",
+   "title": "假设难度目标值为0x1e11ffff，则1e表示指数，11ffff表示系数。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "4n4e",
+     "title": "对",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "4n4e"
+     }
+    },
+    {
+     "id": "9mlh",
+     "title": "错",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "47gn",
+   "title": "区块链不只是单一技术，而是多种技术的综合集成，包括P2P网络通信、非对称加密技术以及分布式数据库技术等。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "32ds",
+     "title": "对",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "32ds"
+     }
+    },
+    {
+     "id": "uwn4",
+     "title": "错",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "pyrg",
+   "title": "区块链上的数据可以被任何人随意修改。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "0oss",
+     "title": "对",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "o7sx",
+     "title": "错",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "o7sx"
+     }
+    }
+   ]
+  },
+  {
+   "id": "w2cn",
+   "title": "以太坊区块链系统中，出块时间大概在10分钟左右。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "72s1",
+     "title": "对",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "hddg",
+     "title": "错",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "hddg"
+     }
+    }
+   ]
+  },
+  {
+   "id": "hgha",
+   "title": "区块链系统可以被视为带密钥的分布式和自动式记账账本，其核心是系统中每个节点都有一份一模一样的账本，记录了所有的交易，并且能自动将新的交易数据添加到每个节点的账本中。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "pysm",
+     "title": "对",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "pysm"
+     }
+    },
+    {
+     "id": "9cvj",
+     "title": "错",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "gvpk",
+   "title": "数字签名的步骤是：接收方将私钥广播到网络，发送方收到私钥后利用该私钥对数据进行签名并发送给接收方，接收方再用公钥进行验签。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "fc3y",
+     "title": "对",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "ecg9",
+     "title": "错",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "ecg9"
+     }
+    }
+   ]
+  },
+  {
+   "id": "h2py",
+   "title": "区块链中的一个区块永远不能有多个父区块。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "0k0o",
+     "title": "对",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "0k0o"
+     }
+    },
+    {
+     "id": "jtz5",
+     "title": "错",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "293w",
+   "title": "数字签名(Digital Signature)主要用于对数字消息进行签名，以防消息的冒名伪造或篡改，亦可以用于通信双方的身份鉴别。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "eua7",
+     "title": "对",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "eua7"
+     }
+    },
+    {
+     "id": "lk6q",
+     "title": "错",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "kcig",
+   "title": "智能合约是基于这些可信的不可篡改的数据，可以自动化的执行一些预先定义好的规则和条款。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "hh6z",
+     "title": "对",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "hh6z"
+     }
+    },
+    {
+     "id": "l6k1",
+     "title": "错",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "k3zp",
+   "title": "区块链系统主要使用的哈希算法是MD5",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "bwcs",
+     "title": "对",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "mlve",
+     "title": "错",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "mlve"
+     }
+    }
+   ]
+  },
+  {
+   "id": "e9cd",
+   "title": "比特币区块链系统中，出块时间越短越好",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "en8q",
+     "title": "对",
+     "type": "Option",
+     "attribute": {}
+    },
+    {
+     "id": "jl02",
+     "title": "错",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "jl02"
+     }
+    }
+   ]
+  },
+  {
+   "id": "ie5h",
+   "title": "比特币区块链系统中，一个区块的大小在1M左右，可以保存4000条交易。",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "pqzm",
+     "title": "对",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "pqzm"
+     }
+    },
+    {
+     "id": "hb6z",
+     "title": "错",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  },
+  {
+   "id": "oi54",
+   "title": "智能合约“状态”分为外部账户与合约账户，合约账户无法主动发起交易，交易只能由外部账户发起",
+   "type": "Radio",
+   "attribute": {
+    "examScore": 1,
+    "examAnswerMode": "onlyOne"
+   },
+   "children": [
+    {
+     "id": "7aag",
+     "title": "对",
+     "type": "Option",
+     "attribute": {
+      "examScore": 1,
+      "examCorrectAnswer": "7aag"
+     }
+    },
+    {
+     "id": "r1e8",
+     "title": "错",
+     "type": "Option",
+     "attribute": {}
+    }
+   ]
+  }
+ ]
+}
