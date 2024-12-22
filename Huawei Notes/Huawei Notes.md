@@ -1857,7 +1857,7 @@ undo debug all
 disp default-parameter rip
 ```
 
-#### Rip路由引入  
+### Rip路由引入  
 - 引入不同进程号的RIP路由  
 不同进程号的路由表是不一样的以下使用rip 10, rip 20进行演示(一般是边界路由的配置)
 ```
