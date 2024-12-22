@@ -5,8 +5,8 @@
 - [MAC地址自动学习于接口绑定](#MAC地址自动学习于接口绑定)
 - [生成树协议(MSTP)](#生成树协议)
 - [链路聚合](#链路聚合)
-- [vlan的创建与应用](#vlan的创建与应用)
-- [vlan中绑定MAC地址](#vlan中绑定MAC地址)
+- [VLAN的创建与应用](#VLAN的创建与应用)
+- [VLAN中绑定MAC地址](#VLAN中绑定MAC地址)
 - [MUX-VLAN配置](#MUX-VLAN配置)
 - [交换机端口隔离功能](#交换机端口隔离功能)
 - [不同vlan之间的通信](#不同vlan之间的通信)
@@ -393,7 +393,7 @@ port trunk allow-pass vlan all
 
 
 
-## [vlan的创建与应用](#vlan的创建与应用)
+## [VLAN的创建与应用](#VLAN的创建与应用)
 **Access、Trunk、Hybrid含义**：  
 - **Access**类型：端口只能属于1个VLAN，`一般用于连接计算机`  
 - **Trunk**类型：端口可以属于多个VLAN，可以接收和发送多个VLAN的报文，`一般用于交换机之间连接`  
@@ -509,7 +509,7 @@ port trunk allow-pass vlan 10 20 30 100
 port trunk allow-pass vlan all
 ```
 
-## [vlan中绑定MAC地址](#vlan中绑定MAC地址)
+## [VLAN中绑定MAC地址](#VLAN中绑定MAC地址)
 vlan中绑定MAC地址  
 进入vlan视图  
 ```
