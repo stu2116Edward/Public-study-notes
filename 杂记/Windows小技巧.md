@@ -111,6 +111,12 @@ Github仓库：ContextMenuManager
 ```
 计算机\HKEY_CLASSES_ROOT\Directory\Background\shell
 ```
+```
+计算机\HKEY_CLASSES_ROOT\Directory\Background\Background
+```
+```
+计算机\HKEY_CLASSES_ROOT\Directory\Background\shellex
+```
 文件：
 ```
 计算机\HKEY_CLASSES_ROOT\*\shell
