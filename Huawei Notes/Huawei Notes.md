@@ -9,7 +9,7 @@
 - [VLAN中绑定MAC地址](#VLAN中绑定MAC地址)
 - [MUX-VLAN配置](#MUX-VLAN配置)
 - [交换机端口隔离功能](#交换机端口隔离功能)
-- [不同vlan之间的通信](#不同vlan之间的通信)
+- [不同VLAN之间的通信](#不同VLAN之间的通信)
 - [VRRP默认网关冗余技术](#VRRP默认网关冗余技术)
 - [MSTP与VRRP](#MSTP与VRRP)
 - [路由协议](#路由协议)
@@ -816,7 +816,7 @@ port-isolate mode all
 
 
 
-## [不同vlan之间的通信](#不同vlan之间的通信)
+## [不同VLAN之间的通信](#不同VLAN之间的通信)
 ### 三层交换机创建VLAN SVI实现不同vlan之间的通信  
 创建vlan 10的SVI,并给其配置ip地址  
 ```
