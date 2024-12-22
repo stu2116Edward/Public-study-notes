@@ -544,15 +544,14 @@ port hybrid untagged vlan 10 20
 
 ## [MUX-VLAN配置](#MUX-VLAN配置)
 绑定vlan关系：  
-主 VLAN(Principal VLAN)可以访问所有从 VLAN  
-组 VLAN(Group VLAN)内部的接口可以互相访问，也可以访问主 VLAN，但不能访问隔离 VLAN  
-隔离 VLAN(Isolate VLAN)内部的接口不能互相访问，只能访问主 VLAN  
-主vlan: mux-vlan  
-互通型(组)vlan: sub group  
-隔离型vlan: sub sep  
-MUX VLAN 是一种用于对连接批量设备的访问控制功能，  
-它允许在一个物理接口上虚拟出多个逻辑接口，  
-每个逻辑接口可以属于不同的 VLAN，从而实现不同 VLAN 间的隔离和互通  
+- **主 VLAN**(Principal VLAN)可以访问所有从 VLAN  
+- **组 VLAN**(Group VLAN)内部的接口可以互相访问，也可以访问主 VLAN，但不能访问隔离 VLAN  
+- **隔离 VLAN**(Isolate VLAN)内部的接口不能互相访问，只能访问主 VLAN  
+
+**主 VLAN**: `mux-vlan`  
+**互通型(组) VLAN**: `sub group`  
+**隔离型 VLAN**: `sub sep`  
+MUX VLAN 是一种用于对连接批量设备的访问控制功能，它允许在一个物理接口上虚拟出多个逻辑接口，每个逻辑接口可以属于不同的 VLAN，从而实现不同 VLAN 间的隔离和互通  
 
 ### 接口绑定vlan    
 trunk模式:    
@@ -789,7 +788,7 @@ arp-proxy enable
 内部员工外部员工和外来人员所有pc能访问服务器  
 外部员工能和内部员工通信，但外部员工之间不能通信来访人员不能和员工通信  
 
-实验配置：  
+拓扑思路：  
 内部外部员工使用vlan 10  
 访客使用vlan 20  
 服务器使用vlan 100  
@@ -1120,7 +1119,7 @@ active region-configuration
 ```
 quit
 ```
-配置实例优先级(数字越小优先级越高，数字越大优先级越低)  
+配置实例优先级(**数字越小优先级越高，数字越大优先级越低**)  
 这里优先使用实例1  
 ```
 stp instance 1 priority 4096
