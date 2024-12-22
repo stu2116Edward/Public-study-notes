@@ -2125,7 +2125,8 @@ display ip routing-table
 #### 多区域配置
 - 多区域含义：  
 整个链路中，所有开启了OSPF协议的路由器分别处在多个不同的区域中  
-- 结构图
+- 结构图  
+![ospfduo](https://github.com/user-attachments/assets/99ba9358-1090-4443-af81-0f07ffd25e48)  
 
 ***实现目标：在路由器R1,R2,R3中使用OSPF协议实现位于不同网段中的主机PC4,PC5,PC6之间能够互相访问***  
 **配置**：  
