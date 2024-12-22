@@ -2253,6 +2253,59 @@ area 1
 network 192.168.1.0 0.0.0.255
 quit
 ```
+### 路由引入
+引入不同进程号的 OSPF 路由
+```
+# 在 OSPF 进程 1 中引入 OSPF 进程 2 的路由
+ospf 1
+import-route ospf 2
+quit
+
+# 在 OSPF 进程 2 中引入 OSPF 进程 1 的路由
+ospf 2
+import-route ospf 1
+quit
+```
+引入直连路由
+```
+ospf [进程号]
+import-route direct
+quit
+```
+引入静态路由
+```
+ospf [进程号]
+import-route static
+quit
+```
+引入 RIP 路由
+```
+ospf [进程号]
+import-route rip
+quit
+```
+引入 BGP 路由
+```
+ospf [进程号]
+import-route bgp
+quit
+```
+引入 ISIS 路由
+```
+ospf [进程号]
+import-route isis
+quit
+```
+引入 User Network Route（UNR）到 OSPF 进程
+```
+ospf [进程号]
+import-route unr
+quit
+```
+注意事项  
+- 进程号：替换为实际的 OSPF 进程号。
+- 路由类型：根据需要引入的路由类型选择相应的命令。
+- 标签（Tag）：如果需要，可以在引入路由时添加 tag 参数，例如 `import-route ospf 2 tag 10` 以便在路由表中标识这些路由
 
 
 
