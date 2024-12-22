@@ -2041,6 +2041,145 @@ display ospf peer
 虽然R2的router-id大于R1的router-id，但是路由器会先根据接口的优先级进行选举，因为`R1`接口g0/0/0的优先级比`R2`接口g0/0/0的优先级高（**值越大优先级越高**），所以`R1的g0/0/0`接口被选举为DR  
 
 
+### OSPF区域
+重点内容：  
+**ospf中不同区域之间是自动同步路由表的但是不同进程之间的路由表是相互独立的所以需要进行进程之间的路由重发布才能实现相互通信**  
+
+#### 骨干区域
+当网络中包含多个区域时，OSPF 协议有特殊的规定，即其中必须有一个 Area 0，通常也叫做骨干区域（Backbone Area），当设计 OSPF 网络时，一个很好的方法就是从骨干区域开始，然后再扩展到其他区域。骨干区域在所有其他区域的中心，即所有区域都必须与骨干区域物理或逻辑上相连，这种设计思想的原因是 OSPF 协议要把所有区域的路由信息引入骨干区，然后再依次将路由信息从骨干区域分发到其它区域中。OSPF 中划分区域的目的就是在于控制链路状态信息LSA 泛洪的范围、减小链路状态数据库LSDB的大小、改善网络的可扩展性、达到快速地收敛  
+也就是说，非骨干区域之间不能直接进行通信，必须先将信息发送到区域0，然后再通过区域0发送到目标区域，如下图：如果区域1想要和区域2进行通信，必须先将信息发送到区域0，然后再通过区域0转发到区域2，从而实现两者之间的通信  
+![ggaea1](https://github.com/user-attachments/assets/8063d7f7-f77e-430b-89a4-a0d8a23b7748)  
+
+但是如果我们把区域0的位置调换一下，区域1访问区域2，区域1将信息发送给区域0，区域0却无法将信息转发给区域2，所以此时区域1和区域2是无法进行通信的，**所以在设置区域时，一定要把区域0放到中心的位置，保证每个区域都能和区域0相连**  
+![ggarea2](https://github.com/user-attachments/assets/5f3093ed-b866-4f3b-9883-f62d61038705)  
+
+#### 单区域配置
+- 单区域含义：  
+整个链路中，所有开启了OSPF协议的路由器都处在同一区域中  
+- 结构图  
+
+***实现目标：在路由器R1,R2,R3中使用OSPF协议实现位于不同网段中的主机PC1,PC2,PC3之间能够互相访问***  
+**配置**：  
+**R1**  
+```
+interface GigabitEthernet 0/0/0
+ip address 192.168.0.1 24
+quit
+interface GigabitEthernet 0/0/1
+ip address 192.168.1.1 24
+quit
+ospf router-id 1.1.1.1
+area 1
+network 192.168.0.0 0.0.0.255
+network 192.168.1.0 0.0.0.255
+quit
+```
+router-id 唯一标识开启了OSPF协议的路由器  
+在使用 network 命令通告路由信息时，格式为：
+```
+network <通告的IP地址网段> <IP地址反子网掩码>
+```
+
+**R2**  
+```
+interface GigabitEthernet 0/0/0
+ip address 192.168.1.2 24
+quit
+interface GigabitEthernet 0/0/1
+ip address 192.168.2.1 24
+quit
+interface GigabitEthernet 0/0/2
+ip address 192.168.3.1 24
+quit
+ospf router-id 2.2.2.2
+area 1
+network 192.168.1.0 0.0.0.255
+network 192.168.2.0 0.0.0.255
+network 192.168.3.0 0.0.0.255
+quit
+```
+**R3** 
+```
+interface GigabitEthernet 0/0/0
+ip address 192.168.4.1 24
+quit
+interface GigabitEthernet 0/0/2
+ip address 192.168.3.2 24
+quit
+ospf router-id 3.3.3.3
+area 1
+network 192.168.3.0 0.0.0.255
+network 192.168.4.0 0.0.0.255
+quit
+```
+查看路由表信息（以R1为例）  
+执行命令：
+```
+display ip routing-table
+```
+
+#### 多区域配置
+- 多区域含义：  
+整个链路中，所有开启了OSPF协议的路由器分别处在多个不同的区域中  
+- 结构图
+
+***实现目标：在路由器R1,R2,R3中使用OSPF协议实现位于不同网段中的主机PC4,PC5,PC6之间能够互相访问***  
+**配置**：  
+**R1**  
+```
+interface GigabitEthernet 0/0/0
+ip address 192.168.0.1 24
+quit
+interface GigabitEthernet 0/0/1
+ip address 192.168.1.1 24
+quit
+ospf router-id 1.1.1.1
+area 0
+network 192.168.0.0 0.0.0.255
+network 192.168.1.0 0.0.0.255
+quit
+```
+**R2**  
+```
+interface GigabitEthernet 0/0/0
+ip address 192.168.1.2 24
+quit
+interface GigabitEthernet 0/0/1
+ip address 192.168.2.1 24
+quit
+interface GigabitEthernet 0/0/2
+ip address 192.168.3.1 24
+quit
+ospf router-id 2.2.2.2
+area 0
+network 192.168.1.0 0.0.0.255
+network 192.168.2.0 0.0.0.255
+quit
+area 1
+network 192.168.3.0 0.0.0.255
+quit
+```
+因为R2同时处于区域0和区域1，所以称R2为"边界路由"，**边界路由的配置规则是：接口处于哪个区域就在哪个区域进行通告，处于区域之间的接口，放在哪个区域都可以，但最好放在区域0当中，也就是能放到骨干区域的就放到骨干区域**  
+**R3** 
+```
+interface GigabitEthernet 0/0/0
+ip address 192.168.4.1 24
+quit
+interface GigabitEthernet 0/0/2
+ip address 192.168.3.2 24
+quit
+ospf router-id 3.3.3.3
+area 1
+network 192.168.3.0 0.0.0.255
+network 192.168.4.0 0.0.0.255
+quit
+```
+查看路由表信息（以R3为例）  
+执行命令：
+```
+display ip routing-table
+```
+
 
 
 
