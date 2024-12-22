@@ -2188,7 +2188,51 @@ quit
 display ip routing-table
 ```
 
-
+#### OSPF多进程路由重发布
+不同进程之间需要互相在各自进程中发布对方进程号才能实现通信  
+拓扑图：  
+![ospfbtjc](https://github.com/user-attachments/assets/f3057065-31e9-4ffc-b8ad-22ae3b6a6208)  
+**R1**:
+```
+sys
+int g0/0/0
+ip address 192.168.0.1 24
+quit
+ospf 1 router-id 1.1.1.1
+area 0
+network 192.168.0.0 0.0.0.255
+quit
+```
+**R2(边界路由)**:
+```
+sys
+int g0/0/0
+ip address 192.168.0.2 24
+int g0/0/1
+ip address 192.168.1.1 24
+quit
+ospf 1 router-id 2.2.2.2
+area 0
+network 192.168.0.0 0.0.0.255
+import-route ospf 2
+quit
+ospf 2 router-id 2.2.2.2
+area 1
+network 192.168.1.0 0.0.0.255
+import-route ospf 1
+quit
+```
+**R3**:
+```
+sys
+int g0/0/1
+ip address 192.168.1.2 24
+quit
+ospf 2 router-id 3.3.3.3
+area 1
+network 192.168.1.0 0.0.0.255
+quit
+```
 
 
 ## [BFD技术](#BFD技术)
