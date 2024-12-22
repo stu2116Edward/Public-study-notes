@@ -2057,6 +2057,7 @@ display ospf peer
 - 单区域含义：  
 整个链路中，所有开启了OSPF协议的路由器都处在同一区域中  
 - 结构图  
+![area1](https://github.com/user-attachments/assets/890323b9-a5a4-4c2f-b5fc-7b58e6930c66)   
 
 ***实现目标：在路由器R1,R2,R3中使用OSPF协议实现位于不同网段中的主机PC1,PC2,PC3之间能够互相访问***  
 **配置**：  
