@@ -259,3 +259,46 @@ pause
 ![gpeditmsc2](https://github.com/user-attachments/assets/942ac72f-b934-4b2d-aff8-e9cad186c1b1)  
 就有熟悉的本地组策略编辑器了  
 ![gpeditmsc3](https://github.com/user-attachments/assets/c4b5787a-b9bb-424a-8f2a-a8ddc760095b)  
+
+
+### 家庭版本开启Hyper-v虚拟机
+测试是否支持虚拟化在任务管理器中的性能处查看  
+一般只要安装了VMware并且能够正常使用就是支持虚拟化的  
+![xnh](https://github.com/user-attachments/assets/53b0fc26-e0f6-480d-8e3a-b40821657bd2)  
+
+安装脚本及步骤  
+1、IBOS开启虚拟化  
+
+2、安装脚本cmd或bat后缀    
+```
+pushd "%~dp0"
+dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
+for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+del hyper-v.txt
+Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL
+```
+安装大约需要五至六分钟，如果中间卡主，可以回车试试。最后下载完毕，输入y确认安装  
+![hv1](https://github.com/user-attachments/assets/f31db33a-6cde-4be2-a4c0-de144889654e)  
+
+与VM冲突  
+`VMware Workstation 与 Hyper-V 不兼容。请先从系统中移除 Hyper-V 角色,然后再运行VMware Wokstation`  
+
+解决问题，重新使用VMware  
+关闭windwos Hyper-v功能  
+1、键盘windows，打开开始菜单  
+2、开始菜单，打开控制面板  
+3、控制面板，类别显示，卸载程序  
+4、左侧：启用或关闭windows功能  
+5、关闭Hyper-v功能  
+![hv2](https://github.com/user-attachments/assets/64fb99ef-6220-4d4e-970d-cb6ebffe9aa2)  
+
+使用命令  
+关闭Hyper-v服务
+```
+bcdedit /set hypervisorlaunchtype off
+```
+创建脚本，管理员模式启动，关闭hyper-v服务。当然也可以通过页面系统，手动关闭服务，重启，成功打开VM  
+开启Hyper-v服务  
+```
+bcdedit /set hypervisorlaunchtype auto
+```
