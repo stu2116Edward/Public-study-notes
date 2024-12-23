@@ -17,6 +17,7 @@
 - [RIP路由](#RIP路由)
 - [OSPF路由协议](#OSPF路由协议)
 - [BFD技术](#BFD技术)
+- [GRE隧道技术](#GRE隧道技术)
 
 ## [基础命令](#基础命令)
 用户视图 `<Huawei>`
@@ -2669,7 +2670,7 @@ ping -c 1000 -a 1.1.1.1 2.2.2.2
 
 
 
-## GRE隧道技术
+## [GRE隧道技术](#GRE隧道技术)
 拓扑图：  
 ![GRE1](https://github.com/user-attachments/assets/8c7fe58d-acc9-473e-bd21-9c5460acb165)  
 先来配置公网路由部分  
