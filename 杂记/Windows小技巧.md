@@ -142,3 +142,120 @@ Github仓库：ContextMenuManager
 点击确定，如有必要则选择重启  
 重启后 `win + R` 键，输入 `mstsc`，输入对应链接地址即可远程连接服务器  
 
+### 本地组策略编辑器(gpedit.msc)打不开解决方案
+这是解决了问题后的截图  
+![gpeditmsc1](https://github.com/user-attachments/assets/356719a7-8464-4e5e-a40b-6794ac3ce336)  
+
+新建一个txt文件粘贴如下内容：
+```
+@echo off
+
+pushd "%~dp0"
+
+dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >List.txt
+
+dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>List.txt
+
+for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-package:"C:\Windows\servicing\Packages\%%i"
+
+pause
+```
+接下来选择文件另存为，文件类型选择所有文件，名称随意，`扩展名修改为“.cmd”`把它保存下来  
+右键以管理员身份运行这个文件，命令行里面有如下内容：  
+<pre>
+
+部署映像服务和管理工具
+版本: 10.0.22000.653
+
+映像版本: 10.0.22000.675
+
+正在处理 1 (共 1) - 正在添加程序包 Microsoft-Windows-GroupPolicy-ClientExtensions-Package~31bf3856ad364e35~amd64~en-US~10.0.22000.1
+[==========================100.0%==========================]
+操作成功完成。
+
+部署映像服务和管理工具
+版本: 10.0.22000.653
+
+映像版本: 10.0.22000.675
+
+正在处理 1 (共 1) - 正在添加程序包 Microsoft-Windows-GroupPolicy-ClientExtensions-Package~31bf3856ad364e35~amd64~zh-CN~10.0.22000.1
+[==========================100.0%==========================]
+操作成功完成。
+
+部署映像服务和管理工具
+版本: 10.0.22000.653
+
+映像版本: 10.0.22000.675
+
+正在处理 1 (共 1) - 正在添加程序包 Microsoft-Windows-GroupPolicy-ClientExtensions-Package~31bf3856ad364e35~amd64~~10.0.22000.1
+[==========================100.0%==========================]
+操作成功完成。
+
+部署映像服务和管理工具
+版本: 10.0.22000.653
+
+映像版本: 10.0.22000.675
+
+正在处理 1 (共 1) - 正在添加程序包 Microsoft-Windows-GroupPolicy-ClientExtensions-Package~31bf3856ad364e35~amd64~~10.0.22000.653
+[==========================100.0%==========================]
+操作成功完成。
+
+部署映像服务和管理工具
+版本: 10.0.22000.653
+
+映像版本: 10.0.22000.675
+
+正在处理 1 (共 1) - 正在添加程序包 Microsoft-Windows-GroupPolicy-ClientTools-Package~31bf3856ad364e35~amd64~en-US~10.0.22000.593
+[==========================100.0%==========================]
+操作成功完成。
+
+部署映像服务和管理工具
+版本: 10.0.22000.653
+
+映像版本: 10.0.22000.675
+
+正在处理 1 (共 1) - 正在添加程序包 Microsoft-Windows-GroupPolicy-ClientTools-Package~31bf3856ad364e35~amd64~en-US~10.0.22000.653
+[==========================100.0%==========================]
+操作成功完成。
+
+部署映像服务和管理工具
+版本: 10.0.22000.653
+
+映像版本: 10.0.22000.675
+
+正在处理 1 (共 1) - 正在添加程序包 Microsoft-Windows-GroupPolicy-ClientTools-Package~31bf3856ad364e35~amd64~zh-CN~10.0.22000.593
+[==========================100.0%==========================]
+操作成功完成。
+
+部署映像服务和管理工具
+版本: 10.0.22000.653
+
+映像版本: 10.0.22000.675
+
+正在处理 1 (共 1) - 正在添加程序包 Microsoft-Windows-GroupPolicy-ClientTools-Package~31bf3856ad364e35~amd64~zh-CN~10.0.22000.653
+[==========================100.0%==========================]
+操作成功完成。
+
+部署映像服务和管理工具
+版本: 10.0.22000.653
+
+映像版本: 10.0.22000.675
+
+正在处理 1 (共 1) - 正在添加程序包 Microsoft-Windows-GroupPolicy-ClientTools-Package~31bf3856ad364e35~amd64~~10.0.22000.593
+[==========================100.0%==========================]
+操作成功完成。
+
+部署映像服务和管理工具
+版本: 10.0.22000.653
+
+映像版本: 10.0.22000.675
+
+正在处理 1 (共 1) - 正在添加程序包 Microsoft-Windows-GroupPolicy-ClientTools-Package~31bf3856ad364e35~amd64~~10.0.22000.653
+[==========================100.0%==========================]
+操作成功完成。
+请按任意键继续. . .
+</pre>
+`win+r`，输入`gpedit.msc`，回车  
+![gpeditmsc2](https://github.com/user-attachments/assets/942ac72f-b934-4b2d-aff8-e9cad186c1b1)  
+就有熟悉的本地组策略编辑器了  
+![gpeditmsc3](https://github.com/user-attachments/assets/c4b5787a-b9bb-424a-8f2a-a8ddc760095b)  
