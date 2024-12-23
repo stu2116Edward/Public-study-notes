@@ -2507,3 +2507,163 @@ tracert 2.2.2.2
 ![abfd4](https://github.com/user-attachments/assets/e213e37e-7323-4291-9ed5-85ecdd9e3de2)  
 
 
+### OSPF联动BFD
+
+ospf 调用BFD 加快收敛  
+![osb1](https://github.com/user-attachments/assets/7d9d1e3b-3b43-4de9-b494-58e3e3c8b92b)  
+先把上一小节BFD和静态路由的配置命令取消  
+**R1**：
+```
+undo bfd
+```
+**y**
+```
+undo ip route-static 2.2.2.0 255.255.255.0 12.1.1.2 preference 50
+undo ip route-static 2.2.2.0 255.255.255.0 21.1.1.2
+```
+**R2**：
+```
+undo bfd
+```
+**y**
+```
+undo ip route-static 1.1.1.0 255.255.255.0 12.1.1.1 preference 50
+undo ip route-static 1.1.1.0 255.255.255.0 21.1.1.1
+```
+接着配置OSPF，并增加一台SW2  
+**R1**：
+```
+ospf 1 router-id 1.1.1.1
+area 0
+network 1.1.1.0 0.0.0.255
+network 12.1.1.0 0.0.0.255
+network 21.1.1.0 0.0.0.255
+quit
+quit
+```
+**R2**：
+```
+ospf 1 router-id 2.2.2.2
+area 0
+network 2.2.2.0 0.0.0.255
+network 12.1.1.0 0.0.0.255
+network 21.1.1.0 0.0.0.255
+quit
+quit
+```
+配置完成后，通过命令`display ip routing-table`查看路由表信息  
+接着到R1的G0/0/1接口修改OSPF的cost值，使得R1与R2直连链路作为备选链路  
+**R1**：
+```
+interface g0/0/1
+ospf cost 3
+quit
+```
+默认情况下，OSPF是10s发送一次Hello报文，当链路出现故障时，需要等待40s才知道对方链路断开进行切换。OSPF的Hello报文发送时间也是可以进行修改，最小可以达到1秒发送一次，死亡间隔4 倍，也需要4秒才进行链路状态更新操作  
+在不使用BFD的情况下，模拟OSPF链路出现故障，观察其现象  
+**R1**：
+```
+ping -c 1000 -a 1.1.1.1 2.2.2.2
+```
+以1.1.1.1 为源地址ping 2.2.2.2次数1000次  
+![osb2](https://github.com/user-attachments/assets/1d3a0482-a84d-46da-90ed-882b334ec38d)  
+![osb3](https://github.com/user-attachments/assets/6a487241-50e0-46c9-9c71-8ceddf9f859d)  
+由上图现象可以看到，当OSPF链路出现故障时，默认情况下需要等待40秒才进行链路状态更新，切换到备份链路上  
+而使用BFD能够加快OSPF的收敛，默认情况下，BFD为1000毫秒发送一次“心跳信号”，死亡间隔时间3倍，3000毫秒完成切换。其最小可以设置100ms，那么300ms就可以完成感知切换  
+**配置BFD**:  
+**R1**：  
+```
+bfd
+quit
+ospf 1
+bfd all-interfaces enable
+quit
+```
+所有位于ospf 的接口全部启用  
+
+**R2**：
+```
+bfd
+quit
+ospf 1
+bfd all-interfaces enable
+quit
+```
+配置完成，通过命令`display bfd session dynamic`查看动态的BFD会话信息  
+过命令`display bfd session dynamic verbose`查看动态的BFD会话详细信息  
+通过命令`display bfd session all`查看BFD所有的会话  
+在使用BFD后，再模拟OSPF链路出现故障，观察其现象  
+**R1**：
+```
+ping -c 1000 -a 1.1.1.1 2.2.2.2
+```
+以1.1.1.1 为源地址ping 2.2.2.2次数1000次  
+![osb4](https://github.com/user-attachments/assets/13b8014f-52e1-46c9-8834-08b1fab9c2c2)  
+由上图可以看到，联动BFD后，OSPF的链路状态的收敛加快。要修改BFD的Hello报文时间，最小可以修改到100ms
+
+
+### BFD单臂回声
+BFD 单臂回声（BFD Echo）是 BFD（Bidirectional Forwarding Detection）协议中的一种故障检测机制。在单臂回声模式下，一个网络设备（通常是路由器）通过自己发送的 BFD Echo 报文来检测链路的连通性，而不是依赖对端设备发送的 BFD 报文进行检测  
+工作原理：启用 BFD 单臂回声的设备会将 BFD Echo 报文发送到链路的对端。这些报文会沿着数据链路传输到对端设备，然后对端设备将收到的 BFD Echo 报文再环回（Loopback）给发送端。发送端根据收到的自己发送的 Echo 报文来判断链路是否正常。如果在规定的时间内没有收到自己发送的 Echo 报文的回环，就认为链路出现故障  
+![osb5](https://github.com/user-attachments/assets/796df475-def6-4371-b609-0cd24be71fc1)  
+
+**配置BFD单臂回声**  
+取消掉第3小节配置的ospf和接口开销  
+**R1**：
+```
+interface g0/0/1
+undo ospf cost
+undo ospf 1
+```
+**y**  
+
+**R2**：
+```
+undo ospf 1
+```
+**y**  
+配置静态路由
+**R1**：
+```
+ip route-static 2.2.2.0 255.255.255.0 12.1.1.2 preference 50
+ip route-static 2.2.2.0 255.255.255.0 21.1.1.2
+```
+**R2**：
+```
+ip route-static 1.1.1.0 255.255.255.0 12.1.1.1 preference 50
+ip route-static 1.1.1.0 255.255.255.0 21.1.1.1
+```
+配置BFD  
+**R1**：
+```
+bfd
+quit
+bfd aa bind peer-ip 12.1.1.2 interface g0/0/0 source-ip 21.1.1.1 one-arm-echo
+discriminator local 100
+commit
+quit
+```
+注意：  
+`source-ip 21.1.1.1` 是BFD报文的源地址  
+`interface g0/0/0` BFD单臂回声报文的目的地址即12.1.1.1（如下图抓包）通常为出接口  
+`peer-ip 12.1.1.2` 对端地址 BFD需要依靠该地址探测对方的mac地址 同时作为建立bfd 会话使用见下图（并不用作bfd报文目标地址）  
+**R1**：
+```
+ip route-static 2.2.2.0 255.255.255.0 12.1.1.2 preference 50 track bfd-session aa
+```
+```
+display bfd session all verbose
+```
+![osb6](https://github.com/user-attachments/assets/3204f079-3bae-4274-996c-bba52bc468ca)  
+
+通过断开SW1与R2互连链路，观察其现象  
+**R1**：
+```
+ping -c 1000 -a 1.1.1.1 2.2.2.2
+```
+以1.1.1.1 为源地址ping 2.2.2.2次数1000次  
+![osb7](https://github.com/user-attachments/assets/cef9c5ba-4ae7-40fb-a20e-425e26f67603)  
+![osb8](https://github.com/user-attachments/assets/0ed05288-e995-4877-b01d-309b9ef39f77)  
+由上图结果可以看到，当链路出现故障后，单臂回声检测不到，立马切换到备选链路  
+![osb9](https://github.com/user-attachments/assets/eba91723-c436-44e2-9dc7-ed8a925d778b)  
+
