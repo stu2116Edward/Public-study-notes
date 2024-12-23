@@ -2667,3 +2667,97 @@ ping -c 1000 -a 1.1.1.1 2.2.2.2
 由上图结果可以看到，当链路出现故障后，单臂回声检测不到，立马切换到备选链路  
 ![osb9](https://github.com/user-attachments/assets/eba91723-c436-44e2-9dc7-ed8a925d778b)  
 
+
+
+## GRE隧道技术
+拓扑图：  
+![GRE1](https://github.com/user-attachments/assets/8c7fe58d-acc9-473e-bd21-9c5460acb165)  
+先来配置公网路由部分  
+**R1**：
+```
+sys
+sys AR1
+int g0/0/0
+ip add 172.16.1.2 24
+int g0/0/1
+ip add 172.16.2.2 24
+quit
+ospf 1
+area 0
+network 172.16.1.0 0.0.0.255
+network 172.16.2.0 0.0.0.255
+quit
+quit
+```
+
+**R2**：
+```
+sys
+sys AR2
+int g0/0/0
+ip add 172.16.1.1 24
+int g0/0/2
+ip add 192.168.1.254 24
+quit
+ospf 1
+area 0
+network 172.16.1.0 0.0.0.255
+quit
+quit
+```
+用于显示与OSPF（开放最短路径优先）协议相关的IP路由表信息
+```
+display ip  routing-table protocol ospf
+```
+
+**R3**：
+```
+sys
+sys AR3
+int g0/0/1
+ip add 172.16.2.1 24
+int g0/0/2
+ip add 192.168.2.254 24
+quit
+ospf 1
+area 0
+network 172.16.2.0 0.0.0.255
+quit
+quit
+```
+
+接下来配置内网路由和GRE隧道
+**R2**：
+```
+int Tunnel 0/0/1
+tunnel-protocol gre
+ip add 10.1.1.1 24
+source 172.16.1.1
+destination 172.16.2.1
+keepalive
+quit
+ospf 2
+area 0
+network 10.1.1.0 0.0.0.255
+network 192.168.1.0 0.0.0.255
+quit
+quit
+```
+
+**R3**：
+```
+int Tunnel 0/0/1
+tunnel-protocol gre
+ip add 10.1.1.2 24
+source 172.16.2.1
+destination 172.16.1.1
+keepalive
+quit
+ospf 2
+area 0
+network 10.1.1.0 0.0.0.255
+network 192.168.2.0 0.0.0.255
+quit
+quit
+```
+本次实验通过GRE隧道技术实现了在不通过公网路由的情况下实现两个内网之间的相互通信  
