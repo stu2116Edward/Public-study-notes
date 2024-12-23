@@ -133,3 +133,12 @@ Github仓库：ContextMenuManager
 ```
 计算机\HKEY_CLASSES_ROOT\Directory\Background\shell
 ```
+
+### Windows家庭版无法使用mstsc解决方法
+打开`控制面板`，选择【`程序和功能`】选择【`启动或关闭Windows功能`】在弹出框里勾选【`Telent客户端`】功能  
+![mstsc1](https://github.com/user-attachments/assets/19edd353-32d7-41db-a575-ea519241fad0)  
+![mstsc2](https://github.com/user-attachments/assets/1d5b0661-5892-4c18-969e-77966e7a9069)  
+![mstsc3](https://github.com/user-attachments/assets/7c46fe76-1ac3-4ddc-bd62-ee160c3d2155)  
+点击确定，如有必要则选择重启  
+重启后 `win + R` 键，输入 `mstsc`，输入对应链接地址即可远程连接服务器  
+
