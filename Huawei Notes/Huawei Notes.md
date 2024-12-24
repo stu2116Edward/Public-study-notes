@@ -12,6 +12,7 @@
 - [不同VLAN之间的通信](#不同VLAN之间的通信)
 - [VRRP默认网关冗余技术](#VRRP默认网关冗余技术)
 - [MSTP与VRRP](#MSTP与VRRP)
+- [Loopback接口的作用](#Loopback接口的作用)
 - [路由协议](#路由协议)
 - [默认路由与静态路由](#默认路由与静态路由)
 - [RIP路由](#RIP路由)
@@ -1630,6 +1631,198 @@ ip address 20.20.20.1 24
 测试当一台交换机坏了(关闭LSW1或LSW2)测试是否还能实现通信  
 测试结果能够实现通信  
 ![result](https://github.com/user-attachments/assets/ba1c3d93-e9bc-4681-aba0-b8188fff78de)
+
+
+
+## [Loopback接口的作用](#Loopback接口的作用)
+### 本地环回接口简介
+- **定义**：本地环回接口（loopback address），亦称回送地址，是一种虚拟接口，广泛应用于几乎每台路由器上。
+- **配置方法**：
+```
+interface loopback 0
+ip address 1.1.1.1 32
+```
+
+### 本地环回接口的常见用途
+1. **作为路由器的管理地址**
+- **原因**：系统管理员为了方便管理，会为每台路由器创建一个loopback接口，并指定一个IP地址作为管理地址。管理员使用该地址远程登录（telnet）路由器。由于telnet使用TCP报文，若路由器某个接口故障down掉，其他接口仍可telnet，TCP连接依旧存在。因此，选择的telnet地址必须是永远也不会down掉的，而虚接口满足此类要求。loopback接口没有与对端互联互通的需求，为节约地址资源，其地址通常指定为32位掩码。
+2. **作为协议的ID**
+- **OSPF和BGP的router id**：动态路由协议OSPF和BGP在运行过程中需要指定一个Router id，作为路由器的唯一标识，并要求在整个自治系统内唯一。Router id是一个32位的无符号整数，与IP地址类似，且IP地址不会重复。loopback接口的IP地址通常被视为路由器的标识，因此成为router id的最佳选择。
+3. **作为建立TCP连接的源地址**
+- **BGP协议**：在BGP协议中，两个运行BGP的路由器之间建立邻居关系是通过TCP建立连接完成的。配置邻居时通常指定loopback接口为建立TCP连接的源地址（通常只用于IBGP），以增强TCP连接的健壮性。例如：
+```
+router id 61.235.66.1
+interface loopback 0
+ip address 61.235.66.1 255.255.255.255
+router bgp 100
+neighbor 61.235.66.7 remote-as 200
+neighbor 61.235.66.7 update-source LoopBack0
+```
+4. **在Windows系统中**
+- **本地环回地址**：采用127.0.0.1作为本地环回地址。
+5. **BGP Update-Source**
+- **作用**：Loopback口只要Router还健在，就会一直保持Active，只要BGP的Peer的Loopback口之间满足路由可达，就可以建立BGP会话。使用loopback口可以提高网络的健壮性。例如：
+```
+neighbor 215.17.1.35 update-source loopback 0
+```
+6. **Router ID**
+- **OSPF和BGP的Router-ID**：使用loopback接口地址作为OSPF、BGP的Router-ID，作为路由器的唯一标识，并要求在整个自治系统内唯一。在IPv6中的BGP/OSPF的Router-ID仍然是32位的IP地址。OSPF中的路由器优先级是在接口下手动设置的，接着才是比较OSPF的Router-ID。OSPF和BGP中的Router-ID都可以手动在路由配置模式下设置。例如：
+```
+OSPF: Router-ID *.*.*.*
+BGP: BGP Router-ID *.*.*.*
+```
+7. **IP Unnumbered Interfaces**
+- **无编号地址**：可以借用强壮的loopback口地址，来节约网络IP地址的分配。例如：
+```
+interface loopback 0
+ip address 215.17.3.1 255.255.255.255
+!
+interface Serial 5/0
+bandwidth 128
+ip unnumbered loopback 0
+```
+8. **Exception Dumps by FTP**
+- **内核导出功能**：当Router宕机时，系统内存中的文件还保留着一份软件内核的备份，CISCO路由器可以被配置为向一台FTP服务器进行内核导出，作为路由器诊断和调试处理过程的一部分。这种内核导出功能必须导向一台没有运行公共FTP服务器软件的系统，而是一台通过ACLS过滤（TCP地址欺骗）被重点保护的只允许路由器访问的FTP服务器。如果Loopback口地址作为Router的源地址，并且是相应地址块的一部分，ACLS的过滤功能很容易配置。例如：
+```
+Sample IOS configuration:
+ip ftp source-interface Loopback0
+ip ftp username cisco
+ip ftp password 7 045802150C2E
+exception protocol ftp
+exception dump 169.223.32.1
+```
+9. **TFTP-SERVER Access**
+- **TFTP服务器配置**：对于TFTP的安全意味着应该经常对IP源地址进行安全方面的配置，CISCO IOS软件允许TFTP服务器被配置为使用特殊的IP接口地址，基于Router的固定IP地址，将运行TFTP服务器配置固定的ACLS。例如：
+```
+ip tftp source-interface Loopback0
+```
+10. **SNMP-SERVER Access**
+- **SNMP网管数据**：路由器的Loopback口一样可以被用来对访问安全进行控制，如果从一个路由器送出的SNMP网管数据起源于Loopback口，则很容易在网络管理中心对SNMP服务器进行保护。例如：
+```
+Sample IOS configuration:
+access-list 98 permit 215.17.34.1
+access-list 98 permit 215.17.1.1
+access-list 98 deny any
+!
+snmp-server community 5nmc02m RO 98
+snmp-server trap-source Loopback0
+snmp-server trap-authentication
+snmp-server host 215.17.34.1 5nmc02m
+snmp-server host 215.17.1.1 5nmc02m.Wednesday, June 06, 2001
+```
+11. **TACACS/RADIUS-Server Source Interface**
+- **TACACS协议**：
+```
+aaa new-model
+aaa authentication login default tacacs+ enable
+aaa authentication enable default tacacs+ enable
+aaa accounting exec start-stop tacacs+
+!
+ip tacacs source-interface Loopback0
+tacacs-server host 215.17.1.2
+tacacs-server host 215.17.34.10
+tacacs-server key CKr3t#
+!
+```
+- **RADIUS协议**：
+```
+radius-server host 215.17.1.2 auth-port 1645 acct-port 1646
+radius-server host 215.17.34.10 auth-port 1645 acct-port 1646
+ip radius source-interface Loopback0
+!
+```
+12. **NetFlow Flow-Export**
+- **流量数据传送**：从一个路由器向NetFlow采集器传送流量数据，以实现流量分析和计费目的，将路由器的Router的Loopback地址作为路由器所有输出流量统计数据包的源地址，可以在服务器或者是服务器外围提供更精确，成本更低的过滤配置。例如：
+```
+ip flow-export destination 215.17.13.1 9996
+ip flow-export source Loopback0
+ip flow-export version 5 origin-as
+!
+interface Fddi0/0/0
+des cription FDDI link to IXP
+ip address 215.18.1.10 255.255.255.0
+ip route-cache flow
+ip route-cache distributed
+no keepalive
+!
+```
+13. **NTP Source Interface**
+- **NTP时钟同步**：NTP用来保证一个网络内所有Router的时钟同步，确保误差在几毫秒之内。如果在NTP的Speaker之间采用Loopback地址作为路由器的源地址，会使得地址过滤和认证在某种程度上容易维护和实现。例如：
+```
+clock timezone SST 8
+!
+access-list 5 permit 192.36.143.150
+access-list 5 permit 169.223.50.14
+!.Cisco ISP Essentials
+39
+ntp authentication-key 1234 md5 104D000A0618 7
+ntp authenticate
+ntp trusted-key 1234
+ntp source Loopback0
+ntp access-group peer 5
+ntp update-calendar
+ntp peer 192.36.143.150
+ntp peer 169.223.50.14
+!
+```
+
+14.  **SYSLOG Source Interface**
+- **系统日志服务器保护**：系统日志服务器同样也需要在ISP骨干网络中被妥善保护。许多ISP只希望采集他们自己的而不是外面网络发送来的系统日志信息。对系统日志服务器的DDOS攻击并不是不知道，如果系统信息数据包的源地址来自于被很好规划了的地址空间，例如，采用路由器的Loopback口地址，对系统日志服务器的安全配置同样会更容易。例如：
+```
+A configuration example:
+logging buffered 16384
+logging trap debugging
+logging source-interface Loopback0
+logging facility local7
+logging 169.223.32.1
+!
+```
+
+15.  **Telnet to the Router**
+- **远程路由器接入**：远程路由器才用Loopback口做远程接入的目标接口，这个一方面提高网络的健壮性，另一方面，如果在DNS服务器做了Router的DNS映射条目，则可以在世界上任何路由可达的地方Telnet到这台Router，ISP会不断扩展，增加新的设备。由于telnet命令使用TCP报文，会存在如下情况：路由器的某一个接口由于故障down掉了，但是其他的接口却仍旧可以telnet，也就是说，到达这台路由器的TCP连接依旧存在。所以选择的telnet地址必须是永远也不会down掉的，而虚接口恰好满足此类要求。由于此类接口没有与对端互联互通的需求，所以为了节约地址资源，loopback接口的地址通常指定为32位掩码。例如：
+```
+; net.galaxy zone file
+net.galaxy. IN SOA ns.net.galaxy. hostmaster.net.galaxy. (
+1998072901 ; version == date(YYYYMMDD)+serial
+10800 ; Refresh (3 hours)
+900 ; Retry (15 minutes)
+172800 ; Expire (48 hours)
+43200 ) ; Mimimum (12 hours)
+IN NS ns0.net.galaxy.
+IN NS ns1.net.galaxy.
+IN MX 10 mail0.net.galaxy.
+IN MX 20 mail1.net.galaxy.
+;
+localhost IN A 127.0.0.1
+gateway1 IN A 215.17.1.1
+gateway2 IN A 215.17.1.2
+gateway3 IN A 215.17.1.3
+;
+;etc etc
+; 1.17.215.in-addr.arpa zone file
+;
+1.17.215.in-addr.arpa. IN SOA ns.net.galaxy. hostmaster.net.galaxy. (
+1998072901 ; version == date(YYYYMMDD)+serial
+10800 ; Refresh (3 hours)
+900 ; Retry (15 minutes)
+172800 ; Expire (48 hours)
+43200 ) ; Mimimum (12 hours)
+IN NS ns0.net.galaxy.
+IN NS ns1.net.galaxy.
+1 IN PTR gateway1.net.galaxy.
+2 IN PTR gateway2.net.galaxy..Wednesday, June 06, 2001
+3 IN PTR gateway3.net.galaxy.
+;
+;etc etc
+On the router, set the telnet source to the loopback interface:
+ip telnet source-interface Loopback0
+```
+
+16.  **RCMD to the router**
+- **RCMD连接**：RCMD要求网络管理员拥有UNIX的rlogin/rsh客户端来访问路由器。某些ISP采用RCMD来捕获接口统计信息，上载或下载路由器配置文件，或者获取Router路由选择表的简易信息，Router可以被配置采用Loopback地址作为源地址，使得路由器发送的所有数据包的源地址都采用Loopback地址来建立RCMD连接。例如：
+```
+ip rcmd source-interface Loopback0
+```
 
 
 
