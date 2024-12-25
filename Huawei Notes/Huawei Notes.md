@@ -18,6 +18,7 @@
 - [RIP路由](#RIP路由)
 - [OSPF路由协议](#OSPF路由协议)
 - [BFD技术](#BFD技术)
+- [BGP路由](#BGP路由)
 - [GRE隧道技术](#GRE隧道技术)
 
 ## [基础命令](#基础命令)
@@ -2860,6 +2861,269 @@ ping -c 1000 -a 1.1.1.1 2.2.2.2
 ![osb8](https://github.com/user-attachments/assets/0ed05288-e995-4877-b01d-309b9ef39f77)  
 由上图结果可以看到，当链路出现故障后，单臂回声检测不到，立马切换到备选链路  
 ![osb9](https://github.com/user-attachments/assets/eba91723-c436-44e2-9dc7-ed8a925d778b)  
+
+
+
+## [BGP路由](#BGP路由)
+### 什么是AS？
+- **定义**：AS是在同一个组织管理下，使用统一选路策略的设备集合。
+- **AS号范围**：四字节，即0~4294967295。其中0和65535是保留的特殊AS号。
+
+### BGP概念
+BGP是边界网关协议，用于自治系统间的动态协议路径矢量。基于TCP中应用层协议，端口号为179,只发送增量路由更新  
+
+### BGP特点
+- **传输层协议**：BGP使用TCP作为其传输层协议（端口号为179），使用触发式路由更新，而不是周期性路由更新。
+- **承载能力**：BGP能够承载大批量的路由信息，能够支撑大规模网络。
+- **路由策略**：BGP提供了丰富的路由策略，能够灵活的进行路由选路，并能指导对等体按策略发布路由。
+- **MPLS/VPN支持**：BGP能够支撑MPLS/VPN的应用，传递客户VPN路由。
+- **稳定性增强**：BGP提供了路由聚合和路由衰减功能用于防止路由振荡，通过这两项功能有效地提高了网络稳定性。
+
+## 二、BGP邻居关系配置
+### 2.1 EBGP邻居配置
+- **定义**：位于不同AS的BGP路由器之间的邻居关系。
+- **配置步骤**：
+  1. 进入BGP进程：`bgp <本地AS号>`
+  2. 绑定对端BGP邻居：`peer <对端IP地址> as-number <对端AS号>`
+  3. 宣告自己的网络：`network <IP地址> <子网掩码>`
+
+- **示例**：
+```
+bgp 100
+peer 192.168.10.2 as-number 200
+network 10.1.1.0 255.255.255.0
+```
+
+### 2.2 IBGP邻居配置
+- **定义**：位于相同自治系统的BGP路由器之间的邻居关系。
+- **配置步骤**：
+  1. 进入BGP进程：`bgp <本地AS号>`
+  2. 绑定对端BGP邻居：`peer <对端环回地址> as-number <本地AS号>`
+  3. 绑定自己环回接口：`peer <对端环回地址> connect-interface LoopBack0`
+  4. 宣告自己的环回地址：`network <环回地址> 32`
+
+- **示例**：
+```
+bgp 100
+peer 10.1.1.2 as-number 100
+peer 10.1.1.2 connect-interface LoopBack0
+network 10.1.1.1 32
+```
+
+## 三、BGP查询命令
+### 3.1 查看BGP对等体信息
+- **命令**：
+```
+display bgp peer
+```
+- **作用**：显示BGP对等体的详细信息，包括对等体的IP地址、AS号、状态等。
+
+### 3.2 查看BGP错误信息
+- **命令**：
+```
+display bgp error
+```
+- **作用**：显示BGP协议运行过程中遇到的错误信息，帮助排查问题。
+
+### 3.3 查看BGP路由表信息
+- **命令**：
+```
+display bgp routing-table
+```
+- **作用**：显示BGP路由表中的路由信息，包括路由的前缀、下一跳、AS路径等。
+
+### 3.4 查看一条BGP详细信息
+- **命令**：
+```
+display bgp routing-table <IP地址>
+```
+- **作用**：显示指定IP地址的BGP路由详细信息，包括路由的来源、路径属性等。
+
+## 四、BGP路由聚合
+### 4.1 手动聚合
+- **配置步骤**：
+1. 进入BGP进程：
+```
+bgp <本地AS号>
+```
+2. 进行聚合：
+```
+aggregate <聚合网段> <子网掩码> detail-suppressed as-set
+```
+
+- **示例**：
+```
+bgp 100
+aggregate 172.168.10.0 255.255.255.0 detail-suppressed as-set
+```
+
+### 4.2 自动聚合
+- **配置步骤**：
+  1. 进入BGP进程：`bgp <本地AS号>`
+  2. 开启自动聚合：`summary automatic`
+
+- **示例**：
+```
+bgp 100
+summary automatic
+```
+
+## 五、BGP属性配置
+### 5.1 AS-path属性更改配置
+- **配置允许环路**：
+```
+bgp 200
+peer 192.168.10.1 as-number 100
+peer 192.168.10.1 allow-as-loop
+```
+
+- **选路配置**：
+```
+acl 2000
+rule 5 permit source 1.1.1.1 0
+route-policy name1 permit node 10
+if-match acl 2000
+apply as-path 10 20 30 40 50 additive
+bgp 200
+peer 192.168.10.1 route-policy name1 import
+```
+
+### 5.2 Next_hop属性配置
+- **配置下一跳为本地出接口**：
+```
+bgp 200
+peer 1.1.1.1 next_hop_local
+```
+
+### 5.3 Local_preference属性配置
+- **选路配置**：
+```
+ip ip-prefix wh index 10 permit 1.1.1.1 32
+route-policy A permit node 10
+if-match ip-prefix wh
+apply local-preference 1000
+bgp 100
+peer 192.168.10.1 route-policy A import
+```
+
+- **更改默认本地优先级值**：
+```
+bgp 200
+default local-preference 10000
+```
+
+### 5.4 Community属性配置
+- **路由配置**：
+```
+ip ip-prefix wh index 10 permit 1.1.1.1 32
+route-policy A permit node 10
+if-match ip-prefix wh
+apply community No-Export
+bgp 100
+peer 192.168.10.1 route-policy A Export
+peer 192.168.10.1 advertise-community
+```
+
+### 5.5 preferred-value属性配置（华为特有）
+- **路由配置**：
+```
+ip ip-prefix 1 index 10 permit 4.4.4.4 32
+route-policy wh1 permit node 10
+if-match ip-prefix 1
+apply preferred-value 10000
+route-policy wh1 permit node 20
+bgp 100
+peer 2.2.2.2 as-number 100
+peer 2.2.2.2 connect-interface LoopBack0
+peer 2.2.2.2 route-policy wh1 import
+```
+
+### 5.6 MED属性配置
+- **配置示例**：
+```
+bgp 100
+peer 2.2.2.2 as-number 100
+peer 2.2.2.2 connect-interface LoopBack0
+peer 2.2.2.2 route-policy wh1 import
+```
+- **注意事项**：
+  1. 缺省情况下，路由器只比较来自同一相邻AS的BGP路由的MED值。
+  2. 如果一条路由是本地开始通过import或network引入的，则默认携带MED属性通告给MED对等体。
+  3. 一条BGP路由为从BGP对等体学习到，那么该路由传递给EBGP对等体时缺省不会携带MED属性。
+  4. 在IBGP对等体之间传递路由时，MED值会被保留并传递。
+  5. 修改默认MED值时只能通过import-route和aggregate（聚合）的路由生效。
+
+### 5.7 联盟配置
+- **定义**：将一个AS内部划分为多个子AS。
+- **配置步骤**：
+  1. 进入子AS BGP进程：`bgp <子AS号>`
+  2. 标识属于的联盟：`confederation id <联盟AS号>`
+  3. 标识要建立对等体的子AS号：`confederation peer-as <子AS号1> <子AS号2>`
+  4. 建立对等体：`peer <对端IP地址> as-number <子AS号>`
+  5. 更改下一跳为本地：`peer <对端IP地址> next-hop-local`
+
+- **示例**：
+```
+bgp 2000
+confederation id 200
+confederation peer-as 2001 2002
+peer 192.168.1.1 as-number 2001
+peer 192.168.2.1 as-number 2002
+peer 192.168.1.1 next-hop-local
+peer 192.168.2.1 next-hop-local
+```
+
+## 六、BGP路由反射器配置
+### 6.1 反射规则
+1. RR从非客户端学习到的IBGP路由会反射给所有客户端。
+2. RR从客户端学习到的IBGP路由会反射给所有的除该客户端之外的客户端和非客户端。
+3. RR从EBGP对等体学习到的路由会发送给所有的非客户端和客户端对等体。
+
+### 6.2 特殊属性
+- **Originator_ID**：当BGP路由器收到一条携带Originator_ID属性的IBGP路由，并且Originator_ID属性值与自身的Router ID相同，则它会忽略关于该条路由的更新。
+- **Cluster_List**：当一条路由被反射器反射后，该RR（该簇）的Cluster_ID就会被添加至路由的Cluster_list属性中。当RR收到一条携带Cluster_list属性的BGP路由，且该属性值中包含该簇的Cluster_ID时，RR认为该条路由存在环路，因此将忽略关于该条路由的更新。
+
+### 6.3 命令配置
+- **配置示例**：
+```
+bgp 200
+peer 3.3.3.3 reflect-client
+reflector cluster-id <Cluster_ID>
+```
+
+## 七、BGP选路原则
+1. 首先丢弃下一跳next_hop不可达的路由。
+2. 优选协议首选值（Preferred-value）值最大的路由。
+3. 优选本地优先级（local_preference）最高的路由。
+4. 优选手动聚合>自动聚合>network>import>对等体学到的路由。
+5. 优选AS路径AS_path最短的路由。
+6. 优选Origin属性最优的路由：i>e>?
+7. 优选MED值最小的路由。
+8. 优选EBGP对等体学习的路由。
+9. 优选Next_hop的IGP度量值最小的路由。
+10. 优选Cluster_list最短的路由。
+11. 优选Router_ID最小的设备通告的路由。
+12. 优选具有最小IP地址的对等体通告的路由。
+
+## 八、BGP路由负载分担
+### 8.1 负载分担前提条件
+1. Preferred-Value属性值相同。
+2. Local_Preference属性值相同。
+3. 都是聚合路由或者非聚合路由。
+4. AS_Path属性长度相同。
+5. Origin类型（IGP、EGP、Incomplete）相同。
+6. MED属性值相同。
+7. 都是EBGP路由或都是IBGP路由。
+8. AS内部IGP的Metric相同。
+9. AS_Path属性完全相同。
+
+### 8.2 负载分担配置
+- **配置示例**：
+```
+bgp 100
+maximum load-balancing ibgp 2
+load_balancing as_path_ignore
+```
 
 
 
