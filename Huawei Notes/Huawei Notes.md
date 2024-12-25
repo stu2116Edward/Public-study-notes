@@ -2900,14 +2900,12 @@ network 10.1.1.0 255.255.255.0
 - **配置步骤**：
   1. 进入BGP进程：`bgp <本地AS号>`
   2. 绑定对端BGP邻居：`peer <对端环回地址> as-number <本地AS号>`
-  3. 绑定自己环回接口：`peer <对端环回地址> connect-interface LoopBack0`
-  4. 宣告自己的环回地址：`network <环回地址> 32`
+  3. 宣告自己的环回地址：`network <本地环回地址> <子网掩码>`
 
 - **示例**：
 ```
 bgp 100
 peer 10.1.1.2 as-number 100
-peer 10.1.1.2 connect-interface LoopBack0
 network 10.1.1.1 32
 ```
 
