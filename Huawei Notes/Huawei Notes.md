@@ -3296,6 +3296,166 @@ load-balancing as-path-ignore
 
 
 
+## ISIS路由
+**ISIS概述**  
+简述IS-IS动态路由协议  
+- IS-IS(Intermediate System-to-Intermediate System，中间系统到中间系统)路由协议最初是ISO(the International Organization for Standardization，国际标准化组织)为CLNP(Connection Less Network Protocol，无连接网络协议)设计的一种动态路由协议  
+- IS-IS属于内部网关路由协议，用于自治系统内部。IS-IS是一种链路状态协议，与TCP/IP网络中的OSPF协议非常相似，使用最短路径优先算法进行路由计算  
+- 运行IS-IS协议的网络包含了终端系统(End System)、中间系统(Intermediate System)、区域(Area)和路由域(Routing Domain)。一个路由器是Intermediate System(IS)，一个主机就是End System(ES)。主机和路由器之间运行的协议称为ES-IS，路由器与路由器之间运行的协议称为IS-IS。区域是路由域的细分单元，IS-IS允许将整个路由域分为多个区域，IS-IS就是用来提供路由域内或一个区域内的路由  
+
+**IS-IS的路由种类和功能**  
+1. 两种路由器级别，L1和L2  
+- L1负责在`同一个区域内`传播链路状态信息（类似OSPF中的1类和2类）  
+- L2负责在`不同的区域内`相互传播链路状态信息（类似OSPF的3类）  
+
+2. 三种路由器的功能：L1，L2和L1-2  
+- L1能获取区域内的路径信息，
+- L2能获取区域间的路径信息
+- L1-2:能同时获取区域内和区域间路径
+
+3. **连接L2路由器和L1/L2路由器的路径会形成骨干区域**
+
+4. IS-IS度量值  
+接口的度量值默认是10，可修改  
+度量值的作用是用于路由选择和路径计算，决定了数据包在网络中传输的路径  
+
+**邻居关系的建立**  
+1. 相同区域内  
+- L1可以和L1，L1-2建立邻居关系，但无法和L2建立邻居关系
+- L2可以和L2，L1-2建立邻居关系
+- L1-2可以和L1和L2建立邻居关系
+
+2. 不同区域内
+- L1无法和其他路由建立邻居关系
+- L2可以和其他路由建立邻居关系，除了L1
+- L1-2可以和其他路由建立邻居关系，除了L1
+
+**NSAP地址**  
+- IS-IS中NSAP类似于OSPF中的router-id
+- LSP 使用NSAP地址来标识路由器并建立拓扑表，因此为IP提供路由选择需要NSAP地址
+- NSAP地址8-20字节，用16进制标识，包含如下主要信息：
+    - 1.区域编号
+    - 2.系统编号（固定6个字节）
+    - 3.NSEL位（固定1字节，并重置为0）
+例如：`49.0001.0020.0200.2002.00`  
+分析：  
+开头的`49.0001`中的`49是固定格式`，`0001`代表在 area1(`区域1`)，若区域为30，则为`49.0030`  
+中间部分的`0020.0200.2002`表示的是由IP地址`2.2.2.2`转换过来的  
+结尾`00：固定格式`
+
+#### **NSAP地址的换算**  
+原则：通过环回口32位地址补齐成48位获得，即补足3位，然后分割成4位3段  
+举例：  
+源IP：`12.12.12.12`  
+补足3位：变成`012.012.012.012`  
+分割成4位3段：变成`0120.1201.2012`  
+所以`12.12.12.12`转换后变为：`49.0001.0120.1201.2012.00`  
+
+**IS-IS状态协议**  
+1. 链路状态协议，使用SPF算法
+2. 使用hello包建立邻居关系，使用LSP交换链路状态信息，采用分层设计
+
+
+#### IS-IS配置命令
+**ISIS查看命令**  
+查看isis邻居关系
+```
+disp isis peer  	
+```
+查看isis接口的明细
+```
+disp isis 1 brief    		
+```
+查看接口isis详情
+```
+disp isis interface g0/0/0
+```
+
+**配置举例**  
+进入IS-IS进程配置默认不加就是进程 1
+***不同的进程都是需要重新发布路由才能实现不同进程之间的相互通信***
+```
+isis 1
+```
+配置网络实体地址补足3位，然后4位分割
+```
+network-entity 49.0001.0010.0100.1001.00
+```
+根据网络结构配置IS-IS路由类型，这边有路由器类型
+```
+is-level level-1
+```
+或
+```
+is-level level-2
+```
+或
+```
+is-level level-1-2
+```
+进入接口
+```
+int g0/0/1
+```
+启动ISIS
+```
+isis enable
+```
+
+
+#### 路由重分发
+引入RIP路由到ISIS实例
+```
+isis <process-id>
+import-route rip <rip-process-id> level-1
+```
+将RIP路由引入到指定的ISIS进程中，并且指定为Level-1路由  
+
+引入直连路由到ISIS实例
+```
+isis <process-id>
+import-route direct
+```
+引入静态路由到ISIS实例
+```
+isis <process-id>
+import-route static
+```
+引入OSPF路由到ISIS实例
+```
+isis <process-id>
+import-route ospf
+```
+引入BGP路由到ISIS实例
+```
+isis <process-id>
+import-route bgp
+```
+引入其他ISIS实例的路由到当前ISIS实例
+```
+isis <process-id>
+import-route isis <other-process-id>
+```
+路由泄露可以将Level-2的路由泄露到Level-1，或者反之
+```
+isis <process-id>
+import-route isis level-2 into level-1
+```
+
+**路由汇总**  
+在ABR上做汇总(`域间路由汇总`)  
+```
+isis <process-id>
+summary <summary-address> <netmask> level-1-2
+```
+在ASBR上做汇总(`不同协议间的路由汇总`)
+```
+isis <process-id>
+summary <summary-address> <netmask> [level-1 | level-2]
+```
+
+
+
 ## [GRE隧道技术](#GRE隧道技术)
 拓扑图：  
 ![GRE1](https://github.com/user-attachments/assets/8c7fe58d-acc9-473e-bd21-9c5460acb165)  
