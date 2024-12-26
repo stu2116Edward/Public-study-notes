@@ -3036,6 +3036,49 @@ disp bgp peer
 ```
 显示`Established`就表示建立成功了
 
+### BGP路由引入
+
+**引入直连路由**  
+直连路由是指与路由器直接相连的网络路由。在BGP中，这些路由可以自动引入，但也可以显式地引入
+```
+bgp <本地AS号>
+import-route direct
+```
+**引入静态路由**  
+静态路由是由网络管理员手动配置的路由。在BGP中引入静态路由，可以使得这些路由被BGP传播
+```
+bgp <本地AS号>
+import-route static
+```
+**引入RIP路由**  
+RIP（Routing Information Protocol）是一种基于距离向量的路由协议。在BGP中引入RIP路由，可以使得RIP的路由信息被BGP传播
+```
+bgp <本地AS号>
+import-route rip
+```
+**引入OSPF路由**  
+OSPF（Open Shortest Path First）是一种基于链路状态的路由协议。在BGP中引入OSPF路由，可以使得OSPF的路由信息被BGP传播  
+```
+bgp <本地AS号>
+import-route ospf
+```
+**引入ISIS路由**  
+ISIS（Intermediate System to Intermediate System）是一种基于ISO标准的路由协议。在BGP中引入ISIS路由，可以使得ISIS的路由信息被BGP传播
+```
+bgp <本地AS号>
+import-route isis
+```
+**引入User Network Route（UNR）到OSPF进程**  
+UNR是一种用户定义的路由，可以引入到OSPF进程中
+```
+ospf <进程号>
+import-route unr
+```
+**注意事项**  
+- 在引入路由时，需要确保目标BGP进程已经正确配置，并且具有相应的AS号
+- 引入的路由可能会受到BGP路由策略的影响，包括路由过滤、路由映射等
+- 在引入路由时，可能需要考虑路由的起源属性（Origin attribute），这会影响路由的选择和传播
+
 
 **三、BGP查询命令**  
 **3.1 查看BGP对等体信息**  
