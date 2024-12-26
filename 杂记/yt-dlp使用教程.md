@@ -35,6 +35,7 @@ windows系统中只有火狐浏览器可以直接从浏览器里面获取cookie
 要登陆一下对应的视频网站如果能够看到最高的分辨率就下载最高分辨率的  
 
 ## 方法一(推荐使用火狐浏览器下载)：
+**下载BiliBili视频推荐使用**
 ```bash
 yt-dlp --cookies-from-browser firefox <video url>
 ```
@@ -47,6 +48,10 @@ yt-dlp "你的视频下载链接" -f "ba+bv"
 yt-dlp --cookies-from-browser firefox https://www.bilibili.com/video/BV1A2DVY2EC5?t=330.2
 ```
 ## 方法二(使用浏览器Cookie下载)：  
+**下载YouTube视频推荐使用**
+```
+yt-dlp -f "bv*+ba/b" --cookies cookies.txt <video url>
+```
 1.Chrome浏览器中安装`get cookie locally`扩展  
 2.执行下面的命令：
 ```bash
@@ -61,15 +66,15 @@ yt-dlp --cookies cookies.txt https://www.bilibili.com/video/BV1A2DVY2EC5?t=323.4
 ## yt-dlp 下载 YouTube 视频的命令  
 下载最佳视频和音频质量，并自动合并（推荐）：
 ```bash
-yt-dlp -f "bv*+ba/b" [视频链接]
+yt-dlp -f "bv*+ba/b" <video url>
 ```
 指定输出格式，例如 MP4：
 ```bash
-yt-dlp -f "bv*[ext=mp4]+ba[ext=m4a]/b" [视频链接]
+yt-dlp -f "bv*[ext=mp4]+ba[ext=m4a]/b" <video url>
 ```
 如果你想确保最终文件一定是 MP4 格式，可以使用以下命令：
 ```bash
-yt-dlp -f "bv*+ba/b" --merge-output-format mp4 [视频链接]
+yt-dlp -f "bv*+ba/b" --merge-output-format mp4 <video url>
 ```
 基本下载命令 
 ```bash
