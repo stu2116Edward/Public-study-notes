@@ -3291,7 +3291,7 @@ reflector cluster-id <Cluster_ID>
 ```
 bgp <本地AS号>
 maximum load-balancing ibgp <最大负载分担数>
-load_balancing as_path_ignore
+load-balancing as-path-ignore
 ```
 
 
