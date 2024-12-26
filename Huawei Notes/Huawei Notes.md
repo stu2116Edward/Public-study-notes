@@ -3142,79 +3142,78 @@ summary automatic
 **5.1 AS-path属性更改配置**  
 - **配置允许环路**：
 ```
-bgp 200
-peer 192.168.10.1 as-number 100
-peer 192.168.10.1 allow-as-loop
+bgp <本地AS号>
+peer <对等体IP> as-number <对等体AS号>
+peer <对等体IP> allow-as-loop
 ```
 
 - **选路配置**：
 ```
-acl 2000
-rule 5 permit source 1.1.1.1 0
-route-policy name1 permit node 10
-if-match acl 2000
-apply as-path 10 20 30 40 50 additive
-bgp 200
-peer 192.168.10.1 route-policy name1 import
+acl <编号>
+rule <序号> permit source <源IP> <反掩码>
+route-policy <策略名> permit node <节点号>
+if-match acl <编号>
+apply as-path <AS路径列表> additive
+bgp <本地AS号>
+peer <对等体IP> route-policy <策略名> import
 ```
 
 **5.2 Next_hop属性配置**  
 - **配置下一跳为本地出接口**：
 ```
-bgp 200
-peer 1.1.1.1 next_hop_local
+bgp <本地AS号>
+peer <对等体IP> next-hop-local
 ```
 
 **5.3 Local_preference属性配置**  
 - **选路配置**：
 ```
-ip ip-prefix wh index 10 permit 1.1.1.1 32
-route-policy A permit node 10
-if-match ip-prefix wh
-apply local-preference 1000
-bgp 100
-peer 192.168.10.1 route-policy A import
+ip ip-prefix <前缀列表名> index <索引号> permit <IP地址> <反掩码>
+route-policy <策略名> permit node <节点号>
+if-match ip-prefix <前缀列表名>
+apply local-preference <值>
+bgp <本地AS号>
+peer <对等体IP> route-policy <策略名> import
 ```
 
 - **更改默认本地优先级值**：
 ```
-bgp 200
-default local-preference 10000
+bgp <本地AS号>
+default local-preference <值>
 ```
 
 **5.4 Community属性配置**  
 - **路由配置**：
 ```
-ip ip-prefix wh index 10 permit 1.1.1.1 32
-route-policy A permit node 10
-if-match ip-prefix wh
-apply community No-Export
-bgp 100
-peer 192.168.10.1 route-policy A Export
-peer 192.168.10.1 advertise-community
+ip ip-prefix <前缀列表名> index <索引号> permit <IP地址> <反掩码>
+route-policy <策略名> permit node <节点号>
+if-match ip-prefix <前缀列表名>
+apply community <社区值>
+bgp <本地AS号>
+peer <对等体IP> route-policy <策略名> export
+peer <对等体IP> advertise-community
 ```
 
 **5.5 preferred-value属性配置（华为特有）**  
 - **路由配置**：
 ```
-ip ip-prefix 1 index 10 permit 4.4.4.4 32
-route-policy wh1 permit node 10
-if-match ip-prefix 1
-apply preferred-value 10000
-route-policy wh1 permit node 20
-bgp 100
-peer 2.2.2.2 as-number 100
-peer 2.2.2.2 connect-interface LoopBack0
-peer 2.2.2.2 route-policy wh1 import
+ip ip-prefix <前缀列表名> index <索引号> permit <IP地址> <反掩码>
+route-policy <策略名> permit node <节点号>
+if-match ip-prefix <前缀列表名>
+apply preferred-value <值>
+bgp <本地AS号>
+peer <对等体IP> as-number <对等体AS号>
+peer <对等体IP> connect-interface LoopBack0
+peer <对等体IP> route-policy <策略名> import
 ```
 
 **5.6 MED属性配置**  
 - **配置示例**：
 ```
-bgp 100
-peer 2.2.2.2 as-number 100
-peer 2.2.2.2 connect-interface LoopBack0
-peer 2.2.2.2 route-policy wh1 import
+bgp <本地AS号>
+peer <对等体IP> as-number <对等体AS号>
+peer <对等体IP> connect-interface LoopBack0
+peer <对等体IP> route-policy <策略名> import
 ```
 - **注意事项**：
   1. 缺省情况下，路由器只比较来自同一相邻AS的BGP路由的MED值。
@@ -3256,8 +3255,8 @@ peer 192.168.2.1 next-hop-local
 **6.3 命令配置**  
 - **配置示例**：
 ```
-bgp 200
-peer 3.3.3.3 reflect-client
+bgp <本地AS号>
+peer <客户端IP> reflect-client
 reflector cluster-id <Cluster_ID>
 ```
 
@@ -3290,8 +3289,8 @@ reflector cluster-id <Cluster_ID>
 **8.2 负载分担配置**  
 - **配置示例**：
 ```
-bgp 100
-maximum load-balancing ibgp 2
+bgp <本地AS号>
+maximum load-balancing ibgp <最大负载分担数>
 load_balancing as_path_ignore
 ```
 
