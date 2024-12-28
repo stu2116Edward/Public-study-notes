@@ -34,10 +34,12 @@
         // 冒泡排序
         function maopao(arr) {
             let len = arr.length
-            for (let i = 0; i < len - 1; i++) {
+            // 外层循环控制比较的轮数
+            for (let i = 0; i < len; i++) {
+                // 内层循环控制每一轮比较的次数
                 for (let j = 0; j < len - i - 1; j++) {
+                    // 如果前一个元素大于后一个元素，则交换位置
                     if (arr[j] > arr[j + 1]) {
-                        // 交换相邻元素0
                         let temp = arr[j]
                         arr[j] = arr[j + 1]
                         arr[j + 1] = temp
