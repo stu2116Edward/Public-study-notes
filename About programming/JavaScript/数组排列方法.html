@@ -48,7 +48,6 @@
             }
             return arr
         }
-        // console.log(maopao(arr1))
         
         // 选择排序
         function xuanze(arr) {
@@ -69,7 +68,21 @@
             }
             return arr
         }
-        // console.log(xuanze(arr1))
+        
+        // 插入排序
+        function insertSort(arr) {
+            let len = arr.length
+            let current, perIndex
+            for (let i = 1; i < len; i++) {
+                current = arr[i]
+                perIndex = i - 1
+                while (perIndex >= 0 && current < arr[perIndex]) {
+                    arr[perIndex + 1] = arr[perIndex]
+                }
+                arr[perIndex + 1] = current
+            }
+            return arr
+        }
 
         // 选择排序（庄鹤林-必考题）
         // for (let len = arr1.length; len > 1; len--) {
@@ -83,7 +96,11 @@
         //     arr1[max] = arr1[len - 1]
         //     arr1[len - 1] = temp
         // }
+        
         // console.log(arr1)
+        // console.log(maopao(arr1))
+        // console.log(xuanze(arr1))
+        // console.log(insertSort(arr1))
     </script>
 </body>
 </html>
