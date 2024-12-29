@@ -1,7 +1,6 @@
 # NFS文件共享
 
 
-
 ### CentOS系统下的NFS配置命令及解释
 
 #### 1. 安装NFS服务软件包
@@ -28,7 +27,7 @@ systemctl enable nfs
 编辑 `/etc/exports` 文件，添加需要共享的目录。
 
 ```bash
-vi /etc/exports
+vim /etc/exports
 ```
 
 **解释**：使用文本编辑器（如vi）编辑NFS的配置文件，定义哪些目录可以被远程挂载以及它们的权限。
