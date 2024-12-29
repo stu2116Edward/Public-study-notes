@@ -78,6 +78,7 @@
                 perIndex = i - 1
                 while (perIndex >= 0 && current < arr[perIndex]) {
                     arr[perIndex + 1] = arr[perIndex]
+                    perIndex--
                 }
                 arr[perIndex + 1] = current
             }
