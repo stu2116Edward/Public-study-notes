@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let regex = /^浙F[a-zA-Z0-9]{5}$/
+        let cph1 = "浙Fabcde"
+        let cph2 = "浙Gabcde"
+        function cphjc(cph) {
+            if (regex.test(cph) == false) {
+                alert("不是嘉兴市车牌号");
+            } else {
+                alert("是嘉兴市车牌号");
+            }
+            return
+        }
+        cphjc(cph1)
+        cphjc(cph2)
+    </script>
+</body>
+</html>

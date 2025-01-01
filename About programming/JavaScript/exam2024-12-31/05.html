@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let st = new Date().getTime()
+        function randInt(N, M) {
+            return N + Math.floor(Math.random() * (M - N + 1))
+        }
+        let num1 = 0
+        let num2 = 0
+        let num3 = 0
+        let num4 = 0
+        let num5 = 0
+        let num6 = 0
+        let count = 1
+        while (count <= 100000000) {
+            let temp = randInt(1,6)
+            if (temp == 1) {
+                num1++
+            } else if(temp == 2) {
+                num2++
+            } else if (temp == 3) {
+                num3++
+            } else if (temp == 4) {
+                num4++
+            } else if (temp == 5) {
+                num5++
+            } else if (temp == 6) {
+                num6++
+            }
+            count++
+        }
+        let et = new Date().getTime()
+        console.log("1 出现了" + num1 + "次");
+        console.log("2 出现了" + num2 + "次");
+        console.log("3 出现了" + num3 + "次");
+        console.log("4 出现了" + num4 + "次");
+        console.log("5 出现了" + num5 + "次");
+        console.log("6 出现了" + num6 + "次");
+        console.log("运行时间："+(et - st) + "ms")
+    </script>
+</body>
+</html>

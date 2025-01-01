@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        arr = [151, 12, 35, 1515, 65, 3]
+        // 冒泡排序
+        function maopao(arr) {
+            let len = arr.length
+            for (let i = 0; i < len - 1; i++) {
+                for (let j = 0; j < len - 1 - i; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        let temp = arr[j]
+                        arr[j] = arr[j + 1]
+                        arr[j + 1] = temp
+                    }
+                }
+            }
+            return arr
+        }
+        // 选择排序
+        function xuanze(arr) {
+            let len = arr.length
+            let minIndex, temp
+            for (let i = 0; i < len - 1; i++) {
+                minIndex = i
+                for (let j = i + 1; j < len; j++) {
+                    if (arr[minIndex] > arr[j]) {
+                        minIndex = j
+                    }
+                }
+                if (minIndex !== i) {
+                    temp = arr[i]
+                    arr[i] = arr[minIndex]
+                    arr[minIndex] = temp
+                }
+            }
+            return arr
+        }
+
+        // 插入排序
+        function insertSort(arr) {
+            let len = arr.length
+            let current, perIndex
+            for (let i = 1; i < len; i++) {
+                current = arr[i]
+                perIndex = i - 1
+                while (perIndex >= 0 && current < arr[perIndex]) {
+                    arr[perIndex + 1] = arr[perIndex]
+                    perIndex--
+                }
+                arr[perIndex + 1] = current
+            }
+            return arr
+        }
+
+        console.log(arr);
+        console.log(maopao(arr));
+        console.log(xuanze(arr));
+        console.log(insertSort(arr));
+    </script>
+</body>
+</html>

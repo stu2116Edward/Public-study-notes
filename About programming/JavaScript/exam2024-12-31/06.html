@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>手机号：<input type="text"><button>发送验证码</button></div>
+    <script>
+        const djsBt = {
+            bt: document.querySelector('button'),
+            djs: 3
+        }
+        djsBt.bt.addEventListener('click', function() {
+            djsBt.bt.disabled = true
+            djsBt.bt.innerText = '剩余3秒'
+            let dsq = setInterval(function() {
+                djsBt.djs -= 1
+                if (djsBt.djs <= 0) {
+                    clearInterval(dsq)
+                    djsBt.bt.innerText = "发送验证码"
+                    djsBt.bt.disabled = false
+                    djsBt.djs = 3
+                } else {
+                    djsBt.bt.innerText = `剩余${djsBt.djs}秒`
+                }
+            }, 1000)
+        })
+    </script>
+</body>
+</html>
