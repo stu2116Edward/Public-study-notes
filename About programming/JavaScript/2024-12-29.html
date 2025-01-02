@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.输出10到1之间的偶数
+        for (let a = 10; a >= 1; a--) {
+            if (a % 2 == 0) {
+                console.log(a)
+            }
+        }
+
+        // 2.输出1-100之间能被7整除的数
+        for (let a = 1; a <= 100; a++) {
+            if (a % 7 == 0) {
+                console.log(a)
+            }
+        }
+
+        // 3.输出1-21之间不能被7整除数的累加和
+        function func1() {
+            let sum = 0
+            for (let a = 1; a <= 21; a++) {
+                if (a % 7 != 0) {
+                    sum += a
+                }
+            }
+            return sum
+        }
+        console.log(func1());
+        
+        // 4.输出1-10与5相乘的结果
+        function func2() {
+            let result = []
+            for (let a = 1; a <= 10; a++) {
+                result.push(a * 5)
+            }
+            return result
+        }
+        console.log(func2());
+        
+        // 5.计算1-100的和并输出结果
+        function func3() {
+            sum = 0
+            for (let i = 1; i <= 100; i++) {
+                sum += i
+            }
+            return sum
+        }
+        console.log(func3());
+        
+        // 6.把100-200之间不能被3整除的数输出
+        function func4() {
+            let arr = []
+            for (let i = 100; i <= 200; i++) {
+                if (i % 3 != 0) {
+                    arr.push(i)
+                }
+            }
+            return arr
+        }
+        console.log(func4());
+        
+        // 7.将1998-2008之间的闰年年份输出
+        function func5() {
+            let arr = []
+            for (let i = 1998; i <= 2008; i++) {
+                if (i % 4 == 0 && i % 100 != 0 || i % 400 == 0) {
+                    arr.push(i)
+                }
+            }
+            return arr
+        }
+        console.log(func5());
+        
+        // 8.求乘积等于100的所有乘数和被乘数（以一对的方式输出）
+        function func6() {
+            let arr = []
+            for (let i = -100; i <= 100; i++) {
+                for (let j = 100; j >= -100; j--) {
+                    if (i * j == 100) {
+                       arr.push(i, j, '\n') 
+                    }
+                }
+            }
+            return arr
+        }
+
+        console.log(func6());
+
+        // 9. 求斐波那契数列40个数，这个数列的特点为：第1,2两个数为1和1，从第三个数开始，该数是前面两个数的和，即1,1,2,3,5,8,13,21......
+        function func7(num) {
+            let num1 = 1,
+                num2 = 1,
+                count = 1,
+                arr = [1, 1],
+                temp
+            while (count <= num) {
+                temp = num1 + num2
+                num1 = num2
+                num2  = temp
+                arr.push(num1)
+                count++
+            }
+            return arr
+        }
+        console.log(func7(40));
+        
+        // 10.求数组中所有元素的和
+        let arr1 = [1, 2, 3, 4, 5]
+        function func8(arr) {
+            let len = arr.length,
+                sum = 0
+            for (let i = 0; i <= len - 1; i++) {
+                sum += arr[i]
+            }
+            return sum
+        }
+        console.log(func8(arr1));
+        
+        // 11.求数组中所有元素的平均值
+        let arr2 = [3, 4, 5, 6, 7]
+        function func9(arr) {
+            let sum = 0
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i]
+            }
+            return sum
+        }
+        console.log(func9(arr2));
+        
+        // 12.求数组中所有元素的最大值
+        let arr3 = [5, 8, 9, 6, 3]
+        function func10(arr) {
+            let max = arr[0]
+            for (let i = 0; i < arr.length; i++) {
+                if (max < arr[i]) {
+                    max = arr[i]
+                }
+            }
+            return max
+        }
+        console.log(func10(arr3));
+
+        // 13.倒序遍历输出数组
+        let arr4 = [1, 2, 3, 4, 5]
+        function func11(arr) {
+            let new_arr = []
+            for (let i = arr.length - 1; i >= 0; i--) {
+                new_arr.push(arr[i])
+            }
+            return new_arr
+        }
+        console.log(func11(arr4));
+        
+        // 14.把数组中的每一个元素用&拼接到一起并输出
+        let arr5 = [10, 20, 30, 40, 50]
+        function func12(arr) {
+            let str = ""
+            for (let i = 0; i < arr.length; i++) {
+                str += arr[i] + "&"
+            }
+            return str
+        }
+        console.log(func12(arr5));
+        
+        // 15.去掉数组中重复的0，并把其他的数据放在一个新的数组中
+        let arr6 = [11, 0, 3, 21, 32, 0, 2, 0]
+        function func13(arr) {
+            return [...new Set(arr)]
+        }
+        console.log(func13(arr6));
+        
+        // 16.反转数组
+        let arr7 = [10, 20, 30, 40, 50]
+        function func14(arr) {
+            let new_arr = []
+            for (let i = arr.length - 1; i >= 0; i--) {
+                new_arr.push(arr[i])
+            }
+            return new_arr
+        }
+        console.log(func14(arr7));
+        
+    </script>
+</body>
+</html>
