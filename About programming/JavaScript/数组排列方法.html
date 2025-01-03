@@ -8,6 +8,7 @@
 <body>
     <script>
         let arr1 = [151, 4155, 154, 15, 151, 999, 11]
+        
         // 获取数组中的最大值
         function arr_min(arr) {
             let max = arr[0]
@@ -30,7 +31,6 @@
             return min
         }
 
-        // 将数组中最大的元素排到最后
         // 冒泡排序
         function maopao(arr) {
             let len = arr.length
@@ -85,23 +85,10 @@
             return arr
         }
 
-        // 选择排序（庄鹤林-必考题）
-        // for (let len = arr1.length; len > 1; len--) {
-        //     let max = 0
-        //     for (let i = 1; i < len; ++i) {
-        //         if (arr1[i] > arr1[max]) {
-        //             max = i
-        //         }
-        //     }
-        //     let temp = arr1[max]
-        //     arr1[max] = arr1[len - 1]
-        //     arr1[len - 1] = temp
-        // }
-        
-        // console.log(arr1)
-        // console.log(maopao(arr1))
-        // console.log(xuanze(arr1))
-        // console.log(insertSort(arr1))
+        console.log(arr1)
+        console.log(maopao(arr1))
+        console.log(xuanze(arr1))
+        console.log(insertSort(arr1))
     </script>
 </body>
 </html>
