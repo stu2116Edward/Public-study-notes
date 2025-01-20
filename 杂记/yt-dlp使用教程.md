@@ -50,7 +50,7 @@ yt-dlp --cookies-from-browser firefox https://www.bilibili.com/video/BV1A2DVY2EC
 ## 方法二(使用浏览器Cookie下载)：  
 **下载YouTube视频推荐使用**
 ```
-yt-dlp -f "bv*+ba/b" --cookies cookies.txt <video url>
+yt-dlp --cookies cookies.txt <video url>
 ```
 1.Chrome浏览器中安装`get cookie locally`扩展  
 2.执行下面的命令：
