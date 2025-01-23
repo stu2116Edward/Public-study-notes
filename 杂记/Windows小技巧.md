@@ -302,3 +302,13 @@ bcdedit /set hypervisorlaunchtype off
 ```
 bcdedit /set hypervisorlaunchtype auto
 ```
+
+### 修改Windows的网络名称
+`打开注册表`：  
+**Win+R**  
+输入gpedit.msc  
+找到以下路径  
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WidowsNT\CurrentVersion\NetworkList\Profiles
+```
+修改文件夹内的`ProfileName`  
