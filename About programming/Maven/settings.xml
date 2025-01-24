@@ -53,6 +53,7 @@ under the License.
   <localRepository>/path/to/local/repo</localRepository>
   -->
 
+  <!-- 这里修改为你本地存储路径 -->
   <localRepository>E:\Maven\Maven local repository</localRepository>
 
   <!-- interactiveMode
