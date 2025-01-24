@@ -78,8 +78,7 @@ Anaconda可以在Windows、MacOS、Linux系统平台中安装和使用，下载�
 
 
 ### Anaconda环境变量的配置
-电脑设置搜索栏搜索高级系统设置 → 选择环境变量 →  系统变量选择**path**，双击进入 →  新建环境变量【根据自己安装的盘，
-选择对应的盘  
+电脑设置搜索栏搜索高级系统设置 → 选择环境变量 →  系统变量选择**path**，双击进入 →  新建环境变量【根据自己安装的盘，选择对应的盘】  
 ![Anaconda11](https://github.com/user-attachments/assets/9b6816c4-68f9-4699-a86f-4cbb3c71ee29)  
 ```
 D:\anaconda3
