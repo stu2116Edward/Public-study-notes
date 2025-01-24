@@ -32,8 +32,11 @@ Maven使用中央仓库来存储依赖库。当Maven需要下载依赖时，它�
 <pre>
 D:\apache-maven-3.9.8-bin\apache-maven-3.9.8
 </pre>
+![Maven1](https://github.com/user-attachments/assets/f0d3c944-84d5-46d3-a9e8-7611609584fe)  
 
 打开环境变量设置：“此电脑” 鼠标右键 → “属性” → 高级系统设置 → 环境变量 → 在下面的系统变量中 → 新建  
+![Maven2](https://github.com/user-attachments/assets/d4a3e93d-4d77-4fc6-a4e2-9398f52396fa)  
+
 变量名填：
 ```
 MAVEN_HOME
@@ -42,6 +45,9 @@ MAVEN_HOME
 ```
 D:\apache-maven-3.9.8-bin\apache-maven-3.9.8
 ```
+![Maven3](https://github.com/user-attachments/assets/a4d0a427-585a-49a8-b34b-ef4ca96abf63)  
+
+![Maven5](https://github.com/user-attachments/assets/32bf4870-03f3-4ba8-ba1b-ccff0a06a358)  
 接着找到Path → 新建 → 填入：
 ```
 %MAVEN_HOME%\bin
@@ -52,6 +58,7 @@ win+R运行cmd，输入:
 ```
 mvn -version
 ```
+![Maven6](https://github.com/user-attachments/assets/97012e6e-f4de-4ec4-9239-b0714dfec808)  
 
 ### Maven的配置
 #### 1.配置本地仓库
@@ -73,17 +80,22 @@ mvn -version
 
 **下面来详细介绍配置本地仓库的过程：**
 1. 找到之前解压的MAVEN文件，新建一个 **Maven local repository** 文件夹作为本地的仓库  
+![Maven7](https://github.com/user-attachments/assets/1b5db2e4-eebd-42eb-bd94-33c4f75c02f1)  
 
 2. 在 **D:\apache-maven-3.9.8-bin\apache-maven-3.9.8** 下找到`conf文件夹`，打开，找到`settings.xml`文件：  
+![Maven8](https://github.com/user-attachments/assets/40c5428a-6dff-4360-8e80-5cc6dc8231e8)  
+![Maven9](https://github.com/user-attachments/assets/a383cce3-6bbc-44a1-899b-b87bbab13d62)  
 
 3. 找到 `localRepository` 节点，在注释外添加：  
 ```
 <localRepository>D:\apache-maven-3.9.8-bin\MAVEN—local repository</localRepository>
 ```
+![Maven11](https://github.com/user-attachments/assets/811c8f74-564f-4108-82a7-76cb76832bf4)  
 
 #### 2.配置阿里云服务器镜像
 国外的服务器下载jar包很慢，所以我们需要将其改为国内的阿里云服务器  
 1. 同样的，在之前这个 `settings.xml` 文件中找到 `mirrors` 节点  
+![Maven12](https://github.com/user-attachments/assets/e271761e-e7c5-4e0b-9ae6-61832fc1b2df)  
 
 2. 将下面的内容复制粘贴进去：
 ```
@@ -97,7 +109,8 @@ mvn -version
 ```
 
 #### 3.配置JDK
-1. 同样的，在之前这个 `settings.xml` 文件中找到 `profiles` 节点：
+1. 同样的，在之前这个 `settings.xml` 文件中找到 `profiles` 节点：  
+![Maven13](https://github.com/user-attachments/assets/94c713f2-b1e3-4f60-bbcb-8a964883ed08)  
 
 2. 将下面的内容复制粘贴进去：
 ```
@@ -117,8 +130,10 @@ mvn -version
 </profile>
 ```
 
-3. 查看是否配置成功，**win+R**快捷键运行**cmd**，输入 **mvn help:system** 测试：
+3. 查看是否配置成功，**win+R**快捷键运行**cmd**，输入 **mvn help:system** 测试：  
+![Maven14](https://github.com/user-attachments/assets/c5c7c0e0-3423-49ef-b1cb-05a93939a00b)  
 如果出现下载很多文件的页面，说明您配置成功啦！！！  
-如果您第一次执行 mvn help:system 命令，Maven相关工具会自动到Maven中央仓库下载缺失的或者Maven中央仓库更新的各种配置文件和类库（jar包)到Maven本地仓库中。
-下载完各种文件后， mvn help:system 命令会打印出所有的**Java系统属性和环境变量**  
+如果您第一次执行 mvn help:system 命令，Maven相关工具会自动到Maven中央仓库下载缺失的或者Maven中央仓库更新的各种配置文件和类库（jar包)到Maven本地仓库中。  
+下载完各种文件后， mvn help:system 命令会打印出所有的**Java系统属性和环境变量**
+![Maven15](https://github.com/user-attachments/assets/509a2a18-a50e-4aa2-821f-0ac78e59828f)  
 到这里，所有的配置就大功告成了  
