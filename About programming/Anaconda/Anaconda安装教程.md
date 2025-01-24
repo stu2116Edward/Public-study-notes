@@ -43,18 +43,23 @@ Anaconda可以在Windows、MacOS、Linux系统平台中安装和使用，下载�
 ### Anaconda 的安装
 下载完成后，只需要一步一步按照提示安装即可，以下说明安装过程中需要**特别注意的步骤** 
 
-**Step1:直接点击next**
+**Step1:直接点击next**  
+![Anaconda1](https://github.com/user-attachments/assets/d702adb2-2703-403e-b921-4fc465bea594)  
 
-**Step2:点击 I Agree**
+**Step2:点击 I Agree**  
+![Anaconda2](https://github.com/user-attachments/assets/58e1f299-962d-4743-98be-e8e35b575d3e)  
 
-**Step3:选择 ALL users（选择仅个人的话，后面使用可能会报错）,然后点击next**
+**Step3:选择 ALL users（选择仅个人的话，后面使用可能会报错）,然后点击next**  
+![Anaconda3](https://github.com/user-attachments/assets/efc0ae71-8a7e-4a99-b44f-bf927872bc5a)  
 
-**Step4:选择Anaconda的安装位置**
+**Step4:选择Anaconda的安装位置**  
+![Anaconda4](https://github.com/user-attachments/assets/ca2e2f9c-c822-445a-9709-c881c6c42219)  
 
 > [Tips!]
 > 这里建议修改为其他盘,要不然下载的包和创建的环境都在C盘，占用空间，我这里修为为F盘（专门安装软件的盘），后面介绍如何把创建的环境和下载的包都装在自己想装的盘里。
 
-**Step5:这里把三个勾全部打上，然后点击Install,anaconda开始安装**
+**Step5:这里把三个勾全部打上，然后点击Install,anaconda开始安装**  
+![Anaconda5](https://github.com/user-attachments/assets/cd0f3f64-eae1-440a-a5d5-ae495ab64605)  
 
 <pre>
 🔒创建开始菜单
@@ -62,15 +67,20 @@ Anaconda可以在Windows、MacOS、Linux系统平台中安装和使用，下载�
 🔒清除包缓存
 </pre>
 
-**Step6:安装进行中，等待即可，这一步取决于电脑的性能**
+**Step6:安装进行中，等待即可，这一步取决于电脑的性能**  
+![Anaconda6](https://github.com/user-attachments/assets/c522cb36-70b2-4a11-8a66-bf7a26cc52fd)  
 
-**Step7: 点击【Next】——再次点击【Next】**
+**Step7: 点击【Next】——再次点击【Next】**  
+![Anaconda7](https://github.com/user-attachments/assets/381347a5-ddd0-44da-939c-9070f7d85e35)  
 
-**Step8：接着来到最后一步，两个勾取消，不要框选。点击【Finish】**
+**Step8：接着来到最后一步，两个勾取消，不要框选。点击【Finish】**  
+![Anaconda8](https://github.com/user-attachments/assets/0bbbb0cf-f5bd-4ac6-a0ab-8326af741efb)  
 
 
 ### Anaconda环境变量的配置
-电脑设置搜索栏搜索高级系统设置 → 选择环境变量 →  系统变量选择**path**，双击进入 →  新建环境变量【根据自己安装的盘，选择对应的盘  
+电脑设置搜索栏搜索高级系统设置 → 选择环境变量 →  系统变量选择**path**，双击进入 →  新建环境变量【根据自己安装的盘，
+选择对应的盘  
+![Anaconda11](https://github.com/user-attachments/assets/9b6816c4-68f9-4699-a86f-4cbb3c71ee29)  
 ```
 D:\anaconda3
 D:\anaconda3\Scripts
@@ -84,6 +94,7 @@ D:\anaconda3\Library\mingw-w64\bin
 ```
 conda --version
 ```
+![Anaconda12](https://github.com/user-attachments/assets/2caad822-8c31-451e-8073-6ab30a8a5c71)  
 成功安装会显示Anaconda的版本号，这里anaconda就安装完成了，但是并没有结束，因为还涉及到环境和包的下载，这里默认是下载在C盘的，我们需要更改下载的位置，以免占C盘系统盘内存；最后再添加镜像源方便下载环境的包  
 
 
@@ -94,8 +105,11 @@ conda --version
 conda info
 ```
 没有修改的conda的pkgs和envs均保存在C盘，为了不占用系统盘的空间，我们需要修改保存的位置  
+![Anaconda13](https://github.com/user-attachments/assets/eab683ac-748e-43ab-892a-1946b736ea74)  
 
-在C盘-用户-用户名，找到`.condarc`,如果找不到打开anaconda prompt输入以下命令:
+在C盘-用户-用户名，找到`.condarc`  
+![Anaconda14](https://github.com/user-attachments/assets/dac0d044-a576-4bf7-b547-9bf3377e6447)  
+如果找不到打开anaconda prompt输入以下命令:
 ```
 conda config --set show_channel_urls yes
 ```
@@ -140,5 +154,6 @@ conda config --set show_channel_urls yes
 conda info
 ```
 首先pkgs和envs都修改为F盘了  
-
+![Anaconda16](https://github.com/user-attachments/assets/26353559-cebf-4508-a392-a9d6d246a1ce)  
 其次我们看镜像源也成功配置  
+![Anaconda17](https://github.com/user-attachments/assets/743aef90-171f-4236-8cb2-d4433f574b96)  
