@@ -106,4 +106,5 @@ python
 C:\Users\admin\.conda\envs
 C:\Users\admin\.conda\pkgs
 ```
+**注意：迁移后这里的C:\Users\Admin\.conda目录千万不要删除了只需要删除里面的两个文件夹就行了（envs和pkgs文件夹），environments.txt文件请不要删除**
 创建环境以及安装包都是在D盘，C盘的空间就不用担心炸了  
