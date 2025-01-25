@@ -126,23 +126,11 @@ conda镜像源的配置，打开anaconda prompt，输入以下指令
 **添加清华源**
 ```
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/linux-64/
 ```
-**添加阿里云镜像源**
-```
-conda config --add channels https://mirrors.aliyun.com/anaconda/pkgs/free/
-conda config --add channels https://mirrors.aliyun.com/anaconda/pkgs/main/
-```
-**添加中科大源**
-```
-conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
-conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
-conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
-conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/msys2/
-conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/bioconda/
-conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/menpo/
-```
+
 **设置搜索时显示通道地址（可选）**
 ```
 conda config --set show_channel_urls yes
