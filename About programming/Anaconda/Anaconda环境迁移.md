@@ -101,4 +101,9 @@ python
 
 ### 删除C盘的Anaconda环境
 如果使用D盘同名称的环境测试成功，那么就可以删除C盘的Anaconda环境了  
+注意这里只需要删除虚拟环境和软件包及依赖就行了  
+```
+C:\Users\admin\.conda\envs
+C:\Users\admin\.conda\pkgs
+```
 创建环境以及安装包都是在D盘，C盘的空间就不用担心炸了  
