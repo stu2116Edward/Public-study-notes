@@ -5,10 +5,13 @@
 **注意：Windows系统中首次安装VSCode时，默认终端为PowerShell（这里需要去微软商店里面自行下载），如果要切换为cmd，则需要进行以下操作：**  
 **较方便的方法：**  
 1. 在终端窗口处点击 + 号右边的 ﹀ 箭头，点击 选择默认配置文件  
+![vs1](https://github.com/user-attachments/assets/960b0e98-a307-44ec-9247-5600256a8e91)  
 
 2. 点击选择第二个 Command Prompt 即可切换 cmd 为默认终端  
+![vs2](https://github.com/user-attachments/assets/af3cc79d-1a58-4c3e-8c20-04f2c8aeee7c)  
 
 3. 切换完成  
+![vs3](https://github.com/user-attachments/assets/10255fe6-b6f7-4276-9d94-5ed5e1e52b12)  
 
 
 **较复杂的方法：**  
