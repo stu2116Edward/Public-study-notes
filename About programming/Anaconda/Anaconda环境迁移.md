@@ -21,8 +21,10 @@ D:\Anaconda\pkgs\复制已安装软件包及其依赖项文件夹
 </pre>
 
 4. 将在C盘的`.conda`文件夹中的**environments.txt**文件里面的**C盘路径换成D盘的路径**修改之后把文件复制到D盘的Anaconda文件夹中  
+> [!Note]  
 **注意：这里的.conda文件夹中的environments.txt文件一定要和D盘的environments.txt文件保持一致**  
 ***这里建议保留C:\Users\admin\.conda\environments.txt文件是为了备份以防万一***  
+
 <pre>
 C:\Users\admin\.conda\environments.txt
 D:\Anaconda\environments.txt
@@ -62,8 +64,10 @@ auto_activate_base: false
 ```
 envs_dirs:这个是修改环境路径  
 pkgs_dirs:这个是修改已安装软件包及其依赖项文件夹路径  
+> [!Note]  
 **这两个路径一定要修改因为Anaconda会默认使用C盘的路径，修改之后就会使用D盘的路径安装虚拟环境及其依赖项**  
-还有这里最重要的一定就是要在D盘安装Anaconda的目录下**将envs文件夹和pkgs文件夹中的Users权限修改为完全控制**，否则创建虚拟环境会报错  
+还有这里最重要的一定就是要在D盘安装Anaconda的目录下**将envs文件夹和pkgs文件夹中的Users权限修改为完全控制**，否则创建虚拟环境会报错
+
 修改方法：**右键envs文件夹** → **属性** → **安全** → **编辑** →  **选择Users** → **勾选完全控制** → **确定** → **确定** → **确定**  
 **同理修改pkgs文件夹的权限！！！**  
 channels:这个是镜像源可以自行修改  
@@ -106,5 +110,7 @@ python
 C:\Users\admin\.conda\envs
 C:\Users\admin\.conda\pkgs
 ```
-**注意：迁移后这里的C:\Users\Admin\.conda目录千万不要删除了只需要删除里面的两个文件夹就行了（envs和pkgs文件夹），environments.txt文件请不要删除**  
+> [!TIP]  
+**注意：迁移后这里的C:\Users\Admin\.conda目录千万不要删除了只需要删除里面的两个文件夹就行了（envs和pkgs文件夹），environments.txt文件请不要删除**
+
 创建环境以及安装包都是在D盘，C盘的空间就不用担心炸了  
