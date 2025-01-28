@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html快速入门</title>
+    <!-- 引入外部css样式 -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- 添加标签栏图标 -->
+    <link rel="icon" href="./img/logo.ico">
+</head>
+<body>
+    <!-- 使用内部样式 -->
+    <style>
+        /* 
+            元素选择器：元素名称 { ... }
+            类选择器：.类名 { ... }
+            id选择器：#id名 { ... }
+            优先级：id选择器 > 类选择器 > 元素选择器
+            
+            分组选择器：选择器1,选择器2 { ... }  （选择多个元素）
+            示例：h1, h2 { ... }  （选中所有的<h1>和<h2>标签）
+            
+            属性选择器：元素名称[属性] { ... }   （选择具有某个属性的元素）
+            示例：input[type] { ... }    （选择所有具有type属性的input元素）
+            
+            属性选择器：元素名称[属性名="值"] { ... } （选择具有某个属性并且属性值为某个值的元素）
+            示例：input[type="password"] { ... }  （选择所有具有type属性并且属性值为password的input元素）
+
+            后代选择器：元素1 元素2 { ... }  （选择元素1中的所有的元素2）
+            示例：form input { ... }  （选择<form>标签中所有的<input>标签）
+        */
+        h1 {
+            /* 
+            1. 关键词表示法-> color: 颜色英文单词
+            2. rgb表示法-> color: rgb(r,g,b)  （红绿蓝三原色，取值0-255）
+            3. rgba表示法-> color: rgba(r,g,b,a)  （红绿蓝三原色，取值0-255，a表示透明度，取值0-1）
+            4. 十六进制表示法-> color: #rrggbb  （红绿蓝三原色，取值00-ff）
+            */
+            color: orange;
+            /* 居中显示 */
+            text-align: center;
+        }
+        
+        .container {
+            text-align: center;
+        }
+
+        #time {
+            color:rgb(236, 54, 54);
+        }
+
+        /* 添加一个网页背景 */
+        body {
+            /* 背景图片的路径 */
+            background-image: url("./img/bg.png");
+            /* 背景图片大小 */
+            background-size: cover;
+        }
+    </style>
+
+    <!-- 这里是标题 -->
+    <h1>Html快速入门</h1>
+    <!-- div块元素独占一行并且使用了行内样式 -->
+    <div style="text-align: center;">
+        <!-- span标签是行内元素 -->
+        <span id="time">2025-1-23 22:35</span>
+    </div>
+
+    <!-- 这里是正文 -->
+    <div class="container">
+        <!-- 定义一个超链接在当前口打开(不配置target属性默认是_self) -->
+        <a href="https://github.com" target="_self">当前窗口打开GitHub</a>
+        <img style="height: 180px; width: 300px;" src="./img/hhr.jpg">
+        <!-- 定义一个超链接在新窗口打开 -->
+        <a href="https://github.com" target="_blank">在新窗口打开GitHub</a>
+        <br><br>
+
+    </div>
+</body>
+</html>
