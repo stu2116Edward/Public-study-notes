@@ -26,7 +26,8 @@ If you wish to contribute or have any questions, you can reach me at [ryolenheal
 
 <details>
     <summary>Click to expand details</summary>
-    1. **菜鸟教程** - [Runoob](https://www.runoob.com/) 
+   
+   1. **菜鸟教程** - [Runoob](https://www.runoob.com/) 
       - 菜鸟成长是一个提供各种编程语言和技术教程的网站，适合初学者和进阶学习者。
 
    2. **Quick Reference** - [Quick Reference](https://quickref.cn/) 
