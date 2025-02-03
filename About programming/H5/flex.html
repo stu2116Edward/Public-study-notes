@@ -7,7 +7,8 @@
 </head>
 <body>
     <style>
-        body{
+        .container{
+            
             /* 使用flex布局 */
             /* 主轴：默认横轴，交叉轴：默认纵轴 */
             display: flex;
@@ -15,43 +16,13 @@
             /* 设置边框：厚度，样式，颜色 */
             border: 8px solid black;
 
-            /* 为子项设置外边距，使其与容器边框保持一定距离 */
+            background-color: lightcoral;
 
             /* 设置flex弹性布局的大小 */
-            min-height: 800px;
+            height: 800px;
+            width: 1300px;
 
-            /* 设置弹性容器中子项在主轴上的对齐方式 */
-            /* flex-start：对齐到主轴的起始端 */
-            /* flex-end：对齐到主轴的结束端 */
-            /* center：主轴居中对齐 */
-            /* space-between：子项之间间隔均匀分布，但开头和结尾没有间隔 */
-            /* space-around：子项之间间隔均匀分布，子项两侧也有间隔 */
-            /* space-evenly：子项之间间隔均匀分布，包括开头和结尾 */
-            justify-content: space-evenly;
-
-            /* 设置弹性容器的子项在主轴上的包裹方式 */
-            /* nowrap：所有子项在一行显示（默认值） */
-            /* wrap：子项超出容器宽度时换行 */
-            /* wrap-reverse：子项超出容器宽度时反向换行 */
-            flex-wrap: wrap;
-
-            /* 设置弹性容器中子项在多行交叉轴上的对齐方式（仅在flex-wrap为wrap时有效） */
-            /* 当子项换行时，align-content控制这些行在交叉轴上的对齐方式 */
-            /* flex-start：对齐到交叉轴的起始端 */
-            /* flex-end：对齐到交叉轴的结束端 */
-            /* center：交叉轴居中对齐 */
-            /* stretch：拉伸子项以填满整个交叉轴 */
-            align-content: flex-start;
-            
-            /* 控制所有子项在交叉轴上的对齐方式 */
-            /* flex-start：对齐到交叉轴的起始端 */
-            /* flex-end：对齐到交叉轴的结束端 */
-            /* center：交叉轴居中对齐 */
-            /* baseline：对齐到基线 */
-            /* stretch：拉伸子项以填满整个交叉轴 */
-            align-items: flex-start;
-            
-            /* 定义弹性容器中子项的排列方向决定了主轴的方向 */
+            /* 定义弹性容器中元素的排列方向决定了主轴的方向 */
             /* row（默认值）：
                 主轴：水平方向（从左到右）
                 交叉轴：垂直方向（从上到下）
@@ -66,17 +37,55 @@
                 交叉轴：水平方向（从左到右） */
             flex-direction: row;
 
-            /* 设置弹性容器中子项在主轴上的间距 */
+            /* 设置弹性容器中元素在主轴上的对齐方式 */
+            /* flex-start：对齐到主轴的起始端（从左到右） */
+            /* flex-end：对齐到主轴的结束端（从右到左） */
+            /* center：主轴居中对齐 */
+            /* space-between：元素之间间隔均匀分布，但开头和结尾没有间隔 */
+            /* space-around：元素之间间隔均匀分布，元素两侧也有间隔 */
+            /* space-evenly：元素之间间隔均匀分布，包括开头和结尾 */
+            /* baseline：第一行文本的基线对齐 */
+            justify-content: space-evenly;
+
+            /* 设置弹性容器中元素在多行交叉轴（多行元素排版）上的对齐方式（仅在flex-wrap为wrap时有效） */
+            /* flex-start：对齐到交叉轴的起始端 */
+            /* flex-end：对齐到交叉轴的结束端 */
+            /* center：交叉轴居中对齐 */
+            /* space-between：元素之间间隔均匀分布，但开头和结尾没有间隔 */
+            /* space-around：元素之间间隔均匀分布，元素两侧也有间隔 */
+            /* space-evenly：元素之间间隔均匀分布，包括开头和结尾 */
+            /* baseline：第一行文本的基线对齐 */
+            align-content: flex-start;
+            align-content: center;
+
+            /* 控制所有元素在交叉轴上的对齐方式（单行元素排版） */
+            /* stretch：拉伸元素以填满整个交叉轴（默认） */
+            /* flex-start：对齐到交叉轴的起始端 */
+            /* flex-end：对齐到交叉轴的结束端 */
+            /* center：交叉轴居中对齐 */
+            /* baseline：对齐到基线 */
+            align-items: center;
+
+            /* 设置盒子的换行 */
+            /* 设置弹性容器的元素在主轴上的包裹方式 */
+            /* nowrap：所有元素在一行显示（默认值） */
+            /* wrap：元素超出容器宽度时换行 */
+            /* wrap-reverse：元素超出容器宽度时反向换行 */
+            flex-wrap: wrap;
+            
+            /* 设置弹性容器中元素在主轴上的间距 */
             column-gap: 20px;
-            /* 设置弹性容器中子项在交叉轴上的间距 */
+            /* 设置弹性容器中元素在交叉轴上的间距 */
             row-gap: 20px;
 
         }
 
         .box{
             width: 200px;
-            height: 200px;
+            height: 350px;
             background-color: royalblue;
+            /* 设置圆角 */
+            border-radius: 12px;
             /* 设置字体大小 */
             font-size: 30pt;
             /* 使用flex布局 */
@@ -96,15 +105,21 @@
         }
 
     </style>
-    <div class="box">box1</div>
-    <div class="box">box2</div>
-    <div class="box">box3</div>
-    <div class="box">box4</div>
-    <div class="box">box5</div>
-    <div class="box">box6</div>
-    <div class="box">box7</div>
-    <div class="box">box8</div>
-    <div class="box">box9</div>
-
+    <div class="container">
+        <!-- 第一行的盒子 -->
+        <div class="box">box1</div>
+        <div class="box">box2</div>
+        <div class="box">box3</div>
+        <div class="box">box4</div>
+        <div class="box">box5</div>
+        <div class="box">box6</div>
+        <!-- 第二行的盒子 -->
+        <div class="box">box7</div>
+        <div class="box">box8</div>
+        <div class="box">box9</div>
+        <div class="box">box10</div>
+        <div class="box">box11</div>
+        <div class="box">box12</div>
+    </div>
 </body>
 </html>
