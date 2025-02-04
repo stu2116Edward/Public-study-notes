@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name          【超星学习通助手】新增AI解答+视频+测试+考试（新增了AI辅助功能，题库调用失败时，可以用于手动查题)
+// @name          【超星学习通助手】更新AI解答+视频+测试+考试（更新了AI辅助功能，题库调用失败时，可以用于手动查题)
 // @namespace    unrival
-// @version      2.01
-// @description  本次更新：2024/10/21 新增了AI辅助功能，题库调用失败时，可以用于手动查题
+// @version      2.05
+// @description  本次更新：2025/2/2 更新了AI功能，正常使用了。新增了AI辅助功能，题库调用失败时，可以用于手动查题
 // @author       unrival
 // @run-at       document-end
 // @storageName  unrivalxxt
@@ -4613,7 +4613,7 @@ const tips = [
         <div class="row" style="margin: 10px;">
             <div class="col-md-6 col-md-offset-3">
                 <div class="header clearfix">
-                    <h3 class="text-muted" style="margin-top: 20px;margin-bottom: 0;float: left;">StudyAI-学习通小助手&ensp;</h3><div id="onlineNum"></div>
+                    <h3 class="text-muted" style="margin-top: 20px;margin-bottom: 0;float: left;">学习通助手&ensp;</h3><div id="onlineNum"></div>
                 </div>
                 <hr style="margin-top: 10px;margin-bottom: 20px;">
                 <div class="panel panel-default" id="normalQuery">
@@ -4664,11 +4664,15 @@ const tips = [
             </div>
         </div>
         <hr> 
+      <p>当题库或脚本出问题时，推荐去网课自助平台下单  <p>学习通全包（视频+章节测试+文档+直播+考试）0.5r/门</p>
+      <p>强力推荐：<a href="https://wk.wangke.fit/" target="_blank">https://wk.wangke.fit/ 超低价网课自助平台</a><p>
+         <hr> 
         <p>自用即可，视频倍速尽量1倍速（速度过快容易清进度）</p>
         <p>关注微信公众号“一之哥哥”，发送token”，即可推送题库Token</p>
         <p>使用过程中出现问题，扫码进入交流群，及时联系</p>
         <p>强力推荐 - 大学生专用AI： <a href="https://studyai0.com/" target="_blank">StudyAI</a></p>
-        <p>为大学生量身定制的人工智能，非常好用！免费体验！</p>
+         <hr> 
+
     </center> 
 </div>
                             </div>
@@ -4681,12 +4685,12 @@ const tips = [
                     <div class="panel panel-default">
                         <div class="panel-heading">StudyAI-题库连接失败时可用于手动查题</div>
                         <div class="panel-body">
-                            <iframe
-                                src="https://udify.app/chatbot/oWzV6cZ3tCVEkUbB"
-                                style="width: 100%; height: 60%; min-height: 500px;"
-                                frameborder="0"
-                                allow="microphone">
-                            </iframe>
+  <iframe
+  src="https://cloud.fastgpt.cn/chat/share?shareId=healvo7h60bo7xdjk06b8ao7"
+  style="width: 100%; height: 600px;"
+  frameborder="0" 
+  allow="*"
+/></iframe>
                         </div>
                     </div>
                 </div>
