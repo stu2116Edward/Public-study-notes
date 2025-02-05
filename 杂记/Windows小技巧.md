@@ -343,7 +343,10 @@ ipconfig /flushdns
 6. 使用第三方的工具清理DISM++（使用其默认的清理）
 工具下载地址：  
 https://github.com/Chuyu-Team/Dism-Multi-language
-**最后清理完成之后不要忘记重启电脑**  
+**最后清理完成之后不要忘记重启电脑**
+>[!Note]
+注册表最好不要乱修改
+系统的虚拟内存默认就行了
 
 ### windows祖传问题
 #### 消失的图标
