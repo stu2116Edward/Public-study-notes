@@ -1,5 +1,9 @@
 # Windows使用小技巧
 
+### Windows笔记本电池正确配置
+**控制面板-硬件和声音-电源选项-选择电源按钮的功能**  
+![battery](https://github.com/user-attachments/assets/51297506-a8bf-4d3c-82ff-4e001939f1c1)  
+
 ### 双网关同时使用内网，外网设置
 打开`cmd`,输入以下命令：
 ```shell
@@ -312,3 +316,45 @@ bcdedit /set hypervisorlaunchtype auto
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WidowsNT\CurrentVersion\NetworkList\Profiles
 ```
 修改文件夹内的`ProfileName`  
+
+### Windows垃圾清理
+**这里只推荐使用前两个**  
+1. 系统自带清理
+**操作步骤「右键C盘」→「属性」→「磁盘清理」**  
+勾选：  
+- 已下载的程序文件
+- Internet临时文件
+- 回收站
+然后点击清理系统文件  
+勾选Windows更新清理  
+点击确定  
+2. 系统进程创建的临时文件
+**操作步骤 Win+R 输入 %temp% 回车 shift+Delete删除里面的所有文件**
+3. 清理系统升级过后的垃圾（注意在系统提示更新时不要删除）
+**进入这个目录 C:\Windows\SoftwareDistribution\Download 删除里面的所有文件**
+4. 清理系统的预读取文件
+**进入这个目录 C:\Windows\Prefetch 删除里面的所有文件**
+5. 刷新dns缓存
+使用命令：
+```
+ipconfig /flushdns
+```
+6. 使用第三方的工具清理DISM++（使用其默认的清理）
+工具下载地址：  
+https://github.com/Chuyu-Team/Dism-Multi-language
+**最后清理完成之后不要忘记重启电脑**  
+
+### windows祖传问题
+#### 消失的图标
+恢复方法：  
+**删除这个目录下的这个文件 C:\Users\Admin\AppData\Local\IconCache.db 重启电脑或者资源管理器**  
+或者使用下面这个项目：  
+https://github.com/iKineticate/AHK-ChangeIcon  
+
+#### 此电脑流氓网盘图标管理
+使用此工具：  
+https://github.com/1357310795/MyComputerManager  
+
+#### 存粹的右键管理工具
+下载地址：  
+https://github.com/BluePointLilac/ContextMenuManager
