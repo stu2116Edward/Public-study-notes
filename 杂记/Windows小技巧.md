@@ -320,6 +320,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WidowsNT\CurrentVersion\NetworkList\Profil
 ### Windows垃圾清理
 **这里只推荐使用前两个**  
 1. 系统自带清理
+**Win11: 使用Win+I 系统-存储-临时文件删除里面的内容即可**  
 **操作步骤「右键C盘」→「属性」→「磁盘清理」**  
 勾选：  
 - 已下载的程序文件
