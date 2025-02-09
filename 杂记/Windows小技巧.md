@@ -55,6 +55,9 @@ regedit
 ```
 
 ### 图标显示不正常？试试强制刷新 Windows 图标缓存
+最方便的是使用下面这个项目解决：  
+https://github.com/iKineticate/AHK-ChangeIcon    
+
 **方法一 删除 IconCache.db 文件**  
 进入 `C:\Users\用户名\appdata\local` 目录，直接删除 `IconCache.db` 文件，重启电脑  
 需要注意的是，这一步中 appdata 文件夹和 IconCache.db 文件都是隐藏的系统文件，需要手动输入地址或者显示隐藏文件  
@@ -101,6 +104,10 @@ rem 重启Windows外壳程序explorer
 start explorer
 ```
 如果上面这三种方法还是没能解决图标问题，说明问题已经超出了「图标缓存」的范畴，需要考虑其他方面的影响（比如软件安装错误、软件图标丢失等）
+
+#### 此电脑流氓网盘图标管理
+使用此工具：  
+https://github.com/1357310795/MyComputerManager
 
 ### 关于右键
 推荐一个右键菜单管理工具  
@@ -340,25 +347,13 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WidowsNT\CurrentVersion\NetworkList\Profil
 ```
 ipconfig /flushdns
 ```
-6. 使用第三方的工具清理DISM++（使用其默认的清理）
-工具下载地址：  
+6. 使用第三方的工具清理（使用其默认的清理）
+DISM++工具下载地址：  
 https://github.com/Chuyu-Team/Dism-Multi-language
+HiBitUninstaller工具下载地址：
+https://www.ghxi.com/hibituninstaller.html  
+
 **最后清理完成之后不要忘记重启电脑**
 >[!Note]
 注册表最好不要乱修改
-系统的虚拟内存默认就行了
-
-### windows祖传问题
-#### 消失的图标
-恢复方法：  
-**删除这个目录下的这个文件 C:\Users\Admin\AppData\Local\IconCache.db 重启电脑或者资源管理器**  
-或者使用下面这个项目：  
-https://github.com/iKineticate/AHK-ChangeIcon  
-
-#### 此电脑流氓网盘图标管理
-使用此工具：  
-https://github.com/1357310795/MyComputerManager  
-
-#### 存粹的右键管理工具
-下载地址：  
-https://github.com/BluePointLilac/ContextMenuManager
+系统的虚拟内存默认就行了 
