@@ -95,4 +95,7 @@ If you wish to contribute or have any questions, you can reach me at [ryolenheal
       
    23. **在线域名解析查询** - [nslookup](https://uutool.cn/nslookup/) 
        - 在线nslookup域名解析查询工具
+
+   24. **在线IPv6测试** - [IPv6测试](https://test-ipv6.com/) 
+       - 在线IPv6测试工具
 </details>
