@@ -364,3 +364,15 @@ https://www.ghxi.com/hibituninstaller.html
 ```
 sfc /scannow
 ```
+扫描当前系统映像的健康状况，检查是否存在可能的损坏或问题
+```
+DISM /Online /Cleanup-Image /ScanHealth
+```
+检查当前系统映像的损坏程度，确定映像是否可以修复
+```
+DISM /Online /Cleanup-Image /CheckHealth
+```
+修复系统映像中的损坏
+```
+DISM /Online /Cleanup-Image /RestoreHealth
+```
