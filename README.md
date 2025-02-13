@@ -98,4 +98,7 @@ If you wish to contribute or have any questions, you can reach me at [ryolenheal
 
    24. **在线IPv6测试** - [IPv6测试](https://test-ipv6.com/) 
        - 在线IPv6测试工具
+   
+   25. **懒盘搜索** - [懒盘搜索](https://www.lzpanx.com/) 
+       - 网盘聚合搜索
 </details>
