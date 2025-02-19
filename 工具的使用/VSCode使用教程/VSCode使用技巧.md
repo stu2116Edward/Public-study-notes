@@ -83,3 +83,10 @@
 pip install -r requirements.txt
 ```
 以安装项目依赖，确保环境完整
+
+### 强迫症舒畅
+如何关闭VScode粘性滚动预览,类似于 Excel 的冻结首行  
+![gdyl1](https://github.com/user-attachments/assets/7dbe14c0-5a0f-47eb-b865-84b5e73487c6)  
+
+按下快捷键**ctrl + ,** 输入 **sticky** 找到下面的选项然后取消勾选  
+![gdyl2](https://github.com/user-attachments/assets/4acd01db-c5fa-4c74-afd3-dd762e8c2ef7)  
