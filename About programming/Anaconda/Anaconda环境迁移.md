@@ -10,7 +10,7 @@ C:\Users\admin\.conda\pkgs
 C:\Users\admin\.conda\environments.txt
 </pre>
 
-2. 进入`envs`文件夹，**复制里面的文件夹**（虚拟环境文件夹），到你安装Anaconda的目录，比如**D盘的Anaconda目录**，然后进入找到**envs文件夹**然后把你复制的文件夹粘贴进去    
+2. 进入`envs`文件夹，**复制里面的文件夹**（虚拟环境文件夹），到你安装Anaconda的目录，比如**D盘的Anaconda目录**，然后进入找到**envs文件夹**然后把你复制的**文件夹**粘贴进去    
 <pre>
 D:\Anaconda\envs\复制的虚拟环境文件夹
 </pre>
