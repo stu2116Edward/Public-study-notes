@@ -376,3 +376,23 @@ DISM /Online /Cleanup-Image /CheckHealth
 ```
 DISM /Online /Cleanup-Image /RestoreHealth
 ```
+
+
+### Win10/11 更改电脑用户名
+**方法一**  
+1. 在电脑桌面选中**此电脑**并右击选择**管理**  
+![gl1](https://github.com/user-attachments/assets/2d687780-1c64-44c6-bb97-f6a09b9e3000)  
+2. 进入**到计算机管理**页面后选择**本地用户和组**，双击**用户**打开  
+![gl2](https://github.com/user-attachments/assets/b9dbbee1-9704-4850-bfbc-d4e2db39cfec)  
+3. 选中和桌面用户名一致的选项，右击选择**重命名**  
+![gl3](https://github.com/user-attachments/assets/065f419d-a453-4e6e-856c-19f2438517ce)  
+
+**方法二**  
+1. 打开**控制面板**，点击**用户帐户**进入  
+![kzmb1](https://github.com/user-attachments/assets/841e1250-c31d-4000-b9df-df0ed117199d)  
+2. 接着点击**用户帐户**  
+![kzmb2](https://github.com/user-attachments/assets/84645ec6-1bff-41c2-83c7-e3ba841b905c)  
+3. 在下图所示的界面中点击**更改帐户名称**  
+![kzmb3](https://github.com/user-attachments/assets/b9c36b0a-7c9b-46a8-a354-4aa2efc35916)  
+4. 在跳转的页面中输入**新帐户名**，点击**更改名称**即可  
+![kzmb4](https://github.com/user-attachments/assets/7b8eb375-243c-4474-bca0-441b52f2a249)  
