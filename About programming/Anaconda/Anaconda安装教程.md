@@ -144,3 +144,24 @@ conda info
 ![Anaconda16](https://github.com/user-attachments/assets/26353559-cebf-4508-a392-a9d6d246a1ce)  
 其次我们看镜像源也成功配置  
 ![Anaconda17](https://github.com/user-attachments/assets/743aef90-171f-4236-8cb2-d4433f574b96)  
+
+**将anaconda3文件夹中的 Users 的权限修改为完全控制**  
+![conda_qx1](https://github.com/user-attachments/assets/379c69c0-ff5b-40b5-a320-97acbc0427e4)  
+![conda_qx2](https://github.com/user-attachments/assets/59bb48b4-4527-4486-92b4-92155f3cb530)  
+
+修改完权限后使用命令创建自己的虚拟环境（这里的路径将从原本的C盘变为你更改的envs文件夹的位置）  
+这个是我的.condarc配置参考：**点击C盘-用户-用户名，找到.condarc**  
+```
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/linux-64/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  - defaults
+envs_dirs:
+  - E:\ProgramData\anaconda3\envs
+pkgs_dirs:
+  - E:\ProgramData\anaconda3\pkgs
+show_channel_urls: true
+auto_activate_base: false
+```
