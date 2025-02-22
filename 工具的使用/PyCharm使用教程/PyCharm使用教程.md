@@ -33,5 +33,5 @@
 3. 选择Conda Environment，点击...，选择conda环境的路径`E:/Anaconda/envs/tensorflow/python.exe`(根据实际情况选择)
 4. 点击OK，完成配置
 
-![PycharmConda1](https://github.com/user-attachments/assets/6d6fbd3d-f47b-4f9f-908c-6e1a62566b8c)  
-![PycharmConda2](https://github.com/user-attachments/assets/9f0c36ef-ea81-499f-a656-58f347698111)  
+![PycharmConda1](https://github.com/user-attachments/assets/1452b09a-79a4-4fb3-ac12-22c939b9d672)  
+![PycharmConda2](https://github.com/user-attachments/assets/4aefc640-5140-456a-91d5-56bf711d5843)  
