@@ -70,8 +70,8 @@ pyinstaller -F -w -i icon.ico main.py
 ```
 pyinstaller -F -w -i favicon.ico main.py --add-data "logo.ico;."
 ```
-logo.ico 是源路径，表示要打包的文件是当前目录下的 logo.ico 文件  
-. 是目标路径，表示 logo.ico 文件会被放置在可执行文件的 根目录 下  
+分号左边的logo.ico 是源路径，表示要打包的文件是当前目录下的 logo.ico 文件  
+分号右边的. 是目标路径，表示 logo.ico 文件会被放置在可执行文件的 根目录 下  
 
 **综合使用多个参数的命令示例：**
 ```
