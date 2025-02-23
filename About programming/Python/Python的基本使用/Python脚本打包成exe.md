@@ -15,7 +15,7 @@ pip install pyinstaller
 </pre>
 2、执行打包命令
 ```
-Pyinstaller -F -w -i logo.ico main.py
+pyinstaller -F -w -i logo.ico main.py
 ```
 打包完成后，生成的可执行文件将位于 **dist** 文件夹中  
 
