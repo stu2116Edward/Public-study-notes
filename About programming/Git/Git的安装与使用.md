@@ -1,11 +1,98 @@
-# Git命令的使用教程
+# Git的安装与使用
 
-Git的安装Windows：https://blog.csdn.net/mukes/article/details/115693833
-Ubuntu安装Git:
+## Git的安装
+**Windows中安装Git**：
+https://blog.csdn.net/mukes/article/details/115693833  
+
+**Ubuntu中安装Git**:
 ```
 sudo apt-get install git
 ```
 
+**CentOS中安装Git**:
+1. 使用包管理器安装 Git
+步骤 1：更新系统包  
+在安装 Git 之前，建议先更新系统包：
+```bash
+sudo yum update
+```
+步骤 2：安装 Git  
+在 CentOS 7 中，使用 `yum` 安装 Git：
+```bash
+sudo yum install git
+```
+在 CentOS 8 中，建议使用 `dnf`（`dnf` 是 `yum` 的替代品，性能更好）：  
+```bash
+sudo dnf install git
+```
+步骤 3：验证安装  
+安装完成后，验证 Git 是否安装成功：
+```bash
+git --version
+```
+如果安装成功，你会看到类似以下的输出：
+```
+git version 2.24.3 (CentOS 8)
+```
+
+2. 从源码编译安装 Git
+如果系统自带的 Git 版本较旧，或者你需要安装最新版本的 Git，可以使用源码编译的方式安装  
+步骤 1：安装编译依赖  
+在编译 Git 之前，需要安装一些必要的开发工具和库：
+```bash
+sudo yum groupinstall "Development Tools"
+sudo yum install zlib-devel openssl-devel perl-ExtUtils-MakeMaker asciidoc xmlto docbook2X
+```
+步骤 2：下载 Git 源码  
+从 Git 的官方网站下载最新版本的源码。例如，下载 Git 2.41.0：
+```bash
+wget https://www.kernel.org/pub/software/scm/git/git-2.41.0.tar.gz
+```
+步骤 3：解压并编译  
+解压下载的文件，并进入解压后的目录：
+```bash
+tar -zxvf git-2.41.0.tar.gz
+cd git-2.41.0
+```
+编译并安装 Git：
+```bash
+make configure
+./configure --prefix=/usr/local
+make all
+sudo make install
+```
+步骤 4：验证安装  
+安装完成后，验证 Git 是否安装成功：
+```bash
+git --version
+```
+如果安装成功，你会看到类似以下的输出：
+```
+git version 2.41.0
+```
+
+3. 配置 Git
+安装完成后，建议配置 Git 的全局用户名和邮箱。这将用于提交时的标识：
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your_email@example.com"
+```
+
+4. 卸载 Git
+如果需要卸载 Git，可以使用以下命令：  
+卸载通过包管理器安装的 Git
+```bash
+sudo yum remove git
+```
+
+卸载通过源码编译安装的 Git  
+如果 Git 是通过源码编译安装的，需要手动删除相关文件：
+```bash
+sudo rm /usr/local/bin/git
+sudo rm -rf /usr/local/libexec/git-core
+```
+
+## Git命令的使用教程
 ### Git 仓库的创建
 初始化一个新的 Git 仓库
 ```
