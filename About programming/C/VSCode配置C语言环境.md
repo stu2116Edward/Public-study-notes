@@ -21,8 +21,9 @@ VSCode推荐设置：
 我的是windows x64位的系统所以下的是`x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0.7z`
 i686开头的是x86位，x86_64开头的是x64位，根据自己系统选择下载  
 
-这是我的安装目录`E:\mingw64\bin`
-
+### 配置C语言环境变量
+这是我的安装目录`E:\mingw64\bin`  
+右键-此电脑-属性-高级系统设置-高级-环境变量-在下方的系统变量中点击Path-编辑-添加你的E:\mingw64\bin\路径  
 查看自己的includepath路径,在cmd下输入:
 ```
 gcc -v -E -x c++ -
