@@ -10,10 +10,35 @@ pip install <package_name> -i https://pypi.tuna.tsinghua.edu.cn/simple
 <package_name> 为要 pip安装的包
 
 ### 二、永久换源
-通过修改配置文件来永久使用某个镜像源：
+通过命令修改配置文件来永久使用某个镜像源：
 ```
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
+#### Windows环境下手动替换镜像源：  
+比如windows账号是 admin 找到配置文件**C:\users\admin\pip\pip.ini**
+```
+[global]
+index-url=https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host=pypi.tuna.tsinghua.edu.cn
+disable-pip-version-check = true
+timeout = 6000
+```
+参数说明：
+- timeout = 6000
+将 pip 的连接超时时间设置为 6000 秒，避免因网络延迟导致的连接失败  
+- disable-pip-version-check = true
+禁用 pip 的版本检查功能，减少运行时的网络请求，加快 pip 的执行速度
+#### Linux 环境下手动替换镜像源：
+同样比例账号为 admin 则需要建立子目录 **\home\admin\pip**; 并在此pip目录下建立内容同上的 **pip.conf**的位置文件  
+```
+cd ~
+mkdir pip
+cd pip
+vim pip.ini
+```
+内容同windows环境下
+
 
 ### 三、重置镜像源
 通过下面命令查看当前设置的镜像源：
