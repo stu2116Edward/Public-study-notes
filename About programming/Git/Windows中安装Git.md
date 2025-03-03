@@ -67,7 +67,7 @@ notepad++ 文件名.后缀名
 
 
 翻译如下：
-<per>
+<pre>
 Use Git from Git Bash only 
 This is the most cautious choice as your PATH will not be modified at all. You w only be able to use the Git command line tools from Git Bash.
 仅从 Git Bash 使用 Git
@@ -88,7 +88,7 @@ Warning: This will override Windows tools like "find"and "sort". Only use this o
 使用命令提示符中的 Git 和可选的 Unix 工具
 Git 和可选的 Unix 工具都将添加到您的 PATH 中。
 警告：这将覆盖 Windows 工具，例如 "find" and "sort". 仅在了解其含义后使用此选项。
-</per>
+</pre>
 第一种是`仅从Git Bash 使用 Git`。这个的意思就是你只能通过 Git 安装后的 Git Bash 来使用 Git ，其他的什么命令提示符啊等第三方软件都不行。  
 **第二种**是`从命令行以及第三方软件进行 Git`。这个就是在第一种基础上进行第三方支持，你将能够`从 Git Bash`，`命令提示符(cmd)` 和 `Windows PowerShell` 以及`可以从 Windows 系统环境变量中寻找 Git 的任何第三方软件中`使用 Git。**推荐使用这个**。  
 第三种是`从命令提示符使用 Git 和可选的 Unix 工具`。选择这种将覆盖 Windows 工具，如 “ find 和 sort ”。只有在了解其含义后才使用此选项。一句话，适合比较懂的人折腾。  
