@@ -98,7 +98,7 @@ Git 和可选的 Unix 工具都将添加到您的 PATH 中。
 
 
 翻译如下：
-<per>
+<pre>
 Use bundled OpenSSH 
 This uses ssh. exe that comes with Git.
 使用捆绑的 OpenSSH
@@ -110,7 +110,7 @@ NEW! This uses an external ssh. exe. Git will not install its own OpenSSH
 使用外部 OpenSSH
 新！这使用外部 ssh.exe 文件。 
 Git 不会安装自己的 OpenSSH（和相关）二进制文件，而是使用在环境变量 PATH 中找到的它们。
-</per>
+</pre>
 `注：选项1为使用 Git 自带的 OpenSSH，选项2为使用系统上的外部 OpenSSH，普通用户建议选项1)`
 
 **选择HTTPS后端传输**  
@@ -118,7 +118,7 @@ Git 不会安装自己的 OpenSSH（和相关）二进制文件，而是使用�
 
 
 翻译如下：
-<per>
+<pre>
 use the OpenSSL library 
 Server certificates will be validated using the ca-bundle. crt file.
 使用 OpenSSL 库
@@ -130,7 +130,7 @@ This option also allows you to use your company's internal Root CA certificates 
 使用本机 Windows 安全通道库
 服务器证书将使用 Windows 证书存储进行验证。
 此选项还允许您使用公司内部分发的内部根 CA 证书，例如通过 Active Directory 域服务。
-</per>
+</pre>
 这两种选项有什么区别呢？  
 来自：https://stackoverflow.com/questions/62456484/whats-the-difference-between-openssl-and-the-native-windows-secure-channel-libr  
 > [!Note]
@@ -143,7 +143,7 @@ This option also allows you to use your company's internal Root CA certificates 
 
 
 翻译如下：
-<per>
+<pre>
 Checkout Windows-style, commit Unix-style line endings 
 Git will convert LF to CRLF when checking out text files. 
 When committing text files, CRLF will be converted to LF. For cross-platform projects, this is the recommended setting on Windows("core. autocrif"is set to "true").
@@ -165,7 +165,7 @@ Choosing this option is not recommended for cross-platform projects("core. autoc
 按原样签出，按原样提交
 Git 在签出或提交文本文件时不会执行任何转换。
 不建议跨平台项目选择此选项（"core.autocrif" 设置为 "false"）。
-</per>
+</pre>
 这三种选择分别是：  
 - 签出 Windows 样式，提交 Unix 样式的行结尾。
 - 按原样签出，提交Unix样式的行结尾。
@@ -196,7 +196,7 @@ Windows 的是 Carriage Return+ Line Feed（回车+换行），用 “\r\n” �
 
 
 翻译如下：
-<per>
+<pre>
 Use MinTTY(the default terminal of MSYS2) 
 Git Bash will use MinTTY as terminal emulator, which sports a resizable window
 non-rectangular selections and a Unicode font.Windows console programs(such
@@ -215,7 +215,7 @@ window was not freely resizable and it only allowed rectangular text selections.
 Git 将使用 Windows 的默认控制台窗口（"cmd.exe"），该窗口可与 Win32 控制台程序（例如交互式Python 或 
 node.js）一起使用，但默认回滚非常有限，需要将其配置为使用 Unicode 字体才能正确显示非 ASCII 字符，并且在 
 Windows 10 之前，其窗口不可随意调整大小，并且仅允许选择矩形文本。
-</per>
+</pre>
 **建议选择第一种**，MinTTY 3功能比 cmd 多，cmd 只不过 比 MinTTY 更适合处理 Windows 的一些接口问题，这个对 Git 用处不大，除此之外 Windows 的默认控制台窗口（cmd）有很多劣势，比如 cmd 具有非常有限的默认历史记录回滚堆栈和糟糕的字体编码等等。  
 相比之下，MinTTY 具有可调整大小的窗口和其他有用的可配置选项，可以通过右键单击的工具栏来打开它们 git-bash。  
 点击 [next] 到第十二步  
@@ -225,7 +225,7 @@ Windows 10 之前，其窗口不可随意调整大小，并且仅允许选择矩
 
 
 翻译如下：
-<per>
+<pre>
 ODefault(fast-forward or merge)
 This is the standard behavior ofgit pull": fast-forward the current branch to 
 the fetched branch when possible, otherwise create a merge commit.
@@ -239,7 +239,7 @@ commits to rebase, this is equivalent to a fast-forward.
 Oonly ever fast-forward 
 Fast-forward to the fetched branch. Fail if that is not possible.
 只能快进快进到获取的分支。如果不可能，则失败。
-</per>
+</pre>
 “git pull” 是什么意思呢？  
 git pull 就是获取最新的远程仓库分支到本地，并与本地分支合并  
 上面给了三个 “git pull” 的行为：
