@@ -259,7 +259,7 @@ git pull 只是拉取远程分支并与本地分支合并，而 git fetch 只是
 
 
 翻译如下：
-<per>
+<pre>
 Git Credential Manager 
 Use the cross-platform Git Credential Manager.
 See more information about the future of Git Credential Manager here.
@@ -270,7 +270,7 @@ Git 凭证管理
 None 
 Do not use a credential helper.
 不使用凭证助手。
-</per>
+</pre>
 一共两个选项：
 - Git 凭证管理
 - 不使用凭证助手
@@ -286,7 +286,7 @@ Do not use a credential helper.
 
 
 翻译如下：
-<per>
+<pre>
 Enable file system caching 
 File system data will be read in bulk and cached in memory for certain operations("core.fscache" is set to "true"). 
 This provides a significant performance boost.
@@ -301,7 +301,7 @@ Please note that existing repositories are unaffected by this setting.
 启用符号链接
 启用符号链接（需要SeCreateSymbolicLink权限）。
 请注意，现有存储库不受此设置的影响。
-</per>
+</pre>
 有两个选项：
 - 启用文件系统缓存
 - 启用符号链接
@@ -315,7 +315,7 @@ Please note that existing repositories are unaffected by this setting.
 
 
 翻译如下：
-<per>
+<pre>
 Enable experimental support for pseudo consoles.
 (NEW!) This allows running native console programs like Node or Python in a Git Bash window without using winpty, 
 but it still has known bugs.
@@ -327,7 +327,7 @@ Enable experimental built-in file system monitor
 (NEW!) Automatically run a built-in file system watcher, to speed up common operations such as ' git status', ' git add', ' git commit', etc in worktrees containing many files.
 启用实验性内置文件系统监视器
 （新！）自动运行内置文件系统监视器，以加快包含许多文件的工作树中的常见操作，例如 'git status'、'git add'、'git commit' 等.
-</per>
+</pre>
 这是实验性功能，可能会有一些小错误之类的，建议不用开启。  
 点击 [install] 进行安装。  
 
