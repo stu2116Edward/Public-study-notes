@@ -4,7 +4,25 @@
 ```
 vim /etc/docker/daemon.json
 ```
-配置文件内容：
+配置文件内容：  
+使用公共镜像仓库
+```
+{
+  "registry-mirrors":
+   [
+      "https://registry.hub.docker.com",
+      "https://docker.itelyou.cf",
+      "https://abc.itelyou.cf",
+      "https://docker.ywsj.tk",
+      "https://docker.xuanyuan.me",
+      "http://image.cloudlayer.icu",
+      "http://docker-0.unsee.tech",
+      "https://dockerpull.pw",
+      "https://docker.hlmirror.com"
+   ]
+}
+```
+有私人镜像仓库的
 ```json
 {
   "registry-mirrors":
