@@ -17,9 +17,9 @@ If you find my notes helpful, please consider giving this repository a star. Eve
 如果您觉得我的笔记对您有所帮助，请考虑给这个仓库点个星。每一个星都是对我继续更新和分享更多知识的信任和鼓励。
 
 > [!Tip]  
-If you wish to contribute or have any questions, you can reach me at [ryolenhealthmawar@mail.com](mailto:ryolenhealthmawar@mail.com).
+If you wish to contribute or have any questions, you can reach me at [stu2116edward@outlook.com](mailto:stu2116edward@outlook.com).
 
-**注意**：如果您希望贡献或有任何问题，可以通过 [ryolenhealthmawar@mail.com](mailto:ryolenhealthmawar@mail.com) 与我联系。
+**注意**：如果您希望贡献或有任何问题，可以通过 [stu2116edward@outlook.com](mailto:stu2116edward@outlook.com) 与我联系。
 
 
 ## Commonly used academic research addresses：  
