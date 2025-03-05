@@ -6,7 +6,7 @@ vim /etc/docker/daemon.json
 ```
 配置文件内容：  
 使用公共镜像仓库
-```
+```json
 {
   "registry-mirrors":
    [
