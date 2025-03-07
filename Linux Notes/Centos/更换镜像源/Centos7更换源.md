@@ -10,6 +10,16 @@ sudo cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
 ```
 sudo wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 ```
+其他国内镜像源  
+清华大学源：
+```
+sudo wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.tuna.tsinghua.edu.cn/centos/7/os/x86_64/
+```
+中国科技大学源：
+```
+sudo wget -O /etc/yum.repos.d/CentOS-Base.repo http://centos.ustc.edu.cn/centos/7/os/x86_64/
+```
+
 步骤 3：清理 YUM 缓存  
 更换源之后需要清理原有的缓存，以便使用新的源进行软件包更新  
 ```
@@ -28,3 +38,10 @@ sudo yum install vim -y
 常见问题  
 无法下载或解析失败： 确认你使用的下载链接是正确的，或者网络连接是否正常  
 旧源恢复： 如果更换新源后遇到问题，可以使用备份的 .repo.bak 文件来恢复旧的 YUM 配置  
+
+恢复旧的 YUM 源  
+```
+sudo mv /etc/yum.repos.d/CentOS-Base.repo.bak /etc/yum.repos.d/CentOS-Base.repo
+sudo yum clean all
+sudo yum makecache
+```
