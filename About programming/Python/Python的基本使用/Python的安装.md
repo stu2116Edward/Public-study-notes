@@ -78,7 +78,7 @@ sudo apt install python3-pip
 sudo apt install python3.8-distutils
 ```
 
-设置默认Python版本（可选）  
+#### 设置默认Python版本（可选）  
 使用软链接的方式设置默认Python版本：  
 1. 检查是否存在旧的链接：
 ```bash
@@ -105,20 +105,20 @@ sudo mv /usr/bin/python.bak /usr/bin/python
 sudo mv /usr/bin/python3.bak /usr/bin/python3
 ```
 通过环境变量设置默认Python版本：  
-编辑`~/.bashrc`或`~/.profile`文件，添加以下内容：  
+1. 编辑`~/.bashrc`或`~/.profile`文件，添加以下内容：  
 ```bash
 vim ~/.bashrc
 ```
-在文件的末尾添加以下内容：
+2. 在文件的末尾添加以下内容：
 ```bash
 alias python=/usr/bin/python3.8
 ```
-如果你想同时设置pip的默认版本，也可以添加：
+3. 如果你想同时设置pip的默认版本，也可以添加：
 ```bash
 alias pip=/usr/bin/pip3.8
 ```
 **确保你希望优先生效的别名定义在文件的最后**  
-保存文件后，运行以下命令使更改生效：
+4. 保存文件后，运行以下命令使更改生效：
 ```bash
 source ~/.bashrc
 ```
@@ -130,7 +130,7 @@ source ~/.bashrc
 ```bash
 ls -l /usr/bin | grep python
 ```
-#### 下载Python安装包
+**下载Python安装包**  
 下载链接：https://www.python.org/ftp/python/  
 下载安装包这里以Python-3.8.5.tgz为例  
 在Ubuntu里我们需要下载安装Python到自己指定的路径(这以~为例)  
@@ -138,8 +138,8 @@ ls -l /usr/bin | grep python
 ```bash
 sudo wget https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tgz
 ```
-#### 安装Python
-**默认安装路径**:
+**安装Python**
+##### 默认安装路径:  
 解压安装包到当前目录下并且进入：
 ```bash
 sudo tar -zxvf Python-3.8.5.tgz -C ~
@@ -166,7 +166,7 @@ sudo make altinstall
 > [!Note]
 > 这时候Python已经安装完成，可执行文件在/usr/local/bin下，库文件在/usr/local/lib下，配置文件在/usr/local/include下，其他资源文件在/usr/local/share下，大家用Pycharm等编辑器使用Python时就用这些路径
 
-**自定义安装路径**：
+##### 自定义安装路径：
 这里按同样，解压安装包到当前目录下并且进入：
 ```bash
 sudo tar -zxvf Python-3.8.5.tgz -C ~
@@ -281,7 +281,8 @@ sudo ln -s /usr/local/python3.8.5/bin/pip3 /usr/bin/pip
 sudo ln -s /usr/local/python3.8.5/bin/pip3 /usr/bin/pip3
 ```
 
-### 卸载Python软件包版本
+### Ubuntu卸载Python
+#### 卸载Python软件包版本
 1. 卸载Python 3.8及其依赖包：
 ```bash
 sudo apt purge python3.8
@@ -341,11 +342,11 @@ sudo apt update
 python3.8 --version
 ```
 
-### 卸载源码编译安装的Python
-#### 1. **确定安装路径**
+#### 卸载源码编译安装的Python
+1. **确定安装路径**
 首先，你需要确定 Python 的安装路径。如果你在安装时使用了 `--prefix` 参数（例如 `--prefix=/usr/local/python3.8.5`），那么 Python 的安装路径就是你指定的路径。如果没有指定 `--prefix`，默认安装路径通常是 `/usr/local`。
 
-#### 2. **删除 Python 的可执行文件和相关文件**
+2. **删除 Python 的可执行文件和相关文件**
 根据你的安装路径，删除 Python 的可执行文件和相关文件。以下是一些常见的文件和目录：
 
 如果安装路径是 `/usr/local`：
@@ -368,7 +369,7 @@ sudo rm /usr/local/python3.8.5/bin/2to3-3.8
 sudo rm /usr/local/python3.8.5/bin/easy_install-3.8
 ```
 
-#### 3. **删除 Python 的库文件**
+3. **删除 Python 的库文件**
 Python 的库文件通常安装在 `/usr/local/lib` 或自定义路径的 `lib` 目录下。你可以删除这些文件：
 
 如果安装路径是 `/usr/local`：
@@ -381,7 +382,7 @@ sudo rm -rf /usr/local/lib/python3.8
 sudo rm -rf /usr/local/python3.8.5/lib/python3.8
 ```
 
-#### 4. **删除 Python 的配置文件**
+4. **删除 Python 的配置文件**
 Python 的配置文件通常在 `/usr/local/include` 或自定义路径的 `include` 目录下。删除这些文件：
 
 如果安装路径是 `/usr/local`：
@@ -394,7 +395,7 @@ sudo rm -rf /usr/local/include/python3.8
 sudo rm -rf /usr/local/python3.8.5/include/python3.8
 ```
 
-#### 5. **删除 Python 的其他资源文件**
+5. **删除 Python 的其他资源文件**
 Python 的其他资源文件（如文档、示例代码等）通常在 `/usr/local/share` 或自定义路径的 `share` 目录下。删除这些文件：
 
 如果安装路径是 `/usr/local`：
@@ -407,13 +408,13 @@ sudo rm -rf /usr/local/share/man/man1/python3.8.1
 sudo rm -rf /usr/local/python3.8.5/share/man/man1/python3.8.1
 ```
 
-#### 6. **删除安装目录（如果适用）**
+6. **删除安装目录（如果适用）**
 如果你在安装时解压了源码到某个目录（例如 `~/Python-3.8.5`），可以删除这个目录：
 ```bash
 rm -rf ~/Python-3.8.5
 ```
 
-#### 7. **清理环境变量**
+7. **清理环境变量**
 如果你在安装时修改了环境变量（例如在 `~/.bashrc` 或 `~/.profile` 文件中添加了路径），需要删除这些路径。打开文件并删除相关行：
 ```bash
 nano ~/.bashrc
@@ -428,7 +429,7 @@ PATH=$PATH:$HOME/bin:/usr/local/python3.8.5/bin
 source ~/.bashrc
 ```
 
-#### 8. **恢复默认的 Python 指向（如果需要）**
+8. **恢复默认的 Python 指向（如果需要）**
 如果你之前更改了 `/usr/bin/python` 或 `/usr/bin/python3` 的指向，可以恢复默认指向：
 ```bash
 sudo mv /usr/bin/python.bak /usr/bin/python
@@ -437,14 +438,14 @@ sudo mv /usr/bin/pip.bak /usr/bin/pip
 sudo mv /usr/bin/pip3.bak /usr/bin/pip3
 ```
 
-#### 9. **验证卸载**
+9. **验证卸载**
 最后，验证 Python 是否已完全卸载：
 ```bash
 python3.8 --version
 ```
 如果返回 `command not found`，则说明卸载成功。
 
-#### 注意事项
+**注意事项**  
 1. **备份重要数据**：在删除任何文件之前，建议备份重要数据。
 2. **不要删除系统自带的 Python**：系统自带的 Python 是系统运行的一部分，不要删除它。
 3. **谨慎操作**：使用 `rm -rf` 命令时要非常小心，避免误删其他重要文件。
@@ -647,8 +648,8 @@ index-url = http://mirrors.aliyun.com/pypi/simple/
 trusted-host = mirrors.aliyun.com
 ```
 
-10. 卸载Python
-**卸载通过包管理器安装的 Python**：  
+### Centos卸载Python
+#### **卸载通过包管理器安装的 Python**：  
 1. 如果你是通过 yum 或 dnf 安装的 Python，可以使用以下命令卸载：
 ```bash
 rpm -qa | grep python3
@@ -676,7 +677,7 @@ python3 -V
 which python3
 ```
 
-**卸载手动安装的 Python**：  
+#### **卸载手动安装的 Python**：  
 如果你需要卸载 Python 3.12.3，可以按照以下步骤进行：  
 1. 删除 Python 安装目录
 ```bash
