@@ -104,7 +104,7 @@ sudo ln -s /usr/bin/python3.8 /usr/bin/python
 sudo mv /usr/bin/python.bak /usr/bin/python
 sudo mv /usr/bin/python3.bak /usr/bin/python3
 ```
-通过环境变量设置默认Python版本：  
+通过别名设置默认Python版本：  
 1. 编辑`~/.bashrc`或`~/.profile`文件，添加以下内容：  
 ```bash
 vim ~/.bashrc
@@ -123,7 +123,6 @@ alias pip=/usr/bin/pip3.8
 source ~/.bashrc
 ```
 
-
 ### 使用源码编译安装：
 众所周知， Ubuntu中自带 Python（有些只带 2有些只带 3，有些两个都带）  
 我们首先查看一下当前系统自带的Python版本及指向：
@@ -138,20 +137,21 @@ ls -l /usr/bin | grep python
 ```bash
 sudo wget https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tgz
 ```
+
 **安装Python**
 ##### 默认安装路径:  
+安装一下编译环境：
+```bash
+sudo apt-get install zlib1g-dev libbz2-dev libssl-dev libncurses5-dev libsqlite3-dev libreadline-dev tk-dev libgdbm-dev libdb-dev libpcap-dev xz-utils libexpat1-dev liblzma-dev libffi-dev libc6-dev
+```
 解压安装包到当前目录下并且进入：
 ```bash
-sudo tar -zxvf Python-3.8.5.tgz -C ~
+sudo tar -zxvf Python-3.8.5.tgz
 cd Python-3.8.5
 ```
 然后我们进行初始化：
 ```bash
 sudo ./configure
-```
-如果你输入这条命令后出现错误的,输入以下命令安装一下编译环境：
-```bash
-sudo apt-get install zlib1g-dev libbz2-dev libssl-dev libncurses5-dev libsqlite3-dev libreadline-dev tk-dev libgdbm-dev libdb-dev libpcap-dev xz-utils libexpat1-dev liblzma-dev libffi-dev libc6-dev
 ```
 先编译：
 ```bash
@@ -161,15 +161,21 @@ make
 ```bash
 sudo make altinstall
 ```
-安装完成
-
+在终端输入：
+```
+python3.8 --version
+```
 > [!Note]
 > 这时候Python已经安装完成，可执行文件在/usr/local/bin下，库文件在/usr/local/lib下，配置文件在/usr/local/include下，其他资源文件在/usr/local/share下，大家用Pycharm等编辑器使用Python时就用这些路径
 
 ##### 自定义安装路径：
+安装一下编译环境：
+```bash
+sudo apt-get install zlib1g-dev libbz2-dev libssl-dev libncurses5-dev libsqlite3-dev libreadline-dev tk-dev libgdbm-dev libdb-dev libpcap-dev xz-utils libexpat1-dev liblzma-dev libffi-dev libc6-dev
+```
 这里按同样，解压安装包到当前目录下并且进入：
 ```bash
-sudo tar -zxvf Python-3.8.5.tgz -C ~
+sudo tar -zxvf Python-3.8.5.tgz
 cd Python-3.8.5
 ```
 然后我们进行和方法一不一样的初始化：
@@ -194,8 +200,13 @@ sudo make altinstall
 ```bash
 vim ~/.bashrc
 ```
+添加如下内容
 ```bash
 PATH=$PATH:$HOME/bin:/usr/local/python3.8.5/bin
+```
+让环境变量生效
+```bash
+source ~/.bashrc
 ```
 好了，安装完了（大家可以输入：echo $PATH 查看一下环境变量有没有添加进去）  
 
@@ -212,25 +223,10 @@ ls -l /usr/bin | grep python
 > 什么是Python当前版本号，什么是其他版本号？
 > 我们输入命令：python3 对应的版本为python3.6.9，那么，我们安装的版本如果是python3.6.11，或者是python3.6.5啥的，只要是在这个3.6的版本内就是当前版本号，本文安装的版本号为3.8，所以安装的是其他版本号
 
-两种情况有不同的更新指向方式：  
-**方式一：当前版本号直接将指向链接更新**  
-删除原有软链接：
-```bash
-sudo rm /usr/bin/python
-```
-建立新软链接：
-```bash
-sudo ln -s /usr/bin/python3.8 /usr/bin/python3
-sudo ln -s /usr/bin/python3.8 /usr/bin/python
-```
-> [!Note]
-当中的python3.8就是我们上面在输入python3.8的时候就出现我们安装的python3.8.5的版本嘛，然后这里改为输入python3和python都指向我们的python3.8.5
-
-然后输入python3或者python就会发现已经好了，方式二就不用再进行了
-
-**方式二：指向其他版本号**
+#### 创建软链接：  
 因为我们安装的Python3.8是不同于系统自带python的版本号，不在/usr/bin下而在/usr/local/bin或者/usr/local/python3.8.5/bin下（取决于前面执行的是./configure还是./configure --prefix=/usr/local/python3.8.5，因此需要先加一条软链接并且把之前的python命令改为python.bak，同时pip也需要更改  
-若Python3.8安装时，执行的是./configure，则依次输入：  
+
+若Python3.8安装时，执行的是`./configure`，则依次输入：  
 将原python与python3命令改为python.bak与python.bak：
 ```bash
 sudo mv /usr/bin/python /usr/bin/python.bak
@@ -238,8 +234,8 @@ sudo mv /usr/bin/python3 /usr/bin/python3.bak
 ```
 将我们刚装的python3.8.5指定运行命令为python与python3:
 ```bash
-sudo ln -s /usr/local/bin/python3 /usr/bin/python
-sudo ln -s /usr/local/bin/python3 /usr/bin/python3
+sudo ln -s /usr/local/bin/python3.8 /usr/bin/python
+sudo ln -s /usr/local/bin/python3.8 /usr/bin/python3
 ```
 将原pip和pip3命令改为pip.bak与pip3.bak:
 ```bash
@@ -248,8 +244,8 @@ sudo mv /usr/bin/pip3 /usr/bin/pip3.bak
 ```
 将我们刚装的python3.8.5的pip指定运行命令为pip与pip3:
 ```bash
-sudo ln -s /usr/local/bin/pip3 /usr/bin/pip
-sudo ln -s /usr/local/bin/pip3 /usr/bin/pip3
+sudo ln -s /usr/local/bin/pip3.8 /usr/bin/pip
+sudo ln -s /usr/local/bin/pip3.8 /usr/bin/pip3
 ```
 
 > [!Note]
@@ -277,8 +273,8 @@ sudo mv /usr/bin/pip3 /usr/bin/pip3.bak
 ```
 将我们刚装的python3.8.5的pip指定运行命令为pip与pip3:
 ```bash
-sudo ln -s /usr/local/python3.8.5/bin/pip3 /usr/bin/pip
-sudo ln -s /usr/local/python3.8.5/bin/pip3 /usr/bin/pip3
+sudo ln -s /usr/local/python3.8.5/bin/pip3.8 /usr/bin/pip
+sudo ln -s /usr/local/python3.8.5/bin/pip3.8 /usr/bin/pip3
 ```
 
 ### Ubuntu卸载Python
@@ -417,7 +413,7 @@ rm -rf ~/Python-3.8.5
 7. **清理环境变量**
 如果你在安装时修改了环境变量（例如在 `~/.bashrc` 或 `~/.profile` 文件中添加了路径），需要删除这些路径。打开文件并删除相关行：
 ```bash
-nano ~/.bashrc
+vim ~/.bashrc
 ```
 删除类似以下的内容：
 ```bash
@@ -563,7 +559,7 @@ cd Python-3.12.3
 配置Python编译环境  
 将 Python 安装到系统目录：
 ```bash
-./configure prefix=/usr/local/python3.12
+sudo ./configure prefix=/usr/local/python3.12.3
 ```
 编译并安装Python
 ```bash
@@ -579,7 +575,7 @@ vim /etc/profile
 ```
 在文件末尾添加以下内容：
 ```bash
-export PATH="/usr/local/python3.12/bin:$PATH"
+export PATH="/usr/local/python3.12.3/bin:$PATH"
 ```
 运行以下命令使更改生效：
 ```bash
@@ -593,7 +589,7 @@ vim ~/.bashrc
 ```
 在文件末尾添加以下内容
 ```bash
-export PATH="/usr/local/python3/bin:$PATH"
+export PATH="/usr/local/python3.12.3/bin:$PATH"
 ```
 执行如下命令，使新配置的环境立即生效
 ```bash
@@ -621,8 +617,8 @@ rm -rf /usr/bin/python3
 再执行下面的命令  
 如果你希望直接使用 python3 和 pip3 命令，可以创建软链接：
 ```bash
-sudo ln -s /usr/local/python3.12/bin/python3.12 /usr/bin/python3
-sudo ln -s /usr/local/python3.12/bin/pip3.12 /usr/bin/pip3
+sudo ln -s /usr/local/python3.12.3/bin/python3.12 /usr/bin/python3
+sudo ln -s /usr/local/python3.12.3/bin/pip3.12 /usr/bin/pip3
 ```
 
 8. 验证Python环境
