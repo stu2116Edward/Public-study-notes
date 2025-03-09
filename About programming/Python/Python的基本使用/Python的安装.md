@@ -601,7 +601,7 @@ which python3.12
 ```
 如果输出类似以下内容，则说明配置成功：
 <pre>
-/usr/local/python3/bin/python3.12
+/usr/local/python3.12.3/bin/python3.12
 </pre>
 你还可以运行以下命令验证 Python 版本：
 ```bash
