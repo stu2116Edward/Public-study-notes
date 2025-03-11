@@ -396,3 +396,12 @@ DISM /Online /Cleanup-Image /RestoreHealth
 ![kzmb3](https://github.com/user-attachments/assets/b9c36b0a-7c9b-46a8-a354-4aa2efc35916)  
 4. 在跳转的页面中输入**新帐户名**，点击**更改名称**即可  
 ![kzmb4](https://github.com/user-attachments/assets/7b8eb375-243c-4474-bca0-441b52f2a249)  
+
+
+### Windows中wget的安装与使用
+去[wget官网](https://eternallybored.org/misc/wget/)下载二进制文件：  
+***注意：要根据你的电脑选择32位还是64位***  
+
+然后你会得到一个.zip格式的文件夹  
+解压，解压到哪里都行(最好不要有中文的目录)  
+然后配置Path环境变量  
