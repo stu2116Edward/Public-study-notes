@@ -401,7 +401,12 @@ DISM /Online /Cleanup-Image /RestoreHealth
 ### Windows中wget的安装与使用
 去[wget官网](https://eternallybored.org/misc/wget/)下载二进制文件：  
 ***注意：要根据你的电脑选择32位还是64位***  
-
 然后你会得到一个.zip格式的文件夹  
 解压，解压到哪里都行(最好不要有中文的目录)  
 然后配置Path环境变量  
+wget的使用：  
+```
+wget -P 目录地址 下载地址
+```
+***注意：目录地址中不能有中文、空格，不然无法解析***  
+更详细的使用教程请参考[Linux命令之wget](https://blog.csdn.net/liaowenxiong/article/details/117337527)
