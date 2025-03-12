@@ -406,6 +406,10 @@ DISM /Online /Cleanup-Image /RestoreHealth
 然后配置Path环境变量  
 wget的使用：  
 ```
+wget 下载地址
+```
+指定目录：
+```
 wget -P 目录地址 下载地址
 ```
 ***注意：目录地址中不能有中文、空格，不然无法解析***  
