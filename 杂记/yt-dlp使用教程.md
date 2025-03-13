@@ -66,7 +66,7 @@ yt-dlp --cookies cookies.txt https://www.bilibili.com/video/BV1A2DVY2EC5?t=323.4
 ## yt-dlp 下载 YouTube 视频的命令  
 下载最佳视频和音频质量，并自动合并（推荐）：
 ```bash
-yt-dlp -f "bv*+ba/b" <video url>
+yt-dlp -f bestvideo+bestaudio --merge-output-format mp4 -o "%(title)s.%(ext)s" <视频链接>
 ```
 指定输出格式，例如 MP4：
 ```bash
