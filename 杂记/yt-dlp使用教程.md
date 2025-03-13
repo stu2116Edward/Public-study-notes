@@ -66,27 +66,7 @@ yt-dlp --cookies cookies.txt https://www.bilibili.com/video/BV1A2DVY2EC5?t=323.4
 ## yt-dlp 下载 YouTube 视频的命令  
 下载最佳视频和音频质量，并自动合并（推荐）：
 ```bash
-yt-dlp -f bestvideo+bestaudio --merge-output-format mp4 -o "%(title)s.%(ext)s" <视频链接>
-```
-指定输出格式，例如 MP4：
-```bash
-yt-dlp -f "bv*[ext=mp4]+ba[ext=m4a]/b" <video url>
-```
-如果你想确保最终文件一定是 MP4 格式，可以使用以下命令：
-```bash
-yt-dlp -f "bv*+ba/b" --merge-output-format mp4 <video url>
-```
-基本下载命令 
-```bash
-yt-dlp -f 'bestvideo+bestaudio' "https://www.youtube.com/watch?v=VIDEO_ID" -o '%(title)s.%(ext)s'
-```
-- -f 'bestvideo+bestaudio'：选择最佳视频和最佳音频格式
-- `https://www.youtube.com/watch?v=VIDEO_ID`：目标视频的 URL
-- -o '%(title)s.%(ext)s'：输出文件的命名格式，%(title)s 表示视频标题，%(ext)s 表示视频格式
-
-视频输出为mp4
-```bash
-yt-dlp -f 'bestvideo+bestaudio' "https://www.youtube.com/watch?v=Oa0ZHfcalCM&ab_channel=BBCWorldService" -o '%(title)s.%(ext)s' --merge-output-format mp4
+yt-dlp -f bestvideo+bestaudio --merge-output-format mp4 -o "%(title)s.%(ext)s" <video url>
 ```
 - -f 'bestvideo+bestaudio'：选择最佳视频和音频流进行下载。
 - -o '%(title)s.%(ext)s'：指定输出文件名格式。
