@@ -344,3 +344,8 @@ Git GUI 就是 Git 的图形化界面，如下图：
 1. [廖雪峰-Git教程](https://liaoxuefeng.com/books/git/introduction/index.html)  
 2. [git - 简明指南](https://rogerdudler.github.io/git-guide/index.zh.html)
 3. [图解Git](https://marklodato.github.io/visual-git-guide/index-zh-cn.html)
+
+**git和GitHub的使用教程**：
+1. https://zhuanlan.zhihu.com/p/664195515
+2. https://zhuanlan.zhihu.com/p/369486197
+3. https://zhuanlan.zhihu.com/p/615581394
