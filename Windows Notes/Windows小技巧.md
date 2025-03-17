@@ -414,3 +414,13 @@ wget -P 目录地址 下载地址
 ```
 ***注意：目录地址中不能有中文、空格，不然无法解析***  
 更详细的使用教程请参考[Linux命令之wget](https://blog.csdn.net/liaowenxiong/article/details/117337527)
+
+### 组策略配置
+打开组策略编辑器：
+```
+gpedit.msc
+```
+更新组策略的命令:
+```
+gpupdate /force
+```
