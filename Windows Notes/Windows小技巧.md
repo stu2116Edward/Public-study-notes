@@ -452,3 +452,5 @@ Win+R输入`msconfig`打开系统配置-工具-选中更改UAC设置-点击启�
 ![fjqyxx3](https://github.com/user-attachments/assets/4272095e-00c2-429c-af60-5e79790ff5b5)
 此方式只适用于之后这样类似的文件比如从网上下载的内容等  
 如果之前的文件每次打开都这样一个一个取消太麻烦可以选择先将这些有弹窗警告的文件复制到虚拟机里面然后再粘贴回去这样即可全部恢复取消弹窗  
+不过微软好像也有类似的工具：  
+https://learn.microsoft.com/en-us/sysinternals/downloads/streams  
