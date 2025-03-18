@@ -424,3 +424,10 @@ gpedit.msc
 ```
 gpupdate /force
 ```
+
+### 如何重启资源管理器？
+Win11:  
+![Win11zyglq](https://github.com/user-attachments/assets/aae73fa3-777d-4457-ad7d-e57242189099)  
+Win10:  
+![Win10zyglq](https://github.com/user-attachments/assets/c0a9f63d-1d3a-4e03-8991-ec38349d2791)  
+选中“Windows资源管理器”进程，点击右下角的“重新启动”即可重启Windows资源管理器  
