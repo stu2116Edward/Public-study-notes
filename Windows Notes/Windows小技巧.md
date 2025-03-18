@@ -425,9 +425,30 @@ gpedit.msc
 gpupdate /force
 ```
 
+
 ### 如何重启资源管理器？
 Win11:  
 ![Win11zyglq](https://github.com/user-attachments/assets/aae73fa3-777d-4457-ad7d-e57242189099)  
 Win10:  
 ![Win10zyglq](https://github.com/user-attachments/assets/c0a9f63d-1d3a-4e03-8991-ec38349d2791)  
 选中“Windows资源管理器”进程，点击右下角的“重新启动”即可重启Windows资源管理器  
+
+
+### 关闭UAC弹窗警告
+如UAC未彻底关闭，对系统进行更改或者下载软件时，电脑总是询问，是否允许，如下面的界面：  
+![uac1](https://github.com/user-attachments/assets/95f3d33b-5923-4b71-872c-94e293c38057)  
+Win+R输入`msconfig`打开系统配置-工具-选中更改UAC设置-点击启动-并修改为从不通知-点击确定  
+![uac2](https://github.com/user-attachments/assets/d82e50fe-459a-4485-8385-568be8842a70)  
+![uac3](https://github.com/user-attachments/assets/a92fc4b0-a130-4b45-8dc8-f5987a1e1f1b)  
+之后就不会有这样的弹窗了  
+
+
+### 关闭打开此文件前总是询问的弹窗警告
+弹窗界面如下：  
+![fjqyxx1](https://github.com/user-attachments/assets/19c46a03-8cde-4153-acc5-ae5318542533)  
+附件区域信息  
+![fjqyxx2](https://github.com/user-attachments/assets/838b9447-6acb-4539-9850-2532d89adf8b)  
+这里需要打开Dism++进行系统优化配置配置内容如下：  
+![fjqyxx3](https://github.com/user-attachments/assets/4272095e-00c2-429c-af60-5e79790ff5b5)
+此方式只适用于之后这样类似的文件比如从网上下载的内容等  
+如果之前的文件每次打开都这样一个一个取消太麻烦可以选择先将这些有弹窗警告的文件复制到虚拟机里面然后再粘贴回去这样即可全部恢复取消弹窗  
