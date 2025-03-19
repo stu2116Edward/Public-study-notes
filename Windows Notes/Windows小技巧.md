@@ -348,9 +348,9 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WidowsNT\CurrentVersion\NetworkList\Profil
 ipconfig /flushdns
 ```
 6. 使用第三方的工具清理（使用其默认的清理）
-DISM++工具下载地址：  
-https://github.com/Chuyu-Team/Dism-Multi-language
-HiBitUninstaller工具下载地址：
+- DISM++工具下载地址：  
+https://github.com/Chuyu-Team/Dism-Multi-language  
+- HiBitUninstaller工具下载地址：  
 https://www.ghxi.com/hibituninstaller.html  
 
 **最后清理完成之后不要忘记重启电脑**
