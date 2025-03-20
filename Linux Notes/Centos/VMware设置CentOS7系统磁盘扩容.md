@@ -57,6 +57,7 @@ df -h
      - 输入 `t` 设置分区类型，输入 `8e`（Linux LVM）。
      - 输入 `p` 查看分区信息，确认新分区已创建。
      - 输入 `w` 保存并退出。
+
 ![CO7cpkz9](https://github.com/user-attachments/assets/0febc4ca-bc09-42f1-b014-08538d6d41e8)  
 ![CO7cpkz10](https://github.com/user-attachments/assets/afeba173-f4a5-49d3-9c7d-4336cfd22864)  
 ![CO7cpkz11](https://github.com/user-attachments/assets/214e035d-4e54-4014-b897-d421d45e9f55)  
