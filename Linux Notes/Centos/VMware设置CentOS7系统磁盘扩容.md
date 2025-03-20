@@ -15,17 +15,29 @@
   3. 点击“扩展”按钮，等待系统自动完成扩展操作。
   4. 点击“确定”按钮，完成虚拟机磁盘的扩展。
 
+![CO7cpkz1](https://github.com/user-attachments/assets/499e3e9d-a768-4168-8a25-2dedd67388b9)  
+![CO7cpkz2](https://github.com/user-attachments/assets/1202ed42-43ad-4011-a5d4-65c75b9380f9)  
+![CO7cpkz3](https://github.com/user-attachments/assets/e6341880-2eee-4eee-8dd6-a18247d02e7d)  
+![CO7cpkz4](https://github.com/user-attachments/assets/5c3cf00a-f5b0-4fe5-9911-769e34cc0da6)  
+![CO7cpkz5](https://github.com/user-attachments/assets/81701be2-92ec-4c08-a4c6-916ce4d92dff)  
+
 
 ## **步骤 2：在 CentOS 系统中扩展磁盘容量**
 
 ### **1. 启动虚拟机**
 - **操作**：启动虚拟机，进入 CentOS 系统。
+- 查看磁盘大小：
+```bash
+df -h
+```
+![CO7cpkz6](https://github.com/user-attachments/assets/002f76eb-c6c7-4002-9222-a0b1765524dc)  
 
 ### **2. 查看磁盘分区信息**
 - **操作**：打开终端，输入以下命令查看磁盘分区信息：
   ```bash
   fdisk -l
   ```
+![CO7cpkz7](https://github.com/user-attachments/assets/0ab819eb-96c0-4774-8acf-66dadb19c45c)  
 
 ### **3. 创建新的分区**
 - **操作**：
@@ -33,6 +45,8 @@
      ```bash
      fdisk /dev/sda
      ```
+  ![CO7cpkz8](https://github.com/user-attachments/assets/7addf0ea-bb75-4df3-9bfb-31b24fca558e)  
+
   2. 按照以下步骤操作：
      - 输入 `p` 查看当前分区信息。
      - 输入 `n` 创建新的分区。
@@ -43,6 +57,10 @@
      - 输入 `t` 设置分区类型，输入 `8e`（Linux LVM）。
      - 输入 `p` 查看分区信息，确认新分区已创建。
      - 输入 `w` 保存并退出。
+![CO7cpkz9](https://github.com/user-attachments/assets/0febc4ca-bc09-42f1-b014-08538d6d41e8)  
+![CO7cpkz10](https://github.com/user-attachments/assets/afeba173-f4a5-49d3-9c7d-4336cfd22864)  
+![CO7cpkz11](https://github.com/user-attachments/assets/214e035d-4e54-4014-b897-d421d45e9f55)  
+![CO7cpkz12](https://github.com/user-attachments/assets/8a02a468-bd91-4a49-9497-9c88086eb1fc)  
 
 ### **4. 刷新分区信息**
 - **操作**：输入以下命令刷新分区信息：
@@ -55,12 +73,15 @@
   ```bash
   pvcreate /dev/sda3
   ```
+![CO7cpkz13](https://github.com/user-attachments/assets/6e856195-7db6-4773-beaf-a2139253cd0b)  
 
 ### **6. 将新分区添加到卷组**
 - **操作**：输入以下命令将新分区添加到卷组：
   ```bash
   vgextend centos /dev/sda3
   ```
+![CO7cpkz14](https://github.com/user-attachments/assets/62f77e6f-ed5a-4ae1-adae-db8c314e3af6)  
+
 
 ### **7. 查看卷组的详细信息**
 - **操作**：输入以下命令查看卷组的详细信息：
