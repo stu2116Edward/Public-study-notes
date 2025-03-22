@@ -130,3 +130,62 @@ ip a
 ![fnOS36](https://github.com/user-attachments/assets/0647400e-3a80-48d5-9efc-c2c5b2b960ee)  
 
 --End--
+
+## 在物理机上安装飞牛OS详细教程
+安装飞牛NAS必须要有一个有线网卡  
+也就是在安装过程中需要接入网线才能正常使用。（后续是否会支持无线网卡？应该会吧。）  
+首先需要准备：  
+- 一台旧电脑（物理机）用来安装飞牛OS
+- 一个U盘（4GB或以上就行）
+- 一台能正常使用的Windows电脑（其他系统的其实也可以）
+- 下载[飞牛OS](https://iso.liveupdate.fnnas.com/x86_64/trim/TRIM-0.8.41-756.iso)和烧录工具[Rufus](https://download.liveupdate.fnnas.com/x86_64/packages/rufus-4.0.exe)（工具使用UltraISO也是可以的，但Rufus更简单些）
+
+### 把飞牛OS镜像写进U盘
+1. 选择要写入的 U 盘  
+![wl_fnOS1](https://github.com/user-attachments/assets/bf41d5ce-45f5-4c31-8be2-0e1fc1742f5f)  
+把准备好的U盘插入到电脑，在Rufus上就会显示（这里需要备份好U盘里的数据，制作过程中会格式化U盘的哦！）  
+2. 选择下载好的镜像  
+![wl_fnOS2](https://github.com/user-attachments/assets/7e695da6-d840-4f4a-9437-823f4b470b9f)
+接着点击【开始】-选择以ISO镜像模式写入(推荐)-【OK】  
+检测完冲突进程之后，就会提示是否制作，然后点击【确定】  
+3. 进度条显示 “准备就绪” 即为完成，可拔出 U 盘  
+![wl_fnOS3](https://github.com/user-attachments/assets/63c09e08-876e-4655-9e94-fc6004a981b9)  
+点击【关闭】
+
+### 进入飞牛OS安装流程
+1. 插到准备安装飞牛OS的电脑上，电脑开机进入Bios调整启动项   
+按主机电源开机，开机同时快速按键盘热键进入boot 设备选择界面。不同设备主板进入boot页面的热键不同，**F2、F7、F8、F10、F11、F12、esc 、Delete** 键都有可能  
+
+2. 把启动项的第一个调整为U盘  
+![wl_fnOS4](https://github.com/user-attachments/assets/88492a2b-b6fd-43e7-8b5b-b843df0f9d27)
+
+按【F10】保存并重启  
+![wl_fnOS5](https://github.com/user-attachments/assets/647c8ecc-dace-4127-a7d5-5799e2a32a00)  
+
+3. 选择安装方式
+进入安装页面，推荐选择 **Graphical Install**（图形化安装流程），回车进入下一步  
+注意：  
+- 如果页面提示 “暂不支持在当前模式下安装。请前往BIOS关闭 Secure Boot 后重试”，请参考  [安装系统异常情况处理](https://help.fnnas.com/articles/fnosV1/start/install-os-fail.md) 中第 1 点
+- 如果在后续图形化安装步骤中遇到错误安装失败，请重启设备、在这一步选择 Rescuing Install（应急模式安装）重试。
+
+4. 接着就是安装流程了  
+流程和上门VMware安装的流程一样就不使用图片说明了  
+点击【下一步】  
+这里的空间建议按照系统要求配置哦！64GB的系统分区大小，4GB的Swap分区  
+
+> [!Note]
+注意：在 fnOS 上，系统将只安装在一块硬盘中。系统盘除系统分区以外的空间，可用于创建存储空间安装应用和存储文件。建议根据需要选择合适容量的 SSD 作为系统盘。
+
+点击【下一步】-【确定】（这个操作会格式化整个硬盘，请提前做好数据备份）  
+
+然后等待一小会儿  
+
+安装完成之后，点击【下一步】，**插上网线**  
+
+网络请选择DHCP  
+
+接着点击【保存】，拔掉U盘，然后点击【重启】  
+
+重启成功进入终端  
+
+到达这个终端界面就已经证明飞牛OS安装完成了!
