@@ -210,7 +210,8 @@ apt install ssh
 [Linux开启ssh并允许root登录](https://github.com/stu2116Edward/Public-study-notes/blob/main/Linux%20Notes/Linux%E5%BC%80%E5%90%AFssh%E5%B9%B6%E5%85%81%E8%AE%B8root%E7%99%BB%E5%BD%95.md)  
 
 - 关闭Ubuntu20.04使用过程中总是弹出检测到系统程序出现问题的弹窗提示  
-![cxwt1](https://github.com/user-attachments/assets/dec2392f-f8c6-468b-98ba-31ec3d61d3a9)  
+![cxwt1](https://github.com/user-attachments/assets/dec2392f-f8c6-468b-98ba-31ec3d61d3a9)
+
 **方法一**：  
 在终端输入以下指令：
 ```
