@@ -24,16 +24,21 @@
 ```bash
 sudo fdisk -l
 ```
+![ucpkr1](https://github.com/user-attachments/assets/0bd39954-1949-46d3-af0b-bce1e94667df)  
+
 或者：
 ```bash
 sudo lsblk
 ```
-   - 这个命令会列出所有硬盘及其分区信息，包括分区大小、类型等。
+![ucpkr2](https://github.com/user-attachments/assets/42ebf56a-c7d0-47aa-83d9-b5e70d4a183c)  
+这个命令会列出所有硬盘及其分区信息，包括分区大小、类型等。
+
 2. **查看磁盘使用情况**：输入以下命令查看磁盘使用情况：
 ```bash
 df -h
 ```
-   - 这个命令会显示已挂载分区的使用情况，包括总容量、已用空间、可用空间等。
+这个命令会显示已挂载分区的使用情况，包括总容量、已用空间、可用空间等。  
+![ucpkr3](https://github.com/user-attachments/assets/ae8db20a-cfb1-4fdf-8c33-80724c6b2392)  
 
 
 ## 三、分区操作
@@ -45,6 +50,8 @@ df -h
 ```bash
 sudo fdisk /dev/sda
 ```
+![ucpkr4](https://github.com/user-attachments/assets/0b1d0996-dbdd-4152-b762-c8dd90e6b5fd)  
+
 **操作步骤**：
    - 输入 `m` 查看菜单，了解可用命令。
    - 输入 `p` 查看当前分区表，确认当前没有分区。
@@ -60,6 +67,7 @@ sudo fdisk /dev/sda
    - 输入 `p` 打印分区表，确认新建的扩展分区
    - 输入 `w` 写入分区表并退出 fdisk 界面。
 
+![ucpkr5](https://github.com/user-attachments/assets/d21fd22f-8848-4a37-9f57-c30bc8c446f2)  
 
 #### 3. **格式化分区**：
 - 确认分区名称：使用 `fdisk -l` 或 `lsblk` 命令确认要格式化的分区名称，例如 `/dev/sda3`。
@@ -79,6 +87,9 @@ sudo mkfs.ext4 /dev/sda3
 sudo mkfs.xfs /dev/sda3
 ```
 
+![ucpkr6](https://github.com/user-attachments/assets/82453b0f-b5c7-42a7-bc5b-4a7025021ce1)  
+
+
 #### 4. **挂载分区**：
 - 创建挂载点：在根目录下新建一个文件夹，作为挂载点，例如：
 ```bash
@@ -89,15 +100,23 @@ sudo mkdir -p /mnt/new_disk1
 ```bash
 sudo mount /dev/sda3 /mnt/new_disk1
 ```
+
 - 查看挂载情况：输入以下命令查看挂载的磁盘：
 ```bash
 df -h
 ```
    - 确认 `/dev/sda3` 已正确挂载到 `/mnt/new_disk1`。
+
+![ucpkr7](https://github.com/user-attachments/assets/c8d43648-6620-4384-8fb3-b24e1ee3303c)  
+![ucpkr8](https://github.com/user-attachments/assets/120ab5a2-abbe-4f1c-9300-11f167405694)  
+
 - 重启系统以确保所有更改生效：
 ```bash
 sudo reboot
 ```
+
+![ucpkr9](https://github.com/user-attachments/assets/730305a6-4c48-465f-816b-a7f71cc358ed)  
+
 
 #### 5. **永久挂载**
 - 编辑 `/etc/fstab` 文件：使用文本编辑器（如 `vim` 或 `nano`）编辑 `/etc/fstab` 文件：
@@ -116,6 +135,9 @@ sudo vim /etc/fstab
      - `0`：表示该分区不需要被 `dump` 备份工具备份。
      - `2`：表示在启动时会检查文件系统（`1` 表示根分区，`2` 表示其他分区，`0` 表示不检查）。
 - 保存并退出文件：保存文件并退出编辑器。
+
+![ucpkr10](https://github.com/user-attachments/assets/db320703-cf9e-4015-98c5-b107783104fe)  
+
 
 #### 6. **删除分区**：
 - **1.确认分区编号**
@@ -152,6 +174,7 @@ sudo fdisk /dev/sda
 2. 输入要删除的分区编号（例如 `3`，表示删除 `/dev/sda3`）。
 3. 输入 `w`，保存更改并退出 `fdisk`。
 
+![ucpkr11](https://github.com/user-attachments/assets/349569e4-1e47-4a0e-b3f9-4434f34fe9e6)  
 
 - **5.更新内核分区表**  
 删除分区后，运行以下命令确保内核同步：
@@ -296,6 +319,9 @@ print free
 ```bash
 quit
 ```
+
+![ucpkr12](https://github.com/user-attachments/assets/6ee248c5-811f-4da0-8baa-7f85bd62c3b3)  
+
 调整文件系统大小：
 - 对于 ext4 文件系统：
 ```bash
@@ -305,6 +331,9 @@ sudo resize2fs /dev/sda5
 ```bash
 sudo xfs_growfs /mnt/new_disk1
 ```
+![ucpkr13](https://github.com/user-attachments/assets/3a3675f7-4dcf-44e1-a71e-52714c8c6eb0)  
+
+
 检查当前的挂载点:
 ```bash
 df -h
@@ -318,6 +347,8 @@ sudo mount -a
 df -h
 ```
 注意扩容完成之后无法再缩小分区，只能扩大分区。
+
+![ucpkr14](https://github.com/user-attachments/assets/5182a72e-d5ba-4c30-a819-5dc2c163bf02)  
 
 
 ### **常见错误及解决方法**  
