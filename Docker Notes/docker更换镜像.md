@@ -75,13 +75,13 @@ https://dockerpull.pw
 https://docker.hlmirror.com
 ```
 ```
-docker.imgdb.de
+https://docker.imgdb.de
 ```
 ```
-docker.m.daocloud.io
+https://docker.m.daocloud.io
 ```
 ```
-docker.melikeme.cn
+https://docker.melikeme.cn
 ```
 
 ## 登录私人Docker Hub仓库：
