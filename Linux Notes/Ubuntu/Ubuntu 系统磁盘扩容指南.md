@@ -206,7 +206,7 @@ primary：主分区
 extended：扩展分区
 logical：逻辑分区
 
-先对扩展分区扩容：
+#### 先对扩展分区扩容：
 ```bash
 resizepart 2
 ```
@@ -238,7 +238,8 @@ print free
  5    539MB   42.9GB  42.4GB  logical   ext4
       42.9GB  53.7GB  10.7GB            可用空间
 </pre>
-再对逻辑分区扩容：
+
+#### 再对逻辑分区扩容：
 ```bash
 resizepart 5
 ```
