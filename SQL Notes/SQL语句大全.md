@@ -2,6 +2,12 @@
 
 ## DDL(Data Definition Language)数据定义语言
 
+**连接数据库**
+使用以下命令连接到 MySQL 数据库：
+```bash
+mysql -u 用户名 -p -h 主机名 -P 端口号
+```
+
 ### 一、操作库
 
 ```sql
