@@ -1,4 +1,4 @@
-# 史上超强最常用SQL语句大全
+# 常用SQL语句大全
 
 ## DDL(Data Definition Language)数据定义语言
 
@@ -20,17 +20,19 @@ mysql -u root -p
 
 ```sql
 -- 创建库
-CREATE DATABASE db1;
+CREATE DATABASE 数据库名;
 -- 创建库，如果不存在则创建
-CREATE DATABASE IF NOT EXISTS db1;
+CREATE DATABASE IF NOT EXISTS 数据库名;
 -- 查看所有数据库
 SHOW DATABASES;
+-- 进入某个数据库
+USE 数据库名;
 -- 查看某个数据库的定义信息 
-SHOW CREATE DATABASE db1; 
+SHOW CREATE DATABASE 数据库名; 
 -- 修改数据库字符信息
-ALTER DATABASE db1 CHARACTER SET utf8; 
+ALTER DATABASE 数据库名 CHARACTER SET utf8; 
 -- 删除数据库
-DROP DATABASE db1;
+DROP DATABASE 数据库名;
 ```
 
 ### 二、操作表
