@@ -74,6 +74,15 @@ https://dockerpull.pw
 ```
 https://docker.hlmirror.com
 ```
+```
+docker.imgdb.de
+```
+```
+docker.m.daocloud.io
+```
+```
+docker.melikeme.cn
+```
 
 ## 登录私人Docker Hub仓库：
 ```
