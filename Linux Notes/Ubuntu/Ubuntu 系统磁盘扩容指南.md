@@ -343,7 +343,7 @@ sudo lsblk -f
 这个命令会列出所有分区及其文件系统类型，帮助你确认分区状态。
 
 
-### 八、验证和清理
+### 四、验证和清理
 1. **检查文件系统状态**：在扩容操作完成后，建议检查文件系统状态（建议在未挂载时进行）：
 ```bash
 sudo umount /mnt/new_disk
@@ -356,7 +356,7 @@ sudo mount /dev/sda3 /mnt/new_disk
 sudo rm -rf /tmp/*
 ```
 
-### 九、备份数据
+### 五、备份数据
 在进行任何磁盘操作之前，建议备份重要数据，以防操作过程中出现意外导致数据丢失。可以使用以下命令备份数据：
 ```bash
 sudo tar -czvf backup.tar.gz /path/to/important/data
