@@ -69,7 +69,7 @@ sudo fdisk /dev/sda
 
 ![ucpkr5](https://github.com/user-attachments/assets/d21fd22f-8848-4a37-9f57-c30bc8c446f2)  
 
-#### 通知内核重新读取分区表
+#### 2. **通知内核重新读取分区表**
 如果格式化分区失败的话可以尝试通知内核重新读取分区表：
 ```
 sudo partprobe /dev/sda
