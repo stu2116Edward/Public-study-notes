@@ -69,6 +69,12 @@ sudo fdisk /dev/sda
 
 ![ucpkr5](https://github.com/user-attachments/assets/d21fd22f-8848-4a37-9f57-c30bc8c446f2)  
 
+#### 通知内核重新读取分区表
+如果格式化分区失败的话可以尝试通知内核重新读取分区表：
+```
+sudo partprobe /dev/sda
+```
+
 #### 3. **格式化分区**：
 - 确认分区名称：使用 `fdisk -l` 或 `lsblk` 命令确认要格式化的分区名称，例如 `/dev/sda3`。
 - 查看文件系统类型：在格式化之前，可以查看当前分区的文件系统类型（如果已经格式化过）：
