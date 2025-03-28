@@ -127,7 +127,7 @@ blkid
 ```
 将 /dev/sda3 的 UUID 复制出来，然后写入到/etc/fstab中去:  
 ```bash
-echo "UUID=e943fbb7-020a-4c64-a48a-2597eb2496df /sda3 ext4 defaults 0 2" >> /etc/fstab
+echo "UUID=e943fbb7-020a-4c64-a48a-2597eb2496df /mnt/new_disk1 ext4 defaults 0 0" >> /etc/fstab
 ```
 或者编辑 `/etc/fstab` 文件：
 ```bash
@@ -135,15 +135,15 @@ sudo vim /etc/fstab
 ```
 - 添加挂载信息：在文件中添加一行，格式为：
 ```plaintext
-UUID=e943fbb7-020a-4c64-a48a-2597eb2496df /sda3 ext4 defaults 0 2
+UUID=e943fbb7-020a-4c64-a48a-2597eb2496df /mnt/new_disk1 ext4 defaults 0 0
 ```
    - **字段说明**：
-     - `/dev/sda3`：分区设备名。
+     - `UUID`：分区唯一标识符。
      - `/mnt/new_disk1`：挂载点路径。
      - `ext4`：文件系统类型（根据实际格式化类型填写，如 `xfs`）。
      - `defaults`：默认挂载选项，适用于大多数情况。
      - `0`：表示该分区不需要被 `dump` 备份工具备份。
-     - `2`：表示在启动时会检查文件系统（`1` 表示根分区，`2` 表示其他分区，`0` 表示不检查）。
+     - `0`：表示在启动时会检查文件系统（`1` 表示根分区，`2` 表示其他分区，`0` 表示不检查）。
 - 保存并退出文件：保存文件并退出编辑器。
 
 ![ucpkr10](https://github.com/user-attachments/assets/db320703-cf9e-4015-98c5-b107783104fe)  
