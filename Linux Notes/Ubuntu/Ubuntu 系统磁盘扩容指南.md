@@ -115,14 +115,7 @@ df -h
 
 ![ucpkr7](https://github.com/user-attachments/assets/c8d43648-6620-4384-8fb3-b24e1ee3303c)  
 ![ucpkr8](https://github.com/user-attachments/assets/120ab5a2-abbe-4f1c-9300-11f167405694)  
-
-- 重启系统以确保所有更改生效：
-```bash
-sudo reboot
-```
-
 ![ucpkr9](https://github.com/user-attachments/assets/730305a6-4c48-465f-816b-a7f71cc358ed)  
-
 
 #### 5. **永久挂载**
 - 编辑 `/etc/fstab` 文件：使用文本编辑器（如 `vim` 或 `nano`）编辑 `/etc/fstab` 文件：
@@ -144,6 +137,10 @@ sudo vim /etc/fstab
 
 ![ucpkr10](https://github.com/user-attachments/assets/db320703-cf9e-4015-98c5-b107783104fe)  
 
+- 重启系统以确保所有更改生效：
+```bash
+sudo reboot
+```
 
 #### 6. **删除分区**：
 - **1.确认分区编号**
