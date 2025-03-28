@@ -125,7 +125,7 @@ df -h
 ```bash
 blkid
 ```
-将 /dev/vdb1 的 UUID 复制出来，然后写入到/etc/fstab中去:
+将 /dev/sda3 的 UUID 复制出来，然后写入到/etc/fstab中去:  
 ```bash
 echo "UUID=e943fbb7-020a-4c64-a48a-2597eb2496df /sda3 ext4 defaults 0 2" >> /etc/fstab
 ```
