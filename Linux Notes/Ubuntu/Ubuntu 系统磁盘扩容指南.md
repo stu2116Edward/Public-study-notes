@@ -121,24 +121,16 @@ df -h
 ![ucpkr9](https://github.com/user-attachments/assets/730305a6-4c48-465f-816b-a7f71cc358ed)  
 
 #### 5. **永久挂载**
-- 查看分区的 UUID：
-```bash
-blkid
-```
-将 /dev/sda3 的 UUID 复制出来，然后写入到/etc/fstab中去:  
-```bash
-echo "UUID=e943fbb7-020a-4c64-a48a-2597eb2496df /mnt/new_disk1 ext4 defaults 0 0" >> /etc/fstab
-```
-或者编辑 `/etc/fstab` 文件：
+编辑 `/etc/fstab` 文件：
 ```bash
 sudo vim /etc/fstab
 ```
 - 添加挂载信息：在文件中添加一行，格式为：
 ```plaintext
-UUID=e943fbb7-020a-4c64-a48a-2597eb2496df /mnt/new_disk1 ext4 defaults 0 0
+/dev/sda3 /mnt/new_disk1 ext4 defaults 0 0
 ```
    - **字段说明**：
-     - `UUID`：分区唯一标识符。
+     - `/dev/sda3`：分区设备名。
      - `/mnt/new_disk1`：挂载点路径。
      - `ext4`：文件系统类型（根据实际格式化类型填写，如 `xfs`）。
      - `defaults`：默认挂载选项，适用于大多数情况。
@@ -162,6 +154,10 @@ sudo fdisk -l
 或者：
 ```bash
 sudo lsblk
+```
+查看分区的 UUID：
+```bash
+blkid
 ```
 这些命令会列出所有分区及其详细信息，包括分区编号、大小和挂载点。
 
