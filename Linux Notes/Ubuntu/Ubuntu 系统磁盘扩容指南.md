@@ -121,13 +121,21 @@ df -h
 ![ucpkr9](https://github.com/user-attachments/assets/730305a6-4c48-465f-816b-a7f71cc358ed)  
 
 #### 5. **永久挂载**
-- 编辑 `/etc/fstab` 文件：使用文本编辑器（如 `vim` 或 `nano`）编辑 `/etc/fstab` 文件：
+- 查看分区的 UUID：
+```bash
+blkid
+```
+将 /dev/vdb1 的 UUID 复制出来，然后写入到/etc/fstab中去:
+```bash
+echo "UUID=e943fbb7-020a-4c64-a48a-2597eb2496df /sda3 ext4 defaults 0 2" >> /etc/fstab
+```
+或者编辑 `/etc/fstab` 文件：
 ```bash
 sudo vim /etc/fstab
 ```
 - 添加挂载信息：在文件中添加一行，格式为：
 ```plaintext
-/dev/sda3 /mnt/new_disk1 ext4 defaults 0 2
+UUID=e943fbb7-020a-4c64-a48a-2597eb2496df /sda3 ext4 defaults 0 2
 ```
    - **字段说明**：
      - `/dev/sda3`：分区设备名。
