@@ -81,7 +81,10 @@ sudo partprobe /dev/sda
 ```bash
 sudo lsblk -f
 ```
-
+或:
+```bash
+sudo blkid /dev/sda3
+```
 - 格式化分区：输入以下命令进行格式化（以 ext4 文件系统为例）：  
    ext4主要处理小文件：
 ```bash
