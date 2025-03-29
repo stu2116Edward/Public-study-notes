@@ -120,22 +120,33 @@ df -h
 ![ucpkr8](https://github.com/user-attachments/assets/120ab5a2-abbe-4f1c-9300-11f167405694)  
 ![ucpkr9](https://github.com/user-attachments/assets/730305a6-4c48-465f-816b-a7f71cc358ed)  
 
-#### 5. **永久挂载**
-编辑 `/etc/fstab` 文件：
+#### 5. **设置开机自动挂载**
+查看分区的 UUID：
+```bash
+blkid
+```
+记住`/dev/sdb1`的 UUID  
+使用文本编辑器打开 `/etc/fstab` 文件  
 ```bash
 sudo vim /etc/fstab
 ```
-- 添加挂载信息：在文件中添加一行，格式为：
+在fstab文件中添加：
 ```plaintext
-/dev/sda3 /mnt/new_disk1 ext4 defaults 0 0
+UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx /mnt/mynewdisk ext4 defaults 0 0
 ```
-   - **字段说明**：
-     - `/dev/sda3`：分区设备名。
-     - `/mnt/new_disk1`：挂载点路径。
-     - `ext4`：文件系统类型（根据实际格式化类型填写，如 `xfs`）。
-     - `defaults`：默认挂载选项，适用于大多数情况。
-     - `0`：表示该分区不需要被 `dump` 备份工具备份。
-     - `0`：表示在启动时会检查文件系统（`1` 表示根分区，`2` 表示其他分区，`0` 表示不检查）。
+或
+```plaintext
+/dev/sdb1 /mnt/mynewdisk ext4 defaults 0 0
+```
+后保存退出  
+解释说明：
+- `UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`：分区的 UUID（唯一标识符），可以使用 `blkid` 命令获取。
+- `/dev/sdb1`：新分区的设备路径。
+- `/mnt/mynewdisk`：挂载点。
+- `ext4`：文件系统类型（根据实际格式化类型填写，如 `xfs`）。
+- `defaults`：默认挂载选项。
+- `0`：表示该分区不需要被 `dump` 备份工具备份。
+- `0`：表示在启动时会检查文件系统（1 表示根分区，2 表示其他分区，0 表示不检查）。
 - 保存并退出文件：保存文件并退出编辑器。
 
 ![ucpkr10](https://github.com/user-attachments/assets/db320703-cf9e-4015-98c5-b107783104fe)  
