@@ -350,7 +350,7 @@ sudo resize2fs /dev/sda5
 ```
 - 对于 xfs 文件系统：
 ```bash
-sudo xfs_growfs /mnt/new_disk1
+sudo xfs_growfs /mnt/sda5
 ```
 ![ucpkr13](https://github.com/user-attachments/assets/3a3675f7-4dcf-44e1-a71e-52714c8c6eb0)  
 
