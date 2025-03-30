@@ -1,25 +1,128 @@
 # Ubuntu 系统磁盘拓展指南
 
-## 一、分区基本概念
+## 基本概念和术语
+
+### 分区的基本概念
 无论是 Linux 还是 Windows，都要把硬盘分成一块一块的区域来管理，Linux中这些区域就叫“分区”，Windows中叫卷（Volume）。就好比把一个大房间分成几个小房间，每个小房间可以放不同的东西。
 
-- **主分区**：独立的分区，通常对应磁盘的第一个分区，一般`用于安装系统`，如 C 盘。一块硬盘最多可以有 4 个主分区。
-- **扩展分区**：`用于容纳逻辑分区`，本身不能直接使用。一块硬盘最多只能有一个扩展分区。
-- **逻辑分区**：在扩展分区上划分的分区，数量没有限制，`用于存储数据`，如 D 盘、E 盘等。
+- 主分区
+主分区是硬盘上的独立分区，通常用于安装操作系统的核心组件。
+例如：  
+  - 根分区（/）：包含操作系统的所有基本文件和目录，是系统启动和运行的基础。  
+  - 启动分区（/boot）：包含启动 Linux 系统所需的关键文件，如内核文件（vmlinuz）和启动加载器（grub）的相关文件。单独划分 /boot 分区可以提高系统的安全性和灵活性。  
 
-**对比：Windows卷与Linux分区**：
+- 扩展分区
+扩展分区本身不能直接使用，它的主要作用是容纳逻辑分区。通过创建扩展分区，用户可以在硬盘上创建更多的逻辑分区，从而突破主分区数量的限制（一块硬盘最多只能有 4 个主分区）。扩展分区是创建逻辑分区的“容器”。  
 
-| 特性          | Windows卷（Volume） | Linux分区（Partition） |
+- 逻辑分区
+逻辑分区是在扩展分区上划分的分区，数量没有限制。它们通常用于存储用户数据或其他需要独立存储空间的目录。
+例如：  
+  - 用户数据分区（/home）：用于存储用户数据，包括个人文件和配置文件。单独划分 /home 分区可以保护用户数据，即使系统分区出现问题，用户数据也不会丢失。  
+  - 临时文件分区（/tmp）：用于存储临时文件，这些文件在系统重启时通常会被清空。单独划分 /tmp 分区可以避免临时文件占用过多空间，影响系统性能。  
+  - 交换分区（/swap）：是 Linux 系统的虚拟内存分区，当系统的物理内存不足时，交换分区会被用作临时存储空间。  
+
+
+**Windows 卷 vs Linux 分区对比**
+
+| 特性          | Windows 卷 (Volume) | Linux 分区 (Partition) |
 |---------------|---------------------|------------------------|
-| 术语          | 卷（Volume）        | 分区（Partition）      |
+| 术语          | 卷 (Volume)         | 分区 (Partition)       |
 | 主分区        | 主卷                | 主分区                 |
 | 扩展分区      | 扩展卷              | 扩展分区               |
 | 逻辑分区      | 逻辑卷              | 逻辑分区               |
-| 格式化        | NTFS、FAT32等       | ext4、xfs、FAT32等     |
-| 挂载方式      | 分配驱动器号（C:, D:等） | 挂载到挂载点（如`/mnt`） |
-| 管理工具      | 磁盘管理（Disk Management） | `fdisk`、`parted`、`gparted`等 |
+| 文件系统      | NTFS/FAT32/exFAT    | ext4/xfs/btrfs         |
+| 挂载方式      | 驱动器号 (C:, D:等) | 挂载点 (如 `/mnt`)     |
+| 扩展性        | 需转换为动态磁盘    | 原生支持 LVM 动态扩展  |
+| 管理工具      | 磁盘管理            | `fdisk`/`parted`/`gparted` |
 
-## 二、查看分区情况
+传统分区结构示例：  
+<pre>
+┌─────────────┐
+│  主分区1    │ ← /boot
+├─────────────┤
+│  主分区2    │ ← /
+├─────────────┤
+│  扩展分区   │
+│ ┌─────────┐ │
+│ │逻辑分区1│ │ ← /home
+│ ├─────────┤ │
+│ │逻辑分区2│ │ ← /swap
+│ └─────────┘ │
+└─────────────┘
+</pre>
+
+
+
+### LVM基本概念和术语
+1. 物理存储介质：  
+指的是物理的硬盘，在`/dev`目录下看到的`sda`，`sdb`，`sdc`，`hda`，`hdb`，`hdc`等  
+
+2. 分区：
+分区是硬盘上的一个独立区域，用于存储数据，分区可以被初始化为物理卷（PV）  
+
+2. 物理卷（Pisical Volume）：  
+指的是物理硬盘上的分区或逻辑上与磁盘分区具有相同功能能的设备，是LVM的基本存储块，但和分区来比，却包含了与LVM管理相关的参数。这个就是前面讲的存储池  
+
+3. 卷组（Volume Group）：  
+LVM的卷组类似于物理硬盘，卷组上边可以建立多个虚拟的“分区”，LVM卷组由一个或多个物理卷组成  
+
+4. 逻辑卷（Logical Volume）：  
+LVM的逻辑卷类似于非LVM系统中的硬盘分区，在逻辑卷上边可以建立文件系统，用于mount到不同的挂载点，提升分区空间（这是真正跟用户打交道的部分）  
+
+5. PE （Physical Extent）  
+每一个物理卷被划分为一个个的基本存储单元，每一个PE都具有唯一的编址（这个东西类似于物理硬盘上的磁盘地址）。PE的大小默认为4MB  
+
+6. LE（Logical Extent）  
+每一个逻辑卷也被划分为一个个的基本存储单元，每一个LE也具有一个唯一的编址。在同一个卷组中，LE和PE的大小是相等的  
+
+综上所述：一个或者多个物理硬盘上都可以划分出一个或者多个LVM分区，然后这些分区可以组成一个物理卷（PV），形成一个存储池。用 户把这个存储池划分出来一个或者多个逻辑卷（LV），挂载到不同的分区上去使用，这个就是LVM的基本原理，也是建立LVM的过程  
+
+LVM 的层级关系图:  
+```mermaid
+graph TD
+    A[物理硬盘] --> B[分区]
+    B -->|pvcreate| C[物理卷 PV]
+    C -->|vgcreate| D[卷组 VG]
+    D -->|lvcreate| E[逻辑卷 LV]
+    E -->|mkfs| F[文件系统]
+    F -->|mount| G[挂载点]
+```
+传统分区 vs LVM 结构对比:
+<pre>
+# 传统分区
+┌─────────────┐
+│  /dev/sda1  │ ← /boot (固定大小)
+├─────────────┤
+│  /dev/sda2  │ ← / (无法动态扩展)
+└─────────────┘
+
+# LVM结构
+┌─────────────┐     ┌─────────────┐
+│  PV(sda1)   │     │  PV(sdb1)   │
+└─────────────┘     └─────────────┘
+        ↓               ↓
+        └───────────────┘
+                ↓
+           [卷组 VG] ← 可动态添加PV
+                ↓
+        ┌───────┴───────┐
+        ↓               ↓
+┌─────────────┐ ┌─────────────┐
+│ LV(root)    │ │ LV(home)    │ ← 可在线扩展
+└─────────────┘ └─────────────┘
+</pre>
+关键优势对比：
+
+| 特性          | 传统分区 (Traditional Partitioning) | LVM (Logical Volume Management) |
+|---------------|-------------------------------------|----------------------------------|
+| 扩展性        | 固定大小，难以调整                   | 动态调整，灵活扩展               |
+| 多磁盘管理    | 独立管理，每块磁盘单独分区           | 统一存储池，整合多块磁盘         |
+| 快照功能      | 不支持                               | 支持，可创建数据快照             |
+| 复杂度        | 操作简单，易于上手                   | 需要学习相关概念，操作稍复杂     |
+| 适用场景      | 适合简单分区需求                     | 适合需要灵活扩展和管理的场景     |
+
+
+## 查看分区情况
 1. **查看分区信息**：打开终端，输入以下命令查看分区情况：
 ```bash
 sudo fdisk -l
@@ -41,9 +144,16 @@ df -h
 ![ucpkr3](https://github.com/user-attachments/assets/ae8db20a-cfb1-4fdf-8c33-80724c6b2392)  
 
 
-## 三、分区操作
+## 分区操作
+
 ### 创建新分区
-***这里的操作类似与在Windows系统中创建新的卷***  
+
+这里我在原来磁盘的剩余空间中实现新建扩展分区并在扩展分区中创建逻辑分区并挂载到指定位置实现的扩容操作  
+如果是新加一块磁盘可能需要执行下面的操作在进行扩容操作  
+首先要扫描新硬件  
+```bash
+echo "- - -" > /sys/class/scsi_host/host0/scan
+```
 
 #### 1. **配置分区工具**：
 进入分区工具：
@@ -371,8 +481,7 @@ df -h
 
 ![ucpkr14](https://github.com/user-attachments/assets/5182a72e-d5ba-4c30-a819-5dc2c163bf02)  
 
-
-### **常见错误及解决方法**  
+#### **常见错误及解决方法**  
 如果分区表损坏，可以使用 `parted` 重新创建分区表：
 ```bash
 sudo parted /dev/sda
@@ -382,6 +491,217 @@ sudo parted /dev/sda
 mklabel msdos
 ```
 这将创建一个新的 DOS 分区表，覆盖旧的分区表
+
+
+###  新增磁盘使用LVM扩容
+
+1. 先安装 LVM 工具
+```bash
+sudo apt update
+sudo apt install lvm2
+```
+
+2. 扫描新硬件
+```bash
+echo "- - -" > /sys/class/scsi_host/host0/scan
+```
+
+3. 找出你将要使用的磁盘：  
+```bash
+sudo fdisk -l
+```
+或
+```bash
+sudo lsblk
+```
+
+4. 使用 fdisk 命令创建需要合并的分区：
+```bash
+sudo fdisk /dev/sda
+```
+```bash
+sudo fdisk /dev/sdb
+```
+步骤:  
+- `n` = 创建新分区  
+- `p` = 创建主分区  
+- `1` = 成为磁盘上的首个分区  
+输入两次  enter 键扩展到使用所有可用的空闲空间  
+
+更改分区类型：
+- `t` = 更改分区类型  
+- `8e` = 更改为 LVM 分区类型  
+
+核实信息并写入硬盘：
+- `p` = 查看分区设置
+- `w` = 写入到磁盘
+
+5. 通知内核重新读取分区表：
+```bash
+sudo partprobe /dev/sda
+```
+```bash
+sudo partprobe /dev/sdb
+```
+
+6. 将新分区初始化为物理卷（PV）
+```bash
+sudo pvcreate /dev/sda3
+```
+```bash
+sudo pvcreate /dev/sdb1
+```
+如果想要取消则输入：
+```bash
+sudo pvremove /dev/sdb1
+```
+查看物理卷（PV）信息
+```bash
+sudo pvdisplay
+```
+或
+```bash
+pvs
+```
+
+7. 确认卷组名称  
+在执行 vgextend 之前，确认系统中存在的卷组名称：
+```bash
+sudo vgdisplay
+```
+或
+```bash
+vgs
+```
+如果系统中没有卷组，您需要创建一个新的卷组。如果存在卷组，记下卷组的名称  
+
+8. 创建新的卷组(如果卷组不存在)  
+命令格式如下：
+```bash
+sudo vgcreate <卷组名> <物理卷设备>
+```
+例如：
+```bash
+sudo vgcreate ubuntu-vg /dev/sda3
+```
+如果要删除卷组：
+```bash
+sudo vgremove <卷组名>
+```
+例如：
+```bash
+sudo vgremove ubuntu-vg
+```
+
+9. 将新物理卷加入卷组（VG）
+```bash
+sudo vgextend ubuntu-vg /dev/sdb1
+```
+如果想要取消则输入：
+```bash
+sudo vgreduce ubuntu-vg /dev/sdb1
+```
+查看vg的扩容前后对比
+```bash
+sudo vgdisplay
+```
+或
+```bash
+vgs
+```
+
+10. 创建逻辑卷（LV）  
+使用所有可用空间创建逻辑卷
+```bash
+sudo lvcreate -l +100%FREE -n root ubuntu-vg
+```
+- `lvcreate`：用于创建逻辑卷的命令
+- `-l +100%FREE`：指定逻辑卷的大小。-l 表示基于物理扩展（PE）的数量来分配空间，+100%FREE 表示使用卷组中所有可用的空闲空间
+- `-n root`：指定逻辑卷的名称为 root
+- `ubuntu-vg`：指定卷组的名称
+
+指定固定大小创建逻辑卷
+```bash
+sudo lvcreate -L 20G -n root ubuntu-vg
+```
+- `-L 20G`：指定逻辑卷的大小为 20GB。
+- `-n root`：指定逻辑卷的名称为 root。
+- `ubuntu-vg`：卷组的名称。
+
+删除逻辑卷
+在删除逻辑卷之前，必须确保它没有被挂载:
+```bash
+sudo umount /dev/ubuntu-vg/root
+```
+运行以下命令删除逻辑卷：
+```bash
+sudo lvremove /dev/ubuntu-vg/root
+```
+
+11. 格式化逻辑卷
+对于 ext4 文件系统：
+```bash
+sudo mkfs.ext4 /dev/ubuntu-vg/root
+```
+对于 XFS 文件系统：
+```bash
+sudo mkfs.xfs /dev/ubuntu-vg/root
+```
+
+12. 挂载逻辑卷
+```bash
+sudo mkdir -p /mnt/newlv
+sudo mount /dev/ubuntu-vg/root /mnt/newlv
+```
+
+13. 扩展逻辑卷（LV）
+检查LV路径:
+```bash
+sudo lvdisplay
+```
+或
+```bash
+lvs
+```
+假设需要扩展的逻辑卷路径为 `/dev/ubuntu-vg/root` 将其扩展到使用所有可用空间：
+```bash
+sudo lvextend -l +100%FREE /dev/ubuntu-vg/root
+```
+- `-l`：指定扩展的大小基于物理扩展（PE）的数量。
+- `+100%FREE`：表示将逻辑卷扩展到使用所有可用的空闲空间。
+- `/dev/ubuntu-vg/root`：目标`逻辑卷`的路径。
+
+使用 -L 参数（指定固定大小）：
+```bash
+sudo lvextend -L +20G /dev/ubuntu-vg/root
+```
+- `-L`：指定扩展的大小为一个固定的值。
+- `+20G`：表示将逻辑卷的大小增加 20GB。如果需要指定其他单位，可以使用 M（兆字节）、G（吉字节）、T（太字节）等。
+- `/dev/ubuntu-vg/root`：目标逻辑卷的路径。
+
+14. 刷新逻辑卷（LV）的空间，使其生效
+```bash
+lvscan
+```
+
+15. 调整文件系统大小  
+对于 ext4 文件系统：
+```bash
+sudo resize2fs /dev/ubuntu-vg/root
+```
+对于 XFS 文件系统：
+```bash
+sudo xfs_growfs /dev/ubuntu-vg/root
+```
+
+16. 验证扩容结果
+```bash
+df -h
+```
+```bash
+sudo lsblk
+```
+
 
 ### 注意事项
 1. **备份数据**
@@ -418,7 +738,7 @@ sudo lsblk -f
 这个命令会列出所有分区及其文件系统类型，帮助你确认分区状态。
 
 
-### 四、验证和清理
+### 验证和清理
 1. **检查文件系统状态**：在扩容操作完成后，建议检查文件系统状态（建议在未挂载时进行）：
 ```bash
 sudo umount /mnt/new_disk
@@ -431,7 +751,7 @@ sudo mount /dev/sda3 /mnt/new_disk
 sudo rm -rf /tmp/*
 ```
 
-### 五、备份数据
+### 备份数据
 在进行任何磁盘操作之前，建议备份重要数据，以防操作过程中出现意外导致数据丢失。可以使用以下命令备份数据：
 ```bash
 sudo tar -czvf backup.tar.gz /path/to/important/data
