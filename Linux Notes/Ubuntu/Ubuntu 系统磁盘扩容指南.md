@@ -494,19 +494,26 @@ mklabel msdos
 
 
 ###  新增磁盘使用LVM扩容
+添加新的硬盘：  
+![ulvm1](https://github.com/user-attachments/assets/4daf640a-5c39-4ad3-b252-c4f0128253c0)  
+![ulvm2](https://github.com/user-attachments/assets/81174432-6ebb-47a1-9c2e-2b30aa34a6fd)  
+![ulvm3](https://github.com/user-attachments/assets/65f0ce69-8af9-46e9-a9b4-958c228882b5)  
+![ulvm4](https://github.com/user-attachments/assets/d8c4a0ae-6525-4051-9d3a-2d336d5045d3)  
+![ulvm5](https://github.com/user-attachments/assets/efc48dfa-70fc-4a38-ad66-15e1359e7172)  
 
-1. 先安装 LVM 工具
+#### 1. 先安装 LVM 工具
 ```bash
 sudo apt update
 sudo apt install lvm2
 ```
 
-2. 扫描新硬件
+#### 2. 扫描新硬件
 ```bash
 echo "- - -" > /sys/class/scsi_host/host0/scan
 ```
+![ulvm6](https://github.com/user-attachments/assets/2e00140f-a0f4-4aa8-8b3c-ecb9a5363846)  
 
-3. 找出你将要使用的磁盘：  
+#### 3. 找出你将要使用的磁盘：  
 ```bash
 sudo fdisk -l
 ```
@@ -515,7 +522,7 @@ sudo fdisk -l
 sudo lsblk
 ```
 
-4. 使用 fdisk 命令创建需要合并的分区：
+#### 4. 使用 fdisk 命令创建需要合并的分区：
 ```bash
 sudo fdisk /dev/sda
 ```
@@ -536,7 +543,10 @@ sudo fdisk /dev/sdb
 - `p` = 查看分区设置
 - `w` = 写入到磁盘
 
-5. 通知内核重新读取分区表：
+![ulvm7](https://github.com/user-attachments/assets/2dc6faa5-eaea-4e26-bce8-1163372c7238)  
+![ulvm8](https://github.com/user-attachments/assets/7ca0e053-216f-4267-a1cc-9add609e573e)  
+
+#### 5. 通知内核重新读取分区表：
 ```bash
 sudo partprobe /dev/sda
 ```
@@ -544,7 +554,7 @@ sudo partprobe /dev/sda
 sudo partprobe /dev/sdb
 ```
 
-6. 将新分区初始化为物理卷（PV）
+#### 6. 将新分区初始化为物理卷（PV）
 ```bash
 sudo pvcreate /dev/sda3
 ```
@@ -563,8 +573,9 @@ sudo pvdisplay
 ```bash
 pvs
 ```
+![ulvm9](https://github.com/user-attachments/assets/a4523557-4dff-4922-a141-1266ce4591a0)  
 
-7. 确认卷组名称  
+#### 7. 确认卷组名称  
 在执行 vgextend 之前，确认系统中存在的卷组名称：
 ```bash
 sudo vgdisplay
@@ -575,7 +586,7 @@ vgs
 ```
 如果系统中没有卷组，您需要创建一个新的卷组。如果存在卷组，记下卷组的名称  
 
-8. 创建新的卷组(如果卷组不存在)  
+#### 8. 创建新的卷组(如果卷组不存在)  
 命令格式如下：
 ```bash
 sudo vgcreate <卷组名> <物理卷设备>
@@ -592,8 +603,9 @@ sudo vgremove <卷组名>
 ```bash
 sudo vgremove ubuntu-vg
 ```
+![ulvm10](https://github.com/user-attachments/assets/692d372c-552c-4de4-a90e-de3dc17318a7)  
 
-9. 将新物理卷加入卷组（VG）
+#### 9. 将新物理卷加入卷组（VG）
 ```bash
 sudo vgextend ubuntu-vg /dev/sdb1
 ```
@@ -609,8 +621,9 @@ sudo vgdisplay
 ```bash
 vgs
 ```
+![ulvm11](https://github.com/user-attachments/assets/2ecfbe03-8bbd-4455-a64d-861dbd451643)
 
-10. 创建逻辑卷（LV）  
+#### 10. 创建逻辑卷（LV）  
 使用所有可用空间创建逻辑卷
 ```bash
 sudo lvcreate -l +100%FREE -n root ubuntu-vg
@@ -638,7 +651,7 @@ sudo umount /dev/ubuntu-vg/root
 sudo lvremove /dev/ubuntu-vg/root
 ```
 
-11. 格式化逻辑卷
+#### 11. 格式化逻辑卷
 对于 ext4 文件系统：
 ```bash
 sudo mkfs.ext4 /dev/ubuntu-vg/root
@@ -648,13 +661,13 @@ sudo mkfs.ext4 /dev/ubuntu-vg/root
 sudo mkfs.xfs /dev/ubuntu-vg/root
 ```
 
-12. 挂载逻辑卷
+#### 12. 挂载逻辑卷
 ```bash
 sudo mkdir -p /mnt/newlv
 sudo mount /dev/ubuntu-vg/root /mnt/newlv
 ```
 
-13. 扩展逻辑卷（LV）
+#### 13. 扩展逻辑卷（LV）
 检查LV路径:
 ```bash
 sudo lvdisplay
@@ -679,12 +692,12 @@ sudo lvextend -L +20G /dev/ubuntu-vg/root
 - `+20G`：表示将逻辑卷的大小增加 20GB。如果需要指定其他单位，可以使用 M（兆字节）、G（吉字节）、T（太字节）等。
 - `/dev/ubuntu-vg/root`：目标逻辑卷的路径。
 
-14. 刷新逻辑卷（LV）的空间，使其生效
+#### 14. 刷新逻辑卷（LV）的空间，使其生效
 ```bash
 lvscan
 ```
 
-15. 调整文件系统大小  
+#### 15. 调整文件系统大小  
 对于 ext4 文件系统：
 ```bash
 sudo resize2fs /dev/ubuntu-vg/root
@@ -694,14 +707,14 @@ sudo resize2fs /dev/ubuntu-vg/root
 sudo xfs_growfs /dev/ubuntu-vg/root
 ```
 
-16. 验证扩容结果
+#### 16. 验证扩容结果
 ```bash
 df -h
 ```
 ```bash
 sudo lsblk
 ```
-
+![ulvm13](https://github.com/user-attachments/assets/6d05da60-5beb-4eaa-a7ee-2419be31d9e5)  
 
 ### 注意事项
 1. **备份数据**
