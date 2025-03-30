@@ -666,6 +666,7 @@ sudo mkfs.xfs /dev/ubuntu-vg/root
 sudo mkdir -p /mnt/newlv
 sudo mount /dev/ubuntu-vg/root /mnt/newlv
 ```
+![ulvm12](https://github.com/user-attachments/assets/17663339-5b33-4db8-976d-62c693f73f27)  
 
 #### 13. 扩展逻辑卷（LV）
 检查LV路径:
