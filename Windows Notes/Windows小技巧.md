@@ -29,6 +29,22 @@ regedit
 ![gbzdgx2](https://github.com/user-attachments/assets/0a8d4501-54d3-41d2-a1c5-f6a633cdd576)  
 ![gbzdgx3](https://github.com/user-attachments/assets/89c1c3e6-9467-4026-9019-9515798596b8)  
 
+编辑注册表的方式实现：  
+1. 按**Win+R**快捷键后输入`regedit`启动注册表编辑器  
+2. 从左侧依序打开相关路径  
+```
+计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings
+```
+在右侧空白位置按下鼠标右键新建数值  
+3. 点选右键后选择「新建」、「DWORD(32-位)值」,输入数值名称：  
+```
+FlightSettingsMaxPauseDays
+```
+4. 接着再双击打开刚才加入的数值，将数值数据修改为`36500`,再选择「十进制」后确定  
+5. 开启设置中「Windows Update」后会显示目前系统更新状态，从下方找到高级选项  
+6. 在暂停更新的日期中往下卷动，最下方找到最长期限「2632年9月16日」  
+7. 选好后就能将Windows更新暂停、延长100年  
+
 
 ### 如何重启资源管理器？
 Win11:  
