@@ -7,6 +7,10 @@
 [dnGrep](https://github.com/dnGrep/dnGrep)  
 
 
+### 常用的Windows命令
+[点击跳转](https://github.com/stu2116Edward/Public-study-notes/blob/main/Windows%20Notes/Windows%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4.md)  
+
+
 ### 禁用Windows自动更新
 使用Dism++的系统优化功能中的`Windows Update`实现：  
 ![gbzdgx1](https://github.com/user-attachments/assets/5ad8407f-0887-4ec6-aa56-291f898bc93f)  
