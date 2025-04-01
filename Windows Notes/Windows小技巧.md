@@ -1,5 +1,12 @@
 # Windows使用小技巧
 
+### 装机必下工具
+[图吧工具箱](https://www.tbtool.cn/)  
+[DISM++](https://github.com/Chuyu-Team/Dism-Multi-language)  
+[HiBitUninstaller](https://github.com/stu2116Edward/Public-study-notes/blob/main/tools/HiBitUninstaller_3.2.40_Single.zip)  
+[dnGrep](https://github.com/dnGrep/dnGrep)  
+
+
 ### 常用配置命令
 `msconfig`是一个能够修改调节系统启动方式、状态、后台服务等的程序
 ```
@@ -13,6 +20,14 @@ gpedit.msc
 ```
 regedit
 ```
+
+
+### 禁用Windows自动更新
+使用Dism++的系统优化功能中的`Windows Update`实现：  
+![gbzdgx1](https://github.com/user-attachments/assets/5ad8407f-0887-4ec6-aa56-291f898bc93f)  
+接下来是可选配置（非必要）：  
+![gbzdgx2](https://github.com/user-attachments/assets/0a8d4501-54d3-41d2-a1c5-f6a633cdd576)  
+![gbzdgx3](https://github.com/user-attachments/assets/89c1c3e6-9467-4026-9019-9515798596b8)  
 
 
 ### 如何重启资源管理器？
