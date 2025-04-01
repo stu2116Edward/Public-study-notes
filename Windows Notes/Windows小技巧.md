@@ -407,6 +407,7 @@ DISM /Online /Cleanup-Image /RestoreHealth
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WidowsNT\CurrentVersion\NetworkList\Profiles
 ```
 修改文件夹内的`ProfileName`  
+或者使用第三方工具实现修改：[Network Profile Name Changer](https://github.com/stu2116Edward/Public-study-notes/blob/main/tools/%E7%BD%91%E7%BB%9C%E9%87%8D%E5%91%BD%E5%90%8D%E5%B7%A5%E5%85%B7/Network%20Profile%20Name%20Changer.zip)
 
 
 ### 双网关同时使用内网，外网设置
