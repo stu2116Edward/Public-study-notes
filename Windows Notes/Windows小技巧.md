@@ -1,45 +1,5 @@
 # Windows使用小技巧
 
-### Windows笔记本电池正确配置
-**控制面板-硬件和声音-电源选项-选择电源按钮的功能**  
-![battery](https://github.com/user-attachments/assets/51297506-a8bf-4d3c-82ff-4e001939f1c1)  
-
-### 双网关同时使用内网，外网设置
-打开`cmd`,输入以下命令：
-```shell
-route print
-```
-主要查看`跃点数`观察是否不一样如果有两个`不一样`的跃点数就代表当前`仅能`使有线或无线  
-要想实现即能使用有线也能使用无线就需要把`跃点数改为一样`  
-内网:
-<pre>
-IP：     192.168.0.100
-netmask：255.255.255.0
-gateway：192.168.0.1
-</pre>
-外网:
-<pre>
-IP：     192.168.1.100
-netmask：255.255.255.0
-gateway：192.168.1.1
-</pre>
-这里我使用家庭网络进行模拟演示我们都知道可以通过网线(有线)和WIFI(无线)进行连接到我们的互联网但是日常需求中又想同时使用`有线+无线`的形式连接到互联网，这时候就需要设置双网关了，具体操作如下：  
-- ① 打开`控制面板`，点击`网络和Internet`选择`网络和共享中心`，点击`更改适配器设置`(如果桌面没有控制面板就`右键`选择`个性化`再选择`主题`再相关设置那一栏找到`桌面图标设置`点击添加控制面板)
-- ② 右键点击`以太网`和`WLAN`，选择`属性`，选择`Internet协议版本4(TCP/IPv4)`，点击`属性`
-- ③ 在`常规`选项卡中，点击`高级`，选择`IP设置`，取消`自动跃点数`改为手动把`以太网`和`WLAN`改为相同的跃点数，点击`确定`，`确定`，完成配置  
-
-![yds1](https://github.com/user-attachments/assets/6e918314-d489-462d-8110-b48eb85352b9)  
-![yds2](https://github.com/user-attachments/assets/a89bf038-6b64-4f27-bd04-c17d4d09dc3e)  
-
-
-### 配置本地域名解析
-它的作用是将域名映射到 IP 地址，以便计算机可以直接通过域名访问网络设备，而无需查询 DNS 服务器  
-以管理员方式打开`cmd`  
-输入以下命令：
-```shell
-notepad C:\Windows\System32\drivers\etc\hosts
-```
-
 ### 常用配置命令
 `msconfig`是一个能够修改调节系统启动方式、状态、后台服务等的程序
 ```
@@ -53,6 +13,71 @@ gpedit.msc
 ```
 regedit
 ```
+
+
+### 如何重启资源管理器？
+Win11:  
+![Win11zyglq](https://github.com/user-attachments/assets/aae73fa3-777d-4457-ad7d-e57242189099)  
+Win10:  
+![Win10zyglq](https://github.com/user-attachments/assets/c0a9f63d-1d3a-4e03-8991-ec38349d2791)  
+选中“Windows资源管理器”进程，点击右下角的“重新启动”即可重启Windows资源管理器  
+
+
+### 关闭UAC弹窗警告
+如UAC未彻底关闭，对系统进行更改或者下载软件时，电脑总是询问，是否允许，如下面的界面：  
+![uac1](https://github.com/user-attachments/assets/95f3d33b-5923-4b71-872c-94e293c38057)  
+Win+R输入`msconfig`打开系统配置-工具-选中更改UAC设置-点击启动-并修改为从不通知-点击确定  
+![uac2](https://github.com/user-attachments/assets/d82e50fe-459a-4485-8385-568be8842a70)  
+![uac3](https://github.com/user-attachments/assets/a92fc4b0-a130-4b45-8dc8-f5987a1e1f1b)  
+之后就不会有这样的弹窗了  
+
+
+### 关闭打开此文件前总是询问的弹窗警告
+弹窗界面如下：  
+![fjqyxx1](https://github.com/user-attachments/assets/19c46a03-8cde-4153-acc5-ae5318542533)  
+附件区域信息  
+![fjqyxx2](https://github.com/user-attachments/assets/838b9447-6acb-4539-9850-2532d89adf8b)  
+这里需要打开Dism++进行系统优化配置配置内容如下：  
+![fjqyxx3](https://github.com/user-attachments/assets/4272095e-00c2-429c-af60-5e79790ff5b5)
+此方式只适用于之后这样类似的文件比如从网上下载的内容等  
+如果之前的文件每次打开都这样一个一个取消太麻烦可以选择先将这些有弹窗警告的文件复制到虚拟机里面然后再粘贴回去这样即可全部恢复取消弹窗  
+不过微软好像也有类似的工具：  
+https://learn.microsoft.com/en-us/sysinternals/downloads/streams  
+
+
+### Windows笔记本电池正确配置
+**控制面板-硬件和声音-电源选项-选择电源按钮的功能**  
+![battery](https://github.com/user-attachments/assets/51297506-a8bf-4d3c-82ff-4e001939f1c1)  
+
+
+### 配置本地域名解析
+它的作用是将域名映射到 IP 地址，以便计算机可以直接通过域名访问网络设备，而无需查询 DNS 服务器  
+以管理员方式打开`cmd`  
+输入以下命令：
+```shell
+notepad C:\Windows\System32\drivers\etc\hosts
+```
+
+
+### Win10/11 更改电脑用户名
+**方法一**  
+1. 在电脑桌面选中**此电脑**并右击选择**管理**  
+![gl1](https://github.com/user-attachments/assets/2d687780-1c64-44c6-bb97-f6a09b9e3000)  
+2. 进入**到计算机管理**页面后选择**本地用户和组**，双击**用户**打开  
+![gl2](https://github.com/user-attachments/assets/b9dbbee1-9704-4850-bfbc-d4e2db39cfec)  
+3. 选中和桌面用户名一致的选项，右击选择**重命名**  
+![gl3](https://github.com/user-attachments/assets/065f419d-a453-4e6e-856c-19f2438517ce)  
+
+**方法二**  
+1. 打开**控制面板**，点击**用户帐户**进入  
+![kzmb1](https://github.com/user-attachments/assets/841e1250-c31d-4000-b9df-df0ed117199d)  
+2. 接着点击**用户帐户**  
+![kzmb2](https://github.com/user-attachments/assets/84645ec6-1bff-41c2-83c7-e3ba841b905c)  
+3. 在下图所示的界面中点击**更改帐户名称**  
+![kzmb3](https://github.com/user-attachments/assets/b9c36b0a-7c9b-46a8-a354-4aa2efc35916)  
+4. 在跳转的页面中输入**新帐户名**，点击**更改名称**即可  
+![kzmb4](https://github.com/user-attachments/assets/7b8eb375-243c-4474-bca0-441b52f2a249)  
+
 
 ### 图标显示不正常？试试强制刷新 Windows 图标缓存
 最方便的是使用下面这个项目解决：  
@@ -109,7 +134,8 @@ start explorer
 使用此工具：  
 https://github.com/1357310795/MyComputerManager
 
-### 关于右键
+
+### 关于右键菜单管理
 推荐一个右键菜单管理工具  
 Github仓库：ContextMenuManager  
 下载地址：https://github.com/BluePointLilac/ContextMenuManager/releases  
@@ -145,6 +171,7 @@ Github仓库：ContextMenuManager
 计算机\HKEY_CLASSES_ROOT\Directory\Background\shell
 ```
 
+
 ### Windows家庭版无法使用mstsc解决方法
 打开`控制面板`，选择【`程序和功能`】选择【`启动或关闭Windows功能`】在弹出框里勾选【`Telent客户端`】功能  
 ![mstsc1](https://github.com/user-attachments/assets/19edd353-32d7-41db-a575-ea519241fad0)  
@@ -152,6 +179,7 @@ Github仓库：ContextMenuManager
 ![mstsc3](https://github.com/user-attachments/assets/7c46fe76-1ac3-4ddc-bd62-ee160c3d2155)  
 点击确定，如有必要则选择重启  
 重启后 `win + R` 键，输入 `mstsc`，输入对应链接地址即可远程连接服务器  
+
 
 ### 本地组策略编辑器(gpedit.msc)打不开解决方案
 这是解决了问题后的截图  
@@ -314,15 +342,6 @@ bcdedit /set hypervisorlaunchtype off
 bcdedit /set hypervisorlaunchtype auto
 ```
 
-### 修改Windows的网络名称
-`打开注册表`：  
-**Win+R**  
-输入gpedit.msc  
-找到以下路径  
-```
-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WidowsNT\CurrentVersion\NetworkList\Profiles
-```
-修改文件夹内的`ProfileName`  
 
 ### Windows垃圾清理
 **这里只推荐使用前两个**  
@@ -378,24 +397,43 @@ DISM /Online /Cleanup-Image /RestoreHealth
 ```
 
 
-### Win10/11 更改电脑用户名
-**方法一**  
-1. 在电脑桌面选中**此电脑**并右击选择**管理**  
-![gl1](https://github.com/user-attachments/assets/2d687780-1c64-44c6-bb97-f6a09b9e3000)  
-2. 进入**到计算机管理**页面后选择**本地用户和组**，双击**用户**打开  
-![gl2](https://github.com/user-attachments/assets/b9dbbee1-9704-4850-bfbc-d4e2db39cfec)  
-3. 选中和桌面用户名一致的选项，右击选择**重命名**  
-![gl3](https://github.com/user-attachments/assets/065f419d-a453-4e6e-856c-19f2438517ce)  
+### 修改Windows的网络名称
+`打开注册表`：  
+**Win+R**  
+输入gpedit.msc  
+找到以下路径  
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WidowsNT\CurrentVersion\NetworkList\Profiles
+```
+修改文件夹内的`ProfileName`  
 
-**方法二**  
-1. 打开**控制面板**，点击**用户帐户**进入  
-![kzmb1](https://github.com/user-attachments/assets/841e1250-c31d-4000-b9df-df0ed117199d)  
-2. 接着点击**用户帐户**  
-![kzmb2](https://github.com/user-attachments/assets/84645ec6-1bff-41c2-83c7-e3ba841b905c)  
-3. 在下图所示的界面中点击**更改帐户名称**  
-![kzmb3](https://github.com/user-attachments/assets/b9c36b0a-7c9b-46a8-a354-4aa2efc35916)  
-4. 在跳转的页面中输入**新帐户名**，点击**更改名称**即可  
-![kzmb4](https://github.com/user-attachments/assets/7b8eb375-243c-4474-bca0-441b52f2a249)  
+
+### 双网关同时使用内网，外网设置
+打开`cmd`,输入以下命令：
+```shell
+route print
+```
+主要查看`跃点数`观察是否不一样如果有两个`不一样`的跃点数就代表当前`仅能`使有线或无线  
+要想实现即能使用有线也能使用无线就需要把`跃点数改为一样`  
+内网:
+<pre>
+IP：     192.168.0.100
+netmask：255.255.255.0
+gateway：192.168.0.1
+</pre>
+外网:
+<pre>
+IP：     192.168.1.100
+netmask：255.255.255.0
+gateway：192.168.1.1
+</pre>
+这里我使用家庭网络进行模拟演示我们都知道可以通过网线(有线)和WIFI(无线)进行连接到我们的互联网但是日常需求中又想同时使用`有线+无线`的形式连接到互联网，这时候就需要设置双网关了，具体操作如下：  
+- ① 打开`控制面板`，点击`网络和Internet`选择`网络和共享中心`，点击`更改适配器设置`(如果桌面没有控制面板就`右键`选择`个性化`再选择`主题`再相关设置那一栏找到`桌面图标设置`点击添加控制面板)
+- ② 右键点击`以太网`和`WLAN`，选择`属性`，选择`Internet协议版本4(TCP/IPv4)`，点击`属性`
+- ③ 在`常规`选项卡中，点击`高级`，选择`IP设置`，取消`自动跃点数`改为手动把`以太网`和`WLAN`改为相同的跃点数，点击`确定`，`确定`，完成配置  
+
+![yds1](https://github.com/user-attachments/assets/6e918314-d489-462d-8110-b48eb85352b9)  
+![yds2](https://github.com/user-attachments/assets/a89bf038-6b64-4f27-bd04-c17d4d09dc3e)  
 
 
 ### Windows中wget的安装与使用
@@ -424,33 +462,3 @@ gpedit.msc
 ```
 gpupdate /force
 ```
-
-
-### 如何重启资源管理器？
-Win11:  
-![Win11zyglq](https://github.com/user-attachments/assets/aae73fa3-777d-4457-ad7d-e57242189099)  
-Win10:  
-![Win10zyglq](https://github.com/user-attachments/assets/c0a9f63d-1d3a-4e03-8991-ec38349d2791)  
-选中“Windows资源管理器”进程，点击右下角的“重新启动”即可重启Windows资源管理器  
-
-
-### 关闭UAC弹窗警告
-如UAC未彻底关闭，对系统进行更改或者下载软件时，电脑总是询问，是否允许，如下面的界面：  
-![uac1](https://github.com/user-attachments/assets/95f3d33b-5923-4b71-872c-94e293c38057)  
-Win+R输入`msconfig`打开系统配置-工具-选中更改UAC设置-点击启动-并修改为从不通知-点击确定  
-![uac2](https://github.com/user-attachments/assets/d82e50fe-459a-4485-8385-568be8842a70)  
-![uac3](https://github.com/user-attachments/assets/a92fc4b0-a130-4b45-8dc8-f5987a1e1f1b)  
-之后就不会有这样的弹窗了  
-
-
-### 关闭打开此文件前总是询问的弹窗警告
-弹窗界面如下：  
-![fjqyxx1](https://github.com/user-attachments/assets/19c46a03-8cde-4153-acc5-ae5318542533)  
-附件区域信息  
-![fjqyxx2](https://github.com/user-attachments/assets/838b9447-6acb-4539-9850-2532d89adf8b)  
-这里需要打开Dism++进行系统优化配置配置内容如下：  
-![fjqyxx3](https://github.com/user-attachments/assets/4272095e-00c2-429c-af60-5e79790ff5b5)
-此方式只适用于之后这样类似的文件比如从网上下载的内容等  
-如果之前的文件每次打开都这样一个一个取消太麻烦可以选择先将这些有弹窗警告的文件复制到虚拟机里面然后再粘贴回去这样即可全部恢复取消弹窗  
-不过微软好像也有类似的工具：  
-https://learn.microsoft.com/en-us/sysinternals/downloads/streams  
