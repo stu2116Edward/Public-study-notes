@@ -223,6 +223,10 @@ sudo mkdir -p /mnt/new_disk1
 ```bash
 sudo mount /dev/sda3 /mnt/new_disk1
 ```
+- 如果要取消挂载：
+```bash
+sudo umount /dev/sda3
+```
 
 - 查看挂载情况：输入以下命令查看挂载的磁盘：
 ```bash
