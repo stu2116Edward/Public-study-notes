@@ -114,7 +114,7 @@ ip link show ens33
     inet 192.168.66.122/24 brd 192.168.66.255 scope global noprefixroute dynamic ens33
        valid_lft 1618sec preferred_lft 1618sec
 </pre>
-2. 启用或禁用网卡
+2. 启用或禁用网卡  
 启用网卡：
 ```bash
 sudo ip link set ens33 up
