@@ -59,12 +59,17 @@ vim ifcfg-ens33
 1.按回车键进入以下界面：  
 ![109e49d1a8b40e22bb1019e9899f240f](https://github.com/user-attachments/assets/b152cbe2-4a4c-42c6-9bbb-cbf31ca8090e)  
 2.在当前界面按下i键进入交互模式  
-3.把 `ONMOOT=NO` 改为 `ONBOOT=YES`  
+3.把 `ONBOOT=NO` 改为 `ONBOOT=YES`  
 4.修改完毕后按下esc键，输入:wq即可  
 5.如果无法访问互联网记得在配置文件的最后加上DNS解析记录
 ```
 DNS1=223.6.6.6
 ```
+如果不修改那么就无法获取到IP地址：
+<pre>
+2: ens33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+    link/ether 00:0c:29:5e:46:43 brd ff:ff:ff:ff:ff:ff
+</pre>
 
 ### 4.测试网络
 进行完以上配置重启network.service服务。  
@@ -75,8 +80,46 @@ service network restart
 进行ping测试，是否能连接外部网络  
 代码如下：  
 ```
-ping www.baidu.com
+ping -c 4 www.baidu.com
 ```
+参数`-c`表示次数不加就会一直ping
+
 如果连接成功会出现以下界面：  
 ![7189ba60fd0879e9accd12884c906cc6](https://github.com/user-attachments/assets/7e55f495-cc17-49b4-b0f8-c8c2dad88b14)  
 网络配置到此结束~  
+
+### 如果网卡是关闭的
+1. 确认网卡状态
+```bash
+ip address
+```
+或
+```bash
+ip link show ens33
+```
+这将显示 ens33 网卡的详细状态信息。例如：
+- 开启的状态包含 `UP` 和 `LOWER_UP`
+<pre>
+2: ens33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 00:0c:29:5e:46:43 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.66.122/24 brd 192.168.66.255 scope global noprefixroute dynamic ens33
+       valid_lft 1799sec preferred_lft 1799sec
+    inet6 fe80::89ba:ca41:be36:f935/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+</pre>
+- 关闭的状态包含 `DOWN`
+<pre>
+2: ens33: <BROADCAST,MULTICAST> mtu 1500 qdisc pfifo_fast state DOWN group default qlen 1000
+    link/ether 00:0c:29:5e:46:43 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.66.122/24 brd 192.168.66.255 scope global noprefixroute dynamic ens33
+       valid_lft 1618sec preferred_lft 1618sec
+</pre>
+2. 启用或禁用网卡
+启用网卡：
+```bash
+sudo ip link set ens33 up
+```
+禁用网卡：
+```bash
+sudo ip link set ens33 down
+```
