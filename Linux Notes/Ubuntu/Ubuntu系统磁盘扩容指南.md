@@ -649,8 +649,8 @@ sudo lvcreate -L 20G -n root ubuntu-vg
 - `-n root`：指定逻辑卷的名称为 root。
 - `ubuntu-vg`：卷组的名称。
 
-删除逻辑卷
-在删除逻辑卷之前，必须确保它没有被挂载:
+删除逻辑卷  
+**在删除逻辑卷之前，必须确保它没有被挂载**:
 ```bash
 sudo umount /dev/ubuntu-vg/root
 ```
