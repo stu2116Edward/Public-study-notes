@@ -510,7 +510,7 @@ sudo lsblk
 ## **使用parted扩展fdisk创建的分区**
 这里如果你使用的是fdisk的方式实现先创建扩展分区，然后再创建逻辑分区，那么直接在原有磁盘的空闲空间对扩展分区扩容然后再对逻辑分区扩容即可实现对当前分区的挂载点扩容（首先对扩展分区扩容，然后才能对其中的逻辑分区扩容）  
 
-1. 确认分区编号：
+#### 1. 确认分区编号：
 ```bash
 sudo lsblk
 ```
@@ -519,23 +519,23 @@ sudo lsblk
 sudo fdisk -l
 ```
 
-2. 卸载挂载点(如果已被挂载需要先卸载)
+#### 2. 卸载挂载点(如果已被挂载需要先卸载)
 ```bash
 sudo umount /dev/sdb5
 ```
 
-3. 启动 parted：
+#### 3. 启动 parted：
 ```bash
 sudo parted /dev/sdb
 ```
 
-4. 查看当前分区表：
+#### 4. 查看当前分区表：
 ```bash
 print free
 ```
 primary：主分区 extended：扩展分区 logical：逻辑分区  
 
-5. 先对扩展分区(extended)扩容：
+#### 5. 先对扩展分区(extended)扩容：
 ```bash
 resizepart 1
 ```
@@ -550,7 +550,7 @@ print free
 ```
 可以看到扩展分区已被扩容到指定的大小  
 
-6. 对逻辑分区(logical)扩容：
+#### 6. 对逻辑分区(logical)扩容：
 ```bash
 resizepart 5
 ```
@@ -569,7 +569,7 @@ print free
 quit
 ```
 
-7. 调整文件系统大小：
+#### 7. 调整文件系统大小：
 运行 e2fsck 检查文件系统:
 ```bash
 sudo e2fsck -f /dev/sdb5
@@ -587,12 +587,12 @@ sudo resize2fs /dev/sdb5
 sudo xfs_growfs /mnt/sdb5
 ```
 
-8. 重新挂载分区：
+#### 8. 重新挂载分区：
 ```bash
 sudo mount /dev/sdb5 /mnt/mynewdisk
 ```
 
-9. 验证
+#### 9. 验证
 查看是否扩容  
 ```bash
 df -h
@@ -607,7 +607,8 @@ sudo mount -a
 
 
 ## 删除分区
-1. 确认分区编号 在删除分区之前，务必确认要删除的分区编号，以避免误操作。可以使用以下命令查看分区信息：
+#### 1. 确认分区编号
+在删除分区之前，务必确认要删除的分区编号，以避免误操作。可以使用以下命令查看分区信息：
 ```bash
 sudo fdisk -l
 ```
@@ -621,7 +622,8 @@ blkid
 ```
 这些命令会列出所有分区及其详细信息，包括分区编号、大小和挂载点。
 
-2. 取消挂载分区 如果要删除的分区已经挂载，需要先取消挂载。使用以下命令取消挂载分区：
+#### 2. 取消挂载分区
+如果要删除的分区已经挂载，需要先取消挂载。使用以下命令取消挂载分区：
 ```bash
 sudo umount /dev/sda3
 ```
@@ -630,18 +632,18 @@ sudo umount /dev/sda3
 ```bash
 sudo umount -f /dev/sda3 
 ```
-3. 启动 fdisk
+#### 3. 启动 fdisk
 启动 fdisk 工具，指定要操作的磁盘设备：
 ```bash
 sudo fdisk /dev/sda
 ```
-4. 删除分区
+#### 4. 删除分区
 在 fdisk 界面中，执行以下操作：
 - 输入 `d`，表示删除分区。
 - 输入要删除的分区编号（例如 3，表示删除 /dev/sda3）。
 - 输入 `w`，保存更改并退出 fdisk。
 
-5. 更新内核分区表
+#### 5. 更新内核分区表
 删除分区后，运行以下命令确保内核同步：
 ```bash
 sudo partprobe /dev/sda
@@ -651,7 +653,7 @@ sudo partprobe /dev/sda
 sudo reboot
 ```
 
-6. 验证分区是否删除
+#### 6. 验证分区是否删除
 退出 fdisk 后，再次运行以下命令确认分区是否已被删除：
 ```bash
 sudo fdisk -l
