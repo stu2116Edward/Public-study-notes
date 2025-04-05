@@ -41,6 +41,7 @@ Win11:
 Win10:  
 ![Win10zyglq](https://github.com/user-attachments/assets/c0a9f63d-1d3a-4e03-8991-ec38349d2791)  
 选中“Windows资源管理器”进程，点击右下角的“重新启动”即可重启Windows资源管理器  
+或者 Win+R 输入 `explorer.exe`  
 
 
 ### 关闭UAC弹窗警告
