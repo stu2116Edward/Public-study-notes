@@ -60,9 +60,37 @@ reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\
 5. 恢复方法  
 如果想回到win11风格，在命令行输入：
 ```
-reg.exe delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /va /f 
+reg.exe delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /va /f
 ```
 重启后恢复win11右键  
+你可以创建一个批处理文件，方便快速切换右键菜单风格：
+```bat
+@echo off
+setlocal
+
+echo 1. 切换到Windows 10风格右键菜单
+echo 2. 恢复到Windows 11风格右键菜单
+echo 3. 退出
+echo.
+set /p choice="请选择一个选项: "
+
+if "%choice%"=="1" (
+    reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
+    echo 已切换到Windows 10风格右键菜单，请重启资源管理器或电脑。
+)
+
+if "%choice%"=="2" (
+    reg.exe delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /va /f
+    echo 已恢复到Windows 11风格右键菜单，请重启资源管理器或电脑。
+)
+
+if "%choice%"=="3" (
+    exit
+)
+
+endlocal
+```
+将上述内容保存为`.bat`文件，然后以`管理员身份`运行它，即可快速切换右键菜单风格  
 
 
 ### 关闭UAC弹窗警告
