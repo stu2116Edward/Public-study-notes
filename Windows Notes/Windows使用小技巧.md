@@ -44,6 +44,27 @@ Win10:
 或者 Win+R 输入 `explorer.exe`  
 
 
+### 修改win11右键菜单、右键选项、还原win10右键菜单
+- 不改设置，非永久  
+每次按下`shift+右键`，既可直接打开折叠菜单啦~  
+- 命令一键修改
+确保以`管理员身份运行cmd`，防止权限问题  
+1. `Win+R`打开运行  
+2. 输入`cmd`，按下`Ctrl+Shift+Enter`以管理员身份运行  
+3. 在命令行里输入  
+```
+reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
+```
+4. 重启（重启电脑或文件资源管理器（File Explorer））  
+重启后即可使用win10风格右键菜单  
+5. 恢复方法  
+如果想回到win11风格，在命令行输入：
+```
+reg.exe delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /va /f 
+```
+重启后恢复win11右键  
+
+
 ### 关闭UAC弹窗警告
 如UAC未彻底关闭，对系统进行更改或者下载软件时，电脑总是询问，是否允许，如下面的界面：  
 ![uac1](https://github.com/user-attachments/assets/95f3d33b-5923-4b71-872c-94e293c38057)  
