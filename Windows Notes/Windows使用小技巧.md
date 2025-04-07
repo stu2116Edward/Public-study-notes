@@ -57,7 +57,7 @@ reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\
 ```
 4. 重启（重启电脑或文件资源管理器（File Explorer））  
 重启后即可使用win10风格右键菜单  
-![w10yj](https://github.com/user-attachments/assets/896d0744-ad72-45aa-b4d1-c2a037625241)  
+![w10yj](https://github.com/user-attachments/assets/61aaa6bc-e192-4ace-8952-3ac3fb567764)  
 
 6. 恢复方法  
 如果想回到win11风格，在命令行输入：
@@ -65,7 +65,7 @@ reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\
 reg.exe delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /va /f
 ```
 重启后恢复win11右键  
-![w11yj](https://github.com/user-attachments/assets/443dba66-abd0-4f3c-ac24-896cefeef3b8)  
+![w11yj](https://github.com/user-attachments/assets/fb452926-5211-43be-90f5-9135059af2db)  
 
 你可以创建一个批处理文件，方便快速切换右键菜单风格：
 ```bat
