@@ -529,6 +529,10 @@ sudo fdisk -l
 ```bash
 sudo lsblk
 ```
+如果已被挂载需要先卸载挂载点
+```
+sudo umount /dev/sdb5
+```
 
 #### 4. 使用 fdisk 命令创建需要合并的分区：
 ```bash
