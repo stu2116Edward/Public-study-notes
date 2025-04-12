@@ -9,7 +9,7 @@
 - 21116/udp
 - 21118/tcp
 
-
+![RustDesk_txy](https://github.com/user-attachments/assets/e513ff1d-e029-4370-bd20-1e981ea301f8)  
 
 ## 在服务器防火墙中放行端口
 Ubuntu系统：
@@ -61,11 +61,14 @@ docker run --name hbbr -v $(pwd)/data:/root -td --net=host --restart unless-stop
 docker logs hbbs
 ```
 还有IP地址（这里作为服务器地址与中继地址使用）  
+![RustDesk1](https://github.com/user-attachments/assets/cbbc72af-4878-41b3-a572-a85585191ab3)
 
 ## 客户端部署
 去电脑和手机端下载客户端程序:  
 https://github.com/rustdesk/rustdesk  
-
+![RustDesk2](https://github.com/user-attachments/assets/337bc549-3663-4fc1-972b-64145555aa06)  
 Windows下载64位的。直接运行exe  
+![RustDesk3](https://github.com/user-attachments/assets/9fdec970-8194-4b00-be94-3cbfeed4262f)  
+![RustDesk4](https://github.com/user-attachments/assets/718390cf-6d65-4d01-9e19-2ef82cb9088d)  
 
 另一台机器也这样操作。就可以输入对方设备码控制另一台机器了。还可以手机操控电脑，电脑从控安卓手机。苹果手机只能控制其他设备不能被控制  
