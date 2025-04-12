@@ -104,6 +104,15 @@ docker top <容器名/ID>
 systemctl daemon-reload && systemctl restart docker
 ```
 
+配置容器开机自启动：
+```
+docker update --restart=always <容器名或容器ID>
+```
+取消容器开机自启动：
+```
+docker update --restart=no <容器名或容器ID>
+```
+
 **进入容器内部**：  
 除了使用 docker run -it 来启动一个交互式容器外，您还可以使用 docker exec 命令进入已经运行的容器内部：  
 ```
