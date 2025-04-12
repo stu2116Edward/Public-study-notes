@@ -1,0 +1,71 @@
+# RustDesk远程桌面服务端和中继端部署
+
+准备工作：  
+1. 一台大带宽的VPS(最好是离自己近的)  
+2. 安装好docker环境   
+3. 如果使用的云服务有控制台策略，则需要在云服务控制台放行对应的端口
+- 21115/tcp
+- 21116/tcp
+- 21116/udp
+- 21118/tcp
+
+
+
+## 在服务器防火墙中放行端口
+Ubuntu系统：
+- 放行指定端口
+```bash
+sudo ufw allow 21115/tcp
+sudo ufw allow 21116/tcp
+sudo ufw allow 21116/udp
+sudo ufw allow 21118/tcp
+```
+- 重新加载防火墙规则
+```bash
+ufw reload
+```
+- 查看是否生效
+```bash
+sudo ufw status
+```
+
+Centos系统：
+- 放行指定端口
+```bash
+sudo firewall-cmd --permanent --zone=public --add-port=21115/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=21116/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=21116/udp
+sudo firewall-cmd --permanent --zone=public --add-port=21118/tcp
+```
+- 重新加载防火墙规则
+```bash
+sudo firewall-cmd --reload
+```
+- 查看是否生效
+```bash
+sudo firewall-cmd --list-all
+```
+
+## 服务端部署
+```bash
+docker run --name hbbs -v $(pwd)/data:/root -td --net=host --restart unless-stopped rustdesk/rustdesk-server hbbs
+```
+
+## 中继端部署
+```bash
+docker run --name hbbr -v $(pwd)/data:/root -td --net=host --restart unless-stopped rustdesk/rustdesk-server hbbr
+```
+
+用下面日志命令，查看远程服务的`key`我们一会会用到:  
+```bash
+docker logs hbbs
+```
+还有IP地址（这里作为服务器地址与中继地址使用）  
+
+## 客户端部署
+去电脑和手机端下载客户端程序:  
+https://github.com/rustdesk/rustdesk  
+
+Windows下载64位的。直接运行exe  
+
+另一台机器也这样操作。就可以输入对方设备码控制另一台机器了。还可以手机操控电脑，电脑从控安卓手机。苹果手机只能控制其他设备不能被控制  
