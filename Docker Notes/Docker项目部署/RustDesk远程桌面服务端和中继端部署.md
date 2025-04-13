@@ -33,7 +33,9 @@ Centos系统：
 sudo firewall-cmd --permanent --zone=public --add-port=21115/tcp
 sudo firewall-cmd --permanent --zone=public --add-port=21116/tcp
 sudo firewall-cmd --permanent --zone=public --add-port=21116/udp
+sudo firewall-cmd --permanent --zone=public --add-port=21117/tcp
 sudo firewall-cmd --permanent --zone=public --add-port=21118/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=21119/tcp
 ```
 - 重新加载防火墙规则
 ```bash
