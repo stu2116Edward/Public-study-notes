@@ -5,7 +5,7 @@
 2. 安装好docker环境   
 3. 如果使用的云服务有控制台策略，则需要在云服务控制台放行对应的端口
 
-![RustDesk_txy](https://github.com/user-attachments/assets/b3529911-d473-4ddd-bf7d-7e49e399563d)  
+![RustDesk_txy](https://github.com/user-attachments/assets/7f601a8a-c440-4358-82f8-9874a8688a6d)  
 
 ## 在服务器防火墙中放行端口
 Ubuntu系统：
