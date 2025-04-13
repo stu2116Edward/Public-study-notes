@@ -56,6 +56,35 @@ docker run --name hbbs -v $(pwd)/data:/root -td --net=host --restart unless-stop
 docker run --name hbbr -v $(pwd)/data:/root -td --net=host --restart unless-stopped rustdesk/rustdesk-server hbbr
 ```
 
+### 使用Docker-compose部署
+```yml
+services:
+  hbbs:
+    container_name: hbbs
+    image: docker.io/rustdesk/rustdesk-server-pro:latest
+    command: hbbs
+    volumes:
+      - ./data:/root
+    network_mode: "host"
+
+    depends_on:
+      - hbbr
+    restart: unless-stopped
+
+  hbbr:
+    container_name: hbbr
+    image: docker.io/rustdesk/rustdesk-server-pro:latest
+    command: hbbr
+    volumes:
+      - ./data:/root
+    network_mode: "host"
+    restart: unless-stopped
+```
+在yml文件下输入以下命令启动：
+```bash
+docker-compose up -d
+```
+
 用下面日志命令，查看远程服务的`key`我们一会会用到:  
 ```bash
 docker logs hbbs
