@@ -67,7 +67,7 @@ services:
     volumes:
       - ./data:/root
     networks:
-      - host
+      - rustdesk-network
     restart: unless-stopped
     command: hbbs
 
@@ -77,13 +77,13 @@ services:
     volumes:
       - ./data:/root
     networks:
-      - host
+      - rustdesk-network
     restart: unless-stopped
     command: hbbr
 
 networks:
-  host:
-    external: true
+  rustdesk-network:
+    driver: bridge
 ```
 在yml文件下输入以下命令启动：
 ```bash
