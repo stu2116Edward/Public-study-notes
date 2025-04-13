@@ -58,7 +58,7 @@ docker run --name hbbr -v $(pwd)/data:/root -td --net=host --restart unless-stop
 
 ### 使用Docker-compose部署
 ```yml
-version: '3.8'
+version: '3'
 
 services:
   hbbs:
