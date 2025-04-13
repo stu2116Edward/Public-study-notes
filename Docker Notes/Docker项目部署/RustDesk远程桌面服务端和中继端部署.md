@@ -4,12 +4,8 @@
 1. 一台大带宽的VPS(最好是离自己近的)  
 2. 安装好docker环境   
 3. 如果使用的云服务有控制台策略，则需要在云服务控制台放行对应的端口
-- 21115/tcp
-- 21116/tcp
-- 21116/udp
-- 21118/tcp
 
-![RustDesk_txy](https://github.com/user-attachments/assets/e513ff1d-e029-4370-bd20-1e981ea301f8)  
+![RustDesk_txy](https://github.com/user-attachments/assets/b3529911-d473-4ddd-bf7d-7e49e399563d)  
 
 ## 在服务器防火墙中放行端口
 Ubuntu系统：
@@ -18,7 +14,9 @@ Ubuntu系统：
 sudo ufw allow 21115/tcp
 sudo ufw allow 21116/tcp
 sudo ufw allow 21116/udp
+sudo ufw allow 21117/tcp
 sudo ufw allow 21118/tcp
+sudo ufw allow 21119/tcp
 ```
 - 重新加载防火墙规则
 ```bash
