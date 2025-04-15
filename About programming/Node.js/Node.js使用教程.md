@@ -8,8 +8,8 @@ Node.js最先是用来开发后端程序用的，现在它的功能已经不仅�
 
 
 ## Node.js下载与安装
-Node.js官网： https://nodejs.org/  
-Node.js中文网： http://nodejs.cn/  
+Node.js官网： https://nodejs.org/en/download  
+Node.js 历史版本下载地址： https://nodejs.org/dist/  
 镜像下载地址: https://registry.npmmirror.com/binary.html?path=node/  
 下载完成后直接点击安装即可  
 下载安装没有太多好说的，通常来说使用长期维护版（LTS）版就行  
