@@ -6,30 +6,40 @@ Node.js 历史版本下载地址：https://nodejs.org/dist/
 详细安装参考：https://www.runoob.com/nodejs/nodejs-install-setup.html  
 
 #### Windows 上安装 Node.js
-
+下载安装包：  
+![Node jsWind1](https://github.com/user-attachments/assets/27417a79-8a76-44a7-bb04-a8b2292592c9)  
 Windows 安装包(.msi)  
+![Node jsWind2](https://github.com/user-attachments/assets/b8de7406-7b22-4a05-a619-c51ca7fc7fe2)  
 
-安装步骤：
-
+安装步骤：  
 1、双击下载后的安装包，如下所示：  
+![Node jsWind3](https://github.com/user-attachments/assets/8ed2341d-9f65-47ef-b973-52d4b15d6bb4)
 
 2、点击以上的 Next 按钮，将出现如下界面：  
+![Node jsWind4](https://github.com/user-attachments/assets/3fc0ec57-0311-4674-a350-2f0c486f37ac)
 
-3、勾选接受协议选项，点击 Next 按钮 :  
+3、勾选接受协议选项，点击 Next 按钮:  
+![Node jsWind5](https://github.com/user-attachments/assets/f287a8c3-ab3b-4c50-9883-989a6dd76f6c)  
 
 4、Node.js默认安装目录为 "C:\Program Files\nodejs\" , 你可以修改目录，并点击 Next 按钮：  
+![Node jsWind6](https://github.com/user-attachments/assets/989fca60-4100-4367-9d38-44f72f28f965)  
 
 5、点击 Install（安装） 开始安装 Node.js，你也可以点击 Back（返回）来修改先前的配置：  
+![Node jsWind7](https://github.com/user-attachments/assets/68f18990-0ea1-4e9e-8951-b587799b3656)  
 
 安装过程：  
+![Node jsWind8](https://github.com/user-attachments/assets/cb8474b3-2a27-4605-a564-82c7a6e1b5ea)  
 
 点击 Finish（完成）按钮退出安装向导  
+![Node jsWind9](https://github.com/user-attachments/assets/b63ed6f2-1e66-482a-945d-86eb87b4b33e)  
 
 安装完成后，我们可以在命令行或 Windows Powershell 中执行以下命令来测试：  
 ```
 node -v
 npm -v
 ```
+![Node jsWind10](https://github.com/user-attachments/assets/c8d606ad-4274-473e-bd30-3e2ece21cb30)  
+
 
 #### Linux 上安装 Node.js
 1、使用官方提供的安装脚本  
