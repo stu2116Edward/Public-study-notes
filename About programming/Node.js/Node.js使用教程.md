@@ -13,6 +13,7 @@ Node.js中文网： http://nodejs.cn/
 Node.js 历史版本下载地址： https://nodejs.org/dist/  
 镜像下载地址: https://registry.npmmirror.com/binary.html?path=node/  
 下载完成后直接点击安装即可  
+下载教程参考：https://www.runoob.com/nodejs/nodejs-install-setup.html  
 下载安装没有太多好说的，通常来说使用长期维护版（LTS）版就行  
 安装完成后可以在终端中使用 `node -v` 或是 `node --version` 来查看当前nodejs版本：  
 ![node1](https://github.com/user-attachments/assets/aebaf8c0-c2cc-493f-916b-e0f8f01ec4c7)  
