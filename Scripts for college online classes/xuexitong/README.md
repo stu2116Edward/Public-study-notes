@@ -3,6 +3,9 @@
 GitHub: https://github.com/scriptscat/scriptcat  
 脚本地址：https://scriptcat.org/zh-CN/script-show-page/1693  
 
+如果你是放在服务器里刷的那么推荐使用`2H2G`以上的系统推荐使用`Windows Server 2019`轻量版本的  
+如果有多开需求可以使用sandbox来实现，下载地址：https://www.ghxi.com/sandboxie.html  
+
 **建议关闭Edge标签页休眠功能**：  
 Edge浏览器有标签页休眠功能，一定时间后标签页会自动休眠，导致网页无法更新数据  
 
