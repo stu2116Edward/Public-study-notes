@@ -451,3 +451,145 @@ npm update package-name
 - 保持 package.json 文件的简洁和准确，避免不必要的字段
 - 使用 package-lock.json 来锁定依赖的版本，以确保项目在不同环境中的一致性
 - 定期更新依赖，以利用最新的功能和安全修复
+
+
+### Node.js REPL(交互式解释器)
+Node.js 提供了一个内置的 REPL（Read-Eval-Print Loop），这是一个交互式编程环境，可以在终端中运行 JavaScript 代码  
+
+REPL 的名称来源于它的主要操作：读取（Read）、执行（Eval）、打印（Print）和循环（Loop）  
+
+我们可以输入以下命令来启动 Node 的终端：
+```
+node
+```
+执行后出现如下内容：
+<pre>
+# node
+Welcome to Node.js v20.1.0.
+Type ".help" for more information.
+> 
+</pre>
+这时我们就可以在 > 后输入简单的表达式，并按下回车键来计算结果  
+
+#### 简单的表达式运算
+接下来让我们在 Node.js REPL 的命令行窗口中执行简单的数学运算：
+<pre>
+$ node
+> 1 + 4
+5
+> 5 / 2
+2.5
+> 3 * 6
+18
+> 4 - 1
+3
+> 1 + ( 2 * 3 ) - 4
+3
+>
+</pre>
+
+#### 使用变量
+你可以将数据存储在变量中，并在你需要的时候使用它  
+
+变量声明需要使用 let 关键字，如果没有使用 let 关键字变量会直接打印出来  
+
+使用 let 关键字的变量可以使用 console.log() 来输出变量  
+<pre>
+$ node
+> x = 10
+10
+> let y = 10
+undefined
+> x + y
+20
+> console.log("Hello World")
+Hello World
+undefined
+> console.log("www.runoob.com")
+www.runoob.com
+undefined
+</pre>
+
+#### 多行表达式
+Node REPL 支持输入多行表达式，这就有点类似 JavaScript。接下来让我们来执行一个 do-while 循环：
+<pre>
+$ node
+> let x = 0
+undefined
+> do {
+... x++;
+... console.log("x: " + x);
+... } while ( x < 5 );
+x: 1
+x: 2
+x: 3
+x: 4
+x: 5
+undefined
+>
+</pre>
+... 三个点的符号是系统自动生成的，你回车换行后即可。Node 会自动检测是否为连续的表达式  
+
+#### 下划线(_)变量
+你可以使用下划线`_`获取上一个表达式的运算结果：
+<pre>
+$ node
+> let x = 10
+undefined
+> let y = 20
+undefined
+> x + y
+30
+> let sum = _
+undefined
+> console.log(sum)
+30
+undefined
+>
+</pre>
+
+#### REPL 命令
+Node.js REPL 的常用命令和快捷键汇总表：  
+| 命令/快捷键 | 说明 |
+|--------------|------|
+| `.help` | 显示 REPL 中可用的所有命令及其说明。 |
+| `.exit` | 退出 REPL 会话，相当于按 `Ctrl + D`。 |
+| `.save <filename>` | 将当前的 REPL 会话保存到指定文件中。 |
+| `.load <filename>` | 从指定文件中加载并执行代码到 REPL。 |
+| `.break` | 退出多行表达式输入模式，返回到单行输入模式。 |
+| `.clear` | 重置 REPL 的上下文，相当于清除所有变量和状态。 |
+| `Ctrl + C` | 强制退出当前输入或终止命令。如果按两次，则退出 REPL 会话。 |
+| `Ctrl + D` | 结束 REPL 会话，相当于 `.exit`。 |
+| `Ctrl + L` | 清除屏幕，类似于在终端中输入 `clear`。 |
+| 方向键（↑/↓） | 浏览输入历史记录，查看并重新执行之前输入的命令。 |
+| `Tab` | 自动补全输入，显示可能的选项或补全命令。 |
+| `_` | 用于访问上一次表达式的结果。 |
+| `Ctrl + R` | 进入反向搜索历史，搜索先前输入的命令。 |
+| `Ctrl + U` | 删除当前行从光标到行首的所有内容。 |
+| `Ctrl + K` | 删除当前行从光标到行尾的所有内容。 |
+| `Ctrl + A` | 移动光标到行首。 |
+| `Ctrl + E` | 移动光标到行尾。 |
+| `Ctrl + B` | 向后移动光标一个字符。 |
+| `Ctrl + F` | 向前移动光标一个字符。 |
+| `Ctrl + N` | 显示下一条历史记录（与方向键 ↓ 相同）。 |
+| `Ctrl + P` | 显示上一条历史记录（与方向键 ↑ 相同）。 |
+| `Ctrl + Z` | 挂起 REPL 会话，将其置于后台（在某些系统中可用）。 |
+
+#### 停止 REPL
+前面我们已经提到按下两次 ctrl + c 键就能退出 REPL:
+<pre>
+$ node
+>
+(^C again to quit)
+>
+</pre>
+
+#### REPL 进阶功能
+- 自动补全：输入一部分代码并按 Tab，REPL 会尝试补全或显示可能的选项
+- 结果缓存：REPL 会自动将上次运行的结果保存到特殊变量 _ 中。例如：
+<pre>
+> 5 + 5
+10
+> _ * 2
+20
+</pre>
