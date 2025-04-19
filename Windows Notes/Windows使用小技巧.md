@@ -541,6 +541,24 @@ gpupdate /force
 
 
 ### Windows优化使用体验
+#### Win11任务栏设置居左
+在Win10以下的版本都是使用的左面任务栏，但是Win11 将开始菜单和图标搬到了任务栏中间，使用的时候多少有些不习惯，如果你也不喜欢开始菜单的位置，可以右键任务栏打开任务栏设置：  
+![Win11rwl1](https://github.com/user-attachments/assets/76346963-f1e8-4193-aa98-bcef1f9e5eb5)  
+找到`任务栏行为`，将任务栏对其方式修改为`靠左`  
+![Win11rwl2](https://github.com/user-attachments/assets/fec7c4af-d0e4-42f0-8a4a-898b25cb2446)  
+在同样的位置还可以设置「自动隐藏任务栏」，下方的「选择任务栏的远角以显示桌面」开启该功能后鼠标点击任务栏右侧可以隐藏全部窗口  
+
+#### 隐藏任务栏多余图标
+Win11可能会有四个图标，搜索、任务视图、小组件、聊天。如果你不需要这些功能，直接右键任务栏打开任务栏设置，隐藏那些不需要的功能即可  
+![Win11rwl3](https://github.com/user-attachments/assets/aa8a7108-c90a-4123-bc1c-743ff8b1680f)  
+
+#### 开启剪贴板历史记录
+开启该功能后系统会将你复制过的文字、图片保存在剪贴板历史记录中，这样不会被新的复制内容覆盖掉  
+你可以直接按 `Win+V` 打开剪贴板历史记录面板，然后点击启用该功能：  
+![Winjqb1](https://github.com/user-attachments/assets/5301aca1-2971-4b30-9e06-4a658c8e067c)  
+点击记录右侧的图钉，可以将该记录固定，被固定的记录不会被清除，即便电脑重启也还在  
+![Winjqb2](https://github.com/user-attachments/assets/a58bc740-4f98-4fcd-ba1c-bf082a965fe1)  
+
 #### 总弹出在Microsoft Store查找应用的窗口
 解决方法：  
 1. 在键盘上按下`Win+R`打开运行，输入`regedit`，打开`注册表`  
