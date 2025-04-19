@@ -538,3 +538,36 @@ gpedit.msc
 ```
 gpupdate /force
 ```
+
+
+### Windows优化使用体验
+#### 总弹出在Microsoft Store查找应用的窗口
+解决方法：  
+1. 在键盘上按下`Win+R`打开运行，输入`regedit`，打开`注册表`  
+2. 在注册表中找到以下路径：
+```
+HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer
+```
+如果没有`Explorer`项需要自行创建一个
+3. 在右侧右键选择`新建DWORD(32位)值`，取名为`NoUseStoreOpenWith`，并输入数值为`1`（十六进制H）  
+![MStcclose](https://github.com/user-attachments/assets/3fbcdea8-6c7b-41ef-aad9-ddc9d8c4a1d2)  
+4. 重启系统或者重启资源管理器  
+
+
+#### Windows Search卡顿解决办法
+可以通过修改注册表，来禁用 Windows 搜索的 Bing 网络搜索功能  
+
+1. 开启系统注册表,`Win+R`呼出运行键入`regedit`  
+2. 通过地址栏进入到以下路径：
+```
+计算机\HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\
+```
+3. 接着，对准 Windows 的文件夹点击右键呼出快捷菜单，选择 `新建项`，然后，将新建的项命名为 `Explorer`(如果有直接跳过)  
+4. 右键点击 Explorer，选择 `新建DWORD(32位)值`,并将它命名为 `DisableSearchBoxSuggestions`  
+5. 然后，修改这个键值的内容，**设置为 `1`** （十六进制H）即是禁用 Windows 的网络搜索，设置为 `0` 则是开启 Windows 网络搜索特性  
+![winsssz3](https://github.com/user-attachments/assets/903d60a8-9771-4502-85f3-3fe83efd17b6)  
+6. 重启系统或者重启资源管理器，从此以后用只会搜出本地结果，不会让 Bing 来降低效率，占用资源了  
+
+此外，在搜索设置中还可进行如下设置，进一步提高搜索响应速度，提高效率  
+![winsssz1](https://github.com/user-attachments/assets/90c35549-b4f1-458c-8e0e-781167f932e7)  
+![winsssz2](https://github.com/user-attachments/assets/df780233-7734-494b-88df-21de10086a02)  
