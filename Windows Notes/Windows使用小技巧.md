@@ -548,7 +548,7 @@ gpupdate /force
 ```
 HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer
 ```
-如果没有`Explorer`项需要自行创建一个
+如果没有`Explorer`项需要自行创建一个  
 3. 在右侧右键选择`新建DWORD(32位)值`，取名为`NoUseStoreOpenWith`，并输入数值为`1`（十六进制H）  
 ![MStcclose](https://github.com/user-attachments/assets/3fbcdea8-6c7b-41ef-aad9-ddc9d8c4a1d2)  
 4. 重启系统或者重启资源管理器  
