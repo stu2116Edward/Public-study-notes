@@ -30,14 +30,17 @@
 安装 VS Code 和 Python 扩展：  
 **Ctrl + Shift + X** 打开市场，搜索并安装 Python 扩展
 
+
 ### 配置虚拟环境（可选）
 如果你希望在虚拟环境中运行 Python 项目:  
 虚拟环境可以使用在当前项目下创建的**本地虚拟环境venv**，也可以使用**全局的虚拟环境conda**  
+
 
 ### 选择Python解释器
 1. 使用快捷键（ **Ctrl + Shift + P** ）打开 **命令面板**  
 2. 输入 **Python: Select Interpreter** 即可找到 Python: Select Interpreter ，然后点击进入  
 3. 选择你需要的解释器即可  
+
 
 ### 配置 launch.json（调试和运行）
 如果需要自定义运行设置，可以配置 launch.json 文件：
@@ -65,16 +68,19 @@
 `program`: 指定运行的 Python 文件。
 `console`: 设置为 `"integratedTerminal"`，以便在终端中查看输出。
 
+
 ### 选择默认的Python解释器路径
 1. 打开 VS Code 的设置（**Ctrl+,**）
 2. 搜索 **Python Default Interpreter Path**
 3. 填写你需要的Python解释器路径，例如：`C:\Programs\Python\Python38\python.exe`
+
 
 ### 配置终端的默认环境
 如果需要在终端运行特定环境：  
 1. 打开 VS Code 的设置（**Ctrl+,**）  
 2. 搜索 **Python Terminal Activate Environment**  
 3. 勾选该选项，确保在终端中自动激活选择的 Python 解释器  
+
 
 ### 安装额外的Python依赖
 前提是当前工作目录下有**requirements.txt**文件  
@@ -84,9 +90,16 @@ pip install -r requirements.txt
 ```
 以安装项目依赖，确保环境完整
 
+
 ### 强迫症舒畅
 如何关闭VScode粘性滚动预览,类似于 Excel 的冻结首行  
 ![gdyl1](https://github.com/user-attachments/assets/7dbe14c0-5a0f-47eb-b865-84b5e73487c6)  
 
 按下快捷键**ctrl + ,** 输入 **sticky** 找到下面的选项然后取消勾选  
 ![gdyl2](https://github.com/user-attachments/assets/4acd01db-c5fa-4c74-afd3-dd762e8c2ef7)  
+
+
+### 常用快捷方式
+查询指定字符串：`Ctrl + F`  
+查找并替换指定字符串：`Ctrl + H`,`Enter`替换单个,`Ctrl + Alt + Enter`替换全部  
+向下复制当前行功能快捷键：`Shift + Alt + ↓`  
