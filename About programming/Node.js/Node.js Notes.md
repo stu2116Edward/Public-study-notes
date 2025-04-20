@@ -593,3 +593,147 @@ $ node
 > _ * 2
 20
 </pre>
+
+
+### Node.js 回调函数
+Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境，它使得 JavaScript 可以脱离浏览器运行在服务器端  
+
+Node.js 的核心特性之一是其非阻塞 I/O（输入/输出）模型，这使得 Node.js 非常适合处理高并发的网络应用  
+
+Node.js 异步编程的直接体现就是回调  
+
+**使用场景**  
+- 读取文件、写入文件等 I/O 操作
+- 处理网络请求
+- 数据库查询
+
+例如，我们可以一边读取文件，一边执行其他命令，在文件读取完成后，我们将文件内容作为回调函数的参数返回。这样在执行代码时就没有阻塞或等待文件 I/O 操作。这就大大提高了 Node.js 的性能，可以处理大量的并发请求  
+回调函数一般作为函数的最后一个参数出现：
+<pre>
+function foo1(name, age, callback) { }
+function foo2(value, callback1, callback2) { }
+</pre>
+
+**实例**
+#### 阻塞代码实例
+创建一个文件 input.txt ，内容如下：
+```
+菜鸟教程官网地址：www.runoob.com
+```
+创建 main.js 文件, 代码如下：
+```js
+let fs = require("fs");
+
+let data = fs.readFileSync("input.txt");
+
+console.log(data.toString());
+console.log("程序执行结束！");
+
+```
+以上代码执行结果如下：
+<pre>
+$ node main.js
+菜鸟教程官网地址：www.runoob.com
+
+程序执行结束!
+</pre>
+
+#### 非阻塞代码实例
+创建一个文件 input.txt ，内容如下：
+```
+菜鸟教程官网地址：www.runoob.com
+```
+创建 main.js 文件, 代码如下：
+```js
+let fs = require("fs");
+
+fs.readFile('input.txt', function(err, data) {
+    if (err) return console.error(err);
+    console.log(data.toString()); 
+});
+
+console.log("程序执行结束！");
+```
+参数解释：
+- `err` 是错误对象，如果读取失败会有值。
+- `data` 是读取的文件内容。
+以上代码执行结果如下：
+<pre>
+$ node main.js
+程序执行结束!
+菜鸟教程官网地址：www.runoob.com
+</pre>
+以上两个实例我们了解了阻塞与非阻塞调用的不同：
+- 第一个实例在文件读取完后才执行程序
+- 第二个实例我们不需要等待文件读取完，这样就可以在读取文件时同时执行接下来的代码，大大提高了程序的性能
+
+因此，**阻塞是按顺序执行的**，而**非阻塞是不需要按顺序的**，所以如果需要处理回调函数的参数，我们就需要写在回调函数内  
+
+#### 回调地狱（Callback Hell）
+当多个异步操作需要按顺序执行时，回调函数会导致代码嵌套，使得代码难以阅读和维护  
+```js
+fs.readFile('file1.txt', 'utf8', (err, data1) => {
+    if (err) {
+        console.error('Error reading file1:', err);
+        return;
+    }
+
+    fs.readFile('file2.txt', 'utf8', (err, data2) => {
+        if (err) {
+            console.error('Error reading file2:', err);
+            return;
+        }
+
+        fs.readFile('file3.txt', 'utf8', (err, data3) => {
+            if (err) {
+                console.error('Error reading file3:', err);
+                return;
+            }
+
+            console.log('Data from all files:', data1, data2, data3);
+        });
+    });
+});
+```
+为了改善代码的可读性和可维护性，可以使用以下几种方法：
+##### 1、使用 async/await:
+async/await 是 ES2017 引入的语法糖，可以让你更方便地处理异步操作，避免回调地狱
+```js
+const fs = require('fs').promises;
+
+async function readFiles() {
+    try {
+        const data1 = await fs.readFile('file1.txt', 'utf8');
+        const data2 = await fs.readFile('file2.txt', 'utf8');
+        const data3 = await fs.readFile('file3.txt', 'utf8');
+
+        console.log('Data from all files:', data1, data2, data3);
+    } catch (err) {
+        console.error('Error reading files:', err);
+    }
+}
+
+readFiles();
+```
+#### 2、使用 Promises
+Promises 是另一种处理异步操作的方式，可以链式调用 then 方法，避免嵌套回调
+```js
+const fs = require('fs').promises;
+
+fs.readFile('file1.txt', 'utf8')
+    .then(data1 => {
+        console.log('Data from file1:', data1);
+        return fs.readFile('file2.txt', 'utf8');
+    })
+    .then(data2 => {
+        console.log('Data from file2:', data2);
+        return fs.readFile('file3.txt', 'utf8');
+    })
+    .then(data3 => {
+        console.log('Data from file3:', data3);
+    })
+    .catch(err => {
+        console.error('Error reading files:', err);
+    });
+```
+回调函数是 Node.js 中处理异步操作的一种基本方式，但随着应用复杂性的增加，回调地狱问题会变得越来越明显。通过使用 async/await 或 Promises，可以显著改善代码的可读性和可维护性
