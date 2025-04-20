@@ -715,7 +715,7 @@ async function readFiles() {
 
 readFiles();
 ```
-#### 2、使用 Promises
+##### 2、使用 Promises
 Promises 是另一种处理异步操作的方式，可以链式调用 then 方法，避免嵌套回调
 ```js
 const fs = require('fs').promises;
