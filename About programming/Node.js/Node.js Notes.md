@@ -696,7 +696,7 @@ fs.readFile('file1.txt', 'utf8', (err, data1) => {
 });
 ```
 为了改善代码的可读性和可维护性，可以使用以下几种方法：
-##### 1、使用 async/await:
+##### 1、使用 async/await
 async/await 是 ES2017 引入的语法糖，可以让你更方便地处理异步操作，避免回调地狱
 ```js
 const fs = require('fs').promises;
