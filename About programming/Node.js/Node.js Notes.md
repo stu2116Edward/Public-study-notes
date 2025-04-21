@@ -737,3 +737,195 @@ fs.readFile('file1.txt', 'utf8')
     });
 ```
 回调函数是 Node.js 中处理异步操作的一种基本方式，但随着应用复杂性的增加，回调地狱问题会变得越来越明显。通过使用 async/await 或 Promises，可以显著改善代码的可读性和可维护性
+
+
+### Node.js 事件循环
+事件循环是 Node.js 处理非阻塞 I/O 操作的核心机制，使得单线程能够高效处理多个并发请求  
+Node.js 是基于单线程的 JavaScript 运行时，利用事件循环来处理异步操作，如文件读取、网络请求和数据库查询  
+
+#### 事件循环的阶段
+事件循环分为多个阶段，每个阶段处理特定的任务。关键阶段如下：
+- `Timers`：执行 setTimeout() 和 setInterval() 的回调
+- `I/O Callbacks`：处理一些延迟的 I/O 回调
+- `Idle, prepare`：内部使用，不常见
+- `Poll`：检索新的 I/O 事件，执行与 I/O 相关的回调
+- `Check`：执行 setImmediate() 回调
+- `Close Callbacks`：处理关闭的回调，如 socket.on('close', ...)
+
+
+#### 事件循环的流程
+- 任务进入事件循环队列
+- 事件循环按照阶段顺序进行处理，每个阶段有自己的回调队列
+- 事件循环会在 poll 阶段等待新的事件到达，如果没有事件，会检查其他阶段的回调
+- 如果 setImmediate() 和 setTimeout() 都存在，setImmediate() 在 check 阶段先执行，而 setTimeout() 在 timers 阶段执行
+**示例**：
+```js
+setTimeout(() => {
+  console.log('Timeout callback');
+}, 0);
+
+setImmediate(() => {
+  console.log('Immediate callback');
+});
+
+console.log('Main thread execution');
+```
+输出顺序：
+- `Main thread execution` 先打印。
+- `setImmediate()` 和 `setTimeout()` 的执行顺序取决于当前事件循环的状态，一般 `setImmediate()` 会先执行
+
+#### 宏任务与微任务
+- 宏任务：setTimeout、setInterval、setImmediate、I/O 操作等
+- 微任务：process.nextTick、Promise.then
+***执行顺序：微任务优先级高于宏任务，会在当前阶段的回调结束后立即执行***
+```js
+setTimeout(() => {
+  console.log('Timeout callback');
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log('Promise callback');
+});
+
+console.log('Main thread execution');
+```
+执行输出结果：
+<pre>
+Main thread execution
+Promise callback
+Timeout callback
+</pre>
+
+#### process.nextTick()
+process.nextTick() 会在当前操作结束后、下一个阶段开始前执行微任务，优先级高于 Promise  
+```js
+process.nextTick(() => {
+  console.log('Next tick callback');
+});
+
+console.log('Main thread execution');
+```
+输出：
+<pre>
+Main thread execution
+Next tick callback
+</pre>
+
+#### 事件驱动程序
+在 Node.js 中，事件驱动编程主要通过 EventEmitter 类来实现  
+EventEmitter 是一个内置类，位于 events 模块中，通过继承 EventEmitter，你可以创建自己的事件发射器，并注册和触发事件  
+
+**基本概念**：
+- **事件**：在程序中发生的动作或状态改变，例如一个文件读取完成或一个 HTTP 请求到达
+- **事件触发器**：EventEmitter 是 Node.js 的内置模块，用来发出和监听事件
+- **事件处理器**：与事件关联的回调函数，事件发生时被调用
+
+**事件驱动的流程**：
+- **注册事件**：在程序中通过 EventEmitter 实例注册事件和对应的处理器
+- **触发事件**：当指定的事件发生时，EventEmitter 会触发该事件
+- **处理事件**：事件循环会调度相应的回调函数来执行任务
+
+Node.js 有多个内置的事件，我们可以通过引入 events 模块，并通过实例化 EventEmitter 类来绑定和监听事件，如下实例：
+```js
+// 引入 events 模块
+var events = require('events');
+// 创建 eventEmitter 对象
+var eventEmitter = new events.EventEmitter();
+```
+以下程序绑定事件处理程序：
+```js
+// 绑定事件及事件的处理程序
+eventEmitter.on('eventName', eventHandler);
+```
+我们可以通过程序触发事件：
+```js
+// 触发事件
+eventEmitter.emit('eventName');
+```
+**实例**:  
+创建 hello.js 文件，代码如下所示：
+```js
+const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
+
+// 注册事件处理器
+myEmitter.on('greet', () => {
+  console.log('Hello, world!');
+});
+
+// 触发事件
+myEmitter.emit('greet');
+```
+输出：
+<pre>
+Hello, world!
+</pre>
+创建 main.js 文件，代码如下所示：
+```js
+// 引入 events 模块
+var events = require('events');
+// 创建 eventEmitter 对象
+var eventEmitter = new events.EventEmitter();
+ 
+// 创建事件处理程序
+var connectHandler = function connected() {
+   console.log('连接成功。');
+  
+   // 触发 data_received 事件 
+   eventEmitter.emit('data_received');
+}
+ 
+// 绑定 connection 事件处理程序
+eventEmitter.on('connection', connectHandler);
+ 
+// 使用匿名函数绑定 data_received 事件
+eventEmitter.on('data_received', function(){
+   console.log('数据接收成功。');
+});
+ 
+// 触发 connection 事件 
+eventEmitter.emit('connection');
+ 
+console.log("程序执行完毕。");
+```
+接下来让我们执行以上代码：
+<pre>
+$ node main.js
+连接成功。
+数据接收成功。
+程序执行完毕。
+</pre>
+
+#### Node 应用程序是如何工作的？
+在 Node 应用程序中，执行异步操作的函数将回调函数作为最后一个参数， 回调函数接收错误对象作为第一个参数  
+接下来让我们来重新看下前面的实例，创建一个 input.txt ,文件内容如下：
+```
+菜鸟教程官网地址：www.runoob.com
+```
+创建 main.js 文件，代码如下：
+```js
+let fs = require("fs");
+
+fs.readFile('input.txt', function (err, data) {
+   if (err){
+      console.log(err.stack);
+      return;
+   }
+   console.log(data.toString());
+});
+console.log("程序执行完毕");
+```
+以上程序中 fs.readFile() 是异步函数用于读取文件。 如果在读取文件过程中发生错误，错误 err 对象就会输出错误信息  
+如果没发生错误，readFile 跳过 err 对象的输出，文件内容就通过回调函数输出  
+
+执行以上代码，执行结果如下：
+<pre>
+程序执行完毕
+菜鸟教程官网地址：www.runoob.com
+</pre>
+接下来我们删除 input.txt 文件，执行结果如下所示：
+<pre>
+程序执行完毕
+Error: ENOENT, open 'input.txt'
+</pre>
+因为文件 input.txt 不存在，所以输出了错误信息
