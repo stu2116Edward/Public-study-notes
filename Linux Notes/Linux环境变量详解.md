@@ -88,7 +88,7 @@ printenv 环境变量名
 echo $环境变量名
 ```
 示例：
-```
+```bash
 echo $PATH
 ```
 
@@ -121,23 +121,23 @@ source /etc/profile
 - `.bash_profile`：这是在登录时加载的主要文件。通常用于设置用户的个人环境变量和启动脚本  
 - `.bash_login`：如果 `.bash_profile` 不存在，则会尝试加载此文件  
 - `.profile`：如果 `.bash_profile` 和 `.bash_login` 都不存在，则会尝试加载此文件。这是一个通用的配置文件，适用于多种类型的 shell  
-- `.bashrc`：这是在每次打开新的终端窗口时加载的文件。它包含了用户定义的别名、函数、自定义环境变量等  
+- `.bashrc`：这是在`每次打开新的终端窗口时加载的文件`。它包含了用户定义的别名、函数、自定义环境变量等  
 通常情况下，用户可以在`.bash_profile`、`.bash_login` 或 `.profile`    
 文件中设置一些全局的环境变量和启动脚本，而在.bashrc 文件中设置一些特定于 Bash 的配置和个人设置  
 请注意，这是默认的行为，具体的加载顺序可能会受到系统配置的影响
+
+编辑用户环境变量配置文件：
 ```bash
-cd ~
+vim ~/.profile
 ```
-```bash
-vim ./bash_profile
-```
+添加环境变量：
 ```bash
 export PATH=$PATH:(需要添加的进程)
 ```
 即可永久性的添加环境变量  
 修改文件后要想马上生效还要运行：
 ```bash
-source ./bash_profile
+source ~/.profile
 ```
 
 ### 6.删除环境变量
@@ -149,6 +149,11 @@ source ./bash_profile
 比如:`PATH=(需要保留的路径):(需要删除的路径)`可以：`PATH=$(需要保留的路径)`
 
 修改文件后要想马上生效还要运行：
+- 系统环境变量
 ```bash
-source ./bash_profile
+source /etc/profile
+```
+- 用户环境变量
+```bash
+source ~/.profile
 ```
