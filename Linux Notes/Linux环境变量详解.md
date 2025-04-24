@@ -104,6 +104,7 @@ uusama@ubuntu:~$ echo $PATH
 /home/uusama/bin:/home/uusama/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 </pre>
 **他们以冒号 `:` 作为分隔符用来分割不同的路径，因此你可以一次性添加多个路径**  
+**在 Windows 系统中，环境变量 PATH 的路径分隔符是分号 ; ，而在 Linux/Unix 系统中，路径分隔符是冒号 :**  
 将其分隔成一些子路径，当写入命令时，会自动一个子路径一个子路径的寻找命令自己的源文件，所以就不需要像我们自己写的文件那样，需要主动加上路径(`./project`)，才能被系统所识别运行  
 
 
