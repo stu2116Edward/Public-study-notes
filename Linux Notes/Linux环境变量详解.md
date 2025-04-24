@@ -137,6 +137,7 @@ vim /etc/profile
 ```bash
 export PATH=$PATH:(需要添加的路径)
 ```
+通过在命令中使用 `$PATH`，将新路径追加到现有的 PATH 中，而不会覆盖原有的路径  
 配置示例（这里加了双引号）：
 ```bash
 export PATH="/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH"
@@ -145,6 +146,7 @@ export PATH="/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH"
 ```bash
 export PATH=$PATH:~/bin:/usr/local/bin
 ```
+新的路径追加到现有的环境变量中路径之间使用冒号 `:` 分隔  
 使配置生效：
 ```bash
 source /etc/profile
