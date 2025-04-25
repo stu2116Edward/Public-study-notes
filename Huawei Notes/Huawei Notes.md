@@ -29,6 +29,10 @@
 ```
 system-view
 ```
+缩写
+```
+sys
+```
 
 2.删除或禁用某个功能或者删除某项配置  
 ```
@@ -168,19 +172,20 @@ flow-control
 
 
 ## [MAC地址自动学习于接口绑定](#MAC地址自动学习于接口绑定)
-1.系统视图中关闭交换机指定接口的MAC地址学习功能(避免陌生mac设备接入),也称为信息中心功能  
+1.系统视图中关闭设备的信息中心功能执行该命令后，设备上产生的Log、Trap和Debug信息都不再记录，包括执行undo info-center enable命令产生的日志信息也不记录  
 ```
 undo info-center enable
 ```
 
-2.关闭指定接口的MAC地址自动学习功能(接口视图中)  
+2.在网络环境固定的情况下，为了节约MAC地址表项，可禁止`VLAN`或`接口`内的MAC地址学习功能  
 ```
-mac-address learning disable action discard
+interface Ethernet0/0/1
+mac-address learning disable
 ```
 
 3.将host1的MAC地址与Ethernet 0/0/1接口绑定  
 ```
-Mac-address static <host1的mac地址> Ethernet0/0/1 vlan 1
+mac-address static <host1的mac地址> Ethernet0/0/1 vlan 1
 ```
 
 
@@ -204,7 +209,7 @@ stp enable
 我们一般使用高级版本的STP协议MSTP  
 2.MSTP的应用  
 多个vlan凑成一个实例(instance)多个实例凑成一个区域（一个实例对应一个树）  
-LSW1:  
+**LSW1**:  
 进入系统视图  
 ```
 sys
@@ -264,7 +269,7 @@ stp instance 1 priority 4096
 stp instance 2 priority 8192
 ```
 
-LSW2:  
+**LSW2**:  
 进入系统视图  
 ```
 sys
@@ -316,7 +321,7 @@ instance 2 vlan 20 40
 ```
 active region-configuration
 ```
-配置实例优先级(数字越小优先级越高越不会被断开，数字越大优先级越低容易断开)
+配置实例优先级(`数字越小优先级越高`越不会被断开，数字越大优先级越低容易断开)
 ```
 stp instance 1 priority 8192
 ```
@@ -368,6 +373,7 @@ quit
 
 链路聚合用于增加带宽  
 链路聚合的配置  
+**LSW1&LSW2**:  
 进入聚合接口  
 ```
 int Eth-Trunk 1
@@ -382,7 +388,7 @@ trunkport g0/0/3
 ```
 trunkport g0/0/4
 ```
-或者  
+或者批量加入  
 ```
 trunkport g 0/0/2 to 0/0/4
 ```
@@ -402,6 +408,20 @@ port trunk allow-pass vlan all
 - **Access**类型：端口只能属于1个VLAN，`一般用于连接计算机`  
 - **Trunk**类型：端口可以属于多个VLAN，可以接收和发送多个VLAN的报文，`一般用于交换机之间连接`  
 - **Hybrid**类型：端口可以属于多个VLAN，可以接收和发送多个VLAN的报文，可以用于`交换机`之间连接，也可以用于连接用户的`计算机`  
+
+**本征VLAN**（pvid与native vlan）:  
+pvid与native vlan是思科与华为交换机中的概念，虽然说法有不同，但是其本质上还是缺省vlan  
+缺省**vlan默认为1**，各个端口都有一个缺省的vlan，该值支持修改  
+首先在交换机中`trunk的接口我们一般称之为干道接口`(思科里称为中继接口)，干道接口是允许所有带VLAN的标签（tag）的帧通过，即permit any all（默认即是允许所有），如果遇到没有打标签的流量，交换机也会将其打上vlan 1的tag  
+`pvid主要作用是为了解决无法打vlan标签的设备与能打vlan标签的设备进行通信而存在`。其次：设备管理通信作用  
+PC=无法打标签，交换机=可以打标签  
+
+**二层通信条件：只要两个接口允许相同的VLAN流量通过，并且接口配置正确（包括标签处理方式），无论它们是Hybrid、Trunk还是Access类型，都可以正常通信。注意确保接口配置正确，并且VLAN已经创建**
+
+创建单个vlan
+```
+vlan 10
+```
 
 创建多个vlan  
 ```
@@ -423,54 +443,45 @@ port link-type access
 port default vlan 100
 ```
 
-创建进入某个vlan的视图(10是vlan的编号)  
+创建进入某个vlan的视图(100是vlan的编号)  
 ```
 vlan 100
 ```
 
-设置为主vlan(主vlan可以和所有vlan通信)  
+设置为主vlan(**主vlan**可以和所有vlan通信)  
 ```
 mux-vlan
 ```
 
-在某个vlan视图内绑定互通型vlan 10 vlan 20(互通型vlan可以和主vlan通信也可以和同一vlan内的设备通信)  
+在某个vlan视图内绑定互通型vlan 10 vlan 20(**互通型vlan**可以和主vlan通信也可以和同一vlan内的设备通信，不能与隔离型vlan通信)  
 ```
 subordinate group 10 20
-```  
+```
 缩写  
 ```
 sub group 10 20
 ```
 
-在某个vlan视图内定义一个隔离形vlan 30(隔离型vlan只能与主vlan通信不能与其他vlan通信)  
+在某个vlan视图内定义一个隔离形vlan 30(**隔离型vlan**只能与主vlan通信不能与其他vlan通信)  
 ```
 subordinate separate 30
-```  
+```
 缩写  
 ```
 sub sep 30
-``` 
+```
 
 显示当前视图下的配置  
 ```
 display this
-```  
-缩写  
 ```
-disp this
-``` 
 
 退出当前视图  
 ```
 quit
-```  
-缩写  
-```
-q
 ```
 
-
-设置接口的链路类型为access  
+**设置接口的链路类型为access**  
 进入接口  
 ```
 int g0/0/2
@@ -491,8 +502,7 @@ port default vlan 100
 port mux-vlan enable
 ```
 
-
-设置接口的链路类型为trunk  
+**设置接口的链路类型为trunk**  
 进入接口  
 ```
 int g0/0/1
@@ -503,18 +513,62 @@ int g0/0/1
 port link-type trunk
 ```
 
-配置运行通过的vlan  
+配置允许`特定的VLAN`通过  
 ```
 port trunk allow-pass vlan 10 20 30 100
 ```
 
-或允许全部vlan通过  
+或允许`全部vlan`通过  
 ```
 port trunk allow-pass vlan all
 ```
 
+**Hybrid链路类型配置语法**  
+Hybrid接口具有以下特点：  
+- 既可以作为Access接口，也可以作为Trunk接口
+- 可以允许多个VLAN的帧通过
+- 可以配置允许或禁止特定VLAN的帧通过
+- 可以配置VLAN的PVID（Port VLAN ID）
+
+应用场景:  
+- 在不同VLAN之间实现通信和隔离
+- 将多个VLAN连接到同一个交换机端口
+- 连接两台交换机之间的干道链路(Trunk)
+
+**PVID**（Port VLAN ID）:  
+即端口VLAN ID，用于指定一个端口所属的默认VLAN。当一个端口收到没有VLAN标记的数据帧时，会将其标记为PVID所属的VLAN  
+**Tagged**:  
+即标记，是指数据帧带有VLAN标记。这种数据帧通常是由支持VLAN的设备（比如交换机）在Trunk端口上发送的。Trunk端口可以属于多个VLAN，所以它会在发送数据帧时加上VLAN标记，这样接收端就能知道这个帧属于哪个VLAN  
+**Untagged**（未标记）:  
+未标记帧是指不包含 VLAN 标识符的以太网帧。这类帧通常来自非 VLAN 感知设备。也就是去除vlan 传输数据,不支持VLAN的设备，比如普通的电脑、打印机等。这些设备发送的数据帧是没有VLAN标签的  
+
+进入接口视图
+```
+interface g0/0/1
+```
+设置接口类型为Hybrid
+```
+port link-type hybrid
+```
+配置PVID（Port VLAN ID）  
+PVID用于处理未标记的流量。当接口收到未标记的帧（即没有VLAN标签的帧）时，会将其分配到PVID指定的VLAN
+```
+port hybrid pvid vlan <VLAN-ID>
+```
+配置允许通过的VLAN  
+可以配置接口允许哪些VLAN的流量通过，并且可以指定这些流量是否携带标签  
+- 允许未标记流量通过
+```
+port hybrid untagged vlan <VLAN-ID>
+```
+- 允许标记流量通过
+```
+port hybrid tagged vlan <VLAN-ID>
+```
+
+
 ## [VLAN中绑定MAC地址](#VLAN中绑定MAC地址)
-在指定vlan中绑定MAC地址  
+在指定vlan中绑定MAC地址限制只有特定的MAC地址能够访问该VLAN  
 进入vlan 10视图  
 ```
 vlan 10
@@ -524,7 +578,7 @@ vlan 10
 mac-vlan mac-address <MAC地址>
 ```
 
-在接口中基于MAC地址实现划分VLAN  
+### 在接口中基于MAC地址实现划分VLAN  
 进入接口视图  
 ```
 int g0/0/1
@@ -534,7 +588,7 @@ int g0/0/1
 mac-vlan enable
 ```
 
-将接口设置为hybrid类型  
+将接口设置为`hybrid类型`  
 ```
 port link-type hybrid
 ```
@@ -544,13 +598,11 @@ port link-type hybrid
 port hybrid untagged vlan 10 20
 ```
 
-
-
 ## [MUX-VLAN配置](#MUX-VLAN配置)
 绑定vlan关系：  
 - **主 VLAN**(Principal VLAN)可以访问所有从 VLAN  
-- **组 VLAN**(Group VLAN)内部的接口可以互相访问，也可以访问主 VLAN，但不能访问隔离 VLAN  
-- **隔离 VLAN**(Isolate VLAN)内部的接口不能互相访问，只能访问主 VLAN  
+- **互通型 VLAN**(Group VLAN)内部的接口可以互相访问，也可以访问主 VLAN，但不能访问隔离 VLAN  
+- **隔离型 VLAN**(Isolate VLAN)内部的接口不能互相访问，只能访问主 VLAN  
 
 **主 VLAN**: `mux-vlan`  
 **互通型(组) VLAN**: `sub group`  
