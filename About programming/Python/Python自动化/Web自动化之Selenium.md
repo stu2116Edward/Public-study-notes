@@ -1,12 +1,10 @@
 # Web自动化之Selenium
 
 ### 安装配置环境
-安装浏览器和与之对应的WebDriver:
+安装浏览器和与之对应的WebDriver:  
 [Edge果核离线安装包](https://www.ghxi.com/microsoftedge.html)  
 [EdgeDriver](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/?form=MA13LH)  
-
 [Chrome & ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing)  
-
 [FireFox](https://www.firefox.com.cn/download/#product-desktop-release)  
 [geckodriver](https://github.com/mozilla/geckodriver/releases)  
 **这里的版本要对应**  
