@@ -1,6 +1,8 @@
 # Edge浏览器修改自动填充数据的方法
 
-用户输入无论正确与否的数据都会被浏览器记录，自动填充时都会显示形成干扰，或其他诸如此类不完善的体验，和Chrome浏览器不同Chrome浏览器可以通过快捷键`Shift + Delete`的方式删除但是目前的Edge无法实现该功能所以可以使用以下方法实现：
+用户输入无论正确与否的数据都会被浏览器记录，自动填充时都会显示形成干扰，或其他诸如此类不完善的体验  
+![edge_list_history](https://github.com/user-attachments/assets/428ae043-dc0e-4fa2-a35d-d05425e11b32)  
+和Chrome浏览器不同Chrome浏览器可以通过快捷键`Shift + Delete`的方式删除但是目前的Edge无法实现该功能所以可以使用以下方法实现：
 
 1. 在C盘找到Edge的本地数据目录，具体地址：
 ```
