@@ -26,7 +26,10 @@ curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh && ch
 
 [linux官方内核](https://www.kernel.org/)  
 
-卸载顺序同理参考上面的操作  
+升级/卸载：
+1. 选择**系统工具**输入：`13`
+2. 选择**开启BBR3加速**输入：`16`
+3. 输入：`1` 更新 `2` 卸载
 
 ### 手动安装
 
