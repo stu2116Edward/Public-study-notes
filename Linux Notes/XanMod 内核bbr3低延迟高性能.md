@@ -73,6 +73,8 @@ BBR一键安装脚本
 ```bash
 wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 ```
+选择**使用BBR加速**输入：4  
+完成  
 
 **手动安装**：  
 1. 安装系统组件：
