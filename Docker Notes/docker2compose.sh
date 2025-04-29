@@ -1,10 +1,11 @@
 #!/bin/bash
-# 交互式容器转docker-compose脚本
+# 增强交互式容器转docker-compose脚本（支持0退出）
 
 # 颜色定义
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # 显示帮助信息
@@ -17,6 +18,7 @@ show_help() {
     echo "  -c, --container   指定容器名称或ID"
     echo "  -o, --output      指定输出文件(默认为docker-compose.yml)"
     echo "  -h, --help        显示帮助信息"
+    echo -e "${YELLOW}交互模式下输入0可以随时退出${NC}"
 }
 
 # 检查依赖
@@ -40,46 +42,82 @@ check_dependencies() {
     fi
 }
 
+# 安全退出函数
+safe_exit() {
+    echo -e "${BLUE}用户请求退出脚本。${NC}"
+    exit 0
+}
+
+# 用户确认提示
+confirm_action() {
+    local prompt="$1"
+    while true; do
+        echo -en "${YELLOW}${prompt} [y/N/0(退出)]: ${NC}"
+        read -r answer
+        case "$answer" in
+            [Yy]* ) return 0;;
+            [Nn]* ) return 1;;
+            0 ) safe_exit;;
+            * ) echo -e "${RED}请输入 y, n 或 0 退出${NC}";;
+        esac
+    done
+}
+
 # 选择容器
 select_container() {
-    echo -e "${YELLOW}正在获取容器列表...${NC}"
-    local containers=$(docker ps --format "{{.ID}}:{{.Names}}:{{.Image}}")
-    
-    if [ -z "$containers" ]; then
-        echo -e "${RED}没有找到运行中的容器!${NC}"
-        exit 1
-    fi
-    
-    echo -e "${GREEN}请选择要转换的容器:${NC}"
-    local i=1
-    local options=()
-    
-    echo "编号 | 容器ID       | 容器名称       | 镜像"
-    echo "--------------------------------------------"
-    while IFS=':' read -r id name image; do
-        printf "%-4s | %-12s | %-14s | %s\n" "$i" "${id:0:12}" "$name" "$image"
-        options+=("$id")
-        ((i++))
-    done <<< "$containers"
-    
     while true; do
-        echo -en "${YELLOW}请输入容器编号(1-$((i-1)))或直接输入容器ID/名称: ${NC}"
-        read -r choice
+        echo -e "${YELLOW}正在获取容器列表...${NC}"
+        local containers=$(docker ps --format "{{.ID}}:{{.Names}}:{{.Image}}")
         
-        # 如果用户输入的是数字
-        if [[ "$choice" =~ ^[0-9]+$ ]] && [ "$choice" -ge 1 ] && [ "$choice" -lt "$i" ]; then
-            SELECTED_CONTAINER="${options[$((choice-1))]}"
-            break
-        # 如果用户直接输入容器ID或名称
-        elif docker inspect "$choice" &>/dev/null; then
-            SELECTED_CONTAINER="$choice"
-            break
-        else
-            echo -e "${RED}无效选择，请重试!${NC}"
+        if [ -z "$containers" ]; then
+            echo -e "${RED}没有找到运行中的容器!${NC}"
+            if confirm_action "是否重试?"; then
+                continue
+            else
+                safe_exit
+            fi
         fi
+        
+        echo -e "${GREEN}请选择要转换的容器(输入0退出):${NC}"
+        local i=1
+        local options=()
+        
+        echo -e "${BLUE}编号 | 容器ID       | 容器名称       | 镜像${NC}"
+        echo "--------------------------------------------"
+        while IFS=':' read -r id name image; do
+            printf "%-4s | %-12s | %-14s | %s\n" "$i" "${id:0:12}" "$name" "$image"
+            options+=("$id")
+            ((i++))
+        done <<< "$containers"
+        
+        while true; do
+            echo -en "${YELLOW}请输入容器编号(1-$((i-1)) 或容器ID/名称，或0退出): ${NC}"
+            read -r choice
+            
+            # 检查是否请求退出
+            if [ "$choice" = "0" ]; then
+                safe_exit
+            fi
+            
+            # 如果用户输入的是数字
+            if [[ "$choice" =~ ^[0-9]+$ ]]; then
+                if [ "$choice" -ge 1 ] && [ "$choice" -lt "$i" ]; then
+                    SELECTED_CONTAINER="${options[$((choice-1))]}"
+                    echo -e "${GREEN}已选择容器: ${SELECTED_CONTAINER}${NC}"
+                    return 0
+                else
+                    echo -e "${RED}无效编号，请选择1-$((i-1))或0退出${NC}"
+                fi
+            # 如果用户直接输入容器ID或名称
+            elif docker inspect "$choice" &>/dev/null; then
+                SELECTED_CONTAINER="$choice"
+                echo -e "${GREEN}已选择容器: ${SELECTED_CONTAINER}${NC}"
+                return 0
+            else
+                echo -e "${RED}无效选择，请重试或输入0退出!${NC}"
+            fi
+        done
     done
-    
-    echo -e "${GREEN}已选择容器: ${SELECTED_CONTAINER}${NC}"
 }
 
 # 获取输出文件名
@@ -87,10 +125,12 @@ get_output_filename() {
     local default_output="docker-compose.yml"
     
     while true; do
-        echo -en "${YELLOW}请输入输出文件名(默认为 ${default_output}): ${NC}"
+        echo -en "${YELLOW}请输入输出文件名(默认为 ${default_output})或0退出: ${NC}"
         read -r output
         
-        if [ -z "$output" ]; then
+        if [ "$output" = "0" ]; then
+            safe_exit
+        elif [ -z "$output" ]; then
             OUTPUT_FILE="$default_output"
             break
         elif [[ "$output" == *.yml ]] || [[ "$output" == *.yaml ]]; then
@@ -103,11 +143,8 @@ get_output_filename() {
     
     # 检查文件是否已存在
     if [ -f "$OUTPUT_FILE" ]; then
-        echo -en "${YELLOW}文件 ${OUTPUT_FILE} 已存在，要覆盖吗? [y/N]: ${NC}"
-        read -r overwrite
-        if [[ ! "$overwrite" =~ ^[Yy]$ ]]; then
-            echo -e "${RED}操作已取消。${NC}"
-            exit 0
+        if ! confirm_action "文件 ${OUTPUT_FILE} 已存在，要覆盖吗?"; then
+            safe_exit
         fi
     fi
 }
@@ -263,6 +300,7 @@ main() {
     # 交互模式
     if [ -z "$CONTAINER" ]; then
         echo -e "${GREEN}=== 交互式Docker容器转Compose工具 ===${NC}"
+        echo -e "${BLUE}提示: 在任何输入提示处输入0可以退出脚本${NC}"
         select_container
     else
         SELECTED_CONTAINER="$CONTAINER"
