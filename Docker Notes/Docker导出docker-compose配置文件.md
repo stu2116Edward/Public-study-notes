@@ -24,28 +24,26 @@ vim docker-compose.yml
 
 ### 使用docker2compose脚本
 使用[docker2compose.sh](https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/Docker%20Notes/docker2compose.sh)脚本的方式自动化生成 `docker-compose.yml` 文件  
-
+使用一键脚本：
+```
+curl -sS -O https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/Docker%20Notes/docker2compose.sh && chmod +x docker2compose.sh && ./docker2compose.sh
+```
 运行这个脚本提示所需组件：
 ```bash
 apt install -y jq
 ```
 
-添加可执行权限：
-```bash
-chmod +x docker2compose.sh
-```
-
-交互模式：
+- 交互模式：
 ```bash
 ./docker2compose.sh
 ```
 
-命令行模式：
+- 命令行模式：
 ```bash
 ./docker2compose.sh -c 容器名或ID -o docker-compose.yml
 ```
 
-显示帮助：
+- 显示帮助：
 ```bash
 ./docker2compose.sh -h
 ```
