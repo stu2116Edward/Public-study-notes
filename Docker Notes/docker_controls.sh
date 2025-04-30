@@ -120,38 +120,44 @@ install_docker() {
 
     echo -e "${GREEN}开始安装 Docker...${NC}"
 
-    # 获取适合当前系统的Docker下载URL
-    base_url=$(get_docker_url)
-    if [ $? -ne 0 ]; then
-        echo -e "${RED}无法确定适合您系统的Docker版本。${NC}"
-        return 1
-    fi
-
-    echo -e "${BLUE}检测到系统架构: $(uname -m)${NC}"
-    echo -e "${BLUE}使用Docker镜像源: $base_url${NC}"
-
-    # 获取最新的Docker版本
-    echo -e "${YELLOW}获取最新的Docker版本...${NC}"
-    package_name=$(wget -qO- "$base_url" | grep -oP '(?<=href=")docker-\d+\.\d+\.\d+\.tgz' | sort -V | tail -n 1)
+    # 首先检查当前目录下是否有docker-*.tgz文件
+    local package_name=$(find . -maxdepth 1 -name 'docker-*.tgz' -printf "%f\n" | head -n 1)
     
-    if [ -z "$package_name" ]; then
-        echo -e "${RED}无法获取最新的Docker版本，请检查网络连接或手动下载。${NC}"
-        return 1
-    fi
+    if [ -n "$package_name" ]; then
+        echo -e "${GREEN}发现本地Docker安装包: $package_name${NC}"
+        echo -e "${YELLOW}将使用本地安装包进行安装...${NC}"
+    else
+        echo -e "${YELLOW}未找到本地Docker安装包，尝试在线获取...${NC}"
 
-    download_url="$base_url/$package_name"
-    echo -e "${GREEN}最新版本的Docker安装包为: $package_name${NC}"
+        # 获取适合当前系统的Docker下载URL
+        base_url=$(get_docker_url)
+        if [ $? -ne 0 ]; then
+            echo -e "${RED}无法确定适合您系统的Docker版本。${NC}"
+            return 1
+        fi
 
-    # 检查当前目录下是否存在安装包
-    if [ ! -f "$package_name" ]; then
-        echo -e "${YELLOW}安装包 $package_name 不存在，正在下载...${NC}"
+        echo -e "${BLUE}检测到系统架构: $(uname -m)${NC}"
+        echo -e "${BLUE}使用Docker镜像源: $base_url${NC}"
+
+        # 获取最新的Docker版本
+        echo -e "${YELLOW}获取最新的Docker版本...${NC}"
+        package_name=$(wget -qO- "$base_url" | grep -oP '(?<=href=")docker-\d+\.\d+\.\d+\.tgz' | sort -V | tail -n 1)
+        
+        if [ -z "$package_name" ]; then
+            echo -e "${RED}无法获取最新的Docker版本，请检查网络连接或手动下载。${NC}"
+            return 1
+        fi
+
+        download_url="$base_url/$package_name"
+        echo -e "${GREEN}最新版本的Docker安装包为: $package_name${NC}"
+
+        # 下载Docker安装包
+        echo -e "${YELLOW}下载Docker安装包...${NC}"
         if ! wget "$download_url"; then
             echo -e "${RED}下载失败，请检查网络连接或URL是否正确。${NC}"
             return 1
         fi
         echo -e "${GREEN}安装包 $package_name 下载成功。${NC}"
-    else
-        echo -e "${GREEN}安装包 $package_name 已存在，跳过下载。${NC}"
     fi
 
     # 解压Docker安装包
