@@ -3,7 +3,13 @@
 前言：基于Ubuntu Jammy 22.04 (LTS)版本安装和测试  
 [Docker在线安装官方文档](https://docs.docker.com/engine/install/)
 
-## 安装Docker
+## 使用一键脚本安装Docker
+运行以下命令：
+```bash
+curl -sS -O https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/Docker%20Notes/docker_controls.sh && chmod +x docker_controls.sh && ./docker_controls.sh
+```
+
+## 手动安装Docker
 ### 步骤一：[离线安装包官网](https://download.docker.com/linux/static/stable/x86_64/)下载 docker 安装包
 ```
 wget https://download.docker.com/linux/static/stable/x86_64/docker-24.0.6.tgz
