@@ -4,6 +4,3 @@ zj-cu-v4.ip.zstaticcdn.com:80
 zj-cm-v4.ip.zstaticcdn.com:80
 浙江省宁波市鄞州中国电信
 zj-ct-v4.ip.zstaticcdn.com:80
-
-
-
