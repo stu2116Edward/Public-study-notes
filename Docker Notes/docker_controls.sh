@@ -51,52 +51,51 @@ confirm() {
     esac
 }
 
-# 获取系统架构和对应的Docker下载URL
-get_docker_url() {
-    # 获取系统架构
+# 获取系统架构
+get_system_arch() {
     local arch=$(uname -m)
-    local mirrors=(
-        "https://download.docker.com/linux/static/stable"
-        "https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/static/stable"
-        "https://mirrors.pku.edu.cn/docker-ce/linux/static/stable"
-    )
-    
-    # 映射架构到Docker的架构命名
     case "$arch" in
         x86_64)
-            arch_suffix="x86_64"
+            echo "x86_64"
             ;;
         aarch64|arm64)
-            arch_suffix="aarch64"
+            echo "aarch64"
             ;;
         armv7l|armhf)
-            arch_suffix="armhf"
+            echo "armhf"
             ;;
         armv6l)
-            arch_suffix="armel"
+            echo "armel"
             ;;
         s390x)
-            arch_suffix="s390x"
+            echo "s390x"
             ;;
         ppc64le)
-            arch_suffix="ppc64le"
+            echo "ppc64le"
             ;;
         *)
             echo -e "${RED}不支持的架构: $arch${NC}" >&2
             return 1
             ;;
     esac
+}
+
+# 获取可用的Docker版本
+get_available_docker_version() {
+    local base_url=$1
+    # 获取页面内容并过滤出所有可用的docker版本
+    local versions=$(wget -qO- "$base_url" | grep -oP 'docker-\d+\.\d+\.\d+\.tgz' | sed 's/docker-\(.*\)\.tgz/\1/' | sort -Vr 2>/dev/null)
     
-    # 检查镜像源可用性并返回第一个可用的URL
-    for mirror in "${mirrors[@]}"; do
-        local url="$mirror/$arch_suffix"
-        if curl --output /dev/null --silent --head --fail "$url"; then
-            echo "$url"
+    # 检查每个版本是否存在
+    for version in $versions; do
+        local package_name="docker-${version}.tgz"
+        # 使用--spider检查文件是否存在而不下载
+        if wget --spider "${base_url}/${package_name}" 2>/dev/null; then
+            echo "$package_name"
             return 0
         fi
     done
     
-    echo -e "${RED}所有镜像源均不可用，请检查网络连接。${NC}" >&2
     return 1
 }
 
@@ -110,6 +109,15 @@ install_docker() {
             echo -e "${GREEN}用户选择跳过安装。${NC}"
             return
         fi
+
+        # 用户确认重新安装，先执行卸载操作
+        echo -e "${YELLOW}开始卸载现有 Docker 环境...${NC}"
+        uninstall_docker
+        if [ $? -ne 0 ]; then
+            echo -e "${RED}卸载 Docker 失败，请检查错误信息。${NC}"
+            return 1
+        fi
+        echo -e "${GREEN}现有 Docker 环境已成功卸载，继续进行安装。${NC}"
     else
         echo -e "${YELLOW}未检测到 Docker 环境。${NC}"
         if ! confirm "是否需要安装 Docker？"; then
@@ -129,35 +137,53 @@ install_docker() {
     else
         echo -e "${YELLOW}未找到本地Docker安装包，尝试在线获取...${NC}"
 
-        # 获取适合当前系统的Docker下载URL
-        base_url=$(get_docker_url)
+        # 获取系统架构
+        arch_suffix=$(get_system_arch)
         if [ $? -ne 0 ]; then
             echo -e "${RED}无法确定适合您系统的Docker版本。${NC}"
             return 1
         fi
 
         echo -e "${BLUE}检测到系统架构: $(uname -m)${NC}"
-        echo -e "${BLUE}使用Docker镜像源: $base_url${NC}"
 
-        # 获取最新的Docker版本
-        echo -e "${YELLOW}获取最新的Docker版本...${NC}"
-        package_name=$(wget -qO- "$base_url" | grep -oP '(?<=href=")docker-\d+\.\d+\.\d+\.tgz' | sort -V | tail -n 1)
+        # 定义镜像源列表
+        local mirrors=(
+            "https://mirrors.aliyun.com/docker-ce/linux/static/stable/$arch_suffix"
+            "https://mirrors.tencent.com/docker-ce/linux/static/stable/$arch_suffix"
+			"https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/static/stable/$arch_suffix"
+            "https://mirrors.ustc.edu.cn/docker-ce/linux/static/stable/$arch_suffix"
+            "https://download.docker.com/linux/static/stable/$arch_suffix"
+			"https://mirrors.pku.edu.cn/docker-ce/linux/static/stable/$arch_suffix"
+        )
+
+        package_name=""
+        local working_mirror=""
         
+        # 尝试从多个镜像源获取可用的Docker版本
+        for mirror in "${mirrors[@]}"; do
+            echo -e "${YELLOW}尝试从镜像源获取版本: $mirror${NC}"
+            package_name=$(get_available_docker_version "$mirror")
+            if [ -n "$package_name" ]; then
+                working_mirror="$mirror"
+                echo -e "${GREEN}找到可用版本: $package_name${NC}"
+                break
+            fi
+            echo -e "${YELLOW}镜像源 $mirror 无可用版本，尝试下一个...${NC}"
+        done
+
         if [ -z "$package_name" ]; then
-            echo -e "${RED}无法获取最新的Docker版本，请检查网络连接或手动下载。${NC}"
+            echo -e "${RED}所有镜像源均无法获取可用Docker版本，请检查网络或手动下载。${NC}"
             return 1
         fi
-
-        download_url="$base_url/$package_name"
-        echo -e "${GREEN}最新版本的Docker安装包为: $package_name${NC}"
 
         # 下载Docker安装包
-        echo -e "${YELLOW}下载Docker安装包...${NC}"
+        download_url="$working_mirror/$package_name"
+        echo -e "${YELLOW}正在下载 $package_name ...${NC}"
         if ! wget "$download_url"; then
-            echo -e "${RED}下载失败，请检查网络连接或URL是否正确。${NC}"
+            echo -e "${RED}下载失败，请检查网络连接。${NC}"
             return 1
         fi
-        echo -e "${GREEN}安装包 $package_name 下载成功。${NC}"
+        echo -e "${GREEN}安装包下载成功: $package_name${NC}"
     fi
 
     # 解压Docker安装包
