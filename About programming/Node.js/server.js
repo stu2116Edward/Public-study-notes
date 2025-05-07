@@ -1,14 +1,18 @@
-let http = require("http")
+const http = require('http') // 引入http模块
 
-http.createServer(function(require, response) {
-    // 发送 HTTP 头部
-    // HTTP 状态值: 200 : OK
-    // 内容类型: text/plain
-    response.writeHead(200, {'Content-Type': 'text/plain'});
+const hostname = '127.0.0.1'
+const port = 3000
 
-    // 发送响应数据"hello World"
-    response.end("Hello World!");
-}).listen(8888);
-    
-// 终端打印如下信息
-console.log('Server running at http://127.0.0.1:8888/');
+// 创建web服务器
+const server = http.createServer((require, response) => {
+    // require为来自客户端的请求
+    // response为服务应答
+    response.statusCode = 200 // 设置状态码
+    response.setHeader('Content-Type', 'text/plain') // 设置响应头字段
+    response.end('Hello World\n') // 发送消息并结束本次连接
+})
+
+// 启动服务器
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`) // 启动成功后输出信息
+})
