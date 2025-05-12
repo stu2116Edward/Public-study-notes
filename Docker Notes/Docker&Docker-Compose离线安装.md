@@ -126,7 +126,7 @@ sha256sum -c docker-compose-linux-x86_64.sha256
 
 ### 2.将二进制文件移动到/usr/local/bin/目录下：
 ```
-sudo mv docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+sudo mv docker-compose-linux-x86_64 /usr/local/bin/docker-compose
 ```
 ### 3.赋予执行权限
 ```
