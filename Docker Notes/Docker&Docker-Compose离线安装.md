@@ -132,7 +132,22 @@ sudo mv docker-compose-linux-x86_64 /usr/local/bin/docker-compose
 ```
 sudo chmod +x /usr/local/bin/docker-compose
 ```
-### 4.验证安装：
+### 4.配置环境变量:
+```bash
+echo "export PATH=$PATH:/usr/local/bin" >> ~/.bashrc
+```
+使环境变量生效：
+```bash
+source ~/.bashrc
+```
+或者使用软链接：
+```
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+由于系统可能在`/usr/bin`目录下寻找命令，您可以尝试在`/usr/bin`目录下创建一个指向`/usr/local/bin/docker-compose`的软链接  
+这样系统就可以找到docker-compose命令了  
+
+### 5.验证安装：
 ```
 docker-compose -v
 ```
