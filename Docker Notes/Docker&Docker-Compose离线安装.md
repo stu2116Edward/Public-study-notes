@@ -122,8 +122,10 @@ curl -sS -O https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/r
 ```bash
 hash -r
 ```
+一般情况下使用包管理器安装的docker-compose的版本基本较低如果想要安装更高版本的建议用户手动进行安装，即下载[docker-compose安装包](https://github.com/docker/compose/releases)
 
-### 1.下载Docker Compose二进制文件：
+## 手动安装docker-compose
+### 1.下载docker-compose二进制文件：
 [docker-compose安装包下载地址](https://github.com/docker/compose/releases)  
 将二进制文件复制到目标机器并将二进制文件移动到适当的位置，并确保具有执行权限  
 可以将其放在/usr/local/bin/目录下，这样可以全局访问Docker Compose  
