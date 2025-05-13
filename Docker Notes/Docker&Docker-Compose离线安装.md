@@ -113,6 +113,12 @@ docker --version
 
 ## docker-compose离线安装：
 
+## 使用一键脚本安装docker-compose
+运行以下命令：
+```bash
+curl -sS -O https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/Docker%20Notes/docker-compose_controls.sh && chmod +x docker-compose_controls.sh && ./docker-compose_controls.sh
+```
+
 ### 1.下载Docker Compose二进制文件：
 [docker-compose安装包下载地址](https://github.com/docker/compose/releases)  
 将二进制文件复制到目标机器并将二进制文件移动到适当的位置，并确保具有执行权限  
