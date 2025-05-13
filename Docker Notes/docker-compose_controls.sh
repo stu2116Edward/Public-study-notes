@@ -139,12 +139,25 @@ install_with_package_manager() {
         echo -e "${BLUE}检测到APT包管理器${NC}"
         apt update
         apt install -y docker-compose
-    elif command -v yum &> /dev/null; then
-        echo -e "${BLUE}检测到YUM包管理器${NC}"
-        yum install -y docker-compose
-    elif command -v dnf &> /dev/null; then
-        echo -e "${BLUE}检测到DNF包管理器${NC}"
-        dnf install -y docker-compose
+    elif command -v yum &> /dev/null || command -v dnf &> /dev/null; then
+        echo -e "${BLUE}检测到YUM/DNF包管理器${NC}"
+        
+        # 对于CentOS/RHEL，优先尝试从EPEL仓库安装
+        if ! yum repolist | grep -q "epel"; then
+            echo -e "${YELLOW}EPEL仓库未启用，尝试启用EPEL仓库...${NC}"
+            yum install -y epel-release || dnf install -y epel-release
+        fi
+        
+        # 尝试安装docker-compose
+        yum install -y docker-compose || dnf install -y docker-compose
+        
+        # 检查是否安装成功
+        if ! command -v docker-compose &> /dev/null; then
+            echo -e "${YELLOW}从EPEL仓库安装失败，尝试从官方仓库安装...${NC}"
+            yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+            yum install -y docker-compose-plugin
+            ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/bin/docker-compose
+        fi
     elif command -v zypper &> /dev/null; then
         echo -e "${BLUE}检测到ZYPPER包管理器${NC}"
         zypper install -y docker-compose
