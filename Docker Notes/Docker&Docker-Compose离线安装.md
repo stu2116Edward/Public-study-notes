@@ -118,6 +118,10 @@ docker --version
 ```bash
 curl -sS -O https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/Docker%20Notes/docker-compose_controls.sh && chmod +x docker-compose_controls.sh && ./docker-compose_controls.sh
 ```
+注意使用脚本安装成功后输入`docker-compose -v`查看版本信息没有立即生效则需要清理一下父Shell中的缓存：
+```bash
+hash -r
+```
 
 ### 1.下载Docker Compose二进制文件：
 [docker-compose安装包下载地址](https://github.com/docker/compose/releases)  
