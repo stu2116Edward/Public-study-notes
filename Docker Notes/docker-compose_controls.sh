@@ -160,7 +160,11 @@ install_with_package_manager() {
         fi
     elif command -v zypper &> /dev/null; then
         echo -e "${BLUE}检测到ZYPPER包管理器${NC}"
+        zypper refresh
         zypper install -y docker-compose
+    elif command -v pacman &> /dev/null; then
+        echo -e "${BLUE}检测到PACMAN包管理器${NC}"
+        pacman -Sy --noconfirm docker-compose
     else
         echo -e "${RED}未检测到支持的包管理器${NC}"
         return 1
@@ -329,6 +333,9 @@ uninstall_docker_compose() {
         elif command -v zypper &> /dev/null; then
             echo -e "${BLUE}使用ZYPPER包管理器卸载Docker Compose...${NC}"
             zypper remove -y docker-compose
+        elif command -v pacman &> /dev/null; then
+            echo -e "${BLUE}使用PACMAN包管理器卸载Docker Compose...${NC}"
+            pacman -R --noconfirm docker-compose
         else
             echo -e "${RED}未检测到支持的包管理器，无法卸载包管理器安装的Docker Compose。${NC}"
             return 1
@@ -408,7 +415,7 @@ install_docker_compose() {
 # 主程序
 main() {
     # 设置退出时执行的清理操作
-    trap 'if ! command -v docker-compose &> /dev/null; then echo -e "${GREEN}如果docker-compose -v未成功加载。请在父Shell中手动运行 \`${YELLOW}hash -r\`${GREEN} 来清理缓存并重新加载。${NC}"; fi' EXIT
+    trap 'if ! command -v docker-compose &> /dev/null; then echo -e "${GREEN}如果 ${YELLOW} docker-compose -v ${GREEN} 未成功加载，请在终端运行 ${YELLOW} hash -r ${GREEN} 来清理缓存${NC}"; fi' EXIT
 
     while true; do
         show_menu
