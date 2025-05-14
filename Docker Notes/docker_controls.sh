@@ -13,6 +13,16 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+# 定义镜像源列表
+MIRRORS=(
+    "https://mirrors.aliyun.com/docker-ce/linux/static/stable"
+    "https://mirrors.tencent.com/docker-ce/linux/static/stable"
+    "https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/static/stable"
+    "https://mirrors.ustc.edu.cn/docker-ce/linux/static/stable"
+    "https://download.docker.com/linux/static/stable"
+    "https://mirrors.pku.edu.cn/docker-ce/linux/static/stable"
+)
+
 # 检查Docker是否安装
 check_docker_installed() {
     if command -v docker &> /dev/null || \
@@ -33,6 +43,7 @@ show_menu() {
     echo "=============================================="
     echo "1. 安装 Docker"
     echo "2. 卸载 Docker"
+    echo "3. 安装指定版本的 Docker"
     echo "0. 退出"
     echo "=============================================="
     echo -e "${NC}"
@@ -80,32 +91,36 @@ get_system_arch() {
     esac
 }
 
-# 获取可用的Docker版本
-get_available_docker_version() {
+# 获取所有可用的Docker版本并缓存
+get_all_docker_versions() {
     local base_url=$1
-    # 获取页面内容并过滤出所有可用的docker版本
-    local versions=$(wget -qO- "$base_url" | grep -oP 'docker-\d+\.\d+\.\d+\.tgz' | sed 's/docker-\(.*\)\.tgz/\1/' | sort -Vr 2>/dev/null)
-    
-    # 检查每个版本是否存在
-    for version in $versions; do
-        local package_name="docker-${version}.tgz"
-        # 使用--spider检查文件是否存在而不下载
-        if wget --spider "${base_url}/${package_name}" 2>/dev/null; then
-            echo "$package_name"
-            return 0
-        fi
-    done
-    
-    return 1
+    wget -qO- "$base_url" | grep -oP 'docker-\d+\.\d+\.\d+\.tgz' | sed 's/docker-\(.*\)\.tgz/\1/' | sort -Vru 2>/dev/null
 }
 
-# 安装Docker
+# 按列显示版本信息
+display_versions_in_columns() {
+    local versions=("$@")
+    local columns=5  # 每行显示的列数
+    local total=${#versions[@]}
+    local rows=$(( (total + columns - 1) / columns ))
+
+    for ((i = 0; i < rows; i++)); do
+        for ((j = i; j < total; j += rows)); do
+            printf "%-15s" "$((j + 1))) ${versions[j]}"
+        done
+        echo
+    done
+}
+
+# 安装Docker（支持安装最新版本或指定版本）
 install_docker() {
+    local specific_version=$1
+
     # 检查是否已安装 Docker
     if check_docker_installed; then
         echo -e "${YELLOW}Docker 已安装在系统中。${NC}"
         docker --version
-        if ! confirm "是否需要重新安装 Docker？"; then
+        if ! confirm "是否需要卸载现有 Docker 并重新安装？"; then
             echo -e "${GREEN}用户选择跳过安装。${NC}"
             return
         fi
@@ -128,63 +143,59 @@ install_docker() {
 
     echo -e "${GREEN}开始安装 Docker...${NC}"
 
-    # 首先检查当前目录下是否有docker-*.tgz文件
-    local package_name=$(find . -maxdepth 1 -name 'docker-*.tgz' -printf "%f\n" | head -n 1)
-    
-    if [ -n "$package_name" ]; then
-        echo -e "${GREEN}发现本地Docker安装包: $package_name${NC}"
-        echo -e "${YELLOW}将使用本地安装包进行安装...${NC}"
-    else
-        echo -e "${YELLOW}未找到本地Docker安装包，尝试在线获取...${NC}"
+    # 获取系统架构
+    arch_suffix=$(get_system_arch)
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}无法确定适合您系统的Docker版本。${NC}"
+        return 1
+    fi
 
-        # 获取系统架构
-        arch_suffix=$(get_system_arch)
-        if [ $? -ne 0 ]; then
-            echo -e "${RED}无法确定适合您系统的Docker版本。${NC}"
-            return 1
-        fi
+    echo -e "${BLUE}检测到系统架构: $(uname -m)${NC}"
 
-        echo -e "${BLUE}检测到系统架构: $(uname -m)${NC}"
+    local package_name=""
+    local working_mirror=""
 
-        # 定义镜像源列表
-        local mirrors=(
-            "https://mirrors.aliyun.com/docker-ce/linux/static/stable/$arch_suffix"
-            "https://mirrors.tencent.com/docker-ce/linux/static/stable/$arch_suffix"
-			"https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/static/stable/$arch_suffix"
-            "https://mirrors.ustc.edu.cn/docker-ce/linux/static/stable/$arch_suffix"
-            "https://download.docker.com/linux/static/stable/$arch_suffix"
-			"https://mirrors.pku.edu.cn/docker-ce/linux/static/stable/$arch_suffix"
-        )
-
-        package_name=""
-        local working_mirror=""
-        
-        # 尝试从多个镜像源获取可用的Docker版本
-        for mirror in "${mirrors[@]}"; do
-            echo -e "${YELLOW}尝试从镜像源获取版本: $mirror${NC}"
-            package_name=$(get_available_docker_version "$mirror")
+    if [ -z "$specific_version" ]; then
+        # 获取最新版本
+        for mirror in "${MIRRORS[@]}"; do
+            local full_url="$mirror/$arch_suffix"
+            echo -e "${YELLOW}尝试从镜像源获取版本: $full_url${NC}"
+            package_name=$(wget -qO- "$full_url" | grep -oP 'docker-\d+\.\d+\.\d+\.tgz' | sort -Vr | head -n 1)
             if [ -n "$package_name" ]; then
-                working_mirror="$mirror"
-                echo -e "${GREEN}找到可用版本: $package_name${NC}"
+                working_mirror="$full_url"
+                echo -e "${GREEN}找到最新版本: $package_name${NC}"
                 break
             fi
-            echo -e "${YELLOW}镜像源 $mirror 无可用版本，尝试下一个...${NC}"
+            echo -e "${YELLOW}镜像源 $full_url 无可用版本，尝试下一个...${NC}"
         done
-
-        if [ -z "$package_name" ]; then
-            echo -e "${RED}所有镜像源均无法获取可用Docker版本，请检查网络或手动下载。${NC}"
-            return 1
-        fi
-
-        # 下载Docker安装包
-        download_url="$working_mirror/$package_name"
-        echo -e "${YELLOW}正在下载 $package_name ...${NC}"
-        if ! wget "$download_url"; then
-            echo -e "${RED}下载失败，请检查网络连接。${NC}"
-            return 1
-        fi
-        echo -e "${GREEN}安装包下载成功: $package_name${NC}"
+    else
+        # 获取指定版本
+        for mirror in "${MIRRORS[@]}"; do
+            local full_url="$mirror/$arch_suffix"
+            echo -e "${YELLOW}尝试从镜像源获取版本: $full_url${NC}"
+            if wget --spider "$full_url/docker-$specific_version.tgz" 2>/dev/null; then
+                package_name="docker-$specific_version.tgz"
+                working_mirror="$full_url"
+                echo -e "${GREEN}找到指定版本: $package_name${NC}"
+                break
+            fi
+            echo -e "${YELLOW}镜像源 $full_url 无可用版本，尝试下一个...${NC}"
+        done
     fi
+
+    if [ -z "$package_name" ]; then
+        echo -e "${RED}无法获取Docker版本，请检查网络或手动下载。${NC}"
+        return 1
+    fi
+
+    # 下载Docker安装包
+    local download_url="$working_mirror/$package_name"
+    echo -e "${YELLOW}正在下载 $package_name ...${NC}"
+    if ! wget "$download_url"; then
+        echo -e "${RED}下载失败，请检查网络连接。${NC}"
+        return 1
+    fi
+    echo -e "${GREEN}安装包下载成功: $package_name${NC}"
 
     # 解压Docker安装包
     echo -e "${YELLOW}解压Docker安装包...${NC}"
@@ -231,14 +242,6 @@ EOF
 
     # 设置Docker服务开机启动
     systemctl enable docker
-
-    # 等待Docker服务启动完成
-    echo -e "${YELLOW}等待Docker服务启动完成...${NC}"
-    timeout 30 bash -c 'while ! systemctl is-active --quiet docker; do sleep 1; done'
-    if [ $? -ne 0 ]; then
-        echo -e "${RED}Docker服务启动失败，请检查日志。${NC}"
-        return 1
-    fi
 
     # 查看Docker版本
     echo -e "${YELLOW}正在检查Docker版本...${NC}"
@@ -355,17 +358,14 @@ uninstall_docker() {
     fi
     
     echo -e "${GREEN}Docker卸载完成!${NC}"
-    
-    # 直接提示按回车重启脚本
-    read -p "按回车键重启脚本..."
-    exec "$0" "$@"
 }
 
 # 主程序
 main() {
     while true; do
         show_menu
-        read -p "请选择操作 (1安装/2卸载/0退出): " choice
+        stty erase ^H  # 修复退格键问题
+        read -p "请选择操作 (1安装/2卸载/3安装指定版本/0退出): " choice
         
         case "$choice" in
             1)
@@ -373,6 +373,38 @@ main() {
                 ;;
             2)
                 uninstall_docker
+                ;;
+            3)
+                echo -e "${YELLOW}获取所有可用版本...${NC}"
+                arch_suffix=$(get_system_arch)
+                if [ $? -ne 0 ]; then
+                    echo -e "${RED}无法确定系统架构。${NC}"
+                    continue
+                fi
+
+                versions=()
+                for mirror in "${MIRRORS[@]}"; do
+                    versions+=($(get_all_docker_versions "$mirror/$arch_suffix"))
+                    if [ ${#versions[@]} -gt 0 ]; then
+                        break
+                    fi
+                done
+
+                if [ ${#versions[@]} -eq 0 ]; then
+                    echo -e "${RED}无法获取可用版本，请检查网络。${NC}"
+                    continue
+                fi
+
+                echo -e "${GREEN}可用版本列表:${NC}"
+                display_versions_in_columns "${versions[@]}"
+
+                read -p "请输入要安装的版本编号: " version_choice
+                if [[ "$version_choice" =~ ^[0-9]+$ ]] && [ "$version_choice" -ge 1 ] && [ "$version_choice" -le ${#versions[@]} ]; then
+                    selected_version="${versions[$((version_choice - 1))]}"
+                    install_docker "$selected_version"
+                else
+                    echo -e "${RED}无效的选择。${NC}"
+                fi
                 ;;
             0|"")
                 echo -e "${GREEN}退出脚本。${NC}"
