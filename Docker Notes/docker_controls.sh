@@ -121,23 +121,28 @@ install_docker() {
         echo -e "${YELLOW}Docker 已安装在系统中。${NC}"
         docker --version
         if ! confirm "是否需要卸载现有 Docker 并重新安装？"; then
-            echo -e "${GREEN}用户选择跳过安装。${NC}"
-            return
+            echo -e "${GREEN}用户选择保留现有Docker环境。${NC}"
+            return 1
         fi
 
         # 用户确认重新安装，先执行卸载操作
         echo -e "${YELLOW}开始卸载现有 Docker 环境...${NC}"
         uninstall_docker
         if [ $? -ne 0 ]; then
-            echo -e "${RED}卸载 Docker 失败，请检查错误信息。${NC}"
             return 1
         fi
-        echo -e "${GREEN}现有 Docker 环境已成功卸载，继续进行安装。${NC}"
+        echo -e "${GREEN}现有 Docker 环境已成功卸载。${NC}"
+
+        # 卸载后提示用户是否继续安装
+        if ! confirm "是否继续安装 Docker？"; then
+            echo -e "${GREEN}用户选择跳过安装。${NC}"
+            return 1
+        fi
     else
         echo -e "${YELLOW}未检测到 Docker 环境。${NC}"
         if ! confirm "是否需要安装 Docker？"; then
             echo -e "${GREEN}用户选择跳过安装。${NC}"
-            return
+            return 1
         fi
     fi
 
@@ -154,6 +159,7 @@ install_docker() {
 
     local package_name=""
     local working_mirror=""
+    local download_url=""
 
     if [ -z "$specific_version" ]; then
         # 获取最新版本
@@ -163,24 +169,31 @@ install_docker() {
             package_name=$(wget -qO- "$full_url" | grep -oP 'docker-\d+\.\d+\.\d+\.tgz' | sort -Vr | head -n 1)
             if [ -n "$package_name" ]; then
                 working_mirror="$full_url"
+                download_url="$working_mirror/$package_name"
                 echo -e "${GREEN}找到最新版本: $package_name${NC}"
                 break
             fi
             echo -e "${YELLOW}镜像源 $full_url 无可用版本，尝试下一个...${NC}"
         done
     else
-        # 获取指定版本
-        for mirror in "${MIRRORS[@]}"; do
-            local full_url="$mirror/$arch_suffix"
-            echo -e "${YELLOW}尝试从镜像源获取版本: $full_url${NC}"
-            if wget --spider "$full_url/docker-$specific_version.tgz" 2>/dev/null; then
-                package_name="docker-$specific_version.tgz"
-                working_mirror="$full_url"
-                echo -e "${GREEN}找到指定版本: $package_name${NC}"
-                break
-            fi
-            echo -e "${YELLOW}镜像源 $full_url 无可用版本，尝试下一个...${NC}"
-        done
+        # 检查本地是否存在指定版本的安装包
+        package_name="docker-$specific_version.tgz"
+        if [ -f "$package_name" ]; then
+            echo -e "${GREEN}在本地找到指定版本的安装包: $package_name${NC}"
+        else
+            # 获取指定版本
+            for mirror in "${MIRRORS[@]}"; do
+                local full_url="$mirror/$arch_suffix"
+                echo -e "${YELLOW}尝试从镜像源获取版本: $full_url${NC}"
+                if wget --spider "$full_url/$package_name" 2>/dev/null; then
+                    working_mirror="$full_url"
+                    download_url="$working_mirror/$package_name"
+                    echo -e "${GREEN}找到指定版本: $package_name${NC}"
+                    break
+                fi
+                echo -e "${YELLOW}镜像源 $full_url 无可用版本，尝试下一个...${NC}"
+            done
+        fi
     fi
 
     if [ -z "$package_name" ]; then
@@ -188,14 +201,15 @@ install_docker() {
         return 1
     fi
 
-    # 下载Docker安装包
-    local download_url="$working_mirror/$package_name"
-    echo -e "${YELLOW}正在下载 $package_name ...${NC}"
-    if ! wget "$download_url"; then
-        echo -e "${RED}下载失败，请检查网络连接。${NC}"
-        return 1
+    # 下载Docker安装包（如果本地不存在）
+    if [ ! -f "$package_name" ]; then
+        echo -e "${YELLOW}正在下载 $package_name ...${NC}"
+        if ! wget "$download_url"; then
+            echo -e "${RED}下载失败，请检查网络连接。${NC}"
+            return 1
+        fi
+        echo -e "${GREEN}安装包下载成功: $package_name${NC}"
     fi
-    echo -e "${GREEN}安装包下载成功: $package_name${NC}"
 
     # 解压Docker安装包
     echo -e "${YELLOW}解压Docker安装包...${NC}"
@@ -282,7 +296,7 @@ uninstall_docker() {
 
     if ! check_docker_installed; then
         echo -e "${RED}未检测到Docker安装，无需卸载。${NC}"
-        return
+        return 1
     fi
 
     echo -e "${GREEN}检测到系统已安装Docker。${NC}"
@@ -290,7 +304,7 @@ uninstall_docker() {
 
     if ! confirm "确定要卸载Docker吗"; then
         echo -e "${GREEN}已取消卸载操作。${NC}"
-        return
+        return 1
     fi
 
     echo -e "${GREEN}开始卸载Docker...${NC}"
@@ -348,6 +362,10 @@ uninstall_docker() {
     
     # 重新加载systemd
     systemctl daemon-reload
+
+    # 清除 shell 的命令缓存
+    echo -e "${YELLOW}清除命令缓存...${NC}"
+    hash -r
     
     # 询问是否删除Docker数据目录
     if confirm "是否要删除Docker数据目录(/var/lib/docker)？这将删除所有镜像、容器和卷数据"; then
@@ -358,6 +376,7 @@ uninstall_docker() {
     fi
     
     echo -e "${GREEN}Docker卸载完成!${NC}"
+    return 0
 }
 
 # 主程序
