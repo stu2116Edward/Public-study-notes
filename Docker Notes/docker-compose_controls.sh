@@ -35,6 +35,7 @@ show_menu() {
     echo "=============================================="
     echo "1. 安装 Docker Compose"
     echo "2. 卸载 Docker Compose"
+    echo "3. 安装指定版本的 Docker Compose"
     echo "0. 退出"
     echo "=============================================="
     echo -e "${NC}"
@@ -88,6 +89,31 @@ get_system_arch() {
             return 1
             ;;
     esac
+}
+
+# 获取所有的Docker Compose版本
+get_all_docker_compose_versions() {
+    local latest_version=$(curl -s https://api.github.com/repos/docker/compose/releases | grep 'tag_name' | cut -d\" -f4 | sort -Vr)
+    if [ -z "$latest_version" ]; then
+        echo -e "${RED}无法获取版本号列表${NC}" >&2
+        return 1
+    fi
+    echo "$latest_version"
+}
+
+# 按列显示版本信息
+display_versions_in_columns() {
+    local versions=("$@")
+    local columns=5  # 每行显示的列数
+    local total=${#versions[@]}
+    local rows=$(( (total + columns - 1) / columns ))
+
+    for ((i = 0; i < rows; i++)); do
+        for ((j = i; j < total; j += rows)); do
+            printf "%-15s" "$((j + 1))) ${versions[j]}"
+        done
+        echo
+    done
 }
 
 # 获取最新的Docker Compose版本
@@ -186,108 +212,130 @@ install_with_package_manager() {
 install_with_binary() {
     echo -e "${YELLOW}准备通过二进制文件安装Docker Compose...${NC}"
     
-    # 首先检查当前目录下是否有docker-compose-linux-*文件
-    local binary_file=$(find . -maxdepth 1 -name 'docker-compose-linux-*' ! -name '*.sha256' -printf "%f\n" | head -n 1)
-    local sha256_file=$(find . -maxdepth 1 -name 'docker-compose-linux-*.sha256' -printf "%f\n" | head -n 1)
-    
-    if [ -n "$binary_file" ]; then
-        echo -e "${GREEN}发现本地Docker Compose安装包: $binary_file${NC}"
-        
-        # 检查是否有对应的sha256文件
-        if [ -n "$sha256_file" ]; then
-            echo -e "${YELLOW}验证文件完整性...${NC}"
-            if sha256sum -c "$sha256_file" 2>/dev/null | grep -q ': OK$'; then
-                echo -e "${GREEN}文件完整性验证通过${NC}"
-            else
-                echo -e "${RED}文件完整性验证失败${NC}"
-                if ! confirm "文件可能损坏，是否继续安装？"; then
-                    return 1
-                fi
-            fi
-        else
-            echo -e "${YELLOW}未找到对应的sha256校验文件，无法验证完整性。${NC}"
-            if ! confirm "是否继续安装？"; then
-                return 1
-            fi
-        fi
+    # 获取指定版本号
+    local compose_version=""
+    if [ -n "$1" ]; then
+        compose_version=$1
     else
-        echo -e "${YELLOW}未找到本地Docker Compose安装包，尝试在线获取...${NC}"
-        
-        # 获取系统架构
-        arch_suffix=$(get_system_arch)
-        if [ $? -ne 0 ]; then
-            echo -e "${RED}无法确定适合您系统的Docker Compose版本。${NC}"
-            return 1
-        fi
-        
-        echo -e "${BLUE}检测到系统架构: $(uname -m)${NC}"
-        
         # 获取最新版本号
-        latest_version=$(get_latest_docker_compose_version)
+        compose_version=$(get_latest_docker_compose_version)
         if [ $? -ne 0 ]; then
             echo -e "${RED}无法获取最新版本号${NC}"
             return 1
         fi
+        echo -e "${YELLOW}将安装最新版本: $compose_version${NC}"
+    fi
+    
+    # 获取系统架构
+    arch_suffix=$(get_system_arch)
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}无法确定适合您系统的Docker Compose版本。${NC}"
+        return 1
+    fi
+    
+    echo -e "${BLUE}检测到系统架构: $(uname -m)${NC}"
+    
+    # 检查当前目录下是否已存在二进制文件
+    binary_filename="docker-compose-linux-${arch_suffix}"
+    if [ -f "./$binary_filename" ]; then
+        echo -e "${YELLOW}检测到当前目录下已存在 $binary_filename，将优先使用本地文件。${NC}"
         
+        # 检查是否存在对应的哈希校验文件
+        sha256_filename="${binary_filename}.sha256"
+        if [ -f "./$sha256_filename" ]; then
+            echo -e "${BLUE}检测到哈希校验文件 $sha256_filename，将进行完整性校验。${NC}"
+            if sha256sum -c "./$sha256_filename" 2>/dev/null | grep -q ': OK$'; then
+                echo -e "${GREEN}文件完整性验证通过${NC}"
+            else
+                echo -e "${RED}文件完整性验证失败${NC}"
+                if ! confirm "文件可能损坏，是否继续安装？"; then
+                    rm -f "./$binary_filename" "./$sha256_filename"
+                    return 1
+                fi
+            fi
+        else
+            echo -e "${YELLOW}当前目录下未找到 $sha256_filename 哈希校验文件。${NC}"
+            if ! confirm "是否继续安装而不进行完整性校验？"; then
+                echo -e "${RED}用户选择放弃安装。${NC}"
+                return 1
+            fi
+        fi
+        
+        # 安装二进制文件
+        echo -e "${YELLOW}安装Docker Compose...${NC}"
+        mv "./$binary_filename" /usr/local/bin/docker-compose
+        chmod +x /usr/local/bin/docker-compose
+        
+        # 验证安装
+        docker-compose --version
+        if [ $? -eq 0 ]; then
+            echo -e "${GREEN}Docker Compose安装成功${NC}"
+            
+            # 检查并添加PATH
+            check_and_add_to_path
+            
+            return 0
+        else
+            echo -e "${RED}Docker Compose安装失败${NC}"
+            return 1
+        fi
+    else
         # 定义下载URL
-        binary_url="https://github.com/docker/compose/releases/download/${latest_version}/docker-compose-linux-${arch_suffix}"
+        binary_url="https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}"
         sha256_url="${binary_url}.sha256"
         
         # 下载二进制文件
-        echo -e "${YELLOW}正在下载 Docker Compose ${latest_version}...${NC}"
-        if ! wget "$binary_url" -O "docker-compose-linux-${arch_suffix}"; then
+        echo -e "${YELLOW}正在下载 Docker Compose ${compose_version}...${NC}"
+        if ! wget "$binary_url" -O "$binary_filename"; then
             echo -e "${RED}下载二进制文件失败，请检查网络连接或稍后重试${NC}"
             return 1
         fi
         
         # 下载sha256校验文件
         echo -e "${YELLOW}正在下载校验文件...${NC}"
-        if ! wget "$sha256_url" -O "docker-compose-linux-${arch_suffix}.sha256"; then
+        if ! wget "$sha256_url" -O "${binary_filename}.sha256"; then
             echo -e "${YELLOW}下载校验文件失败，无法验证完整性。${NC}"
-            if ! confirm "是否继续安装？"; then
-                rm -f "docker-compose-linux-${arch_suffix}"
+            if ! confirm "是否继续安装而不进行完整性校验？"; then
+                rm -f "./$binary_filename"
                 return 1
             fi
         else
             echo -e "${YELLOW}验证文件完整性...${NC}"
-            sha256_file="docker-compose-linux-${arch_suffix}.sha256"
-            if sha256sum -c "$sha256_file" 2>/dev/null | grep -q ': OK$'; then
+            if sha256sum -c "${binary_filename}.sha256" 2>/dev/null | grep -q ': OK$'; then
                 echo -e "${GREEN}文件完整性验证通过${NC}"
             else
                 echo -e "${RED}文件完整性验证失败${NC}"
                 if ! confirm "文件可能损坏，是否继续安装？"; then
-                    rm -f "docker-compose-linux-${arch_suffix}"*
+                    rm -f "./$binary_filename" "./${binary_filename}.sha256"
                     return 1
                 fi
             fi
         fi
         
-        binary_file="docker-compose-linux-${arch_suffix}"
-    fi
-    
-    # 安装二进制文件
-    echo -e "${YELLOW}安装Docker Compose...${NC}"
-    mv "$binary_file" /usr/local/bin/docker-compose
-    chmod +x /usr/local/bin/docker-compose
-    
-    # 验证安装
-    docker-compose --version
-    if [ $? -eq 0 ]; then
-        echo -e "${GREEN}Docker Compose安装成功${NC}"
+        # 安装二进制文件
+        echo -e "${YELLOW}安装Docker Compose...${NC}"
+        mv "./$binary_filename" /usr/local/bin/docker-compose
+        chmod +x /usr/local/bin/docker-compose
         
-        # 检查并添加PATH
-        check_and_add_to_path
-        
-        # 删除校验文件
-        if [ -n "$sha256_file" ] && [ -f "./$sha256_file" ]; then
-            rm -f "./$sha256_file"
-            echo -e "${GREEN}已删除校验文件 $sha256_file${NC}"
+        # 验证安装
+        docker-compose --version
+        if [ $? -eq 0 ]; then
+            echo -e "${GREEN}Docker Compose安装成功${NC}"
+            
+            # 检查并添加PATH
+            check_and_add_to_path
+            
+            # 删除校验文件
+            if [ -f "./${binary_filename}.sha256" ]; then
+                rm -f "./${binary_filename}.sha256"
+                echo -e "${GREEN}已删除校验文件 ${binary_filename}.sha256${NC}"
+            fi
+            
+            return 0
+        else
+            echo -e "${RED}Docker Compose安装失败${NC}"
+            return 1
         fi
-        
-        return 0
-    else
-        echo -e "${RED}Docker Compose安装失败${NC}"
-        return 1
     fi
 }
 
@@ -313,7 +361,7 @@ uninstall_docker_compose() {
 
     if ! confirm "确定要卸载Docker Compose吗"; then
         echo -e "${GREEN}已取消卸载操作。${NC}"
-        return
+        return 1
     fi
 
     echo -e "${GREEN}开始卸载Docker Compose...${NC}"
@@ -358,6 +406,60 @@ uninstall_docker_compose() {
     fi
 }
 
+# 安装指定版本的Docker Compose
+install_specific_docker_compose() {
+    # 检查是否已安装 Docker Compose
+    if check_docker_compose_installed; then
+        echo -e "${YELLOW}Docker Compose 已安装在系统中。${NC}"
+        docker-compose --version
+        if ! confirm "是否需要卸载现有 Docker Compose 并重新安装？"; then
+            echo -e "${GREEN}用户选择保留现有Docker Compose环境。${NC}"
+            return 1
+        fi
+
+        # 用户确认重新安装，先执行卸载操作
+        echo -e "${YELLOW}开始卸载现有 Docker Compose...${NC}"
+        uninstall_docker_compose
+        if [ $? -ne 0 ]; then
+            return 1
+        fi
+        echo -e "${GREEN}现有 Docker Compose 已成功卸载。${NC}"
+
+        # 卸载后提示用户是否继续安装
+        if ! confirm "是否继续安装 Docker Compose？"; then
+            echo -e "${GREEN}用户选择跳过安装。${NC}"
+            return 1
+        fi
+    else
+        echo -e "${YELLOW}未检测到 Docker Compose 环境。${NC}"
+        if ! confirm "是否需要安装 Docker Compose？"; then
+            echo -e "${GREEN}用户选择跳过安装。${NC}"
+            return 1
+        fi
+    fi
+
+    echo -e "${GREEN}开始安装 Docker Compose...${NC}"
+
+    # 获取所有可用的Docker Compose版本
+    versions=($(get_all_docker_compose_versions))
+    if [ ${#versions[@]} -eq 0 ]; then
+        echo -e "${RED}无法获取可用版本，请检查网络。${NC}"
+        return 1
+    fi
+
+    echo -e "${GREEN}可用版本列表:${NC}"
+    display_versions_in_columns "${versions[@]}"
+
+    read -p "请输入要安装的版本编号: " version_choice
+    if [[ "$version_choice" =~ ^[0-9]+$ ]] && [ "$version_choice" -ge 1 ] && [ "$version_choice" -le ${#versions[@]} ]; then
+        selected_version="${versions[$((version_choice - 1))]}"
+        install_with_binary "$selected_version"
+    else
+        echo -e "${RED}无效的选择。${NC}"
+        return 1
+    fi
+}
+
 # 安装Docker Compose
 install_docker_compose() {
     # 检查是否已安装 Docker Compose
@@ -365,7 +467,7 @@ install_docker_compose() {
         echo -e "${YELLOW}Docker Compose 已安装在系统中。${NC}"
         docker-compose --version
         if ! confirm "是否需要重新安装 Docker Compose？"; then
-            echo -e "${GREEN}用户选择跳过安装。${NC}"
+            echo -e "${GREEN}选择保留现有Docker Compose环境。${NC}"
             return
         fi
 
@@ -373,7 +475,7 @@ install_docker_compose() {
         echo -e "${YELLOW}开始卸载现有 Docker Compose...${NC}"
         uninstall_docker_compose
         if [ $? -ne 0 ]; then
-            echo -e "${RED}卸载 Docker Compose 失败，请检查错误信息。${NC}"
+            echo -e "${GREEN}选择保留现有Docker Compose环境。${NC}"
             return 1
         fi
         echo -e "${GREEN}现有 Docker Compose 已成功卸载，继续进行安装。${NC}"
@@ -385,6 +487,7 @@ install_docker_compose() {
         fi
     fi
 
+    local install_method=""
     while true; do
         echo -e "${GREEN}请选择安装方式:${NC}"
         echo "1. 使用系统包管理器安装 (apt/yum等)"
@@ -419,7 +522,8 @@ main() {
 
     while true; do
         show_menu
-        read -p "请选择操作 (1安装/2卸载/0退出): " choice
+		stty erase ^H
+        read -p "请选择操作 (1安装/2卸载/3安装指定版本/0退出): " choice
         
         case "$choice" in
             1)
@@ -427,6 +531,9 @@ main() {
                 ;;
             2)
                 uninstall_docker_compose
+                ;;
+            3)
+                install_specific_docker_compose
                 ;;
             0|"")
                 echo -e "${GREEN}退出脚本。${NC}"
