@@ -3,11 +3,16 @@
 前言：基于Ubuntu Jammy 22.04 (LTS)版本安装和测试  
 [Docker在线安装官方文档](https://docs.docker.com/engine/install/)
 
-## 使用一键脚本安装Docker
+## 使用一键脚本安装Docker&docker-compose
 运行以下命令：
 ```bash
-curl -sS -O https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/Docker%20Notes/docker_controls.sh && chmod +x docker_controls.sh && ./docker_controls.sh
+curl -sS -O https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/Docker%20Notes/Docker_Shell/docker_tools.sh && chmod +x docker_tools.sh && ./docker_tools.sh
 ```
+注意使用脚本安装成功后输入`docker-compose -v`查看版本信息没有立即生效则需要清理一下父Shell中的缓存：
+```bash
+hash -r
+```
+一般情况下使用包管理器安装的docker-compose的版本基本较低如果想要安装更高版本的建议用户手动进行安装，即下载[docker-compose安装包](https://github.com/docker/compose/releases)
 
 ## 手动安装Docker
 ### 步骤一：[离线安装包官网](https://download.docker.com/linux/static/stable/x86_64/)下载 docker 安装包
@@ -111,18 +116,6 @@ sudo rm -rf /var/lib/containerd
 docker --version
 ```
 
-## docker-compose离线安装：
-
-## 使用一键脚本安装docker-compose
-运行以下命令：
-```bash
-curl -sS -O https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/Docker%20Notes/docker-compose_controls.sh && chmod +x docker-compose_controls.sh && ./docker-compose_controls.sh
-```
-注意使用脚本安装成功后输入`docker-compose -v`查看版本信息没有立即生效则需要清理一下父Shell中的缓存：
-```bash
-hash -r
-```
-一般情况下使用包管理器安装的docker-compose的版本基本较低如果想要安装更高版本的建议用户手动进行安装，即下载[docker-compose安装包](https://github.com/docker/compose/releases)
 
 ## 手动安装docker-compose
 ### 1.下载docker-compose二进制文件：
