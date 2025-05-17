@@ -130,6 +130,19 @@ pip list
 pip freeze > requirements.txt
 ```
 
+##### 生成仅包含项目实际需要的依赖
+`pipreqs` 会扫描项目中的 import 语句，只生成实际使用的依赖列表  
+安装 pipreqs：
+```bash
+pip install pipreqs
+```
+在项目根目录运行：
+```bash
+pipreqs . --force
+```
+- --force 会覆盖现有的 `requirements.txt`
+- 默认会生成到 `./requirements.txt`
+
 #### 2.5.3 查看库的详细信息
 
 ```bash
