@@ -11,6 +11,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
+ORANGE='\033[38;5;208m'
 NC='\033[0m' # No Color
 
 
@@ -898,13 +899,17 @@ show_full_status() {
 show_menu() {
     clear
     echo -e "${GREEN}========================================================${NC}"
-    echo "           	   Docker 管理工具箱"
+    echo -e "${ORANGE}           	   Docker 管理工具箱${NC}"
     echo -e "${GREEN}========================================================${NC}"
 	show_brief_status  # 状态显示
-    echo -e "${GREEN}1. 安装 Docker${NC}             ${GREEN}5. 卸载 Docker Compose${NC}"
-    echo -e "${GREEN}2. 卸载 Docker${NC}             ${GREEN}6. 安装指定版本 Docker Compose${NC}"
-    echo -e "${GREEN}3. 安装指定版本 Docker${NC}     ${GREEN}7. 查看Docker全局状态 ★${NC}"
-    echo -e "${GREEN}4. 安装 Docker Compose${NC}     ${GREEN}0. 退出脚本${NC}"
+    echo -e "${GREEN}1. 安装 Docker${NC}"
+    echo -e "${GREEN}2. 卸载 Docker${NC}"
+    echo -e "${GREEN}3. 安装指定版本 Docker${NC}"
+    echo -e "${GREEN}4. 安装 Docker Compose${NC}"
+    echo -e "${GREEN}5. 卸载 Docker Compose${NC}"
+    echo -e "${GREEN}6. 安装指定版本 Docker Compose${NC}"
+    echo -e "${GREEN}7. 查看Docker全局状态 ★${NC}"
+    echo -e "${GREEN}0. 退出脚本${NC}"
     echo -e "${GREEN}========================================================${NC}"
     echo -e "${NC}"
 }
