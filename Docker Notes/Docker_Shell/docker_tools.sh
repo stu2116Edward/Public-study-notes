@@ -76,8 +76,7 @@ DOCKER_MIRRORS=(
 check_docker_installed() {
     if command -v docker &> /dev/null || \
        [ -f /usr/bin/docker ] || \
-       [ -f /usr/local/bin/docker ] || \
-       systemctl list-unit-files | grep -q docker.service; then
+       [ -f /usr/local/bin/docker ]; then
         return 0
     else
         return 1
@@ -112,7 +111,9 @@ install_docker_core() {
     # 检查是否已安装 Docker
     if check_docker_installed; then
         echo -e "${YELLOW}Docker 已安装在系统中。${NC}"
-        docker --version
+        if command -v docker &> /dev/null; then
+            docker --version
+        fi
         if ! confirm "是否需要卸载现有 Docker 并重新安装？"; then
             echo -e "${GREEN}用户选择保留现有Docker环境。${NC}"
             return 1
@@ -121,7 +122,11 @@ install_docker_core() {
         # 用户确认重新安装，先执行卸载操作
         echo -e "${YELLOW}开始卸载现有 Docker 环境...${NC}"
         uninstall_docker_core
-        if [ $? -ne 0 ]; then
+        # 卸载后刷新命令缓存，防止后续检测到残留
+        hash -r
+        # 重新检测，确保卸载后环境已清理
+        if check_docker_installed; then
+            echo -e "${RED}Docker卸载失败，请检查系统环境。${NC}"
             return 1
         fi
         echo -e "${GREEN}现有 Docker 环境已成功卸载。${NC}"
@@ -293,7 +298,9 @@ uninstall_docker_core() {
     fi
 
     echo -e "${GREEN}检测到系统已安装Docker。${NC}"
-    docker --version
+    if command -v docker &> /dev/null; then
+        docker --version
+    fi
 
     if ! confirm "确定要卸载Docker吗"; then
         echo -e "${GREEN}已取消卸载操作。${NC}"
@@ -371,7 +378,6 @@ uninstall_docker_core() {
     echo -e "${GREEN}Docker卸载完成!${NC}"
     return 0
 }
-
 
 # 检查Docker Compose是否安装
 check_docker_compose_installed() {
@@ -834,24 +840,81 @@ install_specific_docker() {
 }
 
 
+# 新增函数：显示简要Docker状态
+show_brief_status() {
+    if ! check_docker_installed; then
+        echo -e "${YELLOW}未检测到Docker环境，跳过状态显示。${NC}"
+        return
+    fi
+
+    # 获取统计信息
+    container_count=$(docker ps -aq 2>/dev/null | wc -l | tr -d ' ')
+    image_count=$(docker images -q 2>/dev/null | wc -l | tr -d ' ')
+    network_count=$(docker network ls -q 2>/dev/null | wc -l | tr -d ' ')
+    volume_count=$(docker volume ls -q 2>/dev/null | wc -l | tr -d ' ')
+
+    echo -e " ${NC}Docker环境状态:  ${YELLOW}容器:${container_count}  镜像:${image_count}  网络:${network_count}  卷:${volume_count}${NC}"
+}
+
+# 新增函数：显示完整状态
+show_full_status() {
+    clear
+    if ! check_docker_installed; then
+        echo -e "${RED}Docker未安装${NC}"
+        return
+    fi
+
+    echo -e "${GREEN}===================== Docker全局状态 =====================${NC}"
+    
+    # Docker版本
+    echo -e "${YELLOW}[Docker版本信息]${NC}"
+    docker --version 2>/dev/null || echo "无法获取版本"
+    
+    # Compose状态
+    echo -e "\n${YELLOW}[Compose版本信息]${NC}"
+    if check_docker_compose_installed; then
+        docker-compose --version
+    else
+        echo "未安装"
+    fi
+
+    # 详细列表
+    echo -e "\n${YELLOW}[镜像列表]${NC}"
+    docker images 2>/dev/null || echo "无镜像"
+    
+    echo -e "\n${YELLOW}[容器列表]${NC}"
+    docker ps -a 2>/dev/null || echo "无容器"
+    
+    echo -e "\n${YELLOW}[卷列表]${NC}"
+    docker volume ls 2>/dev/null || echo "无卷"
+    
+    echo -e "\n${YELLOW}[网络列表]${NC}"
+    docker network ls 2>/dev/null || echo "无网络"
+    
+    echo -e "${GREEN}========================================================${NC}"
+}
+
+
 show_menu() {
     clear
-    echo -e "${GREEN}=============================================="
-    echo "           Docker 管理工具箱"
-    echo "=============================================="
-    echo -e "${GREEN}1. 安装 Docker${NC}                  ${GREEN}4. 安装 Docker Compose${NC}"
-    echo -e "${GREEN}2. 卸载 Docker${NC}                  ${GREEN}5. 卸载 Docker Compose${NC}"
-    echo -e "${GREEN}3. 安装指定版本 Docker${NC}          ${GREEN}6. 安装指定版本 Docker Compose${NC}"
-    echo -e "${GREEN}0. 退出脚本${NC}"
-    echo -e "${GREEN}==============================================${NC}"
+    echo -e "${GREEN}========================================================${NC}"
+    echo "           	   Docker 管理工具箱"
+    echo -e "${GREEN}========================================================${NC}"
+	show_brief_status  # 状态显示
+    echo -e "${GREEN}1. 安装 Docker${NC}             ${GREEN}5. 卸载 Docker Compose${NC}"
+    echo -e "${GREEN}2. 卸载 Docker${NC}             ${GREEN}6. 安装指定版本 Docker Compose${NC}"
+    echo -e "${GREEN}3. 安装指定版本 Docker${NC}     ${GREEN}7. 查看Docker全局状态 ★${NC}"
+    echo -e "${GREEN}4. 安装 Docker Compose${NC}     ${GREEN}0. 退出脚本${NC}"
+    echo -e "${GREEN}========================================================${NC}"
     echo -e "${NC}"
 }
+
 
 main() {
     while true; do
         show_menu
         stty erase ^H
-        read -p "请输入选项编号 (0-6): " choice
+        read -p "请输入选项编号 (0-7): " choice  # 修改选项范围
         case "$choice" in
             1) # 安装Docker
                 install_docker_core
@@ -870,6 +933,13 @@ main() {
                 ;;
             6) # 安装指定版本Docker Compose
                 install_specific_docker_compose
+                ;;
+            7) # 查看全局状态 ★
+                clear
+                show_full_status
+                # 只显示一次返回主菜单提示
+                read -p "按回车键返回主菜单..."
+                continue
                 ;;
             0) # 退出
                 echo -e "${GREEN}已退出脚本。${NC}"
