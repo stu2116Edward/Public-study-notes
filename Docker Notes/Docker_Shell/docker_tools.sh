@@ -33,6 +33,7 @@ confirm() {
     done
 }
 
+
 # 获取系统架构
 get_system_arch() {
     local arch=$(uname -m)
@@ -73,6 +74,7 @@ DOCKER_MIRRORS=(
     "https://mirrors.pku.edu.cn/docker-ce/linux/static/stable"
 )
 
+
 # 检查Docker是否安装
 check_docker_installed() {
     if command -v docker &> /dev/null || \
@@ -84,11 +86,13 @@ check_docker_installed() {
     fi
 }
 
+
 # 获取所有可用的Docker版本并缓存
 get_all_docker_versions() {
     local base_url=$1
     wget -qO- "$base_url" | grep -oP 'docker-\d+\.\d+\.\d+\.tgz' | sed 's/docker-\(.*\)\.tgz/\1/' | sort -Vru 2>/dev/null
 }
+
 
 # 按列显示版本信息
 display_versions_in_columns() {
@@ -104,6 +108,7 @@ display_versions_in_columns() {
         echo
     done
 }
+
 
 # Docker安装核心逻辑
 install_docker_core() {
@@ -276,6 +281,7 @@ EOF
     fi
 }
 
+
 # Docker卸载核心逻辑
 uninstall_docker_core() {
     echo -e "${GREEN}"
@@ -380,6 +386,7 @@ uninstall_docker_core() {
     return 0
 }
 
+
 # 检查Docker Compose是否安装
 check_docker_compose_installed() {
     if command -v docker-compose &> /dev/null || \
@@ -391,6 +398,7 @@ check_docker_compose_installed() {
     fi
 }
 
+
 # 获取所有的Docker Compose版本
 get_all_docker_compose_versions() {
     local latest_version=$(curl -s https://api.github.com/repos/docker/compose/releases | grep 'tag_name' | cut -d\" -f4 | sort -Vr)
@@ -401,6 +409,7 @@ get_all_docker_compose_versions() {
     echo "$latest_version"
 }
 
+
 # 获取最新的Docker Compose版本
 get_latest_docker_compose_version() {
     local latest_version=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
@@ -410,6 +419,7 @@ get_latest_docker_compose_version() {
     fi
     echo "${latest_version}"
 }
+
 
 # 检查/usr/local/bin是否在PATH中并添加
 check_and_add_to_path() {
@@ -441,6 +451,7 @@ check_and_add_to_path() {
         fi
     fi
 }
+
 
 # 通过包管理器安装Docker Compose
 install_with_package_manager() {
@@ -492,6 +503,7 @@ install_with_package_manager() {
         return 1
     fi
 }
+
 
 # 通过二进制文件安装Docker Compose
 install_with_binary() {
@@ -624,6 +636,7 @@ install_with_binary() {
     fi
 }
 
+
 # Docker Compose安装核心逻辑
 install_docker_compose_core() {
     # 检查是否已安装 Docker Compose
@@ -684,6 +697,7 @@ install_docker_compose_core() {
         esac
     done
 }
+
 
 # Docker Compose卸载核心逻辑
 uninstall_docker_compose_core() {
@@ -752,6 +766,7 @@ uninstall_docker_compose_core() {
     fi
 }
 
+
 # 安装指定版本的Docker Compose
 install_specific_docker_compose() {
     # 检查是否已安装 Docker Compose
@@ -806,6 +821,7 @@ install_specific_docker_compose() {
     fi
 }
 
+
 # 安装指定版本Docker
 install_specific_docker() {
     echo -e "${YELLOW}获取所有可用版本...${NC}"
@@ -857,6 +873,7 @@ show_brief_status() {
     echo -e " ${NC}Docker环境状态:  ${YELLOW}容器:${container_count}  镜像:${image_count}  网络:${network_count}  卷:${volume_count}${NC}"
 }
 
+
 # 新增函数：显示完整状态
 show_full_status() {
     clear
@@ -896,12 +913,264 @@ show_full_status() {
 }
 
 
+# Docker 容器管理
+docker_container_manage() {
+    while true; do
+        clear
+        echo -e "${GREEN}Docker容器列表:${NC}"
+        docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
+        echo ""
+        echo "容器操作"
+        echo "------------------------"
+        echo "1. 创建新的容器"
+        echo "2. 启动指定容器         6. 启动所有容器"
+        echo "3. 停止指定容器         7. 停止所有容器"
+        echo "4. 删除指定容器         8. 删除所有容器"
+        echo "5. 重启指定容器         9. 重启所有容器"
+        echo "------------------------"
+        echo "11. 进入指定容器        12. 查看容器日志"
+        echo "13. 查看容器网络        14. 查看容器占用"
+        echo "------------------------"
+        echo "0. 返回上一级菜单"
+        echo "------------------------"
+        read -p "请输入你的选择: " sub_choice
+        case $sub_choice in
+            1)
+                read -p "请输入docker run命令: " run_cmd
+                eval "$run_cmd"
+                ;;
+            2)
+                read -p "请输入容器名/ID（多个用空格分隔）: " names
+                docker start $names
+                ;;
+            3)
+                read -p "请输入容器名/ID（多个用空格分隔）: " names
+                docker stop $names
+                ;;
+            4)
+                read -p "请输入容器名/ID（多个用空格分隔）: " names
+                docker rm -f $names
+                ;;
+            5)
+                read -p "请输入容器名/ID（多个用空格分隔）: " names
+                docker restart $names
+                ;;
+            6)
+                docker start $(docker ps -a -q)
+                ;;
+            7)
+                docker stop $(docker ps -q)
+                ;;
+            8)
+                read -p "确定删除所有容器吗？(Y/N): " choice
+                [[ "$choice" =~ [Yy] ]] && docker rm -f $(docker ps -a -q)
+                ;;
+            9)
+                docker restart $(docker ps -q)
+                ;;
+            11)
+                read -p "请输入容器名/ID: " name
+                docker exec -it $name /bin/sh
+                ;;
+            12)
+                read -p "请输入容器名/ID: " name
+                # 兼容日志查看，支持分页
+                if command -v less &>/dev/null; then
+                    docker logs $name | less
+                else
+                    docker logs $name
+                fi
+                ;;
+            13)
+                # 参考 kejilion.sh 的实现，显示所有容器的网络和IP
+                echo ""
+                container_ids=$(docker ps -q)
+                echo "------------------------------------------------------------"
+                printf "%-25s %-25s %-25s\n" "容器名称" "网络名称" "IP地址"
+                for container_id in $container_ids; do
+                    docker inspect --format '{{.Name}} {{range $k,$v := .NetworkSettings.Networks}}{{$k}} {{$v.IPAddress}}{{end}}' "$container_id" | \
+                    awk '{cname=$1; for(i=2;i<=NF;i+=2) printf "%-25s %-25s %-25s\n", cname, $(i), $(i+1)}'
+                done
+                echo "------------------------------------------------------------"
+                read -p "按回车键继续..."
+                ;;
+            14)
+                # 参考 kejilion.sh 的实现，显示容器资源占用
+                docker stats --no-stream
+                read -p "按回车键继续..."
+                ;;
+            0)
+                break
+                ;;
+            *)
+                echo "无效的选项，请重新输入。"
+                read -p "按回车键继续..."
+                ;;
+        esac
+    done
+}
+
+# Docker 镜像管理
+docker_image_manage() {
+    while true; do
+        clear
+        echo -e "${GREEN}Docker镜像列表:${NC}"
+        docker image ls
+        echo ""
+        echo "镜像操作"
+        echo "------------------------"
+        echo "1. 获取指定镜像         3. 删除指定镜像"
+        echo "2. 更新指定镜像         4. 删除所有镜像"
+        echo "------------------------"
+        echo "0. 返回上一级菜单"
+        echo "------------------------"
+        read -p "请输入你的选择: " sub_choice
+        case $sub_choice in
+            1)
+                read -p "请输入镜像名（多个用空格分隔）: " names
+                for name in $names; do
+                    docker pull $name
+                done
+                read -p "按回车键继续..."
+                ;;
+            2)
+                read -p "请输入镜像名（多个用空格分隔）: " names
+                for name in $names; do
+                    docker pull $name
+                done
+                read -p "按回车键继续..."
+                ;;
+            3)
+                read -p "请输入镜像名（多个用空格分隔）: " names
+                for name in $names; do
+                    docker rmi -f $name
+                done
+                read -p "按回车键继续..."
+                ;;
+            4)
+                read -p "确定删除所有镜像吗？(Y/N): " choice
+                [[ "$choice" =~ [Yy] ]] && docker rmi -f $(docker images -q)
+                read -p "按回车键继续..."
+                ;;
+            0)
+                break
+                ;;
+            *)
+                echo "无效的选项，请重新输入。"
+                read -p "按回车键继续..."
+                ;;
+        esac
+    done
+}
+
+# Docker 网络管理
+docker_network_manage() {
+    while true; do
+        clear
+        echo -e "${GREEN}Docker网络列表:${NC}"
+        docker network ls
+        echo ""
+        # 显示所有容器的网络与IP地址
+        echo "------------------------------------------------------------"
+        printf "%-25s %-20s %-20s\n" "容器名称" "网络名称" "IP地址"
+        for cid in $(docker ps -q); do
+            cname=$(docker inspect --format '{{.Name}}' $cid)
+            docker inspect --format '{{range $k,$v := .NetworkSettings.Networks}}{{printf "%-25s %-20s %-20s\n" "'"$cname"'" $k $v.IPAddress}}{{end}}' $cid
+        done
+        echo "------------------------------------------------------------"
+        echo "1. 创建网络"
+        echo "2. 加入网络"
+        echo "3. 退出网络"
+        echo "4. 删除网络"
+        echo "0. 返回上一级菜单"
+        echo "------------------------"
+        read -p "请输入你的选择: " sub_choice
+        case $sub_choice in
+            1)
+                read -p "设置新网络名: " netname
+                docker network create $netname
+                ;;
+            2)
+                read -p "加入网络名: " netname
+                read -p "容器名/ID（多个用空格分隔）: " names
+                for n in $names; do
+                    docker network connect $netname $n
+                done
+                ;;
+            3)
+                read -p "退出网络名: " netname
+                read -p "容器名/ID（多个用空格分隔）: " names
+                for n in $names; do
+                    docker network disconnect $netname $n
+                done
+                ;;
+            4)
+                read -p "请输入要删除的网络名: " netname
+                docker network rm $netname
+                ;;
+            0)
+                break
+                ;;
+            *)
+                echo "无效的选项，请重新输入。"
+                read -p "按回车键继续..."
+                ;;
+        esac
+    done
+}
+
+
+# Docker 卷管理
+docker_volume_manage() {
+    while true; do
+        clear
+        echo -e "${GREEN}Docker卷列表:${NC}"
+        docker volume ls
+        echo ""
+        echo "卷操作"
+        echo "------------------------"
+        echo "1. 创建新卷"
+        echo "2. 删除指定卷"
+        echo "3. 删除所有卷"
+        echo "------------------------"
+        echo "0. 返回上一级菜单"
+        echo "------------------------"
+        read -p "请输入你的选择: " sub_choice
+        case $sub_choice in
+            1)
+                read -p "设置新卷名: " vname
+                docker volume create $vname
+                ;;
+            2)
+                read -p "输入删除卷名（多个用空格分隔）: " vnames
+                for v in $vnames; do
+                    docker volume rm $v
+                done
+                ;;
+            3)
+                read -p "确定删除所有卷吗？(Y/N): " choice
+                if [[ "$choice" =~ [Yy] ]]; then
+                    docker volume rm $(docker volume ls -q)
+                fi
+                ;;
+            0)
+                break
+                ;;
+            *)
+                echo "无效的选项，请重新输入。"
+                read -p "按回车键继续..."
+                ;;
+        esac
+    done
+}
+
+
 show_menu() {
     clear
     echo -e "${GREEN}========================================================${NC}"
     echo -e "${ORANGE}           	   Docker 管理工具箱${NC}"
     echo -e "${GREEN}========================================================${NC}"
-	show_brief_status  # 状态显示
+    show_brief_status  # 状态显示
     echo -e "${GREEN}1. 安装 Docker${NC}"
     echo -e "${GREEN}2. 卸载 Docker${NC}"
     echo -e "${GREEN}3. 安装指定版本 Docker${NC}"
@@ -909,53 +1178,49 @@ show_menu() {
     echo -e "${GREEN}5. 卸载 Docker Compose${NC}"
     echo -e "${GREEN}6. 安装指定版本 Docker Compose${NC}"
     echo -e "${GREEN}7. 查看Docker全局状态 ★${NC}"
+    echo -e "${GREEN}8. Docker容器管理${NC}"
+    echo -e "${GREEN}9. Docker镜像管理${NC}"
+    echo -e "${GREEN}10. Docker网络管理${NC}"
+    echo -e "${GREEN}11. Docker卷管理${NC}"
     echo -e "${GREEN}0. 退出脚本${NC}"
     echo -e "${GREEN}========================================================${NC}"
     echo -e "${NC}"
 }
 
 
+
 main() {
     while true; do
         show_menu
         stty erase ^H
-        read -p "请输入选项编号 (0-7): " choice  # 修改选项范围
+        read -p "请输入选项编号 (0-11): " choice
         case "$choice" in
-            1) # 安装Docker
-                install_docker_core
-                ;;
-            2) # 卸载Docker
-                uninstall_docker_core
-                ;;
-            3) # 安装指定版本Docker
-                install_specific_docker
-                ;;
-            4) # 安装Docker Compose
-                install_docker_compose_core
-                ;;
-            5) # 卸载Docker Compose
-                uninstall_docker_compose_core
-                ;;
-            6) # 安装指定版本Docker Compose
-                install_specific_docker_compose
-                ;;
-            7) # 查看全局状态 ★
+            1) install_docker_core ;;
+            2) uninstall_docker_core ;;
+            3) install_specific_docker ;;
+            4) install_docker_compose_core ;;
+            5) uninstall_docker_compose_core ;;
+            6) install_specific_docker_compose ;;
+            7)
                 clear
                 show_full_status
-                # 只显示一次返回主菜单提示
                 read -p "按回车键返回主菜单..."
                 continue
                 ;;
-            0) # 退出
+            8) docker_container_manage ;;
+            9) docker_image_manage ;;
+            10) docker_network_manage ;;
+            11) docker_volume_manage ;;
+            0)
                 echo -e "${GREEN}已退出脚本。${NC}"
                 exit 0
                 ;;
             *)
                 echo -e "${RED}无效的选项，请重新输入!${NC}"
+                read -p "按回车键返回主菜单..."
                 ;;
         esac
-        read -p "按回车键返回主菜单..."
-    done
+    done   
 }
 
 # 执行主程序
