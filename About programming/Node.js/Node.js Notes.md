@@ -58,6 +58,225 @@ node -v # Should print "v22.14.0".
 npm -v # Should print "10.9.2".
 ```
 
+## 精简讲解
+### Node.js 基本语法
+Hello World 示例  
+创建一个新的 JavaScript 文件 app.js，并输入以下代码：
+```js
+console.log("Hello, World!");
+```
+在终端中运行：
+```
+node app.js
+```
+输出结果：
+<pre>
+Hello, World!
+</pre>
+
+#### 变量与数据类型
+Node.js 支持 JavaScript 的所有基本数据类型，包括：
+- 字符串：`let name = "Node.js";`
+- 数字：`let age = 25;`
+- 布尔值：`let isNode = true;`
+- 数组：`let fruits = ["apple", "banana", "orange"];`
+- 对象：`let person = { name: "Alice", age: 30 };`
+
+#### 控制结构
+Node.js 支持常见的控制结构，如条件语句和循环:  
+**if条件语句**  
+```js
+let age = 18;
+if (age >= 18) {
+    console.log("成年人");
+} else {
+    console.log("未成年人");
+}
+```
+**for循环**  
+```js
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+```
+**while循环**  
+```js
+let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}
+```
+
+#### 模块系统
+Node.js 的模块化设计使得代码更易于维护和复用。使用 `require` 导入模块，使用 `module.exports` 导出模块  
+
+**创建模块**  
+创建一个名为 math.js 的文件，内容如下：
+```js
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+module.exports = {
+    add,
+    subtract
+};
+```
+
+**使用模块**  
+在 app.js 中使用刚刚创建的模块：
+```js
+const math = require('./math');
+
+console.log(math.add(5, 3)); // 输出 8
+console.log(math.subtract(5, 3)); // 输出 2
+```
+
+#### 异步编程
+Node.js 的异步编程模型是其核心特性之一。通过`回调函数`、`Promise` 和 `async/await` 来处理异步操作  
+
+**回调函数**  
+```js
+const fs = require('fs');
+
+fs.readFile('example.txt', 'utf8', (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log(data);
+});
+```
+
+**Promise**  
+```js
+const fs = require('fs').promises;
+
+fs.readFile('example.txt', 'utf8')
+    .then(data => {
+        console.log(data);
+    })
+    .catch(err => {
+        console.error(err);
+    });
+```
+
+**async/await**  
+```js
+const fs = require('fs').promises;
+
+async function readFile() {
+    try {
+        const data = await fs.readFile('example.txt', 'utf8');
+        console.log(data);
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+readFile();
+```
+
+#### 创建 Web 服务器
+Node.js 可以轻松创建 HTTP 服务器。以下是一个简单的服务器示例：
+```js
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello, Node.js!\n');
+});
+
+server.listen(3000, () => {
+    console.log('服务器运行在 http://localhost:3000/');
+});
+```
+在终端中运行该文件后，打开浏览器访问 `http://localhost:3000/`，你将看到 `Hello, Node.js!` 的输出  
+
+#### 使用 Express 框架
+Express 是 Node.js 最流行的 Web 应用框架之一，简化了服务器的创建和路由管理  
+
+**安装 Express**  
+使用 npm 安装 Express：
+```
+npm install express
+```
+
+**创建一个简单的 Express 应用**
+```js
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Hello, Express!');
+});
+
+app.listen(3000, () => {
+    console.log('Express 服务器运行在 http://localhost:3000/');
+});
+```
+
+**路由管理**
+```js
+app.get('/about', (req, res) => {
+    res.send('关于页面');
+});
+
+app.get('/contact', (req, res) => {
+    res.send('联系页面');
+});
+```
+
+#### 错误处理
+在 Node.js 中，错误处理是非常重要的。可以使用 `try...catch` 语句处理同步代码中的错误，对于异步代码，可以在 Promise 中使用 `.catch()` 方法  
+```js
+async function riskyOperation() {
+    try {
+        // 可能抛出错误的操作
+    } catch (error) {
+        console.error("发生错误：", error);
+    }
+}
+```
+
+#### 中间件
+在 Express 中，中间件是处理请求和响应的函数。可以用于日志记录、请求解析、身份验证等  
+
+**创建中间件**
+```js
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next(); // 调用下一个中间件
+});
+```
+
+**使用现成的中间件**
+可以使用 body-parser 中间件解析请求体：
+```
+npm install body-parser
+```
+```js
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+```
+
+#### 部署 Node.js 应用
+将 Node.js 应用部署到云服务器中  
+1. 选择云服务提供商：选择适合的云服务提供商并创建账户
+2. 配置服务器：根据提供商的文档配置服务器环境
+3. 上传代码：使用 Git 或 TFTP 将代码上传到服务器
+4. 安装依赖：在服务器上运行 `npm install` 安装依赖
+5. 启动应用：使用 `node app.js` 启动应用，或者使用 PM2 等进程管理工具保持应用运行
+
+## 详细讲解
 ### 创建 Node.js 应用
 **步骤一、使用 require 指令来加载和引入模块**  
 语法格式如下：  
