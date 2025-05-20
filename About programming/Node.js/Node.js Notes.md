@@ -233,6 +233,113 @@ app.get('/contact', (req, res) => {
 });
 ```
 
+### 数据库操作
+以下是使用 Node.js 操作 MySQL 数据库的示例代码：  
+**安装 MySQL 驱动**
+```
+npm install mysql2
+```
+**连接 MySQL**
+```js
+const mysql = require('mysql2/promise'); // 使用 mysql2 的 promise 版本
+
+async function main() {
+    const connection = await mysql.createConnection({
+        host: 'localhost', // 数据库服务器地址
+        user: 'root',      // 数据库用户名
+        password: 'password', // 数据库密码
+        database: 'test'   // 数据库名称
+    });
+
+    try {
+        console.log("成功连接到 MySQL");
+    } catch (err) {
+        console.error(err);
+    } finally {
+        await connection.end(); // 关闭连接
+    }
+}
+
+main().catch(console.error);
+```
+
+**插入数据（Create）**
+```js
+async function addUser(connection, userInfo) {
+    // SQL语句：向users表插入数据
+    const sql = 'INSERT INTO users (name, email, age) VALUES (?, ?, ?)';
+    
+    // 执行SQL，用问号防止SQL注入攻击
+    const [result] = await connection.execute(sql, [
+        userInfo.name, 
+        userInfo.email, 
+        userInfo.age
+    ]);
+    
+    console.log(`添加成功！新用户ID: ${result.insertId}`);
+}
+```
+使用示例：
+```js
+await addUser(connection, {
+    name: '张三',
+    email: 'zhangsan@example.com',
+    age: 25
+});
+```
+
+**查询数据（Read）**
+```js
+async function getUsers(connection) {
+    // 简单查询所有用户
+    const [users] = await connection.execute('SELECT * FROM users');
+    
+    console.log('当前所有用户：');
+    console.table(users); // 用表格形式输出
+    
+    return users;
+}
+```
+
+**更新数据（Update）**
+```js
+async function updateUser(connection, userId, newInfo) {
+    // 更新指定ID的用户信息
+    const [result] = await connection.execute(
+        'UPDATE users SET name=?, email=?, age=? WHERE id=?',
+        [newInfo.name, newInfo.email, newInfo.age, userId]
+    );
+    
+    console.log(`成功更新了 ${result.affectedRows} 条记录`);
+}
+```
+使用示例：
+```js
+await updateUser(connection, 1, {
+    name: '张三丰', // 修改名字
+    email: 'new@example.com', // 修改邮箱
+    age: 30 // 修改年龄
+});
+```
+
+**删除数据（Delete）**
+```js
+async function deleteUser(connection, userId) {
+    // 删除指定ID的用户
+    const [result] = await connection.execute(
+        'DELETE FROM users WHERE id=?',
+        [userId]
+    );
+    
+    if (result.affectedRows > 0) {
+        console.log('用户删除成功');
+    } else {
+        console.log('没有找到该用户');
+    }
+}
+```
+记住：每个数据库操作都要放在 `try-catch` 中处理可能的错误哦！  
+
 #### 错误处理
 在 Node.js 中，错误处理是非常重要的。可以使用 `try...catch` 语句处理同步代码中的错误，对于异步代码，可以在 Promise 中使用 `.catch()` 方法  
 ```js
