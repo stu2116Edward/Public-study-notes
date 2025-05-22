@@ -87,6 +87,10 @@ zerotier-cli join <network_id>
 ```bash
 zerotier-cli status
 ```
+或
+```bash
+zerotier-cli info
+```
 如果一切正常，你会看到类似以下的输出：
 <pre>
 200 info 1234567890abcdef <your_node_id> ONLINE
@@ -100,4 +104,18 @@ zerotier-cli leave <network_id>
 **8. 列出网络**
 ```bash
 zerotier-cli listnetworks
+```
+
+**查看节点服务器**
+```
+zerotier-cli peers
+```
+
+如果要在Windows中使用命令行的方式使用Zerotier那么需要使用`管理员模式开启Windows Powershell`然后把命令行前缀改为`zerotier-cli.bat`就可以了  
+例如：
+```
+zerotier-cli.bat join <network_id>
+zerotier-cli.bat status
+zerotier-cli.bat listnetworks
+zerotier-cli.bat peers
 ```
