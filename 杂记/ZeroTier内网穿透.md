@@ -141,7 +141,7 @@ sudo zerotier-cli join xxxxxxxx
 ```
 可以进入[Web后台](https://www.zerotier.com/)进行统一管理勾选后`Authorize`授权`Deauthorize`取消授权  
 
-### 第三步 配置 Moon
+### 配置 Moon
 进入 zerotier-one 程序所在的目录，默认为 `/var/lib/zerotier-one`
 ```bash
 cd /var/lib/zerotier-one
