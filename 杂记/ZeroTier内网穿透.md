@@ -210,7 +210,7 @@ zerotier-cli.bat listpeers
 ```
 退出 Moon 节点
 ```powershell
-zerotier-cli.bat deorbit
+zerotier-cli.bat deorbit xxxxxxxxxx
 ```
 提示：Windows 系统的默认程序目录位于 `C:\Program Files (x86)\ZeroTier\One`  
 
