@@ -77,6 +77,11 @@ docker exec -it <容器名/ID> /bin/bash
 ```bash
 zerotier-one -d
 ```
+如果报错`zerotier-one: fatal error: cannot bind to local control interface port 9993`  
+先尝试关闭再执行：
+```
+sudo systemctl stop zerotier-one
+```
 
 **5.加入网络**
 ```bash
