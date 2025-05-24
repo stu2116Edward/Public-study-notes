@@ -312,6 +312,6 @@ zerotier-cli.bat deorbit xxxxxxxxxx
   - 避免将 Moon 服务器同时作为 Moon 和 Leaf 节点
   - 适合将 Moon 部署在就近的数据中心（如国内云服务商）
 
-#### Ref
-[Private Root Servers](https://docs.zerotier.com/roots/)
+##### Ref
+[Private Root Servers](https://docs.zerotier.com/roots/)  
 [MoonID 变更情况，新机器无法加入 moon-id 的方案](https://github.com/zerotier/ZeroTierOne/issues/2197)
