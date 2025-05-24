@@ -17,14 +17,20 @@ $ zerotier-one: fatal error: cannot bind to local control interface port 9993
 ```bash
 netstat -lp | grep 9993
 ```
-解决方法：
+解决方法：  
+这个可能有问题
 ```bash
 killall -9 zerotier-one
+```
+一般先尝试关闭：
+```
+sudo systemctl stop zerotier-one
 ```
 然后再次尝试启动 ZeroTier 服务：
 ```bash
 zerotier-one -d
 ```
+
 **3.加入网络**
 ```bash
 zerotier-cli join <network_id>
@@ -76,11 +82,6 @@ docker exec -it <容器名/ID> /bin/bash
 **4.启动zerotier-one**
 ```bash
 zerotier-one -d
-```
-如果报错`zerotier-one: fatal error: cannot bind to local control interface port 9993`  
-先尝试关闭再执行：
-```
-sudo systemctl stop zerotier-one
 ```
 
 **5.加入网络**
