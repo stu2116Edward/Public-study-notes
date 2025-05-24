@@ -6,6 +6,7 @@
 Anaconda：https://www.anaconda.com/download  
 Sqlmap下载链接：https://sqlmap.org/  
 Sqlmap GitHub：https://github.com/sqlmapproject/sqlmap/releases  
+已经打包好的Sqlmap_v1.9：https://edwardhu.lanzouu.com/iTbxJ2x1dtsh
 
 在conda虚拟环境中安装`pyinstaller`本地环境可能会失败  
 ```
