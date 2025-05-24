@@ -1,6 +1,6 @@
 # ZeroTier内网穿透使用
 
-### 使用命令行部署
+### 使用命令行部署ZeroTier
 **1.安装ZeroTier**
 ```bash
 curl -s https://install.zerotier.com | sudo bash
