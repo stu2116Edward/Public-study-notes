@@ -105,7 +105,7 @@ services:
 ```bash
 docker-compose up -d
 ```
-安装完成后使用`http://ip:8280`访问  
+安装完成后使用`http://127.0.0.1:8280`访问  
 停止容器运行(一定要在配置文件的文件夹下运行这个命令)  
 ```bash
 docker-compose down
@@ -170,16 +170,94 @@ vim /etc/docker/daemon.json
   ]
 }
 ```
+"你自己的镜像站"注意如果是IP地址记得加上端口"IP:8280"  
+
 将重新加载镜像：
 ```bash
 systemctl daemon-reload && systemctl restart docker
 ```
+如果出现以下错误那就证明你配置的格式不正确(提示：注意逗号`,`🤭)：
+<pre>
+root@VM-16-7-ubuntu:~# systemctl daemon-reload && systemctl restart docker
+Job for docker.service failed because the control process exited with error code.
+See "systemctl status docker.service" and "journalctl -xe" for details.
+</pre>
 
 登录dockerhub仓库:
 ```bash
-docker login <IP/域名>
+docker login <IP:端口/域名>
 ```
+注意要先在`/etc/docker/daemon.json`加上你的私人镜像仓库地址才能实现登陆否则可能出现以下错误  
+没有修改`/etc/docker/daemon.json`配置文件，注意加上你的私有地址才行  
+<pre>
+Error response from daemon: Get "https://127.0.0.1/v2/  ": dial tcp 101.34.30.246:443: connect: connection refused
+</pre>
+使用域名访问或者加了端口但是没有修改`/etc/docker/daemon.json`配置文件  
+<pre>
+Error response from daemon: Get "https://127.0.0.1:8280/v2/": http: server gave HTTP response to HTTPS client
+</pre>
+
 输入账号密码
+<pre>
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+</pre>
+这里提示警告是因为 Docker 默认将你的登录凭据（用户名和密码）以 明文形式 存储在 `~/.docker/config.json` 文件中，存在安全隐患  
+1. 所以需要使用 Docker 凭证存储（Credential Helper）  
+**Linux 系统（推荐 pass 或 secretservice）**  
+安装 `pass`（基于 GPG 加密）  
+- Debian/Ubuntu
+```bash
+sudo apt-get install pass gnupg2 -y
+```
+- CentOS/RHEL
+```bash
+sudo yum install pass gnupg2 -y
+```
+
+或安装 `docker-credential-secretservice`  
+- Debian/Ubuntu
+```bash
+sudo apt-get install docker-credential-secretservice -y
+```
+- CentOS/RHEL
+```bash
+sudo yum install docker-credential-secretservice -y
+```
+
+2. 配置 Docker 使用凭证助手
+编辑或创建 Docker 配置文件 `~/.docker/config.json`，添加 `"credsStore"` 选项：
+```bash
+vim ~/.docker/config.json
+```
+修改为以下内容：
+```json
+{
+  "credsStore": "pass"  # 或 "secretservice"
+}
+```
+然后重新登录 Docker  
+退出登陆
+```
+docker logout
+```
+登陆  
+```
+docker login
+```
+验证是否生效  
+检查 `~/.docker/config.json`，应该不再有明文密码，而是类似：
+<pre>
+{
+  "auths": {
+    "https://index.docker.io/v1/": {}
+  },
+  "credsStore": "pass"
+}
+</pre>
 
 拉取镜像：
 ```bash
