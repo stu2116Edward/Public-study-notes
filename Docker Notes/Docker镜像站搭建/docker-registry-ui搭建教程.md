@@ -267,7 +267,9 @@ docker pull <镜像名:tag/ID>
 ```bash
 docker tag <原始镜像名>:<tag> <私有仓库地址>/<新镜像名>:<tag>
 ```
+这里如果使用IP:Port的话别漏了端口  
 推送镜像：
 ```bash
-docker push <IP/域名>/images:<tag>
+docker push <私有仓库地址>/<新镜像名>:<tag>
 ```
+这里就直接复制已经打上标签的那段内容就可以了如果是latest的话可以默认不填latest
