@@ -242,11 +242,11 @@ vim ~/.docker/config.json
 然后重新登录 Docker  
 退出登陆
 ```
-docker logout
+docker logout <IP:端口/域名>
 ```
 登陆  
 ```
-docker login
+docker login <IP:端口/域名>
 ```
 验证是否生效  
 检查 `~/.docker/config.json`，应该不再有明文密码，而是类似：
