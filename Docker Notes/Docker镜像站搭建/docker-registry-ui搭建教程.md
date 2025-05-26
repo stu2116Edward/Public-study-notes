@@ -206,47 +206,81 @@ https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 Login Succeeded
 </pre>
 这里提示警告是因为 Docker 默认将你的登录凭据（用户名和密码）以 明文形式 存储在 `~/.docker/config.json` 文件中，存在安全隐患  
-1. 所以需要使用 Docker 凭证存储（Credential Helper）  
-**Linux 系统（推荐 pass 或 secretservice）**  
-安装 `pass`（基于 GPG 加密）  
-- Debian/Ubuntu
+查看配置文件信息中的`auth`：
 ```bash
-sudo apt-get install pass gnupg2 -y
+cat /root/.docker/config.json
 ```
-- CentOS/RHEL
+通过命令行可以将 base64 加密后的用户名密码解码：
 ```bash
-sudo yum install pass gnupg2 -y
+echo "cm9vdDpQYXNzd29yZA==" | base64 --decode
 ```
-
-或安装 `docker-credential-secretservice`  
-- Debian/Ubuntu
-```bash
-sudo apt-get install docker-credential-secretservice -y
-```
-- CentOS/RHEL
-```bash
-sudo yum install docker-credential-secretservice -y
-```
-
-2. 配置 Docker 使用凭证助手
-编辑或创建 Docker 配置文件 `~/.docker/config.json`，添加 `"credsStore"` 选项：
-```bash
-vim ~/.docker/config.json
-```
-修改为以下内容：
-```json
-{
-  "credsStore": "pass"  # 或 "secretservice"
-}
-```
-然后重新登录 Docker  
-退出登陆
+### 配置存储凭证
+在存储凭证前要先退出当前登陆
 ```
 docker logout <IP:端口/域名>
 ```
-登陆  
+
+1. 安装 Docker 凭据助手
+首先需要安装 `docker-credential-helpers` 工具包，它提供了安全的凭据存储方式
+```bash
+sudo apt-get update
+sudo apt-get install docker-credential-pass
 ```
+对于 CentOS/RHEL 系统：
+```bash
+sudo yum install docker-credential-pass
+```
+
+2. 安装和配置 GPG 和 pass
+Docker 的凭据助手使用 pass 工具，而 pass 依赖于 GPG 加密：
+```bash
+sudo apt-get install gpg pass
+```
+
+3. 生成 GPG 密钥
+```bash
+gpg --generate-key
+```
+按照提示操作，设置您的姓名、电子邮件和密码  
+生成的密钥在`/root/.gnupg/openpgp-revocs.d`路径下
+
+4. 初始化 pass 存储
+```bash
+pass init <您的GPG密钥ID或关联邮箱>
+```
+
+5. 配置 Docker 使用凭据助手
+编辑或创建 Docker 配置文件：
+```bash
+cat > ~/.docker/config.json <<EOF
+{
+  "credsStore": "pass"
+}
+EOF
+```
+
+6. 登录 Docker 仓库
+```bash
 docker login <IP:端口/域名>
+```
+
+检查凭据存储是否正常工作：
+```bash
+docker-credential-pass list
+```
+除了 pass 之外，Docker 还支持其他凭据助手例如`secretservice`：
+```bash
+sudo apt-get install docker-credential-secretservice
+```
+然后修改 config.json 为：
+```
+{
+  "credsStore": "secretservice"
+}
+```
+如果您之前已经使用明文存储了密码，请删除旧的配置文件：
+```bash
+rm ~/.docker/config.json
 ```
 验证是否生效  
 检查 `~/.docker/config.json`，应该不再有明文密码，而是类似：
