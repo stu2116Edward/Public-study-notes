@@ -234,7 +234,11 @@ sudo yum install docker-credential-pass
 2. 安装和配置 GPG 和 pass
 Docker 的凭据助手使用 pass 工具，而 pass 依赖于 GPG 加密：
 ```bash
-sudo apt-get install gpg pass
+sudo apt-get install gnupg2 pass
+```
+对于 CentOS/RHEL 系统：
+```bash
+sudo yum install gnupg2 pass
 ```
 
 3. 生成 GPG 密钥
@@ -271,6 +275,10 @@ docker-credential-pass list
 除了 pass 之外，Docker 还支持其他凭据助手例如`secretservice`：
 ```bash
 sudo apt-get install docker-credential-secretservice
+```
+对于 CentOS/RHEL 系统：
+```bash
+sudo yum install docker-credential-secretservice
 ```
 然后修改 config.json 为：
 ```
