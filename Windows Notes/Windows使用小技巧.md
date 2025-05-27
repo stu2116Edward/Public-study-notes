@@ -44,6 +44,29 @@ Win10:
 或者 Win+R 输入 `explorer.exe`  
 
 
+### windows备份环境变量（导入导出）
+**导出（备份）**  
+`Win+R`输入`regedit`回车打开注册表  
+系统环境变量路径：
+```
+计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
+```
+![Win_Environment1](https://github.com/user-attachments/assets/aedbfb4f-80ce-4876-a3ab-d194d83b0079)  
+右键导出`Environment`，命名为系统环境变量保存  
+![Win_Environment2](https://github.com/user-attachments/assets/6b3133a4-0f31-4c08-b514-3df1593d33f0)  
+用户环境变量路径：
+```
+计算机\HKEY_CURRENT_USER\Environment
+```
+![Win_Environment3](https://github.com/user-attachments/assets/c7eec84b-e486-4265-bbec-35699b005ce8)  
+右键导出`Environment`，命名为用户环境变量保存  
+![Win_Environment4](https://github.com/user-attachments/assets/45854a60-1b5f-4744-8b31-e056a99d7ae7)  
+**导入（恢复）**  
+双击你的`.reg`文件即可  
+![Win_Environment5](https://github.com/user-attachments/assets/7b74ae99-049f-41c8-9cad-85d420e25168)
+![Win_Environment6](https://github.com/user-attachments/assets/bb1adea5-a0b1-45f2-85bb-6268d918e2be)
+
+
 ### 修改win11右键菜单、右键选项、还原win10右键菜单
 - 不改设置，非永久  
 每次按下`shift+右键`，既可直接打开折叠菜单啦~  
@@ -541,6 +564,8 @@ gpupdate /force
 
 ### Windows安装配置curl
 curl是一种命令行工具，作用是发出网络请求，然后得到和提取数据，显示在"标准输出"（stdout）上面  
+一般 win10 都是自带curl的  
+
 curl 安装及配置  
 官网下载地址：[curl官网](https://curl.se/download.html#Win64)  
 windows系统版本下拉到最下方，我选择的是标红色方框的版本，如下图：  
@@ -555,6 +580,7 @@ windows系统版本下拉到最下方，我选择的是标红色方框的版本�
 ```
 %CURL_HOME%\bin\
 ```
+当然你也可以直接在`Path`中添加curl目录`\bin`的绝对路径  
 测试是否安装成功  
 ```bash
 curl  -V
