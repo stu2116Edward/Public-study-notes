@@ -549,8 +549,12 @@ windows系统版本下拉到最下方，我选择的是标红色方框的版本�
 ![win_curl2](https://github.com/user-attachments/assets/5cf52c8a-e4f7-4b9d-a806-c8463516528d)  
 我这里下载的第一个文件并解压  
 ![win_curl3](https://github.com/user-attachments/assets/b2e2d644-e855-4d12-97e6-bb7f8fc6b227)  
-配置环境变量添加个变量名为`CURO_HOME`，指定到刚解压的文件，`E:\curl`，确定  
+配置环境变量添加个变量名为`CURL_HOME`，指定到刚解压的文件，`E:\curl`，确定  
 ![win_curl4](https://github.com/user-attachments/assets/50c8619c-95e7-465d-ac08-2d87d03933f8)  
+这里还需在`Path`中添加如下内容：
+```
+%CURL_HOME%\bin\
+```
 测试是否安装成功  
 ```bash
 curl  -V
