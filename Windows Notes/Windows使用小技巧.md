@@ -147,7 +147,7 @@ Windows Registry Editor Version 5.00
 "EnableLUA"=dword:00000000
 "FilterAdministratorToken"=dword:00000001
 ```
-保存文件为 .reg 格式（如 fix_mmc.reg），双击文件导入注册表  
+保存文件为 .reg 格式（如 UAC.reg），双击文件导入注册表  
 重启计算机，使设置生效  
 
 方法3：组策略调整  
