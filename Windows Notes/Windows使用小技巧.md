@@ -129,6 +129,42 @@ Win+R输入`msconfig`打开系统配置-工具-选中更改UAC设置-点击启�
 之后就不会有这样的弹窗了  
 
 
+### 为了对电脑进行保护,已经阻止此应用
+在后续的使用中相信也可能遇到这样突如其来的弹窗问题导致程序无法正常运行  
+![uac4](https://github.com/user-attachments/assets/e9cdfda7-7a97-4642-be53-0f598d892959)  
+问题原因：  
+1. 用户账户控制（UAC）限制：Windows的用户账户控制可能误判了mmc.exe的安全性，导致其被阻止执行
+2. 注册表或组策略配置错误：某些注册表项（如EnableLUA、FilterAdministratorToken）被修改，或者组策略设置了管理员批准模式，阻止了mmc.exe的运行
+3. 防火墙或安全软件拦截：某些防火墙或第三方安全软件可能会误判mmc.exe，并阻止其运行
+
+方法1：通过**HiBitUninstaller**注册表清理功能实现修复（推荐）  
+
+方法2：通过手动修改注册表  
+以管理员身份运行记事本，创建新文件并粘贴以下内容：
+```reg
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"EnableLUA"=dword:00000000
+"FilterAdministratorToken"=dword:00000001
+```
+保存文件为 .reg 格式（如 fix_mmc.reg），双击文件导入注册表  
+重启计算机，使设置生效  
+
+方法3：组策略调整  
+按 `Win + R`，输入 `gpedit.msc` 打开组策略编辑器  
+依次展开：`计算机配置` → `Windows设置` → `安全设置` → `本地策略` → `安全选项`  
+修改以下两项：  
+`用户账户控制`: `用于内置管理员账户的管理员批准模式` → 设置为`已启用`  
+`用户账户控制`: `以管理员批准模式运行所有管理员` → 设置为`已禁用`  
+重启计算机  
+
+方法4：防火墙例外设置  
+打开`控制面板` → `Windows Defender 防火墙`  
+点击`“允许应用或功能通过防火墙”`，然后点击`“更改设置”`  
+点击`“允许其他应用”`，定位到 C:\Windows\System32\可执行文件.exe 并添加。
+勾选`“专用”`和`“公用网络”`权限，保存后注销系统  
+
+
 ### 关闭打开此文件前总是询问的弹窗警告
 弹窗界面如下：  
 ![fjqyxx1](https://github.com/user-attachments/assets/19c46a03-8cde-4153-acc5-ae5318542533)  
