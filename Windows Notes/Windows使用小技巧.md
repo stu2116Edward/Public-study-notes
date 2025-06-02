@@ -133,9 +133,9 @@ Win+R输入`msconfig`打开系统配置-工具-选中更改UAC设置-点击启�
 在后续的使用中相信也可能遇到这样突如其来的弹窗问题导致程序无法正常运行  
 ![uac4](https://github.com/user-attachments/assets/e9cdfda7-7a97-4642-be53-0f598d892959)  
 问题原因：  
-1. 用户账户控制（UAC）限制：Windows的用户账户控制可能误判了mmc.exe的安全性，导致其被阻止执行
-2. 注册表或组策略配置错误：某些注册表项（如EnableLUA、FilterAdministratorToken）被修改，或者组策略设置了管理员批准模式，阻止了mmc.exe的运行
-3. 防火墙或安全软件拦截：某些防火墙或第三方安全软件可能会误判mmc.exe，并阻止其运行
+1. 用户账户控制（UAC）限制：Windows的用户账户控制可能误判了Setup.exe的安全性，导致其被阻止执行
+2. 注册表或组策略配置错误：某些注册表项（如EnableLUA、FilterAdministratorToken）被修改，或者组策略设置了管理员批准模式，阻止了Setup.exe的运行
+3. 防火墙或安全软件拦截：某些防火墙或第三方安全软件可能会误判Setup.exe，并阻止其运行
 
 **方法1：通过 HiBitUninstaller 注册表清理功能实现修复（推荐）**  
 
@@ -161,7 +161,7 @@ Windows Registry Editor Version 5.00
 方法4：防火墙例外设置  
 打开`控制面板` → `Windows Defender 防火墙`  
 点击`“允许应用或功能通过防火墙”`，然后点击`“更改设置”`  
-点击`“允许其他应用”`，定位到 C:\Windows\System32\可执行文件.exe 并添加。
+点击`“允许其他应用”`，定位到 E:\Program Files\tmp\Setup.exe 并添加。
 勾选`“专用”`和`“公用网络”`权限，保存后注销系统  
 
 
