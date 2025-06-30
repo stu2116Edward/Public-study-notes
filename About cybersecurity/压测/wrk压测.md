@@ -48,7 +48,7 @@ docker run --rm \
 -v "$PWD/wrk.lua":/scripts/wrk.lua \
 haydenjeune/wrk2 \
 -H "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" \
--t1 -c100 -R100 -d10s -s /scripts/wrk.lua https://panel.kejilion.pro
+-t1 -c100 -R100 -d10s -s /scripts/wrk.lua https://example.com
 ```
 
 ddos.lua:
