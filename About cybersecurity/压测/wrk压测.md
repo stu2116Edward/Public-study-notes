@@ -26,7 +26,7 @@ docker run --rm --name wrk --network host --cpuset-cpus="0" -v $(pwd):/scripts:z
 ```
 http:
 ```bash
-curl -L -o wrk.lua https://github.com/stu2116Edward/Public-study-notes/blob/main/About%20cybersecurity/%E5%8E%8B%E6%B5%8B/wrk.lua
+curl -L -o wrk.lua https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/About%20cybersecurity/%E5%8E%8B%E6%B5%8B/wrk.lua
 docker run --rm \
 --name wrk \
 --user root \
@@ -39,7 +39,7 @@ haydenjeune/wrk2 \
 ```
 https:
 ```bash
-curl -L -o wrk.lua https://github.com/stu2116Edward/Public-study-notes/blob/main/About%20cybersecurity/%E5%8E%8B%E6%B5%8B/wrk.lua
+curl -L -o wrk.lua https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/About%20cybersecurity/%E5%8E%8B%E6%B5%8B/wrk.lua
 docker run --rm \
 --name wrk \
 --user root \
