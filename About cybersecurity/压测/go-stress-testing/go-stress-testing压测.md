@@ -135,7 +135,7 @@ nload   # 查看网络流量情况
 /proc/pid/status # 查看进程状态
 ```
 
-## 运行以 Windows 为示例
+## Windows
 ```
 go-stress-testing-win.exe -c 1 -n 100 -u https://example.com
 ```
