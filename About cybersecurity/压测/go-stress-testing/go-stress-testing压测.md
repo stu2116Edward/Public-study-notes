@@ -81,8 +81,10 @@ curl是Linux在命令行下的工作的文件传输工具，是一款很强大�
 使用curl文件可以压测使用非GET的请求，支持设置http请求的 method、cookies、header、body等参数  
 
 I: chrome 浏览器生成 curl文件，打开开发者模式(快捷键F12)，如图所示，生成 curl 在终端执行命令  
+<img width="810" height="542" alt="copy cURL" src="https://github.com/user-attachments/assets/49082fd9-ae5c-4b16-baf6-8543bd9a5ed1" />  
 
 II: postman 生成 curl 命令  
+<img width="1141" height="850" alt="postman cURL" src="https://github.com/user-attachments/assets/98edd8f0-1af4-4883-b7ae-ec5405297dba" />  
 
 生成内容粘贴到项目目录下的curl/example.curl.txt文件中，执行下面命令就可以从curl.txt文件中读取需要压测的内容进行压测了
 ```
