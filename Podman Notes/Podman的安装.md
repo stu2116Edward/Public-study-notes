@@ -57,15 +57,19 @@ podman --version
 vim /etc/containers/registries.conf
 ```
 ```conf
-unqualified-search-registries = ["docker.io", "quay.io"]
+unqualified-search-registries = ["docker.io"]
 
 [[registry]]
 prefix = "docker.io"
-location = "hub-mirror.c.163.com"
+location = "docker.io"
+insecure = false
+
+[[registry.mirror]]
+location = "abc.itelyou.cf"
 insecure = true
 
 [[registry.mirror]]
-location = "docker.imgdb.de"
+location = "docker.itelyou.cf"
 insecure = true
 
 [[registry.mirror]]
@@ -77,15 +81,15 @@ location = "docker.hlmirror.com"
 insecure = true
 
 [[registry.mirror]]
-location = "cjie.eu.org"
+location = "dockerpull.pw"
 insecure = true
 
 [[registry.mirror]]
-location = "docker.mirrors.sjtug.sjtu.edu.cn"
+location = "docker.1ms.run"
 insecure = true
 
 [[registry.mirror]]
-location = "docker.nju.edu.cn"
+location = "docker.xuanyuan.me"
 insecure = true
 ```
 
