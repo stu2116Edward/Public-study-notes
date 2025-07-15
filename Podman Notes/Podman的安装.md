@@ -91,6 +91,10 @@ insecure = true
 [[registry.mirror]]
 location = "docker.xuanyuan.me"
 insecure = true
+
+[[registry.mirror]]
+location = "docker.m.daocloud.io"
+insecure = true
 ```
 
 刷新DNS缓存
