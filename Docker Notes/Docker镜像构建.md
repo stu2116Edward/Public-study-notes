@@ -33,6 +33,19 @@ docker buildx version
 github.com/docker/buildx v0.11.2 5fac64c2c49dae1320f2b51f1a899ca451935554
 </pre>
 
+### 卸载 Docker Buildx
+通过 cli-plugins 手动安装（如你的安装方式），直接删除插件文件即可：
+```bash
+rm -f ~/.docker/cli-plugins/docker-buildx
+```
+验证是否移除：
+```bash
+docker buildx version
+```
+<pre>
+docker: 'buildx' is not a docker command.
+</pre>
+
 
 ## 什么是Dockerfile
 Dockerfile 是用于构建 Docker 镜像的文本文件。它包含了一系列的指令，用于描述如何构建镜像的步骤和配置  
