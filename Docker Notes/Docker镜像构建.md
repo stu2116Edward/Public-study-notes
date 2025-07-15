@@ -6,6 +6,34 @@
 - [cpp项目Docker镜像构建流程](#cpp项目Docker镜像构建流程)
 - [Go项目Docker镜像构建流程](#Go项目Docker镜像构建流程)
 
+## Docker Buildx 手动安装
+
+### 下载 Buildx 二进制文件
+首先，从 Docker Buildx 的 GitHub 发布页面下载适合你操作系统的最新版本：
+```bash
+wget https://github.com/docker/buildx/releases/download/v0.11.2/buildx-v0.11.2.linux-amd64
+```
+
+### 安装 Buildx 插件
+将下载的二进制文件移动到 Docker 的插件目录并重命名：
+```bash
+mkdir -p ~/.docker/cli-plugins
+mv buildx-v0.11.2.linux-amd64 ~/.docker/cli-plugins/docker-buildx
+chmod +x ~/.docker/cli-plugins/docker-buildx
+```
+
+### 验证安装
+检查 Buildx 是否安装成功：
+```
+docker buildx version
+```
+
+如果安装成功，你应该能看到类似这样的输出：
+<pre>
+github.com/docker/buildx v0.11.2 5fac64c2c49dae1320f2b51f1a899ca451935554
+</pre>
+
+
 ## 什么是Dockerfile
 Dockerfile 是用于构建 Docker 镜像的文本文件。它包含了一系列的指令，用于描述如何构建镜像的步骤和配置  
 通过编写 Dockerfile，您可以定义镜像的基础环境、安装软件包、复制文件、设置环境变量等操作。Dockerfile 提供了一种可重复、可自动化的方式来构建镜像，使得您可以轻松地创建和部署应用程序的容器化版本  
