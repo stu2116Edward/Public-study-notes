@@ -12,7 +12,7 @@ mkdir -p /data/samwaf/{conf,data,logs,ssl}
 docker run -d --name=samwaf-instance \
   --restart=always \
   -p 26666:26666 \
-  -p 80:80 \
+  -p 8080:80 \
   -p 443:443 \
   -v /data/samwaf/conf:/app/conf \
   -v /data/samwaf/data:/app/data \
