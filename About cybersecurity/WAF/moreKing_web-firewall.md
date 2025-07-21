@@ -128,6 +128,7 @@ database:
 生产环境下运行容器
 ```bash
 docker run -itd --network host --privileged \
+--restart=always \
 -v /etc/sysctl.conf:/etc/sysctl.conf \
 -v /proc:/host_proc \
 -v /data/web-firewall/config:/web-firewall/manifest/config \
