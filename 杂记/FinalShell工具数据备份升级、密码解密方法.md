@@ -13,6 +13,10 @@ tcconfig.json     # 一些缓存
 
 ## 密码解密
 可以在`\backup\connect_config_XXXX`文件中，找到加密后的服务器密钥，然后将下面代码中的  `PgpoZmsfN3j3rMA10bxQU4ehh9/EqGJB`替换为自己的密钥，然后运行代码解密就出来了  
+
+<img width="1078" height="887" alt="finalshell_backup_01" src="https://github.com/user-attachments/assets/8b2d8ba0-313e-4cd2-96e4-b827bcc5a931" />  
+<img width="1286" height="842" alt="finalshell_backup_02" src="https://github.com/user-attachments/assets/6c8f8c33-b809-4e2b-99ee-fd8e2b492a36" />  
+
 ```java
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
