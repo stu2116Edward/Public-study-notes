@@ -26,7 +26,7 @@ docker run --rm \
 -v "$PWD/ddos.lua":/scripts/ddos.lua \
 haydenjeune/wrk2 \
 -H "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" \
--t1 -c100 -R100 -d10m -s /scripts/ddos.lua https://example.com
+-t1 -c100 -R10000 -d10m -s /scripts/ddos.lua https://example.com
 ```
 
 参数说明：  
@@ -34,7 +34,7 @@ haydenjeune/wrk2 \
 - `-c100`：维持 100 个并发 TCP 连接。
 - `-R10000`：目标吞吐量为 10000 RPS（Requests Per Second）,wrk2 会尝试把请求速率稳定在这一水平。
 - `-d10m`：压测持续 10 分钟（10 minutes）。
-- `-s /scripts/ddos.lua`：加载 Lua 脚本 /scripts/ddos.lua
+- `-s /scripts/ddos.lua`：加载映射在容器内部的 Lua 脚本 /scripts/ddos.lua
 - `https://example.com`：压测目标站点  
 
 
