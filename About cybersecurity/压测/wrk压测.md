@@ -5,8 +5,12 @@
 
 ## 一键部署
 ### http压测:
+获取压测脚本
 ```bash
 curl -L -o ddos.lua https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/About%20cybersecurity/%E5%8E%8B%E6%B5%8B/ddos.lua
+```
+执行压测
+```bash
 docker run --rm \
 --name wrk \
 --user root \
@@ -19,8 +23,12 @@ haydenjeune/wrk2 \
 ```
 
 ### https压测:
+获取压测脚本
 ```bash
 curl -L -o ddos.lua https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/About%20cybersecurity/%E5%8E%8B%E6%B5%8B/ddos.lua
+```
+执行压测
+```bash
 docker run --rm \
 --name wrk \
 --user root \
