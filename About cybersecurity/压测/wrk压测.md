@@ -1,8 +1,5 @@
 # wrk压测
 
-**免责声明**  
-本脚本及示例命令仅供学习、教育或合法授权测试之用。使用者须确保对目标系统拥有完整所有权或已事先取得书面测试授权。任何未经授权的公网压测均可能触犯《刑法》第 285、286 条及/或其他地区法律，由此产生的一切法律责任由使用者自行承担。长压或大流量测试请提前告知相关运维团队，因未提前沟通而导致的云厂商 DDoS 防护、告警或其他后果，概与作者无关。  
-
 ## 一键部署
 ### http压测:
 获取压测脚本
@@ -80,3 +77,4 @@ curl -L -o wrk.lua https://raw.githubusercontent.com/stu2116Edward/Public-study-
 ```bash
 docker run --rm --name wrk --user root --network host -v "$PWD/wrk.lua":/scripts/wrk.lua williamyeh/wrk -H "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" -t2 -c100 -d120s -s /scripts/wrk.lua https://example.com
 ```
+
