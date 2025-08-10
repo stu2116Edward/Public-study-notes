@@ -107,45 +107,59 @@ local function generate_table_rows(client_ip)
     return rows
 end
 
+-- 以下为流量统计清空逻辑
 
--- 每日零点清空流量统计
+-- 每日跨天清空流量统计
 local function clear_traffic_stats_daily()
     local dict = ngx.shared.traffic_stats
-    local now = os.date("*t")
-    -- 每天零点触发
-    if now.hour == 0 and now.min == 0 then
+    local now = os.time()
+    local last_clear = dict:get("last_clear_daily") or 0
+    -- 获取今天零点时间戳
+    local today = os.date("*t", now)
+    today.hour, today.min, today.sec = 0, 0, 0
+    local today_zero = os.time(today)
+    -- 如果上次清空早于今天零点，则清空
+    if last_clear < today_zero then
         dict:flush_all()
         dict:flush_expired()
+        dict:set("last_clear_daily", now)
     end
 end
 
--- 每周一零点清空流量统计（默认关闭）
+-- 每周一清空（默认关闭）
 local function clear_traffic_stats_weekly()
     local dict = ngx.shared.traffic_stats
-    local now = os.date("*t")
-    -- 每周一零点触发（wday==2为周一）
-    if now.wday == 2 and now.hour == 0 and now.min == 0 then
+    local now = os.time()
+    local last_clear = dict:get("last_clear_weekly") or 0
+    local t = os.date("*t", now)
+    -- 计算本周一零点
+    local days_since_monday = (t.wday + 5) % 7
+    local monday = os.time{year=t.year, month=t.month, day=t.day - days_since_monday, hour=0, min=0, sec=0}
+    if last_clear < monday then
         dict:flush_all()
         dict:flush_expired()
+        dict:set("last_clear_weekly", now)
     end
 end
 
--- 每月一号零点清空流量统计（默认关闭）
+-- 每月一号清空（默认关闭）
 local function clear_traffic_stats_monthly()
     local dict = ngx.shared.traffic_stats
-    local now = os.date("*t")
-    -- 每月1号零点触发
-    if now.day == 1 and now.hour == 0 and now.min == 0 then
+    local now = os.time()
+    local last_clear = dict:get("last_clear_monthly") or 0
+    local t = os.date("*t", now)
+    local first_day = os.time{year=t.year, month=t.month, day=1, hour=0, min=0, sec=0}
+    if last_clear < first_day then
         dict:flush_all()
         dict:flush_expired()
+        dict:set("last_clear_monthly", now)
     end
 end
 
--- ====== 调用清空函数 ======
-clear_traffic_stats_daily()      -- 每日清空，默认启用
+-- 调用清空函数
+clear_traffic_stats_daily()      -- 每日清空
 -- clear_traffic_stats_weekly()  -- 每周清空
 -- clear_traffic_stats_monthly() -- 每月清空
-
 
 local request_type = ngx.var.arg_type or "page"
 local client_ip = get_client_ip()
@@ -153,87 +167,95 @@ local client_ip = get_client_ip()
 if request_type == "data" then
     ngx.say(generate_table_rows(client_ip))
 else
-	ngx.say([[
-		<html>
-		<head>
-		<title>IP 限制与使用统计（统一显示微秒）</title>
-		<style>
-			table { 
-				border-collapse: collapse; 
-				font-family: monospace;
-				font-size: 14px;
-				margin: 20px auto;
-				width: 90%;
-				max-width: 1500px;
-			}
-			th, td { 
-				border: 1px solid #ccc; 
-				padding: 8px 12px; 
-				text-align: center;
-			}
-			th { 
-				background: #f5f5f5; 
-				font-weight: bold;
-			}
-			.update-time {
-				text-align: center;
-				margin-top: 10px;
-				color: #666;
-				font-size: 12px;
-			}
-			.current-ip {
-				text-align: center;
-				margin: 20px auto 10px auto;
-				font-size: 16px;
-				color: #333;
-				font-weight: bold;
-			}
-			.current-ip span {
-				color: blue;
-			}
-			.highlight {
-				background: #e6ffe6 !important;
-			}
-			.ip-cell {
-				user-select: all;
-				-webkit-user-select: all;
-				cursor: pointer;
-			}
-		</style>
-		<script>
-			setInterval(() => {
-				fetch('/dk8s.stats?type=data&t=' + Date.now())
-					.then(r => r.text())
-					.then(data => {
-						document.getElementById('stats-body').innerHTML = data;
-						document.getElementById('last-update').textContent = new Date().toLocaleString();
-					});
-			}, 500);
-		</script>
-		</head>
-		<body>
-			<div class="current-ip">Your Current IP: <span>]] .. client_ip .. [[</span></div>
-			<table>
-				<thead>
-					<tr>
-						<th>IP</th>
-						<th>周期</th>
-						<th>活跃时间(秒)</th>
-						<th>入站时间（秒级）</th>
-						<th>请求数(当前/限制)</th>
-						<th>流量(当前/限制)</th>
-						<th>耗时(当前/限制)</th>
-						<th>是否封禁</th>
-					</tr>
-				</thead>
-				<tbody id="stats-body">
-					]] .. generate_table_rows(client_ip) .. [[
-				</tbody>
-			</table>
-			<div class="update-time">
-				最后更新: <span id="last-update">]] .. os.date("%Y-%m-%d %H:%M:%S") .. [[</span>
-			</div>
-		</body>
-		</html>
-	]])
+    ngx.say([[
+        <html>
+        <head>
+        <title>IP 限制与使用统计（统一显示微秒）</title>
+        <style>
+            table { 
+                border-collapse: collapse; 
+                font-family: monospace;
+                font-size: 14px;
+                margin: 20px auto;
+                width: 90%;
+                max-width: 1500px;
+            }
+            th, td { 
+                border: 1px solid #ccc; 
+                padding: 8px 12px; 
+                text-align: center;
+                user-select: text; /* 允许所有单元格选中复制 */
+            }
+            th { 
+                background: #f5f5f5; 
+                font-weight: bold;
+            }
+            .update-time {
+                text-align: center;
+                margin-top: 10px;
+                color: #666;
+                font-size: 12px;
+            }
+            .current-ip {
+                text-align: center;
+                margin: 20px auto 10px auto;
+                font-size: 16px;
+                color: #333;
+                font-weight: bold;
+            }
+            .current-ip span {
+                color: blue;
+            }
+            .highlight {
+                background: #e6ffe6 !important;
+            }
+            .ip-cell {
+                user-select: text;
+                -webkit-user-select: text;
+                cursor: pointer;
+            }
+        </style>
+        <script>
+            // 判断页面是否有选中内容
+            function hasSelection() {
+                var sel = window.getSelection();
+                return sel && sel.toString().length > 0;
+            }
+            setInterval(() => {
+                if (!hasSelection()) {
+                    fetch('/dk8s.stats?type=data&t=' + Date.now())
+                        .then(r => r.text())
+                        .then(data => {
+                            document.getElementById('stats-body').innerHTML = data;
+                            document.getElementById('last-update').textContent = new Date().toLocaleString();
+                        });
+                }
+            }, 500);
+        </script>
+        </head>
+        <body>
+            <div class="current-ip">Your Current IP: <span>]] .. client_ip .. [[</span></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>周期</th>
+                        <th>活跃时间(秒)</th>
+                        <th>入站时间（秒级）</th>
+                        <th>请求数(当前/限制)</th>
+                        <th>流量(当前/限制)</th>
+                        <th>耗时(当前/限制)</th>
+                        <th>是否封禁</th>
+                    </tr>
+                </thead>
+                <tbody id="stats-body">
+                    ]] .. generate_table_rows(client_ip) .. [[
+                </tbody>
+            </table>
+            <div class="update-time">
+                最后更新: <span id="last-update">]] .. os.date("%Y-%m-%d %H:%M:%S") .. [[</span>
+            </div>
+        </body>
+        </html>
+    ]])
 end
