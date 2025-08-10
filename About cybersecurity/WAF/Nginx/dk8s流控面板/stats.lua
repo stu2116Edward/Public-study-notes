@@ -108,16 +108,43 @@ local function generate_table_rows(client_ip)
 end
 
 
--- 每天零点清空IP访问列表（取消注释即可启用）
-local function clear_traffic_stats_at_midnight()
+-- 每日零点清空流量统计
+local function clear_traffic_stats_daily()
     local dict = ngx.shared.traffic_stats
     local now = os.date("*t")
+    -- 每天零点触发
     if now.hour == 0 and now.min == 0 then
         dict:flush_all()
         dict:flush_expired()
     end
 end
-clear_traffic_stats_at_midnight()
+
+-- 每周一零点清空流量统计（默认关闭）
+local function clear_traffic_stats_weekly()
+    local dict = ngx.shared.traffic_stats
+    local now = os.date("*t")
+    -- 每周一零点触发（wday==2为周一）
+    if now.wday == 2 and now.hour == 0 and now.min == 0 then
+        dict:flush_all()
+        dict:flush_expired()
+    end
+end
+
+-- 每月一号零点清空流量统计（默认关闭）
+local function clear_traffic_stats_monthly()
+    local dict = ngx.shared.traffic_stats
+    local now = os.date("*t")
+    -- 每月1号零点触发
+    if now.day == 1 and now.hour == 0 and now.min == 0 then
+        dict:flush_all()
+        dict:flush_expired()
+    end
+end
+
+-- ====== 调用清空函数 ======
+clear_traffic_stats_daily()      -- 每日清空，默认启用
+-- clear_traffic_stats_weekly()  -- 每周清空
+-- clear_traffic_stats_monthly() -- 每月清空
 
 
 local request_type = ngx.var.arg_type or "page"
