@@ -78,7 +78,16 @@ local function generate_table_rows(client_ip)
                 local first_time = dict:get("first:"..during..":"..ip)
                 local first_time_str = first_time and os.date("%Y-%m-%d %H:%M:%S", first_time) or "-"
 
-                local highlight = (ip == client_ip) and ' class="highlight"' or ""
+                -- 高亮行
+                local highlight = ""
+                if forbidden == "true" and ip == client_ip then
+                    highlight = ' class="highlight-red"'
+                elseif forbidden == "true" then
+                    highlight = ' class="highlight-red"'
+                elseif ip == client_ip then
+                    highlight = ' class="highlight"'
+                end
+
                 rows = rows .. string.format([[
                     <tr%s>
                         <td class="ip-cell">%s</td>
@@ -208,6 +217,9 @@ else
             }
             .highlight {
                 background: #e6ffe6 !important;
+            }
+            .highlight-red {
+                background: #ffe6e6 !important;
             }
             .ip-cell {
                 user-select: text;
