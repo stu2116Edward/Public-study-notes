@@ -117,6 +117,8 @@ local function generate_table_rows(client_ip)
     return rows
 end
 
+-- 以下为流量统计清空逻辑
+
 -- 每日跨天清空流量统计
 local function clear_traffic_stats_daily()
     local dict = ngx.shared.traffic_stats
@@ -134,17 +136,46 @@ local function clear_traffic_stats_daily()
     end
 end
 
+-- 每周一清空（默认关闭）
+local function clear_traffic_stats_weekly()
+    local dict = ngx.shared.traffic_stats
+    local now = os.time()
+    local last_clear = dict:get("last_clear_weekly") or 0
+    local t = os.date("*t", now)
+    -- 计算本周一零点
+    local days_since_monday = (t.wday + 5) % 7
+    local monday = os.time{year=t.year, month=t.month, day=t.day - days_since_monday, hour=0, min=0, sec=0}
+    if last_clear < monday then
+        dict:flush_all()
+        dict:flush_expired()
+        dict:set("last_clear_weekly", now)
+    end
+end
+
+-- 每月一号清空（默认关闭）
+local function clear_traffic_stats_monthly()
+    local dict = ngx.shared.traffic_stats
+    local now = os.time()
+    local last_clear = dict:get("last_clear_monthly") or 0
+    local t = os.date("*t", now)
+    local first_day = os.time{year=t.year, month=t.month, day=1, hour=0, min=0, sec=0}
+    if last_clear < first_day then
+        dict:flush_all()
+        dict:flush_expired()
+        dict:set("last_clear_monthly", now)
+    end
+end
+
 -- 调用清空函数
-clear_traffic_stats_daily()
+clear_traffic_stats_daily()      -- 每日清空
+-- clear_traffic_stats_weekly()  -- 每周清空
+-- clear_traffic_stats_monthly() -- 每月清空
 
 local request_type = ngx.var.arg_type or "page"
 local client_ip = get_client_ip()
 
 if request_type == "data" then
     ngx.say(generate_table_rows(client_ip))
-elseif request_type == "ip" then
-    ngx.say(client_ip)
-    return
 else
     ngx.say([[
         <html>
@@ -163,7 +194,7 @@ else
                 border: 1px solid #ccc; 
                 padding: 8px 12px; 
                 text-align: center;
-                user-select: text;
+                user-select: text; /* 允许所有单元格选中复制 */
             }
             th { 
                 background: #f5f5f5; 
@@ -202,13 +233,15 @@ else
             }
         </style>
         <script>
-            // IP归属地缓存
+            // 在脚本顶部创建一个全局缓存对象
             const ipLocationCache = {};
 
-            // 更新IP归属地
+            // 更新IP归属地的函数，增加缓存逻辑
             function updateIPLocations() {
+                // 使用 Set 来自动处理重复的IP地址
                 const ipsToFetch = new Set(); 
 
+                // 第一次遍历：用缓存填充，并收集所有需要新查询的IP
                 document.querySelectorAll('.location-cell').forEach(cell => {
                     const ip = cell.dataset.ip;
                     if (!ip) return;
@@ -217,10 +250,12 @@ else
                         cell.textContent = ipLocationCache[ip];
                     } else {
                         cell.textContent = '查询中...';
+                        // 无论IP出现多少次，Set只会保留一个
                         ipsToFetch.add(ip);
                     }
                 });
 
+                // 第二次遍历：仅为需要新查询的IP发起API请求
                 ipsToFetch.forEach(ip => {
                     fetch(`https://api.vore.top/api/IPdata?ip=${ip}`)
                         .then(response => response.json())
@@ -247,48 +282,35 @@ else
                 });
             }
 
-            // 检查是否有选中文本
+            // 判断页面是否有选中内容
             function hasSelection() {
-                const sel = window.getSelection();
+                var sel = window.getSelection();
                 return sel && sel.toString().length > 0;
             }
             
-            // 获取当前IP
-            function getCurrentIP() {
-                return fetch('/dk8s.stats?type=ip&t=' + Date.now())
-                    .then(r => r.text())
-                    .then(ip => {
-                        document.getElementById('current-ip').textContent = ip;
-                        return ip;
-                    });
-            }
-            
-            // 获取统计数据
             function fetchData() {
                 if (!hasSelection()) {
-                    getCurrentIP().then(currentIP => {
-                        fetch('/dk8s.stats?type=data&t=' + Date.now())
-                            .then(r => r.text())
-                            .then(data => {
-                                document.getElementById('stats-body').innerHTML = data;
-                                document.getElementById('last-update').textContent = new Date().toLocaleString();
-                                updateIPLocations();
-                            });
-                    });
+                    fetch('/dk8s.stats?type=data&t=' + Date.now())
+                        .then(r => r.text())
+                        .then(data => {
+                            document.getElementById('stats-body').innerHTML = data;
+                            document.getElementById('last-update').textContent = new Date().toLocaleString();
+                            updateIPLocations();
+                        });
                 }
             }
             
-            // 页面加载完成后初始化
+            // 页面加载完成后立即执行一次
             document.addEventListener('DOMContentLoaded', function() {
                 fetchData();
                 updateIPLocations();
-                // 每500毫秒刷新一次
-                setInterval(fetchData, 500);
             });
+            
+            setInterval(fetchData, 500);
         </script>
         </head>
         <body>
-            <div class="current-ip">Your Current IP: <span id="current-ip">]] .. client_ip .. [[</span></div>
+            <div class="current-ip">Your Current IP: <span>]] .. client_ip .. [[</span></div>
             <table>
                 <thead>
                     <tr>
