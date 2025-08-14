@@ -72,6 +72,100 @@ local function ensure_log_directory()
     end
 end
 
+-- 后台获取IP归属地的函数 (定时器)
+local function fetch_ip_location_background()
+    local dict = ngx.shared.traffic_stats
+    local location_dict = ngx.shared.ip_location_stats
+    
+    if not dict or not location_dict then
+        return
+    end
+    
+    local keys = dict:get_keys(0)
+    local ips_to_fetch = {}
+    
+    -- 收集需要查询归属地的IP
+    for _, val in pairs(keys) do
+        if val:match("^last:hour:") then
+            local ip = val:sub(11) -- 去掉 "last:hour:" 前缀
+            local location = location_dict:get(ip)
+            if not location and ip and ip ~= "" then
+                table.insert(ips_to_fetch, ip)
+                -- 限制每次查询的IP数量，避免过载
+                if #ips_to_fetch >= 5 then
+                    break
+                end
+            end
+        end
+    end
+    
+    -- 为每个IP发起查询
+    for _, ip in ipairs(ips_to_fetch) do
+        local httpc = require("resty.http"):new()
+        if httpc then
+            httpc:set_timeout(5000) -- 5秒超时
+            local res, err = httpc:request_uri("https://api.vore.top/api/IPdata?ip=" .. ip)
+            if res and res.status == 200 and res.body then
+                local json = require("cjson")
+                local ok, data = pcall(json.decode, res.body)
+                if ok and data and data.ipdata and data.ipdata.info1 then
+                    local location = string.format("%s %s %s", 
+                        data.ipdata.info1 or "",
+                        data.ipdata.info2 or "",
+                        data.ipdata.info3 or ""):gsub("%s+", " "):match("^%s*(.-)%s*$")
+                    if location and location ~= "" then
+                        location_dict:set(ip, location)
+                    end
+                end
+            end
+            httpc:close()
+        end
+        -- 避免并发过多，每个IP查询间隔0.5秒
+        ngx.sleep(0.5)
+    end
+end
+
+-- 启动定时器进行后台IP归属地查询
+local function start_background_location_timer()
+    -- 检查是否已经启动过定时器
+    local dict = ngx.shared.traffic_stats
+    if dict and dict:get("background_timer_started") then
+        return -- 定时器已启动，不重复启动
+    end
+    
+    -- 检查是否有 lua-resty-http 模块
+    local has_http, _ = pcall(require, "resty.http")
+    if not has_http then
+        ngx.log(ngx.WARN, "lua-resty-http module not available, background IP location fetch disabled")
+        return
+    end
+    
+    local delay = 30 -- 30秒间隔
+    local handler
+    handler = function(premature)
+        if not premature then
+            local ok, err = pcall(fetch_ip_location_background)
+            if not ok then
+                ngx.log(ngx.ERR, "Background IP location fetch error: ", err)
+            end
+            -- 重新设置定时器
+            local timer_ok, timer_err = ngx.timer.at(delay, handler)
+            if not timer_ok then
+                ngx.log(ngx.ERR, "Failed to create timer: ", timer_err)
+            end
+        end
+    end
+    
+    -- 启动定时器
+    local timer_ok, timer_err = ngx.timer.at(delay, handler)
+    if timer_ok then
+        dict:set("background_timer_started", true, 0) -- 永久标记
+        ngx.log(ngx.INFO, "Background IP location timer started")
+    else
+        ngx.log(ngx.ERR, "Failed to start location timer: ", timer_err)
+    end
+end
+
 -- 生成日志数据（使用 hour 周期的数据）
 local function generate_log_data()
     local dict = ngx.shared.traffic_stats
@@ -295,6 +389,9 @@ end
 clear_traffic_stats_daily()      -- 每日清空
 -- clear_traffic_stats_weekly()  -- 每周清空
 -- clear_traffic_stats_monthly() -- 每月清空
+
+-- 启动后台IP归属地查询定时器
+start_background_location_timer()
 
 
 
