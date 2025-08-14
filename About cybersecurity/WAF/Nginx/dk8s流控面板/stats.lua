@@ -368,6 +368,7 @@ else
         .location-cell { min-width: 180px; color: #337ab7; }
         .export-btn { display:inline-block; margin-top:8px; padding:6px 12px; background:#007bff; color:#fff; border-radius:4px; cursor:pointer; font-size:13px; }
         .export-btn:disabled { background:#999; cursor:not-allowed; }
+        .view-mode-select { display:inline-block; margin-left:15px; padding:6px 10px; font-size:13px; border:1px solid #ccc; border-radius:4px; background:#fff; }
     </style>
     <script>
         // 在脚本顶部创建一个全局缓存对象
@@ -456,6 +457,7 @@ else
                     document.getElementById('stats-body').innerHTML = decodeURIComponent(data.table_html);
                     document.getElementById('last-update').textContent = new Date().toLocaleString();
                     updateIPLocations();
+                    updateViewMode();
                 });
         }
 
@@ -480,8 +482,25 @@ else
             setTimeout(() => document.body.removeChild(a), 2000);
         }
 
+        function updateViewMode() {
+            const sel = document.getElementById('view-mode');
+            const mode = sel ? sel.value : 'hour';
+            const rows = document.querySelectorAll('#stats-body tr');
+            rows.forEach(row => {
+                const periodCell = row.querySelector('td:nth-child(3)');
+                const period = periodCell ? periodCell.textContent.trim() : '';
+                if (mode === 'hour') {
+                    row.style.display = (period === 'hour') ? '' : 'none';
+                } else if (mode === 'day') {
+                    row.style.display = (period === 'day') ? '' : 'none';
+                } else {
+                    row.style.display = '';
+                }
+            });
+        }
+
         // 页面加载完成后，立即执行一次
-        document.addEventListener('DOMContentLoaded', fetchAndUpdate);
+        document.addEventListener('DOMContentLoaded', () => { fetchAndUpdate(); updateViewMode(); });
 
         // 每隔 5 秒刷新一次数据
         setInterval(fetchAndUpdate, 500);
@@ -492,6 +511,11 @@ else
         <div class="header-info">
             <h3>Your Current IP: <span id="current-ip" style="color: #007bff;">]] .. current_visitor_ip .. [[</span></h3>
             <button id="export-btn" class="export-btn" onclick="manualExport()">手动导出当前面板信息</button>
+            <select id="view-mode" class="view-mode-select" onchange="updateViewMode()">
+                <option value="hour" selected>仅显示 hour</option>
+                <option value="day">仅显示 day</option>
+                <option value="all">显示所有</option>
+            </select>
         </div>
         <table>
             <thead>
