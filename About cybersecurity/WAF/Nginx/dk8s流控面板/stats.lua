@@ -162,12 +162,10 @@ local function generate_table_rows(visitor_ip)
             if val:sub(1, #match) == match then
                 local ip = val:sub(#match + 2)
                 
-                -- 首次访问时写入入站时间
-                if during == "hour" and not dict:get("first:hour:"..ip) then
-                    dict:add("first:hour:"..ip, os.time())
-                end
-                if during == "day" and not dict:get("first:day:"..ip) then
-                    dict:add("first:day:"..ip, os.time())
+                -- 首次访问时写入入站时间（只记录一次，不覆盖）
+                local first_key = "first:"..during..":"..ip
+                if not dict:get(first_key) then
+                    dict:add(first_key, os.time())
                 end
 
                 -- 批量获取数据，减少竞态条件窗口
@@ -177,12 +175,13 @@ local function generate_table_rows(visitor_ip)
                 local costs_us = dict:get("costs:"..during..":"..ip)
                 local forbidden = dict:get("forbidden:"..during..":"..ip)
                 -- 入站时间
-                local first_time = dict:get("first:"..during..":"..ip)
+                local first_time = dict:get(first_key)
                 local first_time_str = first_time and os.date("%Y-%m-%d %H:%M:%S", first_time) or "-"
 
                 -- 增加nil检查，如果数据在中途被删除，则跳过此条记录
                 if last_time and count and bytes and costs_us then
-                    local age = math.floor(timestamp - (tonumber(last_time) or timestamp))
+                    -- 活跃时间 = 当前时间 - 首次入站时间（单位秒）
+                    local age = first_time and math.floor(timestamp - tonumber(first_time)) or 0
                     local bytes_human = human_bytes(tonumber(bytes))
                     local costs_human = human_duration(tonumber(costs_us))
                     local forbidden_str = tostring(forbidden or false)
@@ -230,7 +229,6 @@ local function generate_table_rows(visitor_ip)
     stats("day")
     return rows
 end
-
 
 -- 以下为流量统计清空逻辑
 
