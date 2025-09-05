@@ -164,10 +164,10 @@ local function generate_table_rows(visitor_ip)
                 
                 -- 首次访问时写入入站时间
                 if during == "hour" and not dict:get("first:hour:"..ip) then
-                    dict:set("first:hour:"..ip, os.time())
+                    dict:add("first:hour:"..ip, os.time())
                 end
                 if during == "day" and not dict:get("first:day:"..ip) then
-                    dict:set("first:day:"..ip, os.time())
+                    dict:add("first:day:"..ip, os.time())
                 end
 
                 -- 批量获取数据，减少竞态条件窗口
@@ -234,6 +234,14 @@ end
 
 -- 以下为流量统计清空逻辑
 
+-- 启动时立即生成当天日志文件并记录数据
+local function init_daily_log()
+    local now = os.time()
+    local today = os.date("*t", now)
+    local log_filename = string.format("%04d%02d%02d.csv", today.year, today.month, today.day)
+    export_log_to_file(log_filename)
+end
+init_daily_log()
 -- 每日跨天清空流量统计
 local function clear_traffic_stats_daily()
     local dict = ngx.shared.traffic_stats
@@ -243,10 +251,13 @@ local function clear_traffic_stats_daily()
     local today = os.date("*t", now)
     today.hour, today.min, today.sec = 0, 0, 0
     local today_zero = os.time(today)
-    
     -- 首次启动时不导出日志文件，只初始化标记，避免一开始就创建当日日志文件
     if last_clear == 0 then
         dict:set("last_clear_daily", now)
+        -- 归档后立即重新统计新的24小时入站IP（清空后自动统计）
+        local today = os.date("*t", now)
+        local log_filename = string.format("%04d%02d%02d.csv", today.year, today.month, today.day)
+        export_log_to_file(log_filename)
         return
     end
     -- 如果上次清空早于今天零点，则清空
@@ -256,7 +267,6 @@ local function clear_traffic_stats_daily()
         local y = os.date("*t", yesterday_ts)
         local log_filename = string.format("%04d%02d%02d.csv", y.year, y.month, y.day)
         export_log_to_file(log_filename)
-        
         dict:flush_all()
         dict:flush_expired()
         dict:set("last_clear_daily", now)
@@ -266,6 +276,10 @@ local function clear_traffic_stats_daily()
             location_dict:flush_all()
             location_dict:flush_expired()
         end
+        -- 归档后立即重新统计新的24小时入站IP（清空后自动统计）
+        local today = os.date("*t", now)
+        local log_filename = string.format("%04d%02d%02d.csv", today.year, today.month, today.day)
+        export_log_to_file(log_filename)
     end
 end
 
@@ -438,18 +452,21 @@ else
             document.querySelectorAll('.location-cell').forEach(cell => {
                 const ip = cell.dataset.ip;
                 if (!ip) return;
-                
+                // 优先显示已查询到的归属地结果
+                if (cell.textContent && cell.textContent !== '排队中...' && cell.textContent !== '查询中...') {
+                    return;
+                }
+                // 如果后端已返回归属地（即 cell.textContent 已经是具体归属地），则直接显示，无需排队和查询
                 if (ipLocationCache[ip]) {
                     cell.textContent = ipLocationCache[ip];
-                } else {
-                    cell.textContent = '排队中...';
+                } else if (cell.textContent === '' || cell.textContent === '排队中...' || cell.textContent === '查询中...') {
+                    cell.textContent = '查询中...';
                     // 如果IP不在队列中，则加入
                     if (!ipRequestQueue.includes(ip)) {
                         ipRequestQueue.push(ip);
                     }
                 }
             });
-
             // 如果队列当前没有在处理，则开始处理
             if (!isProcessingQueue && ipRequestQueue.length > 0) {
                 processIpQueue();
