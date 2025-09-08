@@ -75,32 +75,38 @@ end
 -- 生成日志数据（使用 hour 周期的数据）
 local function generate_log_data()
     local dict = ngx.shared.traffic_stats
-    local location_dict = ngx.shared.ip_location_stats
     local log_entries = {}
+    local processed_ips = {} -- 用于跟踪已经处理过的IP
 
     local keys = dict:get_keys(0)
-    for _, val in pairs(keys) do
-        local match = "last:".."hour"
-        if val:sub(1, #match) == match then
-            local ip = val:sub(#match + 2)
+    for _, key in pairs(keys) do
+        -- 检查是否是 last:hour 键
+        if key:sub(1, 9) == "last:hour" then
+            local ip = key:sub(11) -- 提取IP地址
+            
+            -- 跳过已经处理过的IP
+            if processed_ips[ip] then
+                goto continue
+            end
+            processed_ips[ip] = true
+            
             -- 获取必要数据
-            local last_time = dict:get(val)
+            local last_time = dict:get(key)
             local count = dict:get("count:hour:"..ip)
             local bytes = dict:get("bytes:hour:"..ip)
             local costs_us = dict:get("costs:hour:"..ip)
             local forbidden = dict:get("forbidden:hour:"..ip)
             local first_time = dict:get("first:hour:"..ip)
-            -- 获取IP归属地信息
-            local location = location_dict and location_dict:get(ip) or "未知"
+            
             if last_time and count and bytes and costs_us then
                 table.insert(log_entries, {
                     ip = ip,
-                    location = location,
                     first_time = first_time or 0,
                     forbidden = forbidden or false
                 })
             end
         end
+        ::continue::
     end
     return log_entries
 end
@@ -126,12 +132,11 @@ local function export_log_to_file(filename)
     if file then
         -- 写入UTF-8 BOM确保编码
         file:write("\239\187\191")
-        -- 写入表头（四列）
-        file:write("IP,归属地,入站时间戳,是否被封禁\n")
+        -- 写入表头（三列）
+        file:write("IP,入站时间戳,是否被封禁\n")
         for _, entry in ipairs(log_entries) do
             local line = table.concat({
                 csv_escape(entry.ip),
-                csv_escape(entry.location),
                 csv_escape(format_ts(entry.first_time)),
                 csv_escape(tostring(entry.forbidden))
             }, ",") .. "\n"
@@ -149,7 +154,6 @@ local function generate_table_rows(visitor_ip)
     local rows = ""
     local timestamp = ngx.now()
     local dict = ngx.shared.traffic_stats
-    local location_dict = ngx.shared.ip_location_stats -- 用于存储IP归属地信息
     
     local function stats(during)
         local limits = get_limits(during)
@@ -196,14 +200,9 @@ local function generate_table_rows(visitor_ip)
                         row_style = "style='background-color: #d4edda; font-weight: bold;'"
                     end
                     
-                    -- 获取IP归属地信息
-                    local location = location_dict and location_dict:get(ip) or nil
-                    local location_display = location or string.format('<span class="location-cell" data-ip="%s"></span>', ip)
-                    
                     rows = rows .. string.format([[
                         <tr %s>
                             <td class="ip-cell">%s</td>
-                            <td>%s</td>
                             <td>%s</td>
                             <td>%d</td>
                             <td>%s</td>
@@ -215,7 +214,7 @@ local function generate_table_rows(visitor_ip)
                     ]], 
                     row_style,
                     ip,
-                    location_display, during, age, first_time_str,
+                    during, age, first_time_str,
                     tonumber(count), limits.count, 
                     bytes_human, bytes_limit_human, 
                     costs_human, costs_limit_human, 
@@ -231,112 +230,64 @@ local function generate_table_rows(visitor_ip)
     return rows
 end
 
-
--- 以下为流量统计清空逻辑
+-- 获取当前日期的日志文件名
+local function get_current_log_filename()
+    local now = os.time()
+    local today = os.date("*t", now)
+    return string.format("%04d%02d%02d.csv", today.year, today.month, today.day)
+end
 
 -- 启动时立即生成当天日志文件并记录数据
 local function init_daily_log()
-    local now = os.time()
-    local today = os.date("*t", now)
-    local log_filename = string.format("%04d%02d%02d.csv", today.year, today.month, today.day)
+    local log_filename = get_current_log_filename()
     export_log_to_file(log_filename)
 end
-init_daily_log()
+
 -- 每日跨天清空流量统计
 local function clear_traffic_stats_daily()
     local dict = ngx.shared.traffic_stats
     local now = os.time()
     local last_clear = dict:get("last_clear_daily") or 0
+    
     -- 获取今天零点时间戳
     local today = os.date("*t", now)
     today.hour, today.min, today.sec = 0, 0, 0
     local today_zero = os.time(today)
-    -- 首次启动时不导出日志文件，只初始化标记，避免一开始就创建当日日志文件
+    
+    -- 首次启动时，创建当天日志文件并设置标记
     if last_clear == 0 then
         dict:set("last_clear_daily", now)
-        -- 归档后立即重新统计新的24小时入站IP（清空后自动统计）
-        local today = os.date("*t", now)
-        local log_filename = string.format("%04d%02d%02d.csv", today.year, today.month, today.day)
-        export_log_to_file(log_filename)
+        init_daily_log() -- 创建当天日志文件
         return
     end
-    -- 如果上次清空早于今天零点，则清空
+    
+    -- 如果上次清空早于今天零点，则清空并归档
     if last_clear < today_zero then
         -- 在清空之前先导出昨天的日志（文件名为昨天日期）
         local yesterday_ts = today_zero - 86400
         local y = os.date("*t", yesterday_ts)
         local log_filename = string.format("%04d%02d%02d.csv", y.year, y.month, y.day)
         export_log_to_file(log_filename)
+        
+        -- 清空统计数据
         dict:flush_all()
         dict:flush_expired()
         dict:set("last_clear_daily", now)
-        -- 清空IP归属地缓存
-        local location_dict = ngx.shared.ip_location_stats
-        if location_dict then
-            location_dict:flush_all()
-            location_dict:flush_expired()
-        end
-        -- 归档后立即重新统计新的24小时入站IP（清空后自动统计）
-        local today = os.date("*t", now)
-        local log_filename = string.format("%04d%02d%02d.csv", today.year, today.month, today.day)
-        export_log_to_file(log_filename)
+        
+        -- 创建新的当天日志文件
+        init_daily_log()
     end
 end
 
--- 每周一清空（默认关闭）
-local function clear_traffic_stats_weekly()
-    local dict = ngx.shared.traffic_stats
-    local now = os.time()
-    local last_clear = dict:get("last_clear_weekly") or 0
-    local t = os.date("*t", now)
-    -- 计算本周一零点
-    local days_since_monday = (t.wday + 5) % 7
-    local monday = os.time{year=t.year, month=t.month, day=t.day - days_since_monday, hour=0, min=0, sec=0}
-    if last_clear < monday then
-        dict:flush_all()
-        dict:flush_expired()
-        dict:set("last_clear_weekly", now)
-    end
-end
+-- 初始化：创建当天日志文件
+init_daily_log()
 
--- 每月一号清空（默认关闭）
-local function clear_traffic_stats_monthly()
-    local dict = ngx.shared.traffic_stats
-    local now = os.time()
-    local last_clear = dict:get("last_clear_monthly") or 0
-    local t = os.date("*t", now)
-    local first_day = os.time{year=t.year, month=t.month, day=1, hour=0, min=0, sec=0}
-    if last_clear < first_day then
-        dict:flush_all()
-        dict:flush_expired()
-        dict:set("last_clear_monthly", now)
-    end
-end
-
--- 调用清空函数
-clear_traffic_stats_daily()      -- 每日清空
--- clear_traffic_stats_weekly()  -- 每周清空
--- clear_traffic_stats_monthly() -- 每月清空
-
-
+-- 调用清空函数（检查是否需要归档）
+clear_traffic_stats_daily()
 
 local request_type = ngx.var.arg_type or "page"
 
-if request_type == "save_location" then
-    -- 保存IP归属地到共享字典
-    local ip = ngx.var.arg_ip
-    local location = ngx.var.arg_location or ""
-    local location_dict = ngx.shared.ip_location_stats
-    if ip and ip ~= "" and location_dict then
-        location_dict:set(ip, location)
-        ngx.say("ok")
-        return
-    else
-        ngx.status = 400
-        ngx.say("bad request")
-        return
-    end
-elseif request_type == "export" then
+if request_type == "export" then
     -- 手动导出当前面板数据，直接返回CSV供浏览器下载
     local log_entries = generate_log_data()
     local filename = string.format("%04d%02d%02d_%02d%02d%02d.csv", os.date("%Y"), os.date("%m"), os.date("%d"), os.date("%H"), os.date("%M"), os.date("%S"))
@@ -353,11 +304,10 @@ elseif request_type == "export" then
     end
     
     -- 生成CSV内容（添加UTF-8 BOM）
-    local csv_content = "\239\187\191" .. "IP,归属地,入站时间戳,是否被封禁\n"
+    local csv_content = "\239\187\191" .. "IP,入站时间戳,是否被封禁\n"
     for _, entry in ipairs(log_entries) do
         local line = table.concat({
             csv_escape(entry.ip),
-            csv_escape(entry.location),
             csv_escape(format_ts(entry.first_time)),
             csv_escape(tostring(entry.forbidden))
         }, ",") .. "\n"
@@ -387,89 +337,11 @@ else
         th { background: #f5f5f5; font-weight: bold; }
         .header-info { text-align: center; margin: 10px auto; }
         .update-time { text-align: center; margin-top: 10px; color: #666; font-size: 12px; }
-        .location-cell { min-width: 180px; color: #337ab7; }
         .export-btn { display:inline-block; margin-top:8px; padding:6px 12px; background:#007bff; color:#fff; border-radius:4px; cursor:pointer; font-size:13px; }
         .export-btn:disabled { background:#999; cursor:not-allowed; }
         .view-mode-select { display:inline-block; margin-left:15px; padding:6px 10px; font-size:13px; border:1px solid #ccc; border-radius:4px; background:#fff; }
     </style>
     <script>
-        // 在脚本顶部创建一个全局缓存对象
-        const ipLocationCache = {};
-        // 创建一个队列来管理待处理的IP请求
-        let ipRequestQueue = [];
-        let isProcessingQueue = false;
-
-        // 处理IP请求队列的函数
-        function processIpQueue() {
-            if (ipRequestQueue.length === 0) {
-                isProcessingQueue = false;
-                return;
-            }
-            isProcessingQueue = true;
-            
-            const ip = ipRequestQueue.shift(); // 取出队列中的第一个IP
-
-            // 更新UI状态为"查询中..."
-            document.querySelectorAll(`.location-cell[data-ip='${ip}']`).forEach(c => {
-                c.textContent = '查询中...';
-            });
-
-            fetch(`https://api.vore.top/api/IPdata?ip=${ip}`)
-                .then(response => response.json())
-                .then(data => {
-                    let location = '查询失败';
-                    if (data && data.ipdata && data.ipdata.info1) {
-                        location = `${data.ipdata.info1} ${data.ipdata.info2 || ''} ${data.ipdata.info3 || ''}`.trim();
-                    }
-                    ipLocationCache[ip] = location;
-                    // 将归属地信息保存到服务器
-                    fetch('/dk8s.stats?type=save_location&ip=' + ip + '&location=' + encodeURIComponent(location))
-                        .then(response => {
-                            if (!response.ok) {
-                                console.error('Failed to save location for IP:', ip);
-                            }
-                        });
-                    document.querySelectorAll(`.location-cell[data-ip='${ip}']`).forEach(c => {
-                        c.textContent = location;
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching IP location for', ip, error);
-                    const errorMessage = '查询出错';
-                    ipLocationCache[ip] = errorMessage;
-                    document.querySelectorAll(`.location-cell[data-ip='${ip}']`).forEach(c => {
-                        c.textContent = errorMessage;
-                    });
-                })
-                .finally(() => {
-                    // 3秒后处理下一个IP
-                    setTimeout(processIpQueue, 3000);
-                });
-        }
-
-        // 更新IP归属地的函数，将IP加入队列
-        function updateIPLocations() {
-            document.querySelectorAll('.location-cell').forEach(cell => {
-                const ip = cell.dataset.ip;
-                if (!ip) return;
-                
-                if (ipLocationCache[ip]) {
-                    cell.textContent = ipLocationCache[ip];
-                } else {
-                    cell.textContent = '排队中...';
-                    // 如果IP不在队列中，则加入
-                    if (!ipRequestQueue.includes(ip)) {
-                        ipRequestQueue.push(ip);
-                    }
-                }
-            });
-
-            // 如果队列当前没有在处理，则开始处理
-            if (!isProcessingQueue && ipRequestQueue.length > 0) {
-                processIpQueue();
-            }
-        }
-
         // 封装数据获取和更新的逻辑
         function fetchAndUpdate() {
             fetch('/dk8s.stats?type=data&t=' + Date.now())
@@ -478,7 +350,6 @@ else
                     document.getElementById('current-ip').textContent = data.current_ip;
                     document.getElementById('stats-body').innerHTML = decodeURIComponent(data.table_html);
                     document.getElementById('last-update').textContent = new Date().toLocaleString();
-                    updateIPLocations();
                     updateViewMode();
                 });
         }
@@ -509,7 +380,7 @@ else
             const mode = sel ? sel.value : 'hour';
             const rows = document.querySelectorAll('#stats-body tr');
             rows.forEach(row => {
-                const periodCell = row.querySelector('td:nth-child(3)');
+                const periodCell = row.querySelector('td:nth-child(2)');
                 const period = periodCell ? periodCell.textContent.trim() : '';
                 if (mode === 'hour') {
                     row.style.display = (period === 'hour') ? '' : 'none';
@@ -543,7 +414,6 @@ else
             <thead>
                 <tr>
                     <th>IP</th>
-                    <th>归属地</th>
                     <th>周期</th>
                     <th>活跃时间(秒)</th>
                     <th>入站时间</th>
