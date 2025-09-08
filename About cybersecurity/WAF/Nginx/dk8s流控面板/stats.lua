@@ -162,10 +162,12 @@ local function generate_table_rows(visitor_ip)
             if val:sub(1, #match) == match then
                 local ip = val:sub(#match + 2)
                 
-                -- 首次访问时写入入站时间（只记录一次，不覆盖）
-                local first_key = "first:"..during..":"..ip
-                if not dict:get(first_key) then
-                    dict:add(first_key, os.time())
+                -- 首次访问时写入入站时间
+                if during == "hour" and not dict:get("first:hour:"..ip) then
+                    dict:add("first:hour:"..ip, os.time())
+                end
+                if during == "day" and not dict:get("first:day:"..ip) then
+                    dict:add("first:day:"..ip, os.time())
                 end
 
                 -- 批量获取数据，减少竞态条件窗口
@@ -175,13 +177,12 @@ local function generate_table_rows(visitor_ip)
                 local costs_us = dict:get("costs:"..during..":"..ip)
                 local forbidden = dict:get("forbidden:"..during..":"..ip)
                 -- 入站时间
-                local first_time = dict:get(first_key)
+                local first_time = dict:get("first:"..during..":"..ip)
                 local first_time_str = first_time and os.date("%Y-%m-%d %H:%M:%S", first_time) or "-"
 
                 -- 增加nil检查，如果数据在中途被删除，则跳过此条记录
                 if last_time and count and bytes and costs_us then
-                    -- 活跃时间 = 当前时间 - 首次入站时间（单位秒）
-                    local age = first_time and math.floor(timestamp - tonumber(first_time)) or 0
+                    local age = math.floor(timestamp - (tonumber(last_time) or timestamp))
                     local bytes_human = human_bytes(tonumber(bytes))
                     local costs_human = human_duration(tonumber(costs_us))
                     local forbidden_str = tostring(forbidden or false)
@@ -229,6 +230,7 @@ local function generate_table_rows(visitor_ip)
     stats("day")
     return rows
 end
+
 
 -- 以下为流量统计清空逻辑
 
@@ -450,21 +452,18 @@ else
             document.querySelectorAll('.location-cell').forEach(cell => {
                 const ip = cell.dataset.ip;
                 if (!ip) return;
-                // 优先显示已查询到的归属地结果
-                if (cell.textContent && cell.textContent !== '排队中...' && cell.textContent !== '查询中...') {
-                    return;
-                }
-                // 如果后端已返回归属地（即 cell.textContent 已经是具体归属地），则直接显示，无需排队和查询
+                
                 if (ipLocationCache[ip]) {
                     cell.textContent = ipLocationCache[ip];
-                } else if (cell.textContent === '' || cell.textContent === '排队中...' || cell.textContent === '查询中...') {
-                    cell.textContent = '查询中...';
+                } else {
+                    cell.textContent = '排队中...';
                     // 如果IP不在队列中，则加入
                     if (!ipRequestQueue.includes(ip)) {
                         ipRequestQueue.push(ip);
                     }
                 }
             });
+
             // 如果队列当前没有在处理，则开始处理
             if (!isProcessingQueue && ipRequestQueue.length > 0) {
                 processIpQueue();
