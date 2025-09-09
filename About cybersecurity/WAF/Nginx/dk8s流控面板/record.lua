@@ -40,48 +40,38 @@ end
 local function update_ip_ban_status_in_log(ip, banned_status)
     ensure_log_directory()
     local log_filename = "log/" .. get_current_log_filename()
-    
     local dict = ngx.shared.traffic_stats
     local offset_key = "log_offset:" .. ip
     local last_status_key = "last_ban_status:" .. ip
-    
+
     -- 获取上次记录的封禁状态和文件偏移量
     local last_status = dict:get(last_status_key)
     local file_offset = dict:get(offset_key)
-    
+
     -- 如果状态无变化或偏移量不存在，则跳过
     if last_status == banned_status or not file_offset then
         return
     end
-    
-    -- 格式化新状态行
-    local function csv_escape(v)
-        v = tostring(v or "")
-        v = v:gsub('"', '""')
-        return '"' .. v .. '"'
-    end
-    
-    local function format_ts(ts)
-        if not ts or ts == 0 then return "-" end
-        local t = os.date("*t", ts)
-        return string.format("%d-%d-%d %02d:%02d:%02d", t.year, t.month, t.day, t.hour, t.min, t.sec)
-    end
-    
-    local timestamp = os.time()
-    local new_entry = table.concat({
-        csv_escape(ip),
-        csv_escape(format_ts(timestamp)),
-        csv_escape(banned_status and "true" or "false")
-    }, ",") .. "\n"
-    
-    -- 覆盖写入更新状态
+
+    -- 只覆盖最后一列（true/false），不覆盖时间戳
     local file = io.open(log_filename, "r+")
     if file then
         file:seek("set", file_offset)
-        file:write(new_entry)
+        local line = file:read("*l")
+        if line and line ~= "" then
+            -- 找到最后一个逗号，替换最后一列
+            local last_comma = line:match(".*(),")
+            if last_comma then
+                local new_line = line:sub(1, last_comma) .. (banned_status and "true" or "false")
+                -- 保证覆盖原行长度，补足空格
+                if #new_line < #line then
+                    new_line = new_line .. string.rep(" ", #line - #new_line)
+                end
+                file:seek("set", file_offset)
+                file:write(new_line .. "\n")
+            end
+        end
         file:close()
-        
-        -- 更新最后状态记录
         dict:set(last_status_key, banned_status, 86400)
     end
 end
