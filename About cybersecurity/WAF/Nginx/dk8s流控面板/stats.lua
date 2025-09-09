@@ -269,8 +269,14 @@ local function clear_traffic_stats_daily()
         local log_filename = string.format("%04d%02d%02d.csv", y.year, y.month, y.day)
         export_log_to_file(log_filename)
         
-        -- 清空统计数据
-        dict:flush_all()
+        -- 清空统计数据，但保留IP记录标记（避免重复记录）
+        local keys = dict:get_keys(0)
+        for _, key in ipairs(keys) do
+            -- 保留 recorded:* 和 first:* 键，只清除统计相关的键
+            if not key:find("^recorded:") and not key:find("^first:") and key ~= "last_clear_daily" then
+                dict:delete(key)
+            end
+        end
         dict:flush_expired()
         dict:set("last_clear_daily", now)
         
