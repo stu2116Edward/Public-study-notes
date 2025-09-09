@@ -76,6 +76,16 @@ local function update_ip_ban_status_in_log(ip, banned_status)
     end
 end
 
+-- 检查是否为同一天
+local function is_same_day(timestamp1, timestamp2)
+    if not timestamp1 or not timestamp2 then
+        return false
+    end
+    local t1 = os.date("*t", timestamp1)
+    local t2 = os.date("*t", timestamp2)
+    return t1.year == t2.year and t1.month == t2.month and t1.day == t2.day
+end
+
 -- 记录IP到CSV文件（首次记录）
 local function log_ip_to_csv(ip)
     ensure_log_directory()
@@ -83,7 +93,13 @@ local function log_ip_to_csv(ip)
     local dict = ngx.shared.traffic_stats
     local recorded_key = "recorded:" .. ip
     
-    if not dict:get(recorded_key) then
+    -- 获取当前记录的日期信息
+    local recorded_info = dict:get(recorded_key)
+    local current_time = os.time()
+    local current_day = os.date("%Y%m%d", current_time)
+    
+    -- 如果记录不存在或者不是同一天的记录，则创建新记录
+    if not recorded_info or not is_same_day(recorded_info, current_time) then
         local timestamp = os.time()
         local banned = is_ip_banned(ip, "hour") or is_ip_banned(ip, "day")
         local banned_status = banned and "true" or "false"
@@ -119,17 +135,18 @@ local function log_ip_to_csv(ip)
             file:write(log_entry)
             file:close()
             
-            -- 保存偏移量和状态到共享字典
-            dict:set(recorded_key, true, 86400)
-            dict:set("log_offset:" .. ip, offset, 86400)
-            dict:set("last_ban_status:" .. ip, banned, 86400)
+            -- 保存偏移量和状态到共享字典（使用当前日期作为标记）
+            dict:set(recorded_key, current_time, 86400 * 2)  -- 保存2天，确保跨天时仍有记录
+            dict:set("log_offset:" .. ip, offset, 86400 * 2)
+            dict:set("last_ban_status:" .. ip, banned, 86400 * 2)
             
+            -- 记录首次访问时间（如果不存在）
             if not dict:get("first:hour:"..ip) then
                 dict:add("first:hour:"..ip, timestamp, 86400)
             end
         end
     else
-        -- 非首次记录，检查状态变化并更新
+        -- 已有当天记录，检查状态变化并更新
         local banned = is_ip_banned(ip, "hour") or is_ip_banned(ip, "day")
         update_ip_ban_status_in_log(ip, banned)
     end
