@@ -28,7 +28,7 @@ do
     end
 end
 
--- 日志记录函数（与record.lua一致，直接嵌入保证页面访问也写日志）
+-- 日志记录函数
 local function ensure_log_directory()
     local log_dir = "log"
     local test_path = log_dir .. "/.dir_test__"
