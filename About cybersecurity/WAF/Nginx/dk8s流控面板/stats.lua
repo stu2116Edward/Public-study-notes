@@ -169,6 +169,14 @@ local function get_ip_first_time(ip)
     return format_ts(first_time)
 end
 
+-- 判断某个时间戳是否为今天
+local function is_today(ts)
+    if not ts or ts == 0 then return false end
+    local t = os.date("*t", ts)
+    local now = os.date("*t", os.time())
+    return t.year == now.year and t.month == now.month and t.day == now.day
+end
+
 local function generate_table_rows(visitor_ip)
     local rows = ""
     local timestamp = ngx.now()
@@ -181,45 +189,50 @@ local function generate_table_rows(visitor_ip)
             local match = "last:"..during
             if val:sub(1, #match) == match then
                 local ip = val:sub(#match + 2)
-                local first_time_str = get_ip_first_time(ip)
-                local last_time = dict:get(val)
-                local count = dict:get("count:"..during..":"..ip)
-                local bytes = dict:get("bytes:"..during..":"..ip)
-                local costs_us = dict:get("costs:"..during..":"..ip)
-                local forbidden = dict:get("forbidden:"..during..":"..ip)
-                if last_time and count and bytes and costs_us then
-                    local age = math.floor(timestamp - (tonumber(last_time) or timestamp))
-                    local bytes_human = human_bytes(tonumber(bytes))
-                    local costs_human = human_duration(tonumber(costs_us))
-                    local forbidden_str = tostring(forbidden or false)
-                    local row_style = ""
-                    if forbidden == true and ip == visitor_ip then
-                        row_style = "style='background-color: #ffe6e6; font-weight: bold;'"
-                    elseif forbidden == true then
-                        row_style = "style='background-color: #ffe6e6;'"
-                    elseif ip == visitor_ip then
-                        row_style = "style='background-color: #d4edda; font-weight: bold;'"
+                local first_time_key = "first:hour:" .. ip
+                local first_time_raw = dict:get(first_time_key)
+                -- 只显示当天入站的 IP
+                if is_today(first_time_raw) then
+                    local first_time_str = get_ip_first_time(ip)
+                    local last_time = dict:get(val)
+                    local count = dict:get("count:"..during..":"..ip)
+                    local bytes = dict:get("bytes:"..during..":"..ip)
+                    local costs_us = dict:get("costs:"..during..":"..ip)
+                    local forbidden = dict:get("forbidden:"..during..":"..ip)
+                    if last_time and count and bytes and costs_us then
+                        local age = math.floor(timestamp - (tonumber(last_time) or timestamp))
+                        local bytes_human = human_bytes(tonumber(bytes))
+                        local costs_human = human_duration(tonumber(costs_us))
+                        local forbidden_str = tostring(forbidden or false)
+                        local row_style = ""
+                        if forbidden == true and ip == visitor_ip then
+                            row_style = "style='background-color: #ffe6e6; font-weight: bold;'"
+                        elseif forbidden == true then
+                            row_style = "style='background-color: #ffe6e6;'"
+                        elseif ip == visitor_ip then
+                            row_style = "style='background-color: #d4edda; font-weight: bold;'"
+                        end
+                        rows = rows .. string.format([[
+                            <tr %s>
+                                <td class="ip-cell">%s</td>
+                                <td>%s</td>
+                                <td>%d</td>
+                                <td>%s</td>
+                                <td>%d/%s</td>
+                                <td>%s/%s</td>
+                                <td>%s/%s</td>
+                                <td>%s</td>
+                            </tr>
+                        ]],
+                        row_style,
+                        ip,
+                        during, age, first_time_str,
+                        tonumber(count), limits.count,
+                        bytes_human, bytes_limit_human,
+                        costs_human, costs_limit_human,
+                        forbidden_str
+                        )
                     end
-                    rows = rows .. string.format([[
-                        <tr %s>
-                            <td class="ip-cell">%s</td>
-                            <td>%s</td>
-                            <td>%d</td>
-                            <td>%s</td>
-                            <td>%d/%s</td>
-                            <td>%s/%s</td>
-                            <td>%s/%s</td>
-                            <td>%s</td>
-                        </tr>
-                    ]],
-                    row_style,
-                    ip,
-                    during, age, first_time_str,
-                    tonumber(count), limits.count,
-                    bytes_human, bytes_limit_human,
-                    costs_human, costs_limit_human,
-                    forbidden_str
-                    )
                 end
             end
         end
@@ -348,6 +361,7 @@ else
         <div class="update-time">
             最后更新: <span id="last-update">]] .. os.date("%Y-%m-%d %H:%M:%S") .. [[</span>
         </div>
+        <div style="text-align:center;margin-top:8px;color:#666;font-size:13px;">仅显示当天入站的IP数据</div>
     </body>
     </html>
     ]])
