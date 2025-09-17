@@ -1,4 +1,5 @@
 ## 将其加入ScriptCat(脚本猫)
+学习通web地址：https://mooc1-1.chaoxing.com/visit/interaction  
 脚本猫插件地址：https://docs.scriptcat.org/  
 GitHub: https://github.com/scriptscat/scriptcat  
 脚本地址：https://scriptcat.org/zh-CN/script-show-page/1693  
