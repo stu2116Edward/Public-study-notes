@@ -30,7 +30,7 @@ hashcat.exe -m 13000 -w 4 -a 3 -o password.txt $rar5$16$a072ecbd885426feb1b3167b
   - `4` Nightmare（极高负载）
 
 
-tips: 可以在(hashcat官网)[https://hashcat.net/wiki/doku.php?id=example_hashes]查询hash类型
+tips: 可以在[hashcat官网](https://hashcat.net/wiki/doku.php?id=example_hashes)查询hash类型
 
 
 ## 针对**Zip**密码的命令：  
@@ -84,3 +84,4 @@ hashcat.exe -m 10500 -a 3 $pdf$4*4*128*-3904*0*16*55f913d20e34724fd70d3004f5e431
 
 perl：http://www.activestate.com/activeperl  
 python：https://www.python.org
+
