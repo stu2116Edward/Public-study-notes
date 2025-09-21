@@ -42,8 +42,8 @@ If you wish to contribute or have any questions, you can reach me at [stu2116edw
    5. **稀土掘金** - [稀土掘金](https://juejin.cn/) 
       - 稀土掘金是一个技术社区，提供各种技术文章和资讯。
    
-   6. **CSDN** - [CSDN](https://www.csdn.net/) 
-      - CSDN是中国最大的IT社区和服务平台。
+   6. **LINUX DO** - [LINUX DO](https://linux.do/) 
+      - 开发者论坛
    
    7. **Gitee** - [Gitee](https://gitee.com/) 
       - Gitee是一个基于Git的代码托管和研发协作平台。
@@ -104,4 +104,16 @@ If you wish to contribute or have any questions, you can reach me at [stu2116edw
    
    26. **微步云沙箱** - [微步云沙箱](https://s.threatbook.com/) 
        - 微步云在线沙箱病毒检测
+   
+   27. **SkrBT** - [SkrBT](https://skrbtso.top/) 
+       - 磁力搜索引擎
+      
+   28. **小云搜索** - [小云搜索](https://www.yunso.net/) 
+       - 网盘资源搜索
+
+   29. **BT影视** - [BT影视](https://www.btbtla.com/) 
+       - BT电影资源
+
+   30. **MX动漫** - [MX动漫](https://www.mxdm.xyz/) 
+       - 在线动漫
 </details>
