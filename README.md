@@ -116,4 +116,7 @@ If you wish to contribute or have any questions, you can reach me at [stu2116edw
 
    30. **MX动漫** - [MX动漫](https://www.mxdm.xyz/) 
        - 在线动漫
+
+   31. **吾爱破解** - [吾爱破解](https://www.52pojie.cn/) 
+       - 破解工具下载
 </details>
