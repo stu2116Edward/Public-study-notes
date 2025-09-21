@@ -1,5 +1,9 @@
 # Hashcat + john the ripper破解密码
 
+## 下载Hashcat和john the ripper
+下载hashcat：https://hashcat.net/hashcat/ 选择 `hashcat binaries` 点击 Download  
+下载john the ripper：https://www.openwall.com/john/  
+
 ## 针对**RAR**密码的命令：
 1. 获取hash值
 ```
@@ -668,3 +672,4 @@ $metamaskMobile$JV4j2dUDl7n+sujyqW3Wvg==$398f9b04c822d36bfcbdd1e68c82d1e8$auj3J2
 74000	Generic Hash [Bridged: Rust]	33522b0fd9812aa68586f66dba7c17a8ce64344137f9c7d8b11f32a6921c22de*9348746780603343
 99999	Plaintext	hashcat
 </pre>
+
