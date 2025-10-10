@@ -8,6 +8,10 @@
 ```bash
 curl -sS -O https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/Docker%20Notes/Docker_Shell/docker_tools.sh && chmod +x docker_tools.sh && ./docker_tools.sh
 ```
+使用Gitee镜像加速
+```bash
+curl -sS -O https://gitee.com/stu2116Edward/docker-tools/raw/master/docker_tools.sh && chmod +x docker_tools.sh && ./docker_tools.sh
+```
 注意使用脚本安装成功后输入`docker-compose -v`查看版本信息没有立即生效则需要清理一下父Shell中的缓存：
 ```bash
 hash -r
@@ -191,3 +195,4 @@ apt remove docker-compose
 ```
 sudo rm /usr/local/bin/docker-compose
 ```
+
