@@ -1,8 +1,12 @@
 # docker更换镜像
 
 ### 修改镜像配置文件：
-```
+```bash
 vim /etc/docker/daemon.json
+```
+如果不存在
+```bash
+cd /etc/docker && touch daemon.json
 ```
 配置文件内容：  
 使用公共镜像仓库
@@ -141,3 +145,4 @@ docker push <私有仓库地址-IP:端口/域名>/images:tag
 ```
 docker push example.com/mycloudreve
 ```
+
