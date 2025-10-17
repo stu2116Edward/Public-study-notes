@@ -759,10 +759,12 @@ uninstall_docker_compose_core() {
 
     echo -e "${GREEN}Docker Compose卸载完成!${NC}"
     read -p "按回车键重启脚本..."
+    # 取本脚本绝对路径
+    SCRIPT_PATH="$(readlink -f "$0")"
     # 如果脚本不是在子shell中运行，则重启脚本
-    if [ "$BASH_SUBSHELL" -eq 0 ]; then
+    if [ "$BASH_SUBSHELL" -eq 0 ] && [ -n "$SCRIPT_PATH" ]; then
         echo -e "${BLUE}正在重启脚本...${NC}"
-        exec "$0"
+        exec "$SCRIPT_PATH"
     fi
 }
 
@@ -895,6 +897,16 @@ show_full_status() {
     else
         echo "未安装"
     fi
+    
+    # 显示Docker镜像配置
+    echo -e "\n${YELLOW}[Docker镜像配置]${NC}"
+    if [ -f "/etc/docker/daemon.json" ]; then
+        echo "文件位置: /etc/docker/daemon.json"
+        echo "配置内容:"
+        cat /etc/docker/daemon.json
+    else
+        echo "无镜像配置文件 (/etc/docker/daemon.json 不存在)"
+    fi
 
     # 详细列表
     echo -e "\n${YELLOW}[镜像列表]${NC}"
@@ -911,6 +923,94 @@ show_full_status() {
     
     echo -e "${GREEN}========================================================${NC}"
 }
+
+
+# 更新Docker镜像地址
+update_docker_mirror() {
+    echo -e "${GREEN}"
+    echo "=============================================="
+    echo "          更新 Docker 镜像地址"
+    echo "=============================================="
+    echo -e "${NC}"
+    
+    # 检查Docker是否安装
+    if ! check_docker_installed; then
+        echo -e "${RED}Docker未安装，请先安装Docker。${NC}"
+        read -p "按回车键返回主菜单..."
+        return 1
+    fi
+    
+    echo -e "${YELLOW}正在更新Docker镜像地址...${NC}"
+    
+    # 创建/etc/docker目录（如果不存在）
+    if [ ! -d "/etc/docker" ]; then
+        echo -e "${YELLOW}创建 /etc/docker 目录...${NC}"
+        mkdir -p /etc/docker
+    fi
+    
+    # 下载daemon.json配置文件
+    echo -e "${YELLOW}下载Docker镜像配置文件...${NC}"
+    cd /etc/docker
+    
+    # 备份原有的daemon.json文件（如果存在）
+    if [ -f "daemon.json" ]; then
+        echo -e "${YELLOW}备份原有的daemon.json文件...${NC}"
+        cp daemon.json "daemon.json.backup.$(date +%Y%m%d%H%M%S)"
+        echo -e "${GREEN}原配置文件已备份。${NC}"
+    fi
+    
+    # 下载新的daemon.json文件
+    if wget -q https://gitee.com/stu2116Edward/docker-images/raw/master/daemon.json -O daemon.json; then
+        echo -e "${GREEN}Docker镜像配置文件下载成功。${NC}"
+        
+        # 重新加载systemd配置并重启Docker
+        echo -e "${YELLOW}重新加载配置并重启Docker服务...${NC}"
+        if systemctl daemon-reload && systemctl restart docker; then
+            echo -e "${GREEN}Docker服务重启成功！${NC}"
+            echo -e "${GREEN}镜像地址更新完成。${NC}"
+            
+            # 显示新的镜像配置
+            echo -e "${YELLOW}新的镜像配置如下：${NC}"
+            cat /etc/docker/daemon.json
+        else
+            echo -e "${RED}Docker服务重启失败，请检查配置。${NC}"
+            return 1
+        fi
+    else
+        echo -e "${RED}配置文件下载失败，请检查网络连接。${NC}"
+        
+        # 如果下载失败，尝试创建基本的镜像配置
+        if confirm "是否创建基本的国内镜像配置？"; then
+            cat > daemon.json << 'EOF'
+{
+  "registry-mirrors": [
+    "https://registry.hub.docker.com",
+    "https://docker.itelyou.cf",
+    "https://abc.itelyou.cf",
+    "https://docker.ywsj.tk",
+    "https://docker.xuanyuan.me",
+    "http://image.cloudlayer.icu",
+    "http://docker-0.unsee.tech",
+    "https://dockerpull.pw",
+    "https://docker.hlmirror.com"
+  ]
+}
+EOF
+            echo -e "${GREEN}基本镜像配置创建成功。${NC}"
+            
+            # 重新加载并重启Docker
+            systemctl daemon-reload && systemctl restart docker
+            echo -e "${GREEN}Docker服务重启成功！${NC}"
+        else
+            echo -e "${YELLOW}已取消操作。${NC}"
+            return 1
+        fi
+    fi
+    
+    read -p "按回车键返回主菜单..."
+    return 0
+}
+
 
 
 # Docker 容器管理
@@ -1182,6 +1282,7 @@ show_menu() {
     echo -e "${GREEN}9. Docker镜像管理${NC}"
     echo -e "${GREEN}10. Docker网络管理${NC}"
     echo -e "${GREEN}11. Docker卷管理${NC}"
+    echo -e "${GREEN}12. 更新Docker镜像地址${NC}"
     echo -e "${GREEN}0. 退出脚本${NC}"
     echo -e "${GREEN}========================================================${NC}"
     echo -e "${NC}"
@@ -1211,6 +1312,7 @@ main() {
             9) docker_image_manage ;;
             10) docker_network_manage ;;
             11) docker_volume_manage ;;
+            12) update_docker_mirror ;;
             0)
                 echo -e "${GREEN}已退出脚本。${NC}"
                 exit 0
