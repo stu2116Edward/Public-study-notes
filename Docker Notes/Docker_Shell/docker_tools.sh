@@ -577,20 +577,55 @@ install_with_binary() {
             return 1
         fi
     else
-        # 定义下载URL
-        binary_url="https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}"
-        sha256_url="${binary_url}.sha256"
+        # 定义镜像地址列表，支持智能切换
+        local mirror_urls=(
+            "https://gh-proxy.com/https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}"
+            "https://ghproxy.net/https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}"
+            "https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}"
+        )
+        
+        local binary_url=""
+        local sha256_url=""
+        
+        # 尝试不同的镜像地址，设置10秒超时
+        for url in "${mirror_urls[@]}"; do
+            echo -e "${YELLOW}尝试镜像地址: $url${NC}"
+            
+            # 使用timeout命令设置10秒超时检查二进制文件URL可用性
+            if timeout 10s wget --spider -o /dev/null "$url" 2>/dev/null; then
+                binary_url="$url"
+                # 根据镜像地址自动构建对应的sha256 URL
+                if [[ "$url" == *"gh-proxy.com"* ]] || [[ "$url" == *"ghproxy.net"* ]]; then
+                    # 对于代理地址，sha256文件也需要通过代理下载
+                    sha256_url="${url}.sha256"
+                else
+                    sha256_url="https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}.sha256"
+                fi
+                echo -e "${GREEN}找到可用的镜像地址: $binary_url${NC}"
+                break
+            else
+                echo -e "${YELLOW}镜像地址超时或不可用: $url，尝试下一个地址${NC}"
+                continue
+            fi
+        done
+        
+        if [ -z "$binary_url" ]; then
+            echo -e "${RED}所有镜像地址均超时或不可用，请检查网络连接或稍后重试${NC}"
+            return 1
+        fi
         
         # 下载二进制文件
         echo -e "${YELLOW}正在下载 Docker Compose ${compose_version}...${NC}"
-        if ! wget "$binary_url" -O "$binary_filename"; then
+        # 显示下载进度条
+        if ! wget --show-progress --progress=bar:force "$binary_url" -O "$binary_filename"; then
             echo -e "${RED}下载二进制文件失败，请检查网络连接或稍后重试${NC}"
             return 1
         fi
         
         # 下载sha256校验文件
         echo -e "${YELLOW}正在下载校验文件...${NC}"
-        if ! wget "$sha256_url" -O "${binary_filename}.sha256"; then
+        # 显示下载进度条
+        if ! wget --show-progress --progress=bar:force "$sha256_url" -O "${binary_filename}.sha256"; then
             echo -e "${YELLOW}下载校验文件失败，无法验证完整性。${NC}"
             if ! confirm "是否继续安装而不进行完整性校验？"; then
                 rm -f "./$binary_filename"
@@ -598,10 +633,17 @@ install_with_binary() {
             fi
         else
             echo -e "${YELLOW}验证文件完整性...${NC}"
-            if sha256sum -c "${binary_filename}.sha256" 2>/dev/null | grep -q ': OK$'; then
+            # 计算下载文件的SHA256
+            local calculated_sha256=$(sha256sum "./$binary_filename" | awk '{print $1}')
+            # 读取校验文件中的SHA256
+            local expected_sha256=$(cat "./${binary_filename}.sha256" | awk '{print $1}')
+            
+            if [ "$calculated_sha256" = "$expected_sha256" ]; then
                 echo -e "${GREEN}文件完整性验证通过${NC}"
             else
                 echo -e "${RED}文件完整性验证失败${NC}"
+                echo -e "${YELLOW}期望的SHA256: $expected_sha256${NC}"
+                echo -e "${YELLOW}计算的SHA256: $calculated_sha256${NC}"
                 if ! confirm "文件可能损坏，是否继续安装？"; then
                     rm -f "./$binary_filename" "./${binary_filename}.sha256"
                     return 1
@@ -1294,7 +1336,7 @@ main() {
     while true; do
         show_menu
         stty erase ^H
-        read -p "请输入选项编号 (0-11): " choice
+        read -p "请输入选项编号 (0-12): " choice
         case "$choice" in
             1) install_docker_core ;;
             2) uninstall_docker_core ;;
