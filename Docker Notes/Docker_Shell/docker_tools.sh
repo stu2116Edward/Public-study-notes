@@ -509,6 +509,49 @@ install_with_package_manager() {
 install_with_binary() {
     echo -e "${YELLOW}准备通过二进制文件安装Docker Compose...${NC}"
     
+    # 系统兼容性检查和依赖安装
+    echo -e "${BLUE}检查系统依赖...${NC}"
+    
+    # 检测包管理器并安装必要工具
+    local missing_tools=()
+    for tool in wget curl; do
+        if ! command -v "$tool" &> /dev/null; then
+            missing_tools+=("$tool")
+        fi
+    done
+    
+    if [ ${#missing_tools[@]} -gt 0 ]; then
+        echo -e "${YELLOW}需要安装依赖工具: ${missing_tools[*]}${NC}"
+        
+        if command -v apt &> /dev/null; then
+            # Debian/Ubuntu/Kali
+            apt update
+            apt install -y "${missing_tools[@]}" ca-certificates
+        elif command -v yum &> /dev/null; then
+            # CentOS/RHEL
+            yum install -y "${missing_tools[@]}" ca-certificates
+        elif command -v dnf &> /dev/null; then
+            # Fedora
+            dnf install -y "${missing_tools[@]}" ca-certificates
+        elif command -v pacman &> /dev/null; then
+            # Arch Linux/Manjaro
+            pacman -Sy --noconfirm "${missing_tools[@]}" ca-certificates
+        elif command -v zypper &> /dev/null; then
+            # openSUSE
+            zypper refresh
+            zypper install -y "${missing_tools[@]}" ca-certificates
+        else
+            echo -e "${RED}无法自动安装依赖，请手动安装: ${missing_tools[*]}${NC}"
+            return 1
+        fi
+    fi
+    
+    # 确保 /usr/local/bin 目录存在
+    if [ ! -d "/usr/local/bin" ]; then
+        echo -e "${YELLOW}创建 /usr/local/bin 目录...${NC}"
+        mkdir -p /usr/local/bin
+    fi
+
     # 获取指定版本号
     local compose_version=""
     if [ -n "$1" ]; then
@@ -523,17 +566,36 @@ install_with_binary() {
         echo -e "${YELLOW}将安装最新版本: $compose_version${NC}"
     fi
     
-    # 获取系统架构
+    # 获取系统架构 - 修复架构映射问题
     arch_suffix=$(get_system_arch)
     if [ $? -ne 0 ]; then
         echo -e "${RED}无法确定适合您系统的Docker Compose版本。${NC}"
         return 1
     fi
     
-    echo -e "${BLUE}检测到系统架构: $(uname -m)${NC}"
+    # 特殊处理：Docker Compose 使用的架构命名可能与系统不同
+    case "$arch_suffix" in
+        "x86_64")
+            compose_arch="x86_64"
+            ;;
+        "aarch64")
+            compose_arch="aarch64"
+            ;;
+        "armhf")
+            compose_arch="armv7"
+            ;;
+        "armel")
+            compose_arch="armv6"
+            ;;
+        *)
+            compose_arch="$arch_suffix"
+            ;;
+    esac
+    
+    echo -e "${BLUE}检测到系统架构: $(uname -m) -> Docker Compose架构: $compose_arch${NC}"
     
     # 检查当前目录下是否已存在二进制文件
-    binary_filename="docker-compose-linux-${arch_suffix}"
+    binary_filename="docker-compose-linux-${compose_arch}"
     if [ -f "./$binary_filename" ]; then
         echo -e "${YELLOW}检测到当前目录下已存在 $binary_filename，将优先使用本地文件。${NC}"
         
@@ -541,14 +603,18 @@ install_with_binary() {
         sha256_filename="${binary_filename}.sha256"
         if [ -f "./$sha256_filename" ]; then
             echo -e "${BLUE}检测到哈希校验文件 $sha256_filename，将进行完整性校验。${NC}"
-            if sha256sum -c "./$sha256_filename" 2>/dev/null | grep -q ': OK$'; then
-                echo -e "${GREEN}文件完整性验证通过${NC}"
-            else
-                echo -e "${RED}文件完整性验证失败${NC}"
-                if ! confirm "文件可能损坏，是否继续安装？"; then
-                    rm -f "./$binary_filename" "./$sha256_filename"
-                    return 1
+            if command -v sha256sum &> /dev/null; then
+                if sha256sum -c "./$sha256_filename" 2>/dev/null | grep -q ': OK$'; then
+                    echo -e "${GREEN}文件完整性验证通过${NC}"
+                else
+                    echo -e "${RED}文件完整性验证失败${NC}"
+                    if ! confirm "文件可能损坏，是否继续安装？"; then
+                        rm -f "./$binary_filename" "./$sha256_filename"
+                        return 1
+                    fi
                 fi
+            else
+                echo -e "${YELLOW}未找到 sha256sum 工具，跳过完整性校验${NC}"
             fi
         else
             echo -e "${YELLOW}当前目录下未找到 $sha256_filename 哈希校验文件。${NC}"
@@ -560,51 +626,53 @@ install_with_binary() {
         
         # 安装二进制文件
         echo -e "${YELLOW}安装Docker Compose...${NC}"
-        mv "./$binary_filename" /usr/local/bin/docker-compose
+        cp "./$binary_filename" /usr/local/bin/docker-compose
         chmod +x /usr/local/bin/docker-compose
         
         # 验证安装
-        docker-compose --version
-        if [ $? -eq 0 ]; then
+        if /usr/local/bin/docker-compose --version >/dev/null 2>&1; then
             echo -e "${GREEN}Docker Compose安装成功${NC}"
+            /usr/local/bin/docker-compose --version
             
             # 检查并添加PATH
             check_and_add_to_path
             
             return 0
         else
-            echo -e "${RED}Docker Compose安装失败${NC}"
+            echo -e "${RED}Docker Compose安装失败，二进制文件可能不兼容当前系统${NC}"
             return 1
         fi
     else
-        # 定义镜像地址列表，支持智能切换
-        local mirror_urls=(
-            "https://gh-proxy.com/https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}"
-            "https://ghproxy.net/https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}"
-            "https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}"
+        # 定义镜像地址基础URL列表，支持智能切换
+        local mirror_base_urls=(
+            "https://gh-proxy.com/https://github.com/docker/compose/releases/download"
+            "https://ghproxy.net/https://github.com/docker/compose/releases/download"
+            "https://github.com/docker/compose/releases/download"
         )
         
         local binary_url=""
         local sha256_url=""
         
         # 尝试不同的镜像地址，设置10秒超时
-        for url in "${mirror_urls[@]}"; do
-            echo -e "${YELLOW}尝试镜像地址: $url${NC}"
+        for base_url in "${mirror_base_urls[@]}"; do
+            # 构建完整的下载URL
+            local test_url="$base_url/${compose_version}/${binary_filename}"
+            echo -e "${YELLOW}尝试镜像地址: $(echo "$base_url" | cut -d'/' -f3)${NC}"
             
-            # 使用timeout命令设置10秒超时检查二进制文件URL可用性
-            if timeout 10s wget --spider -o /dev/null "$url" 2>/dev/null; then
-                binary_url="$url"
+            # 使用wget检查URL可用性，设置10秒超时
+            if timeout 10s wget --spider -q "$test_url"; then
+                binary_url="$test_url"
                 # 根据镜像地址自动构建对应的sha256 URL
-                if [[ "$url" == *"gh-proxy.com"* ]] || [[ "$url" == *"ghproxy.net"* ]]; then
+                if [[ "$base_url" == *"gh-proxy.com"* ]] || [[ "$base_url" == *"ghproxy.net"* ]] || [[ "$base_url" == *"mirror.ghproxy.com"* ]]; then
                     # 对于代理地址，sha256文件也需要通过代理下载
-                    sha256_url="${url}.sha256"
+                    sha256_url="${test_url}.sha256"
                 else
                     sha256_url="https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}.sha256"
                 fi
-                echo -e "${GREEN}找到可用的镜像地址: $binary_url${NC}"
+                echo -e "${GREEN}找到可用的镜像地址: $(echo "$base_url" | cut -d'/' -f3)${NC}"
                 break
             else
-                echo -e "${YELLOW}镜像地址超时或不可用: $url，尝试下一个地址${NC}"
+                echo -e "${YELLOW}镜像地址超时或不可用: $(echo "$base_url" | cut -d'/' -f3)，尝试下一个地址${NC}"
                 continue
             fi
         done
@@ -616,63 +684,84 @@ install_with_binary() {
         
         # 下载二进制文件
         echo -e "${YELLOW}正在下载 Docker Compose ${compose_version}...${NC}"
-        # 显示下载进度条
-        if ! wget --show-progress --progress=bar:force "$binary_url" -O "$binary_filename"; then
-            echo -e "${RED}下载二进制文件失败，请检查网络连接或稍后重试${NC}"
-            return 1
+        
+        # 检查wget是否支持--show-progress参数
+        if wget --help 2>&1 | grep -q "\-\-show-progress"; then
+            # 新版本wget支持进度条
+            if ! wget --timeout=30 --tries=3 --show-progress -O "$binary_filename" "$binary_url"; then
+                echo -e "${RED}下载二进制文件失败，请检查网络连接或稍后重试${NC}"
+                return 1
+            fi
+        else
+            # 旧版本wget不支持进度条
+            if ! wget --timeout=30 --tries=3 -O "$binary_filename" "$binary_url"; then
+                echo -e "${RED}下载二进制文件失败，请检查网络连接或稍后重试${NC}"
+                return 1
+            fi
         fi
         
         # 下载sha256校验文件
         echo -e "${YELLOW}正在下载校验文件...${NC}"
-        # 显示下载进度条
-        if ! wget --show-progress --progress=bar:force "$sha256_url" -O "${binary_filename}.sha256"; then
+        if wget --timeout=15 --tries=2 -O "${binary_filename}.sha256" "$sha256_url" 2>/dev/null; then
+            echo -e "${YELLOW}验证文件完整性...${NC}"
+            # 检查是否有 sha256sum 工具
+            if command -v sha256sum &> /dev/null; then
+                # 计算下载文件的SHA256
+                local calculated_sha256=$(sha256sum "./$binary_filename" | awk '{print $1}')
+                # 读取校验文件中的SHA256
+                local expected_sha256=$(cat "./${binary_filename}.sha256" | awk '{print $1}')
+                
+                if [ "$calculated_sha256" = "$expected_sha256" ]; then
+                    echo -e "${GREEN}文件完整性验证通过${NC}"
+                else
+                    echo -e "${RED}文件完整性验证失败${NC}"
+                    echo -e "${YELLOW}期望的SHA256: $expected_sha256${NC}"
+                    echo -e "${YELLOW}计算的SHA256: $calculated_sha256${NC}"
+                    if ! confirm "文件可能损坏，是否继续安装？"; then
+                        rm -f "./$binary_filename" "./${binary_filename}.sha256"
+                        return 1
+                    fi
+                fi
+            else
+                echo -e "${YELLOW}未找到 sha256sum 工具，跳过完整性校验${NC}"
+            fi
+        else
             echo -e "${YELLOW}下载校验文件失败，无法验证完整性。${NC}"
             if ! confirm "是否继续安装而不进行完整性校验？"; then
                 rm -f "./$binary_filename"
                 return 1
             fi
-        else
-            echo -e "${YELLOW}验证文件完整性...${NC}"
-            # 计算下载文件的SHA256
-            local calculated_sha256=$(sha256sum "./$binary_filename" | awk '{print $1}')
-            # 读取校验文件中的SHA256
-            local expected_sha256=$(cat "./${binary_filename}.sha256" | awk '{print $1}')
-            
-            if [ "$calculated_sha256" = "$expected_sha256" ]; then
-                echo -e "${GREEN}文件完整性验证通过${NC}"
-            else
-                echo -e "${RED}文件完整性验证失败${NC}"
-                echo -e "${YELLOW}期望的SHA256: $expected_sha256${NC}"
-                echo -e "${YELLOW}计算的SHA256: $calculated_sha256${NC}"
-                if ! confirm "文件可能损坏，是否继续安装？"; then
-                    rm -f "./$binary_filename" "./${binary_filename}.sha256"
-                    return 1
-                fi
-            fi
         fi
         
         # 安装二进制文件
         echo -e "${YELLOW}安装Docker Compose...${NC}"
-        mv "./$binary_filename" /usr/local/bin/docker-compose
+        cp "./$binary_filename" /usr/local/bin/docker-compose
         chmod +x /usr/local/bin/docker-compose
         
         # 验证安装
-        docker-compose --version
-        if [ $? -eq 0 ]; then
+        if /usr/local/bin/docker-compose --version >/dev/null 2>&1; then
             echo -e "${GREEN}Docker Compose安装成功${NC}"
+            /usr/local/bin/docker-compose --version
             
             # 检查并添加PATH
             check_and_add_to_path
             
-            # 删除校验文件
+            # 删除下载的文件
+            rm -f "./$binary_filename"
             if [ -f "./${binary_filename}.sha256" ]; then
                 rm -f "./${binary_filename}.sha256"
-                echo -e "${GREEN}已删除校验文件 ${binary_filename}.sha256${NC}"
             fi
             
             return 0
         else
-            echo -e "${RED}Docker Compose安装失败${NC}"
+            echo -e "${RED}Docker Compose安装失败，二进制文件可能不兼容当前系统${NC}"
+            # 提供调试信息
+            echo -e "${YELLOW}调试信息:${NC}"
+            echo -e "系统: $(uname -s)"
+            echo -e "架构: $(uname -m)"
+            echo -e "Libc信息: $(ldd --version 2>/dev/null | head -n1 || echo '未知')"
+            # 清理失败的文件
+            rm -f "/usr/local/bin/docker-compose" "./$binary_filename" "./${binary_filename}.sha256"
             return 1
         fi
     fi
