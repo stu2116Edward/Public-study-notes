@@ -509,49 +509,6 @@ install_with_package_manager() {
 install_with_binary() {
     echo -e "${YELLOW}准备通过二进制文件安装Docker Compose...${NC}"
     
-    # 系统兼容性检查和依赖安装
-    echo -e "${BLUE}检查系统依赖...${NC}"
-    
-    # 检测包管理器并安装必要工具
-    local missing_tools=()
-    for tool in wget curl; do
-        if ! command -v "$tool" &> /dev/null; then
-            missing_tools+=("$tool")
-        fi
-    done
-    
-    if [ ${#missing_tools[@]} -gt 0 ]; then
-        echo -e "${YELLOW}需要安装依赖工具: ${missing_tools[*]}${NC}"
-        
-        if command -v apt &> /dev/null; then
-            # Debian/Ubuntu/Kali
-            apt update
-            apt install -y "${missing_tools[@]}" ca-certificates
-        elif command -v yum &> /dev/null; then
-            # CentOS/RHEL
-            yum install -y "${missing_tools[@]}" ca-certificates
-        elif command -v dnf &> /dev/null; then
-            # Fedora
-            dnf install -y "${missing_tools[@]}" ca-certificates
-        elif command -v pacman &> /dev/null; then
-            # Arch Linux/Manjaro
-            pacman -Sy --noconfirm "${missing_tools[@]}" ca-certificates
-        elif command -v zypper &> /dev/null; then
-            # openSUSE
-            zypper refresh
-            zypper install -y "${missing_tools[@]}" ca-certificates
-        else
-            echo -e "${RED}无法自动安装依赖，请手动安装: ${missing_tools[*]}${NC}"
-            return 1
-        fi
-    fi
-    
-    # 确保 /usr/local/bin 目录存在
-    if [ ! -d "/usr/local/bin" ]; then
-        echo -e "${YELLOW}创建 /usr/local/bin 目录...${NC}"
-        mkdir -p /usr/local/bin
-    fi
-
     # 获取指定版本号
     local compose_version=""
     if [ -n "$1" ]; then
@@ -566,36 +523,17 @@ install_with_binary() {
         echo -e "${YELLOW}将安装最新版本: $compose_version${NC}"
     fi
     
-    # 获取系统架构 - 修复架构映射问题
+    # 获取系统架构
     arch_suffix=$(get_system_arch)
     if [ $? -ne 0 ]; then
         echo -e "${RED}无法确定适合您系统的Docker Compose版本。${NC}"
         return 1
     fi
     
-    # 特殊处理：Docker Compose 使用的架构命名可能与系统不同
-    case "$arch_suffix" in
-        "x86_64")
-            compose_arch="x86_64"
-            ;;
-        "aarch64")
-            compose_arch="aarch64"
-            ;;
-        "armhf")
-            compose_arch="armv7"
-            ;;
-        "armel")
-            compose_arch="armv6"
-            ;;
-        *)
-            compose_arch="$arch_suffix"
-            ;;
-    esac
-    
-    echo -e "${BLUE}检测到系统架构: $(uname -m) -> Docker Compose架构: $compose_arch${NC}"
+    echo -e "${BLUE}检测到系统架构: $(uname -m)${NC}"
     
     # 检查当前目录下是否已存在二进制文件
-    binary_filename="docker-compose-linux-${compose_arch}"
+    binary_filename="docker-compose-linux-${arch_suffix}"
     if [ -f "./$binary_filename" ]; then
         echo -e "${YELLOW}检测到当前目录下已存在 $binary_filename，将优先使用本地文件。${NC}"
         
@@ -603,18 +541,14 @@ install_with_binary() {
         sha256_filename="${binary_filename}.sha256"
         if [ -f "./$sha256_filename" ]; then
             echo -e "${BLUE}检测到哈希校验文件 $sha256_filename，将进行完整性校验。${NC}"
-            if command -v sha256sum &> /dev/null; then
-                if sha256sum -c "./$sha256_filename" 2>/dev/null | grep -q ': OK$'; then
-                    echo -e "${GREEN}文件完整性验证通过${NC}"
-                else
-                    echo -e "${RED}文件完整性验证失败${NC}"
-                    if ! confirm "文件可能损坏，是否继续安装？"; then
-                        rm -f "./$binary_filename" "./$sha256_filename"
-                        return 1
-                    fi
-                fi
+            if sha256sum -c "./$sha256_filename" 2>/dev/null | grep -q ': OK$'; then
+                echo -e "${GREEN}文件完整性验证通过${NC}"
             else
-                echo -e "${YELLOW}未找到 sha256sum 工具，跳过完整性校验${NC}"
+                echo -e "${RED}文件完整性验证失败${NC}"
+                if ! confirm "文件可能损坏，是否继续安装？"; then
+                    rm -f "./$binary_filename" "./$sha256_filename"
+                    return 1
+                fi
             fi
         else
             echo -e "${YELLOW}当前目录下未找到 $sha256_filename 哈希校验文件。${NC}"
@@ -626,53 +560,51 @@ install_with_binary() {
         
         # 安装二进制文件
         echo -e "${YELLOW}安装Docker Compose...${NC}"
-        cp "./$binary_filename" /usr/local/bin/docker-compose
+        mv "./$binary_filename" /usr/local/bin/docker-compose
         chmod +x /usr/local/bin/docker-compose
         
         # 验证安装
-        if /usr/local/bin/docker-compose --version >/dev/null 2>&1; then
+        docker-compose --version
+        if [ $? -eq 0 ]; then
             echo -e "${GREEN}Docker Compose安装成功${NC}"
-            /usr/local/bin/docker-compose --version
             
             # 检查并添加PATH
             check_and_add_to_path
             
             return 0
         else
-            echo -e "${RED}Docker Compose安装失败，二进制文件可能不兼容当前系统${NC}"
+            echo -e "${RED}Docker Compose安装失败${NC}"
             return 1
         fi
     else
-        # 定义镜像地址基础URL列表，支持智能切换
-        local mirror_base_urls=(
-            "https://gh-proxy.com/https://github.com/docker/compose/releases/download"
-            "https://ghproxy.net/https://github.com/docker/compose/releases/download"
-            "https://github.com/docker/compose/releases/download"
+        # 定义镜像地址列表，支持智能切换
+        local mirror_urls=(
+            "https://gh-proxy.com/https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}"
+            "https://ghproxy.net/https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}"
+            "https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}"
         )
         
         local binary_url=""
         local sha256_url=""
         
         # 尝试不同的镜像地址，设置10秒超时
-        for base_url in "${mirror_base_urls[@]}"; do
-            # 构建完整的下载URL
-            local test_url="$base_url/${compose_version}/${binary_filename}"
-            echo -e "${YELLOW}尝试镜像地址: $(echo "$base_url" | cut -d'/' -f3)${NC}"
+        for url in "${mirror_urls[@]}"; do
+            echo -e "${YELLOW}尝试镜像地址: $url${NC}"
             
-            # 使用wget检查URL可用性，设置10秒超时
-            if timeout 10s wget --spider -q "$test_url"; then
-                binary_url="$test_url"
+            # 使用timeout命令设置10秒超时检查二进制文件URL可用性
+            if timeout 10s wget --spider -o /dev/null "$url" 2>/dev/null; then
+                binary_url="$url"
                 # 根据镜像地址自动构建对应的sha256 URL
-                if [[ "$base_url" == *"gh-proxy.com"* ]] || [[ "$base_url" == *"ghproxy.net"* ]] || [[ "$base_url" == *"mirror.ghproxy.com"* ]]; then
+                if [[ "$url" == *"gh-proxy.com"* ]] || [[ "$url" == *"ghproxy.net"* ]]; then
                     # 对于代理地址，sha256文件也需要通过代理下载
-                    sha256_url="${test_url}.sha256"
+                    sha256_url="${url}.sha256"
                 else
                     sha256_url="https://github.com/docker/compose/releases/download/${compose_version}/${binary_filename}.sha256"
                 fi
-                echo -e "${GREEN}找到可用的镜像地址: $(echo "$base_url" | cut -d'/' -f3)${NC}"
+                echo -e "${GREEN}找到可用的镜像地址: $binary_url${NC}"
                 break
             else
-                echo -e "${YELLOW}镜像地址超时或不可用: $(echo "$base_url" | cut -d'/' -f3)，尝试下一个地址${NC}"
+                echo -e "${YELLOW}镜像地址超时或不可用: $url，尝试下一个地址${NC}"
                 continue
             fi
         done
@@ -684,84 +616,63 @@ install_with_binary() {
         
         # 下载二进制文件
         echo -e "${YELLOW}正在下载 Docker Compose ${compose_version}...${NC}"
-        
-        # 检查wget是否支持--show-progress参数
-        if wget --help 2>&1 | grep -q "\-\-show-progress"; then
-            # 新版本wget支持进度条
-            if ! wget --timeout=30 --tries=3 --show-progress -O "$binary_filename" "$binary_url"; then
-                echo -e "${RED}下载二进制文件失败，请检查网络连接或稍后重试${NC}"
-                return 1
-            fi
-        else
-            # 旧版本wget不支持进度条
-            if ! wget --timeout=30 --tries=3 -O "$binary_filename" "$binary_url"; then
-                echo -e "${RED}下载二进制文件失败，请检查网络连接或稍后重试${NC}"
-                return 1
-            fi
+        # 显示下载进度条
+        if ! wget --show-progress --progress=bar:force "$binary_url" -O "$binary_filename"; then
+            echo -e "${RED}下载二进制文件失败，请检查网络连接或稍后重试${NC}"
+            return 1
         fi
         
         # 下载sha256校验文件
         echo -e "${YELLOW}正在下载校验文件...${NC}"
-        if wget --timeout=15 --tries=2 -O "${binary_filename}.sha256" "$sha256_url" 2>/dev/null; then
-            echo -e "${YELLOW}验证文件完整性...${NC}"
-            # 检查是否有 sha256sum 工具
-            if command -v sha256sum &> /dev/null; then
-                # 计算下载文件的SHA256
-                local calculated_sha256=$(sha256sum "./$binary_filename" | awk '{print $1}')
-                # 读取校验文件中的SHA256
-                local expected_sha256=$(cat "./${binary_filename}.sha256" | awk '{print $1}')
-                
-                if [ "$calculated_sha256" = "$expected_sha256" ]; then
-                    echo -e "${GREEN}文件完整性验证通过${NC}"
-                else
-                    echo -e "${RED}文件完整性验证失败${NC}"
-                    echo -e "${YELLOW}期望的SHA256: $expected_sha256${NC}"
-                    echo -e "${YELLOW}计算的SHA256: $calculated_sha256${NC}"
-                    if ! confirm "文件可能损坏，是否继续安装？"; then
-                        rm -f "./$binary_filename" "./${binary_filename}.sha256"
-                        return 1
-                    fi
-                fi
-            else
-                echo -e "${YELLOW}未找到 sha256sum 工具，跳过完整性校验${NC}"
-            fi
-        else
+        # 显示下载进度条
+        if ! wget --show-progress --progress=bar:force "$sha256_url" -O "${binary_filename}.sha256"; then
             echo -e "${YELLOW}下载校验文件失败，无法验证完整性。${NC}"
             if ! confirm "是否继续安装而不进行完整性校验？"; then
                 rm -f "./$binary_filename"
                 return 1
             fi
+        else
+            echo -e "${YELLOW}验证文件完整性...${NC}"
+            # 计算下载文件的SHA256
+            local calculated_sha256=$(sha256sum "./$binary_filename" | awk '{print $1}')
+            # 读取校验文件中的SHA256
+            local expected_sha256=$(cat "./${binary_filename}.sha256" | awk '{print $1}')
+            
+            if [ "$calculated_sha256" = "$expected_sha256" ]; then
+                echo -e "${GREEN}文件完整性验证通过${NC}"
+            else
+                echo -e "${RED}文件完整性验证失败${NC}"
+                echo -e "${YELLOW}期望的SHA256: $expected_sha256${NC}"
+                echo -e "${YELLOW}计算的SHA256: $calculated_sha256${NC}"
+                if ! confirm "文件可能损坏，是否继续安装？"; then
+                    rm -f "./$binary_filename" "./${binary_filename}.sha256"
+                    return 1
+                fi
+            fi
         fi
         
         # 安装二进制文件
         echo -e "${YELLOW}安装Docker Compose...${NC}"
-        cp "./$binary_filename" /usr/local/bin/docker-compose
+        mv "./$binary_filename" /usr/local/bin/docker-compose
         chmod +x /usr/local/bin/docker-compose
         
         # 验证安装
-        if /usr/local/bin/docker-compose --version >/dev/null 2>&1; then
+        docker-compose --version
+        if [ $? -eq 0 ]; then
             echo -e "${GREEN}Docker Compose安装成功${NC}"
-            /usr/local/bin/docker-compose --version
             
             # 检查并添加PATH
             check_and_add_to_path
             
-            # 删除下载的文件
-            rm -f "./$binary_filename"
+            # 删除校验文件
             if [ -f "./${binary_filename}.sha256" ]; then
                 rm -f "./${binary_filename}.sha256"
+                echo -e "${GREEN}已删除校验文件 ${binary_filename}.sha256${NC}"
             fi
             
             return 0
         else
-            echo -e "${RED}Docker Compose安装失败，二进制文件可能不兼容当前系统${NC}"
-            # 提供调试信息
-            echo -e "${YELLOW}调试信息:${NC}"
-            echo -e "系统: $(uname -s)"
-            echo -e "架构: $(uname -m)"
-            echo -e "Libc信息: $(ldd --version 2>/dev/null | head -n1 || echo '未知')"
-            # 清理失败的文件
-            rm -f "/usr/local/bin/docker-compose" "./$binary_filename" "./${binary_filename}.sha256"
+            echo -e "${RED}Docker Compose安装失败${NC}"
             return 1
         fi
     fi
@@ -1029,6 +940,12 @@ show_full_status() {
         echo "未安装"
     fi
     
+    echo
+    
+    # Docker Buildx版本
+    echo -e "${YELLOW}[Docker Buildx版本信息]${NC}"
+    docker buildx version 2>/dev/null || echo "无法获取版本"
+    
     # 显示Docker镜像配置
     echo -e "\n${YELLOW}[Docker镜像配置]${NC}"
     if [ -f "/etc/docker/daemon.json" ]; then
@@ -1142,6 +1059,247 @@ EOF
     return 0
 }
 
+
+# 检查Docker Buildx是否安装
+check_docker_buildx_installed() {
+    if command -v docker-buildx &> /dev/null || \
+       [ -f ~/.docker/cli-plugins/docker-buildx ] || \
+       [ -f /usr/libexec/docker/cli-plugins/docker-buildx ] || \
+       [ -f /usr/local/lib/docker/cli-plugins/docker-buildx ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# 获取最新的Docker Buildx版本
+get_latest_docker_buildx_version() {
+    local latest_version=$(curl -s https://api.github.com/repos/docker/buildx/releases/latest | grep 'tag_name' | cut -d\" -f4)
+    if [ -z "$latest_version" ]; then
+        echo -e "${RED}无法获取最新版本号${NC}" >&2
+        return 1
+    fi
+    echo "${latest_version}"
+}
+
+
+# 通过二进制文件安装Docker Buildx
+install_docker_buildx_with_binary() {
+    echo -e "${YELLOW}准备通过二进制文件安装Docker Buildx...${NC}"
+    
+    # 获取指定版本号
+    local buildx_version=""
+    if [ -n "$1" ]; then
+        buildx_version=$1
+    else
+        # 获取最新版本号
+        buildx_version=$(get_latest_docker_buildx_version)
+        if [ $? -ne 0 ]; then
+            echo -e "${RED}无法获取最新版本号${NC}"
+            return 1
+        fi
+        echo -e "${YELLOW}将安装最新版本: $buildx_version${NC}"
+    fi
+    
+    # 获取系统架构
+    arch_suffix=$(get_system_arch)
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}无法确定适合您系统的Docker Buildx版本。${NC}"
+        return 1
+    fi
+    
+    # 特殊处理：Docker Buildx 使用的架构命名可能与系统不同
+    case "$arch_suffix" in
+        "x86_64")
+            buildx_arch="amd64"
+            ;;
+        "aarch64")
+            buildx_arch="arm64"
+            ;;
+        "armhf")
+            buildx_arch="arm-v7"
+            ;;
+        "armel")
+            buildx_arch="arm-v6"
+            ;;
+        *)
+            buildx_arch="$arch_suffix"
+            ;;
+    esac
+    
+    echo -e "${BLUE}检测到系统架构: $(uname -m) -> Docker Buildx架构: $buildx_arch${NC}"
+    
+    # 定义镜像地址基础URL列表，支持智能切换
+    local mirror_base_urls=(
+        "https://gh-proxy.com/https://github.com/docker/buildx/releases/download"
+        "https://ghproxy.net/https://github.com/docker/buildx/releases/download"
+        "https://github.com/docker/buildx/releases/download"
+    )
+    
+    local binary_filename="buildx-${buildx_version}.linux-${buildx_arch}"
+    local binary_url=""
+    
+    # 尝试不同的镜像地址，设置10秒超时
+    for base_url in "${mirror_base_urls[@]}"; do
+        # 构建完整的下载URL
+        local test_url="$base_url/${buildx_version}/${binary_filename}"
+        echo -e "${YELLOW}尝试镜像地址: $(echo "$base_url" | cut -d'/' -f3)${NC}"
+        
+        # 使用wget检查URL可用性，设置10秒超时
+        if timeout 10s wget --spider -q "$test_url"; then
+            binary_url="$test_url"
+            echo -e "${GREEN}找到可用的镜像地址: $(echo "$base_url" | cut -d'/' -f3)${NC}"
+            break
+        else
+            echo -e "${YELLOW}镜像地址超时或不可用: $(echo "$base_url" | cut -d'/' -f3)，尝试下一个地址${NC}"
+            continue
+        fi
+    done
+    
+    if [ -z "$binary_url" ]; then
+        echo -e "${RED}所有镜像地址均超时或不可用，请检查网络连接或稍后重试${NC}"
+        return 1
+    fi
+    
+    # 创建Docker CLI插件目录
+    local cli_plugins_dir="$HOME/.docker/cli-plugins"
+    if [ ! -d "$cli_plugins_dir" ]; then
+        echo -e "${YELLOW}创建Docker CLI插件目录: $cli_plugins_dir${NC}"
+        mkdir -p "$cli_plugins_dir"
+    fi
+    
+    # 下载二进制文件
+    echo -e "${YELLOW}正在下载 Docker Buildx ${buildx_version}...${NC}"
+    
+    # 检查wget是否支持--show-progress参数
+    if wget --help 2>&1 | grep -q "\-\-show-progress"; then
+        # 新版本wget支持进度条
+        if ! wget --timeout=30 --tries=3 --show-progress -O "$binary_filename" "$binary_url"; then
+            echo -e "${RED}下载二进制文件失败，请检查网络连接或稍后重试${NC}"
+            return 1
+        fi
+    else
+        # 旧版本wget不支持进度条
+        if ! wget --timeout=30 --tries=3 -O "$binary_filename" "$binary_url"; then
+            echo -e "${RED}下载二进制文件失败，请检查网络连接或稍后重试${NC}"
+            return 1
+        fi
+    fi
+    
+    # 安装二进制文件
+    echo -e "${YELLOW}安装Docker Buildx...${NC}"
+    chmod +x "$binary_filename"
+    mv "$binary_filename" "$cli_plugins_dir/docker-buildx"
+    
+    # 验证安装
+    if docker buildx version >/dev/null 2>&1; then
+        echo -e "${GREEN}Docker Buildx安装成功${NC}"
+        docker buildx version
+        
+        # 删除下载的文件
+        rm -f "$binary_filename"
+        
+        return 0
+    else
+        echo -e "${RED}Docker Buildx安装失败，二进制文件可能不兼容当前系统${NC}"
+        # 提供调试信息
+        echo -e "${YELLOW}调试信息:${NC}"
+        echo -e "系统: $(uname -s)"
+        echo -e "架构: $(uname -m)"
+        echo -e "Libc信息: $(ldd --version 2>/dev/null | head -n1 || echo '未知')"
+        # 清理失败的文件
+        rm -f "$cli_plugins_dir/docker-buildx" "$binary_filename"
+        return 1
+    fi
+}
+
+# 卸载Docker Buildx
+uninstall_docker_buildx() {
+    echo -e "${GREEN}"
+    echo "=============================================="
+    echo "       Docker Buildx 卸载警告"
+    echo "=============================================="
+    echo -e "${NC}此操作将删除Docker Buildx可执行文件"
+    echo -e "${GREEN}=============================================="
+    echo -e "${NC}"
+
+    if ! check_docker_buildx_installed; then
+        echo -e "${RED}未检测到Docker Buildx安装，无需卸载。${NC}"
+        return 1
+    fi
+
+    echo -e "${GREEN}检测到系统已安装Docker Buildx。${NC}"
+    docker buildx version
+
+    if ! confirm "确定要卸载Docker Buildx吗"; then
+        echo -e "${GREEN}已取消卸载操作。${NC}"
+        return 1
+    fi
+
+    echo -e "${GREEN}开始卸载Docker Buildx...${NC}"
+    
+    # 检测安装方式并执行相应卸载步骤
+    if [ -f "$HOME/.docker/cli-plugins/docker-buildx" ]; then
+        echo -e "${BLUE}检测到Docker Buildx是通过二进制文件安装的。${NC}"
+        echo -e "${BLUE}删除Docker Buildx可执行文件...${NC}"
+        rm -f "$HOME/.docker/cli-plugins/docker-buildx"
+    elif command -v apt &> /dev/null && dpkg -l | grep -q docker-buildx-plugin; then
+        echo -e "${BLUE}检测到Docker Buildx是通过APT包管理器安装的。${NC}"
+        echo -e "${BLUE}使用APT包管理器卸载Docker Buildx...${NC}"
+        apt remove -y docker-buildx-plugin
+    elif command -v yum &> /dev/null && rpm -qa | grep -q docker-buildx-plugin; then
+        echo -e "${BLUE}检测到Docker Buildx是通过YUM包管理器安装的。${NC}"
+        echo -e "${BLUE}使用YUM包管理器卸载Docker Buildx...${NC}"
+        yum remove -y docker-buildx-plugin
+    elif command -v dnf &> /dev/null && rpm -qa | grep -q docker-buildx-plugin; then
+        echo -e "${BLUE}检测到Docker Buildx是通过DNF包管理器安装的。${NC}"
+        echo -e "${BLUE}使用DNF包管理器卸载Docker Buildx...${NC}"
+        dnf remove -y docker-buildx-plugin
+    else
+        echo -e "${RED}无法确定Docker Buildx的安装方式，无法进行卸载。${NC}"
+        return 1
+    fi
+
+    echo -e "${GREEN}Docker Buildx卸载完成!${NC}"
+    return 0
+}
+
+# Docker Buildx安装核心逻辑
+install_docker_buildx_core() {
+    # 检查是否已安装 Docker Buildx
+    if check_docker_buildx_installed; then
+        echo -e "${YELLOW}Docker Buildx 已安装在系统中。${NC}"
+        docker buildx version
+        if ! confirm "是否需要卸载现有 Docker Buildx 并重新安装？"; then
+            echo -e "${GREEN}选择保留现有Docker Buildx环境。${NC}"
+            return 1
+        fi
+
+        # 用户确认重新安装，先执行卸载操作
+        echo -e "${YELLOW}开始卸载现有 Docker Buildx...${NC}"
+        uninstall_docker_buildx
+        if [ $? -ne 0 ]; then
+            echo -e "${GREEN}选择保留现有Docker Buildx环境。${NC}"
+            return 1
+        fi
+        echo -e "${GREEN}现有 Docker Buildx 已成功卸载，继续进行安装。${NC}"
+
+        # 卸载后提示用户是否继续安装
+        if ! confirm "是否继续安装 Docker Buildx？"; then
+            echo -e "${GREEN}用户选择跳过安装。${NC}"
+            return 1
+        fi
+    else
+        echo -e "${YELLOW}未检测到 Docker Buildx 环境。${NC}"
+        if ! confirm "是否需要安装 Docker Buildx？"; then
+            echo -e "${GREEN}用户选择跳过安装。${NC}"
+            return 1
+        fi
+    fi
+
+    # 直接使用二进制文件安装
+    install_docker_buildx_with_binary
+}
 
 
 # Docker 容器管理
@@ -1401,49 +1559,64 @@ show_menu() {
     echo -e "${GREEN}========================================================${NC}"
     echo -e "${ORANGE}           	   Docker 管理工具箱${NC}"
     echo -e "${GREEN}========================================================${NC}"
-    show_brief_status  # 状态显示
-    echo -e "${GREEN}1. 安装 Docker${NC}"
-    echo -e "${GREEN}2. 卸载 Docker${NC}"
-    echo -e "${GREEN}3. 安装指定版本 Docker${NC}"
-    echo -e "${GREEN}4. 安装 Docker Compose${NC}"
-    echo -e "${GREEN}5. 卸载 Docker Compose${NC}"
-    echo -e "${GREEN}6. 安装指定版本 Docker Compose${NC}"
-    echo -e "${GREEN}7. 查看Docker全局状态 ★${NC}"
-    echo -e "${GREEN}8. Docker容器管理${NC}"
-    echo -e "${GREEN}9. Docker镜像管理${NC}"
+    show_brief_status
+    echo -e "${GREEN} 1. 安装 Docker${NC}"
+    echo -e "${GREEN} 2. 卸载 Docker${NC}"
+    echo -e "${GREEN} 3. 安装指定版本 Docker${NC}"
+    echo -e "${GREEN} 4. 安装 Docker Compose${NC}"
+    echo -e "${GREEN} 5. 卸载 Docker Compose${NC}"
+    echo -e "${GREEN} 6. 安装指定版本 Docker Compose${NC}"
+    echo -e "${GREEN} 7. 查看Docker全局状态 ★${NC}"
+    echo -e "${GREEN} 8. Docker容器管理${NC}"
+    echo -e "${GREEN} 9. Docker镜像管理${NC}"
     echo -e "${GREEN}10. Docker网络管理${NC}"
     echo -e "${GREEN}11. Docker卷管理${NC}"
     echo -e "${GREEN}12. 更新Docker镜像地址${NC}"
-    echo -e "${GREEN}0. 退出脚本${NC}"
+    echo -e "${GREEN}13. 安装 Docker Buildx${NC}"
+    echo -e "${GREEN}14. 卸载 Docker Buildx${NC}"
+    echo -e "${GREEN}--------------------------------------------------------${NC}"
+    echo -e "${GREEN}00. 获取最新脚本并重新运行${NC}"
+    echo -e "${GREEN} 0. 退出脚本${NC}"
     echo -e "${GREEN}========================================================${NC}"
-    echo -e "${NC}"
+    echo
 }
-
 
 
 main() {
     while true; do
         show_menu
         stty erase ^H
-        read -p "请输入选项编号 (0-12): " choice
+        read -p "请输入选项编号 (0-14|00): " choice
         case "$choice" in
-            1) install_docker_core ;;
-            2) uninstall_docker_core ;;
-            3) install_specific_docker ;;
-            4) install_docker_compose_core ;;
-            5) uninstall_docker_compose_core ;;
-            6) install_specific_docker_compose ;;
-            7)
-                clear
-                show_full_status
-                read -p "按回车键返回主菜单..."
-                continue
-                ;;
-            8) docker_container_manage ;;
-            9) docker_image_manage ;;
+            1)  install_docker_core ;;
+            2)  uninstall_docker_core ;;
+            3)  install_specific_docker ;;
+            4)  install_docker_compose_core ;;
+            5)  uninstall_docker_compose_core ;;
+            6)  install_specific_docker_compose ;;
+            7)  clear; show_full_status; read -p "按回车键返回主菜单..." ;;
+            8)  docker_container_manage ;;
+            9)  docker_image_manage ;;
             10) docker_network_manage ;;
             11) docker_volume_manage ;;
             12) update_docker_mirror ;;
+            13) install_docker_buildx_core ;;
+            14) uninstall_docker_buildx ;;
+            00)
+                echo -e "${YELLOW}正在拉取最新脚本...${NC}"
+                for url in \
+                  "https://gitee.com/stu2116Edward/docker-tools/raw/master/docker_tools.sh" \
+                  "https://raw.githubusercontent.com/stu2116Edward/Public-study-notes/refs/heads/main/Docker%20Notes/Docker_Shell/docker_tools.sh"
+                do
+                    if curl -sS -O "$url" && [[ -s docker_tools.sh ]]; then
+                        chmod +x docker_tools.sh
+                        echo -e "${GREEN}获取成功，即将重启脚本...${NC}"
+                        exec ./docker_tools.sh
+                    fi
+                done
+                echo -e "${RED}所有源均不可用，请检查网络！${NC}"
+                read -p "按回车键返回主菜单..."
+                ;;
             0)
                 echo -e "${GREEN}已退出脚本。${NC}"
                 exit 0
@@ -1453,7 +1626,7 @@ main() {
                 read -p "按回车键返回主菜单..."
                 ;;
         esac
-    done   
+    done
 }
 
 # 执行主程序
