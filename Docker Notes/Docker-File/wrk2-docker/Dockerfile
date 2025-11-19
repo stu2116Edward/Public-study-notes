@@ -38,7 +38,7 @@ FROM alpine:3.12
 RUN apk add --no-cache luajit libgcc libstdc++
 
 # 拷贝编译好的 wrk 二进制和 LuaJIT 库
-COPY --from=build /wrk2/wrk /usr/bin/wrk2
+COPY --from=builder /wrk2/wrk /usr/local/bin/wrk
 COPY --from=builder /usr/local/lib/libluajit-5.1.so.2* /usr/lib/
 
 ENTRYPOINT ["/usr/local/bin/wrk"]
