@@ -213,6 +213,12 @@ docker run -d --name my_container -v /host/path:/container/path:ro nginx
 ```
 docker search <镜像名称>
 ```
+登陆到docker官方镜像仓库：
+```
+docker login -u 账户名称
+```
+输入密码  
+
 登录私有dockerhub仓库:
 ```
 docker login <IP/域名>
