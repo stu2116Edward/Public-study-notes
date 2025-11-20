@@ -1,0 +1,76 @@
+# Stage 1: Builder
+FROM alpine:latest AS builder
+
+WORKDIR /tmp
+
+# Install build dependencies and fetch latest versions
+RUN set -eux && \
+    apk add --no-cache \
+    build-base \
+    curl \
+    linux-headers \
+    perl \
+    sed \
+    grep \
+    tar \
+    bash && \
+    NGINX_VERSION=$(wget -q -O - https://nginx.org/en/download.html | grep -oE 'nginx-[0-9]+\.[0-9]+\.[0-9]+' | head -n1 | cut -d'-' -f2) && \
+    OPENSSL_VERSION=$(wget -q -O - https://www.openssl.org/source/ | grep -oE 'openssl-[0-9]+\.[0-9]+\.[0-9]+' | head -n1 | cut -d'-' -f2) && \
+    ZLIB_VERSION=$(wget -q -O - https://zlib.net/ | grep -oE 'zlib-[0-9]+\.[0-9]+\.[0-9]+' | head -n1 | cut -d'-' -f2) && \
+    PCRE2_VERSION=$(curl -sL https://github.com/PCRE2Project/pcre2/releases/ | grep -ioE 'pcre2-[0-9]+\.[0-9]+' | grep -v RC | cut -d'-' -f2 | sort -Vr | head -n1) && \
+    \
+    echo "=============Version Numbers=============" && \
+    echo "NGINX_VERSION=${NGINX_VERSION}" && \
+    echo "OPENSSL_VERSION=${OPENSSL_VERSION}" && \
+    echo "ZLIB_VERSION=${ZLIB_VERSION}" && \
+    echo "PCRE2_VERSION=${PCRE2_VERSION}" && \
+    \
+    curl -fSL https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz -o nginx.tar.gz && \
+    tar xzf nginx.tar.gz && \
+    \
+    curl -fSL https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz -o openssl.tar.gz && \
+    tar xzf openssl.tar.gz && \
+    \
+    curl -fSL https://fossies.org/linux/misc/zlib-${ZLIB_VERSION}.tar.gz -o zlib.tar.gz && \
+    tar xzf zlib.tar.gz && \
+    \
+    curl -fSL https://github.com/PCRE2Project/pcre2/releases/download/pcre2-${PCRE2_VERSION}/pcre2-${PCRE2_VERSION}.tar.gz -o pcre2.tar.gz && \
+    tar xzf pcre2.tar.gz && \
+    \
+    cd nginx-${NGINX_VERSION} && \
+    ./configure \
+    --prefix=/etc/nginx \
+    --user=root \
+    --group=root \
+    --with-compat \
+    --with-cc-opt="-static" \
+    --with-ld-opt="-static" \
+    --with-openssl=../openssl-${OPENSSL_VERSION} \
+    --with-zlib=../zlib-${ZLIB_VERSION} \
+    --with-pcre=../pcre2-${PCRE2_VERSION} \
+    --with-pcre-jit \
+    --with-http_ssl_module \
+    --with-http_v2_module \
+    --with-http_gzip_static_module \
+    --with-http_stub_status_module \
+    --with-threads && \
+    make -j$(nproc) && \
+    make install && \
+    strip /etc/nginx/sbin/nginx
+
+# Stage 2: Final image
+FROM gcr.io/distroless/static
+
+# Copy the statically compiled Nginx binary and necessary directories
+COPY --from=builder /etc/nginx/sbin/nginx /nginx
+COPY --from=builder /etc/nginx/conf /etc/nginx/conf
+COPY --from=builder /etc/nginx/html /etc/nginx/html
+COPY --from=builder /etc/nginx/logs /etc/nginx/logs
+
+# Expose ports
+EXPOSE 80 443
+
+# Start Nginx
+# The container runs as root by default, which is necessary for the master process
+# to bind to privileged ports. The worker processes are also configured to run as root.
+CMD ["/nginx", "-g", "daemon off;"]
