@@ -6,6 +6,15 @@
 - [cpp项目Docker镜像构建流程](#cpp项目Docker镜像构建流程)
 - [Go项目Docker镜像构建流程](#Go项目Docker镜像构建流程)
 
+### 构建时写入日志
+写入日志排查问题
+```
+docker build -t 账户名称/项目名称 . 2>&1 | tee build.log
+```
+```
+docker build -t 账户名称/项目名称 . 2>&1 | tee build_$(date +%Y%m%d_%H%M%S).log
+```
+
 ## Docker Buildx 手动安装
 
 ### 下载 Buildx 二进制文件
