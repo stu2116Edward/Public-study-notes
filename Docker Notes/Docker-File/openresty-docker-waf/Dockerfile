@@ -9,7 +9,7 @@ WORKDIR /build
 # 安装构建依赖
 RUN set -eux && apk add --no-cache \
     build-base \
-    curl \
+    curl curl-dev \
     git \
     bash \
     linux-headers \
@@ -59,7 +59,9 @@ RUN set -eux && apk add --no-cache \
     # ModSecurity模块和ModSecurity-nginx模块
     git clone --depth 1 https://github.com/owasp-modsecurity/ModSecurity \
     && cd ModSecurity \
-    && git submodule update --init --depth 1 \
+    && git config --global advice.detachedHead false \
+    && git config --global init.defaultBranch main \
+    && git submodule update --init --recursive --depth 1 || true \
     && ./build.sh \
     && ./configure \
     && make -j$(nproc) \
@@ -86,7 +88,7 @@ RUN set -eux && apk add --no-cache \
     echo "ZLIB_VERSION=${ZLIB_VERSION}" && \
     echo "ZSTD_VERSION=${ZSTD_VERSION}" && \
     echo "CORERULESET_VERSION=${CORERULESET_VERSION}" && \
-    echo "PCRE_VERSION=${CORERULESET_VERSION}" && \
+    echo "PCRE_VERSION=${PCRE_VERSION}" && \
     \
     # fallback 以防 curl/grep 失败
     OPENRESTY_VERSION="${OPENRESTY_VERSION:-1.21.4.1}" && \
@@ -96,7 +98,7 @@ RUN set -eux && apk add --no-cache \
     CORERULESET_VERSION="${CORERULESET_VERSION:-4.15.0}" && \
     PCRE_VERSION="${PCRE_VERSION:-8.45}" && \
     \
-    echo "==> Using versions: openresty-${OPENRESTY_VERSION}, openssl-${OPENSSL_VERSION}, zlib-${ZLIB_VERSION}, ZSTD_VERSION-${ZSTD_VERSION}, CORERULESET_VERSION-${CORERULESET_VERSION}, CORERULESET_VERSION-${CORERULESET_VERSION}" && \
+    echo "==> Using versions: openresty-${OPENRESTY_VERSION}, openssl-${OPENSSL_VERSION}, zlib-${ZLIB_VERSION}, zstd-${ZSTD_VERSION}, coreruleset-${CORERULESET_VERSION}, pcre-${PCRE_VERSION}" && \
     \
     curl -fSL https://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz -o openresty.tar.gz && \
     # curl -fSL https://github.com/openresty/openresty/releases/download/v${OPENRESTY_VERSION}/openresty-${OPENRESTY_VERSION}.tar.gz  && \
@@ -111,19 +113,28 @@ RUN set -eux && apk add --no-cache \
     curl -fSL https://sourceforge.net/projects/pcre/files/pcre/${PCRE_VERSION}/pcre-${PCRE_VERSION}.tar.gz/download -o pcre.tar.gz && \
     tar xzf pcre.tar.gz && \
     \
-    # tree \
-    # && \
-  
     cd openresty-${OPENRESTY_VERSION} && \
     # 编译生成.so模块
     ./configure \
     --with-compat \
+    --with-cc-opt="-O2 -fPIC" \
+    --with-ld-opt="-Wl,-rpath,/usr/local/lib" \
     --add-dynamic-module=../ngx_brotli \
-    # --add-dynamic-module=../ModSecurity-nginx \
+    --add-dynamic-module=../ModSecurity-nginx \
     --add-dynamic-module=../zstd-nginx-module \
     && \
-    make modules \
-    # && mv /usr/src/nginx-${NGINX_VERSION} /usr/src/nginx
+    make -j$(nproc) \
+    && \
+    mkdir -p /tmp/nginx-modules \
+    && \
+    # 复制编译好的模块 - 改进搜索逻辑
+    find . -name "*.so" -type f | grep -E "(ngx_|brotli|zstd|modsecurity)" | while read module; do \
+        echo "Found module: $module"; \
+        cp "$module" /tmp/nginx-modules/; \
+    done \
+    && \
+    # 确保目录存在且模块已复制
+    ls -la /tmp/nginx-modules/ \
     && \
     # 查看未压缩前的大小
     du -sh /usr/local/modsecurity/lib && \
@@ -139,13 +150,15 @@ FROM stu2116edwardhu/openresty:latest
 USER root
 
 COPY --from=builder /usr/local/modsecurity/lib/* /usr/lib/
+RUN mkdir -p /usr/local/nginx/modules
+COPY --from=builder /tmp/nginx-modules/*.so /usr/local/nginx/modules/
 
 # 环境变量指定动态库搜索路径
-ENV LD_LIBRARY_PATH=/usr/local/modsecurity/lib
+ENV LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH
 
 # 创建配置目录并下载必要文件
 RUN set -eux \
-    && apk add --no-cache lua5.1 lua5.1-dev pcre pcre-dev yajl yajl-dev curl \
+    && apk add --no-cache lua5.1 pcre pcre2 yajl lmdb libxml2 libxslt geoip brotli-libs zstd-libs curl wget \
     && mkdir -p /etc/nginx/modsec/plugins \
     && CORERULESET_VERSION=$(curl -s https://api.github.com/repos/coreruleset/coreruleset/releases/latest | grep -oE '"tag_name": "[^"]+' | cut -d'"' -f4 | sed 's/v//') \
     && wget https://github.com/coreruleset/coreruleset/archive/v${CORERULESET_VERSION}.tar.gz \
@@ -168,11 +181,10 @@ RUN set -eux \
     && echo 'Include /etc/nginx/modsec/plugins/*-before.conf' >> /etc/nginx/modsec/modsecurity.conf \
     && echo 'Include /etc/nginx/modsec/rules/*.conf' >> /etc/nginx/modsec/modsecurity.conf \
     && echo 'Include /etc/nginx/modsec/plugins/*-after.conf' >> /etc/nginx/modsec/modsecurity.conf \
-    && ldconfig /usr/lib \
     && wget https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/unicode.mapping -O /etc/nginx/modsec/unicode.mapping \
     && apk del curl \
     && rm -rf /var/cache/apk/*
 
 EXPOSE 80 443
-WORKDIR /etc/nginx
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+WORKDIR /usr/local/nginx
+CMD ["nginx", "-g", "daemon off;"]
