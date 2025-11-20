@@ -215,7 +215,7 @@ docker search <镜像名称>
 ```
 登陆到docker官方镜像仓库：
 ```
-docker login -u 账户名称
+docker login -u <账户名称>
 ```
 输入密码  
 
