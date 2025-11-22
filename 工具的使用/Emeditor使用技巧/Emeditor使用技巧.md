@@ -22,3 +22,5 @@
 
 替换为**空**  
 点击**替换全部**  
+
+<img width="898" height="568" alt="Emeditor-rmkh" src="https://github.com/user-attachments/assets/9bd10156-6d0e-4530-a757-0747d958ef70" />  
