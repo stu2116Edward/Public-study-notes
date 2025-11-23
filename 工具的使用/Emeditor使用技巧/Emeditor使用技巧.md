@@ -1,5 +1,8 @@
 # Emeditor 使用技巧
 
+下载地址：https://edwardhu.lanzouu.com/b00uzmylaj  
+密码：hgvj  
+
 ### 使用 Emeditor 删除文件中的空行
 使用快捷键`Ctrl + H`替换  
 勾选使用**正则表达式**  
@@ -24,3 +27,4 @@
 点击**替换全部**  
 
 <img width="898" height="568" alt="Emeditor-rmkh" src="https://github.com/user-attachments/assets/9bd10156-6d0e-4530-a757-0747d958ef70" />  
+
