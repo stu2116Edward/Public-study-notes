@@ -11,7 +11,7 @@ bash reinstall.sh ubuntu 20.04
 ```
 
 ### 常用版本
-<per>
+<pre>
 centos 7|8|9 (8|9 为 stream 版本)
 oracle 7|8|9
 alma 8|9
@@ -24,7 +24,7 @@ alpine 3.16|3.17|3.18|3.19
 kali
 arch
 gentoo
-</per>
+</pre>
 
 ## Windows系统
 ```
@@ -32,17 +32,18 @@ bash reinstall.sh windows --image-name 'Windows 7 Ultimate' --lang zh-cn
 ```
 
 ### 常用版本
-<per>
+<pre>
 Windows 7 Ultimate
 Windows 10 Enterprise LTSC 2021
 Windows 11 Pro
 Windows Server 2022 SERVERDATACENTER
-</per>
+</pre>
 
 
 ### 初始端口用户名密码
-<per>
+<pre>
 系统			用户名		密码
 Linux	 		root			123@@@
 Windows (iso)	administrator	123@@@
-</per>
+</pre>
+
