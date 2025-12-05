@@ -1,5 +1,10 @@
 # DD脚本重装系统
 
+## 查看当前Linux系统版本
+```
+lsb_release -a
+```
+
 ## 安装脚本
 ```
 curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh
@@ -49,5 +54,3 @@ Windows Server 2022 SERVERDATACENTER
 Linux	 		root			123@@@
 Windows (iso)	administrator	123@@@
 </pre>
-
-
