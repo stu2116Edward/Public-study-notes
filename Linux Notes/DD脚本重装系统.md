@@ -4,6 +4,9 @@
 ```
 curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh
 ```
+```
+chmod +x reinstall.sh
+```
 
 ## Linux系统
 ```
@@ -46,4 +49,5 @@ Windows Server 2022 SERVERDATACENTER
 Linux	 		root			123@@@
 Windows (iso)	administrator	123@@@
 </pre>
+
 
