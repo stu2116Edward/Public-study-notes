@@ -17,6 +17,14 @@ chmod +x reinstall.sh
 ```
 bash reinstall.sh ubuntu 20.04
 ```
+重启
+```
+reboot
+```
+重启后查看状态
+```
+tail -fn+1 /reinstall.log
+```
 
 ### 常用版本
 <pre>
@@ -54,3 +62,4 @@ Windows Server 2022 SERVERDATACENTER
 Linux	 		root			123@@@
 Windows (iso)	administrator	123@@@
 </pre>
+
