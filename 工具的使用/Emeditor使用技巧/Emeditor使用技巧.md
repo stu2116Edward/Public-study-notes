@@ -13,6 +13,7 @@
 <img width="899" height="524" alt="屏幕截图 2025-12-06 232132" src="https://github.com/user-attachments/assets/722fda0f-3d95-4ce3-9d12-a50a9586a07c" />  
 
 如果要新增在`^`和`).*$`中间增加`(?=.*关键字)`  
+测试正则表达式：https://regex101.com  
 在 EmEditor（PCRE 引擎）里，只要在“关键字”里遇到下面这 14 个字符，就必须先转义，否则正则会被拆错：  
 <pre>
 \     ^     $     .     |     ?     *     +     (  )     [  ]     {  }
@@ -54,5 +55,6 @@
 点击**替换全部**  
 
 <img width="898" height="568" alt="Emeditor-rmkh" src="https://github.com/user-attachments/assets/9bd10156-6d0e-4530-a757-0747d958ef70" />  
+
 
 
