@@ -1,5 +1,8 @@
 # Public-study-notes
 
+## Download
+Download Specific Directory: [DownGit](https://minhaskamal.github.io/DownGit)
+
 ## Introduction
 This is my study note repository. If you find any inaccuracies or have suggestions for improvement, please feel free to raise an issue or send me an email. I will rectify it in a timely manner.  
 这是我的学习笔记仓库。如果您发现内容有任何错误或有改进建议，欢迎提出或给我发邮件，我会及时纠正。
