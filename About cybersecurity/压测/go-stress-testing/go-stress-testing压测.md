@@ -9,7 +9,7 @@ go-stress-testing 是go语言实现的简单压测工具，源码开源、支持
 [go-stress-testing](https://github.com/link1st/go-stress-testing/releases) 下载地址
 
 clone 项目源码运行的时候，需要将项目 clone 到 $GOPATH 目录下  
-有 go 环境安装  
+用 go 环境安装  
 安装最新版本 `go install github.com/link1st/go-stress-testing@latest`  
 安装路径在 `echo $GOBIN` 目录下，配置了 `export PATH=$PATH:$GOROOT/bin:$GOBIN` 可以在任意目录下执行  
 查看帮助信息 `go-stress-testing --help`  
@@ -207,3 +207,4 @@ docker exec -it go-stress -c 10 -n 10 -u www.example.com
 - `最短耗时`: 压测中，单个请求最短的响应时长
 - `平均耗时`: 压测中，单个请求平均的响应时长
 - `错误码`: 压测中，接口返回的 code 码:返回次数的集合
+
