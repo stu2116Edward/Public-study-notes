@@ -32,6 +32,8 @@ nvidia-smi
 ```
 RTX 4090 # 根据你自己的显卡而定
 ```
+<img width="1109" height="598" alt="vLLM1" src="https://github.com/user-attachments/assets/1022e74b-fecc-4763-b8ed-00e8bc3695d5" />
+
 
 ## Ubuntu
 确认你的 Ubuntu 系统和显卡信息：  
@@ -144,7 +146,7 @@ python -m vllm.entrypoints.openai.api_server \
   --tool-call-parser hermes
 ```
 成功后会看到：  
-
+<img width="1129" height="615" alt="vLLM2" src="https://github.com/user-attachments/assets/1b05091e-d4e3-4420-9c1f-4b8e81ee0e22" />
 
 说明 API 已启动成功
 
@@ -178,8 +180,7 @@ openclaw onboard
 添加模型：  
 模型提供商必须选择自定义的：  
 
-
-
+<img width="1363" height="747" alt="vLLM3" src="https://github.com/user-attachments/assets/fd88bf96-12e7-4b19-9bf2-642eb308dbe3" />
 
 Base URL：http://127.0.0.1:8000/v1
 
@@ -187,7 +188,10 @@ API key：123456 (随便填写)
 
 模型名称：Qwen2.5-14B-Instruct-AWQ
 
+<img width="1376" height="759" alt="vLLM4" src="https://github.com/user-attachments/assets/080745a1-e92b-41a2-821d-da719a7ceeee" />
+
 最后保存即可！
+
 
 
 ### OpenClaw 推荐参数（优化）
