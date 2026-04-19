@@ -11,15 +11,21 @@ Open the Command Palette (**Ctrl+Shift+P**).
 打开命令调板（**Ctrl+Shift+P**）。
 
 
-Run the Preferences: Configure Runtime Arguments command.  
+`Run the Preferences: Configure Runtime Arguments command`.  
 运行 首选项：配置运行时参数命令。
 
 This command opens a argv.json file to configure runtime arguments. You might see some default arguments there already.  
-此命令将打开 argv.json 文件，以配置运行时参数。您可能已经在该文件中看到了一些默认参数。
+此命令将打开 `argv.json` 文件，以配置运行时参数。您可能已经在该文件中看到了一些默认参数。
 
 
 Add "disable-chromium-sandbox": true.    
 添加 "disable-chromium-sandbox": true 。
+```
+	// Disable Chromium sandbox
+	"disable-chromium-sandbox": true,
+```
+<img width="1754" height="978" alt="屏幕截图 2026-04-19 123343" src="https://github.com/user-attachments/assets/a6716a0e-668a-4a72-8b03-d0f99558f9e2" />  
+
 
 Restart VS Code.    
 重新启动 VS Code。
