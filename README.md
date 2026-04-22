@@ -1,125 +1,88 @@
-# Public-study-notes
+# 📚 Public Study Notes / 公共学习笔记
 
-## Download
-Download Specific Directory: [DownGit](https://minhaskamal.github.io/DownGit)
+## 📥 Download Specific Directory / 下载特定目录
+Use [DownGit](https://minhaskamal.github.io/DownGit) to easily download a specific folder from this repository.  
+使用 [DownGit](https://minhaskamal.github.io/DownGit) 轻松下载仓库中的指定文件夹。
 
-## Introduction
-This is my study note repository. If you find any inaccuracies or have suggestions for improvement, please feel free to raise an issue or send me an email. I will rectify it in a timely manner.  
-这是我的学习笔记仓库。如果您发现内容有任何错误或有改进建议，欢迎提出或给我发邮件，我会及时纠正。
+## 📖 Introduction / 简介
+This is my personal study notes repository. If you find any errors or have suggestions for improvement, feel free to open an Issue or send an email — I will correct them promptly.  
+这是我的个人学习笔记仓库。如果发现任何错误或有改进建议，欢迎提交 Issue 或发送邮件，我会及时修正。
 
-## Contribution
-If you have your own study notes to share, I would be happy to upload them as well. Let's grow together through knowledge sharing.  
-如果你有自己的学习笔记要分享，我也很乐意上传，让我们一起通过知识分享成长。
+> **Note / 注意**  
+> If you have your own study notes to share, I'm happy to help upload them. Let's grow together through knowledge sharing.  
+> 若您有自己的学习笔记愿意分享，我也很乐意协助上传。让我们在知识共享中共同成长。
 
-## Language
-I understand that language can be a barrier. If there are specific language requirements or if you notice any translation issues, I will manually adjust the translations to better serve our diverse community.  
-我明白语言可能是一个障碍。如果有特定的语言需求或发现任何翻译问题，我会手动调整翻译，以更好地服务我们的多元文化社区。
+## 🌐 Language Support / 语言支持
+Language should not be a barrier. If you have specific language needs or notice translation issues, you can use the following free online translation tools:  
+语言不应该是障碍。如有特定的语言需求或发现翻译问题，可以使用以下免费在线翻译工具：
 
-## Support
-If you find my notes helpful, please consider giving this repository a star. Every star is a vote of confidence and encouragement for me to continue updating and sharing more knowledge.  
-如果您觉得我的笔记对您有所帮助，请考虑给这个仓库点个星。每一个星都是对我继续更新和分享更多知识的信任和鼓励。
+- **[Google Translate](https://translate.google.com/)** — Free, supports 100+ languages, text and webpage translation. / 免费、支持 100+ 种语言，可翻译文本和网页。
+- **[Microsoft Translator](https://www.bing.com/translator)** — Free, integrates with Office and Windows, supports real-time conversation translation. / 免费、与 Office 和 Windows 深度集成，支持实时对话翻译。
 
-> [!Tip]  
-If you wish to contribute or have any questions, you can reach me at [stu2116edward@outlook.com](mailto:stu2116edward@outlook.com).
+## ⭐ Support / 支持
+If you find these notes helpful, please give this repository a Star. Every star is a vote of trust and encouragement for me to continue sharing.  
+如果这些笔记对您有帮助，请给这个仓库一个 Star。每一颗星都是对我持续分享的信任与鼓励。
 
-**注意**：如果您希望贡献或有任何问题，可以通过 [stu2116edward@outlook.com](mailto:stu2116edward@outlook.com) 与我联系。
+## 📬 Contact & Contribution / 联系与贡献
+- Email / 邮箱: [stu2116edward@outlook.com](mailto:stu2116edward@outlook.com)
+- Issues and pull requests are welcome. / 欢迎提交 Issue 和 Pull Request。
 
+---
 
-## Common online tools：  
+## 🛠️ Useful Online Tools / 常用在线工具
 
-<details>
-    <summary>Click to expand details</summary>
-   
-   1. **菜鸟教程** - [Runoob](https://www.runoob.com/) 
-      - 菜鸟成长是一个提供各种编程语言和技术教程的网站，适合初学者和进阶学习者。
+### 📚 Tutorials / 学习教程
+- [Runoob / 菜鸟教程](https://www.runoob.com/)
+- [Quick Reference / 速查表](https://quickref.cn/)
+- [Cnblogs / 博客园](https://www.cnblogs.com/)
+- [Juejin / 稀土掘金](https://juejin.cn/)
+- [LINUX DO](https://linux.do/)
 
-   2. **Quick Reference** - [Quick Reference](https://quickref.cn/) 
-      - 为了方便开发人员查阅技术栈，分享这份快速参考备忘清单【速查表】。
-   
-   3. **哔哩哔哩** - [bilibili](https://www.bilibili.com/) 
-      - 哔哩哔哩是一个视频分享网站，用户可以观看、上传、分享视频。
-   
-   4. **博客园** - [博客园](https://www.cnblogs.com/) 
-      - 博客园是一个面向开发者的知识分享社区。
-   
-   5. **稀土掘金** - [稀土掘金](https://juejin.cn/) 
-      - 稀土掘金是一个技术社区，提供各种技术文章和资讯。
-   
-   6. **LINUX DO** - [LINUX DO](https://linux.do/) 
-      - 开发者论坛
-   
-   7. **Gitee** - [Gitee](https://gitee.com/) 
-      - Gitee是一个基于Git的代码托管和研发协作平台。
-   
-   8. **北京大学镜像站** - [北京大学镜像站](https://mirrors.pku.edu.cn/) 
-      - 北京大学镜像站提供软件、操作系统、开发工具等资源的镜像下载服务。
-   
-   9. **中科大镜像站** - [中科大镜像站](https://mirrors.ustc.edu.cn/) 
-      - 中科大镜像站提供软件、操作系统、开发工具等资源的镜像下载服务。
-   
-   10. **果核剥壳** - [果核剥壳](https://www.ghxi.com/) 
-       - 果核剥壳是一个提供软件下载、教程、资源分享的网站。
-   
-   11. **科技lion导航** - [科技lion](https://dh.kejilion.pro/) 
-       - 科技lion导航是一个提供各种搜索工具、生活服务、推广活动、AI工具等分类链接的导航网站。
-   
-   12. **赵彤刚的小屋** - [赵彤刚的小屋](https://my.heheda.top/) 
-       - 个人博客或网站，可能包含技术文章、个人项目、学习笔记等内容。
-   
-   13. **韩小韩Web API接口站** - [韩小韩Web API接口站](https://api.vvhan.com/) 
-       - 提供免费Web API数据接口服务。
-   
-   14. **ITDOG** - [ITDOG](https://www.itdog.cn/) 
-       - ITDOG提供在线网络测试工具，包括在线Ping、Tcping、网站测速、路由追踪、DNS查询等服务。
-   
-   15. **IP Ping工具** - [IP Ping](http://ip.ping0.cc/) 
-       - 这是一个在线工具，可以用来测试IP地址的连通性。
-   
-   16. **金山文档** - [金山文档](https://www.kdocs.cn/view/l/cczZcgviXVhJ) 
-       - 提供在线文档编辑和协作功能，支持多种文档格式。
-   
-   17. **diffchecker** - [diffchecker](https://www.diffchecker.com/zh-Hans/text-compare/) 
-       - 在线查找两个文本文件之间的差异
-      
-   18. **在线markdown** - [在线markdown](https://tool.lu/markdown/) 
-       - 在线markdown编辑器
-   
-   19. **在线磁力解析** - [webtor](https://webtor.io/) 
-       - 在线磁力解析工具
-   
-   20. **在线Json格式解析** - [Json.cn](https://www.json.cn/) 
-       - 在线Json格式校验
-      
-   21. **在线XML格式解析** - [XML格式化](https://www.jyshare.com/front-end/710/) 
-       - 在线XML格式化
-   
-   22. **在线源站ip扫描** - [Censys](https://search.censys.io/) 
-       - 在线源站ip扫描
-      
-   23. **在线域名解析查询** - [nslookup](https://uutool.cn/nslookup/) 
-       - 在线nslookup域名解析查询工具
+### 💻 Code Hosting / 代码托管
+- [GitHub](https://github.com/)
+- [Gitee](https://gitee.com/)
+- [GitLab](https://gitlab.com/)
+- [CloudFlare](https://cloudflare.com/) — CDN, DDoS protection, Pages, Workers / CDN、DDoS防护、Pages、 Workers
+- [Vercel](https://vercel.com/) — Frontend hosting and serverless functions / 前端托管与无服务器函数
 
-   24. **在线IPv6测试** - [IPv6测试](https://test-ipv6.com/) 
-       - 在线IPv6测试工具
-   
-   25. **懒盘搜索** - [懒盘搜索](https://www.lzpanx.com/) 
-       - 网盘聚合搜索
-   
-   26. **微步云沙箱** - [微步云沙箱](https://s.threatbook.com/) 
-       - 微步云在线沙箱病毒检测
-   
-   27. **SkrBT** - [SkrBT](https://skrbtso.top/) 
-       - 磁力搜索引擎
-      
-   28. **小云搜索** - [小云搜索](https://www.yunso.net/) 
-       - 网盘资源搜索
+### 🔧 Mirrors / 镜像站
+- [Peking University Mirrors / 北京大学镜像站](https://mirrors.pku.edu.cn/)
+- [USTC Mirrors / 中科大镜像站](https://mirrors.ustc.edu.cn/)
 
-   29. **BT影视** - [BT影视](https://www.btbtla.com/) 
-       - BT电影资源
+### 📦 Software Resources / 软件资源
+- [GHXI / 果核剥壳](https://www.ghxi.com/)
+- [52pojie / 吾爱破解](https://www.52pojie.cn/)
 
-   30. **MX动漫** - [MX动漫](https://www.mxdm.xyz/) 
-       - 在线动漫
+### 🧭 Navigation & Blogs / 导航与博客
+- [Kejilion Navigation / 科技lion导航](https://dh.kejilion.pro/)
+- [Zhao Tonggang's Home / 赵彤刚的小屋](https://my.heheda.top/)
 
-   31. **吾爱破解** - [吾爱破解](https://www.52pojie.cn/) 
-       - 破解工具下载
-</details>
+### 🔌 API Services / API服务
+- [Han Xiaohan Web API / 韩小韩Web API接口站](https://api.vvhan.com/)
+
+### 🌐 Network Testing / 网络测试
+- [ITDOG](https://www.itdog.cn/)
+- [IP Ping](http://ip.ping0.cc/)
+- [IPv6 Test / IPv6测试](https://test-ipv6.com/)
+- [nslookup](https://uutool.cn/nslookup/)
+- [Censys](https://search.censys.io/)
+- [ZeroTier](https://www.zerotier.com/) — Global SD-WAN / 全球虚拟组网
+- [TailScale](https://tailscale.com/) — Zero-trust VPN built on WireGuard / 基于 WireGuard 的零信任 VPN
+
+### 📄 Document Processing / 文档处理
+- [Kdocs / 金山文档](https://www.kdocs.cn/view/l/cczZcgviXVhJ)
+- [Diffchecker](https://www.diffchecker.com/)
+- [Online Markdown / 在线Markdown](https://tool.lu/markdown/)
+- [JSON.cn](https://www.json.cn/)
+- [XML Formatter / XML格式化](https://www.jyshare.com/front-end/710/)
+
+### 🔍 Resource Search / 资源搜索
+- [SkrBT](https://skrbtso.top/)
+- [Lazy Disk Search / 懒盘搜索](https://www.lzpanx.com/)
+- [Yunso Search / 小云搜索](https://www.yunso.net/)
+- [BT Movies / BT影视](https://www.btbtla.com/)
+- [Wallhaven](https://wallhaven.cc/) — High-quality wallpaper search / 高质量壁纸搜索
+
+### 🛠️ Other Tools / 其他工具
+- [Webtor](https://webtor.io/) — torrent parsing / 磁力解析
+- [Threatbook Sandbox / 微步云沙箱](https://s.threatbook.com/) — virus detection / 病毒检测
