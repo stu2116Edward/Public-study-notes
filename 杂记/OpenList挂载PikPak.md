@@ -3,7 +3,7 @@
 参考官方文档 https://doc.oplist.org/guide/drivers/pikpak#_1-pikpak%E6%8C%82%E8%BD%BD
 
 ### 1. 登录OpenList  
-浏览器打开 `http://127.0.0.1:5244`
+浏览器打开 `http://127.0.0.1:5244`  
 账号默认 `admin`  
 密码默认 `admin`  
 可自行修改  
