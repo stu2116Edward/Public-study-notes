@@ -112,8 +112,10 @@ MASQUE：基于 HTTP/3，流量伪装成普通 HTTPS，穿透力强且符合 FIP
 5. 创建新的配置文件
 配置如下
 
+**Windows**:
 <img width="1067" height="2218" alt="Win CF WARP2" src="https://github.com/user-attachments/assets/c88a55bd-c9df-44ba-a148-458d4a3b9372" />
 
+**Android & IOS**:
 <img width="1051" height="2220" alt="Win CF WARP3" src="https://github.com/user-attachments/assets/4714cf6c-a40e-4f0d-830d-abc0a29b4f3b" />
 
 7. 在配置文件中做网络分流，编辑配置文件，在拆分隧道中点击管理
