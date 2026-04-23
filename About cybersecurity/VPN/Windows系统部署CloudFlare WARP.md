@@ -35,6 +35,8 @@ MASQUE：基于 HTTP/3，流量伪装成普通 HTTPS，穿透力强且符合 FIP
 
 1. 进入控制面板点击 `ZeroTrust` 再点击右上角的 `Get started`
 
+<img width="2461" height="1389" alt="Win CF WARP1" src="https://github.com/user-attachments/assets/1ec4eff8-18c3-4cbe-986b-f84dc14416e4" />
+
 2. 创建一个自己喜欢的团队名称（唯一的）
 
 3. 选择 `Zero Trust Free` （根据自己的需求决定）
@@ -95,6 +97,8 @@ MASQUE：基于 HTTP/3，流量伪装成普通 HTTPS，穿透力强且符合 FIP
 
 4. 点击 '配置' 在添加规则中添加多用户的授权登录邮箱，点击下方 `添加"包括"` 选择对应的认证方式即可添加新用户的登录验证方式
 
+
+
 #### 网络配置
 
 1. 在 `ZeroTrust` 点击左侧 `流量策略` 下拉菜单中点击 `流量设置`
@@ -106,12 +110,17 @@ MASQUE：基于 HTTP/3，流量伪装成普通 HTTPS，穿透力强且符合 FIP
 4. 删除自动生成的配置文件保留默认配置文件
 
 5. 创建新的配置文件
-配置如下  
+配置如下
 
-6. 在配置文件中做网络分流，编辑配置文件，在拆分隧道中点击管理
+<img width="1067" height="2218" alt="Win CF WARP2" src="https://github.com/user-attachments/assets/c88a55bd-c9df-44ba-a148-458d4a3b9372" />
 
-7. 在管理拆分隧道（排除）中使用IP（如192.168.0.0/16）或域名（*.qq.com）的方式排除对应流量进入隧道即直接使用本地网络直连
+<img width="1051" height="2220" alt="Win CF WARP3" src="https://github.com/user-attachments/assets/4714cf6c-a40e-4f0d-830d-abc0a29b4f3b" />
 
+7. 在配置文件中做网络分流，编辑配置文件，在拆分隧道中点击管理
+
+8. 在管理拆分隧道（排除）中使用IP（如192.168.0.0/16）或域名（*.qq.com）的方式排除对应流量进入隧道即直接使用本地网络直连
+
+<img width="2110" height="1130" alt="Win CF WARP4" src="https://github.com/user-attachments/assets/77f6e0ed-44c0-4efc-8a2d-0108d3b914d3" />
 
 
 ### 遇到的问题
@@ -127,3 +136,18 @@ MASQUE：基于 HTTP/3，流量伪装成普通 HTTPS，穿透力强且符合 FIP
 例如，将 ZeroTier 的优先级设置为 20，CloudFlare WARP 的设置为 50  
 
 跃点数修改参考与 https://zhuanlan.zhihu.com/p/1913361130010711003  
+
+`Win + R` 打开 cmd 输入 `ncpa.cpl`
+进行如下配置  
+
+<img width="588" height="482" alt="yds1" src="https://github.com/user-attachments/assets/7e28457b-730c-4054-ba13-e586c1c6ea21" />
+
+<img width="733" height="1028" alt="yds2" src="https://github.com/user-attachments/assets/a8c68f39-e1da-4ee1-b5d2-c0c5b3852526" />
+
+<img width="802" height="988" alt="yds3" src="https://github.com/user-attachments/assets/4e16f0b8-2a2a-4cad-8305-69bc73ddc056" />
+
+<img width="806" height="1074" alt="yds4" src="https://github.com/user-attachments/assets/0ec441fc-0bf8-4212-bffe-14be10208b7f" />
+
+cmd 输入 `route print` 查看路由表  
+
+<img width="1344" height="600" alt="yds5" src="https://github.com/user-attachments/assets/35240bad-895a-45af-b0fd-9b845305b781" />
