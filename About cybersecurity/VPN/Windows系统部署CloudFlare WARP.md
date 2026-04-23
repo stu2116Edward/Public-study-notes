@@ -105,6 +105,8 @@ MASQUE：基于 HTTP/3，流量伪装成普通 HTTPS，穿透力强且符合 FIP
 
 2. 在 `流量设置` 中勾选 `允许安全Web网关代理流量` 并勾选全部协议 `UDP`，`ICMP` 协议
 
+<img width="2548" height="590" alt="屏幕截图 2026-04-23 112152" src="https://github.com/user-attachments/assets/dfc532b7-1148-4440-814d-e119a87b39d6" />
+
 3. 回到 `团队和资源` 下拉菜单中点击 `设备` 点击 `设备配置文件`
 
 4. 删除自动生成的配置文件保留默认配置文件
