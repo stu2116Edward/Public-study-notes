@@ -674,3 +674,14 @@ HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer
 此外，在搜索设置中还可进行如下设置，进一步提高搜索响应速度，提高效率  
 ![winsssz1](https://github.com/user-attachments/assets/90c35549-b4f1-458c-8e0e-781167f932e7)  
 ![winsssz2](https://github.com/user-attachments/assets/df780233-7734-494b-88df-21de10086a02)  
+
+
+#### 解决Windows复制到桌面的文件会打乱图标顺序
+
+1. 桌面上点击`右键`--`个性化`--`主题`--`桌面图标设置`--取消勾选`允许主题更改桌面图标`，然后应用
+
+<img width="717" height="812" alt="屏幕截图 2026-04-28 144011" src="https://github.com/user-attachments/assets/cf0aee9b-ae0c-407f-9ae3-0f7682b258e0" />  
+
+2. 桌面上点击`右键`--`查看`--取消勾选`自动排列图标`
+
+<img width="689" height="456" alt="屏幕截图 2026-04-28 144252" src="https://github.com/user-attachments/assets/67636cb9-7baa-42e8-ad8f-4570d0c93b74" />  
