@@ -10,9 +10,13 @@ https://wangchujiang.com/free-font/
 在Word中，依次点击`文件`->`选项`->`信任中心`->`信任中心设置`->`宏设置`  
 然后在跳出的界面中选择`启用所有宏设置`即可  
 
+<img width="1255" height="1011" alt="屏幕截图 2026-04-30 141212" src="https://github.com/user-attachments/assets/b39376cc-4cf6-44bf-8be6-e09978b2ca6d" />  
 
 然后在，依次点击`视图`->`宏`  
 输入宏项目名称为 `字体修改`，在跳出来的窗口中  
+
+<img width="755" height="641" alt="屏幕截图 2026-04-30 141931" src="https://github.com/user-attachments/assets/017a1f71-71eb-48ed-963e-39979341e91d" />  
+
 将我给的代码复制进去即可  
 ```
 Sub 字体修改()
