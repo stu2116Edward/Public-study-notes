@@ -48,6 +48,14 @@ conda deactivate
 conda env remove -n <env_name>
 ```
 - 删除名为 `env_name` 的环境。
+```bash
+conda env remove --prefix <env_path>
+```
+- 删除路径为 `env_path` 的环境。
+Demo:
+```
+conda env remove --prefix C:\Users\Admin\miniconda3
+```
 
 8. **更新环境**：
 ```bash
