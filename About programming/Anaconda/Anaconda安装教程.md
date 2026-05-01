@@ -140,6 +140,21 @@ conda config --set show_channel_urls yes
 ```
 conda info
 ```
+
+**切换回官方源**
+先清除现有源
+```
+conda config --remove-key channels
+```
+添加官方源
+```
+conda config --add channels defaults
+```
+查看结果
+```
+conda config --show channels
+```
+
 首先pkgs和envs都修改为F盘了  
 ![Anaconda16](https://github.com/user-attachments/assets/26353559-cebf-4508-a392-a9d6d246a1ce)  
 其次我们看镜像源也成功配置  
