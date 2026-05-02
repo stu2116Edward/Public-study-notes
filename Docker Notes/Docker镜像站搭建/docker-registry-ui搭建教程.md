@@ -123,6 +123,8 @@ mkdir -p /root/docker-registry/{data,auth}
 htpasswd -Bbn 用户名 密码 > /root/docker-registry/auth/passwd
 ```
 注意这里的registry和docker-compose搭建的文件夹名称不同！
+
+带账号密码
 ```bash
 docker run -d \
 --restart=always \
@@ -133,8 +135,21 @@ docker run -d \
 -e "REGISTRY_AUTH=htpasswd" \
 -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
 -e "REGISTRY_AUTH_HTPASSWD_PATH=/etc/registry/auth/passwd" \
+-e REGISTRY_PROXY_REMOTEURL=https://registry-1.docker.io \
 registry:latest
 ```
+
+不带账号密码
+```
+docker run -d \
+-p 5000:5000 \
+--name registry \
+-v /home/docker/registry:/var/lib/registry \
+-e REGISTRY_PROXY_REMOTEURL=https://registry-1.docker.io \
+--restart always \
+registry:latest
+```
+
 注意`"REGISTRY_AUTH_HTPASSWD_PATH=/etc/registry/auth/passwd"`这里是你密码存放的路径  
 使用Docker安装完成后使用`http://ip:5002/v2/_catalog`访问  
 
