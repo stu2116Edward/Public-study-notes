@@ -1,11 +1,11 @@
 # Windows使用小技巧
 
 ### 装机必下工具
-[图吧工具箱](https://www.tbtool.cn/)  
+[图吧工具箱](https://www.tbtool.cn/)   
 [DISM++](https://github.com/Chuyu-Team/Dism-Multi-language)  
 [HiBitUninstaller](https://github.com/stu2116Edward/Public-study-notes/blob/main/tools/HiBitUninstaller_3.2.40_Single.zip)  
 [dnGrep](https://github.com/dnGrep/dnGrep)  
-
+[EarTrumpet](https://github.com/File-New-Project/EarTrumpet)  
 
 ### 常用的Windows命令
 [点击跳转](https://github.com/stu2116Edward/Public-study-notes/blob/main/Windows%20Notes/Windows%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4.md)  
