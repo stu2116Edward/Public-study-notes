@@ -41,7 +41,7 @@ sudo apt install ethtool wakeonlan
 ```
 
 5. 查看网卡信息：
-```
+
 使用以下命令查看你的网卡信息，找到你的网卡接口名称（例如 eth0 或 enp2s0）：
 ```
 ip add
