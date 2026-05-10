@@ -70,7 +70,7 @@ shutdown /r /fw /t 0
 - `/fw`：进入固件（Firmware）设置  
 - `/t 0`：立即执行  
 
-<img width="555" height="204" alt="biosuefi9" src="https://github.com/user-attachments/assets/3fc1e9b4-c02d-46c5-a8c7-7271adf27762" />  
+<img width="653" height="229" alt="biosuefi9" src="https://github.com/user-attachments/assets/579864ca-e960-47b4-bc32-2162cc42fa2a" />
 
 执行后系统将直接重启并进入 BIOS  
 
