@@ -180,3 +180,12 @@ pkgs_dirs:
 show_channel_urls: true
 auto_activate_base: false
 ```
+使用默认channels
+```
+envs_dirs:
+  - E:\ProgramData\anaconda3\envs
+pkgs_dirs:
+  - E:\ProgramData\anaconda3\pkgs
+channels:
+  - defaults
+```
