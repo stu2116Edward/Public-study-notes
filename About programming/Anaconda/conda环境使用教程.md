@@ -209,3 +209,19 @@ conda config --show channels
 conda env repair
 ```
 - 修复损坏的环境。
+
+
+### Windows conda base 环境清理
+
+base 环境包越多，初始化的时候就要加载很多时间  
+批量清除 base 里面通过 pip 安装的包，只剩下默认安装的 defaults 通道  
+找出所有 pip 装进 base 的包（conda 会标记为 channel=pypi）
+```
+conda list --json > conda_list.json
+python -c "import json; pkgs=json.load(open(r'conda_list.json','r',encoding='utf-8')); print('\n'.join(sorted({p['name'] for p in pkgs if p.get('channel')=='pypi'})))" > pip_pkgs.txt
+type pip_pkgs.txt
+```
+批量卸载这些 pip 包
+```
+Get-Content "pip_pkgs.txt" | ForEach-Object { python -m pip uninstall -y $_ }
+```
