@@ -94,7 +94,6 @@ Miniconda:
 E:\ProgramData\miniconda3
 E:\ProgramData\miniconda3\Scripts
 E:\ProgramData\miniconda3\Library\bin
-E:\ProgramData\miniconda3\Library\mingw-w64\bin
 ```
 
 在windows菜单栏搜索`Anaconda`,打开**anaconda prompt**  
