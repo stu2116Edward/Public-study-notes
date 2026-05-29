@@ -11,6 +11,7 @@
 ### 配置环境变量
 得到完整的 Go 环境之后，需要配置 Go 的环境变量，右击`此电脑`–>`属性`–>`高级系统设置`–>`环境变量`，打开环境变量设置窗口  
 
+<img width="744" height="834" alt="go1" src="https://github.com/user-attachments/assets/03dcc4d4-6b60-43d3-bbd4-334c56693468" />  
 
 **需要新建两个环境变量配置**  
 
@@ -22,13 +23,16 @@
 1. 新建GOROOT，在变量名一栏输入 `GOROOT`
 2. 在变量值一栏输入Go 环境所在目录位置 `E:\ProgramData\go` 点击确定
 
+<img width="965" height="917" alt="go2" src="https://github.com/user-attachments/assets/cddee092-9804-4cd6-9fd9-21cc9936f7f4" />  
 
 3. 新建GOPATH，在变量名一栏输入 `GOPATH`
 4. 在变量值一栏输入任意一个目录 `E:\ProgramData\go\gopath` 点击确定
 
+<img width="965" height="917" alt="go3" src="https://github.com/user-attachments/assets/2cbd24cf-50c9-4b04-b66f-ed158552a4cc" />  
 
 5. 将新建的GOROOT配置到 `Path` 这个环境变量中去，在`系统变量`中找到 `Path`，点击`编辑`->`新建`，输入`%GOROOT%\bin`，点击确定
 
+<img width="823" height="787" alt="go4" src="https://github.com/user-attachments/assets/43dbcdf3-c45c-464d-a933-d83e841acc87" />  
 
 
 ### 校验是否配置成功
