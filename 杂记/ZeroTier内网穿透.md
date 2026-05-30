@@ -72,6 +72,23 @@ zerotier-cli listpeers
 - MOON 表示自建 zerotier 中转节点
 - LEAF 表示组网范围内的其他同级别节点
 
+启动ZeroTier服务
+```
+systemctl start zerotier-one
+```
+关闭ZeroTier服务
+```
+systemctl stop zerotier-one
+```
+重启ZeroTier服务
+```
+systemctl restart zerotier-one
+```
+查看服务状态
+```
+systemctl status zerotier-one
+```
+
 
 #### 在Windows中使用
 如果要在`Windows`中使用命令行的方式使用Zerotier那么需要使用`管理员模式开启Windows Powershell`然后把命令行前缀改为`zerotier-cli.bat`就可以了如下：  
@@ -94,6 +111,22 @@ zerotier-cli.bat listnetworks
 查看Zerotier节点：
 ```
 zerotier-cli.bat peers
+```
+启动ZeroTier服务
+```
+net start ZeroTierOneService
+```
+关闭ZeroTier服务
+```
+net stop ZeroTierOneService
+```
+重启ZeroTier服务
+```
+net stop ZeroTierOneService && net start ZeroTierOneService
+```
+查看服务状态
+```
+sc query ZeroTierOneService
 ```
 
 
