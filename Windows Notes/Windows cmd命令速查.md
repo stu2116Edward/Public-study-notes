@@ -53,7 +53,14 @@
 | 根据名称结束进程 | `taskkill /IM 进程名.exe /F` |
 | 查看特定进程 | `tasklist \| findstr 进程名` |
 | 启动进程 | `start 程序名.exe` |
-| 查看服务列表 | `sc query` |
+| 查看正在运行的服务 | `sc query` |
+| **查看所有服务（包括已停止等全部状态）** | **`sc query state=all`** |
+| 查看服务详细信息 | `sc query 服务名` |
+| 配置服务自动启动 | `sc config 服务名 start= auto` |
+| 配置服务手动启动 | `sc config 服务名 start= demand` |
+| 禁用服务 | `sc config 服务名 start= disabled` |
+| 创建服务 | `sc create 服务名 binPath= 程序路径` |
+| 删除服务 | `sc delete 服务名` |
 | 启动服务 | `net start 服务名` |
 | 停止服务 | `net stop 服务名` |
 | 查看进程详细信息 | `tasklist /v` |
@@ -61,12 +68,6 @@
 | 以低优先级启动 | `start /low 程序名.exe` |
 | 以高优先级启动 | `start /high 程序名.exe` |
 | 等待程序退出 | `start /wait 程序名.exe` |
-| 查看服务详细信息 | `sc query 服务名` |
-| 配置服务自动启动 | `sc config 服务名 start= auto` |
-| 配置服务手动启动 | `sc config 服务名 start= demand` |
-| 禁用服务 | `sc config 服务名 start= disabled` |
-| 创建服务 | `sc create 服务名 binPath= 程序路径` |
-| 删除服务 | `sc delete 服务名` |
 | 查看进程树 | `wmic process get processid,parentprocessid` |
 | 查看进程命令行 | `wmic process get processid,commandline` |
 
