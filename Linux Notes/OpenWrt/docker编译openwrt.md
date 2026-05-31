@@ -76,6 +76,9 @@ WORKDIR /home/user
 ```
 docker build -t openwrt_builder .
 ```
+
+<img width="1245" height="421" alt="dopb1" src="https://github.com/user-attachments/assets/c6ac3bd4-82fb-450a-afe2-b2dbdd0836a0" />
+
 执行此命令后，我们本地就多出了一个安装好编译依赖的debian镜像
 ```
 docker images | grep openwrt
@@ -141,13 +144,15 @@ make menuconfig
 ```
 
 先认识一下界面  
-
+<img width="1120" height="561" alt="dopb2" src="https://github.com/user-attachments/assets/3e53e80f-f57b-4069-9b3e-6b3c68a292d4" />
 
 在这个例子里面，我们暂时使用x86平台，到后面我们再使用指定的路由器平台，所以这些默认不动即可！  
 
+<img width="443" height="91" alt="dopb3" src="https://github.com/user-attachments/assets/db7ff183-3c91-4da4-a151-1aac3766aeae" />
 
 openwrt编译默认不带luci的web界面，你需要手动勾选安装，找到， LuCI-> Collections-> luci，双击使得前面的变成 `*` 符号  
 
+<img width="803" height="158" alt="dopb4" src="https://github.com/user-attachments/assets/1642115f-d8f5-4b8c-9099-ab02c37e9c9b" />
 
 设置web界面为中文， 双击空格使得前面的 `< >` 变成 `<*>` 符号  
 ```
@@ -155,12 +160,15 @@ LuCI->Modules->Translations -> <*> Chinese Simplified (zh_Hans)
 ```
 我们选择x86平台就是为了能在宿主机上运行，为了能docker中运行openwrt，找到target image勾选tar.gz (默认是勾选上的，没有自己勾上)  
 
+<img width="352" height="105" alt="dopb5" src="https://github.com/user-attachments/assets/8ecec9e6-721e-4945-8811-9e6a9e74bac5" />
 
 接着保存配置菜单，移动到Save，回车  
 
+<img width="547" height="92" alt="dopb6" src="https://github.com/user-attachments/assets/a073bd06-fdc7-4765-998b-a78c93a03746" />
 
 选择OK  
 
+<img width="487" height="203" alt="dopb7" src="https://github.com/user-attachments/assets/33c3cc0e-73b8-4cf7-be84-c0de279ff918" />
 
 然后光标移动到EXIT退出菜单  
 
@@ -192,8 +200,11 @@ make -j1 V=s
 ```
 加上 `V=s` 后可以看到详细的错误信息，例如可能出现的网络问题  
 
+<img width="1177" height="402" alt="dopb8" src="https://github.com/user-attachments/assets/b28afb52-7be3-4703-85c1-71b5a2a15bc5" />
 
 编译成功后，到这里你可以看到在 `bin/target/x86/64` 目录下看到编译的固件  
+
+<img width="915" height="443" alt="dopb9" src="https://github.com/user-attachments/assets/e1b82037-65fe-4c76-9e33-bfe89683614f" />
 
 
 
@@ -346,6 +357,7 @@ opkg install luci-i18n-wol-zh-cn
 
 ### 3 可能遇到的错误
 
+
 #### 3.1 在ip地址正确设置的情况下，web界面无法打开
 猜测是你的镜像有问题，进入容器，查看一下网络监听状态，有没有80和443，如果没监听 0.0.0.0:80，那么就说明镜像可能有问题  
 ```
@@ -353,6 +365,7 @@ netstat -antp
 ```
 发现压根没有监听80端口  
 
+<img width="856" height="294" alt="dopb11" src="https://github.com/user-attachments/assets/a47eab95-ff4c-41f3-8a84-8ba74567ec2b" />
 
 但是samba和ssh都可以连接，所以可以确定是web服务没有开启  
 https://forum.openwrt.org/t/cant-access-openwrt-web-gui-luci/27914/12  
@@ -368,6 +381,7 @@ https://forum.openwrt.org/t/cant-access-openwrt-web-gui-luci/27914/12
 #### 4.1 openwrt 无法访问web
 原因是编译镜像的时候没有勾选luci，请勾选Luci->luci后重新编译！  
 
+<img width="875" height="165" alt="dopb12" src="https://github.com/user-attachments/assets/6381fa6c-d43e-4a91-8381-4a2871e1db55" />
 
 #### 4.2 lede无法访问web的解决办法：
 - https://forum.openwrt.org/t/luci-uhttpd-channel-3-open-failed-connect-failed/91646/2
@@ -405,6 +419,7 @@ make menuconfig
 
 ##### 2.3.1 网络共享samba4
 
+<img width="813" height="99" alt="dopb13" src="https://github.com/user-attachments/assets/37062951-e37d-4d92-9e0c-1e043ede8919" />
 
 光标移动到save，保存.config，然后再次编译，发现速度会快很多  
 
@@ -528,6 +543,8 @@ sudo apt install libfuse-dev
 
 参考 https://github.com/fw876/helloworld/issues/836 原因是勾选passwall2的时候，自动勾选了v2ray-plugin，要么取消调v2raya-plugin，要么升级go版本  
 
+<img width="1260" height="596" alt="dopb14" src="https://github.com/user-attachments/assets/174d0332-94f4-4649-938a-0090a03a26f1" />
+
 
 #### 2.5 调整ROOT大小
 - 参考 https://github.com/danshui-git/shuoming/blob/master/overlay.md
@@ -627,6 +644,7 @@ make menuconfig
 ```
 第一次编译建议不要勾选任何插件，因为第一次编译包含了很多基础包的编译，过程比较持久，如果加上了插件造成报错可能会感到困惑：到底是插件的问题，还是我系统没配置好？因此第一次仅仅勾选你的路由器平台即可。这里拿RAX3000M举例，首先选择平台，接着是芯片，第三项是具体型号  
 
+<img width="548" height="83" alt="dopb15" src="https://github.com/user-attachments/assets/6e104e08-921a-449c-8345-766019c7304e" />
 
 
 #### 3.2 自定义配置
@@ -660,6 +678,7 @@ make -j1 V=s
 ```
 编译完成后，可以在bin/target/平台目录下看到自己编译后的包，其中 `xxx-squashfs-sysupgrade.bin` 就是我们要的固件  
 
+<img width="1043" height="254" alt="dopb16" src="https://github.com/user-attachments/assets/cbfb9f3c-8b46-442a-977a-a12dcd564fcc" />
 
 
 #### 3.3 集成插件编译
