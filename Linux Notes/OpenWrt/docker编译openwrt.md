@@ -203,6 +203,9 @@ make -j1 V=s
 <img width="1177" height="402" alt="dopb8" src="https://github.com/user-attachments/assets/b28afb52-7be3-4703-85c1-71b5a2a15bc5" />
 
 编译成功后，到这里你可以看到在 `bin/target/x86/64` 目录下看到编译的固件  
+```
+ls -lah bin/target/x86/64
+```
 
 <img width="915" height="443" alt="dopb9" src="https://github.com/user-attachments/assets/e1b82037-65fe-4c76-9e33-bfe89683614f" />
 
