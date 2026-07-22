@@ -46,7 +46,38 @@ graphroot = "/overlay/podman/storage"
 EOF
 ```
 
-### 3. 测试运行
+### 3. 更换镜像
+```
+vim /etc/containers/registries.conf
+```
+```
+unqualified-search-registries = ["docker.io"]
+
+[[registry]]
+location = "docker.io"
+[[registry.mirror]]
+location = "https://docker.itelyou.cf"
+[[registry.mirror]]
+location = "https://docker.ywsj.tk"
+[[registry.mirror]]
+location = "https://docker.xuanyuan.me"
+[[registry.mirror]]
+location = "http://image.cloudlayer.icu"
+[[registry.mirror]]
+location = "http://docker-0.unsee.tech"
+[[registry.mirror]]
+location = "https://dockerpull.pw"
+[[registry.mirror]]
+location = "https://docker.hlmirror.com"
+[[registry.mirror]]
+location = "https://docker.imgdb.de"
+[[registry.mirror]]
+location = "https://docker.m.daocloud.io"
+[[registry.mirror]]
+location = "https://docker.melikeme.cn"
+```
+
+### 4. 测试运行
 ```
 podman run --rm hello-world
 ```
