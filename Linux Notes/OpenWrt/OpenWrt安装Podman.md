@@ -56,25 +56,25 @@ unqualified-search-registries = ["docker.io"]
 [[registry]]
 location = "docker.io"
 [[registry.mirror]]
-location = "https://docker.itelyou.cf"
+location = "docker.itelyou.cf"
 [[registry.mirror]]
-location = "https://docker.ywsj.tk"
+location = "docker.ywsj.tk"
 [[registry.mirror]]
-location = "https://docker.xuanyuan.me"
+location = "docker.xuanyuan.me"
 [[registry.mirror]]
-location = "http://image.cloudlayer.icu"
+location = "image.cloudlayer.icu"
 [[registry.mirror]]
-location = "http://docker-0.unsee.tech"
+location = "docker-0.unsee.tech"
 [[registry.mirror]]
-location = "https://dockerpull.pw"
+location = "dockerpull.pw"
 [[registry.mirror]]
-location = "https://docker.hlmirror.com"
+location = "docker.hlmirror.com"
 [[registry.mirror]]
-location = "https://docker.imgdb.de"
+location = "docker.imgdb.de"
 [[registry.mirror]]
-location = "https://docker.m.daocloud.io"
+location = "docker.m.daocloud.io"
 [[registry.mirror]]
-location = "https://docker.melikeme.cn"
+location = "docker.melikeme.cn"
 ```
 
 ### 4. 测试运行
