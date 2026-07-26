@@ -138,6 +138,20 @@ docker run -d \
 -e REGISTRY_PROXY_REMOTEURL=https://registry-1.docker.io \
 registry:latest
 ```
+本地部署不使用代理
+```
+docker run -d \
+--restart=always \
+--name registry \
+-p 5002:5000 \
+-v /root/docker-registry/data:/var/lib/registry \
+-v /root/docker-registry/auth:/etc/registry/auth \
+-e "REGISTRY_AUTH=htpasswd" \
+-e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
+-e "REGISTRY_AUTH_HTPASSWD_PATH=/etc/registry/auth/passwd" \
+registry:latest
+```
+去除`-e REGISTRY_PROXY_REMOTEURL=https://registry-1.docker.io \`
 
 不带账号密码
 ```
