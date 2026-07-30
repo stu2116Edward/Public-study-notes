@@ -10,7 +10,7 @@ mkdir -p /overlay/zerotier-one
 podman run -d \
   --name zerotier-one \
   --device=/dev/net/tun \
-  --net=host
+  --net=host \
   --cap-add=NET_ADMIN \
   --cap-add=SYS_ADMIN \
   -v /overlay/zerotier-one:/var/lib/zerotier-one \
