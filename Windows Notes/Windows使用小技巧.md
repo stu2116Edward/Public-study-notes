@@ -15,6 +15,11 @@
 使用Dism++的系统优化功能中的`Windows Update`实现：  
 ![gbzdgx1](https://github.com/user-attachments/assets/5ad8407f-0887-4ec6-aa56-291f898bc93f)  
 接下来是可选配置（非必要）：  
+Win+R输入  
+```
+services.msc
+```
+找到 Windows 更新并禁用
 ![gbzdgx2](https://github.com/user-attachments/assets/0a8d4501-54d3-41d2-a1c5-f6a633cdd576)  
 ![gbzdgx3](https://github.com/user-attachments/assets/89c1c3e6-9467-4026-9019-9515798596b8)  
 
