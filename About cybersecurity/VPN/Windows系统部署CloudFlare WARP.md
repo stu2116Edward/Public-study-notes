@@ -128,6 +128,7 @@ MASQUE：基于 HTTP/3，流量伪装成普通 HTTPS，穿透力强且符合 FIP
 
 
 ### 遇到的问题
+#### 跃点数优先级配置
 在 `Windows` 系统中同时使用 `cloudflare warp` 隧道和 `ZeroTier` 内网穿透服务可能导致 `ZeroTier` 服务中断  
 
 分析原因：  
@@ -154,4 +155,11 @@ MASQUE：基于 HTTP/3，流量伪装成普通 HTTPS，穿透力强且符合 FIP
 
 cmd 输入 `route print` 查看路由表  
 
-<img width="1344" height="600" alt="yds5" src="https://github.com/user-attachments/assets/35240bad-895a-45af-b0fd-9b845305b781" />
+<img width="1344" height="600" alt="yds5" src="https://github.com/user-attachments/assets/35240bad-895a-45af-b0fd-9b845305b781" />  
+
+注：`WLAN` 和 `Ethernet` 网口的跃点数也可以设置为`自动跃点数`，只需修改`ZeroTier`和`Tailscale`的跃点数即可，`Cloudflare WARP Interface Tunnel`的跃点数默认`自动跃点数`保持不动即可
+
+#### cf_happy_eyeballs_mitm_failure
+
+在 Windows 系统中遇到 `Cloudflare One Client` 连接时出现 `cf_happy_eyeballs_mitm_failure` 首先尝试 `重置密钥`
+如果还是不行就打开 `windows 安全中心`-`防火墙和网络保护`-`允许应用通过防火墙`-`更改设置`-`允许其他应用(R)`-`浏览(B)`-添加 `C:\Program Files\Cloudflare\Cloudflare WARP`目录下的`warp-svc.exe`文件到策略中并且勾选`专用`，`公用`最后确定即可重新尝试连接
