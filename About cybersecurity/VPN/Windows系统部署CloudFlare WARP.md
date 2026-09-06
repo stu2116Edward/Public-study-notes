@@ -162,4 +162,8 @@ cmd 输入 `route print` 查看路由表
 #### cf_happy_eyeballs_mitm_failure
 
 在 Windows 系统中遇到 `Cloudflare One Client` 连接时出现 `cf_happy_eyeballs_mitm_failure` 首先尝试 `重置密钥`
-如果还是不行就打开 `windows 安全中心`-`防火墙和网络保护`-`允许应用通过防火墙`-`更改设置`-`允许其他应用(R)`-`浏览(B)`-添加 `C:\Program Files\Cloudflare\Cloudflare WARP`目录下的`warp-svc.exe`文件到策略中并且勾选`专用`，`公用`最后确定即可重新尝试连接
+如果还是不行就打开 `windows 安全中心`-`防火墙和网络保护`-`允许应用通过防火墙`-`更改设置`-`允许其他应用(R)`-`浏览(B)`-添加 `C:\Program Files\Cloudflare\Cloudflare WARP`目录下的`warp-svc.exe`文件到策略中并且勾选`专用`，`公用`最后确定即可重新尝试连接  
+
+<img width="1215" height="949" alt="屏幕截图 2026-09-06 103910" src="https://github.com/user-attachments/assets/53bb434e-1312-4067-93c7-72318c72c938" />  
+
+<img width="678" height="471" alt="屏幕截图 2026-09-06 103830" src="https://github.com/user-attachments/assets/b91ef72a-a705-46d8-89a5-197fd7511a9f" />  
