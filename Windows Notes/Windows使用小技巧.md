@@ -440,7 +440,12 @@ pause
 
 
 ### 家庭版本开启Hyper-v虚拟机
-测试是否支持虚拟化在任务管理器中的性能处查看  
+注：本人不建议开启，因为 Hyper-v 操作门槛高，缺乏直观监控工具不如 VMware 容易上手，开启后容易出现兼容性问题  
+
+查看是否支持/开启虚拟化 `Ctrl+Shift+Esc` 打开任务管理器-`性能`-`CPU`在右下角查看 虚拟化 状态： 显示“已启用”：CPU支持虚拟化并已开启， 显示“已禁用”：CPU支持虚拟化但未开启  
+
+<img width="781" height="694" alt="Virtualization" src="https://github.com/user-attachments/assets/6f69ca85-236a-4502-8cdf-f4a1c843ee0f" />  
+
 一般只要安装了VMware并且能够正常使用就是支持虚拟化的  
 ![xnh](https://github.com/user-attachments/assets/53b0fc26-e0f6-480d-8e3a-b40821657bd2)  
 
