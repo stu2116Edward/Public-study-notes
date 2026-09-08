@@ -445,9 +445,10 @@ pause
 ![xnh](https://github.com/user-attachments/assets/53b0fc26-e0f6-480d-8e3a-b40821657bd2)  
 
 安装脚本及步骤  
-1、IBOS开启虚拟化  
+1、BIOS/UEFI 开启虚拟化  
+开机后 `Ctrl + Shift + Esc`打开任务管理器在 `性能`-`CPU`中确认是否开启
 
-2、安装脚本cmd或bat后缀    
+2、安装脚本 `.cmd` 或`.bat`后缀（管理员模式启动）    
 ```
 pushd "%~dp0"
 dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
@@ -475,11 +476,81 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 ```
 bcdedit /set hypervisorlaunchtype off
 ```
-创建脚本，管理员模式启动，关闭hyper-v服务。当然也可以通过页面系统，手动关闭服务，重启，成功打开VM  
+手动关闭服务，重启Windows  
 开启Hyper-v服务  
 ```
 bcdedit /set hypervisorlaunchtype auto
 ```
+查看状态
+```
+bcdedit /enum {current}
+```
+彻底卸载Hyper-v
+```
+@echo off
+pushd "%~dp0"
+
+echo 正在禁用Hyper-V功能...
+Dism /online /disable-feature /featurename:Microsoft-Hyper-V-All /Remove /norestart
+
+echo 正在列出Hyper-V包...
+dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
+
+echo 正在移除Hyper-V包...
+for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do dism /online /norestart /remove-package:"%SystemRoot%\servicing\Packages\%%i"
+
+del hyper-v.txt
+
+echo 操作完成，请重启计算机以完成卸载。
+pause
+```
+卸载脚本 `.cmd` 或`.bat`后缀（管理员模式启动） 
+
+
+### 关闭 VBS (基于虚拟化的安全性)
+优缺点：  
+基于虚拟化的安全（Virtualization-Based Security, VBS）是 Windows 10/11 提供的一项高级安全功能，它利用硬件虚拟化与 Windows 虚拟机监控程序（Hyper-V）[&创建隔离的虚拟环境，作为操作系统的信任根&]。即使内核被入侵，该隔离环境依然能保护关键安全资产，如用户凭据和系统资源。  
+在 VBS 中，内存完整性（又称 HVCI）是核心组件，它会在隔离环境中运行内核模式代码完整性检查，阻止未签名或不受信任的驱动加载，并确保内核内存页在通过验证前不可执行，且可执行页不可写，从而防御缓冲区溢出等攻击。  
+
+性能损失：系统整体性能可能下降 5%-10%，游戏性能尤为明显。  
+兼容性问题：某些虚拟化软件（如 VMware、VirtualBox）可能无法正常运行。  
+
+关闭 VBS 的方法：     
+一、 Windows 安全中心关闭内存完整性（建议）  
+
+<img width="769" height="455" alt="close VBS 1" src="https://github.com/user-attachments/assets/ffa8d6a9-c91a-4b02-b1dc-9b7aad147fc9" />  
+
+二、 bcdedit 命令关闭 Hypervisor
+```
+bcdedit /set hypervisorlaunchtype off
+```
+
+三、 组策略禁用“基于虚拟化的安全”（家庭版不可用）  
+1. 打开组策略编辑器按下 `Win + R`，输入 `gpedit.msc` 并回车  
+2. 导航到相关设置： 依次展开 计算机配置 > 管理模板 > 系统 > Device Guard  
+3. 修改策略： 找到“打开基于虚拟化的安全”选项，双击并将其设置为“已禁用”  
+4. 重启系统： 修改完成后，重启电脑以应用更改  
+
+四、 通过修改注册表  
+1. 打开注册表编辑器：  
+按下 `Win + R`，输入 `regedit` 并按回车  
+
+2. 导航到路径：  
+```
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard
+```
+3. 创建或修改键值：  
+- 右键点击 `DeviceGuard`，选择“新建 > DWORD (32 位) 值”
+- 将新建的键命名为 `EnableVirtualizationBasedSecurity`
+- 双击该键，将值设置为 `1` 以启用，或设置为 `0` 以禁用
+
+4. 保存更改并重启系统：  
+修改完成后，关闭注册表编辑器并重启电脑以应用更改  
+
+**验证是否关闭**：  
+按下 `Win + R`，输入 `msinfo32` 并按回车  
+
+<img width="609" height="338" alt="close VBS 2" src="https://github.com/user-attachments/assets/4aaa1057-f31a-40bd-8562-31c5ea84940b" />  
 
 
 ### Windows垃圾清理
