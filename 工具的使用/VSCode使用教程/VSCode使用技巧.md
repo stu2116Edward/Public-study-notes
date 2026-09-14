@@ -1,4 +1,4 @@
-# VSCode使用技巧
+# Visual Studio Code使用技巧
 
 ## VSCode切换默认终端
 ***目的：切换终端的目的是为了切换特定的终端环境***  
@@ -25,6 +25,31 @@
 4. 成功更换 cmd 为默认终端  
 
 ## VSCode如何配置Python环境
+
+### 修改 VSCode 插件默认安装路径
+
+1. 移动（剪切）插件文件`C:\Users\{个人用户名}\.vscode\extensions`到自定义目录，找到`extensions`文件夹，右键剪切  
+```
+C:\Users\Admin\.vscode\extensions
+```
+2. 在管理员权限下的命令提示符（CMD）输入以下命令：  
+`mklink /D "C:\Users\{个人用户名}\.vscode\extensions" "{自定义路径}"`
+```
+mklink /D "C:\Users\Admin\.vscode\extensions" "D:\ProgramData\extensions"
+```
+或者
+```
+mklink /J "C:\Users\Admin\.vscode\extensions" "D:\ProgramData\extensions"
+```
+- `/D`	目录符号链接	Directory Symbolic Link	软链接，可以跨卷、跨网络，指向目标路径
+- `/J`	目录联接	Directory Junction	硬链接的一种（目录联接），只能用于本地卷，指向目标路径
+
+<img width="791" height="170" alt="vscode_extensions1" src="https://github.com/user-attachments/assets/d4b8f5e8-1558-4239-ad5f-7aef2c6379cb" />  
+
+3. 打开`C:\Users\{个人用户名}\.vscode`，extensions变成快捷方式，则修改成功
+<img width="834" height="282" alt="vscode_extensions2" src="https://github.com/user-attachments/assets/03b34d98-046e-4c05-a550-9d208238c5f6" />  
+
+
 ### 安装必要工具
 确保已在系统中安装 [Python](https://www.python.org/downloads/)  
 安装 VS Code 和 Python 扩展：  
