@@ -167,3 +167,7 @@ cmd 输入 `route print` 查看路由表
 <img width="1215" height="949" alt="屏幕截图 2026-09-06 103910" src="https://github.com/user-attachments/assets/53bb434e-1312-4067-93c7-72318c72c938" />  
 
 <img width="678" height="471" alt="屏幕截图 2026-09-06 103830" src="https://github.com/user-attachments/assets/b91ef72a-a705-46d8-89a5-197fd7511a9f" />  
+
+在 `高级安全 Windows Defender 防火墙` 中 `出站规则` 新建规则允许 `warp-svc.exe` 通过  
+
+<img width="1076" height="224" alt="屏幕截图 2026-09-15 142704" src="https://github.com/user-attachments/assets/4bfd001a-592a-4195-b69b-d06513be0ce1" />  
