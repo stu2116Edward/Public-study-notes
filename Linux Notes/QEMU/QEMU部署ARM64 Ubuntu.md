@@ -61,6 +61,12 @@ Demo
 ```
 netstat -ano
 ```
+安装时更换镜像
+```
+http://mirrors.aliyun.com/ubuntu/
+```
+注意勾选openssh
+安装完成会出现 `Reboot`
 
 
 ### 运行已安装好系统的虚拟机
