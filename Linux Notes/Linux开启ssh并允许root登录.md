@@ -15,6 +15,13 @@
 
 ## Ubuntu开启ssh服务及允许root登录
 
+### 设置Root密码
+```
+sudo passwd root
+```
+输入当前用户密码
+再输出两次root用户密码即可更改
+
 ### 安装ssh服务器端
 Ubuntu默认没有安装ssh的server，需要安装  
 ```
