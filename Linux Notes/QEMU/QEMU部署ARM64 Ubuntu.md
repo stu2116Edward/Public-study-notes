@@ -79,3 +79,24 @@ Demo
 ```
 创建一个cmd启动文件即可
 
+### 端口映射
+端口映射只能在 QEMU 启动时通过参数指定，无法在虚拟机内部完成  
+```
+"E:\Program Files\qemu\qemu-system-aarch64.exe" -m 4096 -cpu cortex-a72 -smp 4,sockets=2,cores=2 -M virt -bios "E:\Virtual Machines\QEMU\QEMU_EFI.fd" -device VGA -device nec-usb-xhci -device usb-mouse -device usb-kbd -drive if=none,file="E:\Virtual Machines\QEMU\ubuntu-22.04.5\Disk_Ubuntu.qcow2",id=hd0 -device virtio-blk-device,drive=hd0 -drive if=none,file=,id=cdrom,media=cdrom -device virtio-scsi-device -device scsi-cd,drive=cdrom -net nic -net user,hostfwd=tcp:127.0.0.1:2222-:22,hostfwd=tcp:0.0.0.0:5757-:5757
+```
+结尾的`hostfwd=tcp:127.0.0.1:2222-:22,hostfwd=tcp:0.0.0.0:5757-:5757`就是端口映射  
+建议每一个服务都分别创建一个`cmd`文件作为启动文件  
+
+hostfwd 的语法：  
+```
+hostfwd=[tcp|udp]:[hostaddr]:hostport-[guestaddr]:guestport
+```
+```
+hostfwd=[tcp|udp]:[宿主机地址]:宿主机端口-[虚拟机地址]:虚拟机端口
+```
+地址为空默认是`0.0.0.0`
+| 绑定地址 | 谁能访问 | 访问方式 |
+|:---|:---|:---|
+| `127.0.0.1` | 只有宿主机自己 | `http://127.0.0.1:5757` |
+| `0.0.0.0` | 宿主机 + 局域网所有机器 | `http://127.0.0.1:5757` 或 `http://宿主机局域网IP:5757` |
+| 留空 | 等价于 `0.0.0.0`，所有接口 | 同上 |
