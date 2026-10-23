@@ -706,6 +706,14 @@ curl  -V
 ![win_curl5](https://github.com/user-attachments/assets/3f299a23-e1cb-4b8a-8083-9020427ab97a)  
 
 
+### 解决PowerShell报错：无法加载文件 profile.ps1，因为在此系统上禁止运行脚本
+<img width="794" height="160" alt="image" src="https://github.com/user-attachments/assets/651749f1-e82d-4604-bd6e-b2622ce57efb" />  
+运行powershell输入：
+```
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+
 ### Windows优化使用体验
 #### Win11任务栏设置居左
 在Win10以下的版本都是使用的左面任务栏，但是Win11 将开始菜单和图标搬到了任务栏中间，使用的时候多少有些不习惯，如果你也不喜欢开始菜单的位置，可以右键任务栏打开任务栏设置：  
