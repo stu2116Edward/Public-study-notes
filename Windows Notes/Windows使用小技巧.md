@@ -707,11 +707,40 @@ curl  -V
 
 
 ### 解决PowerShell报错：无法加载文件 profile.ps1，因为在此系统上禁止运行脚本
+
 <img width="794" height="160" alt="image" src="https://github.com/user-attachments/assets/651749f1-e82d-4604-bd6e-b2622ce57efb" />  
-运行powershell输入：
+
+查看当前执行策略：  
+```
+Get-ExecutionPolicy -List
+```
+| 策略名称 | 说明 |
+|---|---|
+| Restricted | ❌ 默认值，禁止运行所有脚本 |
+| AllSigned | 仅允许运行经过数字签名的脚本 |
+| RemoteSigned | ✅ 本地脚本可直接运行，远程脚本需签名（推荐） |
+| Unrestricted | 允许运行所有脚本（不推荐，存在安全风险） |
+
+| 作用域 | 含义 | 优先级 |
+|---|---|---|
+| MachinePolicy | 由组策略为计算机所有用户设置 | 最高（组策略控制，不可直接修改） |
+| UserPolicy | 由组策略为当前用户设置 | 同上 |
+| Process | 仅影响当前 PowerShell 会话 | 最高（非组策略情况下） |
+| CurrentUser | 仅影响当前用户 | 次高 |
+| LocalMachine | 影响计算机所有用户（默认作用域） | 最低 |
+
+运行powershell输入：  
 ```
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
+-`ExecutionPolicy RemoteSigned`：将策略设为"远程签名"，本地脚本可直接运行，远程脚本需要签名，安全性与易用性兼顾  
+-`Scope CurrentUser`：仅对当前用户生效，无需管理员权限，不影响系统其他用户
+
+执行以下命令检查：
+```
+Get-ExecutionPolicy -Scope CurrentUser
+```
+输出结果为：`RemoteSigned`  
 
 
 ### Windows优化使用体验
