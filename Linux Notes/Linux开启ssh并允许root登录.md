@@ -32,7 +32,7 @@ ssh客户端是默认安装的，连接其它ssh服务器用的，使用 `apt in
 ### 允许远程使用root账号ssh连接本机
 修改`/etc/ssh/sshd_config`文件
 ```
-vim /etc/ssh/sshd_config
+sudo vim /etc/ssh/sshd_config
 ```
 修改如下：允许root账户登录  
 <pre>
@@ -73,7 +73,7 @@ yum install openssh-server
 编辑sshd服务配置文件  
 没有vim用vi或者yum install -y vim 安装  
 ```
-vim /etc/ssh/sshd_config
+sudo vim /etc/ssh/sshd_config
 ```
 开启监听端口
 ```
@@ -110,7 +110,7 @@ apt-get install openssh-server
 修改配置让ssh允许root登录  
 配置ssh配置文件  
 ```
-vim /etc/ssh/sshd_config
+sudo vim /etc/ssh/sshd_config
 ```
 修改如下：允许root账户登录  
 <pre>
