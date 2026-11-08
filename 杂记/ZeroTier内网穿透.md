@@ -140,6 +140,17 @@ docker pull zerotier/zerotier
 ```
 
 **2.使用命令**
+Linux:
+```bash
+docker run -d \
+  --name zerotier \
+  --cap-add=NET_ADMIN \
+  --network=host \
+  -v /var/lib/zerotier-one:/var/lib/zerotier-one \
+  zerotier/zerotier \
+  zerotier-one
+```
+OpenWrt：
 ```bash
 docker run -d \
   --name zerotier \
