@@ -90,6 +90,19 @@ systemctl status zerotier-one
 ```
 
 
+### 卸载ZeroTier
+Debian/Ubuntu:
+```
+sudo systemctl stop zerotier-one
+sudo systemctl disable zerotier-one
+sudo apt remove --purge zerotier-one
+sudo rm -rf /var/lib/zerotier-one
+ls /etc/apt/sources.list.d/ | grep -i zerotier
+sudo rm /etc/apt/sources.list.d/zerotier.list
+```
+
+
+
 #### 在Windows中使用
 如果要在`Windows`中使用命令行的方式使用Zerotier那么需要使用`管理员模式开启Windows Powershell`然后把命令行前缀改为`zerotier-cli.bat`就可以了如下：  
 查看服务状态：
@@ -140,6 +153,17 @@ docker pull zerotier/zerotier
 ```
 
 **2.使用命令**
+Debian/Ubuntu:
+```bash
+docker run -d \
+  --name zerotier \
+  --cap-add=NET_ADMIN \
+  --network=host \
+  -v /var/lib/zerotier-one:/var/lib/zerotier-one \
+  zerotier/zerotier \
+  zerotier-one
+```
+OpenWrt：
 ```bash
 docker run -d \
   --name zerotier \
@@ -192,6 +216,11 @@ zerotier-cli listnetworks
 **查看节点服务器**
 ```
 zerotier-cli peers
+```
+
+### Docker卸载ZeroTier
+```
+docker rm -f <ZeroTier容器ID>
 ```
 
 
