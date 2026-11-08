@@ -2,7 +2,12 @@
 
 **一般都使用dhcp所以以下内容是针对静态IP配置的**
 
-编辑配置文件
+查看网络配置文件名称
+```
+ls /etc/netplan/
+```
+
+编辑配置文件(根据情况修改成自己的)
 ```bash
 sudo vim /etc/netplan/01-network-manager-all.yaml
 ```
