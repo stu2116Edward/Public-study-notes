@@ -36,7 +36,7 @@ network:
             - 223.6.6.6
 ```
 非图形化：
-```
+```yaml
 network:
     version: 2
     renderer: networkd
@@ -51,7 +51,6 @@ network:
           addresses:
             - 1.1.1.1
             - 223.6.6.6
-
 ```
 
 相关说明：  
