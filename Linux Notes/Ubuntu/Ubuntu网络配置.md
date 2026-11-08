@@ -29,7 +29,9 @@ network:
         addresses:
           - 192.168.66.130/24
         optional: true
-        gateway4: 192.168.66.1
+        routes:
+          - to: default
+            via: 192.168.66.1
         nameservers:
           addresses:
             - 1.1.1.1
@@ -46,7 +48,9 @@ network:
         addresses:
           - 192.168.66.130/24
         optional: true
-        gateway4: 192.168.66.1
+        routes:
+          - to: default
+            via: 192.168.66.1
         nameservers:
           addresses:
             - 1.1.1.1
