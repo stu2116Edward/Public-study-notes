@@ -2,6 +2,13 @@
 
 **一般都使用dhcp所以以下内容是针对静态IP配置的**
 
+禁用 cloud-init 的网络管理
+```
+sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg <<EOF
+network: {config: disabled}
+EOF
+```
+
 查看网络配置文件名称
 ```
 ls /etc/netplan/
