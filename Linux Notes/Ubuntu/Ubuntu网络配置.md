@@ -52,6 +52,14 @@ network:
             - 1.1.1.1
             - 223.6.6.6
 ```
+默认DHCP
+```
+network:
+    ethernets:
+        ens33:
+            dhcp4: true
+    version: 2
+```
 
 相关说明：  
 - ens33：网卡名称，一般网卡名称是ens33，若不同可能为ens32，具体通过ifconfig命令查看
