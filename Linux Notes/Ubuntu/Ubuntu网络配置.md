@@ -18,23 +18,42 @@ network:
   version: 2
   renderer: NetworkManager
 ```
-修改成:
+图形化:
 ```yaml
 network:
     version: 2
     renderer: NetworkManager
     ethernets:
-      ens33:        # 你的网卡名称
-        dhcp4: no       # 是否启用dhcp
+      ens33:
+        dhcp4: no
         addresses:
-          - 192.168.66.113/24      # 你的ip地址/子网掩码
+          - 192.168.66.130/24
         optional: true
-        gateway4: 192.168.66.1     # 网关
+        gateway4: 192.168.66.1
         nameservers:
-          addresses:                # 配置DNS服务器
+          addresses:
+            - 1.1.1.1
             - 223.6.6.6
-            - 8.8.8.8
 ```
+非图形化：
+```
+network:
+    version: 2
+    renderer: networkd
+    ethernets:
+      ens33:
+        dhcp4: no
+        addresses:
+          - 192.168.66.130/24
+        optional: true
+        gateway4: 192.168.66.1
+        nameservers:
+          addresses:
+            - 1.1.1.1
+            - 223.6.6.6
+
+```
+
 相关说明：  
 - ens33：网卡名称，一般网卡名称是ens33，若不同可能为ens32，具体通过ifconfig命令查看
 - dhcp4:no，该字段设置为no，表示设置为静态IP
