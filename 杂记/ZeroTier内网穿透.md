@@ -177,8 +177,11 @@ docker run -d \
 
 **3.进入容器内部**
 ```bash
-docker exec -it <容器名/ID> /bin/bash
+docker exec -it zerotier /bin/bash
 ```
+<pre>
+docker exec -it <容器名/ID> /bin/bash
+</pre>
 
 **4.启动zerotier-one**
 ```bash
